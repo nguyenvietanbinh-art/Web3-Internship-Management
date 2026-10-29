@@ -88,6 +88,11 @@ const TopicSchema = new mongoose.Schema(
       type: String,
       default: "",
     },
+    mentorWallet: {
+      type: String,
+      lowercase: true,
+      default: null,
+    },
     assignedStudentWallet: {
       type: String,
       lowercase: true,

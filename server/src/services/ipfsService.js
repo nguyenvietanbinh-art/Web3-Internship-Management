@@ -1,49 +1,57 @@
-const crypto = require("crypto");
 const axios = require("axios");
-
-const PINATA_JWT = process.env.PINATA_JWT || "";
+const FormData = require("form-data");
+const config = require("../config/env");
+const { HttpError } = require("../utils/http");
 
 /**
- * Upload JSON metadata hoặc văn bản lên IPFS
+ * IPFS qua Pinata. KHÔNG bao giờ tạo CID giả: thiếu PINATA_JWT hoặc Pinata lỗi
+ * đều ném HttpError để route trả lỗi rõ ràng cho client.
  */
-async function uploadToIPFS(data, name = "metadata.json") {
-  if (PINATA_JWT) {
-    try {
-      const res = await axios.post(
-        "https://api.pinata.cloud/pinning/pinJSONToIPFS",
-        {
-          pinataContent: data,
-          pinataMetadata: { name },
-        },
-        {
-          headers: {
-            Authorization: `Bearer ${PINATA_JWT}`,
-            "Content-Type": "application/json",
-          },
-        }
-      );
-      return {
-        ipfsHash: res.data.IpfsHash,
-        url: `https://gateway.pinata.cloud/ipfs/${res.data.IpfsHash}`,
-      };
-    } catch (err) {
-      console.warn("Pinata upload failed, returning a local development marker:", err.message);
-    }
+function assertConfigured() {
+  if (!config.pinataJwt) {
+    throw new HttpError(503, "IPFS chưa được cấu hình: thiếu PINATA_JWT trong server/.env", "IPFS_NOT_CONFIGURED");
   }
-
-  // Development placeholder. A SHA-256 string is not an IPFS CID and must not
-  // be advertised as content-addressed storage.
-  const str = typeof data === "string" ? data : JSON.stringify(data);
-  const hash = crypto.createHash("sha256").update(str).digest("hex");
-  const ipfsHash = `local-${hash}`;
-
-  return {
-    ipfsHash,
-    url: null,
-    isLocalMock: true,
-  };
 }
 
-module.exports = {
-  uploadToIPFS,
-};
+const auth = () => ({ Authorization: `Bearer ${config.pinataJwt}` });
+
+function wrapPinataError(err) {
+  if (err instanceof HttpError) return err;
+  const detail = err.response?.data?.error?.details || err.response?.data?.error || err.message;
+  return new HttpError(502, `Upload IPFS thất bại: ${typeof detail === "string" ? detail : JSON.stringify(detail)}`, "IPFS_UPLOAD_FAILED");
+}
+
+/** Upload JSON lên IPFS. Trả { ipfsHash, url }. */
+async function uploadToIPFS(data, name = "metadata.json") {
+  assertConfigured();
+  try {
+    const res = await axios.post(
+      "https://api.pinata.cloud/pinning/pinJSONToIPFS",
+      { pinataContent: data, pinataMetadata: { name } },
+      { headers: { ...auth(), "Content-Type": "application/json" }, timeout: 30000 }
+    );
+    return { ipfsHash: res.data.IpfsHash, url: `https://gateway.pinata.cloud/ipfs/${res.data.IpfsHash}` };
+  } catch (err) {
+    throw wrapPinataError(err);
+  }
+}
+
+/** Upload file nhị phân (buffer) lên IPFS. Trả { ipfsHash, url }. */
+async function uploadFileToIPFS(buffer, filename) {
+  assertConfigured();
+  try {
+    const form = new FormData();
+    form.append("file", buffer, { filename });
+    form.append("pinataMetadata", JSON.stringify({ name: filename }));
+    const res = await axios.post("https://api.pinata.cloud/pinning/pinFileToIPFS", form, {
+      headers: { ...auth(), ...form.getHeaders() },
+      maxBodyLength: Infinity,
+      timeout: 60000,
+    });
+    return { ipfsHash: res.data.IpfsHash, url: `https://gateway.pinata.cloud/ipfs/${res.data.IpfsHash}` };
+  } catch (err) {
+    throw wrapPinataError(err);
+  }
+}
+
+module.exports = { uploadToIPFS, uploadFileToIPFS };

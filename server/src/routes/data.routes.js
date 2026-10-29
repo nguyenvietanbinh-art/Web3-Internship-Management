@@ -11,6 +11,7 @@ const Submission = require("../models/Submission");
 const KPIEvaluation = require("../models/KPIEvaluation");
 const AIAnalysis = require("../models/AIAnalysis");
 const ChainEvent = require("../models/ChainEvent");
+const { requireAuth } = require("../middleware/auth");
 
 const asyncRoute = (handler) => (req, res, next) => Promise.resolve(handler(req, res, next)).catch(next);
 const pagination = (req) => ({
@@ -52,7 +53,7 @@ router.get("/students/:id", asyncRoute(async (req, res) => {
   res.json({ student, assignments });
 }));
 
-router.put("/students/:id", asyncRoute(async (req, res) => {
+router.put("/students/:id", requireAuth, asyncRoute(async (req, res) => {
   let student;
   if (validId(req.params.id)) student = await Student.findById(req.params.id);
   else {
@@ -60,6 +61,7 @@ router.put("/students/:id", asyncRoute(async (req, res) => {
     if (user) student = await Student.findOne({ userId: user._id });
   }
   if (!student) return res.status(404).json({ error: "Student not found" });
+  if (String(student.userId) !== String(req.user._id)) return res.status(403).json({ error: "Chỉ chủ hồ sơ mới được sửa", code: "NOT_OWNER" });
   const allowed = ["studentCode", "fullName", "university", "major", "skills", "gpa", "cvCid"];
   for (const key of allowed) if (req.body[key] !== undefined) student[key] = req.body[key];
   await student.save();
@@ -89,7 +91,7 @@ router.get("/companies/:id", asyncRoute(async (req, res) => {
   res.json({ company, topics });
 }));
 
-router.put("/companies/:id", asyncRoute(async (req, res) => {
+router.put("/companies/:id", requireAuth, asyncRoute(async (req, res) => {
   let company;
   if (validId(req.params.id)) company = await Company.findById(req.params.id);
   else {
@@ -97,6 +99,7 @@ router.put("/companies/:id", asyncRoute(async (req, res) => {
     if (user) company = await Company.findOne({ userId: user._id });
   }
   if (!company) return res.status(404).json({ error: "Company not found" });
+  if (String(company.userId) !== String(req.user._id)) return res.status(403).json({ error: "Chỉ chủ hồ sơ mới được sửa", code: "NOT_OWNER" });
   for (const key of ["name", "description", "industry", "website"]) if (req.body[key] !== undefined) company[key] = req.body[key];
   await company.save();
   if (req.body.name) await User.updateOne({ _id: company.userId }, { $set: { name: req.body.name, companyName: req.body.name } });
@@ -185,9 +188,6 @@ router.get("/chain-events", asyncRoute(async (req, res) => {
   res.json(pageResult(items, total, page, limit));
 }));
 
-router.use((err, _req, res, _next) => {
-  console.error("Data query error:", err.message);
-  res.status(500).json({ error: "Database query failed" });
-});
+// Lỗi được errorHandler toàn cục (app.js) xử lý để giữ đúng mã HTTP.
 
 module.exports = router;

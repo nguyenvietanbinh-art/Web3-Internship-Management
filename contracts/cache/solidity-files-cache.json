@@ -1,0 +1,77 @@
+{
+  "_format": "hh-sol-cache-2",
+  "files": {
+    "D:\\OneDrive\\2.0 Tài liệu học tập\\GitHub\\Web3-Internship-Management\\contracts\\contracts\\InternshipPlatform.sol": {
+      "lastModificationDate": 1793116435332,
+      "contentHash": "d7bdc704aeb6230addb143cb6616b96d",
+      "sourceName": "contracts/InternshipPlatform.sol",
+      "solcConfig": {
+        "version": "0.8.24",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "evmVersion": "paris",
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [],
+      "versionPragmas": [
+        "^0.8.24"
+      ],
+      "artifacts": [
+        "InternshipPlatform"
+      ]
+    },
+    "D:\\OneDrive\\2.0 Tài liệu học tập\\GitHub\\Web3-Internship-Management\\contracts\\contracts\\InternshipRegistry.sol": {
+      "lastModificationDate": 1793116612357,
+      "contentHash": "1e30d78258866ff8e24fa7f2e4a08358",
+      "sourceName": "contracts/InternshipRegistry.sol",
+      "solcConfig": {
+        "version": "0.8.24",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "evmVersion": "paris",
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [],
+      "versionPragmas": [
+        "^0.8.24"
+      ],
+      "artifacts": [
+        "InternshipRegistry"
+      ]
+    }
+  }
+}

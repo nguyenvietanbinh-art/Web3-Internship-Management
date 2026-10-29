@@ -23,12 +23,16 @@ app.add_middleware(
 )
 
 # Optional Sentence-BERT model loader
+import os
 bert_model = None
 try:
-    from sentence_transformers import SentenceTransformer
-    # Can load lightweight multilingual BERT model
-    # bert_model = SentenceTransformer('paraphrase-multilingual-MiniLM-L12-v2')
-except Exception:
+    if os.getenv('AI_ENGINE', 'tfidf').lower() in ['sbert', 'bert', 'sentence-transformers']:
+        from sentence_transformers import SentenceTransformer
+        print('[AI Service] Loading SentenceTransformer model...')
+        bert_model = SentenceTransformer('all-MiniLM-L6-v2')
+        print('[AI Service] SentenceTransformer model loaded successfully!')
+except Exception as e:
+    print(f'[AI Service] Falling back to TF-IDF ({e})')
     bert_model = None
 
 # Input schemas
