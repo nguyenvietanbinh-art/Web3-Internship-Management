@@ -1,0 +1,10 @@
+
+
+  InternshipPlatform Smart Contract
+    √ Cho phep cong ty tao de tai moi
+    √ Cho phep cong ty them KPI va phan cong sinh vien
+    √ Sinh vien nop bao cao va cong ty nghiem thu KPI tren blockchain
+
+
+  3 passing (714ms)
+

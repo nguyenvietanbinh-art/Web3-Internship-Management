@@ -15,3 +15,10 @@ test('oversized/unknown errors do not leak payloads in client response or logs',
     errorHandler(new Error('TEST-PRIVATE-CREDENTIAL'),null,res,null);assert.equal(status,500);assert.ok(!JSON.stringify(body).includes('TEST-PRIVATE'));assert.ok(!logged.includes('TEST-PRIVATE'));
   }finally{console.error=old}
 });
+
+test('Mongoose validation response never echoes private rejected values',()=>{
+ const {errorHandler}=require('../src/middleware/errorHandler');let status,body;
+ const res={status(n){status=n;return this;},json(value){body=value;return this;}};
+ errorHandler({name:'ValidationError',message:'profile validation failed with TEST_PRIVATE_VALUE'},null,res,null);
+ assert.equal(status,400);assert.equal(body.code,'VALIDATION');assert.ok(!JSON.stringify(body).includes('TEST_PRIVATE_VALUE'));
+});

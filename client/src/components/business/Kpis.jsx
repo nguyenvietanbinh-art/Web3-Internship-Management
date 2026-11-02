@@ -8,7 +8,7 @@ export default function Kpis({assignment,user}) {
   const [revision,setRevision]=useState(0),[modal,setModal]=useState(null),state=useResource('/core/placements/'+assignment._id,revision);
   if(state.loading)return <LoadingSkeleton rows={1} />;if(state.error)return <EmptyState error title="Không tải được KPI">{state.error}</EmptyState>;
   const doc=state.data;
-  return <Panel title="KPI riêng của phân công" description="Snapshot rubric lúc phân công; điểm có trọng số khác điểm nhận xét báo cáo. Chưa có IPFS/on-chain proof.">
+  return <Panel title="KPI riêng của phân công" description="Kết quả theo tiêu chí và trọng số của phân công.">
     <p className="business-total">{doc.kpiScore===null?'Chưa đủ KPI đã duyệt':`${doc.kpiScore}/100`}</p>
     <div className="business-stack">{(doc.kpis||[]).map((k,i)=><article className="notification-item" key={k._id||i}><div className="section-heading"><div><strong>{k.title} · {k.weightPercent}%</strong><p>{k.description}</p><small>Hạn: {dateLabel(k.deadline)}</small></div><Status value={k.status} /></div>
       <p>{k.score===null?'Chưa chấm':`Điểm: ${k.score}/100`}</p>{k.submittedLate&&<p className="is-error">Nộp sau hạn KPI</p>}{k.content&&<details><summary>Nội dung đã nộp</summary><pre className="business-content">{k.content}</pre></details>}{k.feedback&&<p>Nhận xét: {k.feedback}</p>}

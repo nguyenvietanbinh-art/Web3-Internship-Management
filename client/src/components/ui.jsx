@@ -16,7 +16,7 @@ export function LoadingSkeleton({ label = 'Đang tải dữ liệu', rows = 3 })
 }
 
 export function PageHeader({ eyebrow = 'KHÔNG GIAN THỰC TẬP', title, description, children }) {
-  return <div className="page-header"><div><p className="eyebrow">{eyebrow}</p><h1>{title}</h1><p>{description}</p></div>{children}</div>;
+  return <div className="page-header"><div><p className="eyebrow">{eyebrow}</p><h1>{title}</h1>{description&&<p>{description}</p>}</div>{children}</div>;
 }
 
 export function StatCard({ icon: Icon, title, value, description, tone = 'indigo', testId }) {
@@ -25,7 +25,7 @@ export function StatCard({ icon: Icon, title, value, description, tone = 'indigo
 }
 
 // A single dialog primitive owns Escape, focus containment and focus restoration.
-export function Dialog({ children, onClose, label = 'Hộp thoại' }) {
+export function Dialog({ children, onClose, label = 'Hộp thoại', className = '', closeLabel = 'Đóng hộp thoại' }) {
   const ref = useRef(null);
   const closeRef = useRef(onClose);
   useEffect(() => { closeRef.current = onClose; }, [onClose]);
@@ -47,8 +47,8 @@ export function Dialog({ children, onClose, label = 'Hộp thoại' }) {
     return () => { node.removeEventListener('keydown', keyboard); document.body.style.overflow = overflow; if (previous?.isConnected) previous.focus(); };
   }, []);
   return <div className="modal-overlay" onClick={e => { if (e.target === e.currentTarget) onClose?.(); }}>
-    <div ref={ref} role="dialog" aria-modal="true" aria-label={label} tabIndex={-1} className="dialog-root">
-      {children}<button type="button" className="icon-button dialog-close" aria-label="Đóng hộp thoại" onClick={onClose}><X size={18} /></button>
+    <div ref={ref} role="dialog" aria-modal="true" aria-label={label} tabIndex={-1} className={`dialog-root ${className}`}>
+      {children}<button type="button" className="icon-button dialog-close" aria-label={closeLabel} onClick={onClose}><X size={18} /></button>
     </div>
   </div>;
 }
@@ -73,5 +73,5 @@ export function DataTable({ rows, columns, rowKey = '_id', searchText = row => J
 }
 
 export function UnavailableView({ title }) {
-  return <article className="glass-panel unavailable-panel"><span className="badge badge-pending">NOT IMPLEMENTED · PHASE 3+</span><EmptyState title={title}>Chức năng này chưa có luồng Backend hoàn chỉnh. Giao diện không tạo dữ liệu hoặc thông báo thành công thay thế.</EmptyState></article>;
+  return <article className="glass-panel unavailable-panel"><span className="badge badge-pending">Chưa khả dụng</span><EmptyState title={title}>Chức năng này hiện chưa khả dụng. Vui lòng liên hệ quản trị viên để được hỗ trợ.</EmptyState></article>;
 }

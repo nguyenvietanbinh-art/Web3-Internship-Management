@@ -7,7 +7,7 @@ export default function NativeQrScanner({onDecoded,onError}) {
     const preview=video.current;
     const stop=()=>{controls?.stop();stream?.getTracks().forEach(track=>track.stop());if(preview?.srcObject===stream)preview.srcObject=null;};
     (async()=>{try{
-      if(!navigator.mediaDevices?.getUserMedia)throw new Error('Camera cần trình duyệt hỗ trợ và secure context/localhost.');
+      if(!navigator.mediaDevices?.getUserMedia)throw new Error('Camera chưa khả dụng. Vui lòng kiểm tra quyền truy cập và kết nối an toàn.');
       stream=await navigator.mediaDevices.getUserMedia({video:{facingMode:{ideal:'environment'}},audio:false});
       // React StrictMode may dispose the effect while camera permission is pending.
       // Never attach that obsolete stream to the current preview/decoder.

@@ -1,0 +1,12 @@
+TEST_DB_VERIFIED web3_internship_test_phase1_5d0f7ebe_0a3c3d06c825
+PASS Direct /register -> real email signup -> Student Dashboard without wallet, one origin
+PASS Create CV through UI without wallet and retain data after logout/login
+PASS Company email Dashboard and JD UI create work without wallet
+PASS Real SBERT UI matching and application without wallet
+PASS Company/mentor/admin relationship workflow uses same User IDs; normal business before wallet
+PASS Wallet gate only protects Web3; real signature through TEST EIP1193 bridge links same account
+PASS Actual local report/hours/completion transactions and SBT verify on same frontend
+FAIL Desktop/mobile Light/Dark, one frontend origin and no automatic mutations on navigation
+PASS Rejected live session returns to login and removes private menus without data writes
+Evidence: D:\Web3-Internship-Management\contracts\node_modules\.cache\unified-browser-1793599012499
+Unified browser 8/9; exceptions 0; blocked 0

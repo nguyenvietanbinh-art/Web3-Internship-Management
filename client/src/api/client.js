@@ -4,12 +4,11 @@
  * - Tự gắn Bearer JWT.
  * - Ném Error có `status` / `code` để UI hiển thị thông báo rõ ràng.
  */
-export const API_BASE = import.meta.env.VITE_API_URL || 'http://localhost:5000/api';
-export const DEMO_ENABLED = import.meta.env.VITE_ENABLE_DEMO === 'true';
-const TOKEN_KEY = 'w3i_token';
-
-export const getToken = () => localStorage.getItem(TOKEN_KEY) || '';
-export const setToken = (token) => (token ? localStorage.setItem(TOKEN_KEY, token) : localStorage.removeItem(TOKEN_KEY));
+import { getToken, setToken, invalidateSession } from './session.js';
+import { errorMessage } from './errorMessages.js';
+export { getToken, setToken };
+export const API_BASE = import.meta.env?.VITE_API_URL || 'http://localhost:5000/api';
+export const DEMO_ENABLED = import.meta.env?.DEV === true && import.meta.env?.VITE_ENABLE_DEMO === 'true';
 
 export async function apiRequest(path, { method = 'GET', body, headers = {} } = {}) {
   const token = getToken();
@@ -25,14 +24,15 @@ export async function apiRequest(path, { method = 'GET', body, headers = {} } = 
       body: body === undefined ? undefined : multipart || binary || typeof body === 'string' ? body : JSON.stringify(body),
     });
   } catch {
-    const err = new Error(`Không kết nối được backend (${API_BASE}). Hãy chạy server và MongoDB.`);
+    const err = new Error('Không thể kết nối hệ thống. Vui lòng thử lại sau.');
     err.code = 'NETWORK';
     throw err;
   }
   const data = await response.json().catch(() => ({}));
   if (!response.ok) {
-    if (response.status === 401 && token) setToken(''); // token hết hạn/không hợp lệ
-    const err = new Error(data.error || `Lỗi API (${response.status})`);
+    const sessionCodes = ['BAD_TOKEN','NO_TOKEN','NO_USER','SESSION_REVOKED','ACCOUNT_DISABLED'];
+    if (response.status === 401 && (!path.startsWith('/auth/') || sessionCodes.includes(data.code))) invalidateSession(token);
+    const err = new Error(errorMessage(data.error || 'Không thể hoàn tất thao tác. Vui lòng thử lại.',data.code));
     err.status = response.status;
     err.code = data.code;
     throw err;

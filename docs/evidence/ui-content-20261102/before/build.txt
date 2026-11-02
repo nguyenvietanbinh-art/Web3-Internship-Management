@@ -1,0 +1,29 @@
+vite v8.3.4 building client environment for production...
+transforming...
+✓ 2348 modules transformed.
+rendering chunks...
+computing gzip size...
+../contracts/node_modules/.cache/production-shell-1793607395848/dist/index.html                                1.00 kB │ gzip:   0.61 kB
+../contracts/node_modules/.cache/production-shell-1793607395848/dist/assets/index-5D6-oJzO.css                29.47 kB │ gzip:   7.06 kB
+../contracts/node_modules/.cache/production-shell-1793607395848/dist/assets/book-open-Dqjq4xSS.js              0.31 kB │ gzip:   0.24 kB
+../contracts/node_modules/.cache/production-shell-1793607395848/dist/assets/rolldown-runtime-hePW80VL.js       0.71 kB │ gzip:   0.42 kB
+../contracts/node_modules/.cache/production-shell-1793607395848/dist/assets/hooks-Ci6kfhvb.js                  0.90 kB │ gzip:   0.53 kB
+../contracts/node_modules/.cache/production-shell-1793607395848/dist/assets/Notifications-CynV6l6i.js          1.38 kB │ gzip:   0.78 kB
+../contracts/node_modules/.cache/production-shell-1793607395848/dist/assets/Shared-CjJ0qVdo.js                 5.61 kB │ gzip:   2.15 kB
+../contracts/node_modules/.cache/production-shell-1793607395848/dist/assets/jsx-runtime-BNakU3Ej.js            8.24 kB │ gzip:   3.11 kB
+../contracts/node_modules/.cache/production-shell-1793607395848/dist/assets/DashboardView-DhJxqUb0.js         10.39 kB │ gzip:   3.72 kB
+../contracts/node_modules/.cache/production-shell-1793607395848/dist/assets/Web3CertificateView-DUly1QlN.js   10.55 kB │ gzip:   3.60 kB
+../contracts/node_modules/.cache/production-shell-1793607395848/dist/assets/Web3Page-DYCrG38D.js              13.04 kB │ gzip:   4.84 kB
+../contracts/node_modules/.cache/production-shell-1793607395848/dist/assets/CvJdView--nueF-VW.js              14.55 kB │ gzip:   4.41 kB
+../contracts/node_modules/.cache/production-shell-1793607395848/dist/assets/AttendanceView-UOd9wJZh.js        16.52 kB │ gzip:   4.59 kB
+../contracts/node_modules/.cache/production-shell-1793607395848/dist/assets/QrCode-Dk9_6SuZ.js                24.24 kB │ gzip:   9.33 kB
+../contracts/node_modules/.cache/production-shell-1793607395848/dist/assets/CoreBusinessView-BX9ymyAJ.js      53.66 kB │ gzip:  13.42 kB
+../contracts/node_modules/.cache/production-shell-1793607395848/dist/assets/index-DfV2e0w3.js                302.36 kB │ gzip:  90.23 kB
+../contracts/node_modules/.cache/production-shell-1793607395848/dist/assets/lib.esm-DXGi7BZN.js              379.90 kB │ gzip: 142.14 kB
+../contracts/node_modules/.cache/production-shell-1793607395848/dist/assets/NativeQrScanner-6Uq8AQmK.js      436.66 kB │ gzip: 115.57 kB
+
+✓ built in 718ms
+
+(!) outDir D:\Web3-Internship-Management\contracts\node_modules\.cache\production-shell-1793607395848\dist is not inside project root and will not be emptied.
+Use --emptyOutDir to override.
+

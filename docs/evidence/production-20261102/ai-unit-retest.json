@@ -1,0 +1,8 @@
+{
+  "command": "python -B -m unittest discover -s tests -p test_nlp.py -v",
+  "cwd": "ai-service",
+  "tests": 16,
+  "exit": 0,
+  "durationSeconds": 0.05,
+  "scope": "Pure/API/metrics/TF-IDF/guard tests only. Does not include test_model_inference.py; native full run failed separately."
+}

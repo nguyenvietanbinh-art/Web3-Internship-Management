@@ -1,0 +1,16 @@
+
+
+  Assignment evidence and ERC5192 soulbound certificate (actual local EVM)
+    √ exposes ERC165/721/metadata/5192 interfaces, not unknown interface (69ms)
+    √ only owner grants/revokes writers, unauthorized evidence rejected (53ms)
+    √ records actual evidence event and state with operation binding
+    √ rejects replay, zero commitments, invalid kind and oversized reference
+    √ cannot change assignment student or bypass report/attendance completion gates
+    √ mints a real unique token with Transfer, Locked and CertificateIssued events
+    √ rejects duplicate mint, replay and unauthorized mint
+    √ every transfer overload and approval is rejected for locked certificates
+    √ unknown token is not a verified certificate, metadata contains no private report
+
+
+  9 passing (3s)
+

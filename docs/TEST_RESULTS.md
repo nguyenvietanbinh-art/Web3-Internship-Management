@@ -1,3 +1,21 @@
+# Global UI content cleanup — 02/11/2026
+
+1179 vị trí frontend AST trước sửa:143 được xử lý (REMOVE7/SHORTEN30/REWRITE72/RELOCATE24/CONDITIONAL10),1036KEEP.48 file sau sửa,422 Backend message candidates chỉ review, không sửa Backend. Login gọn/email-first, Google conditional, ví/role/demo cũ chỉ DEV opt-in; không đổi auth protocol/permissions/data/AI/chain.
+
+Production menu4role6/6, email6/6, Google-wallet7/7, client unit10/10 PASS. Backend auth40PASS/0FAIL/1SKIP on-chain, không tuyên bố41PASS. Lint/build PASS. DB gốc/demo giữ hash/index; không commit/push/merge. [Báo cáo đầy đủ](UI_CONTENT_AUDIT.md), [bằng chứng](evidence/ui-content-20261102/INDEX.md). Các mục phía dưới là lịch sử, không tổng kiểm thử riêng của đợt text cleanup này.
+
+---
+
+# Kết quả full-project audit — 02/11/2026
+
+Source/UI/functional audit mới: [FULL_PROJECT_AUDIT.md](FULL_PROJECT_AUDIT.md), [cleanup UI](PRODUCTION_UI_CLEANUP.md), [dead code](DEAD_CODE_REVIEW.md), [production checklist](PRODUCTION_READINESS_CHECKLIST.md).23 findings,7fixed,16open/blocked/review. Không commit/push/merge, không xóa file/migration/dependency upgrade.
+
+Baseline Backend164/164; sau sửa165/165. Dev unified9/9 + email6/6 + Google retest7/7; client unit7/7; AI pure unit16/16; Solidity local9/9; production shell retest5/5. Google selector cũ từng fail1, production browser/AI native có lỗi tài nguyên được giữ log và phân biệt ở checklist; không ghi toàn bộ production PASS. SBERT API/model thật qua E2E không thay quality metrics. Risk NOT_TRAINED, Google/Pinata/Atlas live BLOCKED.
+
+Gốc/demo hashes/counts/indexes không đổi; chỉ TEST allowlist và chain local đã ghi. Framework bảo mật/production deployment, labels AI, fault-tolerant report submission và dependency toolchain cần làm tiếp. Các phần dưới là lịch sử phase, không kết luận nghiệm thu mới.
+
+---
+
 # Identity thống nhất — cập nhật 02/11/2026
 
 **Hiện hành:** http://localhost:5182/, Backend57407, User ID ownership. Email → Dashboard theo role → nghiệp vụ không ví → liên kết ví sau, cùng URL/database. Các mục cũ bên dưới là lịch sử.

@@ -100,6 +100,17 @@ export default function App() {
 
   // Restore session
   useEffect(() => {
+    const expire = () => {
+      setUser(null);setWalletAddress('');setNetworkName('');setTopics([]);setSelectedTopic(null);
+      setShowCreateTopicModal(false);setShowSubmitKPIModal(null);setShowEvaluateModal(null);
+      setActiveTab('dashboard');setAuthMode('login');setShowAuthModal(true);
+      history.replaceState({},'', '/login');setBackendError('Phiên đăng nhập đã hết hiệu lực. Vui lòng đăng nhập lại.');
+    };
+    window.addEventListener('internova:session-expired',expire);
+    return () => window.removeEventListener('internova:session-expired',expire);
+  }, []);
+
+  useEffect(() => {
     let active = true;
     const initialToken = getToken();
     Promise.all([apiRequest('/core/capabilities').catch(()=>({enabled:false,unified:false})),restoreSession()])
@@ -267,7 +278,7 @@ export default function App() {
 
       await refreshTopic(selectedTopic._id);
       setAssigneeWallet('');
-      showToast(`Đã lưu phân công trong database; ${chainResult}.`);
+      showToast(`Đã lưu phân công; ${chainResult}.`);
     } catch (error) {
       showToast(`Không thể phân công: ${error.message}`);
     } finally {
@@ -335,7 +346,7 @@ export default function App() {
       setShowCreateTopicModal(false);
       setNewTopicForm({ title: '', description: '', requiredSkills: 'Solidity, React', expectedKeywords: 'Web3, KPI' });
       setKpiRows([newKpiRow(15, 40), newKpiRow(45, 60)]);
-      showToast(`Đã lưu đề tài trong database; ${chainResult}.`);
+      showToast(`Đã lưu đề tài; ${chainResult}.`);
     } catch (error) {
       showToast(`Không thể tạo đề tài: ${error.message}`);
     } finally {

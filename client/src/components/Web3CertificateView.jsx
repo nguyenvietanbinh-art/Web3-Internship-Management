@@ -58,14 +58,14 @@ export default function Web3CertificateView({ showToast, user }) {
     <div style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>
       {error && <EmptyState error title="Chưa thể xác minh">{error}</EmptyState>}
       {loading && <LoadingSkeleton label="Đang tra cứu chứng nhận" />}
-      <div className="inline-alert"><strong>BLOCKED · Xác minh token chưa được cấu hình</strong><p>Không hiển thị chứng nhận hợp lệ khi thiếu bằng chứng on-chain. Nhật ký toàn hệ thống chỉ dành cho Admin.</p></div>
+      <div className="inline-alert"><strong>Xác minh chứng nhận chưa khả dụng</strong><p>Không hiển thị chứng nhận hợp lệ khi thiếu bằng chứng on-chain. Nhật ký toàn hệ thống chỉ dành cho Admin.</p></div>
       {/* Search Bar */}
       <div className="glass-panel" style={{ padding: '24px' }}>
         <h3 style={{ fontSize: '1.25rem', fontWeight: 800, margin: '0 0 6px 0' }}>
-          Tra Cứu Chứng Nhận Thực Tập Web3 On-Chain (SBT / NFT Explorer)
+          Tra cứu chứng nhận thực tập
         </h3>
         <p style={{ margin: '0 0 16px 0', fontSize: '0.82rem', color: 'var(--text-muted)' }}>
-          Nhập Topic ID, Địa chỉ Ví Sinh viên hoặc Transaction Hash để xác minh chứng nhận chống gian lận
+          Nhập mã đề tài, địa chỉ ví hoặc mã giao dịch để tra cứu.
         </p>
 
         <form onSubmit={handleSearch} style={{ display: 'flex', gap: '10px' }}>
@@ -169,7 +169,7 @@ export default function Web3CertificateView({ showToast, user }) {
           <div>
             <h4 style={{ fontSize: '1.1rem', fontWeight: 700, margin: '0 0 4px 0', display: 'flex', alignItems: 'center', gap: '8px' }}>
               <Hash size={18} color="var(--primary-light)" />
-              Sổ Cái Sự Kiện On-Chain (Blockchain Events Ledger)
+              Lịch sử hoạt động blockchain
             </h4>
             <p style={{ fontSize: '0.8rem', color: 'var(--text-muted)', margin: 0 }}>
               Listener mặc định tắt. Đồng bộ thủ công cần quyền Admin và RPC đã cấu hình.

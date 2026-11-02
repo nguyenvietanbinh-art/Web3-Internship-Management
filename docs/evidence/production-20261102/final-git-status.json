@@ -1,0 +1,33 @@
+{
+  "branch": "branch_1",
+  "head": "8f4e5ac267f5fc86e15c1b106d9bc1f555056227",
+  "staged": "",
+  "deletedTrackedFiles": "",
+  "trackedChanges": [
+    "client/src/App.jsx",
+    "client/src/api/client.js",
+    "client/src/components/AppShell.jsx",
+    "client/src/components/AuthModal.jsx",
+    "client/src/components/CvJdView.jsx",
+    "client/src/components/DashboardView.jsx",
+    "client/src/components/EmailIdentity.jsx",
+    "client/src/components/GoogleIdentity.jsx",
+    "client/src/components/business/Accounts.jsx",
+    "client/src/components/business/AiPage.jsx",
+    "client/src/components/business/CoreBusinessView.jsx",
+    "client/src/components/business/CoreOverview.jsx",
+    "client/src/components/business/ProfileCv.jsx",
+    "client/src/components/business/Recruitment.jsx",
+    "client/src/components/business/Shared.jsx",
+    "client/src/components/business/Web3Page.jsx",
+    "client/src/components/identity.css",
+    "client/src/components/ui.jsx",
+    "client/test/google-auth.e2e.cjs",
+    "client/test/unified.e2e.cjs",
+    "docs/IMPLEMENTATION_PROGRESS.md",
+    "docs/TEST_RESULTS.md",
+    "server/src/middleware/errorHandler.js",
+    "server/test/error-safety.test.js"
+  ],
+  "status": "M client/src/App.jsx\n M client/src/api/client.js\n M client/src/components/AppShell.jsx\n M client/src/components/AuthModal.jsx\n M client/src/components/CvJdView.jsx\n M client/src/components/DashboardView.jsx\n M client/src/components/EmailIdentity.jsx\n M client/src/components/GoogleIdentity.jsx\n M client/src/components/business/Accounts.jsx\n M client/src/components/business/AiPage.jsx\n M client/src/components/business/CoreBusinessView.jsx\n M client/src/components/business/CoreOverview.jsx\n M client/src/components/business/ProfileCv.jsx\n M client/src/components/business/Recruitment.jsx\n M client/src/components/business/Shared.jsx\n M client/src/components/business/Web3Page.jsx\n M client/src/components/identity.css\n M client/src/components/ui.jsx\n M client/test/email-auth.e2e.cjs\n M client/test/google-auth.e2e.cjs\n M client/test/unified.e2e.cjs\n M docs/IMPLEMENTATION_PROGRESS.md\n M docs/TEST_RESULTS.md\n M server/src/middleware/errorHandler.js\n M server/test/error-safety.test.js\n?? audit-reports/\n?? client/src/api/formAction.js\n?? client/src/api/session.js\n?? client/test/production-safety.test.mjs\n?? client/test/production-shell.e2e.cjs\n?? docs/DEAD_CODE_REVIEW.md\n?? docs/FULL_PROJECT_AUDIT.md\n?? docs/PRODUCTION_READINESS_CHECKLIST.md\n?? docs/PRODUCTION_UI_CLEANUP.md\n?? docs/evidence/production-20261102/"
+}

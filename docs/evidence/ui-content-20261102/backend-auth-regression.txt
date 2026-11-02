@@ -1,0 +1,259 @@
+TAP version 13
+# TEST_DB_VERIFIED web3_internship_test_phase1_f380521c_40e4e3f6301c
+# Subtest: register real email/password user, hash only, no Google/wallet fabrication
+ok 1 - register real email/password user, hash only, no Google/wallet fabrication
+  ---
+  duration_ms: 2026.5399
+  type: 'test'
+  ...
+# Subtest: duplicate/case collision and concurrent registration cannot create multiple accounts
+ok 2 - duplicate/case collision and concurrent registration cannot create multiple accounts
+  ---
+  duration_ms: 522.1908
+  type: 'test'
+  ...
+# Subtest: reject privilege injection, malformed email, password mismatch and bcrypt truncation
+ok 3 - reject privilege injection, malformed email, password mismatch and bcrypt truncation
+  ---
+  duration_ms: 30.7768
+  type: 'test'
+  ...
+# Subtest: login normalized email, wrong/unknown password errors generic, no auto-merge existing wallet email
+ok 4 - login normalized email, wrong/unknown password errors generic, no auto-merge existing wallet email
+  ---
+  duration_ms: 902.562
+  type: 'test'
+  ...
+# Subtest: password accounts cannot access wallet scope; profile email edits do not change login identifier
+ok 5 - password accounts cannot access wallet scope; profile email edits do not change login identifier
+  ---
+  duration_ms: 594.0527
+  type: 'test'
+  ...
+# Subtest: password change verifies old password, revokes prior JWT and accepts only new password
+ok 6 - password change verifies old password, revokes prior JWT and accepts only new password
+  ---
+  duration_ms: 1739.5375
+  type: 'test'
+  ...
+# Subtest: password/wallet linking requires owner reauthentication, browser binding and signature; no replay/theft
+ok 7 - password/wallet linking requires owner reauthentication, browser binding and signature; no replay/theft
+  ---
+  duration_ms: 2355.3243
+  type: 'test'
+  ...
+# Subtest: expired challenge and disabled user cannot authenticate; GET and missing feature do not write
+ok 8 - expired challenge and disabled user cannot authenticate; GET and missing feature do not write
+  ---
+  duration_ms: 853.1493
+  type: 'test'
+  ...
+# TEST_DB_VERIFIED web3_internship_test_phase1_f380521c_269f8d3e4ecc
+# Subtest: missing Google configuration reports BLOCKED without writes
+ok 9 - missing Google configuration reports BLOCKED without writes
+  ---
+  duration_ms: 1055.9824
+  type: 'test'
+  ...
+# Subtest: legacy wallet index prevents Google writes until approved index preparation
+ok 10 - legacy wallet index prevents Google writes until approved index preparation
+  ---
+  duration_ms: 11.0948
+  type: 'test'
+  ...
+# Subtest: first and repeated Google login: real Mongo/JWT, no wallet/password fabrication, no duplicate
+ok 11 - first and repeated Google login: real Mongo/JWT, no wallet/password fabrication, no duplicate
+  ---
+  duration_ms: 126.4612
+  type: 'test'
+  ...
+# Subtest: claims rejection: issuer/audience/azp/expiry/future iat/subject/email verification/nonce
+ok 12 - claims rejection: issuer/audience/azp/expiry/future iat/subject/email verification/nonce
+  ---
+  duration_ms: 157.6184
+  type: 'test'
+  ...
+# Subtest: Google email changes follow stable subject without overwriting profile or falsely verifying old email
+ok 13 - Google email changes follow stable subject without overwriting profile or falsely verifying old email
+  ---
+  duration_ms: 26.4216
+  type: 'test'
+  ...
+# Subtest: production verifier refuses malformed unsigned input, never uses TEST injection
+ok 14 - production verifier refuses malformed unsigned input, never uses TEST injection
+  ---
+  duration_ms: 196.0251
+  type: 'test'
+  ...
+# Subtest: browser-bound challenge, Origin, expiration, purpose and replay protection
+ok 15 - browser-bound challenge, Origin, expiration, purpose and replay protection
+  ---
+  duration_ms: 44.4988
+  type: 'test'
+  ...
+# Subtest: concurrent nonce consumption permits one login and one User only
+ok 16 - concurrent nonce consumption permits one login and one User only
+  ---
+  duration_ms: 21.772
+  type: 'test'
+  ...
+# Subtest: concurrent distinct challenges for one subject do not create duplicate accounts
+ok 17 - concurrent distinct challenges for one subject do not create duplicate accounts
+  ---
+  duration_ms: 29.4147
+  type: 'test'
+  ...
+# Subtest: public registration cannot grant company/mentor/admin; matching profile email never auto-links
+ok 18 - public registration cannot grant company/mentor/admin; matching profile email never auto-links
+  ---
+  duration_ms: 149.1032
+  type: 'test'
+  ...
+# Subtest: Google-only session can edit own profile, cannot access wallet-scoped APIs or elevate role
+ok 19 - Google-only session can edit own profile, cannot access wallet-scoped APIs or elevate role
+  ---
+  duration_ms: 56.4502
+  type: 'test'
+  ...
+# Subtest: link Google requires fresh wallet signature and Google proof; all provisioned roles preserved
+ok 20 - link Google requires fresh wallet signature and Google proof; all provisioned roles preserved
+  ---
+  duration_ms: 392.6676
+  type: 'test'
+  ...
+# Subtest: Google sub cannot link to another wallet account; challenge bound to authenticated User
+ok 21 - Google sub cannot link to another wallet account; challenge bound to authenticated User
+  ---
+  duration_ms: 58.6997
+  type: 'test'
+  ...
+# Subtest: last provider cannot unlink; wallet linking rejects theft and requires matching fresh Google identity
+ok 22 - last provider cannot unlink; wallet linking rejects theft and requires matching fresh Google identity
+  ---
+  duration_ms: 122.2984
+  type: 'test'
+  ...
+# Subtest: unlink with both proofs retains wallet login and invalidates Google-issued session
+ok 23 - unlink with both proofs retains wallet login and invalidates Google-issued session
+  ---
+  duration_ms: 43.96
+  type: 'test'
+  ...
+# Subtest: disabled accounts reject Google login and existing JWT, read endpoints do not write or expose identities
+ok 24 - disabled accounts reject Google login and existing JWT, read endpoints do not write or expose identities
+  ---
+  duration_ms: 79.3676
+  type: 'test'
+  ...
+# Subtest: official Google library validates local RSA signature and rejects modified signature/audience/issuer/expiry
+ok 25 - official Google library validates local RSA signature and rejects modified signature/audience/issuer/expiry
+  ---
+  duration_ms: 64.9743
+  type: 'test'
+  ...
+# Subtest: test guard accepts only exact local allowlist with NODE_ENV=test
+ok 26 - test guard accepts only exact local allowlist with NODE_ENV=test
+  ---
+  duration_ms: 1.676
+  type: 'test'
+  ...
+# Subtest: test guard rejects DEV/demo/production, missing configuration and URI tricks before connect
+ok 27 - test guard rejects DEV/demo/production, missing configuration and URI tricks before connect
+  ---
+  duration_ms: 0.6548
+  type: 'test'
+  ...
+# TEST_DB_VERIFIED web3_internship_test_phase1_f380521c_c75070812b62
+# Subtest: one identity: public student registration; controlled company/mentor; all roles dashboard without wallet
+ok 28 - one identity: public student registration; controlled company/mentor; all roles dashboard without wallet
+  ---
+  duration_ms: 4296.5039
+  type: 'test'
+  ...
+# Subtest: walletless CV isolation, unique User ownership, invalid owner injection and legacy fallback fail closed
+ok 29 - walletless CV isolation, unique User ownership, invalid owner injection and legacy fallback fail closed
+  ---
+  duration_ms: 145.2745
+  type: 'test'
+  ...
+# Subtest: walletless company JD ownership/search and real local TF-IDF/SBERT matching
+ok 30 - walletless company JD ownership/search and real local TF-IDF/SBERT matching
+  ---
+  duration_ms: 430.5351
+  type: 'test'
+  ...
+# Subtest: apply, concurrent duplicate, consented ranking and notifications use User IDs before wallet
+ok 31 - apply, concurrent duplicate, consented ranking and notifications use User IDs before wallet
+  ---
+  duration_ms: 101.7018
+  type: 'test'
+  ...
+# Subtest: User ID topic/rubric and accepted-student directory; reject unaccepted/foreign placement
+ok 32 - User ID topic/rubric and accepted-student directory; reject unaccepted/foreign placement
+  ---
+  duration_ms: 121.1369
+  type: 'test'
+  ...
+# Subtest: walletless tasks/progress/logs/reviews enforce relationships and preserve audits by User ID
+ok 33 - walletless tasks/progress/logs/reviews enforce relationships and preserve audits by User ID
+  ---
+  duration_ms: 78.5213
+  type: 'test'
+  ...
+# Subtest: walletless QR issue/redeem uses User ID, authentic nonce, GPS fixture and replay/expiry controls
+ok 34 - walletless QR issue/redeem uses User ID, authentic nonce, GPS fixture and replay/expiry controls
+  ---
+  duration_ms: 142.0995
+  type: 'test'
+  ...
+# Subtest: walletless check-in/out and audited TEST adjustment/approval count hours; no automatic credits
+ok 35 - walletless check-in/out and audited TEST adjustment/approval count hours; no automatic credits
+  ---
+  duration_ms: 79.7634
+  type: 'test'
+  ...
+# Subtest: walletless KPI, report/reviews/approval, NLP and dashboard work without on-chain claims
+ok 36 - walletless KPI, report/reviews/approval, NLP and dashboard work without on-chain claims
+  ---
+  duration_ms: 185.7451
+  type: 'test'
+  ...
+# Subtest: link actual TEST signature binds same User, does not rewrite/duplicate business records; email relogin preserves CV
+ok 37 - link actual TEST signature binds same User, does not rewrite/duplicate business records; email relogin preserves CV
+  ---
+  duration_ms: 1752.4038
+  type: 'test'
+  ...
+# Subtest: real local blockchain anchors and SBT mint/verify from same User-ID business records
+ok 38 - real local blockchain anchors and SBT mint/verify from same User-ID business records # SKIP
+  ---
+  duration_ms: 0.1898
+  type: 'test'
+  ...
+# Subtest: wallet unlink without chain commitments preserves CV ownership and prevents last-provider/replay loss
+ok 39 - wallet unlink without chain commitments preserves CV ownership and prevents last-provider/replay loss
+  ---
+  duration_ms: 597.3261
+  type: 'test'
+  ...
+# Subtest: Google linking before wallet requires password reauthentication and stable sub; no live Google claim
+ok 40 - Google linking before wallet requires password reauthentication and stable sub; no live Google claim
+  ---
+  duration_ms: 605.3484
+  type: 'test'
+  ...
+# Subtest: all GET dashboards/scopes preserve database fingerprints, foreign IDOR and privilege injection rejected
+ok 41 - all GET dashboards/scopes preserve database fingerprints, foreign IDOR and privilege injection rejected
+  ---
+  duration_ms: 287.3121
+  type: 'test'
+  ...
+1..41
+# tests 41
+# suites 0
+# pass 40
+# fail 0
+# cancelled 0
+# skipped 1
+# todo 0
+# duration_ms 23910.1921

@@ -168,7 +168,7 @@ export default function AttendanceView({ user, showToast }) {
               <h4 style={{ fontSize: '1.05rem', fontWeight: 700, margin: 0 }}>Mã QR Điểm Danh Hôm Nay</h4>
             </div>
 
-            <p style={{ fontSize: '0.85rem' }}>Phiên có hạn, dành cho đúng sinh viên/phân công. Camera, GPS và bằng chứng blockchain chưa được triển khai ở phase này. Khóa ngày điểm danh hiện dùng UTC để tương thích dữ liệu cũ.</p>
+            <p style={{ fontSize: '0.85rem' }}>Phiên có thời hạn cho sinh viên được phân công. Luồng này chưa xác minh camera, GPS hoặc blockchain; ngày điểm danh theo UTC.</p>
             {user?.role === 'company' && <form onSubmit={createQrSession} style={{ width: '100%', display: 'grid', gap: 8 }}>
               <label>Ví sinh viên<input className="input-field" aria-label="Ví sinh viên của phiên QR" required value={qrForm.studentWallet} onChange={e => setQrForm({ ...qrForm, studentWallet: e.target.value })} /></label>
               <label>ID đề tài<input className="input-field" aria-label="ID đề tài của phiên QR" required value={qrForm.topicId} onChange={e => setQrForm({ ...qrForm, topicId: e.target.value })} /></label>

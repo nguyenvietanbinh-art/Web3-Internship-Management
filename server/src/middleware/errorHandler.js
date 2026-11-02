@@ -7,7 +7,7 @@ function errorHandler(err, _req, res, _next) {
   if (err instanceof HttpError) {
     return res.status(err.status).json({ error: err.message, ...(err.code && { code: err.code }) });
   }
-  if (err.name === "ValidationError") return res.status(400).json({ error: err.message, code: "VALIDATION" });
+  if (err.name === "ValidationError") return res.status(400).json({ error: "Dữ liệu không hợp lệ. Vui lòng kiểm tra các trường đã nhập.", code: "VALIDATION" });
   if (err.name === "CastError") return res.status(400).json({ error: "Tham số không hợp lệ", code: "BAD_ID" });
   if (err.type === "entity.parse.failed") return res.status(400).json({ error: "JSON không hợp lệ" });
   if (err.type === 'entity.too.large') return res.status(413).json({ error: 'Nội dung vượt giới hạn cho phép', code: 'PAYLOAD_TOO_LARGE' });

@@ -1,0 +1,85 @@
+{
+  "at": "2026-11-02T05:59:47.037Z",
+  "protectedDatabases": [
+    {
+      "database": "web3_internship",
+      "unchanged": true
+    },
+    {
+      "database": "web3_internship_demo_20261030_2340",
+      "unchanged": true
+    },
+    {
+      "database": "web3_internship_demo_20261030_2340_foundation",
+      "unchanged": true
+    }
+  ],
+  "latency": [
+    {
+      "url": "http://localhost:57407/api/health",
+      "status": 200,
+      "samplesMs": [
+        47.29,
+        5.86,
+        3.67,
+        4.34,
+        3.73
+      ],
+      "meanMs": 12.98,
+      "body": {
+        "status": "online",
+        "dbState": "connected",
+        "ipfsConfigured": false,
+        "demoEnabled": false,
+        "timestamp": "2026-11-02T05:59:46.985Z"
+      }
+    },
+    {
+      "url": "http://localhost:57407/api/core/capabilities",
+      "status": 200,
+      "samplesMs": [
+        3.27,
+        3.32,
+        3.24,
+        5.69,
+        8.5
+      ],
+      "meanMs": 4.8,
+      "body": {
+        "enabled": true,
+        "authentication": "user-id",
+        "unified": true
+      }
+    },
+    {
+      "url": "http://127.0.0.1:8003/api/v1/nlp/status",
+      "status": 200,
+      "samplesMs": [
+        7.38,
+        5.73,
+        3.28,
+        3.21,
+        3.75
+      ],
+      "meanMs": 4.67,
+      "body": {
+        "sbert": {
+          "ready": true,
+          "configured": true,
+          "model_id": "sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2",
+          "revision": "e8f8c211226b894fcb81acc59f3b34ba3efd5f42",
+          "expected_revision": "e8f8c211226b894fcb81acc59f3b34ba3efd5f42",
+          "backend": "onnx-cpu-int8",
+          "reason": null,
+          "available_memory_mib": 591.19921875,
+          "network_inference": false
+        },
+        "baseline": "tfidf",
+        "risk_classifier": "NOT_TRAINED",
+        "quality_metrics": null,
+        "data_leaves_machine": false
+      }
+    }
+  ],
+  "note": "Five sequential local samples per health/status, not a load test or model inference benchmark"
+}

@@ -1,0 +1,9 @@
+TEST_DB_VERIFIED web3_internship_test_phase1_f380521c_a3585f8a63a3
+PASS Guest desktop/mobile hides all workspace menus and business requests; login/register creates no account
+PASS Browser registration persists real hashed student and signed JWT without Google/MetaMask
+PASS Save profile shows success only after actual persistence; reload preserves fields
+PASS Reload restores session, profile-only scope, mobile/Dark theme without auto-write
+PASS Logout clears token; wrong password shows error and does not log in
+PASS Correct email/password login returns same User; password change works from UI
+Evidence: D:\Web3-Internship-Management\contracts\node_modules\.cache\email-auth-browser-1793608202424
+Email browser 6/6; exceptions 0; blocked 0

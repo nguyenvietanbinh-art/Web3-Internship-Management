@@ -1,0 +1,30 @@
+{
+  "at": "2026-11-02T05:55:57.640Z",
+  "backend": {
+    "exit": 0,
+    "summary": [
+      "# tests 165",
+      "# pass 165",
+      "# fail 0",
+      "# skipped 0",
+      "# duration_ms 98070.2747"
+    ]
+  },
+  "unifiedBrowser": {
+    "exit": 0,
+    "summary": []
+  },
+  "emailRegression": {
+    "exit": 0,
+    "summary": []
+  },
+  "googleRegression": {
+    "exit": 1,
+    "summary": []
+  },
+  "protectedUnchanged": true,
+  "googleLive": "BLOCKED_NO_CLIENT_ID",
+  "ipfsLive": "BLOCKED_NO_CREDENTIALS",
+  "actualMetaMaskExtension": "NOT_TESTED; browser fixture transport signs actual TEST message",
+  "testData": "Synthetic records, including explicit company-adjusted TEST hours; no claims of physically worked time"
+}

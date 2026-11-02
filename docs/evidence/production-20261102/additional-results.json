@@ -1,0 +1,22 @@
+{
+  "production-browser": {
+    "exit": 1,
+    "ms": 26252
+  },
+  "google-browser-retest": {
+    "exit": 0,
+    "ms": 15816
+  },
+  "client-unit": {
+    "exit": 0,
+    "ms": 255
+  },
+  "ai-unit-inference": {
+    "exit": 3221226505,
+    "ms": 7491
+  },
+  "solidity-local": {
+    "exit": 0,
+    "ms": 25715
+  }
+}

@@ -1,0 +1,54 @@
+{
+  "findings": 23,
+  "fixed": 7,
+  "remaining": 16,
+  "backend": {
+    "pass": 165,
+    "fail": 0
+  },
+  "devUnified": {
+    "pass": 9,
+    "fail": 0
+  },
+  "email": {
+    "pass": 6,
+    "fail": 0
+  },
+  "googleUIRetest": {
+    "pass": 7,
+    "fail": 0
+  },
+  "productionShellRetest": {
+    "pass": 5,
+    "fail": 0
+  },
+  "clientUnit": {
+    "pass": 7,
+    "fail": 0
+  },
+  "aiPureUnit": {
+    "pass": 16,
+    "fail": 0
+  },
+  "solidity": {
+    "pass": 9,
+    "fail": 0
+  },
+  "deepProductionE2E": "FAIL; latest3/9, renderer/screenshot/CDP cascading failures; not replaced by shell smoke",
+  "aiNative": "FAIL allocation; exit3221226505; resource retest BLOCKED",
+  "productionReady": false,
+  "googleLive": "BLOCKED",
+  "pinataLive": "BLOCKED",
+  "atlas": "BLOCKED",
+  "riskClassifier": "NOT_TRAINED",
+  "solidityLegacy": {
+    "pass": 3,
+    "fail": 0
+  },
+  "demoGuards": {
+    "pass": 3,
+    "fail": 0
+  },
+  "secretScanCandidates": 429,
+  "secretPatternHits": 0
+}

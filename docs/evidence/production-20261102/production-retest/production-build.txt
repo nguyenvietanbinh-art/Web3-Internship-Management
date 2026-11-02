@@ -1,0 +1,29 @@
+vite v8.3.4 building client environment for production...
+transforming...
+✓ 2348 modules transformed.
+rendering chunks...
+computing gzip size...
+../contracts/node_modules/.cache/unified-browser-1793599128794/production-dist/index.html                                1.00 kB │ gzip:   0.61 kB
+../contracts/node_modules/.cache/unified-browser-1793599128794/production-dist/assets/index-5D6-oJzO.css                29.47 kB │ gzip:   7.06 kB
+../contracts/node_modules/.cache/unified-browser-1793599128794/production-dist/assets/book-open-DPJ9VW5S.js              0.31 kB │ gzip:   0.24 kB
+../contracts/node_modules/.cache/unified-browser-1793599128794/production-dist/assets/rolldown-runtime-hePW80VL.js       0.71 kB │ gzip:   0.42 kB
+../contracts/node_modules/.cache/unified-browser-1793599128794/production-dist/assets/hooks-BY50I-u5.js                  0.90 kB │ gzip:   0.53 kB
+../contracts/node_modules/.cache/unified-browser-1793599128794/production-dist/assets/Notifications-C4fepxz_.js          1.38 kB │ gzip:   0.78 kB
+../contracts/node_modules/.cache/unified-browser-1793599128794/production-dist/assets/Shared-DRrODpqP.js                 5.61 kB │ gzip:   2.15 kB
+../contracts/node_modules/.cache/unified-browser-1793599128794/production-dist/assets/jsx-runtime-BNakU3Ej.js            8.24 kB │ gzip:   3.11 kB
+../contracts/node_modules/.cache/unified-browser-1793599128794/production-dist/assets/DashboardView-DLQi-U8E.js         10.39 kB │ gzip:   3.73 kB
+../contracts/node_modules/.cache/unified-browser-1793599128794/production-dist/assets/Web3CertificateView-FNpwuxpF.js   10.55 kB │ gzip:   3.60 kB
+../contracts/node_modules/.cache/unified-browser-1793599128794/production-dist/assets/Web3Page-enPl8ZSF.js              13.04 kB │ gzip:   4.84 kB
+../contracts/node_modules/.cache/unified-browser-1793599128794/production-dist/assets/CvJdView-BZhjq3Q9.js              14.55 kB │ gzip:   4.41 kB
+../contracts/node_modules/.cache/unified-browser-1793599128794/production-dist/assets/AttendanceView-Dk-MayUI.js        16.52 kB │ gzip:   4.59 kB
+../contracts/node_modules/.cache/unified-browser-1793599128794/production-dist/assets/QrCode-Dk9_6SuZ.js                24.24 kB │ gzip:   9.33 kB
+../contracts/node_modules/.cache/unified-browser-1793599128794/production-dist/assets/CoreBusinessView-D8yzZFfT.js      53.66 kB │ gzip:  13.42 kB
+../contracts/node_modules/.cache/unified-browser-1793599128794/production-dist/assets/index-C5VDddzb.js                303.21 kB │ gzip:  90.45 kB
+../contracts/node_modules/.cache/unified-browser-1793599128794/production-dist/assets/lib.esm-DXGi7BZN.js              379.90 kB │ gzip: 142.14 kB
+../contracts/node_modules/.cache/unified-browser-1793599128794/production-dist/assets/NativeQrScanner-6Uq8AQmK.js      436.66 kB │ gzip: 115.57 kB
+
+✓ built in 733ms
+
+(!) outDir D:\Web3-Internship-Management\contracts\node_modules\.cache\unified-browser-1793599128794\production-dist is not inside project root and will not be emptied.
+Use --emptyOutDir to override.
+

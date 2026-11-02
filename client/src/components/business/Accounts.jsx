@@ -8,7 +8,7 @@ import { roleNames } from '../navigation';
 const options=Object.entries(roleNames).map(([value,label])=>({value,label}));
 export default function AccountsPage({user,unified=false}) {
   const [revision,setRevision]=useState(0),[editing,setEditing]=useState(null),[history,setHistory]=useState(null),[role,setRole]=useState('');
-  return <Panel title="Tài khoản & phân quyền" description="Chỉ Admin cấp quyền/khóa tài khoản, mọi thay đổi có lý do và lịch sử. Không có mật khẩu cho tài khoản ví." actions={<button className="btn btn-primary" onClick={()=>setEditing({})}>Cấp tài khoản</button>}>
+  return <Panel title="Tài khoản & phân quyền" description="Quản lý quyền và trạng thái tài khoản. Mọi thay đổi được lưu trong lịch sử." actions={<button className="btn btn-primary" onClick={()=>setEditing({})}>Cấp tài khoản</button>}>
     <Select label="Lọc vai trò tài khoản" value={role} onChange={setRole} options={[{value:'',label:'Tất cả vai trò'},...options]} />
     <ServerTable key={role} path={'/core/accounts'+(role?'?role='+role:'')} revision={revision} label="Tài khoản" columns={[
       {key:'name',title:'Tài khoản',render:r=><div><strong>{r.name}</strong><small className="business-block muted">{r.walletAddress}</small></div>},

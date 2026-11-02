@@ -1,0 +1,146 @@
+{
+  "time": "2026-11-02T08:16:51.651Z",
+  "tests": [
+    {
+      "name": "Production email login, private menu and clean shell: student",
+      "status": "PASS"
+    },
+    {
+      "name": "Production email login, private menu and clean shell: company",
+      "status": "PASS"
+    },
+    {
+      "name": "Production email login, private menu and clean shell: mentor",
+      "status": "PASS"
+    },
+    {
+      "name": "Production email login, private menu and clean shell: admin",
+      "status": "PASS"
+    },
+    {
+      "name": "Production tablet/mobile, Light/Dark and no automatic mutations",
+      "status": "PASS"
+    }
+  ],
+  "requests": [
+    {
+      "method": "GET",
+      "path": "/api/core/capabilities"
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/api/core/capabilities"
+    },
+    {
+      "method": "POST",
+      "path": "/api/auth/email/login"
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/api/auth/email/login"
+    },
+    {
+      "method": "GET",
+      "path": "/api/auth/me"
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/api/auth/me"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/dashboard"
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/api/core/dashboard"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/profile"
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/api/core/profile"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/dashboard"
+    },
+    {
+      "method": "POST",
+      "path": "/api/auth/email/login"
+    },
+    {
+      "method": "GET",
+      "path": "/api/auth/me"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/dashboard"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/profile"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/dashboard"
+    },
+    {
+      "method": "POST",
+      "path": "/api/auth/email/login"
+    },
+    {
+      "method": "GET",
+      "path": "/api/auth/me"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/dashboard"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/profile"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/dashboard"
+    },
+    {
+      "method": "POST",
+      "path": "/api/auth/email/login"
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/api/auth/email/login"
+    },
+    {
+      "method": "GET",
+      "path": "/api/auth/me"
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/api/auth/me"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/dashboard"
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/api/core/dashboard"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/profile"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/dashboard"
+    }
+  ],
+  "exceptions": [],
+  "blocked": [],
+  "environment": "Vite production build, Backend isolated TEST, no AI inference in this smoke suite"
+}

@@ -1,7 +1,23 @@
 .identity-credentials { display: grid; gap: 12px; border: 0; padding: 16px 0; margin: 0; min-width: 0; }
 .identity-credentials label { display: grid; gap: 6px; font-size: .85rem; color: var(--text-main); }
-.identity-credentials input { width: 100%; box-sizing: border-box; min-height: 42px; padding: 10px 12px; color: var(--text-main); background: transparent; border: 1px solid var(--border-glass); border-radius: 10px; }
+.identity-credentials input,.identity-credentials select { width: 100%; box-sizing: border-box; min-height: 42px; padding: 10px 12px; color: var(--text-main); background: var(--bg-card); border: 1px solid var(--border-glass); border-radius: 10px; }
 .identity-credentials:disabled { opacity: .65; }
 .google-identity { display: grid; justify-items: start; gap: 12px; padding: 12px 0; overflow-wrap: anywhere; }
 .google-identity > div { max-width: 100%; }
 .google-identity p { margin: 0; font-size: .85rem; line-height: 1.6; }
+.identity-settings { padding: 24px; margin-bottom: 24px; min-width: 0; overflow-wrap: anywhere; }
+.identity-settings h2 { font-size: 1.15rem; margin: 0 0 12px; }
+.identity-settings p { line-height: 1.6; }
+.identity-settings > .btn { margin: 0 8px 12px 0; }
+.identity-security { border-top: 1px solid var(--border-glass); padding-top: 24px; margin-top: 24px; }
+.identity-security .identity-credentials { max-width: 640px; }
+.identity-security .identity-credentials > .btn { justify-self: start; }
+@media (max-width: 640px) { .identity-settings { padding: 20px 16px; } }
+.auth-modal { max-width: 480px; padding: 28px; }
+.auth-modal-heading { display: flex; align-items: center; gap: 12px; }
+.auth-modal-heading h3 { flex: 1; font-size: 1.3rem; margin: 0; }
+.auth-modal > .btn { width: 100%; }
+.auth-dialog.dialog-root { position: relative; width: min(480px, calc(100vw - 32px)); }
+.auth-dialog .auth-modal { width: 100%; max-width: none; box-sizing: border-box; }
+.auth-dialog .dialog-close { position: absolute; top: 18px; right: 18px; }
+.auth-dialog .auth-modal-heading { padding-right: 28px; }

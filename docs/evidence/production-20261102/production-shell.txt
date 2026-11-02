@@ -1,0 +1,8 @@
+TEST_DB_VERIFIED web3_internship_test_phase1_101f65c5_adebab30deb7
+FAIL Production email login, private menu and clean shell: student
+FAIL Production email login, private menu and clean shell: company
+FAIL Production email login, private menu and clean shell: mentor
+FAIL Production email login, private menu and clean shell: admin
+PASS Production tablet/mobile, Light/Dark and no automatic mutations
+Evidence: D:\Web3-Internship-Management\contracts\node_modules\.cache\production-shell-1793599511757
+Production shell 1/5; exceptions 0

@@ -1,0 +1,186 @@
+[
+  {
+    "id": "P01",
+    "severity": "High",
+    "status": "FIXED",
+    "issue": "401 cũ xóa token mới",
+    "files": "client/src/api/client.js:32; client/src/api/session.js:7",
+    "action": "So token snapshot trước invalidate; giữ phiên mới. Unit mô phỏng response trễ."
+  },
+  {
+    "id": "P02",
+    "severity": "Medium",
+    "status": "FIXED",
+    "issue": "Token hết hạn nhưng sidebar và user state còn",
+    "files": "client/src/App.jsx:102",
+    "action": "Sự kiện expiry xóa UI riêng tư, về /login; E2E gọi API thật với token bị từ chối."
+  },
+  {
+    "id": "P03",
+    "severity": "Medium",
+    "status": "FIXED",
+    "issue": "Form không chờ callback async sau lưu",
+    "files": "client/src/components/business/Shared.jsx:15; client/src/api/formAction.js:2",
+    "action": "Await cả mutation và onSaved, đưa lỗi vào vòng đời form; không gọi callback nếu mutation fail."
+  },
+  {
+    "id": "P04",
+    "severity": "Medium",
+    "status": "FIXED",
+    "issue": "Validation có thể phản chiếu giá trị riêng tư",
+    "files": "server/src/middleware/errorHandler.js:10",
+    "action": "Trả message validation an toàn, giữ HTTP400/code VALIDATION; regression kiểm không echo giá trị."
+  },
+  {
+    "id": "P05",
+    "severity": "Low",
+    "status": "FIXED",
+    "issue": "Ghi chú nội bộ và debug trên UI",
+    "files": "client/src/components/AppShell.jsx; EmailIdentity.jsx; GoogleIdentity.jsx; business/CoreOverview.jsx; business/Web3Page.jsx",
+    "action": "48 mục copy/diagnostic đổi có manifest; debug/raw response chỉ DEV; demo quick-login bị tắt trong build production."
+  },
+  {
+    "id": "P06",
+    "severity": "Medium",
+    "status": "FIXED",
+    "issue": "Selector phân công chỉ hiện ví, tài khoản email thành dấu gạch",
+    "files": "client/src/components/business/Shared.jsx:37",
+    "action": "Dùng participantNames.student được API scoped trả về, fallback wallet legacy, không đổi ownership."
+  },
+  {
+    "id": "P07",
+    "severity": "Low",
+    "status": "FIXED",
+    "issue": "Phần cài đặt danh tính thiếu spacing/form select thống nhất",
+    "files": "client/src/components/identity.css; GoogleIdentity.jsx; EmailIdentity.jsx",
+    "action": "CSS scoped, input/select/theme và khoảng cách hồ sơ thống nhất; giữ labels/focus."
+  },
+  {
+    "id": "P08",
+    "severity": "High",
+    "status": "OPEN",
+    "issue": "Nộp phiên bản báo cáo chưa atomic",
+    "files": "server/src/core/reports.js:12-13",
+    "action": "Source: supersede bản cũ rồi create bản mới. Nếu create fail, có thể thiếu current report. Chưa fault-injection lần này; cần transaction/unique-current design và rollback, đánh giá replica set trước. Không tự migration."
+  },
+  {
+    "id": "P09",
+    "severity": "High",
+    "status": "OPEN",
+    "issue": "Advisory dependency toolchain contracts",
+    "files": "contracts/package-lock.json; evidence/production-20261102/contracts-npm-audit.json",
+    "action": "Npm audit48 advisories:18High/16Moderate/14Low. Toolchain dev, không tự suy contract exploitable. Cần duyệt bản vá tương thích; không audit fix/major upgrade tự động."
+  },
+  {
+    "id": "P10",
+    "severity": "High",
+    "status": "NOT TESTED",
+    "issue": "Chưa có bằng chứng deployment production được bảo vệ",
+    "files": "server/src/app.js:15-27; server/src/index.js; client/src/api/session.js",
+    "action": "App có CORS allowlist, bearer và limiter memory/IP; chưa TLS/reverse-proxy/CSP/HSTS/shared rate-limit/secret rotation/backup restore/load test được nghiệm thu. JWT localStorage còn bề mặt XSS. Cần thiết kế vận hành, không đổi auth hàng loạt."
+  },
+  {
+    "id": "P11",
+    "severity": "High",
+    "status": "BLOCKED",
+    "issue": "Web3 chỉ hỗ trợ chain/DB TEST local",
+    "files": "server/src/services/localWeb3.js:7-18; contracts/hardhat.local.cjs",
+    "action": "Guard intentionally fail closed, không bỏ guard. Public/testnet/service signer cần phê duyệt riêng; không dùng receipt local làm production proof."
+  },
+  {
+    "id": "P12",
+    "severity": "Medium",
+    "status": "BLOCKED",
+    "issue": "Google live chưa có Client ID",
+    "files": "server/src/services/googleIdentity.js; client/src/components/GoogleIdentity.jsx",
+    "action": "Cấu hình Client ID/authorized origin và kiểm Google thật; hiện xác minh cấu trúc/code và UI unavailable, không fake OAuth."
+  },
+  {
+    "id": "P13",
+    "severity": "High",
+    "status": "BLOCKED",
+    "issue": "Pinata live/readback chưa cấu hình",
+    "files": "server/src/services/privateIpfs.js; server/src/core/web3.js",
+    "action": "Cần Pinata token, key32byte/key ID, enable flag; kiểm encrypted upload/readback thật. Test adapter không thay external integration."
+  },
+  {
+    "id": "P14",
+    "severity": "High",
+    "status": "BLOCKED",
+    "issue": "Chưa nghiệm thu chất lượng AI/risk classifier",
+    "files": "ai-service/nlp/risk.py:19; ai-service/evaluation/README.md",
+    "action": "SBERT inference thật có; risk NOT_TRAINED, thiếu nhãn độc lập. Cần dữ liệu consent, adjudication/split leakage, metrics P@K/R@K/MAP/NDCG; không tự gán nhãn để PASS."
+  },
+  {
+    "id": "P15",
+    "severity": "Medium",
+    "status": "OPEN",
+    "issue": "Ranking chỉ xét50 candidate theo ID",
+    "files": "server/src/core/ai.js:14,20",
+    "action": "Giới hạn được trả catalog_limit/candidate_count. Chưa full-catalog retrieval; cần retrieval/pagination có benchmark, không hứa top-K toàn bộ catalog."
+  },
+  {
+    "id": "P16",
+    "severity": "Medium",
+    "status": "OPEN",
+    "issue": "2 advisory Moderate ở server dev tooling",
+    "files": "server/package-lock.json; evidence/production-20261102/server-npm-audit.json",
+    "action": "minimatch/nodemon; cần duyệt patch tương thích, không dùng fixAvailable major tự động. Client audit0."
+  },
+  {
+    "id": "P17",
+    "severity": "Medium",
+    "status": "NOT TESTED",
+    "issue": "Chưa stress/query-plan trên dữ liệu quy mô lớn",
+    "files": "server/src/core/dashboard.js:5; client/src/components/business/Shared.jsx:36",
+    "action": "Dashboard nạp các assignment IDs; picker tối đa100. Cần dataset TEST riêng, explain và load test trước tối ưu index. Không suy production latency từ5health requests."
+  },
+  {
+    "id": "P18",
+    "severity": "Medium",
+    "status": "OPEN",
+    "issue": "Email verify/reset password chưa hoàn thiện",
+    "files": "server/src/routes/email.routes.js; client/src/components/EmailIdentity.jsx",
+    "action": "Change password đã test; chưa mail verification/reset token/delivery. Thiết kế TTL/rate-limit/không enumerate account trước triển khai, không fake forgot-password link."
+  },
+  {
+    "id": "P19",
+    "severity": "Low",
+    "status": "REVIEW",
+    "issue": "Export SaveButton chưa thấy consumer",
+    "files": "client/src/components/business/Shared.jsx:39",
+    "action": "rg import/source chỉ thấy declaration; chưa đủ kết luận không có consumer ngoài repo. Giữ file/export, đề xuất kiểm contract consumer trước xóa."
+  },
+  {
+    "id": "P20",
+    "severity": "Low",
+    "status": "REVIEW",
+    "issue": "Hai nhánh UI/API legacy/unified và CSS còn chồng lớp",
+    "files": "client/src/App.jsx; client/src/components/DashboardView.jsx; server/src/app.js",
+    "action": "Feature flags/dynamic imports và regression legacy còn dùng. Giữ, lập kế hoạch deprecate riêng, không xóa vì unified không gọi."
+  },
+  {
+    "id": "P21",
+    "severity": "High",
+    "status": "BLOCKED",
+    "issue": "Atlas/shared database chưa cấu hình",
+    "files": "server/src/config/testDatabaseGuard.js; server/scripts/start-unified.cjs",
+    "action": "Không URI/cluster permission; không migration. Shared environment cần indexes/backup/access credentials riêng; không bật TEST để bypass local guard."
+  },
+  {
+    "id": "P22",
+    "severity": "Medium",
+    "status": "OPEN",
+    "issue": "Web3 có GET status lặp khi chưa chọn phân công",
+    "files": "client/src/components/business/Web3Page.jsx:13-14",
+    "action": "operations/artifacts fallback status cùng status hook. Read-only, không auto-write; đề xuất hook null/skip và browser request-count regression, chưa refactor trong lượt này."
+  },
+  {
+    "id": "P23",
+    "severity": "High",
+    "status": "BLOCKED",
+    "issue": "Bộ nhớ hạn chế chặn nghiệm thu native AI/production browser đầy đủ",
+    "files": "ai-service/nlp/engine.py; evidence/production-20261102/ai-unit-inference.txt; production-browser-retest.txt",
+    "action": "Native AI abort allocation17MiB, renderer screenshot/CDP timeout. Không lower guard, không tắt ứng dụng cá nhân. Cần giải phóng RAM/commit headroom rồi retest; API SBERT service hiện có vẫn đã chạy E2E."
+  }
+]

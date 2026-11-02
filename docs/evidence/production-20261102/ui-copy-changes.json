@@ -1,0 +1,242 @@
+[
+  {
+    "file": "client/src/components/AppShell.jsx",
+    "before": "PanelLeftOpen, Menu, Wallet, LogOut, ShieldCheck, GraduationCap, ArrowUpRight",
+    "after": "PanelLeftOpen, Menu, Wallet, LogOut, ShieldCheck, GraduationCap"
+  },
+  {
+    "file": "client/src/components/AppShell.jsx",
+    "before": "Có thể dùng email và mật khẩu riêng của Internova. Không cần Google hoặc ví để đăng nhập bằng email.",
+    "after": "Đăng nhập bằng email; bạn có thể liên kết ví sau."
+  },
+  {
+    "file": "client/src/components/AppShell.jsx",
+    "before": "Quyền truy cập được xác minh tại Backend.",
+    "after": "Chỉ bạn và người được cấp quyền có thể truy cập."
+  },
+  {
+    "file": "client/src/components/AppShell.jsx",
+    "before": "description={current.description || 'Theo dõi tình trạng triển khai của chức năng.'}",
+    "after": "description={current.description}"
+  },
+  {
+    "file": "client/src/components/AppShell.jsx",
+    "before": "<span>AI có nguồn · Chứng nhận cần xác minh <ArrowUpRight size={13} /></span>",
+    "after": ""
+  },
+  {
+    "file": "client/src/components/AppShell.jsx",
+    "before": "<details className=\"runtime-details\">",
+    "after": "{import.meta.env.DEV && <details className=\"runtime-details\">"
+  },
+  {
+    "file": "client/src/components/AppShell.jsx",
+    "before": "Chứng nhận token chỉ được xác nhận khi có bằng chứng.</p></details>",
+    "after": "Chứng nhận token chỉ được xác nhận khi có bằng chứng.</p></details>}"
+  },
+  {
+    "file": "client/src/components/AppShell.jsx",
+    "before": "NOT IMPLEMENTED",
+    "after": "Chưa khả dụng"
+  },
+  {
+    "file": "client/src/components/AppShell.jsx",
+    "before": "Chức năng chưa được bật hoặc cần đăng nhập. Không hiển thị số chưa đọc hoặc thông báo mẫu.",
+    "after": "Thông báo hiện chưa khả dụng. Vui lòng thử lại sau."
+  },
+  {
+    "file": "client/src/components/EmailIdentity.jsx",
+    "before": "Backend này chưa có đăng nhập email; mở môi trường email TEST theo hướng dẫn.",
+    "after": "Đăng nhập email hiện chưa khả dụng. Vui lòng liên hệ quản trị viên."
+  },
+  {
+    "file": "client/src/components/EmailIdentity.jsx",
+    "before": "Cần MetaMask và ví TEST để ký liên kết. Đăng nhập email không cần MetaMask.",
+    "after": "Cần cài MetaMask để liên kết ví. Bạn vẫn có thể đăng nhập bằng email."
+  },
+  {
+    "file": "client/src/components/EmailIdentity.jsx",
+    "before": "Liên kết ví TEST bằng mật khẩu và chữ ký",
+    "after": "Liên kết ví MetaMask"
+  },
+  {
+    "file": "client/src/components/EmailIdentity.jsx",
+    "before": "Dùng mật khẩu riêng cho Internova, không dùng mật khẩu Gmail. Tối thiểu 10 ký tự, tối đa 72 byte. Email chưa được xác minh; chưa có khôi phục mật khẩu qua email.",
+    "after": "Mật khẩu riêng của Internova: ít nhất 10 ký tự, tối đa 72 byte. Email chưa được xác minh; khôi phục mật khẩu qua email chưa khả dụng."
+  },
+  {
+    "file": "client/src/components/GoogleIdentity.jsx",
+    "before": "BLOCKED: Backend đang chạy bản cũ chưa có Google Login. Mở môi trường Google TEST theo hướng dẫn.",
+    "after": "Đăng nhập Google hiện chưa khả dụng. Vui lòng dùng email hoặc phương thức đã liên kết."
+  },
+  {
+    "file": "client/src/components/GoogleIdentity.jsx",
+    "before": "BLOCKED: Google Login chưa được cấu hình Client ID trên Backend.",
+    "after": "Đăng nhập Google chưa được cấu hình. Vui lòng dùng phương thức khác."
+  },
+  {
+    "file": "client/src/components/GoogleIdentity.jsx",
+    "before": "Cần MetaMask và ví TEST để ký xác nhận liên kết.",
+    "after": "Cần cài MetaMask để ký xác nhận liên kết."
+  },
+  {
+    "file": "client/src/components/GoogleIdentity.jsx",
+    "before": "Liên kết ví TEST khi cần chức năng blockchain.",
+    "after": "Liên kết ví khi cần chức năng blockchain."
+  },
+  {
+    "file": "client/src/components/GoogleIdentity.jsx",
+    "before": "Không tự gộp tài khoản theo email. Không đổi/hủy ví đang làm khóa sở hữu nghiệp vụ. Không thể xóa phương thức đăng nhập cuối cùng.",
+    "after": "Tài khoản không tự gộp theo email. Không thể gỡ phương thức đăng nhập cuối cùng hoặc ví còn ràng buộc với dữ liệu blockchain."
+  },
+  {
+    "file": "client/src/components/AuthModal.jsx",
+    "before": "Email và mật khẩu Internova · Không cần tài khoản Google",
+    "after": "Chào mừng bạn trở lại"
+  },
+  {
+    "file": "client/src/components/AuthModal.jsx",
+    "before": "Đăng ký email cấp tài khoản sinh viên. Giảng viên và Admin do nhà trường cấp; không tự chọn quyền cao.",
+    "after": "Sinh viên có thể tự đăng ký. Tài khoản doanh nghiệp, giảng viên và nhà trường được cấp riêng."
+  },
+  {
+    "file": "client/src/components/AuthModal.jsx",
+    "before": "Google OAuth (tùy chọn, không cần cho demo email)",
+    "after": "Đăng nhập bằng Google"
+  },
+  {
+    "file": "client/src/components/AuthModal.jsx",
+    "before": "Yêu cầu ký xác thực Nonce (EIP-191) an toàn, không tốn phí Gas.",
+    "after": "Ký thông điệp để xác thực; không gửi giao dịch và không mất phí gas."
+  },
+  {
+    "file": "client/src/components/business/CoreOverview.jsx",
+    "before": "CORE BUSINESS · THEO PHÂN CÔNG",
+    "after": "TỔNG QUAN THỰC TẬP"
+  },
+  {
+    "file": "client/src/components/business/CoreOverview.jsx",
+    "before": "Nguồn database theo vai trò; chỉ giờ đã duyệt, không cộng Attendance QR cũ thiếu checkout.",
+    "after": "Theo dõi tiến độ, kết quả và giờ làm đã được duyệt."
+  },
+  {
+    "file": "client/src/components/business/CoreOverview.jsx",
+    "before": "Từ User và InternshipBatch",
+    "after": "Tổng số doanh nghiệp và kỳ thực tập"
+  },
+  {
+    "file": "client/src/components/business/CoreOverview.jsx",
+    "before": "Task đã xong / tổng",
+    "after": "Công việc đã xong / tổng"
+  },
+  {
+    "file": "client/src/components/business/CoreOverview.jsx",
+    "before": " · chưa phải điểm on-chain",
+    "after": ""
+  },
+  {
+    "file": "client/src/components/business/CoreOverview.jsx",
+    "before": "KPI có trọng số của phân công đã kết thúc; khác điểm nhận xét báo cáo",
+    "after": "Kết quả KPI có trọng số sau khi hoàn tất thực tập"
+  },
+  {
+    "file": "client/src/components/business/ProfileCv.jsx",
+    "before": " · Vai trò do Backend quản lý: {user.role}",
+    "after": ""
+  },
+  {
+    "file": "client/src/components/business/ProfileCv.jsx",
+    "before": "CV riêng tư; doanh nghiệp chỉ xem snapshot của hồ sơ bạn đã ứng tuyển. Nội dung trích xuất dùng được cho AI ở PHASE4.",
+    "after": "CV riêng tư. Doanh nghiệp chỉ xem bản hồ sơ bạn đã gửi khi ứng tuyển."
+  },
+  {
+    "file": "client/src/components/business/ProfileCv.jsx",
+    "before": "Chưa upload tài liệu.",
+    "after": "Chưa tải lên tài liệu."
+  },
+  {
+    "file": "client/src/components/business/Recruitment.jsx",
+    "before": "Tìm kiếm và phân trang từ API. Chấp nhận ứng tuyển không tự tạo phân công hoặc chứng nhận.",
+    "after": "Tìm cơ hội phù hợp và theo dõi ứng viên. Sau khi nhận ứng tuyển, cần tạo phân công thực tập."
+  },
+  {
+    "file": "client/src/components/business/Accounts.jsx",
+    "before": "Chỉ Admin cấp quyền/khóa tài khoản, mọi thay đổi có lý do và lịch sử. Không có mật khẩu cho tài khoản ví.",
+    "after": "Quản lý quyền và trạng thái tài khoản. Mọi thay đổi được lưu trong lịch sử."
+  },
+  {
+    "file": "client/src/components/business/CoreBusinessView.jsx",
+    "before": "Xác thực tài khoản có vai trò phù hợp. API vẫn kiểm tra quyền trên từng bản ghi.",
+    "after": "Tài khoản của bạn chưa được cấp quyền sử dụng chức năng này."
+  },
+  {
+    "file": "client/src/components/business/Shared.jsx",
+    "before": "{label} — phân trang phía API",
+    "after": "{label}"
+  },
+  {
+    "file": "client/src/components/business/Shared.jsx",
+    "before": "${shortWallet(a.studentWallet)}",
+    "after": "${a.participantNames?.student || shortWallet(a.studentWallet)}"
+  },
+  {
+    "file": "client/src/components/business/Shared.jsx",
+    "before": "Tối đa100 phân công được phép đã tải. Thời gian hiển thị theo máy; nghiệp vụ giờ làm dùng UTC.",
+    "after": "Hiển thị tối đa 100 phân công. Thời gian theo múi giờ thiết bị."
+  },
+  {
+    "file": "client/src/components/business/AiPage.jsx",
+    "before": "AI / NLP cục bộ",
+    "after": "Phân tích mức độ phù hợp"
+  },
+  {
+    "file": "client/src/components/business/AiPage.jsx",
+    "before": "Chỉ phân tích khi bạn bấm nút. CV và báo cáo không gửi tới dịch vụ bên ngoài; không ghi database.",
+    "after": "Nội dung CV và báo cáo được xử lý nội bộ, không gửi đến dịch vụ AI bên ngoài."
+  },
+  {
+    "file": "client/src/components/business/AiPage.jsx",
+    "before": "Kết quả phân tích thực tế",
+    "after": "Kết quả phân tích"
+  },
+  {
+    "file": "client/src/components/business/Web3Page.jsx",
+    "before": "Thiếu credentials/key thì BLOCKED; anchor hash không có CID không được coi là đã upload IPFS.",
+    "after": "Lưu hash không đồng nghĩa báo cáo đã được tải lên IPFS."
+  },
+  {
+    "file": "client/src/components/business/Web3Page.jsx",
+    "before": "IPFS live BLOCKED: thiếu Pinata/quyền bật upload/khóa mã hóa. Chưa readback thật.",
+    "after": "Lưu trữ IPFS chưa sẵn sàng. Báo cáo chưa được tải lên và xác minh."
+  },
+  {
+    "file": "client/src/components/business/Web3Page.jsx",
+    "before": "Cần phân công completed, đủ KPI, finalreport approved, giờ dương đã duyệt và các proof đã anchor. Backend kiểm lại điều kiện, không mint khi render.",
+    "after": "Chỉ phát hành khi hoàn tất thực tập, đủ KPI, báo cáo cuối kỳ và giờ làm được duyệt, bằng chứng được xác nhận."
+  },
+  {
+    "file": "client/src/components/business/Web3Page.jsx",
+    "before": "{last&&<details data-testid=\"web3-last-result\" open>",
+    "after": "{import.meta.env.DEV && last&&<details data-testid=\"web3-last-result\" open>"
+  },
+  {
+    "file": "client/src/components/ui.jsx",
+    "before": "NOT IMPLEMENTED · PHASE 3+",
+    "after": "Chưa khả dụng"
+  },
+  {
+    "file": "client/src/components/ui.jsx",
+    "before": "Chức năng này chưa có luồng Backend hoàn chỉnh. Giao diện không tạo dữ liệu hoặc thông báo thành công thay thế.",
+    "after": "Chức năng này hiện chưa khả dụng. Vui lòng liên hệ quản trị viên để được hỗ trợ."
+  },
+  {
+    "file": "client/src/components/DashboardView.jsx",
+    "before": "Biểu đồ được tính từ đề tài API đã tải; không dùng dữ liệu mẫu.",
+    "after": "Biểu đồ sẽ hiển thị khi có dữ liệu thực tập."
+  },
+  {
+    "file": "client/src/components/CvJdView.jsx",
+    "before": "Thứ tự theo API; chỉ có điểm sau khi chạy matching",
+    "after": "Điểm phù hợp được hiển thị sau khi phân tích"
+  }
+]

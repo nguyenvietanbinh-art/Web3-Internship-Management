@@ -1,0 +1,1194 @@
+[
+  {
+    "file": "client/src/components/AuthModal.jsx",
+    "before": "Wallet role selector, native wallet login, demo presets in the main authentication modal",
+    "after": "Preserved in LegacyAuthModal, opt-in DEV VITE_ENABLE_LEGACY_AUTH_UI only",
+    "action": "RELOCATE",
+    "occurrences": 1,
+    "reason": "Luồng chính email-first; không xóa API hoặc mã đăng nhập ví cũ."
+  },
+  {
+    "file": "client/src/components/EmailIdentity.jsx",
+    "before": "  {register&&<label>Loại tài khoản được tự đăng ký<select aria-label=\"Loại tài khoản email\" defaultValue=\"student\"><option value=\"student\">Sinh viên</option></select></label>}",
+    "after": "",
+    "action": "REMOVE",
+    "occurrences": 1,
+    "reason": "Control chỉ có một lựa chọn, không gửi role; Backend vẫn chỉ cấp student."
+  },
+  {
+    "file": "client/src/components/EmailIdentity.jsx",
+    "before": "<label>Mật khẩu Internova<input",
+    "after": "<label>Mật khẩu<input",
+    "action": "REWRITE",
+    "occurrences": 1,
+    "reason": "Nội dung ngắn gọn, dễ hiểu; không đổi giá trị/API."
+  },
+  {
+    "file": "client/src/components/EmailIdentity.jsx",
+    "before": "  <p className=\"muted\">Mật khẩu riêng của Internova: ít nhất 10 ký tự, tối đa 72 byte. Email chưa được xác minh; khôi phục mật khẩu qua email chưa khả dụng.</p>",
+    "after": "  {register&&<small id=\"register-password-hint\" className=\"muted\">Ít nhất 10 ký tự. Tối đa 72 byte khi mã hóa.</small>}",
+    "action": "CONDITIONAL",
+    "occurrences": 1,
+    "reason": "Quy tắc chỉ ở đăng ký; giới hạn Backend/validation được giữ. Trạng thái email ở Cài đặt."
+  },
+  {
+    "file": "client/src/components/EmailIdentity.jsx",
+    "before": "autoComplete={register?'new-password':'current-password'} required",
+    "after": "autoComplete={register?'new-password':'current-password'} aria-describedby={register?'register-password-hint':undefined} required",
+    "action": "KEEP",
+    "occurrences": 1,
+    "reason": "Nối hint với input cho screenreader."
+  },
+  {
+    "file": "client/src/components/EmailIdentity.jsx",
+    "before": "register?'Tạo tài khoản sinh viên':'Đăng nhập bằng email'",
+    "after": "register?'Tạo tài khoản':'Đăng nhập'",
+    "action": "REWRITE",
+    "occurrences": 1,
+    "reason": "Nội dung ngắn gọn, dễ hiểu; không đổi giá trị/API."
+  },
+  {
+    "file": "client/src/components/EmailIdentity.jsx",
+    "before": "<p>Email chưa xác minh. Chỉnh email hồ sơ không thay email đăng nhập.</p>",
+    "after": "<details><summary>Thông tin bảo mật</summary><p>Email chưa được xác minh. Khôi phục mật khẩu qua email chưa khả dụng. Đổi email hồ sơ không đổi email đăng nhập.</p></details>",
+    "action": "RELOCATE",
+    "occurrences": 1,
+    "reason": "Giữ tình trạng thật, đưa vào Cài đặt thay vì Login."
+  },
+  {
+    "file": "client/src/components/EmailIdentity.jsx",
+    "before": "  <button className=\"btn btn-secondary\" disabled={busy}>Đổi mật khẩu</button>",
+    "after": "  <small className=\"muted\">Mật khẩu mới cần ít nhất 10 ký tự, tối đa 72 byte khi mã hóa.</small><button className=\"btn btn-secondary\" disabled={busy}>Đổi mật khẩu</button>",
+    "action": "CONDITIONAL",
+    "occurrences": 1,
+    "reason": "Hiển thị quy tắc ở đúng form đổi mật khẩu."
+  },
+  {
+    "file": "client/src/components/business/Shared.jsx",
+    "before": "type = 'text', required = false, ...props }) { return <Field label={label}>",
+    "after": "type = 'text', required = false, hint, ...props }) { return <Field label={label} hint={hint}>",
+    "action": "REWRITE",
+    "occurrences": 1,
+    "reason": "Nội dung ngắn gọn, dễ hiểu; không đổi giá trị/API."
+  },
+  {
+    "file": "client/src/components/business/ProfileCv.jsx",
+    "before": "Đăng nhập bằng email/mật khẩu Internova hoặc phương thức đã liên kết. Đổi email hồ sơ không đổi email đăng nhập và không xác minh email.",
+    "after": "Cập nhật thông tin cá nhân của bạn.",
+    "action": "SHORTEN",
+    "occurrences": 1,
+    "reason": "Nội dung ngắn gọn, dễ hiểu; không đổi giá trị/API."
+  },
+  {
+    "file": "client/src/components/business/ProfileCv.jsx",
+    "before": "<Text label=\"Email\" type=\"email\" value={form.email}",
+    "after": "<Text label=\"Email\" type=\"email\" hint=\"Email hồ sơ không thay đổi email đăng nhập và chưa được xác minh.\" value={form.email}",
+    "action": "RELOCATE",
+    "occurrences": 1,
+    "reason": "Giữ cảnh báo cạnh đúng trường thay vì giới thiệu dài."
+  },
+  {
+    "file": "client/src/components/business/Shared.jsx",
+    "before": "title=\"Chưa có bản ghi phù hợp\"",
+    "after": "title=\"Không tìm thấy kết quả\"",
+    "action": "REWRITE",
+    "occurrences": 1,
+    "reason": "Nội dung ngắn gọn, dễ hiểu; không đổi giá trị/API."
+  },
+  {
+    "file": "client/src/components/business/Shared.jsx",
+    "before": "placeholder=\"Tìm trong dữ liệu được phép…\"",
+    "after": "placeholder=\"Nhập từ khóa…\"",
+    "action": "REWRITE",
+    "occurrences": 1,
+    "reason": "Nội dung ngắn gọn, dễ hiểu; không đổi giá trị/API."
+  },
+  {
+    "file": "client/src/components/AppShell.jsx",
+    "before": "WORKSPACE",
+    "after": "KHÔNG GIAN LÀM VIỆC",
+    "action": "REWRITE",
+    "occurrences": 2,
+    "reason": "Nội dung ngắn gọn, dễ hiểu; không đổi giá trị/API."
+  },
+  {
+    "file": "client/src/components/AppShell.jsx",
+    "before": "Workspace <span>/</span>",
+    "after": "Internova <span>/</span>",
+    "action": "REWRITE",
+    "occurrences": 1,
+    "reason": "Nội dung ngắn gọn, dễ hiểu; không đổi giá trị/API."
+  },
+  {
+    "file": "client/src/components/AppShell.jsx",
+    "before": "Theo dõi dữ liệu thực tập trong phạm vi tài khoản của bạn.",
+    "after": "",
+    "action": "REMOVE",
+    "occurrences": 1,
+    "reason": "Dashboard đã có tiêu đề và số liệu rõ."
+  },
+  {
+    "file": "client/src/components/AppShell.jsx",
+    "before": "label:'AI matching & phân tích'",
+    "after": "label:'Phân tích AI'",
+    "action": "REWRITE",
+    "occurrences": 1,
+    "reason": "Nội dung ngắn gọn, dễ hiểu; không đổi giá trị/API."
+  },
+  {
+    "file": "client/src/components/AppShell.jsx",
+    "before": "label:'Task & nhật ký theo kỳ'",
+    "after": "label:'Công việc & nhật ký'",
+    "action": "REWRITE",
+    "occurrences": 1,
+    "reason": "Nội dung ngắn gọn, dễ hiểu; không đổi giá trị/API."
+  },
+  {
+    "file": "client/src/components/AppShell.jsx",
+    "before": "label:'Giờ làm theo kỳ'",
+    "after": "label:'Chấm công'",
+    "action": "REWRITE",
+    "occurrences": 1,
+    "reason": "Nội dung ngắn gọn, dễ hiểu; không đổi giá trị/API."
+  },
+  {
+    "file": "client/src/components/AppShell.jsx",
+    "before": "label:'CV đã lưu'",
+    "after": "label:'CV của tôi'",
+    "action": "REWRITE",
+    "occurrences": 1,
+    "reason": "Nội dung ngắn gọn, dễ hiểu; không đổi giá trị/API."
+  },
+  {
+    "file": "client/src/components/AppShell.jsx",
+    "before": "companyLabel:'Quản lý JD'",
+    "after": "companyLabel:'Tin tuyển dụng'",
+    "action": "REWRITE",
+    "occurrences": 1,
+    "reason": "Nội dung ngắn gọn, dễ hiểu; không đổi giá trị/API."
+  },
+  {
+    "file": "client/src/components/business/Work.jsx",
+    "before": "Dữ liệu có Assignment riêng; không trộn hoặc tự chuyển dữ liệu legacy. Lịch sử được lưu cùng mỗi thay đổi.",
+    "after": "Theo dõi công việc và nhật ký thực tập.",
+    "action": "SHORTEN",
+    "occurrences": 1,
+    "reason": "Nội dung ngắn gọn, dễ hiểu; không đổi giá trị/API."
+  },
+  {
+    "file": "client/src/components/business/Work.jsx",
+    "before": "Task theo kỳ",
+    "after": "Công việc",
+    "action": "REWRITE",
+    "occurrences": 3,
+    "reason": "Nội dung ngắn gọn, dễ hiểu; không đổi giá trị/API."
+  },
+  {
+    "file": "client/src/components/business/Work.jsx",
+    "before": "Task theo phân công",
+    "after": "Công việc được giao",
+    "action": "REWRITE",
+    "occurrences": 1,
+    "reason": "Nội dung ngắn gọn, dễ hiểu; không đổi giá trị/API."
+  },
+  {
+    "file": "client/src/components/business/Work.jsx",
+    "before": "Tạo task theo kỳ",
+    "after": "Giao công việc",
+    "action": "REWRITE",
+    "occurrences": 1,
+    "reason": "Nội dung ngắn gọn, dễ hiểu; không đổi giá trị/API."
+  },
+  {
+    "file": "client/src/components/business/Work.jsx",
+    "before": "title:'Task'",
+    "after": "title:'Công việc'",
+    "action": "REWRITE",
+    "occurrences": 1,
+    "reason": "Nội dung ngắn gọn, dễ hiểu; không đổi giá trị/API."
+  },
+  {
+    "file": "client/src/components/business/Work.jsx",
+    "before": "title:'Deadline'",
+    "after": "title:'Hạn hoàn thành'",
+    "action": "REWRITE",
+    "occurrences": 1,
+    "reason": "Nội dung ngắn gọn, dễ hiểu; không đổi giá trị/API."
+  },
+  {
+    "file": "client/src/components/business/Work.jsx",
+    "before": "Cập nhật task",
+    "after": "Cập nhật công việc",
+    "action": "REWRITE",
+    "occurrences": 1,
+    "reason": "Nội dung ngắn gọn, dễ hiểu; không đổi giá trị/API."
+  },
+  {
+    "file": "client/src/components/business/Work.jsx",
+    "before": "data?'Lưu task':'Giao task'",
+    "after": "data?'Lưu công việc':'Giao công việc'",
+    "action": "REWRITE",
+    "occurrences": 1,
+    "reason": "Nội dung ngắn gọn, dễ hiểu; không đổi giá trị/API."
+  },
+  {
+    "file": "client/src/components/business/Work.jsx",
+    "before": "Tên task theo kỳ",
+    "after": "Tên công việc",
+    "action": "REWRITE",
+    "occurrences": 1,
+    "reason": "Nội dung ngắn gọn, dễ hiểu; không đổi giá trị/API."
+  },
+  {
+    "file": "client/src/components/business/Work.jsx",
+    "before": "Mô tả task theo kỳ",
+    "after": "Mô tả công việc",
+    "action": "REWRITE",
+    "occurrences": 1,
+    "reason": "Nội dung ngắn gọn, dễ hiểu; không đổi giá trị/API."
+  },
+  {
+    "file": "client/src/components/business/Work.jsx",
+    "before": "Ưu tiên task theo kỳ",
+    "after": "Mức độ ưu tiên",
+    "action": "REWRITE",
+    "occurrences": 1,
+    "reason": "Nội dung ngắn gọn, dễ hiểu; không đổi giá trị/API."
+  },
+  {
+    "file": "client/src/components/business/Work.jsx",
+    "before": "Deadline task (giờ máy)",
+    "after": "Hạn hoàn thành (giờ thiết bị)",
+    "action": "REWRITE",
+    "occurrences": 1,
+    "reason": "Nội dung ngắn gọn, dễ hiểu; không đổi giá trị/API."
+  },
+  {
+    "file": "client/src/components/business/Work.jsx",
+    "before": "Trạng thái task theo kỳ",
+    "after": "Trạng thái công việc",
+    "action": "REWRITE",
+    "occurrences": 1,
+    "reason": "Nội dung ngắn gọn, dễ hiểu; không đổi giá trị/API."
+  },
+  {
+    "file": "client/src/components/business/Work.jsx",
+    "before": "Tiến độ task (%)",
+    "after": "Tiến độ (%)",
+    "action": "REWRITE",
+    "occurrences": 1,
+    "reason": "Nội dung ngắn gọn, dễ hiểu; không đổi giá trị/API."
+  },
+  {
+    "file": "client/src/components/business/Work.jsx",
+    "before": "Xong yêu cầu100%; chỉ người giao sửa tiêu đề/deadline. Bản cập nhật cũ bị từ chối thay vì ghi đè.",
+    "after": "Hoàn thành khi tiến độ đạt 100%. Chỉ người giao được sửa tên và hạn công việc.",
+    "action": "SHORTEN",
+    "occurrences": 1,
+    "reason": "Nội dung ngắn gọn, dễ hiểu; không đổi giá trị/API."
+  },
+  {
+    "file": "client/src/components/business/Time.jsx",
+    "before": "Chấm công thủ công, chưa xác minh QR/GPS/chain. Một phiên/ngày UTC; phút được làm tròn xuống, chỉ phiên đã duyệt được cộng.",
+    "after": "Chỉ giờ đã duyệt được tính vào tổng giờ làm.",
+    "action": "SHORTEN",
+    "occurrences": 1,
+    "reason": "Nội dung ngắn gọn, dễ hiểu; không đổi giá trị/API."
+  },
+  {
+    "file": "client/src/components/business/Time.jsx",
+    "before": "Thiếu checkout không tự đóng. Quá16giờ/qua ngày UTC cần doanh nghiệp từ chối hoặc điều chỉnh có lý do.",
+    "after": "Phiên thiếu giờ ra cần được xem xét trước khi duyệt.",
+    "action": "SHORTEN",
+    "occurrences": 1,
+    "reason": "Nội dung ngắn gọn, dễ hiểu; không đổi giá trị/API."
+  },
+  {
+    "file": "client/src/components/business/Time.jsx",
+    "before": "Check-in giờ làm",
+    "after": "Vào ca",
+    "action": "REWRITE",
+    "occurrences": 1,
+    "reason": "Nội dung ngắn gọn, dễ hiểu; không đổi giá trị/API."
+  },
+  {
+    "file": "client/src/components/business/Time.jsx",
+    "before": "Check-out giờ làm",
+    "after": "Kết thúc ca",
+    "action": "REWRITE",
+    "occurrences": 1,
+    "reason": "Nội dung ngắn gọn, dễ hiểu; không đổi giá trị/API."
+  },
+  {
+    "file": "client/src/components/business/Time.jsx",
+    "before": "Thiếu checkout",
+    "after": "Thiếu giờ ra",
+    "action": "REWRITE",
+    "occurrences": 1,
+    "reason": "Nội dung ngắn gọn, dễ hiểu; không đổi giá trị/API."
+  },
+  {
+    "file": "client/src/components/business/Time.jsx",
+    "before": "Chưa có giờ đã duyệt; phiên mở/pending không được cộng.",
+    "after": "Chưa có giờ làm được duyệt.",
+    "action": "SHORTEN",
+    "occurrences": 1,
+    "reason": "Nội dung ngắn gọn, dễ hiểu; không đổi giá trị/API."
+  },
+  {
+    "file": "client/src/components/business/Reports.jsx",
+    "before": "Báo cáo được lưu riêng tư trong DB. Đây chưa phải lưu IPFS hoặc chứng nhận on-chain. Bản mới giữ nguyên bản cũ.",
+    "after": "Báo cáo được lưu riêng tư và giữ lịch sử phiên bản.",
+    "action": "SHORTEN",
+    "occurrences": 1,
+    "reason": "Giữ quyền riêng tư, không tuyên bố lưu blockchain/IPFS."
+  },
+  {
+    "file": "client/src/components/business/Reports.jsx",
+    "before": "Chốt kết quả (không mint token)",
+    "after": "Chốt kết quả",
+    "action": "REWRITE",
+    "occurrences": 1,
+    "reason": "Nội dung ngắn gọn, dễ hiểu; không đổi giá trị/API."
+  },
+  {
+    "file": "client/src/components/business/Reports.jsx",
+    "before": "Cần đánh giá đồng ý từ cả doanh nghiệp và giảng viên trước khi Nhà trường chốt. Điểm cuối là trung bình hai điểm thực đã nhập; không phát hành NFT/SBT.",
+    "after": "Nhà trường chốt sau khi doanh nghiệp và giảng viên đồng ý. Điểm cuối là trung bình hai đánh giá.",
+    "action": "SHORTEN",
+    "occurrences": 1,
+    "reason": "Nội dung ngắn gọn, dễ hiểu; không đổi giá trị/API."
+  },
+  {
+    "file": "client/src/components/business/Placements.jsx",
+    "before": "Tái sử dụng Assignment. Đề xuất → Nhà trường duyệt → doanh nghiệp bắt đầu → duyệt báo cáo → kết thúc; không tự ghi singleton Topic hoặc blockchain.",
+    "after": "Theo dõi phân công từ đề xuất đến hoàn tất.",
+    "action": "SHORTEN",
+    "occurrences": 1,
+    "reason": "Nội dung ngắn gọn, dễ hiểu; không đổi giá trị/API."
+  },
+  {
+    "file": "client/src/components/business/Placements.jsx",
+    "before": "Doanh nghiệp tự xác định nội dung và một tiêu chí trọng số100%; không tự tạo blockchain.",
+    "after": "Xác định đề tài và tiêu chí đánh giá.",
+    "action": "SHORTEN",
+    "occurrences": 1,
+    "reason": "Nội dung ngắn gọn, dễ hiểu; không đổi giá trị/API."
+  },
+  {
+    "file": "client/src/components/business/Placements.jsx",
+    "before": "title:'Đề tài / rubric'",
+    "after": "title:'Đề tài / tiêu chí'",
+    "action": "REWRITE",
+    "occurrences": 1,
+    "reason": "Nội dung ngắn gọn, dễ hiểu; không đổi giá trị/API."
+  },
+  {
+    "file": "client/src/components/business/Kpis.jsx",
+    "before": "Snapshot rubric lúc phân công; điểm có trọng số khác điểm nhận xét báo cáo. Chưa có IPFS/on-chain proof.",
+    "after": "Kết quả theo tiêu chí và trọng số của phân công.",
+    "action": "SHORTEN",
+    "occurrences": 1,
+    "reason": "Nội dung ngắn gọn, dễ hiểu; không đổi giá trị/API."
+  },
+  {
+    "file": "client/src/components/CvJdView.jsx",
+    "before": "Chưa chạy matching; chưa có kỹ năng được xác nhận khớp.",
+    "after": "Chưa phân tích độ phù hợp.",
+    "action": "REWRITE",
+    "occurrences": 1,
+    "reason": "Nội dung ngắn gọn, dễ hiểu; không đổi giá trị/API."
+  },
+  {
+    "file": "client/src/components/Web3CertificateView.jsx",
+    "before": "Sổ Cái Sự Kiện On-Chain (Blockchain Events Ledger)",
+    "after": "Lịch sử hoạt động blockchain",
+    "action": "REWRITE",
+    "occurrences": 1,
+    "reason": "Nội dung ngắn gọn, dễ hiểu; không đổi giá trị/API."
+  },
+  {
+    "file": "client/src/components/Web3CertificateView.jsx",
+    "before": "BLOCKED · Xác minh token chưa được cấu hình",
+    "after": "Xác minh chứng nhận chưa khả dụng",
+    "action": "REWRITE",
+    "occurrences": 1,
+    "reason": "Nội dung ngắn gọn, dễ hiểu; không đổi giá trị/API."
+  },
+  {
+    "file": "client/src/components/business/NativeQrScanner.jsx",
+    "before": "Camera cần trình duyệt hỗ trợ và secure context/localhost.",
+    "after": "Camera chưa khả dụng. Vui lòng kiểm tra quyền truy cập và kết nối an toàn.",
+    "action": "REWRITE",
+    "occurrences": 1,
+    "reason": "Nội dung ngắn gọn, dễ hiểu; không đổi giá trị/API."
+  },
+  {
+    "file": "client/src/App.jsx",
+    "before": "Đã lưu phân công trong database;",
+    "after": "Đã lưu phân công;",
+    "action": "REWRITE",
+    "occurrences": 1,
+    "reason": "Nội dung ngắn gọn, dễ hiểu; không đổi giá trị/API."
+  },
+  {
+    "file": "client/src/App.jsx",
+    "before": "Đã lưu đề tài trong database;",
+    "after": "Đã lưu đề tài;",
+    "action": "REWRITE",
+    "occurrences": 1,
+    "reason": "Nội dung ngắn gọn, dễ hiểu; không đổi giá trị/API."
+  },
+  {
+    "file": "client/src/components/business/Work.jsx",
+    "before": "import { useState",
+    "after": "import { displayLabel } from './content';\nimport { useState",
+    "action": "KEEP",
+    "occurrences": 1,
+    "reason": "Bộ nhãn trình bày không thay status gửi API."
+  },
+  {
+    "file": "client/src/components/business/Placements.jsx",
+    "before": "import { useState",
+    "after": "import { displayLabel } from './content';\nimport { useState",
+    "action": "KEEP",
+    "occurrences": 1,
+    "reason": "Bộ nhãn trình bày không thay status gửi API."
+  },
+  {
+    "file": "client/src/components/business/Reports.jsx",
+    "before": "import { useState",
+    "after": "import { displayLabel } from './content';\nimport { useState",
+    "action": "KEEP",
+    "occurrences": 1,
+    "reason": "Bộ nhãn trình bày không thay status gửi API."
+  },
+  {
+    "file": "client/src/components/business/Web3Page.jsx",
+    "before": "import { useState",
+    "after": "import { displayLabel } from './content';\nimport { useState",
+    "action": "KEEP",
+    "occurrences": 1,
+    "reason": "Bộ nhãn trình bày không thay status gửi API."
+  },
+  {
+    "file": "client/src/components/business/Work.jsx",
+    "before": "{value,label:value}",
+    "after": "{value,label:displayLabel(value)}",
+    "action": "REWRITE",
+    "occurrences": 2,
+    "reason": "Chỉ thay cách trình bày, giữ dữ liệu và điều kiện thao tác."
+  },
+  {
+    "file": "client/src/components/business/Work.jsx",
+    "before": "{key:'priority',title:'Ưu tiên'}",
+    "after": "{key:'priority',title:'Ưu tiên',render:r=>displayLabel(r.priority)}",
+    "action": "REWRITE",
+    "occurrences": 1,
+    "reason": "Chỉ thay cách trình bày, giữ dữ liệu và điều kiện thao tác."
+  },
+  {
+    "file": "client/src/components/business/Placements.jsx",
+    "before": "{value,label:value}",
+    "after": "{value,label:displayLabel(value)}",
+    "action": "REWRITE",
+    "occurrences": 1,
+    "reason": "Chỉ thay cách trình bày, giữ dữ liệu và điều kiện thao tác."
+  },
+  {
+    "file": "client/src/components/business/Reports.jsx",
+    "before": "{r.kind}",
+    "after": "{displayLabel(r.kind)}",
+    "action": "REWRITE",
+    "occurrences": 1,
+    "reason": "Chỉ thay cách trình bày, giữ dữ liệu và điều kiện thao tác."
+  },
+  {
+    "file": "client/src/components/business/Reports.jsx",
+    "before": "{x.role}: {x.score}/100 · {x.decision}",
+    "after": "{displayLabel(x.role)}: {x.score}/100 · {displayLabel(x.decision)}",
+    "action": "REWRITE",
+    "occurrences": 1,
+    "reason": "Chỉ thay cách trình bày, giữ dữ liệu và điều kiện thao tác."
+  },
+  {
+    "file": "client/src/components/business/Shared.jsx",
+    "before": "${a.lifecycle}",
+    "after": "${displayLabel(a.lifecycle)}",
+    "action": "REWRITE",
+    "occurrences": 1,
+    "reason": "Chỉ thay cách trình bày, giữ dữ liệu và điều kiện thao tác."
+  },
+  {
+    "file": "client/src/components/business/Notifications.jsx",
+    "before": "thông báo thực tế",
+    "after": "thông báo",
+    "action": "REWRITE",
+    "occurrences": 1,
+    "reason": "Chỉ thay cách trình bày, giữ dữ liệu và điều kiện thao tác."
+  },
+  {
+    "file": "client/src/components/business/AiPage.jsx",
+    "before": "import { useState }",
+    "after": "import { displayLabel } from './content';\nimport { useState }",
+    "action": "KEEP",
+    "occurrences": 1,
+    "reason": "Chỉ thay cách trình bày, giữ dữ liệu và điều kiện thao tác."
+  },
+  {
+    "file": "client/src/components/business/AiPage.jsx",
+    "before": "status.loading?'Đang kiểm tra service…':status.data?`SBERT: ${status.data.sbert.ready?'đã nạp mô hình':status.data.sbert.reason||'chưa nạp'} · classifier rủi ro: ${status.data.risk_classifier}`:'AI service chưa sẵn sàng.'",
+    "after": "status.loading?'Đang kiểm tra…':status.data?.sbert.ready?'Sentence-BERT sẵn sàng':'Sentence-BERT chưa sẵn sàng'",
+    "action": "SHORTEN",
+    "occurrences": 1,
+    "reason": "Không in lỗi cấu hình/memory code; vẫn báo trạng thái model thật."
+  },
+  {
+    "file": "client/src/components/business/AiPage.jsx",
+    "before": "<p className=\"muted\">Cosine không phải xác suất tuyển dụng. Chưa có tập nhãn chuyên gia để công bố độ chính xác. Cảnh báo quy tắc không phải dự đoán classifier.</p>",
+    "after": "<details><summary>Giới hạn phân tích</summary><p>Độ tương đồng không phải xác suất tuyển dụng. Chưa có tập nhãn chuyên gia để công bố độ chính xác. Cảnh báo theo quy tắc không phải dự đoán của mô hình.</p></details>",
+    "action": "RELOCATE",
+    "occurrences": 1,
+    "reason": "Giữ giới hạn chất lượng AI và phân biệt rules/classifier."
+  },
+  {
+    "file": "client/src/components/business/AiPage.jsx",
+    "before": "label=\"Engine NLP\"",
+    "after": "label=\"Phương pháp phân tích\"",
+    "action": "REWRITE",
+    "occurrences": 1,
+    "reason": "Chỉ thay cách trình bày, giữ dữ liệu và điều kiện thao tác."
+  },
+  {
+    "file": "client/src/components/business/AiPage.jsx",
+    "before": "Sentence-BERT local (nếu đã cấu hình)",
+    "after": "Sentence-BERT",
+    "action": "REWRITE",
+    "occurrences": 1,
+    "reason": "Chỉ thay cách trình bày, giữ dữ liệu và điều kiện thao tác."
+  },
+  {
+    "file": "client/src/components/business/AiPage.jsx",
+    "before": "TF-IDF baseline",
+    "after": "TF-IDF (đối chiếu từ khóa)",
+    "action": "REWRITE",
+    "occurrences": 1,
+    "reason": "Chỉ thay cách trình bày, giữ dữ liệu và điều kiện thao tác."
+  },
+  {
+    "file": "client/src/components/business/AiPage.jsx",
+    "before": "user.role==='student'?'Top-K JD cho CV đã lưu':'Ranking hồ sơ đã ứng tuyển'",
+    "after": "user.role==='student'?'Cơ hội phù hợp':'Xếp hạng ứng viên'",
+    "action": "REWRITE",
+    "occurrences": 1,
+    "reason": "Chỉ thay cách trình bày, giữ dữ liệu và điều kiện thao tác."
+  },
+  {
+    "file": "client/src/components/business/AiPage.jsx",
+    "before": "Phân tích matching",
+    "after": "Phân tích độ phù hợp",
+    "action": "REWRITE",
+    "occurrences": 1,
+    "reason": "Chỉ thay cách trình bày, giữ dữ liệu và điều kiện thao tác."
+  },
+  {
+    "file": "client/src/components/business/AiPage.jsx",
+    "before": "label=\"Top K NLP\"",
+    "after": "label=\"Số kết quả\"",
+    "action": "REWRITE",
+    "occurrences": 1,
+    "reason": "Chỉ thay cách trình bày, giữ dữ liệu và điều kiện thao tác."
+  },
+  {
+    "file": "client/src/components/business/AiPage.jsx",
+    "before": "label=\"JD cần ranking\"",
+    "after": "label=\"Tin tuyển dụng\"",
+    "action": "REWRITE",
+    "occurrences": 1,
+    "reason": "Chỉ thay cách trình bày, giữ dữ liệu và điều kiện thao tác."
+  },
+  {
+    "file": "client/src/components/business/AiPage.jsx",
+    "before": "Phân tích báo cáo NLP",
+    "after": "Phân tích báo cáo",
+    "action": "REWRITE",
+    "occurrences": 1,
+    "reason": "Chỉ thay cách trình bày, giữ dữ liệu và điều kiện thao tác."
+  },
+  {
+    "file": "client/src/components/business/AiPage.jsx",
+    "before": "label=\"Báo cáo cần phân tích NLP\"",
+    "after": "label=\"Báo cáo cần phân tích\"",
+    "action": "REWRITE",
+    "occurrences": 1,
+    "reason": "Chỉ thay cách trình bày, giữ dữ liệu và điều kiện thao tác."
+  },
+  {
+    "file": "client/src/components/business/AiPage.jsx",
+    "before": "Engine: {result.engine} · {result.candidate_count}/{result.catalog_total} bản ghi trong tập xét · confidence: chưa hiệu chuẩn.",
+    "after": "Phương pháp: {result.engine} · Đã xét {result.candidate_count}/{result.catalog_total} hồ sơ. Độ tin cậy chưa được hiệu chuẩn.",
+    "action": "REWRITE",
+    "occurrences": 1,
+    "reason": "Chỉ thay cách trình bày, giữ dữ liệu và điều kiện thao tác."
+  },
+  {
+    "file": "client/src/components/business/AiPage.jsx",
+    "before": "Cosine: {r.cosine} · Kỹ năng giao nhau:",
+    "after": "Độ tương đồng: {r.cosine} · Kỹ năng phù hợp:",
+    "action": "REWRITE",
+    "occurrences": 1,
+    "reason": "Chỉ thay cách trình bày, giữ dữ liệu và điều kiện thao tác."
+  },
+  {
+    "file": "client/src/components/business/AiPage.jsx",
+    "before": "Query vượt giới hạn token; kết quả không bao phủ toàn bộ CV/JD.",
+    "after": "Nội dung quá dài; kết quả chưa bao phủ toàn bộ CV hoặc tin tuyển dụng.",
+    "action": "REWRITE",
+    "occurrences": 1,
+    "reason": "Chỉ thay cách trình bày, giữ dữ liệu và điều kiện thao tác."
+  },
+  {
+    "file": "client/src/components/business/AiPage.jsx",
+    "before": "{result.rule_alert_level}",
+    "after": "{displayLabel(result.rule_alert_level)}",
+    "action": "REWRITE",
+    "occurrences": 1,
+    "reason": "Chỉ thay cách trình bày, giữ dữ liệu và điều kiện thao tác."
+  },
+  {
+    "file": "client/src/components/business/AiPage.jsx",
+    "before": "Classifier: {result.classifier.status} · confidence: chưa có",
+    "after": "Mô hình cảnh báo: {displayLabel(result.classifier.status)} · Chưa có độ tin cậy được xác minh",
+    "action": "REWRITE",
+    "occurrences": 1,
+    "reason": "Chỉ thay cách trình bày, giữ dữ liệu và điều kiện thao tác."
+  },
+  {
+    "file": "client/src/components/business/AiPage.jsx",
+    "before": "Semantic relevance (",
+    "after": "Độ tương đồng với tiêu chí (",
+    "action": "REWRITE",
+    "occurrences": 1,
+    "reason": "Chỉ thay cách trình bày, giữ dữ liệu và điều kiện thao tác."
+  },
+  {
+    "file": "client/src/components/business/Web3Page.jsx",
+    "before": "QR/GPS và nghiệp vụ thông thường vẫn hoạt động; chỉ anchor/chứng nhận cần ví đã xác minh.",
+    "after": "Liên kết ví đã xác minh để ghi bằng chứng và sử dụng chứng nhận.",
+    "action": "SHORTEN",
+    "occurrences": 1,
+    "reason": "Chỉ thay cách trình bày, giữ dữ liệu và điều kiện thao tác."
+  },
+  {
+    "file": "client/src/components/business/Web3Page.jsx",
+    "before": "Web3 theo kỳ — Hardhat local",
+    "after": "Bằng chứng & chứng nhận",
+    "action": "REWRITE",
+    "occurrences": 1,
+    "reason": "Chỉ thay cách trình bày, giữ dữ liệu và điều kiện thao tác."
+  },
+  {
+    "file": "client/src/components/business/Web3Page.jsx",
+    "before": "Giao dịch do attestor Hardhat local gửi sau kiểm quyền JWT, không phải giao dịch từ ví người dùng. Không dùng mainnet hoặc private key thật.",
+    "after": "Mạng thử nghiệm Hardhat 31337. Hệ thống gửi giao dịch theo quyền; không sử dụng ví hoặc tài sản thật.",
+    "action": "SHORTEN",
+    "occurrences": 1,
+    "reason": "Chỉ thay cách trình bày, giữ dữ liệu và điều kiện thao tác."
+  },
+  {
+    "file": "client/src/components/business/Web3Page.jsx",
+    "before": "status.loading?'Đang kiểm tra RPC…':status.data?.chain.available?'RPC local đã xác minh · chain31337 · ERC721/ERC5192':'RPC chưa sẵn sàng: '+(status.data?.chain.message||'chưa cấu hình')",
+    "after": "status.loading?'Đang kiểm tra kết nối…':status.data?.chain.available?'Mạng thử nghiệm đã kết nối':'Kết nối blockchain chưa sẵn sàng'",
+    "action": "SHORTEN",
+    "occurrences": 1,
+    "reason": "Chỉ thay cách trình bày, giữ dữ liệu và điều kiện thao tác."
+  },
+  {
+    "file": "client/src/components/business/Web3Page.jsx",
+    "before": "Contract: {status.data.chain.contractAddress} · Attestor: {status.data.chain.attestor}",
+    "after": "Hợp đồng: {status.data.chain.contractAddress} · Bên phát hành: {status.data.chain.attestor}",
+    "action": "REWRITE",
+    "occurrences": 1,
+    "reason": "Chỉ thay cách trình bày, giữ dữ liệu và điều kiện thao tác."
+  },
+  {
+    "file": "client/src/components/business/Web3Page.jsx",
+    "before": "Kiểm tra mạng ví (chỉ đọc)",
+    "after": "Kiểm tra mạng ví",
+    "action": "REWRITE",
+    "occurrences": 1,
+    "reason": "Chỉ thay cách trình bày, giữ dữ liệu và điều kiện thao tác."
+  },
+  {
+    "file": "client/src/components/business/Web3Page.jsx",
+    "before": "Chưa có provider ví; không gửi giao dịch ví.",
+    "after": "Chưa kết nối ví.",
+    "action": "SHORTEN",
+    "occurrences": 1,
+    "reason": "Chỉ thay cách trình bày, giữ dữ liệu và điều kiện thao tác."
+  },
+  {
+    "file": "client/src/components/business/Web3Page.jsx",
+    "before": "; giao dịch tính năng này chỉ qua attestor local31337.",
+    "after": "; hệ thống chỉ gửi giao dịch trên mạng thử nghiệm 31337.",
+    "action": "REWRITE",
+    "occurrences": 1,
+    "reason": "Chỉ thay cách trình bày, giữ dữ liệu và điều kiện thao tác."
+  },
+  {
+    "file": "client/src/components/business/Web3Page.jsx",
+    "before": "Báo cáo: mã hóa IPFS và anchor hash",
+    "after": "Bằng chứng báo cáo",
+    "action": "REWRITE",
+    "occurrences": 1,
+    "reason": "Chỉ thay cách trình bày, giữ dữ liệu và điều kiện thao tác."
+  },
+  {
+    "file": "client/src/components/business/Web3Page.jsx",
+    "before": "Chỉ ciphertext AES-GCM được gửi Pinata. Lưu hash không đồng nghĩa báo cáo đã được tải lên IPFS.",
+    "after": "Báo cáo được mã hóa trước khi lưu trữ. Lưu hash không đồng nghĩa đã tải lên IPFS.",
+    "action": "REWRITE",
+    "occurrences": 1,
+    "reason": "Chỉ thay cách trình bày, giữ dữ liệu và điều kiện thao tác."
+  },
+  {
+    "file": "client/src/components/business/Web3Page.jsx",
+    "before": "Artifact IPFS đã readback",
+    "after": "Bản lưu IPFS đã xác minh",
+    "action": "REWRITE",
+    "occurrences": 1,
+    "reason": "Chỉ thay cách trình bày, giữ dữ liệu và điều kiện thao tác."
+  },
+  {
+    "file": "client/src/components/business/Web3Page.jsx",
+    "before": "Artifact: {a.state}",
+    "after": "Bản lưu: {displayLabel(a.state)}",
+    "action": "REWRITE",
+    "occurrences": 1,
+    "reason": "Chỉ thay cách trình bày, giữ dữ liệu và điều kiện thao tác."
+  },
+  {
+    "file": "client/src/components/business/Web3Page.jsx",
+    "before": "không lỗi lưu",
+    "after": "",
+    "action": "REWRITE",
+    "occurrences": 2,
+    "reason": "Chỉ thay cách trình bày, giữ dữ liệu và điều kiện thao tác."
+  },
+  {
+    "file": "client/src/components/business/Web3Page.jsx",
+    "before": "Mã hóa & upload báo cáo IPFS",
+    "after": "Lưu báo cáo lên IPFS",
+    "action": "REWRITE",
+    "occurrences": 1,
+    "reason": "Chỉ thay cách trình bày, giữ dữ liệu và điều kiện thao tác."
+  },
+  {
+    "file": "client/src/components/business/Web3Page.jsx",
+    "before": "Mã hóa & upload tệp đính kèm",
+    "after": "Lưu tệp đính kèm",
+    "action": "REWRITE",
+    "occurrences": 1,
+    "reason": "Chỉ thay cách trình bày, giữ dữ liệu và điều kiện thao tác."
+  },
+  {
+    "file": "client/src/components/business/Web3Page.jsx",
+    "before": "Anchor hash báo cáo đã duyệt",
+    "after": "Ghi bằng chứng báo cáo",
+    "action": "REWRITE",
+    "occurrences": 1,
+    "reason": "Chỉ thay cách trình bày, giữ dữ liệu và điều kiện thao tác."
+  },
+  {
+    "file": "client/src/components/business/Web3Page.jsx",
+    "before": "Không chọn artifact thì chỉ anchor hash nội dung, không tuyên bố IPFS đã upload. Chỉ báo cáo cuối kỳ hiện hành đã duyệt được anchor.",
+    "after": "Chỉ ghi bằng chứng báo cáo cuối kỳ đã duyệt. Nếu không chọn bản lưu IPFS, chỉ hash nội dung được ghi.",
+    "action": "SHORTEN",
+    "occurrences": 1,
+    "reason": "Chỉ thay cách trình bày, giữ dữ liệu và điều kiện thao tác."
+  },
+  {
+    "file": "client/src/components/business/Web3Page.jsx",
+    "before": "Ghi commitment của phiên giờ đã duyệt, gồm nguồn manual/QR. Receipt xác minh việc ghi hash, không chứng minh GPS tuyệt đối.",
+    "after": "Ghi bằng chứng cho giờ làm đã duyệt; không xác nhận tuyệt đối vị trí GPS.",
+    "action": "SHORTEN",
+    "occurrences": 1,
+    "reason": "Chỉ thay cách trình bày, giữ dữ liệu và điều kiện thao tác."
+  },
+  {
+    "file": "client/src/components/business/Web3Page.jsx",
+    "before": "Anchor giờ làm đã duyệt",
+    "after": "Ghi bằng chứng giờ làm",
+    "action": "REWRITE",
+    "occurrences": 1,
+    "reason": "Chỉ thay cách trình bày, giữ dữ liệu và điều kiện thao tác."
+  },
+  {
+    "file": "client/src/components/business/Web3Page.jsx",
+    "before": "Anchor phê duyệt hoàn tất",
+    "after": "Ghi phê duyệt hoàn tất",
+    "action": "REWRITE",
+    "occurrences": 1,
+    "reason": "Chỉ thay cách trình bày, giữ dữ liệu và điều kiện thao tác."
+  },
+  {
+    "file": "client/src/components/business/Web3Page.jsx",
+    "before": "Mint SBT local",
+    "after": "Cấp chứng nhận SBT",
+    "action": "REWRITE",
+    "occurrences": 1,
+    "reason": "Chỉ thay cách trình bày, giữ dữ liệu và điều kiện thao tác."
+  },
+  {
+    "file": "client/src/components/business/Web3Page.jsx",
+    "before": "Chứng nhận SBT — xác minh RPC hiện tại",
+    "after": "Xác minh chứng nhận",
+    "action": "REWRITE",
+    "occurrences": 1,
+    "reason": "Chỉ thay cách trình bày, giữ dữ liệu và điều kiện thao tác."
+  },
+  {
+    "file": "client/src/components/business/Web3Page.jsx",
+    "before": "Không dùng trạng thái DB làm VERIFIED. RPC lỗi/chain reset/token không tồn tại phải từ chối, không giữ badge cũ.",
+    "after": "Chứng nhận chỉ hợp lệ khi được xác minh trực tiếp trên blockchain.",
+    "action": "SHORTEN",
+    "occurrences": 1,
+    "reason": "Chỉ thay cách trình bày, giữ dữ liệu và điều kiện thao tác."
+  },
+  {
+    "file": "client/src/components/business/Web3Page.jsx",
+    "before": "VERIFIED ON-CHAIN · SBT LOCKED",
+    "after": "ĐÃ XÁC MINH · KHÔNG CHUYỂN NHƯỢNG",
+    "action": "REWRITE",
+    "occurrences": 1,
+    "reason": "Chỉ thay cách trình bày, giữ dữ liệu và điều kiện thao tác."
+  },
+  {
+    "file": "client/src/components/business/Web3Page.jsx",
+    "before": "Owner: {certificate.owner}",
+    "after": "Chủ sở hữu: {certificate.owner}",
+    "action": "REWRITE",
+    "occurrences": 1,
+    "reason": "Chỉ thay cách trình bày, giữ dữ liệu và điều kiện thao tác."
+  },
+  {
+    "file": "client/src/components/business/Web3Page.jsx",
+    "before": "Contract: {certificate.contractAddress}",
+    "after": "Hợp đồng: {certificate.contractAddress}",
+    "action": "REWRITE",
+    "occurrences": 1,
+    "reason": "Chỉ thay cách trình bày, giữ dữ liệu và điều kiện thao tác."
+  },
+  {
+    "file": "client/src/components/business/Web3Page.jsx",
+    "before": "Tx: {certificate.txHash}",
+    "after": "Giao dịch: {certificate.txHash}",
+    "action": "REWRITE",
+    "occurrences": 1,
+    "reason": "Chỉ thay cách trình bày, giữ dữ liệu và điều kiện thao tác."
+  },
+  {
+    "file": "client/src/components/business/Web3Page.jsx",
+    "before": "Chứng nhận issuer-attested tại lúc phát hành, không metadata báo cáo cá nhân; không chuyển nhượng.",
+    "after": "Chứng nhận do đơn vị phát hành xác nhận, không công khai nội dung báo cáo cá nhân và không thể chuyển nhượng.",
+    "action": "REWRITE",
+    "occurrences": 1,
+    "reason": "Chỉ thay cách trình bày, giữ dữ liệu và điều kiện thao tác."
+  },
+  {
+    "file": "client/src/components/business/Web3Page.jsx",
+    "before": "Nhập tọa độ nơi thực tập hoặc lấy vị trí sau khi bấm nút; không có GPS mặc định giả.",
+    "after": "Chọn vị trí thực tập và thời hạn điểm danh.",
+    "action": "SHORTEN",
+    "occurrences": 1,
+    "reason": "Chỉ thay cách trình bày, giữ dữ liệu và điều kiện thao tác."
+  },
+  {
+    "file": "client/src/components/business/Web3Page.jsx",
+    "before": "Đang tải QR encoder…",
+    "after": "Đang tạo mã QR…",
+    "action": "REWRITE",
+    "occurrences": 1,
+    "reason": "Chỉ thay cách trình bày, giữ dữ liệu và điều kiện thao tác."
+  },
+  {
+    "file": "client/src/components/business/Web3Page.jsx",
+    "before": "Quét QR và GPS → check-in/check-out",
+    "after": "Điểm danh bằng QR",
+    "action": "REWRITE",
+    "occurrences": 1,
+    "reason": "Chỉ thay cách trình bày, giữ dữ liệu và điều kiện thao tác."
+  },
+  {
+    "file": "client/src/components/business/Web3Page.jsx",
+    "before": "Camera/vị trí chỉ được hỏi sau thao tác. GPS là client claim; sai số+distance phải trong radius, không phải chống giả mạo tuyệt đối.",
+    "after": "Cần quyền camera và vị trí. GPS có sai số và không bảo đảm chống giả mạo tuyệt đối.",
+    "action": "SHORTEN",
+    "occurrences": 1,
+    "reason": "Chỉ thay cách trình bày, giữ dữ liệu và điều kiện thao tác."
+  },
+  {
+    "file": "client/src/components/business/Web3Page.jsx",
+    "before": "Đang tải scanner…",
+    "after": "Đang mở camera…",
+    "action": "REWRITE",
+    "occurrences": 1,
+    "reason": "Chỉ thay cách trình bày, giữ dữ liệu và điều kiện thao tác."
+  },
+  {
+    "file": "client/src/components/business/Web3Page.jsx",
+    "before": "Tiến trình transaction và reconciliation",
+    "after": "Trạng thái giao dịch",
+    "action": "REWRITE",
+    "occurrences": 1,
+    "reason": "Chỉ thay cách trình bày, giữ dữ liệu và điều kiện thao tác."
+  },
+  {
+    "file": "client/src/components/business/Web3Page.jsx",
+    "before": "Trạng thái operation lưu DB; chỉ certificate viewer vừa xác minh RPC mới hiển thị VERIFIED. Pending/failed cần đối chiếu chủ động.",
+    "after": "Theo dõi giao dịch và đối chiếu trạng thái khi cần.",
+    "action": "SHORTEN",
+    "occurrences": 1,
+    "reason": "Chỉ thay cách trình bày, giữ dữ liệu và điều kiện thao tác."
+  },
+  {
+    "file": "client/src/components/business/Web3Page.jsx",
+    "before": "Chưa nhận transaction hash",
+    "after": "Chưa có mã giao dịch",
+    "action": "REWRITE",
+    "occurrences": 1,
+    "reason": "Chỉ thay cách trình bày, giữ dữ liệu và điều kiện thao tác."
+  },
+  {
+    "file": "client/src/components/business/Web3Page.jsx",
+    "before": "Đối chiếu operation",
+    "after": "Đối chiếu giao dịch",
+    "action": "REWRITE",
+    "occurrences": 1,
+    "reason": "Chỉ thay cách trình bày, giữ dữ liệu và điều kiện thao tác."
+  },
+  {
+    "file": "client/src/components/business/Web3Page.jsx",
+    "before": "Chưa có operation của phân công đã chọn.",
+    "after": "Chưa có giao dịch của phân công này.",
+    "action": "REWRITE",
+    "occurrences": 1,
+    "reason": "Chỉ thay cách trình bày, giữ dữ liệu và điều kiện thao tác."
+  },
+  {
+    "file": "client/src/components/MyWallet.jsx",
+    "before": "<h2>Ví Web3 của tôi</h2>",
+    "after": "<h2>Ví Web3 của tôi</h2><details><summary>Về xác thực ví</summary><p>Ký thông điệp để xác thực; không gửi giao dịch và không mất phí gas.</p></details>",
+    "action": "RELOCATE",
+    "occurrences": 1,
+    "reason": "Giữ thông tin chữ ký/phí tại vị trí người dùng liên kết ví."
+  },
+  {
+    "file": "client/src/components/business/ProfileCv.jsx",
+    "before": "<p className=\"muted\">Ví: {user.walletAddress}</p>",
+    "after": "",
+    "action": "REMOVE",
+    "occurrences": 1,
+    "reason": "Trạng thái ví đã có trong Ví Web3, tránh lặp và dòng Ví trống."
+  },
+  {
+    "file": "client/src/components/business/Recruitment.jsx",
+    "before": "import { useState }",
+    "after": "import { displayLabel } from './content';\nimport { useState }",
+    "action": "KEEP",
+    "occurrences": 1,
+    "reason": "Chỉ đổi nội dung hiển thị."
+  },
+  {
+    "file": "client/src/components/business/Recruitment.jsx",
+    "before": "{value,label:value}",
+    "after": "{value,label:displayLabel(value)}",
+    "action": "REWRITE",
+    "occurrences": 1,
+    "reason": "Chỉ đổi nội dung hiển thị."
+  },
+  {
+    "file": "client/src/components/business/Recruitment.jsx",
+    "before": "CV snapshot",
+    "after": "CV đã nộp",
+    "action": "REWRITE",
+    "occurrences": 2,
+    "reason": "Chỉ đổi nội dung hiển thị."
+  },
+  {
+    "file": "client/src/components/business/Recruitment.jsx",
+    "before": "CV version",
+    "after": "Phiên bản CV ",
+    "action": "REWRITE",
+    "occurrences": 1,
+    "reason": "Chỉ đổi nội dung hiển thị."
+  },
+  {
+    "file": "client/src/components/business/Recruitment.jsx",
+    "before": "Mỗi sinh viên chỉ có một hồ sơ ứng tuyển cho mỗi JD. CV đã nộp không đổi khi CV gốc được sửa.",
+    "after": "Mỗi sinh viên ứng tuyển một lần cho mỗi tin tuyển dụng. CV đã gửi được giữ nguyên.",
+    "action": "SHORTEN",
+    "occurrences": 1,
+    "reason": "Chỉ đổi nội dung hiển thị."
+  },
+  {
+    "file": "client/src/components/business/Recruitment.jsx",
+    "before": "Hệ thống dùng phiên bản CV đã lưu của bạn tại thời điểm nộp. Hãy lưu CV ở mục CV đã lưu trước khi ứng tuyển.",
+    "after": "Hồ sơ ứng tuyển sử dụng CV đã lưu tại thời điểm nộp.",
+    "action": "SHORTEN",
+    "occurrences": 1,
+    "reason": "Chỉ đổi nội dung hiển thị."
+  },
+  {
+    "file": "client/src/components/AttendanceView.jsx",
+    "before": "Phiên có hạn, dành cho đúng sinh viên/phân công. Camera, GPS và bằng chứng blockchain chưa được triển khai ở phase này. Khóa ngày điểm danh hiện dùng UTC để tương thích dữ liệu cũ.",
+    "after": "Phiên có thời hạn cho sinh viên được phân công. Luồng này chưa xác minh camera, GPS hoặc blockchain; ngày điểm danh theo UTC.",
+    "action": "SHORTEN",
+    "occurrences": 1,
+    "reason": "Giữ giới hạn thật của luồng legacy, không gọi legacy là đã có GPS."
+  },
+  {
+    "file": "client/src/components/Web3CertificateView.jsx",
+    "before": "Tra Cứu Chứng Nhận Thực Tập Web3 On-Chain (SBT / NFT Explorer)",
+    "after": "Tra cứu chứng nhận thực tập",
+    "action": "REWRITE",
+    "occurrences": 1,
+    "reason": "Chỉ đổi nội dung hiển thị."
+  },
+  {
+    "file": "client/src/components/Web3CertificateView.jsx",
+    "before": "Nhập Topic ID, Địa chỉ Ví Sinh viên hoặc Transaction Hash để xác minh chứng nhận chống gian lận",
+    "after": "Nhập mã đề tài, địa chỉ ví hoặc mã giao dịch để tra cứu.",
+    "action": "SHORTEN",
+    "occurrences": 1,
+    "reason": "Không hứa tuyệt đối chống gian lận khi chức năng xác minh chưa cấu hình."
+  },
+  {
+    "file": "client/src/components/business/Web3Page.jsx",
+    "before": "<strong>{op.kind}</strong>",
+    "after": "<strong>{displayLabel(op.kind)}</strong>",
+    "action": "REWRITE",
+    "occurrences": 1,
+    "reason": "Chỉ lớp hiển thị, không đổi response, phép tính hoặc điều kiện xác minh."
+  },
+  {
+    "file": "client/src/components/business/Web3Page.jsx",
+    "before": "Token ID: {certificate.tokenId} · chain:",
+    "after": "Mã chứng nhận: {certificate.tokenId} · Mạng:",
+    "action": "REWRITE",
+    "occurrences": 1,
+    "reason": "Chỉ lớp hiển thị, không đổi response, phép tính hoặc điều kiện xác minh."
+  },
+  {
+    "file": "client/src/components/business/Web3Page.jsx",
+    "before": "{qr.action}</p>",
+    "after": "{displayLabel(qr.action)}</p>",
+    "action": "REWRITE",
+    "occurrences": 1,
+    "reason": "Chỉ lớp hiển thị, không đổi response, phép tính hoặc điều kiện xác minh."
+  },
+  {
+    "file": "client/src/components/business/Web3Page.jsx",
+    "before": "+t.proof.provider",
+    "after": "+displayLabel(t.proof.provider)",
+    "action": "REWRITE",
+    "occurrences": 1,
+    "reason": "Chỉ lớp hiển thị, không đổi response, phép tính hoặc điều kiện xác minh."
+  },
+  {
+    "file": "client/src/components/business/Web3Page.jsx",
+    "before": "<p className=\"web3-reference\">Hợp đồng: {status.data.chain.contractAddress} · Bên phát hành: {status.data.chain.attestor}</p>",
+    "after": "<details><summary>Chi tiết mạng</summary><p className=\"web3-reference\">Hợp đồng: {status.data.chain.contractAddress} · Bên phát hành: {status.data.chain.attestor}</p></details>",
+    "action": "RELOCATE",
+    "occurrences": 1,
+    "reason": "Chỉ lớp hiển thị, không đổi response, phép tính hoặc điều kiện xác minh."
+  },
+  {
+    "file": "client/src/components/business/AiPage.jsx",
+    "before": "{f.code} ({f.observed}) — {f.description}",
+    "after": "{f.description} ({f.observed})",
+    "action": "SHORTEN",
+    "occurrences": 1,
+    "reason": "Giữ mô tả quy tắc và số quan sát; không phơi code nội bộ."
+  },
+  {
+    "file": "client/src/components/business/AiPage.jsx",
+    "before": "<p>{result.classifier.reason}</p>",
+    "after": "<details><summary>Thông tin mô hình</summary><p>{result.classifier.reason}</p></details>",
+    "action": "RELOCATE",
+    "occurrences": 1,
+    "reason": "Chỉ lớp hiển thị, không đổi response, phép tính hoặc điều kiện xác minh."
+  },
+  {
+    "file": "client/src/components/AuthModal.jsx",
+    "before": "Sinh viên có thể tự đăng ký. Tài khoản doanh nghiệp, giảng viên và nhà trường được cấp riêng.",
+    "after": "",
+    "action": "REMOVE",
+    "occurrences": 1,
+    "reason": "Bỏ giải thích dài trong Login; Backend giữ chính sách đăng ký."
+  },
+  {
+    "file": "client/src/components/AuthModal.jsx",
+    "before": "Chào mừng bạn trở lại",
+    "after": "",
+    "action": "REMOVE",
+    "occurrences": 1,
+    "reason": "Bỏ mô tả trùng tiêu đề."
+  },
+  {
+    "file": "client/src/components/AuthModal.jsx",
+    "before": "Google luôn được gợi ý dù chưa cấu hình",
+    "after": "Chỉ hiển thị khi GET /auth/google/status enabled=true",
+    "action": "CONDITIONAL",
+    "occurrences": 1,
+    "reason": "Không gợi ý phương thức chưa sẵn sàng; không fake Google login."
+  },
+  {
+    "file": "client/src/components/ui.jsx",
+    "before": "Hai nút đóng riêng ở AuthModal và Dialog",
+    "after": "Một nút đóng, giữ Escape/focus trap và aria-label",
+    "action": "REMOVE",
+    "occurrences": 1,
+    "reason": "Loại phần tử lặp phát hiện qua screenshot; không xóa chức năng đóng."
+  },
+  {
+    "file": "client/src/api/errorMessages.js",
+    "before": "Backend config/index/NLP error wording rendered verbatim",
+    "after": "Thông báo người dùng theo code, giữ nguyên HTTP/code và validation khác",
+    "action": "REWRITE",
+    "occurrences": 1,
+    "reason": "Không phơi nội dung cấu hình, không che trạng thái thất bại."
+  },
+  {
+    "file": "client/src/components/MyWallet.jsx",
+    "before": "Kiểm tra network",
+    "after": "Kiểm tra mạng ví",
+    "action": "REWRITE",
+    "occurrences": 1,
+    "reason": "Thống nhất nhãn tiếng Việt."
+  },
+  {
+    "file": "client/src/components/MyWallet.jsx",
+    "before": "Chain ID ",
+    "after": "Mã mạng ",
+    "action": "REWRITE",
+    "occurrences": 1,
+    "reason": "Chỉ đổi nhãn, giữ số chain thực."
+  },
+  {
+    "file": "client/src/components/AppShell.jsx",
+    "before": "{import.meta.env.DEV && <details className=\"runtime-details\">",
+    "after": "{import.meta.env.DEV && import.meta.env.VITE_SHOW_DIAGNOSTICS==='true' && <details className=\"runtime-details\">",
+    "action": "CONDITIONAL",
+    "occurrences": 1,
+    "reason": "Debug chỉ khi DEV và opt-in, không hiện mặc định trên website chạy thử."
+  },
+  {
+    "file": "client/src/components/business/Web3Page.jsx",
+    "before": "{import.meta.env.DEV && last&&<details",
+    "after": "{import.meta.env.DEV && import.meta.env.VITE_SHOW_DIAGNOSTICS==='true' && last&&<details",
+    "action": "CONDITIONAL",
+    "occurrences": 1,
+    "reason": "Giữ raw response cho internal QA khi bật cờ, không hiển thị mặc định."
+  }
+]

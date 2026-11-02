@@ -1,0 +1,17 @@
+{
+  "production-pages": {
+    "exit": 0
+  },
+  "email-regression": {
+    "exit": 0
+  },
+  "google-wallet-regression": {
+    "exit": 0
+  },
+  "client-units": {
+    "exit": 0
+  },
+  "backend-auth-regression": {
+    "exit": 0
+  }
+}

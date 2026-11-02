@@ -1,0 +1,5745 @@
+{
+  "files": [
+    {
+      "file": "ai-service/evaluation/README.md",
+      "lines": 11,
+      "sha256": "70ad6887aa8e8f4a229c661e62526738ef58cd4c5f1dfb8306d2ab9b023e1089"
+    },
+    {
+      "file": "ai-service/evaluation/download_model.py",
+      "lines": 48,
+      "sha256": "eba48a1f5a79faa96e9d5cf70f465b5ddf32525b9446797e3357a250497dcdf1"
+    },
+    {
+      "file": "ai-service/evaluation/evaluate.py",
+      "lines": 30,
+      "sha256": "a9e0fd8486f92994ab74a08a00eee74589d0a53eef0cd2bd5603deea79c747a8"
+    },
+    {
+      "file": "ai-service/evaluation/inference_check.py",
+      "lines": 23,
+      "sha256": "c397c697ce1c9987a5e299282490eac20f6c8dcf8d153634564920260cd26ac4"
+    },
+    {
+      "file": "ai-service/main.py",
+      "lines": 170,
+      "sha256": "4756162558154ea5e4a6c2f570f441ded4584338779f1cf90dcaf6d225443218"
+    },
+    {
+      "file": "ai-service/nlp/__init__.py",
+      "lines": 1,
+      "sha256": "026d9c283581b0ca9b2c28e188818c04c88c6734131badde2f9bf341790b1fbc"
+    },
+    {
+      "file": "ai-service/nlp/api.py",
+      "lines": 21,
+      "sha256": "4f8dda9be40601f246d94edacbe90db8a13113c7d797c296d652d279572e88a2"
+    },
+    {
+      "file": "ai-service/nlp/engine.py",
+      "lines": 172,
+      "sha256": "134f9676e8b0edcd8f65c920fb5586a1dfb856917c582887db10925f6053bac1"
+    },
+    {
+      "file": "ai-service/nlp/metrics.py",
+      "lines": 46,
+      "sha256": "6bf7b09982a1f3fe486792e9b340b73f341565c81d96e513de0b999fb693fa3e"
+    },
+    {
+      "file": "ai-service/nlp/risk.py",
+      "lines": 19,
+      "sha256": "90c566ca3eacc2566deb236ad2487fee8edcfff6167f3a1f56118121c8831a17"
+    },
+    {
+      "file": "ai-service/nlp/schemas.py",
+      "lines": 34,
+      "sha256": "516692e0434ca70da873f466b885b53dce5322bb8dbbf4789af04bedf4897baa"
+    },
+    {
+      "file": "ai-service/tests/test_model_inference.py",
+      "lines": 48,
+      "sha256": "224d5115587373cb92ed44b14dac7b3645c79665518451269959281e9eeb674a"
+    },
+    {
+      "file": "ai-service/tests/test_nlp.py",
+      "lines": 65,
+      "sha256": "bc46ab35111859024e229ebc6bd83b436afe26838fe63a5dd14ffbcea8fe2002"
+    },
+    {
+      "file": "client/.oxlintrc.json",
+      "lines": 8,
+      "sha256": "9a11085b48d1ea2c1cdd18c3438a669abcc635f5586019e5df87161369af70ef"
+    },
+    {
+      "file": "client/README.md",
+      "lines": 16,
+      "sha256": "3fde43cae789b2a7011b266f6925d928e52d99012c7673141a22952eeef7a3c0"
+    },
+    {
+      "file": "client/package-lock.json",
+      "lines": 2069,
+      "sha256": "0e48870d1cda51139c530db4664e6022b38c601b112b77c6c0b4ae049414f06f"
+    },
+    {
+      "file": "client/package.json",
+      "lines": 28,
+      "sha256": "70e74664dd8faa7be6e4acbce445ad0954ce9375d83444f2aa121b7d9e42a60d"
+    },
+    {
+      "file": "client/src/App.css",
+      "lines": 184,
+      "sha256": "c2571ce7245629994b8adc84f6c48e1920f047a4e7e29c89a4aeb51eeb1b5433"
+    },
+    {
+      "file": "client/src/App.jsx",
+      "lines": 1033,
+      "sha256": "84d656cc679d8e8412ce4f633c3a4a6b87ed6e81b4474261092d91647a5bbbef"
+    },
+    {
+      "file": "client/src/api/client.js",
+      "lines": 89,
+      "sha256": "0b1e111fd34c739cdb14748a8e5f9f95796861b83f4b953a81f896887a7ec7be"
+    },
+    {
+      "file": "client/src/api/web3Client.js",
+      "lines": 181,
+      "sha256": "528049b79a1151b0c6f301e5da51b43f544e1e8bffe398bf6ccb2c8d4ba36e22"
+    },
+    {
+      "file": "client/src/business.css",
+      "lines": 6,
+      "sha256": "ed778065100a14f93d3c2bc7661089a36a1b50f01e71eda9f506ab139347ec97"
+    },
+    {
+      "file": "client/src/components/AccountOverview.jsx",
+      "lines": 4,
+      "sha256": "765b61108f5ed45249fb40236ca79a78532f0fa5b0e02176fea8f63a4ee233df"
+    },
+    {
+      "file": "client/src/components/AppShell.jsx",
+      "lines": 78,
+      "sha256": "d7f1856398bcadb4a017ae472e7f2ac0a7f1d21c752bf2bae7c95cf0c550baed"
+    },
+    {
+      "file": "client/src/components/AttendanceView.jsx",
+      "lines": 362,
+      "sha256": "275a859b9eb3d59b221e6f8f7db31e9bc1eef6eae8bf18cc03f5031de73867c3"
+    },
+    {
+      "file": "client/src/components/AuthModal.jsx",
+      "lines": 185,
+      "sha256": "e0e39cabefdcec7ea55f4b8ad6fe13adca6c5e5fe84113c1631063ab60500b71"
+    },
+    {
+      "file": "client/src/components/CvJdView.jsx",
+      "lines": 362,
+      "sha256": "ce376410d29205322216477b15a386362fe8c7e957b0a86a5138fd84f9372b58"
+    },
+    {
+      "file": "client/src/components/DashboardView.jsx",
+      "lines": 55,
+      "sha256": "04b5bd4190e9e02a9e034619f40aefa81b34fb4cdf9e1cb4322cb3c192349270"
+    },
+    {
+      "file": "client/src/components/EmailIdentity.jsx",
+      "lines": 34,
+      "sha256": "ecc18233e32f5c88b5801e5f52e0e98f7143018f50c0320d3322ce676d3b1e33"
+    },
+    {
+      "file": "client/src/components/GoogleIdentity.jsx",
+      "lines": 66,
+      "sha256": "67db69cbe94c916b3b74f0dd58250ebc8072ad244655e2eec39aab838c58aed9"
+    },
+    {
+      "file": "client/src/components/MyWallet.jsx",
+      "lines": 8,
+      "sha256": "6e24d9fb244654529f19655d42fbc5154d3f58c085ba1c16a10d3ab5d6850a77"
+    },
+    {
+      "file": "client/src/components/ViewBoundary.jsx",
+      "lines": 10,
+      "sha256": "4a6d4180c09268900359282716a78f05f21c230133aa44a88dffb82f18875883"
+    },
+    {
+      "file": "client/src/components/Web3CertificateView.jsx",
+      "lines": 240,
+      "sha256": "6c7b033d24eb56a06ab4699182f9546d8533d25ce72a25470fa528644578fbca"
+    },
+    {
+      "file": "client/src/components/auth-entry.css",
+      "lines": 9,
+      "sha256": "9a8e3b775fdc64953ea1c70abab27736bd1b3d8627094a80baccebb7d294bb08"
+    },
+    {
+      "file": "client/src/components/business/Accounts.jsx",
+      "lines": 39,
+      "sha256": "a7e1706395cd621cd3741a69c93c20592969872f0667d520ab2c95148703c44b"
+    },
+    {
+      "file": "client/src/components/business/AiPage.jsx",
+      "lines": 35,
+      "sha256": "1b98dfd7d0ae174dfb9bb930379683eea4f7ba985422ba9ab37f3694dc61bd88"
+    },
+    {
+      "file": "client/src/components/business/CoreBusinessView.jsx",
+      "lines": 22,
+      "sha256": "e2c42152866693c54c896cbb84718625fd5163a46ab92e0d887f435b55567b1e"
+    },
+    {
+      "file": "client/src/components/business/CoreOverview.jsx",
+      "lines": 18,
+      "sha256": "1707187722b719a77b03492878ce3cb18ca694165e1b0ac13ec349b8eea2da71"
+    },
+    {
+      "file": "client/src/components/business/Kpis.jsx",
+      "lines": 26,
+      "sha256": "5d43d255d9af3e3217093b519261593cbb895f562360647c09b2ac28d8eb31e3"
+    },
+    {
+      "file": "client/src/components/business/NativeQrScanner.jsx",
+      "lines": 22,
+      "sha256": "61e65a6b55ae84706a85236d3077091d9075cf5c990376e1eb866f68d2be8636"
+    },
+    {
+      "file": "client/src/components/business/Notifications.jsx",
+      "lines": 14,
+      "sha256": "c1ecc50d9e099bbe02d9a4d788a44fe585cbb22bc4cc50cf5ce383671c54d7a7"
+    },
+    {
+      "file": "client/src/components/business/Placements.jsx",
+      "lines": 66,
+      "sha256": "ab014a561643cc2c5ab61c72387505d06d4692dec5643370a79d8dcf767b6cd4"
+    },
+    {
+      "file": "client/src/components/business/ProfileCv.jsx",
+      "lines": 47,
+      "sha256": "52c0b8c1e91eb31749f63bc4b199fa876b5270f608f6e3cf5c581532a8e68757"
+    },
+    {
+      "file": "client/src/components/business/QrCode.jsx",
+      "lines": 16,
+      "sha256": "fe5cbb8839043be3579f684030c2530231764860264a3547cffefd072f20cb70"
+    },
+    {
+      "file": "client/src/components/business/Recruitment.jsx",
+      "lines": 51,
+      "sha256": "87eef2419f62a0c0b843fef833e18ae8994cdc03ebc892a3f2be19ed5a532680"
+    },
+    {
+      "file": "client/src/components/business/Reports.jsx",
+      "lines": 29,
+      "sha256": "61175a0fdc3c5a38a39d91ae780e3bb52e1b6dd8827762b448ee409e746bc914"
+    },
+    {
+      "file": "client/src/components/business/Shared.jsx",
+      "lines": 38,
+      "sha256": "d80f592f48dd80932638e8ed6c2a57af256f1a88a5524a6aa8f1092c70077985"
+    },
+    {
+      "file": "client/src/components/business/Time.jsx",
+      "lines": 30,
+      "sha256": "38e0fb0b9f31d2ceea368b0489c9fe12c7c56f218e5fd00ad0430784167b2d5f"
+    },
+    {
+      "file": "client/src/components/business/Web3Page.jsx",
+      "lines": 66,
+      "sha256": "e1417e128756ca1053a60a00b908ac38d692525e155345ade1e561d0d795360c"
+    },
+    {
+      "file": "client/src/components/business/Work.jsx",
+      "lines": 43,
+      "sha256": "0de76e12d21891ec154c4abd5e1a5d6418482c94494ff1c4c66c9bb02f531ea9"
+    },
+    {
+      "file": "client/src/components/business/hooks.js",
+      "lines": 21,
+      "sha256": "d507059334f74a81e4271a68331469c5fc33633923580256dafbc0059a42b4a2"
+    },
+    {
+      "file": "client/src/components/business/qrDecoder.js",
+      "lines": 19,
+      "sha256": "f1bf29ca689c15b3bebdf1ad1d32baeb0b3d94355014e86d618fbd5a8b417968"
+    },
+    {
+      "file": "client/src/components/identity.css",
+      "lines": 7,
+      "sha256": "42f53bfdf0968a338a22b3947c26b0b90d6a8d1847dc99c53c1ae4bd70586054"
+    },
+    {
+      "file": "client/src/components/navigation.js",
+      "lines": 1,
+      "sha256": "fe87f316f81dbc531be872fd83c99022482f97ee623ca7652db2499ab5f2a856"
+    },
+    {
+      "file": "client/src/components/ui.jsx",
+      "lines": 77,
+      "sha256": "ac62f5c6e3cbf07272a232284a0f80eea77a60b408051f36720de327e0f4cde0"
+    },
+    {
+      "file": "client/src/contracts/InternshipPlatform.json",
+      "lines": 680,
+      "sha256": "0e74961bda2243c94ec3649284e7018a1b7a2e16658622a2ba6726f4d98fb8ce"
+    },
+    {
+      "file": "client/src/design-system.css",
+      "lines": 21,
+      "sha256": "91202dcc28eee97e0577957907fbd8cfd93238dd2afcaf715ad28ebd147d706c"
+    },
+    {
+      "file": "client/src/index.css",
+      "lines": 265,
+      "sha256": "454761978831ab68ddf1d30811f1b2a72de9ba0bd1f2c5d1ad0ab8939779558d"
+    },
+    {
+      "file": "client/src/main.jsx",
+      "lines": 12,
+      "sha256": "d8d2074a1b0ea0e313df9ff7c43a04c7743b9a7d3ef6ccb56e669479e29b00a6"
+    },
+    {
+      "file": "client/test/browserHarness.cjs",
+      "lines": 31,
+      "sha256": "ddc3c4027f93b9bf4c6752a9657f23ce8e8e1c3d89636d06698abb2b8761661c"
+    },
+    {
+      "file": "client/test/email-auth.e2e.cjs",
+      "lines": 45,
+      "sha256": "6405626c24d875ca6630f46c19878957e199ce5a7537c9eb89537fd016174460"
+    },
+    {
+      "file": "client/test/google-auth.e2e.cjs",
+      "lines": 56,
+      "sha256": "c83f342abe1910af6d535b9e0405fa3db13620c212ac3d5075befbc6ea8f7644"
+    },
+    {
+      "file": "client/test/phase2-browser.cjs",
+      "lines": 84,
+      "sha256": "e2e10bb426d7c05763d5521dac686a1a249cb88eb5ccf97a544e7607a509e472"
+    },
+    {
+      "file": "client/test/phase3-browser.cjs",
+      "lines": 72,
+      "sha256": "5103a4bccfd0f4061fdabe14743b89f97524f897b959768f1c9bd8eaaab9ae1c"
+    },
+    {
+      "file": "client/test/phase3-fixtures.cjs",
+      "lines": 3,
+      "sha256": "ba9f98556d68969df0f4208ca9f55bc4900180d344a6565caad1ae502f2c0523"
+    },
+    {
+      "file": "client/test/phase4-browser.cjs",
+      "lines": 33,
+      "sha256": "c7846a6109c5d15a2a330fa19cf8b2f7128d6b488ad10c403a744e5964802ad0"
+    },
+    {
+      "file": "client/test/phase5-browser.cjs",
+      "lines": 47,
+      "sha256": "5ddc008731756b340a9ae9409925567681f88adebf4046126fbfeadba51a1512"
+    },
+    {
+      "file": "client/test/phase5-qr-browser.cjs",
+      "lines": 29,
+      "sha256": "710e9638979dfc10e3c4aa9fe59ccc6378d35befd7d73633b022c9ef58456df0"
+    },
+    {
+      "file": "client/test/phase6-browser.cjs",
+      "lines": 15,
+      "sha256": "7df7861177c68ec5d7ab406e5e091b6ed286db355d5c7608ffedb0f416b7e220"
+    },
+    {
+      "file": "client/test/qr-code.test.cjs",
+      "lines": 8,
+      "sha256": "021f1b3c2bbd32c6481c3447d656656a8cbb1f7d65c5ad46bab9dc74f1790731"
+    },
+    {
+      "file": "client/test/unified.e2e.cjs",
+      "lines": 59,
+      "sha256": "b891f5035641257b11b33d6ee245150c0d9aef28d86800b002a497bba620bbaa"
+    },
+    {
+      "file": "client/vite.config.js",
+      "lines": 10,
+      "sha256": "e354a3ba2fe2ce5bd9832b158dbb23cb7333024cb043b4335b369f32a17a98e6"
+    },
+    {
+      "file": "contracts/artifacts/build-info/b692646257a3ecff70e490b724d82bc1.json",
+      "lines": 1,
+      "sha256": "5d21fad5fb0d10fad3df6f22305ade54fad932ed326752a7c68aac1e82313a31"
+    },
+    {
+      "file": "contracts/artifacts/contracts/InternshipPlatform.sol/InternshipPlatform.dbg.json",
+      "lines": 4,
+      "sha256": "ae83a32691a8345f254270dde4b9a47bf2e9be039c69ed64aa9295f4ea772727"
+    },
+    {
+      "file": "contracts/artifacts/contracts/InternshipPlatform.sol/InternshipPlatform.json",
+      "lines": 683,
+      "sha256": "9c2e49ebef318f4a677ac693aba061a2dc667160add47b5bde66d29bf37e5464"
+    },
+    {
+      "file": "contracts/artifacts/contracts/InternshipRegistry.sol/InternshipRegistry.dbg.json",
+      "lines": 4,
+      "sha256": "ae83a32691a8345f254270dde4b9a47bf2e9be039c69ed64aa9295f4ea772727"
+    },
+    {
+      "file": "contracts/artifacts/contracts/InternshipRegistry.sol/InternshipRegistry.json",
+      "lines": 457,
+      "sha256": "133ac2c1eedc38a03a210d952d9c82046e9fe688d8ed93af0d1d18dd450eff71"
+    },
+    {
+      "file": "contracts/cache/solidity-files-cache.json",
+      "lines": 77,
+      "sha256": "7b22c7a11f977ecfbb7b2181ad0f39efb5003b3bbef28171726ed6acd23d48ca"
+    },
+    {
+      "file": "contracts/contracts/InternshipEvidenceSBT.sol",
+      "lines": 87,
+      "sha256": "ca1163e4166daa147802c12359ea9a7474ba27b3a0c283ae068ca993b5fb565e"
+    },
+    {
+      "file": "contracts/contracts/InternshipPlatform.sol",
+      "lines": 240,
+      "sha256": "ccab25f7b8a6786dc848c2515b3c925c4ba804a51c1bb381133c5a7e3464d5ae"
+    },
+    {
+      "file": "contracts/contracts/InternshipRegistry.sol",
+      "lines": 118,
+      "sha256": "885978f4f3049de93f67cf0e417fa91da8e73d946d8e56918dad832769eae336"
+    },
+    {
+      "file": "contracts/hardhat.config.js",
+      "lines": 22,
+      "sha256": "e943c9a996e5c5af57d0a9223f0a7bde93815a64c696c11bbc2571af354070de"
+    },
+    {
+      "file": "contracts/hardhat.local.cjs",
+      "lines": 10,
+      "sha256": "4d8c41d15bde7fe1f606afc896c88c87082a10bdafcf86d71cbb0ddef5c75271"
+    },
+    {
+      "file": "contracts/package-lock.json",
+      "lines": 8394,
+      "sha256": "8bbfd40da3ffab943305cd8dc485bbcaeed9e1384a61790bfc44ae49f9e81e92"
+    },
+    {
+      "file": "contracts/package.json",
+      "lines": 21,
+      "sha256": "67caa73ef6856d56e208f8cb3d855bbe843b0792c7a4a24f63102f093328c9dd"
+    },
+    {
+      "file": "contracts/scripts/deploy-local.cjs",
+      "lines": 14,
+      "sha256": "d97cade682b9fc5d97113ab84cd213b4cdb6c59e7333f488e457546ed118db6b"
+    },
+    {
+      "file": "contracts/scripts/deploy.js",
+      "lines": 69,
+      "sha256": "0bbc5e5e90901047974c07b0c6e840e5f269f39ad889a1118d08c747cedf1cba"
+    },
+    {
+      "file": "contracts/scripts/local-hardhat.cjs",
+      "lines": 7,
+      "sha256": "bbd19b385e074cc76517231f69d596142ebbb7631082a1ccc1afd20bdb951f9b"
+    },
+    {
+      "file": "contracts/test-local/InternshipEvidenceSBT.test.cjs",
+      "lines": 16,
+      "sha256": "bb05b83e23362d3e040de4569f2305ef66d6ee3dc33e03954b51b14f0482b618"
+    },
+    {
+      "file": "contracts/test/InternshipPlatform.test.js",
+      "lines": 82,
+      "sha256": "112c4a617924286e61b1ed21450247b91eaba9cbb085efdd97a386301979208c"
+    },
+    {
+      "file": "contracts/tmp/hardhat-nodejs/Config/vars.json",
+      "lines": 4,
+      "sha256": "643a388400b3b9dbd63527d2e7f53fa2c9b6163c8095de0ff7358558135ff1ea"
+    },
+    {
+      "file": "contracts/tmp/hardhat-nodejs/Data/analytics.json",
+      "lines": 5,
+      "sha256": "ddc649a968c18067b7519455650f085221ede53f6713ca94fb0ef4c8dc514e2c"
+    },
+    {
+      "file": "database/seed.mongodb.js",
+      "lines": 296,
+      "sha256": "a53ef7f68584b610cc4f66a0e5f647b49c7458b8860df1f6afca0a70a0828450"
+    },
+    {
+      "file": "docs/AI_IMPLEMENTATION.md",
+      "lines": 116,
+      "sha256": "42ea104fbaeb386fe6fbbebd5ae67381dcc6f9655204fc71b212fc344642ba58"
+    },
+    {
+      "file": "docs/AI_RUNTIME_INFERENCE_RESULT.md",
+      "lines": 102,
+      "sha256": "6a58d5f844d3b24dd47b7cfd989712b73eb8b3aab93fbaeeb0b1d4c9288f1b4f"
+    },
+    {
+      "file": "docs/AI_RUNTIME_INSTALL_RESULT.md",
+      "lines": 52,
+      "sha256": "bff0616672f5d0420712485345094f1860f87b4b00ecd84d19d113787536909a"
+    },
+    {
+      "file": "docs/ARCHITECTURE_UPDATED.md",
+      "lines": 318,
+      "sha256": "374579e209b2dac258b1102b739451f8976741a977d93aa1e990be2f9339a283"
+    },
+    {
+      "file": "docs/DEMO_SCRIPT.md",
+      "lines": 24,
+      "sha256": "799c1deb153ac6f351ff79f22bae7d06cfe24b96adb42defa905cc27b5e888e1"
+    },
+    {
+      "file": "docs/DEPENDENCY_PATCH_PROPOSAL.md",
+      "lines": 25,
+      "sha256": "a16eb814fa89052e5168c87a586c36317a2dd30ecc1cf605f28c976fd8d14384"
+    },
+    {
+      "file": "docs/DEPENDENCY_PATCH_RESULT.md",
+      "lines": 96,
+      "sha256": "4ce8c6bf2b3f4039161ed3a9a956e2d9cc849ccb98974c80c7e25a296e00e453"
+    },
+    {
+      "file": "docs/EMAIL_AUTH_DEMO.md",
+      "lines": 82,
+      "sha256": "4b80ed5f6cadb1fa273a8a148dcf20abdcf565c61d918be879c30598a68f096d"
+    },
+    {
+      "file": "docs/FEATURE_ACCEPTANCE_MATRIX.md",
+      "lines": 258,
+      "sha256": "00b444bfef77105461c4ae7527fef6249644d59ef09e8b5865f349a5a3b97eeb"
+    },
+    {
+      "file": "docs/FINAL_INTEGRATION_TEST_REPORT.md",
+      "lines": 130,
+      "sha256": "91463de1b65fe15f6353a017237139e89dda02e6fd02987711bd1c776d858f76"
+    },
+    {
+      "file": "docs/FINAL_KLCN129_ACCEPTANCE.md",
+      "lines": 101,
+      "sha256": "1d633293507c7728f3640521e5e6e2bac6f778a8c838fdf27904de50ebcec3f6"
+    },
+    {
+      "file": "docs/FINAL_PROJECT_STATUS.md",
+      "lines": 129,
+      "sha256": "b9697f4cc25be8b4313269973ff3b9b101d467f74b1b648a36cad1a6489e1b63"
+    },
+    {
+      "file": "docs/FULL_WEBSITE_TEST_GUIDE.md",
+      "lines": 110,
+      "sha256": "6e305226d2a493f9ae402316081b35e28cd1372c66625f5a3ca782daabfe9cd0"
+    },
+    {
+      "file": "docs/GITHUB_HANDOFF.md",
+      "lines": 21,
+      "sha256": "aaf2c6a8a353b272622a2837cff479270debc4cf29cdde30d185dc13fafd0752"
+    },
+    {
+      "file": "docs/GOOGLE_AUTH_IMPLEMENTATION_PLAN.md",
+      "lines": 80,
+      "sha256": "d23b7e7120be6c9938b0d2e520c8d910cab7823f595bd8896dd72ce4bda15331"
+    },
+    {
+      "file": "docs/GOOGLE_AUTH_RESULT.md",
+      "lines": 83,
+      "sha256": "1a1db427aeb85d15e15e7c6b073077545fa9bc124ea91e4a2e92ec89196bc79b"
+    },
+    {
+      "file": "docs/GOOGLE_AUTH_SETUP.md",
+      "lines": 103,
+      "sha256": "b9885d94bd36ae371efec83111900204b67546318ca5432a0e8fb6ee70e70da3"
+    },
+    {
+      "file": "docs/GUEST_AUTH_UI_RESULT.md",
+      "lines": 17,
+      "sha256": "b269146e937543326e7f6b1721455308cfb20089ca712905abf6090dc658942f"
+    },
+    {
+      "file": "docs/IMPLEMENTATION_MASTER_PLAN.md",
+      "lines": 141,
+      "sha256": "c2f51c6d79aa7f50a61fdf77463f39e9a35c519310bcffa1c64a9a5164391e64"
+    },
+    {
+      "file": "docs/IMPLEMENTATION_PROGRESS.md",
+      "lines": 415,
+      "sha256": "b529c57714ac0dbd81185a9f87d0352151b381fda16d0ee0910f19b56aba9be9"
+    },
+    {
+      "file": "docs/INSTALLATION_GUIDE.md",
+      "lines": 173,
+      "sha256": "25429a0cc135b3abb0d5c7329af7410fff0fb2836a0a0a13058dc686b202ac78"
+    },
+    {
+      "file": "docs/PERFORMANCE_REPORT.md",
+      "lines": 89,
+      "sha256": "5171e9a9dd34bf4ce15926a7e0115a41b25072f79cacb191423cd9867c477c5f"
+    },
+    {
+      "file": "docs/PHASE3_IMPLEMENTATION_PLAN.md",
+      "lines": 131,
+      "sha256": "c5c394922cb783b82a93fc84e7c7f39ce5284ac614c3a1329bc9d6c65d9b33a5"
+    },
+    {
+      "file": "docs/PHASE4_IMPLEMENTATION_PLAN.md",
+      "lines": 71,
+      "sha256": "32499bc7b37cc2ebc655a94be65036ab429373858b3c17e522d32a7783f1977a"
+    },
+    {
+      "file": "docs/PHASE5_IMPLEMENTATION_PLAN.md",
+      "lines": 34,
+      "sha256": "34b1a7dc5113aa021096b1a884f5942be2c5dd3880c8f99d90733f3fce94d467"
+    },
+    {
+      "file": "docs/PHASE6_QA_PLAN.md",
+      "lines": 17,
+      "sha256": "32bffdd705f87851d23b01d87855326092c8242810ba9d55b1d87cc4e79d8512"
+    },
+    {
+      "file": "docs/PROFILE_SAVE_NAVIGATION_RESULT.md",
+      "lines": 19,
+      "sha256": "292e660def0bf6266c7b256c53c51ac7bbcf6340c7fde78c08b85a78fb8352ea"
+    },
+    {
+      "file": "docs/PROGRESS.md",
+      "lines": 136,
+      "sha256": "5069021cb0a7cbf853ca6800525b4cf0baeaeaeaa1735c85ed14e5720cfc9922"
+    },
+    {
+      "file": "docs/REMAINING_ISSUES.md",
+      "lines": 28,
+      "sha256": "41031c1983a938276bbbc4cd120afed6a3799c81f8f40489ce3d62bcac9e918f"
+    },
+    {
+      "file": "docs/SCREENSHOT_CHECKLIST.md",
+      "lines": 46,
+      "sha256": "07d7cd27979405374d15f568696e54a592d7a8b0bc869466ad9ba80bdb773216"
+    },
+    {
+      "file": "docs/SECURITY_RETEST.md",
+      "lines": 56,
+      "sha256": "5351f4ebb48e2268f7a2ae0be1fb119c80e32e230d82e5fff048102bdd67d104"
+    },
+    {
+      "file": "docs/TEAM_QUICKSTART.md",
+      "lines": 134,
+      "sha256": "7188354ad10e873c409a11f2fac8b3ba5f63ec0d2c6139c863bd8634b7974812"
+    },
+    {
+      "file": "docs/TECHNICAL_DOCUMENTATION.md",
+      "lines": 276,
+      "sha256": "9867b3e71a6e0642bc3d8261c783f8c20b4a58befe93e87cfaeb5b4936779a5a"
+    },
+    {
+      "file": "docs/TEST_RESULTS.md",
+      "lines": 636,
+      "sha256": "2c82095d0dcf597dde02ec71bfeb56a1c62408a643568990c3accd72314f8f8d"
+    },
+    {
+      "file": "docs/UI_DESIGN_SYSTEM.md",
+      "lines": 102,
+      "sha256": "55295720819ec08cd9cf20d66799c367d9b5c661a18bcc865b2d451c7ecad313"
+    },
+    {
+      "file": "docs/UNIFIED_IDENTITY_MIGRATION_PLAN.md",
+      "lines": 21,
+      "sha256": "15c47380fa05719348c0a3b8d6136eb0d456815e2f2cbea5d7265c1c3884f24f"
+    },
+    {
+      "file": "docs/UNIFIED_IDENTITY_RESULT.md",
+      "lines": 102,
+      "sha256": "551d88c777291f31e03a09e16c83a0df553c30b5b17583e1d141587b20d08d17"
+    },
+    {
+      "file": "docs/WEB3_INTEGRATION_RESULT.md",
+      "lines": 189,
+      "sha256": "469fcdbeb3dd80c9960f44b6a6a1cd5f99c0d8ae35dd57c5dbb4db814aa73f46"
+    },
+    {
+      "file": "docs/analysis.md",
+      "lines": 36,
+      "sha256": "13b437681fe1ecc3e7a050943e3844809bd1d8478244a5ce1f9c5afd6c12089c"
+    },
+    {
+      "file": "docs/api-queries.md",
+      "lines": 53,
+      "sha256": "f971adf49b550c1bbac0609fc68c0815cd0f0c00b3438f7095e6df9584a35119"
+    },
+    {
+      "file": "docs/architecture.md",
+      "lines": 53,
+      "sha256": "ab44be7b012ce5fb5bd7eaf82f6ac37769bb662a3b20164e751960d5d9fa5cd9"
+    },
+    {
+      "file": "docs/evidence/email-auth-20261102/artifact-index.json",
+      "lines": 26,
+      "sha256": "479423d9c1fa3995f52f48919034944411396d4285aabd4b669ce87799728976"
+    },
+    {
+      "file": "docs/evidence/email-auth-20261102/email-browser-result.json",
+      "lines": 139,
+      "sha256": "8ed728ff23b551f6070e2a041c9a2a2c619f8b277deacaf0f974ed66b6d4c0fa"
+    },
+    {
+      "file": "docs/evidence/email-auth-20261102/final-checks.json",
+      "lines": 23,
+      "sha256": "4ae9ac427dd86750c7eb82607b717708d66066974cc52e4ad93e95f965bd451d"
+    },
+    {
+      "file": "docs/evidence/email-auth-20261102/google-browser-result.json",
+      "lines": 389,
+      "sha256": "7262ddf6dda75955e11054552e8eacd397b019fafc7f808c2b7976e63927b84d"
+    },
+    {
+      "file": "docs/evidence/email-auth-20261102/protected-after.json",
+      "lines": 1193,
+      "sha256": "b57c6e30b4d5441b826ddd5a6406aaa441396fecbc93e0d120dde2177221ac3a"
+    },
+    {
+      "file": "docs/evidence/email-auth-20261102/protected-before.json",
+      "lines": 1193,
+      "sha256": "f96447df5d95705d7f4532db1bd425a5f1cff75edb6a4dcf398e56490846e932"
+    },
+    {
+      "file": "docs/evidence/email-auth-20261102/result.json",
+      "lines": 25,
+      "sha256": "9c269fc96f684bac2bd40919d55b732ea1cdb83fcce41bae78935b4b0d044a19"
+    },
+    {
+      "file": "docs/evidence/google-auth-20261101/browser-attempt-extension-blocked.json",
+      "lines": 398,
+      "sha256": "17e7430cda11c56bd87be9955fdfd3872e9deb50838f7e50435d371c70985047"
+    },
+    {
+      "file": "docs/evidence/google-auth-20261101/browser-result.json",
+      "lines": 389,
+      "sha256": "8282b191acf8c4e9d1eb83b08d0b410ec0cbd48907dc11f9bd1b7771537a7e26"
+    },
+    {
+      "file": "docs/evidence/google-auth-20261101/final-checks.json",
+      "lines": 24,
+      "sha256": "054e2cf21e2a21283af63db72d4a4a516e28d65fd46bae974e17124f30ab6a2f"
+    },
+    {
+      "file": "docs/evidence/google-auth-20261101/image-index.json",
+      "lines": 34,
+      "sha256": "5617dd49ece61977811eb477c822f3673d68e50c40153054820c632f851e8ed3"
+    },
+    {
+      "file": "docs/evidence/google-auth-20261101/protected-after.json",
+      "lines": 1193,
+      "sha256": "efe94caf186f0d8af60a174cb34b427c22c5b44c38a3ae510c5662db2463362c"
+    },
+    {
+      "file": "docs/evidence/google-auth-20261101/protected-before.json",
+      "lines": 1193,
+      "sha256": "c8198a1f22286e5d605df35b747d9e6f08a5cbf32e851fdeb159fa4fcbe50515"
+    },
+    {
+      "file": "docs/evidence/google-auth-20261101/result.json",
+      "lines": 24,
+      "sha256": "fe21d39c43c2e7e398e0c2400326cecc27e04281a617445137b3a0581655406a"
+    },
+    {
+      "file": "docs/evidence/guest-auth-20261102/artifact-index.json",
+      "lines": 26,
+      "sha256": "1ba1da76ae6ed424ee71475ac998e722f35ce09376b8b7c4eaee730b958ffa9a"
+    },
+    {
+      "file": "docs/evidence/guest-auth-20261102/email-browser-result.json",
+      "lines": 127,
+      "sha256": "18a769ed503b77e3302c027c55d0b9d35b4996cab337e4528805f1a14fdec148"
+    },
+    {
+      "file": "docs/evidence/guest-auth-20261102/google-browser-result.json",
+      "lines": 377,
+      "sha256": "5916ea9a4832b655287fd7a306437ba1c1199e75dd454e099e4c6f85d88c7ca5"
+    },
+    {
+      "file": "docs/evidence/phase7-20261101/dependency-patch-verification.json",
+      "lines": 58,
+      "sha256": "765f8abea3a5cb0d56a15b9648b36a2342f5bcd161719cbe9e3ebd577f8989f1"
+    },
+    {
+      "file": "docs/evidence/phase7-20261101/evidence-index.json",
+      "lines": 107,
+      "sha256": "c2928c8ad2402e0dd5a2e83b8a73298eafc87f56d6b9d1309aeba565dbd93fa9"
+    },
+    {
+      "file": "docs/evidence/phase7-20261101/final-checks.json",
+      "lines": 74,
+      "sha256": "707b20aa2b3dcec468610793c289274e205a4fcb2c45fbbbf329cfe4e9777c01"
+    },
+    {
+      "file": "docs/evidence/phase7-20261101/historical-e2e-source-match.json",
+      "lines": 8,
+      "sha256": "49bbe529ca02f6a6f19c93004d8b3fd25438d141426024083233a57769b53663"
+    },
+    {
+      "file": "docs/evidence/phase7-20261101/live-certificate-readback.json",
+      "lines": 13,
+      "sha256": "1db4c3586e15846f3cd1f8d13fc5b019d468e48572bd75310de2ab87e767b4d9"
+    },
+    {
+      "file": "docs/evidence/phase7-20261101/prior-core-e2e-summary.json",
+      "lines": 300,
+      "sha256": "0936eecf528444387a768ae62dd9b67cec5aad4368ede88ffef092e98c808300"
+    },
+    {
+      "file": "docs/evidence/phase7-20261101/prior-legacy-e2e-summary.json",
+      "lines": 806,
+      "sha256": "fab10893b0fe4006b328eac325460cf10d8a27b6f75c2e569f641ada6df1c86b"
+    },
+    {
+      "file": "docs/evidence/phase7-20261101/prior-qr-e2e-summary.json",
+      "lines": 36,
+      "sha256": "1daeb1b2cee0089ea8204a3c3e51d51f4f83b3bbe45601b9123a7ccd47452afe"
+    },
+    {
+      "file": "docs/evidence/profile-save-20261102/artifact-index.json",
+      "lines": 20,
+      "sha256": "61933af007bab2dae627b21ab0aac41356314fe154644a831f101a9dffb49f42"
+    },
+    {
+      "file": "docs/evidence/profile-save-20261102/email-browser-result.json",
+      "lines": 171,
+      "sha256": "090d520cfb6c3d1c111eeb323c5798e7aa9da578d24359d14efbb1b867f57bb9"
+    },
+    {
+      "file": "docs/evidence/profile-save-20261102/google-browser-result.json",
+      "lines": 377,
+      "sha256": "e24cf38cf6f2d2c137ab656b77a92c9912ab4af0b40547d3fa08a4deb2841963"
+    },
+    {
+      "file": "docs/evidence/unified-20261102/INDEX.md",
+      "lines": 20,
+      "sha256": "5fac76b7c1dba43ce3401cf0a95cf709a3997a37acd0a0870af5061cba44b9c6"
+    },
+    {
+      "file": "docs/evidence/unified-20261102/artifact-sha256.json",
+      "lines": 25,
+      "sha256": "38ccc7baf5e98371b6939e07b1ee5eb86053d73988e7722c4a2de17a89a446d5"
+    },
+    {
+      "file": "docs/evidence/unified-20261102/browser-result.json",
+      "lines": 551,
+      "sha256": "6eeec4dc0fde2763094d6788c5d80b3373b3fa9f334b000c6309d179ff0a118b"
+    },
+    {
+      "file": "docs/evidence/unified-20261102/chain-proof.json",
+      "lines": 15,
+      "sha256": "ece4e096f76d4e31b9a788c037a4aba09c7d191168b11b5e7749883a59c89f5d"
+    },
+    {
+      "file": "docs/evidence/unified-20261102/documentation-checks.json",
+      "lines": 6,
+      "sha256": "ddf03e58e2dba95ba51b40c2b07d02fa559af10b0f77df6598574c458e6a6f4f"
+    },
+    {
+      "file": "docs/evidence/unified-20261102/final-readiness.json",
+      "lines": 17,
+      "sha256": "8369c9b6d41c3bbaec450dbdb561f576c7ca527fbdd4931caf96a0fd912958b6"
+    },
+    {
+      "file": "docs/evidence/unified-20261102/frontend-checks.json",
+      "lines": 11,
+      "sha256": "8f1b67a5ddd5c7ce2adfd1628baf4427cc5d07bf4182dd4796e5e59c497a3f11"
+    },
+    {
+      "file": "docs/evidence/unified-20261102/git-and-dependencies.json",
+      "lines": 55,
+      "sha256": "ee95d7fc052feeefe63059efad912e51b73f9b7cb811c35c8676bfbf0a9ade05"
+    },
+    {
+      "file": "docs/evidence/unified-20261102/index-applied.json",
+      "lines": 503,
+      "sha256": "b394180d06b1adf9a7825af6490fae16689b0f213e4af8a2bdd9b3a7ed700dc4"
+    },
+    {
+      "file": "docs/evidence/unified-20261102/mapping-plan.json",
+      "lines": 9,
+      "sha256": "72fe8cca497d62de13aa34706eafcedf8a5b8acb5077a1ad36a99828eda93651"
+    },
+    {
+      "file": "docs/evidence/unified-20261102/preserved-users.json",
+      "lines": 6,
+      "sha256": "af5dd6882589af279e046d55332889d6693b32bf5392d9a4668791d2dc9f6c41"
+    },
+    {
+      "file": "docs/evidence/unified-20261102/protected-after.json",
+      "lines": 1193,
+      "sha256": "fae6eb1415edcc3d89a01c7a2c040e1d5e8abc405baf988cfd2e575a2f3e377a"
+    },
+    {
+      "file": "docs/evidence/unified-20261102/protected-before.json",
+      "lines": 1193,
+      "sha256": "d7037f2529cc8a2527902ca16922aeba57f3447e10d1aeb5da86593309f7d38f"
+    },
+    {
+      "file": "docs/evidence/unified-20261102/result.json",
+      "lines": 30,
+      "sha256": "ac40332d0b94b70ffbae400d349a02d571229ff3124a34643a8fc9eaeb2e49fa"
+    },
+    {
+      "file": "docs/evidence/unified-20261102/runtime.json",
+      "lines": 11,
+      "sha256": "11fb88a68e8b15eaff54d12e56cc3a44e38a0a692ea72487910168d326cb4318"
+    },
+    {
+      "file": "docs/mongodb-setup.md",
+      "lines": 59,
+      "sha256": "e6a80aa66939267a65429c366f5bda0acdb244638812101d700b93a37a95c3ca"
+    },
+    {
+      "file": "scripts/demo/common.cjs",
+      "lines": 10,
+      "sha256": "a9b4f667f1f06d2a7ce3dec881d8ad203630a8f3a7125bf07fb54f54e96cfcd6"
+    },
+    {
+      "file": "scripts/demo/demo.test.cjs",
+      "lines": 4,
+      "sha256": "be0aa1d9c894362698b3ccd63fed598e531b6e84d71063d64fddb0f6cc16ea5e"
+    },
+    {
+      "file": "scripts/demo/email-acceptance.cjs",
+      "lines": 17,
+      "sha256": "83a7c0af237754f9d981c6980638b0e98c8a1e88b719b524be8abe751a93484f"
+    },
+    {
+      "file": "scripts/demo/email-start.cjs",
+      "lines": 9,
+      "sha256": "55e3605c3e948785b972ff48f6a9f37fbb0a01c52542befba944dac0be788f04"
+    },
+    {
+      "file": "scripts/demo/export-login.cjs",
+      "lines": 22,
+      "sha256": "a8351fa4edc866357673fdd39f0d3ff8024ff173da87b6367248d2c0bf68d996"
+    },
+    {
+      "file": "scripts/demo/google-acceptance.cjs",
+      "lines": 18,
+      "sha256": "becfd48638482440391808d0d54fd2babc3d0637b81b4b8c8bb6972076c462bf"
+    },
+    {
+      "file": "scripts/demo/google-start.cjs",
+      "lines": 17,
+      "sha256": "393a5ae8429fedbaeeed7bd418443ec03e27ca0aec89ed9f16bcdaa9b69bdd87"
+    },
+    {
+      "file": "scripts/demo/prepare.cjs",
+      "lines": 24,
+      "sha256": "c285b7437878a9bce580a32caec1b63cf56ae1086037b7bebc97039a33b9b47c"
+    },
+    {
+      "file": "scripts/demo/session.cjs",
+      "lines": 3,
+      "sha256": "aba4fc288a309d98091942872bf4d34aab9212661acde44183481bf2be939ac9"
+    },
+    {
+      "file": "scripts/demo/start.cjs",
+      "lines": 8,
+      "sha256": "bfaf3c219b2bc95f7d9a82122b09c84be8ddbbcc37c8f9ac47a2e971e6667aaf"
+    },
+    {
+      "file": "scripts/demo/unified-acceptance.cjs",
+      "lines": 11,
+      "sha256": "45b0ad82f73948b1f57cdf2356061a08d43860df226784a6fdd21833626c9065"
+    },
+    {
+      "file": "scripts/demo/unified-session.cjs",
+      "lines": 3,
+      "sha256": "2bfcf1fb18d61fbc161a13b4e27ec33c6c97cc69fd41b1219b2757043354ce1c"
+    },
+    {
+      "file": "server/package-lock.json",
+      "lines": 2384,
+      "sha256": "db1f86b346524ca779afa1b4121dec521487526a19ee8734f3afbe955fdea769"
+    },
+    {
+      "file": "server/package.json",
+      "lines": 28,
+      "sha256": "96b80a120bad7744c9626511293405ea4ca4f15cfcde6ea59bc1af515b544f6a"
+    },
+    {
+      "file": "server/parsers/cv_extract.py",
+      "lines": 87,
+      "sha256": "d09f30ac70e1f48f7329a4b97bf0275f438313fbad3020c5b76ee5d1680e3f72"
+    },
+    {
+      "file": "server/scripts/seed.js",
+      "lines": 215,
+      "sha256": "d5c317800407afdac1141e566c212e42dd147cec3369f7819863dc45627db3a1"
+    },
+    {
+      "file": "server/scripts/start-unified.cjs",
+      "lines": 22,
+      "sha256": "d4cf3889c01e0a3758c3c8c2e3c27af341c0bd954ecf138c3a3e7e4f5b4e24a4"
+    },
+    {
+      "file": "server/scripts/unified-index-migration.cjs",
+      "lines": 41,
+      "sha256": "5c6a1cea19d1096888a6a495d6fad79f6975381b539eaa1b02294738f4b115d4"
+    },
+    {
+      "file": "server/scripts/user-id-mapping-plan.cjs",
+      "lines": 15,
+      "sha256": "f314504b29ceb19227bdf4c100a83591e5d53968120eae13529a26d7fd5149b6"
+    },
+    {
+      "file": "server/src/app.js",
+      "lines": 64,
+      "sha256": "397c1cf680363a3a5d8d18130753d7e64e49a9fbb11023dc8ed5a83a943b9a45"
+    },
+    {
+      "file": "server/src/config/env.js",
+      "lines": 43,
+      "sha256": "303622a5a8ad69f4c3853b3fb8586b85c6ea35d21f8ef99185faf06ecd2da559"
+    },
+    {
+      "file": "server/src/config/testDatabaseGuard.js",
+      "lines": 23,
+      "sha256": "955608cf688140c71fc06687297134ec0cbc32a2be8b4ff0438503f528f78b9b"
+    },
+    {
+      "file": "server/src/contracts/InternshipPlatform.json",
+      "lines": 680,
+      "sha256": "0e74961bda2243c94ec3649284e7018a1b7a2e16658622a2ba6726f4d98fb8ce"
+    },
+    {
+      "file": "server/src/core/accounts.js",
+      "lines": 40,
+      "sha256": "9c69a89f5f5c4337352f8426625031a8c48923679ed90c36acfff3e7a0951805"
+    },
+    {
+      "file": "server/src/core/ai.js",
+      "lines": 32,
+      "sha256": "abfa71aef5b7a27dfbb6edef51dbe72989e71b60f03df671f8369dad7e58ee3c"
+    },
+    {
+      "file": "server/src/core/dashboard.js",
+      "lines": 15,
+      "sha256": "f65e6e16157913bd9f3edb8ac0c090479bdd90faa08efa0215f00b35fd8c34f1"
+    },
+    {
+      "file": "server/src/core/index.js",
+      "lines": 15,
+      "sha256": "a74f251d2fba37d5412ae384979263678f51ea448ce474116ecccbb55d656a3c"
+    },
+    {
+      "file": "server/src/core/kpis.js",
+      "lines": 17,
+      "sha256": "8589f3d8ff4c6670a433d4aaf33a0de74929416818940410ecf5aa2cfeba1539"
+    },
+    {
+      "file": "server/src/core/placementPolicy.js",
+      "lines": 16,
+      "sha256": "45b6c8df615b3aa069f180f454f59f4c02499e67825ee5b2142f97f4a678fe63"
+    },
+    {
+      "file": "server/src/core/placements.js",
+      "lines": 81,
+      "sha256": "969518ec5e02226e81db7f10cc3dfa2f16f20639c5d160020a5ff9e9ee8c6dd0"
+    },
+    {
+      "file": "server/src/core/recruitment.js",
+      "lines": 93,
+      "sha256": "2503cd324cfe3efa9720789ce5afb149e592824778cf671e76b63046d5a038d9"
+    },
+    {
+      "file": "server/src/core/reports.js",
+      "lines": 33,
+      "sha256": "f9a81194ca0b9c1cdec7aa1a89a0ef9784c4bba785a114b95ce4925d50bbd278"
+    },
+    {
+      "file": "server/src/core/shared.js",
+      "lines": 43,
+      "sha256": "9ab98478747acce499603d7be886bfae0c0c0634bdaa638f516fd5b5be7e219d"
+    },
+    {
+      "file": "server/src/core/time.js",
+      "lines": 44,
+      "sha256": "e4ad65ad241e5762aa5016d63dca7f36cf724b7aead267017be8ad41757e76de"
+    },
+    {
+      "file": "server/src/core/unifiedPlacements.js",
+      "lines": 54,
+      "sha256": "d0897780af2f6041520feb0f7087b2749b1ee2c3f46fd7c446db12027f512b2c"
+    },
+    {
+      "file": "server/src/core/web3.js",
+      "lines": 57,
+      "sha256": "0cd1dd785adc9f110b79f93372d7873559432848d91ded4743b90b790d996162"
+    },
+    {
+      "file": "server/src/core/work.js",
+      "lines": 40,
+      "sha256": "d2777a5f57cd7dee124b04d97e2f6b601c97748c9c96e352675e35eedfd6fe3e"
+    },
+    {
+      "file": "server/src/index.js",
+      "lines": 29,
+      "sha256": "85d29316d1ff697570a974e1c134929a3036edf7ab882fb5c091ef62518a5ad6"
+    },
+    {
+      "file": "server/src/middleware/auth.js",
+      "lines": 72,
+      "sha256": "60ed1ac9215c9a964899c03624a7bb53ac0797baec02cbdcc149c35e3cd9704e"
+    },
+    {
+      "file": "server/src/middleware/errorHandler.js",
+      "lines": 19,
+      "sha256": "bdcc58be620832056caa1f98860ca7fe1ecf5d2b548ca839f1694b4da5cba3c3"
+    },
+    {
+      "file": "server/src/middleware/permissions.js",
+      "lines": 52,
+      "sha256": "0360996def26c3a5c3afc30d1f332af923272d73f3ff5f9e7cb34d42abd6b0eb"
+    },
+    {
+      "file": "server/src/models/AIAnalysis.js",
+      "lines": 14,
+      "sha256": "1fa746a636c6933f591d3baee024676a4083318cfa410aaf3794100c845bf42a"
+    },
+    {
+      "file": "server/src/models/Assignment.js",
+      "lines": 32,
+      "sha256": "f863b3f315a8ac66d357227bd53507b89d92a7bb547cd9fc939a930654e517e4"
+    },
+    {
+      "file": "server/src/models/Attendance.js",
+      "lines": 24,
+      "sha256": "d18e49904a1766d8681ac016878e435ac36f93e21bead0fe667289ace2f38c70"
+    },
+    {
+      "file": "server/src/models/AttendanceSession.js",
+      "lines": 10,
+      "sha256": "7e6736894633959fd736783799d4a90e7cff7003c13440a84803205c90463608"
+    },
+    {
+      "file": "server/src/models/AuthNonce.js",
+      "lines": 17,
+      "sha256": "c16244b0a6190a3be570db88ca94f371a85714319e5175893fc86b1623918a89"
+    },
+    {
+      "file": "server/src/models/BusinessModels.js",
+      "lines": 30,
+      "sha256": "cee6a9eec5cf12c9beaa8449e05c62c8b48e94ed9948faa8b4e5179261955548"
+    },
+    {
+      "file": "server/src/models/ChainEvent.js",
+      "lines": 14,
+      "sha256": "0b80a80611b24b4db46f71a0b565537933480fd179be9c1616e2d20e7c6d8e36"
+    },
+    {
+      "file": "server/src/models/Company.js",
+      "lines": 11,
+      "sha256": "812bdda6cc89f3f098408b558820ec05292952cc507a36b86542fa140fb2f2fb"
+    },
+    {
+      "file": "server/src/models/IdentityChallenge.js",
+      "lines": 7,
+      "sha256": "6f83ec7711fd1eed37bd954e711acd1bc3e846d7c478082defad29341c44e90c"
+    },
+    {
+      "file": "server/src/models/JD.js",
+      "lines": 24,
+      "sha256": "fb548b1908c5ce878f0b56aae0e9796872ddc3181ce7d66d2513bc7577ef33a7"
+    },
+    {
+      "file": "server/src/models/KPIEvaluation.js",
+      "lines": 30,
+      "sha256": "b8d09501f6f4055f44bed87d5b36a55c3fc6e4e7cc82b18259467a98e662565b"
+    },
+    {
+      "file": "server/src/models/Student.js",
+      "lines": 15,
+      "sha256": "688815719e8e5883814439d70bcec0cc3490cdb0fdca5198172db22c17be692b"
+    },
+    {
+      "file": "server/src/models/Submission.js",
+      "lines": 16,
+      "sha256": "884b98993c88045451ce205d5880718ea0abf0912fcf17e0d7f62d1e8a2cb648"
+    },
+    {
+      "file": "server/src/models/Task.js",
+      "lines": 28,
+      "sha256": "029eac668903ae7990d014e0b7b0624bf270fe5f6e2c46f891b53f9197798054"
+    },
+    {
+      "file": "server/src/models/Topic.js",
+      "lines": 140,
+      "sha256": "8283bcf031c7af8c81240665b93fcfe96265726cc4bec0e53b830c5250f922b8"
+    },
+    {
+      "file": "server/src/models/User.js",
+      "lines": 72,
+      "sha256": "95384784ecdbebb04b64a0adbc473ba0a47cf6e53aa027b54fb925d22563975c"
+    },
+    {
+      "file": "server/src/models/Web3Models.js",
+      "lines": 21,
+      "sha256": "202f25f0ee2ccb9e85efc10c1c2fe21d06f9b6f5a24744afdd3be6dc4c3005b0"
+    },
+    {
+      "file": "server/src/models/WorkLog.js",
+      "lines": 28,
+      "sha256": "ce5b7b4c76159504a240e5f9ab5db1804fb9e82cd7bca7e008fedb2bdecfe4ce"
+    },
+    {
+      "file": "server/src/models/userOwnership.js",
+      "lines": 17,
+      "sha256": "ac17992091753fbf313199e896b6681921e94f78b0e4a6829e0d23c68b80b3da"
+    },
+    {
+      "file": "server/src/routes/auth.routes.js",
+      "lines": 143,
+      "sha256": "85d539ac23fa149bf080631905056bfce45b0e4a0aa21224db84aef8877e5f93"
+    },
+    {
+      "file": "server/src/routes/data.routes.js",
+      "lines": 240,
+      "sha256": "ec2f308482ab66c0db7c2af7ac6ad76c2dbd450ed91ac42145574288e0e83c99"
+    },
+    {
+      "file": "server/src/routes/email.routes.js",
+      "lines": 67,
+      "sha256": "ea610648cca9834619e808cc6355bb8f4b707018b703db507911cdffcd26ad7a"
+    },
+    {
+      "file": "server/src/routes/google.routes.js",
+      "lines": 110,
+      "sha256": "a2b869159ae83ea905c3f0618d84acdf4edbaf6c374b9bae15e4c2b3e5b67e0e"
+    },
+    {
+      "file": "server/src/routes/internship.routes.js",
+      "lines": 148,
+      "sha256": "d226f3a4171c632a0b364cd7a15f44b09fc8dc1e0cb511fe8c410a4c14a36daf"
+    },
+    {
+      "file": "server/src/routes/topic.routes.js",
+      "lines": 377,
+      "sha256": "481e4eb7de20e3ec9e72dc7d3dd27989373fd6ef11c960d8a8b748e28768c50f"
+    },
+    {
+      "file": "server/src/routes/walletIdentity.routes.js",
+      "lines": 30,
+      "sha256": "0a93be074026c6c05dccc20313e8d20456ae5c4c3e6f7a2eff65d1ec51e046b2"
+    },
+    {
+      "file": "server/src/services/accountProfiles.js",
+      "lines": 6,
+      "sha256": "cea748249bf721772d56ce11a22c35f3f50bd420cb0ab22c09841973dc8deaf9"
+    },
+    {
+      "file": "server/src/services/aiClient.js",
+      "lines": 90,
+      "sha256": "f7932fb7df700e6d04002efdb3d2db8a7474ccba4820cde5511c43b32f1a7c17"
+    },
+    {
+      "file": "server/src/services/attendanceService.js",
+      "lines": 59,
+      "sha256": "9e89a56609b713d7a8ce005551388db1e205647e45b952131c47c232917f0962"
+    },
+    {
+      "file": "server/src/services/authService.js",
+      "lines": 73,
+      "sha256": "908863700b7d2f7102bed0472c0348d64a849e7e6ec6b0dcf2fe0ec0936984f0"
+    },
+    {
+      "file": "server/src/services/businessIdentity.js",
+      "lines": 20,
+      "sha256": "0ba4be379e267dbade7f8e70e0ff9383327494e4c04ac3b0e59db05c68f13c32"
+    },
+    {
+      "file": "server/src/services/chainListener.js",
+      "lines": 212,
+      "sha256": "2278bc5f5a9cd9b7c81ab7c46d8b3e5b5172ab694dbf2f9b3a5fb0bd4529c5cf"
+    },
+    {
+      "file": "server/src/services/chainVerificationService.js",
+      "lines": 54,
+      "sha256": "0a1aa6c87ded06cc8d8b86ea5ee3c22d175fb8ceaecd7ee70a3cea7f230b59da"
+    },
+    {
+      "file": "server/src/services/cvParser.js",
+      "lines": 23,
+      "sha256": "3a51dd6913c96766c63b6c2dddf15cba79d7e76089b93d86b5e1560ad9daabad"
+    },
+    {
+      "file": "server/src/services/databaseSafety.js",
+      "lines": 20,
+      "sha256": "2332cbbac912735c71f6a9cbe5981f2e55bd7d321fadfe6d902afddec03c04cd"
+    },
+    {
+      "file": "server/src/services/googleIdentity.js",
+      "lines": 26,
+      "sha256": "398a2069ceeb2dc3ef2fee34d6e9bd4d34e5dd4a3d8cbacdc57049126ee4dafd"
+    },
+    {
+      "file": "server/src/services/ipfsService.js",
+      "lines": 60,
+      "sha256": "0e0408edaa0b2bfdced4139451d13a4a653c65f32b52b3cc0f6ac2e658c1b176"
+    },
+    {
+      "file": "server/src/services/localWeb3.js",
+      "lines": 88,
+      "sha256": "9066a5caacc5ca7e0538075f99da34a8657109c16b11c4a7eee76d7234cadc5b"
+    },
+    {
+      "file": "server/src/services/nlpClient.js",
+      "lines": 17,
+      "sha256": "988717440120b45894ccf91916f8510f28d5246ba8cd209be60100f9cbd644c6"
+    },
+    {
+      "file": "server/src/services/privateIpfs.js",
+      "lines": 44,
+      "sha256": "1c4e3246ef4b04a3bdd2ea7d5e049bcd2e31d07d25e409f71cd7ebacb87de86a"
+    },
+    {
+      "file": "server/src/services/profileService.js",
+      "lines": 12,
+      "sha256": "34216e12b37aaf884adaf30a3dfdebd1f52bd0946dd1fa807f653f368ec2d05a"
+    },
+    {
+      "file": "server/src/services/qrGps.js",
+      "lines": 51,
+      "sha256": "07936235796d772500d983774b69633e1258310a2baa12140261ce5014d51469"
+    },
+    {
+      "file": "server/src/services/timeTracking.js",
+      "lines": 8,
+      "sha256": "a4d757687b00c7f5b9d3041dca4cace9552342c86018848e948fbbf50230b6b3"
+    },
+    {
+      "file": "server/src/utils/http.js",
+      "lines": 20,
+      "sha256": "6cf594b2f5e218d68c1690f30a63c82c9fd07a732dc63bd1bb307478fa1e3e9c"
+    },
+    {
+      "file": "server/test/ai-fallback.test.js",
+      "lines": 15,
+      "sha256": "b3d95c4163bdbfa8c1b721df28a2604833cc84ba324a274d5446941dc0c67160"
+    },
+    {
+      "file": "server/test/chain-adapter.test.js",
+      "lines": 17,
+      "sha256": "ec8cad0f252cecade3b80c225bbfc87437a12efc506cf61b64a3c2201539005a"
+    },
+    {
+      "file": "server/test/core-accounts.test.js",
+      "lines": 61,
+      "sha256": "85959c9d3524ba6db1b63b4e1e8dfd6b9e147c206824627c841f818b51b2b8e9"
+    },
+    {
+      "file": "server/test/core-ai.test.js",
+      "lines": 62,
+      "sha256": "e7d81752b88efd9799ffe88e466853197925b10a01b326bc2b7fd034ca04ac97"
+    },
+    {
+      "file": "server/test/core-edge-cases.test.js",
+      "lines": 53,
+      "sha256": "76295e78d340a61df658c312a5ac78355bfe26949a729a9ca9192498cfa815da"
+    },
+    {
+      "file": "server/test/core-placements.test.js",
+      "lines": 24,
+      "sha256": "9f2c6214d5837770cd990508fb13ff1e58806462f34a6ec57b6a49112afe4200"
+    },
+    {
+      "file": "server/test/core-recruitment.test.js",
+      "lines": 79,
+      "sha256": "54e4ea7620a1fa76eee24521912102aeac6dd0217990acd0524f3f20027310ef"
+    },
+    {
+      "file": "server/test/core-work-time-reports.test.js",
+      "lines": 95,
+      "sha256": "ef64e88472c9430bc74866c877fec7881fcb0b65be72cdf3bdd596abcc365ce9"
+    },
+    {
+      "file": "server/test/coreFixtures.js",
+      "lines": 18,
+      "sha256": "a82f5b01171f3a9de2bf4ae0ed59abd9f734a1b18c9f0a2177f8a1f3ac198ec2"
+    },
+    {
+      "file": "server/test/cvDocuments.js",
+      "lines": 9,
+      "sha256": "6180450af45b8e8df9f259ecaa11e3d1a3d9e117f809256be5d1072a83f5916f"
+    },
+    {
+      "file": "server/test/database-safety.test.js",
+      "lines": 13,
+      "sha256": "b4618cbfaa9f4e574954e55e33856ec1fe409cf8be0f3838dcfd72b5dee225f5"
+    },
+    {
+      "file": "server/test/dependency-patches.test.js",
+      "lines": 7,
+      "sha256": "ca1b1b7268491742c4df12113cfaaf738ea8f0f5d779bb8315552f8f182975e8"
+    },
+    {
+      "file": "server/test/email-auth.test.js",
+      "lines": 58,
+      "sha256": "130174454058744e8132581ed66f23641e8a316c74092172a384dbe742a4112e"
+    },
+    {
+      "file": "server/test/error-safety.test.js",
+      "lines": 17,
+      "sha256": "8dc9b0ed080cf005ade1f86f3187c8c94209610acb8ea9719b107f418b4bf2ec"
+    },
+    {
+      "file": "server/test/fixtures/compressed-body-probe.cjs",
+      "lines": 5,
+      "sha256": "d491bfd5e76d4ebbc4304c76274cc1e4cddd35576e7caaf070f9158fa2d3618b"
+    },
+    {
+      "file": "server/test/foundation.test.js",
+      "lines": 281,
+      "sha256": "76785a00ac3288fbe4c087b515c7a0d30883aa68174d727727c0f4fb5d6b65bd"
+    },
+    {
+      "file": "server/test/full-system-security.test.js",
+      "lines": 44,
+      "sha256": "affb2e39c1e07ec70c6798225eb03e49735b9d335c0a88c1fdedc134db22be7c"
+    },
+    {
+      "file": "server/test/google-auth.test.js",
+      "lines": 130,
+      "sha256": "a95e1dd229027d6b65f2b67f50c9b5eedb30493fc9797c11ee036f2d45d5b568"
+    },
+    {
+      "file": "server/test/google-crypto.test.js",
+      "lines": 15,
+      "sha256": "bfaad1ed6c35276e75dd42914d9bf1bab09462b24199d197abe9464debbc1d97"
+    },
+    {
+      "file": "server/test/helpers.js",
+      "lines": 69,
+      "sha256": "2e8d6b45a20c402d7deb6b450258ccf5bc2842196ecc409902b989c088333a77"
+    },
+    {
+      "file": "server/test/private-ipfs.test.js",
+      "lines": 8,
+      "sha256": "9a55463144a9bbf001f0b0eb028e35ed729fc45b0d90d1e442ee12c17bd64261"
+    },
+    {
+      "file": "server/test/qr-gps.test.js",
+      "lines": 5,
+      "sha256": "e8bef7e3c90f204bde99985435866e8bacc52784bca03db9e237d498899ef418"
+    },
+    {
+      "file": "server/test/runtime-safety.test.js",
+      "lines": 19,
+      "sha256": "c6c06708ec8817f04819dbebe0a0d3a333cf56eb1b1912808eea68b0773321f6"
+    },
+    {
+      "file": "server/test/security-regression.test.js",
+      "lines": 161,
+      "sha256": "6b85610d17ab0a730df59fceb072d03e60580331ad6a85cdb5f30df6b62d4e3a"
+    },
+    {
+      "file": "server/test/startup-entry.test.js",
+      "lines": 12,
+      "sha256": "51bae3a7a3190e20d943bf82bb82ebd3c3dda9e48d6c81153053eb07e9a58b05"
+    },
+    {
+      "file": "server/test/testEnvironment.js",
+      "lines": 2,
+      "sha256": "5c6b4a03f434100cc24540a0b883e200c7a40874cc303a81d952baf347a6629f"
+    },
+    {
+      "file": "server/test/timeTracking.test.js",
+      "lines": 10,
+      "sha256": "2777a142e47bdc0c4ea6b9cbc042f1eb6ba685d7ec906c573a4865eda4a5c7af"
+    },
+    {
+      "file": "server/test/unified-identity.test.js",
+      "lines": 122,
+      "sha256": "4529e658e48d438fb5119be16de74c9d11223d90c9adbdda50c8d5199c42ce9b"
+    },
+    {
+      "file": "server/test/unified-index-migration.test.js",
+      "lines": 23,
+      "sha256": "0b59f9e1e578c26027d22979aa655f1ad9312c6a0776ab79aaff7cf0f2a28ce5"
+    },
+    {
+      "file": "server/test/web3-integration.test.js",
+      "lines": 73,
+      "sha256": "7a38efd2afc5ccd1baf06120b07f2ac00e48688999b4a1d98e0bd57af079ffb3"
+    }
+  ],
+  "routes": [
+    {
+      "file": "server/src/app.js",
+      "line": 43,
+      "method": "GET",
+      "path": "/api/core/capabilities"
+    },
+    {
+      "file": "server/src/app.js",
+      "line": 46,
+      "method": "GET",
+      "path": "/api/health"
+    },
+    {
+      "file": "server/src/app.js",
+      "line": 56,
+      "method": "GET",
+      "path": "/api/ready"
+    },
+    {
+      "file": "server/src/core/accounts.js",
+      "line": 9,
+      "method": "GET",
+      "path": "/profile"
+    },
+    {
+      "file": "server/src/core/accounts.js",
+      "line": 10,
+      "method": "PATCH",
+      "path": "/profile"
+    },
+    {
+      "file": "server/src/core/accounts.js",
+      "line": 17,
+      "method": "GET",
+      "path": "/accounts"
+    },
+    {
+      "file": "server/src/core/accounts.js",
+      "line": 21,
+      "method": "POST",
+      "path": "/accounts"
+    },
+    {
+      "file": "server/src/core/accounts.js",
+      "line": 27,
+      "method": "PATCH",
+      "path": "/accounts/:id"
+    },
+    {
+      "file": "server/src/core/accounts.js",
+      "line": 37,
+      "method": "GET",
+      "path": "/accounts/:id/history"
+    },
+    {
+      "file": "server/src/core/ai.js",
+      "line": 10,
+      "method": "GET",
+      "path": "/ai/status"
+    },
+    {
+      "file": "server/src/core/ai.js",
+      "line": 11,
+      "method": "POST",
+      "path": "/ai/match"
+    },
+    {
+      "file": "server/src/core/ai.js",
+      "line": 18,
+      "method": "POST",
+      "path": "/ai/rank-applicants"
+    },
+    {
+      "file": "server/src/core/ai.js",
+      "line": 24,
+      "method": "POST",
+      "path": "/ai/reports/:id/analyze"
+    },
+    {
+      "file": "server/src/core/dashboard.js",
+      "line": 4,
+      "method": "GET",
+      "path": "/dashboard"
+    },
+    {
+      "file": "server/src/core/kpis.js",
+      "line": 3,
+      "method": "GET",
+      "path": "/placements/:id"
+    },
+    {
+      "file": "server/src/core/kpis.js",
+      "line": 4,
+      "method": "POST",
+      "path": "/placements/:id/kpis/:index/submit"
+    },
+    {
+      "file": "server/src/core/kpis.js",
+      "line": 10,
+      "method": "POST",
+      "path": "/placements/:id/kpis/:index/evaluate"
+    },
+    {
+      "file": "server/src/core/placements.js",
+      "line": 7,
+      "method": "GET",
+      "path": "/batches"
+    },
+    {
+      "file": "server/src/core/placements.js",
+      "line": 11,
+      "method": "POST",
+      "path": "/batches"
+    },
+    {
+      "file": "server/src/core/placements.js",
+      "line": 16,
+      "method": "PATCH",
+      "path": "/batches/:id"
+    },
+    {
+      "file": "server/src/core/placements.js",
+      "line": 21,
+      "method": "GET",
+      "path": "/directory"
+    },
+    {
+      "file": "server/src/core/placements.js",
+      "line": 34,
+      "method": "GET",
+      "path": "/placements"
+    },
+    {
+      "file": "server/src/core/placements.js",
+      "line": 44,
+      "method": "POST",
+      "path": "/placements"
+    },
+    {
+      "file": "server/src/core/placements.js",
+      "line": 60,
+      "method": "PATCH",
+      "path": "/placements/:id/details"
+    },
+    {
+      "file": "server/src/core/placements.js",
+      "line": 69,
+      "method": "PATCH",
+      "path": "/placements/:id"
+    },
+    {
+      "file": "server/src/core/recruitment.js",
+      "line": 12,
+      "method": "GET",
+      "path": "/cv"
+    },
+    {
+      "file": "server/src/core/recruitment.js",
+      "line": 13,
+      "method": "PUT",
+      "path": "/cv"
+    },
+    {
+      "file": "server/src/core/recruitment.js",
+      "line": 19,
+      "method": "POST",
+      "path": "/cv/file"
+    },
+    {
+      "file": "server/src/core/recruitment.js",
+      "line": 35,
+      "method": "GET",
+      "path": "/cv/file"
+    },
+    {
+      "file": "server/src/core/recruitment.js",
+      "line": 48,
+      "method": "GET",
+      "path": "/jds"
+    },
+    {
+      "file": "server/src/core/recruitment.js",
+      "line": 54,
+      "method": "POST",
+      "path": "/jds"
+    },
+    {
+      "file": "server/src/core/recruitment.js",
+      "line": 58,
+      "method": "PATCH",
+      "path": "/jds/:id"
+    },
+    {
+      "file": "server/src/core/recruitment.js",
+      "line": 64,
+      "method": "GET",
+      "path": "/applications"
+    },
+    {
+      "file": "server/src/core/recruitment.js",
+      "line": 68,
+      "method": "POST",
+      "path": "/applications"
+    },
+    {
+      "file": "server/src/core/recruitment.js",
+      "line": 75,
+      "method": "PATCH",
+      "path": "/applications/:id"
+    },
+    {
+      "file": "server/src/core/recruitment.js",
+      "line": 88,
+      "method": "GET",
+      "path": "/notifications"
+    },
+    {
+      "file": "server/src/core/recruitment.js",
+      "line": 89,
+      "method": "PATCH",
+      "path": "/notifications/:id/read"
+    },
+    {
+      "file": "server/src/core/reports.js",
+      "line": 4,
+      "method": "GET",
+      "path": "/reports"
+    },
+    {
+      "file": "server/src/core/reports.js",
+      "line": 8,
+      "method": "POST",
+      "path": "/reports"
+    },
+    {
+      "file": "server/src/core/reports.js",
+      "line": 15,
+      "method": "POST",
+      "path": "/reports/:id/reviews"
+    },
+    {
+      "file": "server/src/core/reports.js",
+      "line": 25,
+      "method": "POST",
+      "path": "/reports/:id/approve"
+    },
+    {
+      "file": "server/src/core/time.js",
+      "line": 5,
+      "method": "GET",
+      "path": "/time/sessions"
+    },
+    {
+      "file": "server/src/core/time.js",
+      "line": 9,
+      "method": "POST",
+      "path": "/time/check-in"
+    },
+    {
+      "file": "server/src/core/time.js",
+      "line": 14,
+      "method": "POST",
+      "path": "/time/:id/check-out"
+    },
+    {
+      "file": "server/src/core/time.js",
+      "line": 20,
+      "method": "PATCH",
+      "path": "/time/:id/review"
+    },
+    {
+      "file": "server/src/core/time.js",
+      "line": 36,
+      "method": "GET",
+      "path": "/time/totals"
+    },
+    {
+      "file": "server/src/core/unifiedPlacements.js",
+      "line": 6,
+      "method": "POST",
+      "path": "/accounts/email"
+    },
+    {
+      "file": "server/src/core/unifiedPlacements.js",
+      "line": 13,
+      "method": "GET",
+      "path": "/topics"
+    },
+    {
+      "file": "server/src/core/unifiedPlacements.js",
+      "line": 16,
+      "method": "POST",
+      "path": "/topics"
+    },
+    {
+      "file": "server/src/core/unifiedPlacements.js",
+      "line": 22,
+      "method": "GET",
+      "path": "/directory"
+    },
+    {
+      "file": "server/src/core/unifiedPlacements.js",
+      "line": 34,
+      "method": "POST",
+      "path": "/placements"
+    },
+    {
+      "file": "server/src/core/unifiedPlacements.js",
+      "line": 47,
+      "method": "PATCH",
+      "path": "/placements/:id/details"
+    },
+    {
+      "file": "server/src/core/web3.js",
+      "line": 8,
+      "method": "GET",
+      "path": "/web3/status"
+    },
+    {
+      "file": "server/src/core/web3.js",
+      "line": 9,
+      "method": "POST",
+      "path": "/web3/qr/issue"
+    },
+    {
+      "file": "server/src/core/web3.js",
+      "line": 10,
+      "method": "POST",
+      "path": "/web3/qr/redeem"
+    },
+    {
+      "file": "server/src/core/web3.js",
+      "line": 13,
+      "method": "GET",
+      "path": "/web3/reports/:id/artifacts"
+    },
+    {
+      "file": "server/src/core/web3.js",
+      "line": 29,
+      "method": "POST",
+      "path": "/web3/reports/:id/ipfs"
+    },
+    {
+      "file": "server/src/core/web3.js",
+      "line": 30,
+      "method": "POST",
+      "path": "/web3/reports/:id/ipfs/file"
+    },
+    {
+      "file": "server/src/core/web3.js",
+      "line": 31,
+      "method": "POST",
+      "path": "/web3/reports/:id/anchor"
+    },
+    {
+      "file": "server/src/core/web3.js",
+      "line": 38,
+      "method": "POST",
+      "path": "/web3/time/:id/anchor"
+    },
+    {
+      "file": "server/src/core/web3.js",
+      "line": 52,
+      "method": "POST",
+      "path": "/web3/placements/:id/complete"
+    },
+    {
+      "file": "server/src/core/web3.js",
+      "line": 53,
+      "method": "POST",
+      "path": "/web3/placements/:id/mint"
+    },
+    {
+      "file": "server/src/core/web3.js",
+      "line": 54,
+      "method": "GET",
+      "path": "/web3/placements/:id/certificate"
+    },
+    {
+      "file": "server/src/core/web3.js",
+      "line": 55,
+      "method": "GET",
+      "path": "/web3/placements/:id/operations"
+    },
+    {
+      "file": "server/src/core/web3.js",
+      "line": 56,
+      "method": "POST",
+      "path": "/web3/operations/:id/reconcile"
+    },
+    {
+      "file": "server/src/core/work.js",
+      "line": 6,
+      "method": "GET",
+      "path": "/tasks"
+    },
+    {
+      "file": "server/src/core/work.js",
+      "line": 10,
+      "method": "POST",
+      "path": "/tasks"
+    },
+    {
+      "file": "server/src/core/work.js",
+      "line": 15,
+      "method": "PATCH",
+      "path": "/tasks/:id"
+    },
+    {
+      "file": "server/src/core/work.js",
+      "line": 24,
+      "method": "GET",
+      "path": "/worklogs"
+    },
+    {
+      "file": "server/src/core/work.js",
+      "line": 28,
+      "method": "POST",
+      "path": "/worklogs"
+    },
+    {
+      "file": "server/src/core/work.js",
+      "line": 32,
+      "method": "PATCH",
+      "path": "/worklogs/:id"
+    },
+    {
+      "file": "server/src/core/work.js",
+      "line": 36,
+      "method": "PATCH",
+      "path": "/worklogs/:id/review"
+    },
+    {
+      "file": "server/src/routes/auth.routes.js",
+      "line": 35,
+      "method": "POST",
+      "path": "/nonce"
+    },
+    {
+      "file": "server/src/routes/auth.routes.js",
+      "line": 43,
+      "method": "POST",
+      "path": "/login-wallet"
+    },
+    {
+      "file": "server/src/routes/auth.routes.js",
+      "line": 76,
+      "method": "POST",
+      "path": "/demo-login"
+    },
+    {
+      "file": "server/src/routes/auth.routes.js",
+      "line": 112,
+      "method": "GET",
+      "path": "/me"
+    },
+    {
+      "file": "server/src/routes/auth.routes.js",
+      "line": 119,
+      "method": "GET",
+      "path": "/profile/:wallet"
+    },
+    {
+      "file": "server/src/routes/auth.routes.js",
+      "line": 126,
+      "method": "PUT",
+      "path": "/profile/:wallet"
+    },
+    {
+      "file": "server/src/routes/data.routes.js",
+      "line": 67,
+      "method": "GET",
+      "path": "/overview"
+    },
+    {
+      "file": "server/src/routes/data.routes.js",
+      "line": 76,
+      "method": "GET",
+      "path": "/students"
+    },
+    {
+      "file": "server/src/routes/data.routes.js",
+      "line": 87,
+      "method": "GET",
+      "path": "/students/:id"
+    },
+    {
+      "file": "server/src/routes/data.routes.js",
+      "line": 99,
+      "method": "PUT",
+      "path": "/students/:id"
+    },
+    {
+      "file": "server/src/routes/data.routes.js",
+      "line": 117,
+      "method": "GET",
+      "path": "/companies"
+    },
+    {
+      "file": "server/src/routes/data.routes.js",
+      "line": 127,
+      "method": "GET",
+      "path": "/companies/:id"
+    },
+    {
+      "file": "server/src/routes/data.routes.js",
+      "line": 139,
+      "method": "PUT",
+      "path": "/companies/:id"
+    },
+    {
+      "file": "server/src/routes/data.routes.js",
+      "line": 156,
+      "method": "GET",
+      "path": "/topics"
+    },
+    {
+      "file": "server/src/routes/data.routes.js",
+      "line": 172,
+      "method": "GET",
+      "path": "/topics/:id"
+    },
+    {
+      "file": "server/src/routes/data.routes.js",
+      "line": 180,
+      "method": "GET",
+      "path": "/assignments"
+    },
+    {
+      "file": "server/src/routes/data.routes.js",
+      "line": 193,
+      "method": "GET",
+      "path": "/submissions"
+    },
+    {
+      "file": "server/src/routes/data.routes.js",
+      "line": 204,
+      "method": "GET",
+      "path": "/evaluations"
+    },
+    {
+      "file": "server/src/routes/data.routes.js",
+      "line": 215,
+      "method": "GET",
+      "path": "/ai-analyses"
+    },
+    {
+      "file": "server/src/routes/data.routes.js",
+      "line": 226,
+      "method": "GET",
+      "path": "/chain-events"
+    },
+    {
+      "file": "server/src/routes/email.routes.js",
+      "line": 14,
+      "method": "GET",
+      "path": "/email/status"
+    },
+    {
+      "file": "server/src/routes/email.routes.js",
+      "line": 20,
+      "method": "POST",
+      "path": "/email/register"
+    },
+    {
+      "file": "server/src/routes/email.routes.js",
+      "line": 29,
+      "method": "POST",
+      "path": "/email/login"
+    },
+    {
+      "file": "server/src/routes/email.routes.js",
+      "line": 36,
+      "method": "POST",
+      "path": "/email/change-password"
+    },
+    {
+      "file": "server/src/routes/email.routes.js",
+      "line": 43,
+      "method": "POST",
+      "path": "/email/wallet-challenge"
+    },
+    {
+      "file": "server/src/routes/email.routes.js",
+      "line": 53,
+      "method": "POST",
+      "path": "/email/link-wallet"
+    },
+    {
+      "file": "server/src/routes/google.routes.js",
+      "line": 16,
+      "method": "GET",
+      "path": "/google/status"
+    },
+    {
+      "file": "server/src/routes/google.routes.js",
+      "line": 17,
+      "method": "GET",
+      "path": "/identities"
+    },
+    {
+      "file": "server/src/routes/google.routes.js",
+      "line": 30,
+      "method": "POST",
+      "path": "/google/challenge"
+    },
+    {
+      "file": "server/src/routes/google.routes.js",
+      "line": 60,
+      "method": "POST",
+      "path": "/google/login"
+    },
+    {
+      "file": "server/src/routes/google.routes.js",
+      "line": 74,
+      "method": "POST",
+      "path": "/google/link"
+    },
+    {
+      "file": "server/src/routes/google.routes.js",
+      "line": 91,
+      "method": "POST",
+      "path": "/wallet/link"
+    },
+    {
+      "file": "server/src/routes/google.routes.js",
+      "line": 102,
+      "method": "POST",
+      "path": "/google/unlink"
+    },
+    {
+      "file": "server/src/routes/internship.routes.js",
+      "line": 25,
+      "method": "GET",
+      "path": "/dashboard"
+    },
+    {
+      "file": "server/src/routes/internship.routes.js",
+      "line": 51,
+      "method": "GET",
+      "path": "/jds"
+    },
+    {
+      "file": "server/src/routes/internship.routes.js",
+      "line": 52,
+      "method": "POST",
+      "path": "/jds"
+    },
+    {
+      "file": "server/src/routes/internship.routes.js",
+      "line": 67,
+      "method": "POST",
+      "path": "/match-cv"
+    },
+    {
+      "file": "server/src/routes/internship.routes.js",
+      "line": 75,
+      "method": "GET",
+      "path": "/tasks"
+    },
+    {
+      "file": "server/src/routes/internship.routes.js",
+      "line": 81,
+      "method": "POST",
+      "path": "/tasks"
+    },
+    {
+      "file": "server/src/routes/internship.routes.js",
+      "line": 91,
+      "method": "PATCH",
+      "path": "/tasks/:id/status"
+    },
+    {
+      "file": "server/src/routes/internship.routes.js",
+      "line": 102,
+      "method": "POST",
+      "path": "/attendance/sessions"
+    },
+    {
+      "file": "server/src/routes/internship.routes.js",
+      "line": 103,
+      "method": "GET",
+      "path": "/attendance/today-qr"
+    },
+    {
+      "file": "server/src/routes/internship.routes.js",
+      "line": 104,
+      "method": "POST",
+      "path": "/attendance/check-in"
+    },
+    {
+      "file": "server/src/routes/internship.routes.js",
+      "line": 105,
+      "method": "GET",
+      "path": "/attendance/history"
+    },
+    {
+      "file": "server/src/routes/internship.routes.js",
+      "line": 110,
+      "method": "GET",
+      "path": "/worklogs"
+    },
+    {
+      "file": "server/src/routes/internship.routes.js",
+      "line": 115,
+      "method": "POST",
+      "path": "/worklogs"
+    },
+    {
+      "file": "server/src/routes/internship.routes.js",
+      "line": 124,
+      "method": "PATCH",
+      "path": "/worklogs/:id/review"
+    },
+    {
+      "file": "server/src/routes/internship.routes.js",
+      "line": 132,
+      "method": "GET",
+      "path": "/certificate/:query"
+    },
+    {
+      "file": "server/src/routes/internship.routes.js",
+      "line": 141,
+      "method": "GET",
+      "path": "/chain-events"
+    },
+    {
+      "file": "server/src/routes/internship.routes.js",
+      "line": 142,
+      "method": "POST",
+      "path": "/sync-events"
+    },
+    {
+      "file": "server/src/routes/topic.routes.js",
+      "line": 74,
+      "method": "GET",
+      "path": "/"
+    },
+    {
+      "file": "server/src/routes/topic.routes.js",
+      "line": 108,
+      "method": "POST",
+      "path": "/ai-match"
+    },
+    {
+      "file": "server/src/routes/topic.routes.js",
+      "line": 113,
+      "method": "GET",
+      "path": "/:id"
+    },
+    {
+      "file": "server/src/routes/topic.routes.js",
+      "line": 118,
+      "method": "POST",
+      "path": "/"
+    },
+    {
+      "file": "server/src/routes/topic.routes.js",
+      "line": 171,
+      "method": "POST",
+      "path": "/:id/kpis"
+    },
+    {
+      "file": "server/src/routes/topic.routes.js",
+      "line": 190,
+      "method": "POST",
+      "path": "/:id/mentor"
+    },
+    {
+      "file": "server/src/routes/topic.routes.js",
+      "line": 200,
+      "method": "POST",
+      "path": "/:id/assign"
+    },
+    {
+      "file": "server/src/routes/topic.routes.js",
+      "line": 227,
+      "method": "POST",
+      "path": "/:id/kpis/:milestoneIndex/submit"
+    },
+    {
+      "file": "server/src/routes/topic.routes.js",
+      "line": 289,
+      "method": "POST",
+      "path": "/:id/kpis/:milestoneIndex/evaluate"
+    },
+    {
+      "file": "server/src/routes/topic.routes.js",
+      "line": 330,
+      "method": "POST",
+      "path": "/:id/complete"
+    },
+    {
+      "file": "server/src/routes/topic.routes.js",
+      "line": 365,
+      "method": "POST",
+      "path": "/:id/record-chain-tx"
+    },
+    {
+      "file": "server/src/routes/walletIdentity.routes.js",
+      "line": 4,
+      "method": "POST",
+      "path": "/wallet/unlink-challenge"
+    },
+    {
+      "file": "server/src/routes/walletIdentity.routes.js",
+      "line": 12,
+      "method": "POST",
+      "path": "/wallet/unlink"
+    },
+    {
+      "file": "server/test/fixtures/compressed-body-probe.cjs",
+      "line": 3,
+      "method": "POST",
+      "path": "/echo"
+    },
+    {
+      "file": "server/test/fixtures/compressed-body-probe.cjs",
+      "line": 3,
+      "method": "GET",
+      "path": "/health"
+    }
+  ],
+  "imports": [
+    {
+      "file": "client/src/App.jsx",
+      "target": "react"
+    },
+    {
+      "file": "client/src/App.jsx",
+      "target": "lucide-react"
+    },
+    {
+      "file": "client/src/App.jsx",
+      "target": "./api/client"
+    },
+    {
+      "file": "client/src/App.jsx",
+      "target": "./api/web3Client"
+    },
+    {
+      "file": "client/src/App.jsx",
+      "target": "./components/AuthModal"
+    },
+    {
+      "file": "client/src/App.jsx",
+      "target": "./components/AccountOverview"
+    },
+    {
+      "file": "client/src/App.jsx",
+      "target": "./components/GoogleIdentity"
+    },
+    {
+      "file": "client/src/App.jsx",
+      "target": "./components/AppShell"
+    },
+    {
+      "file": "client/src/App.jsx",
+      "target": "./components/ViewBoundary"
+    },
+    {
+      "file": "client/src/App.jsx",
+      "target": "./components/ui"
+    },
+    {
+      "file": "client/src/App.jsx",
+      "target": "./components/DashboardView"
+    },
+    {
+      "file": "client/src/App.jsx",
+      "target": "./components/CvJdView"
+    },
+    {
+      "file": "client/src/App.jsx",
+      "target": "./components/AttendanceView"
+    },
+    {
+      "file": "client/src/App.jsx",
+      "target": "./components/Web3CertificateView"
+    },
+    {
+      "file": "client/src/App.jsx",
+      "target": "./components/business/CoreBusinessView"
+    },
+    {
+      "file": "client/src/api/client.js",
+      "target": "ethers"
+    },
+    {
+      "file": "client/src/api/web3Client.js",
+      "target": "./client"
+    },
+    {
+      "file": "client/src/api/web3Client.js",
+      "target": "../contracts/InternshipPlatform.json"
+    },
+    {
+      "file": "client/src/api/web3Client.js",
+      "target": "ethers"
+    },
+    {
+      "file": "client/src/api/web3Client.js",
+      "target": "ethers"
+    },
+    {
+      "file": "client/src/components/AccountOverview.jsx",
+      "target": "./navigation"
+    },
+    {
+      "file": "client/src/components/AppShell.jsx",
+      "target": "react"
+    },
+    {
+      "file": "client/src/components/AppShell.jsx",
+      "target": "lucide-react"
+    },
+    {
+      "file": "client/src/components/AppShell.jsx",
+      "target": "./ui"
+    },
+    {
+      "file": "client/src/components/AppShell.jsx",
+      "target": "./business/Notifications"
+    },
+    {
+      "file": "client/src/components/AppShell.jsx",
+      "target": "../api/client"
+    },
+    {
+      "file": "client/src/components/AppShell.jsx",
+      "target": "./navigation"
+    },
+    {
+      "file": "client/src/components/AttendanceView.jsx",
+      "target": "./ui"
+    },
+    {
+      "file": "client/src/components/AttendanceView.jsx",
+      "target": "react"
+    },
+    {
+      "file": "client/src/components/AttendanceView.jsx",
+      "target": "lucide-react"
+    },
+    {
+      "file": "client/src/components/AttendanceView.jsx",
+      "target": "../api/client"
+    },
+    {
+      "file": "client/src/components/AuthModal.jsx",
+      "target": "./ui"
+    },
+    {
+      "file": "client/src/components/AuthModal.jsx",
+      "target": "../api/client"
+    },
+    {
+      "file": "client/src/components/AuthModal.jsx",
+      "target": "react"
+    },
+    {
+      "file": "client/src/components/AuthModal.jsx",
+      "target": "./GoogleIdentity"
+    },
+    {
+      "file": "client/src/components/AuthModal.jsx",
+      "target": "./EmailIdentity"
+    },
+    {
+      "file": "client/src/components/AuthModal.jsx",
+      "target": "lucide-react"
+    },
+    {
+      "file": "client/src/components/CvJdView.jsx",
+      "target": "./ui"
+    },
+    {
+      "file": "client/src/components/CvJdView.jsx",
+      "target": "react"
+    },
+    {
+      "file": "client/src/components/CvJdView.jsx",
+      "target": "lucide-react"
+    },
+    {
+      "file": "client/src/components/CvJdView.jsx",
+      "target": "../api/client"
+    },
+    {
+      "file": "client/src/components/DashboardView.jsx",
+      "target": "react"
+    },
+    {
+      "file": "client/src/components/DashboardView.jsx",
+      "target": "lucide-react"
+    },
+    {
+      "file": "client/src/components/DashboardView.jsx",
+      "target": "../api/client"
+    },
+    {
+      "file": "client/src/components/DashboardView.jsx",
+      "target": "./ui"
+    },
+    {
+      "file": "client/src/components/DashboardView.jsx",
+      "target": "./navigation"
+    },
+    {
+      "file": "client/src/components/DashboardView.jsx",
+      "target": "./business/CoreOverview"
+    },
+    {
+      "file": "client/src/components/EmailIdentity.jsx",
+      "target": "react"
+    },
+    {
+      "file": "client/src/components/EmailIdentity.jsx",
+      "target": "../api/client"
+    },
+    {
+      "file": "client/src/components/EmailIdentity.jsx",
+      "target": "ethers"
+    },
+    {
+      "file": "client/src/components/GoogleIdentity.jsx",
+      "target": "react"
+    },
+    {
+      "file": "client/src/components/GoogleIdentity.jsx",
+      "target": "../api/client"
+    },
+    {
+      "file": "client/src/components/GoogleIdentity.jsx",
+      "target": "./MyWallet"
+    },
+    {
+      "file": "client/src/components/GoogleIdentity.jsx",
+      "target": "./EmailIdentity"
+    },
+    {
+      "file": "client/src/components/GoogleIdentity.jsx",
+      "target": "ethers"
+    },
+    {
+      "file": "client/src/components/MyWallet.jsx",
+      "target": "react"
+    },
+    {
+      "file": "client/src/components/MyWallet.jsx",
+      "target": "../api/client"
+    },
+    {
+      "file": "client/src/components/MyWallet.jsx",
+      "target": "ethers"
+    },
+    {
+      "file": "client/src/components/ViewBoundary.jsx",
+      "target": "react"
+    },
+    {
+      "file": "client/src/components/ViewBoundary.jsx",
+      "target": "./ui"
+    },
+    {
+      "file": "client/src/components/Web3CertificateView.jsx",
+      "target": "./ui"
+    },
+    {
+      "file": "client/src/components/Web3CertificateView.jsx",
+      "target": "react"
+    },
+    {
+      "file": "client/src/components/Web3CertificateView.jsx",
+      "target": "lucide-react"
+    },
+    {
+      "file": "client/src/components/Web3CertificateView.jsx",
+      "target": "../api/client"
+    },
+    {
+      "file": "client/src/components/business/Accounts.jsx",
+      "target": "react"
+    },
+    {
+      "file": "client/src/components/business/Accounts.jsx",
+      "target": "../../api/client"
+    },
+    {
+      "file": "client/src/components/business/Accounts.jsx",
+      "target": "./Shared"
+    },
+    {
+      "file": "client/src/components/business/Accounts.jsx",
+      "target": "./hooks"
+    },
+    {
+      "file": "client/src/components/business/Accounts.jsx",
+      "target": "../ui"
+    },
+    {
+      "file": "client/src/components/business/Accounts.jsx",
+      "target": "../navigation"
+    },
+    {
+      "file": "client/src/components/business/AiPage.jsx",
+      "target": "react"
+    },
+    {
+      "file": "client/src/components/business/AiPage.jsx",
+      "target": "../../api/client"
+    },
+    {
+      "file": "client/src/components/business/AiPage.jsx",
+      "target": "./Shared"
+    },
+    {
+      "file": "client/src/components/business/AiPage.jsx",
+      "target": "./hooks"
+    },
+    {
+      "file": "client/src/components/business/CoreBusinessView.jsx",
+      "target": "../ui"
+    },
+    {
+      "file": "client/src/components/business/CoreBusinessView.jsx",
+      "target": "./ProfileCv"
+    },
+    {
+      "file": "client/src/components/business/CoreBusinessView.jsx",
+      "target": "./Recruitment"
+    },
+    {
+      "file": "client/src/components/business/CoreBusinessView.jsx",
+      "target": "./Accounts"
+    },
+    {
+      "file": "client/src/components/business/CoreBusinessView.jsx",
+      "target": "./Placements"
+    },
+    {
+      "file": "client/src/components/business/CoreBusinessView.jsx",
+      "target": "./Work"
+    },
+    {
+      "file": "client/src/components/business/CoreBusinessView.jsx",
+      "target": "./Time"
+    },
+    {
+      "file": "client/src/components/business/CoreBusinessView.jsx",
+      "target": "./Reports"
+    },
+    {
+      "file": "client/src/components/business/CoreBusinessView.jsx",
+      "target": "./AiPage"
+    },
+    {
+      "file": "client/src/components/business/CoreBusinessView.jsx",
+      "target": "./Web3Page"
+    },
+    {
+      "file": "client/src/components/business/CoreBusinessView.jsx",
+      "target": "react"
+    },
+    {
+      "file": "client/src/components/business/CoreOverview.jsx",
+      "target": "lucide-react"
+    },
+    {
+      "file": "client/src/components/business/CoreOverview.jsx",
+      "target": "./hooks"
+    },
+    {
+      "file": "client/src/components/business/CoreOverview.jsx",
+      "target": "../ui"
+    },
+    {
+      "file": "client/src/components/business/Kpis.jsx",
+      "target": "react"
+    },
+    {
+      "file": "client/src/components/business/Kpis.jsx",
+      "target": "../../api/client"
+    },
+    {
+      "file": "client/src/components/business/Kpis.jsx",
+      "target": "../ui"
+    },
+    {
+      "file": "client/src/components/business/Kpis.jsx",
+      "target": "./hooks"
+    },
+    {
+      "file": "client/src/components/business/Kpis.jsx",
+      "target": "./Shared"
+    },
+    {
+      "file": "client/src/components/business/NativeQrScanner.jsx",
+      "target": "react"
+    },
+    {
+      "file": "client/src/components/business/NativeQrScanner.jsx",
+      "target": "./qrDecoder"
+    },
+    {
+      "file": "client/src/components/business/Notifications.jsx",
+      "target": "react"
+    },
+    {
+      "file": "client/src/components/business/Notifications.jsx",
+      "target": "../../api/client"
+    },
+    {
+      "file": "client/src/components/business/Notifications.jsx",
+      "target": "./hooks"
+    },
+    {
+      "file": "client/src/components/business/Notifications.jsx",
+      "target": "../ui"
+    },
+    {
+      "file": "client/src/components/business/Notifications.jsx",
+      "target": "./Shared"
+    },
+    {
+      "file": "client/src/components/business/Placements.jsx",
+      "target": "react"
+    },
+    {
+      "file": "client/src/components/business/Placements.jsx",
+      "target": "../../api/client"
+    },
+    {
+      "file": "client/src/components/business/Placements.jsx",
+      "target": "./Shared"
+    },
+    {
+      "file": "client/src/components/business/Placements.jsx",
+      "target": "./hooks"
+    },
+    {
+      "file": "client/src/components/business/ProfileCv.jsx",
+      "target": "react"
+    },
+    {
+      "file": "client/src/components/business/ProfileCv.jsx",
+      "target": "../../api/client"
+    },
+    {
+      "file": "client/src/components/business/ProfileCv.jsx",
+      "target": "../ui"
+    },
+    {
+      "file": "client/src/components/business/ProfileCv.jsx",
+      "target": "./hooks"
+    },
+    {
+      "file": "client/src/components/business/ProfileCv.jsx",
+      "target": "./Shared"
+    },
+    {
+      "file": "client/src/components/business/QrCode.jsx",
+      "target": "react"
+    },
+    {
+      "file": "client/src/components/business/QrCode.jsx",
+      "target": "qrcode"
+    },
+    {
+      "file": "client/src/components/business/Recruitment.jsx",
+      "target": "react"
+    },
+    {
+      "file": "client/src/components/business/Recruitment.jsx",
+      "target": "../../api/client"
+    },
+    {
+      "file": "client/src/components/business/Recruitment.jsx",
+      "target": "./Shared"
+    },
+    {
+      "file": "client/src/components/business/Recruitment.jsx",
+      "target": "./hooks"
+    },
+    {
+      "file": "client/src/components/business/Reports.jsx",
+      "target": "react"
+    },
+    {
+      "file": "client/src/components/business/Reports.jsx",
+      "target": "../../api/client"
+    },
+    {
+      "file": "client/src/components/business/Reports.jsx",
+      "target": "./Shared"
+    },
+    {
+      "file": "client/src/components/business/Reports.jsx",
+      "target": "./hooks"
+    },
+    {
+      "file": "client/src/components/business/Reports.jsx",
+      "target": "./Kpis"
+    },
+    {
+      "file": "client/src/components/business/Shared.jsx",
+      "target": "react"
+    },
+    {
+      "file": "client/src/components/business/Shared.jsx",
+      "target": "../../api/client"
+    },
+    {
+      "file": "client/src/components/business/Shared.jsx",
+      "target": "../ui"
+    },
+    {
+      "file": "client/src/components/business/Shared.jsx",
+      "target": "./hooks"
+    },
+    {
+      "file": "client/src/components/business/Time.jsx",
+      "target": "react"
+    },
+    {
+      "file": "client/src/components/business/Time.jsx",
+      "target": "../../api/client"
+    },
+    {
+      "file": "client/src/components/business/Time.jsx",
+      "target": "./Shared"
+    },
+    {
+      "file": "client/src/components/business/Time.jsx",
+      "target": "./hooks"
+    },
+    {
+      "file": "client/src/components/business/Web3Page.jsx",
+      "target": "react"
+    },
+    {
+      "file": "client/src/components/business/Web3Page.jsx",
+      "target": "../../api/client"
+    },
+    {
+      "file": "client/src/components/business/Web3Page.jsx",
+      "target": "./Shared"
+    },
+    {
+      "file": "client/src/components/business/Web3Page.jsx",
+      "target": "./hooks"
+    },
+    {
+      "file": "client/src/components/business/Web3Page.jsx",
+      "target": "./NativeQrScanner"
+    },
+    {
+      "file": "client/src/components/business/Web3Page.jsx",
+      "target": "./QrCode"
+    },
+    {
+      "file": "client/src/components/business/Work.jsx",
+      "target": "react"
+    },
+    {
+      "file": "client/src/components/business/Work.jsx",
+      "target": "../../api/client"
+    },
+    {
+      "file": "client/src/components/business/Work.jsx",
+      "target": "./Shared"
+    },
+    {
+      "file": "client/src/components/business/Work.jsx",
+      "target": "./hooks"
+    },
+    {
+      "file": "client/src/components/business/hooks.js",
+      "target": "react"
+    },
+    {
+      "file": "client/src/components/business/hooks.js",
+      "target": "../../api/client"
+    },
+    {
+      "file": "client/src/components/business/qrDecoder.js",
+      "target": "@zxing/browser"
+    },
+    {
+      "file": "client/src/components/business/qrDecoder.js",
+      "target": "@zxing/library"
+    },
+    {
+      "file": "client/src/components/ui.jsx",
+      "target": "react"
+    },
+    {
+      "file": "client/src/components/ui.jsx",
+      "target": "lucide-react"
+    },
+    {
+      "file": "client/src/main.jsx",
+      "target": "react"
+    },
+    {
+      "file": "client/src/main.jsx",
+      "target": "react-dom/client"
+    },
+    {
+      "file": "client/src/main.jsx",
+      "target": "./App.jsx"
+    },
+    {
+      "file": "client/test/browserHarness.cjs",
+      "target": "node:fs"
+    },
+    {
+      "file": "client/test/browserHarness.cjs",
+      "target": "node:path"
+    },
+    {
+      "file": "client/test/browserHarness.cjs",
+      "target": "node:assert/strict"
+    },
+    {
+      "file": "client/test/email-auth.e2e.cjs",
+      "target": "node:fs"
+    },
+    {
+      "file": "client/test/email-auth.e2e.cjs",
+      "target": "node:path"
+    },
+    {
+      "file": "client/test/email-auth.e2e.cjs",
+      "target": "node:net"
+    },
+    {
+      "file": "client/test/email-auth.e2e.cjs",
+      "target": "node:child_process"
+    },
+    {
+      "file": "client/test/email-auth.e2e.cjs",
+      "target": "./browserHarness.cjs"
+    },
+    {
+      "file": "client/test/google-auth.e2e.cjs",
+      "target": "node:path"
+    },
+    {
+      "file": "client/test/google-auth.e2e.cjs",
+      "target": "node:fs"
+    },
+    {
+      "file": "client/test/google-auth.e2e.cjs",
+      "target": "node:net"
+    },
+    {
+      "file": "client/test/google-auth.e2e.cjs",
+      "target": "node:child_process"
+    },
+    {
+      "file": "client/test/google-auth.e2e.cjs",
+      "target": "./browserHarness.cjs"
+    },
+    {
+      "file": "client/test/phase2-browser.cjs",
+      "target": "node:fs"
+    },
+    {
+      "file": "client/test/phase2-browser.cjs",
+      "target": "node:path"
+    },
+    {
+      "file": "client/test/phase2-browser.cjs",
+      "target": "node:assert/strict"
+    },
+    {
+      "file": "client/test/phase3-browser.cjs",
+      "target": "node:fs"
+    },
+    {
+      "file": "client/test/phase3-browser.cjs",
+      "target": "node:path"
+    },
+    {
+      "file": "client/test/phase3-browser.cjs",
+      "target": "node:assert/strict"
+    },
+    {
+      "file": "client/test/phase3-browser.cjs",
+      "target": "./browserHarness.cjs"
+    },
+    {
+      "file": "client/test/phase3-browser.cjs",
+      "target": "./phase3-fixtures.cjs"
+    },
+    {
+      "file": "client/test/phase3-browser.cjs",
+      "target": "node:crypto"
+    },
+    {
+      "file": "client/test/phase3-browser.cjs",
+      "target": "./phase4-browser.cjs"
+    },
+    {
+      "file": "client/test/phase3-browser.cjs",
+      "target": "./phase5-browser.cjs"
+    },
+    {
+      "file": "client/test/phase3-browser.cjs",
+      "target": "./phase6-browser.cjs"
+    },
+    {
+      "file": "client/test/phase4-browser.cjs",
+      "target": "node:assert/strict"
+    },
+    {
+      "file": "client/test/phase4-browser.cjs",
+      "target": "./browserHarness.cjs"
+    },
+    {
+      "file": "client/test/phase5-browser.cjs",
+      "target": "node:assert/strict"
+    },
+    {
+      "file": "client/test/phase5-browser.cjs",
+      "target": "node:crypto"
+    },
+    {
+      "file": "client/test/phase5-browser.cjs",
+      "target": "./browserHarness.cjs"
+    },
+    {
+      "file": "client/test/phase5-qr-browser.cjs",
+      "target": "node:fs"
+    },
+    {
+      "file": "client/test/phase5-qr-browser.cjs",
+      "target": "node:path"
+    },
+    {
+      "file": "client/test/phase5-qr-browser.cjs",
+      "target": "node:assert/strict"
+    },
+    {
+      "file": "client/test/phase5-qr-browser.cjs",
+      "target": "node:crypto"
+    },
+    {
+      "file": "client/test/phase5-qr-browser.cjs",
+      "target": "./browserHarness.cjs"
+    },
+    {
+      "file": "client/test/phase5-qr-browser.cjs",
+      "target": "/src/components/business/qrDecoder.js"
+    },
+    {
+      "file": "client/test/phase6-browser.cjs",
+      "target": "node:assert/strict"
+    },
+    {
+      "file": "client/test/phase6-browser.cjs",
+      "target": "node:perf_hooks"
+    },
+    {
+      "file": "client/test/phase6-browser.cjs",
+      "target": "node:crypto"
+    },
+    {
+      "file": "client/test/phase6-browser.cjs",
+      "target": "node:fs"
+    },
+    {
+      "file": "client/test/phase6-browser.cjs",
+      "target": "node:path"
+    },
+    {
+      "file": "client/test/qr-code.test.cjs",
+      "target": "node:test"
+    },
+    {
+      "file": "client/test/qr-code.test.cjs",
+      "target": "node:assert/strict"
+    },
+    {
+      "file": "client/test/qr-code.test.cjs",
+      "target": "node:crypto"
+    },
+    {
+      "file": "client/test/qr-code.test.cjs",
+      "target": "qrcode"
+    },
+    {
+      "file": "client/test/qr-code.test.cjs",
+      "target": "pngjs"
+    },
+    {
+      "file": "client/test/qr-code.test.cjs",
+      "target": "@zxing/library"
+    },
+    {
+      "file": "client/test/qr-code.test.cjs",
+      "target": "../src/components/business/qrDecoder.js"
+    },
+    {
+      "file": "client/test/qr-code.test.cjs",
+      "target": "../src/components/business/qrDecoder.js"
+    },
+    {
+      "file": "client/test/unified.e2e.cjs",
+      "target": "node:fs"
+    },
+    {
+      "file": "client/test/unified.e2e.cjs",
+      "target": "node:path"
+    },
+    {
+      "file": "client/test/unified.e2e.cjs",
+      "target": "node:net"
+    },
+    {
+      "file": "client/test/unified.e2e.cjs",
+      "target": "node:child_process"
+    },
+    {
+      "file": "client/test/unified.e2e.cjs",
+      "target": "node:assert/strict"
+    },
+    {
+      "file": "client/test/unified.e2e.cjs",
+      "target": "./browserHarness.cjs"
+    },
+    {
+      "file": "client/test/unified.e2e.cjs",
+      "target": "node:crypto"
+    },
+    {
+      "file": "client/vite.config.js",
+      "target": "@vitejs/plugin-react"
+    },
+    {
+      "file": "client/vite.config.js",
+      "target": "vite"
+    },
+    {
+      "file": "contracts/hardhat.config.js",
+      "target": "hardhat/config"
+    },
+    {
+      "file": "contracts/hardhat.local.cjs",
+      "target": "@nomicfoundation/hardhat-toolbox"
+    },
+    {
+      "file": "contracts/hardhat.local.cjs",
+      "target": "hardhat/config"
+    },
+    {
+      "file": "contracts/hardhat.local.cjs",
+      "target": "hardhat/builtin-tasks/task-names"
+    },
+    {
+      "file": "contracts/scripts/deploy-local.cjs",
+      "target": "node:fs"
+    },
+    {
+      "file": "contracts/scripts/deploy-local.cjs",
+      "target": "node:path"
+    },
+    {
+      "file": "contracts/scripts/deploy-local.cjs",
+      "target": "hardhat"
+    },
+    {
+      "file": "contracts/scripts/deploy.js",
+      "target": "hardhat"
+    },
+    {
+      "file": "contracts/scripts/deploy.js",
+      "target": "fs"
+    },
+    {
+      "file": "contracts/scripts/deploy.js",
+      "target": "path"
+    },
+    {
+      "file": "contracts/scripts/deploy.js",
+      "target": "url"
+    },
+    {
+      "file": "contracts/scripts/local-hardhat.cjs",
+      "target": "node:fs"
+    },
+    {
+      "file": "contracts/scripts/local-hardhat.cjs",
+      "target": "node:path"
+    },
+    {
+      "file": "contracts/scripts/local-hardhat.cjs",
+      "target": "hardhat/internal/cli/cli"
+    },
+    {
+      "file": "contracts/test-local/InternshipEvidenceSBT.test.cjs",
+      "target": "chai"
+    },
+    {
+      "file": "contracts/test-local/InternshipEvidenceSBT.test.cjs",
+      "target": "hardhat"
+    },
+    {
+      "file": "contracts/test/InternshipPlatform.test.js",
+      "target": "chai"
+    },
+    {
+      "file": "contracts/test/InternshipPlatform.test.js",
+      "target": "hardhat"
+    },
+    {
+      "file": "scripts/demo/common.cjs",
+      "target": "node:path"
+    },
+    {
+      "file": "scripts/demo/common.cjs",
+      "target": "node:fs"
+    },
+    {
+      "file": "scripts/demo/common.cjs",
+      "target": "node:child_process"
+    },
+    {
+      "file": "scripts/demo/demo.test.cjs",
+      "target": "node:test"
+    },
+    {
+      "file": "scripts/demo/demo.test.cjs",
+      "target": "node:assert/strict"
+    },
+    {
+      "file": "scripts/demo/demo.test.cjs",
+      "target": "./common.cjs"
+    },
+    {
+      "file": "scripts/demo/demo.test.cjs",
+      "target": "node:fs"
+    },
+    {
+      "file": "scripts/demo/demo.test.cjs",
+      "target": "node:path"
+    },
+    {
+      "file": "scripts/demo/demo.test.cjs",
+      "target": "./common.cjs"
+    },
+    {
+      "file": "scripts/demo/email-acceptance.cjs",
+      "target": "node:fs"
+    },
+    {
+      "file": "scripts/demo/email-acceptance.cjs",
+      "target": "node:path"
+    },
+    {
+      "file": "scripts/demo/email-acceptance.cjs",
+      "target": "node:crypto"
+    },
+    {
+      "file": "scripts/demo/email-acceptance.cjs",
+      "target": "node:child_process"
+    },
+    {
+      "file": "scripts/demo/email-start.cjs",
+      "target": "node:fs"
+    },
+    {
+      "file": "scripts/demo/email-start.cjs",
+      "target": "node:path"
+    },
+    {
+      "file": "scripts/demo/export-login.cjs",
+      "target": "node:fs"
+    },
+    {
+      "file": "scripts/demo/export-login.cjs",
+      "target": "node:path"
+    },
+    {
+      "file": "scripts/demo/export-login.cjs",
+      "target": "./common.cjs"
+    },
+    {
+      "file": "scripts/demo/google-acceptance.cjs",
+      "target": "node:fs"
+    },
+    {
+      "file": "scripts/demo/google-acceptance.cjs",
+      "target": "node:path"
+    },
+    {
+      "file": "scripts/demo/google-acceptance.cjs",
+      "target": "node:crypto"
+    },
+    {
+      "file": "scripts/demo/google-acceptance.cjs",
+      "target": "node:child_process"
+    },
+    {
+      "file": "scripts/demo/google-start.cjs",
+      "target": "node:fs"
+    },
+    {
+      "file": "scripts/demo/google-start.cjs",
+      "target": "node:path"
+    },
+    {
+      "file": "scripts/demo/prepare.cjs",
+      "target": "./common.cjs"
+    },
+    {
+      "file": "scripts/demo/prepare.cjs",
+      "target": "node:fs"
+    },
+    {
+      "file": "scripts/demo/prepare.cjs",
+      "target": "node:path"
+    },
+    {
+      "file": "scripts/demo/session.cjs",
+      "target": "./common.cjs"
+    },
+    {
+      "file": "scripts/demo/session.cjs",
+      "target": "node:fs"
+    },
+    {
+      "file": "scripts/demo/session.cjs",
+      "target": "node:path"
+    },
+    {
+      "file": "scripts/demo/start.cjs",
+      "target": "./common.cjs"
+    },
+    {
+      "file": "scripts/demo/start.cjs",
+      "target": "node:fs"
+    },
+    {
+      "file": "scripts/demo/start.cjs",
+      "target": "node:path"
+    },
+    {
+      "file": "scripts/demo/start.cjs",
+      "target": "node:http"
+    },
+    {
+      "file": "scripts/demo/unified-acceptance.cjs",
+      "target": "node:fs"
+    },
+    {
+      "file": "scripts/demo/unified-acceptance.cjs",
+      "target": "node:path"
+    },
+    {
+      "file": "scripts/demo/unified-acceptance.cjs",
+      "target": "node:crypto"
+    },
+    {
+      "file": "scripts/demo/unified-acceptance.cjs",
+      "target": "node:child_process"
+    },
+    {
+      "file": "scripts/demo/unified-session.cjs",
+      "target": "node:fs"
+    },
+    {
+      "file": "scripts/demo/unified-session.cjs",
+      "target": "node:path"
+    },
+    {
+      "file": "scripts/demo/unified-session.cjs",
+      "target": "./common.cjs"
+    },
+    {
+      "file": "scripts/demo/unified-session.cjs",
+      "target": "node:child_process"
+    },
+    {
+      "file": "server/scripts/seed.js",
+      "target": "dotenv"
+    },
+    {
+      "file": "server/scripts/seed.js",
+      "target": "crypto"
+    },
+    {
+      "file": "server/scripts/seed.js",
+      "target": "mongoose"
+    },
+    {
+      "file": "server/scripts/seed.js",
+      "target": "../src/models/User"
+    },
+    {
+      "file": "server/scripts/seed.js",
+      "target": "../src/models/Student"
+    },
+    {
+      "file": "server/scripts/seed.js",
+      "target": "../src/models/Company"
+    },
+    {
+      "file": "server/scripts/seed.js",
+      "target": "../src/models/Topic"
+    },
+    {
+      "file": "server/scripts/seed.js",
+      "target": "../src/models/Assignment"
+    },
+    {
+      "file": "server/scripts/seed.js",
+      "target": "../src/models/Submission"
+    },
+    {
+      "file": "server/scripts/seed.js",
+      "target": "../src/models/KPIEvaluation"
+    },
+    {
+      "file": "server/scripts/seed.js",
+      "target": "../src/models/AIAnalysis"
+    },
+    {
+      "file": "server/scripts/start-unified.cjs",
+      "target": "node:fs"
+    },
+    {
+      "file": "server/scripts/start-unified.cjs",
+      "target": "node:path"
+    },
+    {
+      "file": "server/scripts/start-unified.cjs",
+      "target": "node:crypto"
+    },
+    {
+      "file": "server/scripts/start-unified.cjs",
+      "target": "../src/config/testDatabaseGuard"
+    },
+    {
+      "file": "server/scripts/start-unified.cjs",
+      "target": "mongoose"
+    },
+    {
+      "file": "server/scripts/start-unified.cjs",
+      "target": "../src/app"
+    },
+    {
+      "file": "server/scripts/start-unified.cjs",
+      "target": "../src/services/databaseSafety"
+    },
+    {
+      "file": "server/scripts/start-unified.cjs",
+      "target": "../src/models/User"
+    },
+    {
+      "file": "server/scripts/start-unified.cjs",
+      "target": "../src/config/env"
+    },
+    {
+      "file": "server/scripts/start-unified.cjs",
+      "target": "bcryptjs"
+    },
+    {
+      "file": "server/scripts/start-unified.cjs",
+      "target": "../src/services/authService"
+    },
+    {
+      "file": "server/scripts/unified-index-migration.cjs",
+      "target": "node:fs"
+    },
+    {
+      "file": "server/scripts/unified-index-migration.cjs",
+      "target": "node:path"
+    },
+    {
+      "file": "server/scripts/unified-index-migration.cjs",
+      "target": "mongodb"
+    },
+    {
+      "file": "server/scripts/unified-index-migration.cjs",
+      "target": "../src/config/testDatabaseGuard"
+    },
+    {
+      "file": "server/scripts/unified-index-migration.cjs",
+      "target": "mongoose"
+    },
+    {
+      "file": "server/scripts/unified-index-migration.cjs",
+      "target": "../src/app"
+    },
+    {
+      "file": "server/scripts/user-id-mapping-plan.cjs",
+      "target": "node:fs"
+    },
+    {
+      "file": "server/scripts/user-id-mapping-plan.cjs",
+      "target": "node:path"
+    },
+    {
+      "file": "server/scripts/user-id-mapping-plan.cjs",
+      "target": "mongodb"
+    },
+    {
+      "file": "server/scripts/user-id-mapping-plan.cjs",
+      "target": "../src/config/testDatabaseGuard"
+    },
+    {
+      "file": "server/src/app.js",
+      "target": "express"
+    },
+    {
+      "file": "server/src/app.js",
+      "target": "cors"
+    },
+    {
+      "file": "server/src/app.js",
+      "target": "mongoose"
+    },
+    {
+      "file": "server/src/app.js",
+      "target": "./config/env"
+    },
+    {
+      "file": "server/src/app.js",
+      "target": "./utils/http"
+    },
+    {
+      "file": "server/src/app.js",
+      "target": "./middleware/errorHandler"
+    },
+    {
+      "file": "server/src/app.js",
+      "target": "./config/testDatabaseGuard"
+    },
+    {
+      "file": "server/src/app.js",
+      "target": "./routes/walletIdentity.routes"
+    },
+    {
+      "file": "server/src/app.js",
+      "target": "./routes/email.routes"
+    },
+    {
+      "file": "server/src/app.js",
+      "target": "./routes/google.routes"
+    },
+    {
+      "file": "server/src/app.js",
+      "target": "./routes/auth.routes"
+    },
+    {
+      "file": "server/src/app.js",
+      "target": "./routes/topic.routes"
+    },
+    {
+      "file": "server/src/app.js",
+      "target": "./routes/data.routes"
+    },
+    {
+      "file": "server/src/app.js",
+      "target": "./routes/internship.routes"
+    },
+    {
+      "file": "server/src/app.js",
+      "target": "./core"
+    },
+    {
+      "file": "server/src/config/env.js",
+      "target": "path"
+    },
+    {
+      "file": "server/src/config/env.js",
+      "target": "dotenv"
+    },
+    {
+      "file": "server/src/config/env.js",
+      "target": "dotenv"
+    },
+    {
+      "file": "server/src/config/testDatabaseGuard.js",
+      "target": "node:crypto"
+    },
+    {
+      "file": "server/src/core/accounts.js",
+      "target": "express"
+    },
+    {
+      "file": "server/src/core/accounts.js",
+      "target": "../models/User"
+    },
+    {
+      "file": "server/src/core/accounts.js",
+      "target": "../middleware/auth"
+    },
+    {
+      "file": "server/src/core/accounts.js",
+      "target": "../utils/http"
+    },
+    {
+      "file": "server/src/core/accounts.js",
+      "target": "./shared"
+    },
+    {
+      "file": "server/src/core/accounts.js",
+      "target": "../services/profileService"
+    },
+    {
+      "file": "server/src/core/ai.js",
+      "target": "../services/businessIdentity"
+    },
+    {
+      "file": "server/src/core/ai.js",
+      "target": "express"
+    },
+    {
+      "file": "server/src/core/ai.js",
+      "target": "../middleware/auth"
+    },
+    {
+      "file": "server/src/core/ai.js",
+      "target": "../utils/http"
+    },
+    {
+      "file": "server/src/core/ai.js",
+      "target": "../models/BusinessModels"
+    },
+    {
+      "file": "server/src/core/ai.js",
+      "target": "../models/JD"
+    },
+    {
+      "file": "server/src/core/ai.js",
+      "target": "../models/Task"
+    },
+    {
+      "file": "server/src/core/ai.js",
+      "target": "./placementPolicy"
+    },
+    {
+      "file": "server/src/core/ai.js",
+      "target": "./shared"
+    },
+    {
+      "file": "server/src/core/ai.js",
+      "target": "../services/nlpClient"
+    },
+    {
+      "file": "server/src/core/dashboard.js",
+      "target": "../services/businessIdentity"
+    },
+    {
+      "file": "server/src/core/dashboard.js",
+      "target": "express"
+    },
+    {
+      "file": "server/src/core/dashboard.js",
+      "target": "../models/Assignment"
+    },
+    {
+      "file": "server/src/core/dashboard.js",
+      "target": "../models/Task"
+    },
+    {
+      "file": "server/src/core/dashboard.js",
+      "target": "../models/WorkLog"
+    },
+    {
+      "file": "server/src/core/dashboard.js",
+      "target": "../models/BusinessModels"
+    },
+    {
+      "file": "server/src/core/dashboard.js",
+      "target": "../models/User"
+    },
+    {
+      "file": "server/src/core/dashboard.js",
+      "target": "../utils/http"
+    },
+    {
+      "file": "server/src/core/dashboard.js",
+      "target": "./placementPolicy"
+    },
+    {
+      "file": "server/src/core/index.js",
+      "target": "express"
+    },
+    {
+      "file": "server/src/core/index.js",
+      "target": "../middleware/auth"
+    },
+    {
+      "file": "server/src/core/index.js",
+      "target": "./accounts"
+    },
+    {
+      "file": "server/src/core/index.js",
+      "target": "./unifiedPlacements"
+    },
+    {
+      "file": "server/src/core/index.js",
+      "target": "./recruitment"
+    },
+    {
+      "file": "server/src/core/index.js",
+      "target": "./placements"
+    },
+    {
+      "file": "server/src/core/index.js",
+      "target": "./kpis"
+    },
+    {
+      "file": "server/src/core/index.js",
+      "target": "./work"
+    },
+    {
+      "file": "server/src/core/index.js",
+      "target": "./time"
+    },
+    {
+      "file": "server/src/core/index.js",
+      "target": "./reports"
+    },
+    {
+      "file": "server/src/core/index.js",
+      "target": "./dashboard"
+    },
+    {
+      "file": "server/src/core/index.js",
+      "target": "./ai"
+    },
+    {
+      "file": "server/src/core/index.js",
+      "target": "./web3"
+    },
+    {
+      "file": "server/src/core/kpis.js",
+      "target": "express"
+    },
+    {
+      "file": "server/src/core/kpis.js",
+      "target": "../models/Assignment"
+    },
+    {
+      "file": "server/src/core/kpis.js",
+      "target": "../middleware/auth"
+    },
+    {
+      "file": "server/src/core/kpis.js",
+      "target": "../utils/http"
+    },
+    {
+      "file": "server/src/core/kpis.js",
+      "target": "./shared"
+    },
+    {
+      "file": "server/src/core/kpis.js",
+      "target": "./placementPolicy"
+    },
+    {
+      "file": "server/src/core/placementPolicy.js",
+      "target": "../models/Assignment"
+    },
+    {
+      "file": "server/src/core/placementPolicy.js",
+      "target": "../utils/http"
+    },
+    {
+      "file": "server/src/core/placementPolicy.js",
+      "target": "./shared"
+    },
+    {
+      "file": "server/src/core/placementPolicy.js",
+      "target": "../services/businessIdentity"
+    },
+    {
+      "file": "server/src/core/placements.js",
+      "target": "../services/businessIdentity"
+    },
+    {
+      "file": "server/src/core/placements.js",
+      "target": "express"
+    },
+    {
+      "file": "server/src/core/placements.js",
+      "target": "../models/User"
+    },
+    {
+      "file": "server/src/core/placements.js",
+      "target": "../models/Student"
+    },
+    {
+      "file": "server/src/core/placements.js",
+      "target": "../models/Topic"
+    },
+    {
+      "file": "server/src/core/placements.js",
+      "target": "../models/Assignment"
+    },
+    {
+      "file": "server/src/core/placements.js",
+      "target": "../models/BusinessModels"
+    },
+    {
+      "file": "server/src/core/placements.js",
+      "target": "../middleware/auth"
+    },
+    {
+      "file": "server/src/core/placements.js",
+      "target": "../utils/http"
+    },
+    {
+      "file": "server/src/core/placements.js",
+      "target": "./shared"
+    },
+    {
+      "file": "server/src/core/placements.js",
+      "target": "./placementPolicy"
+    },
+    {
+      "file": "server/src/core/placements.js",
+      "target": "../models/BusinessModels"
+    },
+    {
+      "file": "server/src/core/recruitment.js",
+      "target": "../services/businessIdentity"
+    },
+    {
+      "file": "server/src/core/recruitment.js",
+      "target": "express"
+    },
+    {
+      "file": "server/src/core/recruitment.js",
+      "target": "node:crypto"
+    },
+    {
+      "file": "server/src/core/recruitment.js",
+      "target": "../models/BusinessModels"
+    },
+    {
+      "file": "server/src/core/recruitment.js",
+      "target": "../models/JD"
+    },
+    {
+      "file": "server/src/core/recruitment.js",
+      "target": "../middleware/auth"
+    },
+    {
+      "file": "server/src/core/recruitment.js",
+      "target": "../utils/http"
+    },
+    {
+      "file": "server/src/core/recruitment.js",
+      "target": "./shared"
+    },
+    {
+      "file": "server/src/core/recruitment.js",
+      "target": "../services/cvParser"
+    },
+    {
+      "file": "server/src/core/reports.js",
+      "target": "../services/businessIdentity"
+    },
+    {
+      "file": "server/src/core/reports.js",
+      "target": "express"
+    },
+    {
+      "file": "server/src/core/reports.js",
+      "target": "../models/BusinessModels"
+    },
+    {
+      "file": "server/src/core/reports.js",
+      "target": "../models/Assignment"
+    },
+    {
+      "file": "server/src/core/reports.js",
+      "target": "../middleware/auth"
+    },
+    {
+      "file": "server/src/core/reports.js",
+      "target": "../utils/http"
+    },
+    {
+      "file": "server/src/core/reports.js",
+      "target": "./shared"
+    },
+    {
+      "file": "server/src/core/reports.js",
+      "target": "./placementPolicy"
+    },
+    {
+      "file": "server/src/core/shared.js",
+      "target": "mongoose"
+    },
+    {
+      "file": "server/src/core/shared.js",
+      "target": "../utils/http"
+    },
+    {
+      "file": "server/src/core/time.js",
+      "target": "../services/businessIdentity"
+    },
+    {
+      "file": "server/src/core/time.js",
+      "target": "express"
+    },
+    {
+      "file": "server/src/core/time.js",
+      "target": "../models/BusinessModels"
+    },
+    {
+      "file": "server/src/core/time.js",
+      "target": "../models/Assignment"
+    },
+    {
+      "file": "server/src/core/time.js",
+      "target": "../middleware/auth"
+    },
+    {
+      "file": "server/src/core/time.js",
+      "target": "../utils/http"
+    },
+    {
+      "file": "server/src/core/time.js",
+      "target": "./shared"
+    },
+    {
+      "file": "server/src/core/time.js",
+      "target": "./placementPolicy"
+    },
+    {
+      "file": "server/src/core/time.js",
+      "target": "../services/timeTracking"
+    },
+    {
+      "file": "server/src/core/unifiedPlacements.js",
+      "target": "express"
+    },
+    {
+      "file": "server/src/core/unifiedPlacements.js",
+      "target": "../services/businessIdentity"
+    },
+    {
+      "file": "server/src/core/unifiedPlacements.js",
+      "target": "./shared"
+    },
+    {
+      "file": "server/src/core/unifiedPlacements.js",
+      "target": "../middleware/auth"
+    },
+    {
+      "file": "server/src/core/unifiedPlacements.js",
+      "target": "../utils/http"
+    },
+    {
+      "file": "server/src/core/unifiedPlacements.js",
+      "target": "../models/User"
+    },
+    {
+      "file": "server/src/core/unifiedPlacements.js",
+      "target": "../models/Topic"
+    },
+    {
+      "file": "server/src/core/unifiedPlacements.js",
+      "target": "../models/Student"
+    },
+    {
+      "file": "server/src/core/unifiedPlacements.js",
+      "target": "../models/Assignment"
+    },
+    {
+      "file": "server/src/core/unifiedPlacements.js",
+      "target": "../models/BusinessModels"
+    },
+    {
+      "file": "server/src/core/unifiedPlacements.js",
+      "target": "../routes/email.routes"
+    },
+    {
+      "file": "server/src/core/unifiedPlacements.js",
+      "target": "bcryptjs"
+    },
+    {
+      "file": "server/src/core/unifiedPlacements.js",
+      "target": "../services/accountProfiles"
+    },
+    {
+      "file": "server/src/core/unifiedPlacements.js",
+      "target": "./placementPolicy"
+    },
+    {
+      "file": "server/src/core/unifiedPlacements.js",
+      "target": "./placementPolicy"
+    },
+    {
+      "file": "server/src/core/unifiedPlacements.js",
+      "target": "./placementPolicy"
+    },
+    {
+      "file": "server/src/core/web3.js",
+      "target": "../services/businessIdentity"
+    },
+    {
+      "file": "server/src/core/web3.js",
+      "target": "express"
+    },
+    {
+      "file": "server/src/core/web3.js",
+      "target": "../middleware/auth"
+    },
+    {
+      "file": "server/src/core/web3.js",
+      "target": "../utils/http"
+    },
+    {
+      "file": "server/src/core/web3.js",
+      "target": "./shared"
+    },
+    {
+      "file": "server/src/core/web3.js",
+      "target": "./placementPolicy"
+    },
+    {
+      "file": "server/src/core/web3.js",
+      "target": "../services/localWeb3"
+    },
+    {
+      "file": "server/src/core/web3.js",
+      "target": "../services/privateIpfs"
+    },
+    {
+      "file": "server/src/core/web3.js",
+      "target": "../services/qrGps"
+    },
+    {
+      "file": "server/src/core/web3.js",
+      "target": "../models/Web3Models"
+    },
+    {
+      "file": "server/src/core/web3.js",
+      "target": "../models/BusinessModels"
+    },
+    {
+      "file": "server/src/core/web3.js",
+      "target": "../services/cvParser"
+    },
+    {
+      "file": "server/src/core/work.js",
+      "target": "../services/businessIdentity"
+    },
+    {
+      "file": "server/src/core/work.js",
+      "target": "express"
+    },
+    {
+      "file": "server/src/core/work.js",
+      "target": "../models/Task"
+    },
+    {
+      "file": "server/src/core/work.js",
+      "target": "../models/WorkLog"
+    },
+    {
+      "file": "server/src/core/work.js",
+      "target": "../middleware/auth"
+    },
+    {
+      "file": "server/src/core/work.js",
+      "target": "../utils/http"
+    },
+    {
+      "file": "server/src/core/work.js",
+      "target": "./shared"
+    },
+    {
+      "file": "server/src/core/work.js",
+      "target": "./placementPolicy"
+    },
+    {
+      "file": "server/src/core/work.js",
+      "target": "../models/Assignment"
+    },
+    {
+      "file": "server/src/index.js",
+      "target": "./config/env"
+    },
+    {
+      "file": "server/src/index.js",
+      "target": "mongoose"
+    },
+    {
+      "file": "server/src/index.js",
+      "target": "./services/databaseSafety"
+    },
+    {
+      "file": "server/src/index.js",
+      "target": "./app"
+    },
+    {
+      "file": "server/src/index.js",
+      "target": "./services/chainListener"
+    },
+    {
+      "file": "server/src/middleware/auth.js",
+      "target": "../models/User"
+    },
+    {
+      "file": "server/src/middleware/auth.js",
+      "target": "../models/Topic"
+    },
+    {
+      "file": "server/src/middleware/auth.js",
+      "target": "../services/authService"
+    },
+    {
+      "file": "server/src/middleware/auth.js",
+      "target": "../utils/http"
+    },
+    {
+      "file": "server/src/middleware/auth.js",
+      "target": "../config/env"
+    },
+    {
+      "file": "server/src/middleware/auth.js",
+      "target": "../config/env"
+    },
+    {
+      "file": "server/src/middleware/errorHandler.js",
+      "target": "../utils/http"
+    },
+    {
+      "file": "server/src/middleware/permissions.js",
+      "target": "../models/Topic"
+    },
+    {
+      "file": "server/src/middleware/permissions.js",
+      "target": "../utils/http"
+    },
+    {
+      "file": "server/src/models/AIAnalysis.js",
+      "target": "mongoose"
+    },
+    {
+      "file": "server/src/models/Assignment.js",
+      "target": "mongoose"
+    },
+    {
+      "file": "server/src/models/Assignment.js",
+      "target": "../core/shared"
+    },
+    {
+      "file": "server/src/models/Assignment.js",
+      "target": "./userOwnership"
+    },
+    {
+      "file": "server/src/models/Attendance.js",
+      "target": "mongoose"
+    },
+    {
+      "file": "server/src/models/AttendanceSession.js",
+      "target": "mongoose"
+    },
+    {
+      "file": "server/src/models/AuthNonce.js",
+      "target": "mongoose"
+    },
+    {
+      "file": "server/src/models/BusinessModels.js",
+      "target": "mongoose"
+    },
+    {
+      "file": "server/src/models/BusinessModels.js",
+      "target": "../core/shared"
+    },
+    {
+      "file": "server/src/models/BusinessModels.js",
+      "target": "./userOwnership"
+    },
+    {
+      "file": "server/src/models/ChainEvent.js",
+      "target": "mongoose"
+    },
+    {
+      "file": "server/src/models/Company.js",
+      "target": "mongoose"
+    },
+    {
+      "file": "server/src/models/IdentityChallenge.js",
+      "target": "mongoose"
+    },
+    {
+      "file": "server/src/models/JD.js",
+      "target": "mongoose"
+    },
+    {
+      "file": "server/src/models/JD.js",
+      "target": "../core/shared"
+    },
+    {
+      "file": "server/src/models/JD.js",
+      "target": "./userOwnership"
+    },
+    {
+      "file": "server/src/models/KPIEvaluation.js",
+      "target": "mongoose"
+    },
+    {
+      "file": "server/src/models/Student.js",
+      "target": "mongoose"
+    },
+    {
+      "file": "server/src/models/Submission.js",
+      "target": "mongoose"
+    },
+    {
+      "file": "server/src/models/Task.js",
+      "target": "mongoose"
+    },
+    {
+      "file": "server/src/models/Task.js",
+      "target": "../core/shared"
+    },
+    {
+      "file": "server/src/models/Task.js",
+      "target": "./userOwnership"
+    },
+    {
+      "file": "server/src/models/Topic.js",
+      "target": "mongoose"
+    },
+    {
+      "file": "server/src/models/Topic.js",
+      "target": "./userOwnership"
+    },
+    {
+      "file": "server/src/models/User.js",
+      "target": "mongoose"
+    },
+    {
+      "file": "server/src/models/User.js",
+      "target": "crypto"
+    },
+    {
+      "file": "server/src/models/User.js",
+      "target": "../core/shared"
+    },
+    {
+      "file": "server/src/models/Web3Models.js",
+      "target": "mongoose"
+    },
+    {
+      "file": "server/src/models/Web3Models.js",
+      "target": "../core/shared"
+    },
+    {
+      "file": "server/src/models/Web3Models.js",
+      "target": "./userOwnership"
+    },
+    {
+      "file": "server/src/models/Web3Models.js",
+      "target": "./userOwnership"
+    },
+    {
+      "file": "server/src/models/Web3Models.js",
+      "target": "./userOwnership"
+    },
+    {
+      "file": "server/src/models/WorkLog.js",
+      "target": "mongoose"
+    },
+    {
+      "file": "server/src/models/WorkLog.js",
+      "target": "../core/shared"
+    },
+    {
+      "file": "server/src/models/WorkLog.js",
+      "target": "./userOwnership"
+    },
+    {
+      "file": "server/src/models/userOwnership.js",
+      "target": "mongoose"
+    },
+    {
+      "file": "server/src/routes/auth.routes.js",
+      "target": "express"
+    },
+    {
+      "file": "server/src/routes/auth.routes.js",
+      "target": "../models/User"
+    },
+    {
+      "file": "server/src/routes/auth.routes.js",
+      "target": "../models/Student"
+    },
+    {
+      "file": "server/src/routes/auth.routes.js",
+      "target": "../models/Company"
+    },
+    {
+      "file": "server/src/routes/auth.routes.js",
+      "target": "../services/authService"
+    },
+    {
+      "file": "server/src/routes/auth.routes.js",
+      "target": "../middleware/auth"
+    },
+    {
+      "file": "server/src/routes/auth.routes.js",
+      "target": "../utils/http"
+    },
+    {
+      "file": "server/src/routes/auth.routes.js",
+      "target": "../config/env"
+    },
+    {
+      "file": "server/src/routes/auth.routes.js",
+      "target": "../services/profileService"
+    },
+    {
+      "file": "server/src/routes/data.routes.js",
+      "target": "express"
+    },
+    {
+      "file": "server/src/routes/data.routes.js",
+      "target": "mongoose"
+    },
+    {
+      "file": "server/src/routes/data.routes.js",
+      "target": "../models/User"
+    },
+    {
+      "file": "server/src/routes/data.routes.js",
+      "target": "../models/Student"
+    },
+    {
+      "file": "server/src/routes/data.routes.js",
+      "target": "../models/Company"
+    },
+    {
+      "file": "server/src/routes/data.routes.js",
+      "target": "../models/Topic"
+    },
+    {
+      "file": "server/src/routes/data.routes.js",
+      "target": "../models/Assignment"
+    },
+    {
+      "file": "server/src/routes/data.routes.js",
+      "target": "../models/Submission"
+    },
+    {
+      "file": "server/src/routes/data.routes.js",
+      "target": "../models/KPIEvaluation"
+    },
+    {
+      "file": "server/src/routes/data.routes.js",
+      "target": "../models/AIAnalysis"
+    },
+    {
+      "file": "server/src/routes/data.routes.js",
+      "target": "../models/ChainEvent"
+    },
+    {
+      "file": "server/src/routes/data.routes.js",
+      "target": "../middleware/auth"
+    },
+    {
+      "file": "server/src/routes/data.routes.js",
+      "target": "../middleware/permissions"
+    },
+    {
+      "file": "server/src/routes/data.routes.js",
+      "target": "../utils/http"
+    },
+    {
+      "file": "server/src/routes/data.routes.js",
+      "target": "../services/profileService"
+    },
+    {
+      "file": "server/src/routes/data.routes.js",
+      "target": "../services/profileService"
+    },
+    {
+      "file": "server/src/routes/email.routes.js",
+      "target": "express"
+    },
+    {
+      "file": "server/src/routes/email.routes.js",
+      "target": "bcryptjs"
+    },
+    {
+      "file": "server/src/routes/email.routes.js",
+      "target": "node:crypto"
+    },
+    {
+      "file": "server/src/routes/email.routes.js",
+      "target": "../models/User"
+    },
+    {
+      "file": "server/src/routes/email.routes.js",
+      "target": "../models/IdentityChallenge"
+    },
+    {
+      "file": "server/src/routes/email.routes.js",
+      "target": "../config/env"
+    },
+    {
+      "file": "server/src/routes/email.routes.js",
+      "target": "../middleware/auth"
+    },
+    {
+      "file": "server/src/routes/email.routes.js",
+      "target": "../services/authService"
+    },
+    {
+      "file": "server/src/routes/email.routes.js",
+      "target": "../services/accountProfiles"
+    },
+    {
+      "file": "server/src/routes/email.routes.js",
+      "target": "../utils/http"
+    },
+    {
+      "file": "server/src/routes/email.routes.js",
+      "target": "ethers"
+    },
+    {
+      "file": "server/src/routes/email.routes.js",
+      "target": "../core/shared"
+    },
+    {
+      "file": "server/src/routes/google.routes.js",
+      "target": "express"
+    },
+    {
+      "file": "server/src/routes/google.routes.js",
+      "target": "node:crypto"
+    },
+    {
+      "file": "server/src/routes/google.routes.js",
+      "target": "ethers"
+    },
+    {
+      "file": "server/src/routes/google.routes.js",
+      "target": "../models/User"
+    },
+    {
+      "file": "server/src/routes/google.routes.js",
+      "target": "../models/IdentityChallenge"
+    },
+    {
+      "file": "server/src/routes/google.routes.js",
+      "target": "../config/env"
+    },
+    {
+      "file": "server/src/routes/google.routes.js",
+      "target": "../middleware/auth"
+    },
+    {
+      "file": "server/src/routes/google.routes.js",
+      "target": "../utils/http"
+    },
+    {
+      "file": "server/src/routes/google.routes.js",
+      "target": "../services/authService"
+    },
+    {
+      "file": "server/src/routes/google.routes.js",
+      "target": "../services/googleIdentity"
+    },
+    {
+      "file": "server/src/routes/google.routes.js",
+      "target": "../services/accountProfiles"
+    },
+    {
+      "file": "server/src/routes/google.routes.js",
+      "target": "bcryptjs"
+    },
+    {
+      "file": "server/src/routes/internship.routes.js",
+      "target": "express"
+    },
+    {
+      "file": "server/src/routes/internship.routes.js",
+      "target": "../models/Topic"
+    },
+    {
+      "file": "server/src/routes/internship.routes.js",
+      "target": "../models/Student"
+    },
+    {
+      "file": "server/src/routes/internship.routes.js",
+      "target": "../models/Company"
+    },
+    {
+      "file": "server/src/routes/internship.routes.js",
+      "target": "../models/Assignment"
+    },
+    {
+      "file": "server/src/routes/internship.routes.js",
+      "target": "../models/ChainEvent"
+    },
+    {
+      "file": "server/src/routes/internship.routes.js",
+      "target": "../models/JD"
+    },
+    {
+      "file": "server/src/routes/internship.routes.js",
+      "target": "../models/Task"
+    },
+    {
+      "file": "server/src/routes/internship.routes.js",
+      "target": "../models/Attendance"
+    },
+    {
+      "file": "server/src/routes/internship.routes.js",
+      "target": "../models/WorkLog"
+    },
+    {
+      "file": "server/src/routes/internship.routes.js",
+      "target": "../middleware/auth"
+    },
+    {
+      "file": "server/src/routes/internship.routes.js",
+      "target": "../utils/http"
+    },
+    {
+      "file": "server/src/routes/internship.routes.js",
+      "target": "../middleware/permissions"
+    },
+    {
+      "file": "server/src/routes/internship.routes.js",
+      "target": "../services/aiClient"
+    },
+    {
+      "file": "server/src/routes/internship.routes.js",
+      "target": "../services/attendanceService"
+    },
+    {
+      "file": "server/src/routes/internship.routes.js",
+      "target": "../config/env"
+    },
+    {
+      "file": "server/src/routes/internship.routes.js",
+      "target": "../services/chainListener"
+    },
+    {
+      "file": "server/src/routes/topic.routes.js",
+      "target": "express"
+    },
+    {
+      "file": "server/src/routes/topic.routes.js",
+      "target": "crypto"
+    },
+    {
+      "file": "server/src/routes/topic.routes.js",
+      "target": "../models/Topic"
+    },
+    {
+      "file": "server/src/routes/topic.routes.js",
+      "target": "../models/User"
+    },
+    {
+      "file": "server/src/routes/topic.routes.js",
+      "target": "../models/Student"
+    },
+    {
+      "file": "server/src/routes/topic.routes.js",
+      "target": "../models/Company"
+    },
+    {
+      "file": "server/src/routes/topic.routes.js",
+      "target": "../models/Assignment"
+    },
+    {
+      "file": "server/src/routes/topic.routes.js",
+      "target": "../models/Submission"
+    },
+    {
+      "file": "server/src/routes/topic.routes.js",
+      "target": "../models/KPIEvaluation"
+    },
+    {
+      "file": "server/src/routes/topic.routes.js",
+      "target": "../models/AIAnalysis"
+    },
+    {
+      "file": "server/src/routes/topic.routes.js",
+      "target": "../services/aiClient"
+    },
+    {
+      "file": "server/src/routes/topic.routes.js",
+      "target": "../services/ipfsService"
+    },
+    {
+      "file": "server/src/routes/topic.routes.js",
+      "target": "../middleware/auth"
+    },
+    {
+      "file": "server/src/routes/topic.routes.js",
+      "target": "../utils/http"
+    },
+    {
+      "file": "server/src/routes/topic.routes.js",
+      "target": "../middleware/permissions"
+    },
+    {
+      "file": "server/src/routes/topic.routes.js",
+      "target": "../services/chainVerificationService"
+    },
+    {
+      "file": "server/src/routes/walletIdentity.routes.js",
+      "target": "express"
+    },
+    {
+      "file": "server/src/routes/walletIdentity.routes.js",
+      "target": "node:crypto"
+    },
+    {
+      "file": "server/src/routes/walletIdentity.routes.js",
+      "target": "ethers"
+    },
+    {
+      "file": "server/src/routes/walletIdentity.routes.js",
+      "target": "../models/User"
+    },
+    {
+      "file": "server/src/routes/walletIdentity.routes.js",
+      "target": "../models/IdentityChallenge"
+    },
+    {
+      "file": "server/src/routes/walletIdentity.routes.js",
+      "target": "../middleware/auth"
+    },
+    {
+      "file": "server/src/routes/walletIdentity.routes.js",
+      "target": "../utils/http"
+    },
+    {
+      "file": "server/src/routes/walletIdentity.routes.js",
+      "target": "../config/env"
+    },
+    {
+      "file": "server/src/routes/walletIdentity.routes.js",
+      "target": "../services/authService"
+    },
+    {
+      "file": "server/src/routes/walletIdentity.routes.js",
+      "target": "../models/Web3Models"
+    },
+    {
+      "file": "server/src/routes/walletIdentity.routes.js",
+      "target": "../models/BusinessModels"
+    },
+    {
+      "file": "server/src/routes/walletIdentity.routes.js",
+      "target": "../models/"
+    },
+    {
+      "file": "server/src/services/accountProfiles.js",
+      "target": "../models/Student"
+    },
+    {
+      "file": "server/src/services/accountProfiles.js",
+      "target": "../models/Company"
+    },
+    {
+      "file": "server/src/services/aiClient.js",
+      "target": "axios"
+    },
+    {
+      "file": "server/src/services/aiClient.js",
+      "target": "../utils/http"
+    },
+    {
+      "file": "server/src/services/attendanceService.js",
+      "target": "node:crypto"
+    },
+    {
+      "file": "server/src/services/attendanceService.js",
+      "target": "jsonwebtoken"
+    },
+    {
+      "file": "server/src/services/attendanceService.js",
+      "target": "../config/env"
+    },
+    {
+      "file": "server/src/services/attendanceService.js",
+      "target": "../models/AttendanceSession"
+    },
+    {
+      "file": "server/src/services/attendanceService.js",
+      "target": "../models/Attendance"
+    },
+    {
+      "file": "server/src/services/attendanceService.js",
+      "target": "../utils/http"
+    },
+    {
+      "file": "server/src/services/attendanceService.js",
+      "target": "../middleware/permissions"
+    },
+    {
+      "file": "server/src/services/authService.js",
+      "target": "crypto"
+    },
+    {
+      "file": "server/src/services/authService.js",
+      "target": "jsonwebtoken"
+    },
+    {
+      "file": "server/src/services/authService.js",
+      "target": "ethers"
+    },
+    {
+      "file": "server/src/services/authService.js",
+      "target": "../config/env"
+    },
+    {
+      "file": "server/src/services/authService.js",
+      "target": "../models/AuthNonce"
+    },
+    {
+      "file": "server/src/services/authService.js",
+      "target": "../utils/http"
+    },
+    {
+      "file": "server/src/services/businessIdentity.js",
+      "target": "../config/env"
+    },
+    {
+      "file": "server/src/services/businessIdentity.js",
+      "target": "../utils/http"
+    },
+    {
+      "file": "server/src/services/businessIdentity.js",
+      "target": "../models/User"
+    },
+    {
+      "file": "server/src/services/chainListener.js",
+      "target": "fs"
+    },
+    {
+      "file": "server/src/services/chainListener.js",
+      "target": "path"
+    },
+    {
+      "file": "server/src/services/chainListener.js",
+      "target": "ethers"
+    },
+    {
+      "file": "server/src/services/chainListener.js",
+      "target": "../models/ChainEvent"
+    },
+    {
+      "file": "server/src/services/chainListener.js",
+      "target": "../models/Topic"
+    },
+    {
+      "file": "server/src/services/chainVerificationService.js",
+      "target": "ethers"
+    },
+    {
+      "file": "server/src/services/chainVerificationService.js",
+      "target": "../contracts/InternshipPlatform.json"
+    },
+    {
+      "file": "server/src/services/chainVerificationService.js",
+      "target": "../utils/http"
+    },
+    {
+      "file": "server/src/services/cvParser.js",
+      "target": "node:child_process"
+    },
+    {
+      "file": "server/src/services/cvParser.js",
+      "target": "node:path"
+    },
+    {
+      "file": "server/src/services/cvParser.js",
+      "target": "../utils/http"
+    },
+    {
+      "file": "server/src/services/databaseSafety.js",
+      "target": "../config/testDatabaseGuard"
+    },
+    {
+      "file": "server/src/services/databaseSafety.js",
+      "target": "../models/User"
+    },
+    {
+      "file": "server/src/services/databaseSafety.js",
+      "target": "../models/AuthNonce"
+    },
+    {
+      "file": "server/src/services/databaseSafety.js",
+      "target": "../models/Attendance"
+    },
+    {
+      "file": "server/src/services/databaseSafety.js",
+      "target": "../models/BusinessModels"
+    },
+    {
+      "file": "server/src/services/databaseSafety.js",
+      "target": "../models/Assignment"
+    },
+    {
+      "file": "server/src/services/databaseSafety.js",
+      "target": "../models/WorkLog"
+    },
+    {
+      "file": "server/src/services/databaseSafety.js",
+      "target": "../models/Web3Models"
+    },
+    {
+      "file": "server/src/services/googleIdentity.js",
+      "target": "google-auth-library"
+    },
+    {
+      "file": "server/src/services/googleIdentity.js",
+      "target": "../utils/http"
+    },
+    {
+      "file": "server/src/services/googleIdentity.js",
+      "target": "../config/env"
+    },
+    {
+      "file": "server/src/services/ipfsService.js",
+      "target": "axios"
+    },
+    {
+      "file": "server/src/services/ipfsService.js",
+      "target": "form-data"
+    },
+    {
+      "file": "server/src/services/ipfsService.js",
+      "target": "../config/env"
+    },
+    {
+      "file": "server/src/services/ipfsService.js",
+      "target": "../utils/http"
+    },
+    {
+      "file": "server/src/services/localWeb3.js",
+      "target": "./businessIdentity"
+    },
+    {
+      "file": "server/src/services/localWeb3.js",
+      "target": "node:fs"
+    },
+    {
+      "file": "server/src/services/localWeb3.js",
+      "target": "ethers"
+    },
+    {
+      "file": "server/src/services/localWeb3.js",
+      "target": "../utils/http"
+    },
+    {
+      "file": "server/src/services/localWeb3.js",
+      "target": "../config/testDatabaseGuard"
+    },
+    {
+      "file": "server/src/services/localWeb3.js",
+      "target": "../models/Web3Models"
+    },
+    {
+      "file": "server/src/services/localWeb3.js",
+      "target": "../core/shared"
+    },
+    {
+      "file": "server/src/services/nlpClient.js",
+      "target": "axios"
+    },
+    {
+      "file": "server/src/services/nlpClient.js",
+      "target": "../utils/http"
+    },
+    {
+      "file": "server/src/services/privateIpfs.js",
+      "target": "node:crypto"
+    },
+    {
+      "file": "server/src/services/privateIpfs.js",
+      "target": "axios"
+    },
+    {
+      "file": "server/src/services/privateIpfs.js",
+      "target": "form-data"
+    },
+    {
+      "file": "server/src/services/privateIpfs.js",
+      "target": "../utils/http"
+    },
+    {
+      "file": "server/src/services/profileService.js",
+      "target": "../models/User"
+    },
+    {
+      "file": "server/src/services/profileService.js",
+      "target": "../utils/http"
+    },
+    {
+      "file": "server/src/services/profileService.js",
+      "target": "../core/shared"
+    },
+    {
+      "file": "server/src/services/qrGps.js",
+      "target": "./businessIdentity"
+    },
+    {
+      "file": "server/src/services/qrGps.js",
+      "target": "node:crypto"
+    },
+    {
+      "file": "server/src/services/qrGps.js",
+      "target": "jsonwebtoken"
+    },
+    {
+      "file": "server/src/services/qrGps.js",
+      "target": "../config/env"
+    },
+    {
+      "file": "server/src/services/qrGps.js",
+      "target": "../utils/http"
+    },
+    {
+      "file": "server/src/services/qrGps.js",
+      "target": "../models/Web3Models"
+    },
+    {
+      "file": "server/src/services/qrGps.js",
+      "target": "../models/BusinessModels"
+    },
+    {
+      "file": "server/src/services/qrGps.js",
+      "target": "../core/placementPolicy"
+    },
+    {
+      "file": "server/src/services/qrGps.js",
+      "target": "../core/shared"
+    },
+    {
+      "file": "server/src/services/qrGps.js",
+      "target": "./timeTracking"
+    },
+    {
+      "file": "server/src/services/timeTracking.js",
+      "target": "../utils/http"
+    },
+    {
+      "file": "server/src/utils/http.js",
+      "target": "mongoose"
+    },
+    {
+      "file": "server/test/ai-fallback.test.js",
+      "target": "node:test"
+    },
+    {
+      "file": "server/test/ai-fallback.test.js",
+      "target": "node:assert/strict"
+    },
+    {
+      "file": "server/test/ai-fallback.test.js",
+      "target": "axios"
+    },
+    {
+      "file": "server/test/ai-fallback.test.js",
+      "target": "../src/services/aiClient"
+    },
+    {
+      "file": "server/test/chain-adapter.test.js",
+      "target": "node:test"
+    },
+    {
+      "file": "server/test/chain-adapter.test.js",
+      "target": "node:assert/strict"
+    },
+    {
+      "file": "server/test/chain-adapter.test.js",
+      "target": "ethers"
+    },
+    {
+      "file": "server/test/chain-adapter.test.js",
+      "target": "../src/services/chainVerificationService"
+    },
+    {
+      "file": "server/test/core-accounts.test.js",
+      "target": "node:test"
+    },
+    {
+      "file": "server/test/core-accounts.test.js",
+      "target": "node:assert/strict"
+    },
+    {
+      "file": "server/test/core-accounts.test.js",
+      "target": "./helpers"
+    },
+    {
+      "file": "server/test/core-accounts.test.js",
+      "target": "ethers"
+    },
+    {
+      "file": "server/test/core-accounts.test.js",
+      "target": "../src/models/User"
+    },
+    {
+      "file": "server/test/core-ai.test.js",
+      "target": "node:test"
+    },
+    {
+      "file": "server/test/core-ai.test.js",
+      "target": "node:assert/strict"
+    },
+    {
+      "file": "server/test/core-ai.test.js",
+      "target": "./coreFixtures"
+    },
+    {
+      "file": "server/test/core-ai.test.js",
+      "target": "../src/models/BusinessModels"
+    },
+    {
+      "file": "server/test/core-ai.test.js",
+      "target": "../src/models/JD"
+    },
+    {
+      "file": "server/test/core-ai.test.js",
+      "target": "../src/models/Task"
+    },
+    {
+      "file": "server/test/core-ai.test.js",
+      "target": "mongoose"
+    },
+    {
+      "file": "server/test/core-ai.test.js",
+      "target": "node:crypto"
+    },
+    {
+      "file": "server/test/core-ai.test.js",
+      "target": "node:http"
+    },
+    {
+      "file": "server/test/core-edge-cases.test.js",
+      "target": "node:test"
+    },
+    {
+      "file": "server/test/core-edge-cases.test.js",
+      "target": "node:assert/strict"
+    },
+    {
+      "file": "server/test/core-edge-cases.test.js",
+      "target": "./coreFixtures"
+    },
+    {
+      "file": "server/test/core-edge-cases.test.js",
+      "target": "../src/models/BusinessModels"
+    },
+    {
+      "file": "server/test/core-edge-cases.test.js",
+      "target": "../src/models/Assignment"
+    },
+    {
+      "file": "server/test/core-edge-cases.test.js",
+      "target": "../src/core/shared"
+    },
+    {
+      "file": "server/test/core-placements.test.js",
+      "target": "node:test"
+    },
+    {
+      "file": "server/test/core-placements.test.js",
+      "target": "node:assert/strict"
+    },
+    {
+      "file": "server/test/core-placements.test.js",
+      "target": "./coreFixtures"
+    },
+    {
+      "file": "server/test/core-placements.test.js",
+      "target": "../src/models/Assignment"
+    },
+    {
+      "file": "server/test/core-recruitment.test.js",
+      "target": "node:test"
+    },
+    {
+      "file": "server/test/core-recruitment.test.js",
+      "target": "node:assert/strict"
+    },
+    {
+      "file": "server/test/core-recruitment.test.js",
+      "target": "node:child_process"
+    },
+    {
+      "file": "server/test/core-recruitment.test.js",
+      "target": "./coreFixtures"
+    },
+    {
+      "file": "server/test/core-recruitment.test.js",
+      "target": "../src/models/BusinessModels"
+    },
+    {
+      "file": "server/test/core-recruitment.test.js",
+      "target": "./cvDocuments"
+    },
+    {
+      "file": "server/test/core-recruitment.test.js",
+      "target": "../src/models/Assignment"
+    },
+    {
+      "file": "server/test/core-work-time-reports.test.js",
+      "target": "node:test"
+    },
+    {
+      "file": "server/test/core-work-time-reports.test.js",
+      "target": "node:assert/strict"
+    },
+    {
+      "file": "server/test/core-work-time-reports.test.js",
+      "target": "./coreFixtures"
+    },
+    {
+      "file": "server/test/core-work-time-reports.test.js",
+      "target": "../src/models/BusinessModels"
+    },
+    {
+      "file": "server/test/core-work-time-reports.test.js",
+      "target": "../src/models/Task"
+    },
+    {
+      "file": "server/test/core-work-time-reports.test.js",
+      "target": "../src/models/WorkLog"
+    },
+    {
+      "file": "server/test/core-work-time-reports.test.js",
+      "target": "../src/models/Topic"
+    },
+    {
+      "file": "server/test/core-work-time-reports.test.js",
+      "target": "../src/models/ChainEvent"
+    },
+    {
+      "file": "server/test/core-work-time-reports.test.js",
+      "target": "../src/models/Topic"
+    },
+    {
+      "file": "server/test/coreFixtures.js",
+      "target": "./helpers"
+    },
+    {
+      "file": "server/test/coreFixtures.js",
+      "target": "ethers"
+    },
+    {
+      "file": "server/test/coreFixtures.js",
+      "target": "../src/models/User"
+    },
+    {
+      "file": "server/test/cvDocuments.js",
+      "target": "node:zlib"
+    },
+    {
+      "file": "server/test/database-safety.test.js",
+      "target": "node:test"
+    },
+    {
+      "file": "server/test/database-safety.test.js",
+      "target": "node:assert/strict"
+    },
+    {
+      "file": "server/test/database-safety.test.js",
+      "target": "./helpers"
+    },
+    {
+      "file": "server/test/database-safety.test.js",
+      "target": "../src/services/databaseSafety"
+    },
+    {
+      "file": "server/test/database-safety.test.js",
+      "target": "mongoose"
+    },
+    {
+      "file": "server/test/dependency-patches.test.js",
+      "target": "node:test"
+    },
+    {
+      "file": "server/test/dependency-patches.test.js",
+      "target": "node:assert/strict"
+    },
+    {
+      "file": "server/test/dependency-patches.test.js",
+      "target": "node:path"
+    },
+    {
+      "file": "server/test/dependency-patches.test.js",
+      "target": "node:child_process"
+    },
+    {
+      "file": "server/test/dependency-patches.test.js",
+      "target": "node:http"
+    },
+    {
+      "file": "server/test/dependency-patches.test.js",
+      "target": "node:vm"
+    },
+    {
+      "file": "server/test/dependency-patches.test.js",
+      "target": "follow-redirects"
+    },
+    {
+      "file": "server/test/dependency-patches.test.js",
+      "target": "qs"
+    },
+    {
+      "file": "server/test/email-auth.test.js",
+      "target": "node:test"
+    },
+    {
+      "file": "server/test/email-auth.test.js",
+      "target": "node:assert/strict"
+    },
+    {
+      "file": "server/test/email-auth.test.js",
+      "target": "bcryptjs"
+    },
+    {
+      "file": "server/test/email-auth.test.js",
+      "target": "./helpers"
+    },
+    {
+      "file": "server/test/email-auth.test.js",
+      "target": "../src/models/User"
+    },
+    {
+      "file": "server/test/email-auth.test.js",
+      "target": "../src/models/IdentityChallenge"
+    },
+    {
+      "file": "server/test/email-auth.test.js",
+      "target": "ethers"
+    },
+    {
+      "file": "server/test/error-safety.test.js",
+      "target": "node:test"
+    },
+    {
+      "file": "server/test/error-safety.test.js",
+      "target": "node:assert/strict"
+    },
+    {
+      "file": "server/test/error-safety.test.js",
+      "target": "axios"
+    },
+    {
+      "file": "server/test/error-safety.test.js",
+      "target": "../src/services/ipfsService"
+    },
+    {
+      "file": "server/test/error-safety.test.js",
+      "target": "../src/middleware/errorHandler"
+    },
+    {
+      "file": "server/test/fixtures/compressed-body-probe.cjs",
+      "target": "express"
+    },
+    {
+      "file": "server/test/fixtures/compressed-body-probe.cjs",
+      "target": "node:http"
+    },
+    {
+      "file": "server/test/fixtures/compressed-body-probe.cjs",
+      "target": "node:zlib"
+    },
+    {
+      "file": "server/test/fixtures/compressed-body-probe.cjs",
+      "target": "node:assert/strict"
+    },
+    {
+      "file": "server/test/foundation.test.js",
+      "target": "node:test"
+    },
+    {
+      "file": "server/test/foundation.test.js",
+      "target": "node:assert/strict"
+    },
+    {
+      "file": "server/test/foundation.test.js",
+      "target": "ethers"
+    },
+    {
+      "file": "server/test/foundation.test.js",
+      "target": "./helpers"
+    },
+    {
+      "file": "server/test/foundation.test.js",
+      "target": "../src/services/ipfsService"
+    },
+    {
+      "file": "server/test/foundation.test.js",
+      "target": "../src/services/ipfsService"
+    },
+    {
+      "file": "server/test/foundation.test.js",
+      "target": "../src/models/User"
+    },
+    {
+      "file": "server/test/full-system-security.test.js",
+      "target": "node:test"
+    },
+    {
+      "file": "server/test/full-system-security.test.js",
+      "target": "node:assert/strict"
+    },
+    {
+      "file": "server/test/full-system-security.test.js",
+      "target": "node:crypto"
+    },
+    {
+      "file": "server/test/full-system-security.test.js",
+      "target": "jsonwebtoken"
+    },
+    {
+      "file": "server/test/full-system-security.test.js",
+      "target": "./coreFixtures"
+    },
+    {
+      "file": "server/test/full-system-security.test.js",
+      "target": "mongoose"
+    },
+    {
+      "file": "server/test/full-system-security.test.js",
+      "target": "../src/models/User"
+    },
+    {
+      "file": "server/test/full-system-security.test.js",
+      "target": "../src/models/BusinessModels"
+    },
+    {
+      "file": "server/test/full-system-security.test.js",
+      "target": "../src/models/Web3Models"
+    },
+    {
+      "file": "server/test/full-system-security.test.js",
+      "target": "../src/services/privateIpfs"
+    },
+    {
+      "file": "server/test/google-auth.test.js",
+      "target": "node:test"
+    },
+    {
+      "file": "server/test/google-auth.test.js",
+      "target": "node:assert/strict"
+    },
+    {
+      "file": "server/test/google-auth.test.js",
+      "target": "./helpers"
+    },
+    {
+      "file": "server/test/google-auth.test.js",
+      "target": "../src/models/User"
+    },
+    {
+      "file": "server/test/google-auth.test.js",
+      "target": "../src/models/IdentityChallenge"
+    },
+    {
+      "file": "server/test/google-auth.test.js",
+      "target": "ethers"
+    },
+    {
+      "file": "server/test/google-auth.test.js",
+      "target": "../src/services/googleIdentity"
+    },
+    {
+      "file": "server/test/google-auth.test.js",
+      "target": "../src/services/authService"
+    },
+    {
+      "file": "server/test/google-auth.test.js",
+      "target": "jsonwebtoken"
+    },
+    {
+      "file": "server/test/google-auth.test.js",
+      "target": "../src/config/env"
+    },
+    {
+      "file": "server/test/google-crypto.test.js",
+      "target": "node:test"
+    },
+    {
+      "file": "server/test/google-crypto.test.js",
+      "target": "node:assert/strict"
+    },
+    {
+      "file": "server/test/google-crypto.test.js",
+      "target": "node:crypto"
+    },
+    {
+      "file": "server/test/google-crypto.test.js",
+      "target": "google-auth-library"
+    },
+    {
+      "file": "server/test/google-crypto.test.js",
+      "target": "../src/services/googleIdentity"
+    },
+    {
+      "file": "server/test/helpers.js",
+      "target": "node:crypto"
+    },
+    {
+      "file": "server/test/helpers.js",
+      "target": "./testEnvironment"
+    },
+    {
+      "file": "server/test/helpers.js",
+      "target": "mongoose"
+    },
+    {
+      "file": "server/test/helpers.js",
+      "target": "mongodb"
+    },
+    {
+      "file": "server/test/helpers.js",
+      "target": "ethers"
+    },
+    {
+      "file": "server/test/helpers.js",
+      "target": "../src/app"
+    },
+    {
+      "file": "server/test/private-ipfs.test.js",
+      "target": "node:test"
+    },
+    {
+      "file": "server/test/private-ipfs.test.js",
+      "target": "node:assert/strict"
+    },
+    {
+      "file": "server/test/private-ipfs.test.js",
+      "target": "node:crypto"
+    },
+    {
+      "file": "server/test/private-ipfs.test.js",
+      "target": "../src/services/privateIpfs"
+    },
+    {
+      "file": "server/test/qr-gps.test.js",
+      "target": "node:test"
+    },
+    {
+      "file": "server/test/qr-gps.test.js",
+      "target": "node:assert/strict"
+    },
+    {
+      "file": "server/test/qr-gps.test.js",
+      "target": "../src/services/qrGps"
+    },
+    {
+      "file": "server/test/runtime-safety.test.js",
+      "target": "node:test"
+    },
+    {
+      "file": "server/test/runtime-safety.test.js",
+      "target": "node:assert/strict"
+    },
+    {
+      "file": "server/test/runtime-safety.test.js",
+      "target": "./testEnvironment"
+    },
+    {
+      "file": "server/test/security-regression.test.js",
+      "target": "node:test"
+    },
+    {
+      "file": "server/test/security-regression.test.js",
+      "target": "node:assert/strict"
+    },
+    {
+      "file": "server/test/security-regression.test.js",
+      "target": "ethers"
+    },
+    {
+      "file": "server/test/security-regression.test.js",
+      "target": "./helpers"
+    },
+    {
+      "file": "server/test/security-regression.test.js",
+      "target": "../src/app"
+    },
+    {
+      "file": "server/test/security-regression.test.js",
+      "target": "mongoose"
+    },
+    {
+      "file": "server/test/security-regression.test.js",
+      "target": "../src/models/Topic"
+    },
+    {
+      "file": "server/test/security-regression.test.js",
+      "target": "../src/models/Attendance"
+    },
+    {
+      "file": "server/test/security-regression.test.js",
+      "target": "../src/models/AttendanceSession"
+    },
+    {
+      "file": "server/test/security-regression.test.js",
+      "target": "../src/models/User"
+    },
+    {
+      "file": "server/test/security-regression.test.js",
+      "target": "../src/models/Topic"
+    },
+    {
+      "file": "server/test/security-regression.test.js",
+      "target": "../src/services/authService"
+    },
+    {
+      "file": "server/test/security-regression.test.js",
+      "target": "../src/models/WorkLog"
+    },
+    {
+      "file": "server/test/security-regression.test.js",
+      "target": "../src/models/User"
+    },
+    {
+      "file": "server/test/security-regression.test.js",
+      "target": "../src/services/authService"
+    },
+    {
+      "file": "server/test/security-regression.test.js",
+      "target": "../src/app"
+    },
+    {
+      "file": "server/test/startup-entry.test.js",
+      "target": "node:test"
+    },
+    {
+      "file": "server/test/startup-entry.test.js",
+      "target": "node:assert/strict"
+    },
+    {
+      "file": "server/test/startup-entry.test.js",
+      "target": "node:net"
+    },
+    {
+      "file": "server/test/startup-entry.test.js",
+      "target": "node:crypto"
+    },
+    {
+      "file": "server/test/startup-entry.test.js",
+      "target": "node:path"
+    },
+    {
+      "file": "server/test/startup-entry.test.js",
+      "target": "node:child_process"
+    },
+    {
+      "file": "server/test/startup-entry.test.js",
+      "target": "mongodb"
+    },
+    {
+      "file": "server/test/startup-entry.test.js",
+      "target": "./testEnvironment"
+    },
+    {
+      "file": "server/test/testEnvironment.js",
+      "target": "../src/config/testDatabaseGuard"
+    },
+    {
+      "file": "server/test/timeTracking.test.js",
+      "target": "node:test"
+    },
+    {
+      "file": "server/test/timeTracking.test.js",
+      "target": "node:assert/strict"
+    },
+    {
+      "file": "server/test/timeTracking.test.js",
+      "target": "../src/services/timeTracking"
+    },
+    {
+      "file": "server/test/unified-identity.test.js",
+      "target": "node:test"
+    },
+    {
+      "file": "server/test/unified-identity.test.js",
+      "target": "node:assert/strict"
+    },
+    {
+      "file": "server/test/unified-identity.test.js",
+      "target": "node:crypto"
+    },
+    {
+      "file": "server/test/unified-identity.test.js",
+      "target": "bcryptjs"
+    },
+    {
+      "file": "server/test/unified-identity.test.js",
+      "target": "./helpers"
+    },
+    {
+      "file": "server/test/unified-identity.test.js",
+      "target": "../src/models/User"
+    },
+    {
+      "file": "server/test/unified-identity.test.js",
+      "target": "../src/models/Assignment"
+    },
+    {
+      "file": "server/test/unified-identity.test.js",
+      "target": "../src/models/JD"
+    },
+    {
+      "file": "server/test/unified-identity.test.js",
+      "target": "../src/models/BusinessModels"
+    },
+    {
+      "file": "server/test/unified-identity.test.js",
+      "target": "ethers"
+    },
+    {
+      "file": "server/test/unified-identity.test.js",
+      "target": "mongoose"
+    },
+    {
+      "file": "server/test/unified-identity.test.js",
+      "target": "../src/services/googleIdentity"
+    },
+    {
+      "file": "server/test/unified-identity.test.js",
+      "target": "../src/services/authService"
+    },
+    {
+      "file": "server/test/unified-index-migration.test.js",
+      "target": "node:test"
+    },
+    {
+      "file": "server/test/unified-index-migration.test.js",
+      "target": "node:assert/strict"
+    },
+    {
+      "file": "server/test/unified-index-migration.test.js",
+      "target": "node:path"
+    },
+    {
+      "file": "server/test/unified-index-migration.test.js",
+      "target": "node:fs"
+    },
+    {
+      "file": "server/test/unified-index-migration.test.js",
+      "target": "node:crypto"
+    },
+    {
+      "file": "server/test/unified-index-migration.test.js",
+      "target": "node:child_process"
+    },
+    {
+      "file": "server/test/unified-index-migration.test.js",
+      "target": "mongodb"
+    },
+    {
+      "file": "server/test/unified-index-migration.test.js",
+      "target": "./testEnvironment"
+    },
+    {
+      "file": "server/test/unified-index-migration.test.js",
+      "target": "ethers"
+    },
+    {
+      "file": "server/test/web3-integration.test.js",
+      "target": "node:test"
+    },
+    {
+      "file": "server/test/web3-integration.test.js",
+      "target": "node:assert/strict"
+    },
+    {
+      "file": "server/test/web3-integration.test.js",
+      "target": "node:fs"
+    },
+    {
+      "file": "server/test/web3-integration.test.js",
+      "target": "node:path"
+    },
+    {
+      "file": "server/test/web3-integration.test.js",
+      "target": "node:crypto"
+    },
+    {
+      "file": "server/test/web3-integration.test.js",
+      "target": "./coreFixtures"
+    },
+    {
+      "file": "server/test/web3-integration.test.js",
+      "target": "../src/models/BusinessModels"
+    },
+    {
+      "file": "server/test/web3-integration.test.js",
+      "target": "../src/models/Assignment"
+    },
+    {
+      "file": "server/test/web3-integration.test.js",
+      "target": "../src/models/Web3Models"
+    },
+    {
+      "file": "server/test/web3-integration.test.js",
+      "target": "../src/services/localWeb3"
+    },
+    {
+      "file": "server/test/web3-integration.test.js",
+      "target": "mongoose"
+    }
+  ],
+  "pythonSyntax": [
+    {
+      "file": "ai-service/evaluation/download_model.py",
+      "syntax": "PASS"
+    },
+    {
+      "file": "ai-service/evaluation/evaluate.py",
+      "syntax": "PASS"
+    },
+    {
+      "file": "ai-service/evaluation/inference_check.py",
+      "syntax": "PASS"
+    },
+    {
+      "file": "ai-service/main.py",
+      "syntax": "PASS"
+    },
+    {
+      "file": "ai-service/nlp/__init__.py",
+      "syntax": "PASS"
+    },
+    {
+      "file": "ai-service/nlp/api.py",
+      "syntax": "PASS"
+    },
+    {
+      "file": "ai-service/nlp/engine.py",
+      "syntax": "PASS"
+    },
+    {
+      "file": "ai-service/nlp/metrics.py",
+      "syntax": "PASS"
+    },
+    {
+      "file": "ai-service/nlp/risk.py",
+      "syntax": "PASS"
+    },
+    {
+      "file": "ai-service/nlp/schemas.py",
+      "syntax": "PASS"
+    },
+    {
+      "file": "ai-service/tests/test_model_inference.py",
+      "syntax": "PASS"
+    },
+    {
+      "file": "ai-service/tests/test_nlp.py",
+      "syntax": "PASS"
+    },
+    {
+      "file": "server/parsers/cv_extract.py",
+      "syntax": "PASS"
+    }
+  ]
+}

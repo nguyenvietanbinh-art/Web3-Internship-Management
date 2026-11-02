@@ -1,0 +1,233 @@
+[
+  {
+    "file": "client/src/api/client.js",
+    "line": 27,
+    "terms": [
+      "NETWORK"
+    ]
+  },
+  {
+    "file": "client/src/api/client.js",
+    "line": 32,
+    "terms": [
+      "sessionCodes"
+    ]
+  },
+  {
+    "file": "client/src/api/client.js",
+    "line": 33,
+    "terms": [
+      "sessionCodes"
+    ]
+  },
+  {
+    "file": "client/src/api/client.js",
+    "line": 83,
+    "terms": [
+      "NETWORK"
+    ]
+  },
+  {
+    "file": "client/src/App.jsx",
+    "line": 55,
+    "terms": [
+      "setSessionReady"
+    ]
+  },
+  {
+    "file": "client/src/App.jsx",
+    "line": 103,
+    "terms": [
+      "const expire"
+    ]
+  },
+  {
+    "file": "client/src/App.jsx",
+    "line": 127,
+    "terms": [
+      "setSessionReady"
+    ]
+  },
+  {
+    "file": "client/src/components/business/Shared.jsx",
+    "line": 5,
+    "terms": [
+      "completeAction"
+    ]
+  },
+  {
+    "file": "client/src/components/business/Shared.jsx",
+    "line": 15,
+    "terms": [
+      "completeAction"
+    ]
+  },
+  {
+    "file": "client/src/components/business/Shared.jsx",
+    "line": 36,
+    "terms": [
+      "limit=100"
+    ]
+  },
+  {
+    "file": "client/src/components/business/Shared.jsx",
+    "line": 37,
+    "terms": [
+      "participantNames"
+    ]
+  },
+  {
+    "file": "server/src/middleware/errorHandler.js",
+    "line": 10,
+    "terms": [
+      "ValidationError"
+    ]
+  },
+  {
+    "file": "server/src/core/reports.js",
+    "line": 12,
+    "terms": [
+      "superseded"
+    ]
+  },
+  {
+    "file": "server/src/core/reports.js",
+    "line": 13,
+    "terms": [
+      "Report.create"
+    ]
+  },
+  {
+    "file": "server/src/app.js",
+    "line": 2,
+    "terms": [
+      "cors"
+    ]
+  },
+  {
+    "file": "server/src/app.js",
+    "line": 15,
+    "terms": [
+      "cors"
+    ]
+  },
+  {
+    "file": "server/src/app.js",
+    "line": 16,
+    "terms": [
+      "cors"
+    ]
+  },
+  {
+    "file": "server/src/app.js",
+    "line": 21,
+    "terms": [
+      "authAttempts"
+    ]
+  },
+  {
+    "file": "server/src/app.js",
+    "line": 25,
+    "terms": [
+      "authAttempts"
+    ]
+  },
+  {
+    "file": "server/src/app.js",
+    "line": 26,
+    "terms": [
+      "authAttempts"
+    ]
+  },
+  {
+    "file": "server/src/app.js",
+    "line": 27,
+    "terms": [
+      "authAttempts"
+    ]
+  },
+  {
+    "file": "server/src/services/localWeb3.js",
+    "line": 7,
+    "terms": [
+      "function assertTest"
+    ]
+  },
+  {
+    "file": "server/src/services/localWeb3.js",
+    "line": 18,
+    "terms": [
+      "hardhatInstanceId"
+    ]
+  },
+  {
+    "file": "server/src/services/localWeb3.js",
+    "line": 30,
+    "terms": [
+      "hardhatInstanceId"
+    ]
+  },
+  {
+    "file": "server/src/services/localWeb3.js",
+    "line": 56,
+    "terms": [
+      "hardhatInstanceId"
+    ]
+  },
+  {
+    "file": "server/src/services/localWeb3.js",
+    "line": 57,
+    "terms": [
+      "hardhatInstanceId"
+    ]
+  },
+  {
+    "file": "server/src/services/localWeb3.js",
+    "line": 84,
+    "terms": [
+      "hardhatInstanceId"
+    ]
+  },
+  {
+    "file": "server/src/core/ai.js",
+    "line": 14,
+    "terms": [
+      "limit(50)"
+    ]
+  },
+  {
+    "file": "server/src/core/ai.js",
+    "line": 20,
+    "terms": [
+      "limit(50)"
+    ]
+  },
+  {
+    "file": "server/src/core/dashboard.js",
+    "line": 5,
+    "terms": [
+      "Assignment.find"
+    ]
+  },
+  {
+    "file": "client/src/components/business/Web3Page.jsx",
+    "line": 13,
+    "terms": [
+      "operations=useResource"
+    ]
+  },
+  {
+    "file": "client/src/components/business/Web3Page.jsx",
+    "line": 14,
+    "terms": [
+      "artifacts=useResource"
+    ]
+  },
+  {
+    "file": "ai-service/nlp/risk.py",
+    "line": 19,
+    "terms": [
+      "NOT_TRAINED"
+    ]
+  }
+]

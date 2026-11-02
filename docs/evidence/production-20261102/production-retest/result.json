@@ -1,0 +1,218 @@
+{
+  "time": "2026-11-02T06:00:03.562Z",
+  "tests": [
+    {
+      "name": "Direct /register -> real email signup -> Student Dashboard without wallet, one origin",
+      "status": "PASS"
+    },
+    {
+      "name": "Create CV through UI without wallet and retain data after logout/login",
+      "status": "PASS"
+    },
+    {
+      "name": "Company email Dashboard and JD UI create work without wallet",
+      "status": "PASS"
+    },
+    {
+      "name": "Real SBERT UI matching and application without wallet",
+      "status": "FAIL",
+      "detail": "Unable to capture screenshot"
+    },
+    {
+      "name": "Company/mentor/admin relationship workflow uses same User IDs; normal business before wallet",
+      "status": "FAIL",
+      "detail": "Cannot read properties of undefined (reading '_id')"
+    },
+    {
+      "name": "Wallet gate only protects Web3; real signature through TEST EIP1193 bridge links same account",
+      "status": "FAIL",
+      "detail": "CDP timeout Runtime.evaluate"
+    },
+    {
+      "name": "Actual local report/hours/completion transactions and SBT verify on same frontend",
+      "status": "FAIL",
+      "detail": "Cannot read properties of undefined (reading '_id')"
+    },
+    {
+      "name": "Desktop/mobile Light/Dark, one frontend origin and no automatic mutations on navigation",
+      "status": "FAIL",
+      "detail": "CDP timeout Runtime.evaluate"
+    },
+    {
+      "name": "Rejected live session returns to login and removes private menus without data writes",
+      "status": "FAIL",
+      "detail": "CDP timeout Runtime.evaluate"
+    }
+  ],
+  "requests": [
+    {
+      "method": "GET",
+      "path": "/api/core/capabilities"
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/api/core/capabilities"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/capabilities"
+    },
+    {
+      "method": "POST",
+      "path": "/api/auth/email/register"
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/api/auth/email/register"
+    },
+    {
+      "method": "GET",
+      "path": "/api/auth/me"
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/api/auth/me"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/dashboard"
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/api/core/dashboard"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/cv"
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/api/core/cv"
+    },
+    {
+      "method": "PUT",
+      "path": "/api/core/cv"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/cv"
+    },
+    {
+      "method": "POST",
+      "path": "/api/auth/email/login"
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/api/auth/email/login"
+    },
+    {
+      "method": "GET",
+      "path": "/api/auth/me"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/dashboard"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/cv"
+    },
+    {
+      "method": "POST",
+      "path": "/api/auth/email/login"
+    },
+    {
+      "method": "GET",
+      "path": "/api/auth/me"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/dashboard"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/jds"
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/api/core/jds"
+    },
+    {
+      "method": "POST",
+      "path": "/api/core/jds"
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/api/core/jds"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/jds"
+    },
+    {
+      "method": "POST",
+      "path": "/api/auth/email/login"
+    },
+    {
+      "method": "GET",
+      "path": "/api/auth/me"
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/api/auth/me"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/dashboard"
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/api/core/dashboard"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/ai/status"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/jds"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/reports"
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/api/core/ai/status"
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/api/core/jds"
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/api/core/reports"
+    },
+    {
+      "method": "POST",
+      "path": "/api/core/ai/match"
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/api/core/ai/match"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/ai/status"
+    }
+  ],
+  "exceptions": [],
+  "blocked": [],
+  "database": "web3_internship_test_phase1_5f537d3f_2b3f9dfd7225",
+  "frontendOrigin": "http://127.0.0.1:5184",
+  "walletTransport": "TEST EIP1193/CDP bridge; actual EIP191 signature, not real MetaMask extension popup",
+  "blockchain": "Actual local Hardhat receipt and SBT verification",
+  "googleLive": "BLOCKED_NO_CLIENT_ID",
+  "ipfsLive": "BLOCKED_NO_CREDENTIALS",
+  "businessSetup": "Company/mentor/admin create relationships and synthetic audited two-minute hours through real APIs; major CV/JD/apply/AI/login/wallet/verify flows use UI"
+}

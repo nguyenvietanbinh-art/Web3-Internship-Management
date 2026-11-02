@@ -1,0 +1,2960 @@
+{
+  "files": 65,
+  "occurrences": 422,
+  "items": [
+    {
+      "file": "server/src/app.js",
+      "line": 18,
+      "text": "Origin không được phép",
+      "classification": "KEEP",
+      "note": "Backend contract unchanged. Frontend errorMessages only rewrites known setup/NLP codes; meaningful validation and business errors retained."
+    },
+    {
+      "file": "server/src/app.js",
+      "line": 30,
+      "text": "Thử lại sau ít phút",
+      "classification": "KEEP",
+      "note": "Backend contract unchanged. Frontend errorMessages only rewrites known setup/NLP codes; meaningful validation and business errors retained."
+    },
+    {
+      "file": "server/src/app.js",
+      "line": 39,
+      "text": "Sử dụng API nghiệp vụ User ID của hệ thống thống nhất",
+      "classification": "KEEP",
+      "note": "Backend contract unchanged. Frontend errorMessages only rewrites known setup/NLP codes; meaningful validation and business errors retained."
+    },
+    {
+      "file": "server/src/core/accounts.js",
+      "line": 12,
+      "text": "Chỉ doanh nghiệp sửa tên doanh nghiệp",
+      "classification": "KEEP",
+      "note": "Backend contract unchanged. Frontend errorMessages only rewrites known setup/NLP codes; meaningful validation and business errors retained."
+    },
+    {
+      "file": "server/src/core/accounts.js",
+      "line": 15,
+      "text": "Hồ sơ đã thay đổi; tải lại trước khi sửa",
+      "classification": "KEEP",
+      "note": "Backend contract unchanged. Frontend errorMessages only rewrites known setup/NLP codes; meaningful validation and business errors retained."
+    },
+    {
+      "file": "server/src/core/accounts.js",
+      "line": 23,
+      "text": "Cần tên tài khoản",
+      "classification": "KEEP",
+      "note": "Backend contract unchanged. Frontend errorMessages only rewrites known setup/NLP codes; meaningful validation and business errors retained."
+    },
+    {
+      "file": "server/src/core/accounts.js",
+      "line": 28,
+      "text": "Không có tài khoản",
+      "classification": "KEEP",
+      "note": "Backend contract unchanged. Frontend errorMessages only rewrites known setup/NLP codes; meaningful validation and business errors retained."
+    },
+    {
+      "file": "server/src/core/accounts.js",
+      "line": 29,
+      "text": "Không sửa quyền/trạng thái chính mình hoặc Admin qua thao tác này",
+      "classification": "KEEP",
+      "note": "Backend contract unchanged. Frontend errorMessages only rewrites known setup/NLP codes; meaningful validation and business errors retained."
+    },
+    {
+      "file": "server/src/core/accounts.js",
+      "line": 32,
+      "text": "Trạng thái khóa không hợp lệ",
+      "classification": "KEEP",
+      "note": "Backend contract unchanged. Frontend errorMessages only rewrites known setup/NLP codes; meaningful validation and business errors retained."
+    },
+    {
+      "file": "server/src/core/accounts.js",
+      "line": 33,
+      "text": "Chưa chọn thay đổi",
+      "classification": "KEEP",
+      "note": "Backend contract unchanged. Frontend errorMessages only rewrites known setup/NLP codes; meaningful validation and business errors retained."
+    },
+    {
+      "file": "server/src/core/accounts.js",
+      "line": 35,
+      "text": "Tài khoản đã thay đổi",
+      "classification": "KEEP",
+      "note": "Backend contract unchanged. Frontend errorMessages only rewrites known setup/NLP codes; meaningful validation and business errors retained."
+    },
+    {
+      "file": "server/src/core/accounts.js",
+      "line": 38,
+      "text": "Không có tài khoản",
+      "classification": "KEEP",
+      "note": "Backend contract unchanged. Frontend errorMessages only rewrites known setup/NLP codes; meaningful validation and business errors retained."
+    },
+    {
+      "file": "server/src/core/ai.js",
+      "line": 13,
+      "text": "Cần lưu CV có nội dung trước khi phân tích",
+      "classification": "KEEP",
+      "note": "Backend contract unchanged. Frontend errorMessages only rewrites known setup/NLP codes; meaningful validation and business errors retained."
+    },
+    {
+      "file": "server/src/core/ai.js",
+      "line": 19,
+      "text": "JD ngoài phạm vi",
+      "classification": "KEEP",
+      "note": "Backend contract unchanged. Frontend errorMessages only rewrites known setup/NLP codes; meaningful validation and business errors retained."
+    },
+    {
+      "file": "server/src/core/ai.js",
+      "line": 25,
+      "text": "Không có báo cáo",
+      "classification": "KEEP",
+      "note": "Backend contract unchanged. Frontend errorMessages only rewrites known setup/NLP codes; meaningful validation and business errors retained."
+    },
+    {
+      "file": "server/src/core/kpis.js",
+      "line": 6,
+      "text": "KPI đã nộp hoặc đã duyệt",
+      "classification": "KEEP",
+      "note": "Backend contract unchanged. Frontend errorMessages only rewrites known setup/NLP codes; meaningful validation and business errors retained."
+    },
+    {
+      "file": "server/src/core/kpis.js",
+      "line": 11,
+      "text": "Phân công không hoạt động",
+      "classification": "KEEP",
+      "note": "Backend contract unchanged. Frontend errorMessages only rewrites known setup/NLP codes; meaningful validation and business errors retained."
+    },
+    {
+      "file": "server/src/core/kpis.js",
+      "line": 11,
+      "text": "Chỉ chấm KPI vừa nộp",
+      "classification": "KEEP",
+      "note": "Backend contract unchanged. Frontend errorMessages only rewrites known setup/NLP codes; meaningful validation and business errors retained."
+    },
+    {
+      "file": "server/src/core/kpis.js",
+      "line": 12,
+      "text": "Điểm KPI phải từ0 đến100",
+      "classification": "KEEP",
+      "note": "Backend contract unchanged. Frontend errorMessages only rewrites known setup/NLP codes; meaningful validation and business errors retained."
+    },
+    {
+      "file": "server/src/core/placementPolicy.js",
+      "line": 8,
+      "text": "Vai trò không hợp lệ",
+      "classification": "KEEP",
+      "note": "Backend contract unchanged. Frontend errorMessages only rewrites known setup/NLP codes; meaningful validation and business errors retained."
+    },
+    {
+      "file": "server/src/core/placementPolicy.js",
+      "line": 12,
+      "text": "Không tìm thấy phân công trong phạm vi quyền",
+      "classification": "KEEP",
+      "note": "Backend contract unchanged. Frontend errorMessages only rewrites known setup/NLP codes; meaningful validation and business errors retained."
+    },
+    {
+      "file": "server/src/core/placementPolicy.js",
+      "line": 13,
+      "text": "Phân công chưa hoạt động hoặc đã hết hạn",
+      "classification": "KEEP",
+      "note": "Backend contract unchanged. Frontend errorMessages only rewrites known setup/NLP codes; meaningful validation and business errors retained."
+    },
+    {
+      "file": "server/src/core/placements.js",
+      "line": 12,
+      "text": "Mã kỳ chỉ chứa A-Z, số, _ hoặc -",
+      "classification": "KEEP",
+      "note": "Backend contract unchanged. Frontend errorMessages only rewrites known setup/NLP codes; meaningful validation and business errors retained."
+    },
+    {
+      "file": "server/src/core/placements.js",
+      "line": 13,
+      "text": "Khoảng thời gian kỳ không hợp lệ",
+      "classification": "KEEP",
+      "note": "Backend contract unchanged. Frontend errorMessages only rewrites known setup/NLP codes; meaningful validation and business errors retained."
+    },
+    {
+      "file": "server/src/core/placements.js",
+      "line": 17,
+      "text": "Không có kỳ thực tập",
+      "classification": "KEEP",
+      "note": "Backend contract unchanged. Frontend errorMessages only rewrites known setup/NLP codes; meaningful validation and business errors retained."
+    },
+    {
+      "file": "server/src/core/placements.js",
+      "line": 18,
+      "text": "Không mở lại kỳ đã đóng",
+      "classification": "KEEP",
+      "note": "Backend contract unchanged. Frontend errorMessages only rewrites known setup/NLP codes; meaningful validation and business errors retained."
+    },
+    {
+      "file": "server/src/core/placements.js",
+      "line": 18,
+      "text": "Cần kết thúc/hủy các phân công trước khi đóng kỳ",
+      "classification": "KEEP",
+      "note": "Backend contract unchanged. Frontend errorMessages only rewrites known setup/NLP codes; meaningful validation and business errors retained."
+    },
+    {
+      "file": "server/src/core/placements.js",
+      "line": 47,
+      "text": "Không có đề tài hoặc kỳ",
+      "classification": "KEEP",
+      "note": "Backend contract unchanged. Frontend errorMessages only rewrites known setup/NLP codes; meaningful validation and business errors retained."
+    },
+    {
+      "file": "server/src/core/placements.js",
+      "line": 47,
+      "text": "Không phải đề tài của doanh nghiệp",
+      "classification": "KEEP",
+      "note": "Backend contract unchanged. Frontend errorMessages only rewrites known setup/NLP codes; meaningful validation and business errors retained."
+    },
+    {
+      "file": "server/src/core/placements.js",
+      "line": 48,
+      "text": "Kỳ chưa mở",
+      "classification": "KEEP",
+      "note": "Backend contract unchanged. Frontend errorMessages only rewrites known setup/NLP codes; meaningful validation and business errors retained."
+    },
+    {
+      "file": "server/src/core/placements.js",
+      "line": 51,
+      "text": "Sinh viên, giảng viên hoặc doanh nghiệp chưa hợp lệ",
+      "classification": "KEEP",
+      "note": "Backend contract unchanged. Frontend errorMessages only rewrites known setup/NLP codes; meaningful validation and business errors retained."
+    },
+    {
+      "file": "server/src/core/placements.js",
+      "line": 52,
+      "text": "Sinh viên cần đăng nhập để có hồ sơ chuẩn hóa",
+      "classification": "KEEP",
+      "note": "Backend contract unchanged. Frontend errorMessages only rewrites known setup/NLP codes; meaningful validation and business errors retained."
+    },
+    {
+      "file": "server/src/core/placements.js",
+      "line": 53,
+      "text": "Ngày phân công phải nằm trong kỳ",
+      "classification": "KEEP",
+      "note": "Backend contract unchanged. Frontend errorMessages only rewrites known setup/NLP codes; meaningful validation and business errors retained."
+    },
+    {
+      "file": "server/src/core/placements.js",
+      "line": 54,
+      "text": "Rubric đề tài chưa đủ trọng số100",
+      "classification": "KEEP",
+      "note": "Backend contract unchanged. Frontend errorMessages only rewrites known setup/NLP codes; meaningful validation and business errors retained."
+    },
+    {
+      "file": "server/src/core/placements.js",
+      "line": 55,
+      "text": "Hạn KPI phải nằm trong thời gian phân công",
+      "classification": "KEEP",
+      "note": "Backend contract unchanged. Frontend errorMessages only rewrites known setup/NLP codes; meaningful validation and business errors retained."
+    },
+    {
+      "file": "server/src/core/placements.js",
+      "line": 62,
+      "text": "Chỉ chỉnh giảng viên/ngày trước khi phân công hoạt động",
+      "classification": "KEEP",
+      "note": "Backend contract unchanged. Frontend errorMessages only rewrites known setup/NLP codes; meaningful validation and business errors retained."
+    },
+    {
+      "file": "server/src/core/placements.js",
+      "line": 63,
+      "text": "Kỳ không còn mở",
+      "classification": "KEEP",
+      "note": "Backend contract unchanged. Frontend errorMessages only rewrites known setup/NLP codes; meaningful validation and business errors retained."
+    },
+    {
+      "file": "server/src/core/placements.js",
+      "line": 64,
+      "text": "Giảng viên chưa hợp lệ",
+      "classification": "KEEP",
+      "note": "Backend contract unchanged. Frontend errorMessages only rewrites known setup/NLP codes; meaningful validation and business errors retained."
+    },
+    {
+      "file": "server/src/core/placements.js",
+      "line": 65,
+      "text": "Ngày phải trong kỳ",
+      "classification": "KEEP",
+      "note": "Backend contract unchanged. Frontend errorMessages only rewrites known setup/NLP codes; meaningful validation and business errors retained."
+    },
+    {
+      "file": "server/src/core/placements.js",
+      "line": 66,
+      "text": "Ngày phân công phải bao gồm các hạn KPI",
+      "classification": "KEEP",
+      "note": "Backend contract unchanged. Frontend errorMessages only rewrites known setup/NLP codes; meaningful validation and business errors retained."
+    },
+    {
+      "file": "server/src/core/placements.js",
+      "line": 72,
+      "text": "Chuyển trạng thái không hợp lệ",
+      "classification": "KEEP",
+      "note": "Backend contract unchanged. Frontend errorMessages only rewrites known setup/NLP codes; meaningful validation and business errors retained."
+    },
+    {
+      "file": "server/src/core/placements.js",
+      "line": 73,
+      "text": "Nhà trường phê duyệt phân công/kết quả",
+      "classification": "KEEP",
+      "note": "Backend contract unchanged. Frontend errorMessages only rewrites known setup/NLP codes; meaningful validation and business errors retained."
+    },
+    {
+      "file": "server/src/core/placements.js",
+      "line": 74,
+      "text": "Chưa đến hoặc đã hết thời gian thực tập",
+      "classification": "KEEP",
+      "note": "Backend contract unchanged. Frontend errorMessages only rewrites known setup/NLP codes; meaningful validation and business errors retained."
+    },
+    {
+      "file": "server/src/core/placements.js",
+      "line": 76,
+      "text": "Cần duyệt đủ KPI theo phân công",
+      "classification": "KEEP",
+      "note": "Backend contract unchanged. Frontend errorMessages only rewrites known setup/NLP codes; meaningful validation and business errors retained."
+    },
+    {
+      "file": "server/src/core/placements.js",
+      "line": 77,
+      "text": "Cần báo cáo cuối kỳ đã duyệt",
+      "classification": "KEEP",
+      "note": "Backend contract unchanged. Frontend errorMessages only rewrites known setup/NLP codes; meaningful validation and business errors retained."
+    },
+    {
+      "file": "server/src/core/placements.js",
+      "line": 77,
+      "text": "Cần xử lý phiên giờ làm chưa duyệt",
+      "classification": "KEEP",
+      "note": "Backend contract unchanged. Frontend errorMessages only rewrites known setup/NLP codes; meaningful validation and business errors retained."
+    },
+    {
+      "file": "server/src/core/recruitment.js",
+      "line": 10,
+      "text": "GPA phải từ0 đến4",
+      "classification": "KEEP",
+      "note": "Backend contract unchanged. Frontend errorMessages only rewrites known setup/NLP codes; meaningful validation and business errors retained."
+    },
+    {
+      "file": "server/src/core/recruitment.js",
+      "line": 15,
+      "text": "CV chưa có; cần phiên bản null",
+      "classification": "KEEP",
+      "note": "Backend contract unchanged. Frontend errorMessages only rewrites known setup/NLP codes; meaningful validation and business errors retained."
+    },
+    {
+      "file": "server/src/core/recruitment.js",
+      "line": 20,
+      "text": "Chỉ nhận byte PDF/DOCX trực tiếp với MIME đúng, không nhận multipart",
+      "classification": "KEEP",
+      "note": "Backend contract unchanged. Frontend errorMessages only rewrites known setup/NLP codes; meaningful validation and business errors retained."
+    },
+    {
+      "file": "server/src/core/recruitment.js",
+      "line": 23,
+      "text": "Cần nội dung tệp",
+      "classification": "KEEP",
+      "note": "Backend contract unchanged. Frontend errorMessages only rewrites known setup/NLP codes; meaningful validation and business errors retained."
+    },
+    {
+      "file": "server/src/core/recruitment.js",
+      "line": 24,
+      "text": "Tên tệp không hợp lệ",
+      "classification": "KEEP",
+      "note": "Backend contract unchanged. Frontend errorMessages only rewrites known setup/NLP codes; meaningful validation and business errors retained."
+    },
+    {
+      "file": "server/src/core/recruitment.js",
+      "line": 25,
+      "text": "Tên tệp quá dài",
+      "classification": "KEEP",
+      "note": "Backend contract unchanged. Frontend errorMessages only rewrites known setup/NLP codes; meaningful validation and business errors retained."
+    },
+    {
+      "file": "server/src/core/recruitment.js",
+      "line": 29,
+      "text": "Chỉ nhận PDF/DOCX với MIME đúng",
+      "classification": "KEEP",
+      "note": "Backend contract unchanged. Frontend errorMessages only rewrites known setup/NLP codes; meaningful validation and business errors retained."
+    },
+    {
+      "file": "server/src/core/recruitment.js",
+      "line": 30,
+      "text": "Lưu CV trước khi upload",
+      "classification": "KEEP",
+      "note": "Backend contract unchanged. Frontend errorMessages only rewrites known setup/NLP codes; meaningful validation and business errors retained."
+    },
+    {
+      "file": "server/src/core/recruitment.js",
+      "line": 36,
+      "text": "Chưa có tệp CV",
+      "classification": "KEEP",
+      "note": "Backend contract unchanged. Frontend errorMessages only rewrites known setup/NLP codes; meaningful validation and business errors retained."
+    },
+    {
+      "file": "server/src/core/recruitment.js",
+      "line": 49,
+      "text": "Chỉ doanh nghiệp xem JD của mình",
+      "classification": "KEEP",
+      "note": "Backend contract unchanged. Frontend errorMessages only rewrites known setup/NLP codes; meaningful validation and business errors retained."
+    },
+    {
+      "file": "server/src/core/recruitment.js",
+      "line": 50,
+      "text": "Chỉ lọc trạng thái JD của mình",
+      "classification": "KEEP",
+      "note": "Backend contract unchanged. Frontend errorMessages only rewrites known setup/NLP codes; meaningful validation and business errors retained."
+    },
+    {
+      "file": "server/src/core/recruitment.js",
+      "line": 55,
+      "text": "Hạn ứng tuyển phải ở tương lai",
+      "classification": "KEEP",
+      "note": "Backend contract unchanged. Frontend errorMessages only rewrites known setup/NLP codes; meaningful validation and business errors retained."
+    },
+    {
+      "file": "server/src/core/recruitment.js",
+      "line": 59,
+      "text": "Không có JD trong phạm vi của bạn",
+      "classification": "KEEP",
+      "note": "Backend contract unchanged. Frontend errorMessages only rewrites known setup/NLP codes; meaningful validation and business errors retained."
+    },
+    {
+      "file": "server/src/core/recruitment.js",
+      "line": 60,
+      "text": "Cần hạn tuyển dụng còn hiệu lực",
+      "classification": "KEEP",
+      "note": "Backend contract unchanged. Frontend errorMessages only rewrites known setup/NLP codes; meaningful validation and business errors retained."
+    },
+    {
+      "file": "server/src/core/recruitment.js",
+      "line": 63,
+      "text": "Chỉ sinh viên/doanh nghiệp hoặc Admin xem ứng tuyển",
+      "classification": "KEEP",
+      "note": "Backend contract unchanged. Frontend errorMessages only rewrites known setup/NLP codes; meaningful validation and business errors retained."
+    },
+    {
+      "file": "server/src/core/recruitment.js",
+      "line": 69,
+      "text": "JD không còn nhận ứng tuyển",
+      "classification": "KEEP",
+      "note": "Backend contract unchanged. Frontend errorMessages only rewrites known setup/NLP codes; meaningful validation and business errors retained."
+    },
+    {
+      "file": "server/src/core/recruitment.js",
+      "line": 70,
+      "text": "Cần lưu CV trước khi ứng tuyển",
+      "classification": "KEEP",
+      "note": "Backend contract unchanged. Frontend errorMessages only rewrites known setup/NLP codes; meaningful validation and business errors retained."
+    },
+    {
+      "file": "server/src/core/recruitment.js",
+      "line": 70,
+      "text": "CV chưa có nội dung",
+      "classification": "KEEP",
+      "note": "Backend contract unchanged. Frontend errorMessages only rewrites known setup/NLP codes; meaningful validation and business errors retained."
+    },
+    {
+      "file": "server/src/core/recruitment.js",
+      "line": 76,
+      "text": "Không tìm thấy ứng tuyển",
+      "classification": "KEEP",
+      "note": "Backend contract unchanged. Frontend errorMessages only rewrites known setup/NLP codes; meaningful validation and business errors retained."
+    },
+    {
+      "file": "server/src/core/recruitment.js",
+      "line": 78,
+      "text": "Xét duyệt thuộc doanh nghiệp sở hữu JD",
+      "classification": "KEEP",
+      "note": "Backend contract unchanged. Frontend errorMessages only rewrites known setup/NLP codes; meaningful validation and business errors retained."
+    },
+    {
+      "file": "server/src/core/recruitment.js",
+      "line": 79,
+      "text": "Ứng tuyển đã kết thúc hoặc trạng thái không đổi",
+      "classification": "KEEP",
+      "note": "Backend contract unchanged. Frontend errorMessages only rewrites known setup/NLP codes; meaningful validation and business errors retained."
+    },
+    {
+      "file": "server/src/core/recruitment.js",
+      "line": 90,
+      "text": "Không có thông báo",
+      "classification": "KEEP",
+      "note": "Backend contract unchanged. Frontend errorMessages only rewrites known setup/NLP codes; meaningful validation and business errors retained."
+    },
+    {
+      "file": "server/src/core/reports.js",
+      "line": 11,
+      "text": "Báo cáo cuối kỳ đã chốt",
+      "classification": "KEEP",
+      "note": "Backend contract unchanged. Frontend errorMessages only rewrites known setup/NLP codes; meaningful validation and business errors retained."
+    },
+    {
+      "file": "server/src/core/reports.js",
+      "line": 12,
+      "text": "Báo cáo vừa thay đổi; tải lại trước khi nộp",
+      "classification": "KEEP",
+      "note": "Backend contract unchanged. Frontend errorMessages only rewrites known setup/NLP codes; meaningful validation and business errors retained."
+    },
+    {
+      "file": "server/src/core/reports.js",
+      "line": 16,
+      "text": "Không có báo cáo",
+      "classification": "KEEP",
+      "note": "Backend contract unchanged. Frontend errorMessages only rewrites known setup/NLP codes; meaningful validation and business errors retained."
+    },
+    {
+      "file": "server/src/core/reports.js",
+      "line": 17,
+      "text": "Báo cáo đã chốt hoặc cần sinh viên nộp bản mới",
+      "classification": "KEEP",
+      "note": "Backend contract unchanged. Frontend errorMessages only rewrites known setup/NLP codes; meaningful validation and business errors retained."
+    },
+    {
+      "file": "server/src/core/reports.js",
+      "line": 18,
+      "text": "Vai trò này đã đánh giá phiên bản báo cáo",
+      "classification": "KEEP",
+      "note": "Backend contract unchanged. Frontend errorMessages only rewrites known setup/NLP codes; meaningful validation and business errors retained."
+    },
+    {
+      "file": "server/src/core/reports.js",
+      "line": 19,
+      "text": "Cần đánh giá phiên bản báo cáo mới nhất",
+      "classification": "KEEP",
+      "note": "Backend contract unchanged. Frontend errorMessages only rewrites known setup/NLP codes; meaningful validation and business errors retained."
+    },
+    {
+      "file": "server/src/core/reports.js",
+      "line": 20,
+      "text": "Điểm phải từ0 đến100",
+      "classification": "KEEP",
+      "note": "Backend contract unchanged. Frontend errorMessages only rewrites known setup/NLP codes; meaningful validation and business errors retained."
+    },
+    {
+      "file": "server/src/core/reports.js",
+      "line": 23,
+      "text": "Báo cáo đã thay đổi",
+      "classification": "KEEP",
+      "note": "Backend contract unchanged. Frontend errorMessages only rewrites known setup/NLP codes; meaningful validation and business errors retained."
+    },
+    {
+      "file": "server/src/core/reports.js",
+      "line": 26,
+      "text": "Không có báo cáo",
+      "classification": "KEEP",
+      "note": "Backend contract unchanged. Frontend errorMessages only rewrites known setup/NLP codes; meaningful validation and business errors retained."
+    },
+    {
+      "file": "server/src/core/reports.js",
+      "line": 27,
+      "text": "Cần hai đánh giá đồng ý từ doanh nghiệp và giảng viên",
+      "classification": "KEEP",
+      "note": "Backend contract unchanged. Frontend errorMessages only rewrites known setup/NLP codes; meaningful validation and business errors retained."
+    },
+    {
+      "file": "server/src/core/reports.js",
+      "line": 28,
+      "text": "Chỉ chốt phiên bản mới nhất",
+      "classification": "KEEP",
+      "note": "Backend contract unchanged. Frontend errorMessages only rewrites known setup/NLP codes; meaningful validation and business errors retained."
+    },
+    {
+      "file": "server/src/core/reports.js",
+      "line": 29,
+      "text": "Cần duyệt đủ KPI trước khi chốt báo cáo cuối kỳ",
+      "classification": "KEEP",
+      "note": "Backend contract unchanged. Frontend errorMessages only rewrites known setup/NLP codes; meaningful validation and business errors retained."
+    },
+    {
+      "file": "server/src/core/shared.js",
+      "line": 11,
+      "text": "Nội dung không hợp lệ",
+      "classification": "KEEP",
+      "note": "Backend contract unchanged. Frontend errorMessages only rewrites known setup/NLP codes; meaningful validation and business errors retained."
+    },
+    {
+      "file": "server/src/core/shared.js",
+      "line": 12,
+      "text": "`Trường không được phép: ${key}`",
+      "classification": "KEEP",
+      "note": "Backend contract unchanged. Frontend errorMessages only rewrites known setup/NLP codes; meaningful validation and business errors retained."
+    },
+    {
+      "file": "server/src/core/shared.js",
+      "line": 16,
+      "text": "`${label} không hợp lệ`",
+      "classification": "KEEP",
+      "note": "Backend contract unchanged. Frontend errorMessages only rewrites known setup/NLP codes; meaningful validation and business errors retained."
+    },
+    {
+      "file": "server/src/core/shared.js",
+      "line": 19,
+      "text": "`${label} không hợp lệ`",
+      "classification": "KEEP",
+      "note": "Backend contract unchanged. Frontend errorMessages only rewrites known setup/NLP codes; meaningful validation and business errors retained."
+    },
+    {
+      "file": "server/src/core/shared.js",
+      "line": 20,
+      "text": "`${label} không hợp lệ`",
+      "classification": "KEEP",
+      "note": "Backend contract unchanged. Frontend errorMessages only rewrites known setup/NLP codes; meaningful validation and business errors retained."
+    },
+    {
+      "file": "server/src/core/shared.js",
+      "line": 21,
+      "text": "ID không hợp lệ",
+      "classification": "KEEP",
+      "note": "Backend contract unchanged. Frontend errorMessages only rewrites known setup/NLP codes; meaningful validation and business errors retained."
+    },
+    {
+      "file": "server/src/core/shared.js",
+      "line": 22,
+      "text": "Địa chỉ ví không hợp lệ",
+      "classification": "KEEP",
+      "note": "Backend contract unchanged. Frontend errorMessages only rewrites known setup/NLP codes; meaningful validation and business errors retained."
+    },
+    {
+      "file": "server/src/core/shared.js",
+      "line": 23,
+      "text": "`${label} không hợp lệ; cần ngày hoặc ISO có múi giờ`",
+      "classification": "KEEP",
+      "note": "Backend contract unchanged. Frontend errorMessages only rewrites known setup/NLP codes; meaningful validation and business errors retained."
+    },
+    {
+      "file": "server/src/core/shared.js",
+      "line": 23,
+      "text": "`${label} không hợp lệ`",
+      "classification": "KEEP",
+      "note": "Backend contract unchanged. Frontend errorMessages only rewrites known setup/NLP codes; meaningful validation and business errors retained."
+    },
+    {
+      "file": "server/src/core/shared.js",
+      "line": 24,
+      "text": "`${label} không hợp lệ`",
+      "classification": "KEEP",
+      "note": "Backend contract unchanged. Frontend errorMessages only rewrites known setup/NLP codes; meaningful validation and business errors retained."
+    },
+    {
+      "file": "server/src/core/shared.js",
+      "line": 26,
+      "text": "Query phải là chuỗi đơn",
+      "classification": "KEEP",
+      "note": "Backend contract unchanged. Frontend errorMessages only rewrites known setup/NLP codes; meaningful validation and business errors retained."
+    },
+    {
+      "file": "server/src/core/shared.js",
+      "line": 40,
+      "text": "Dữ liệu đã thay đổi; tải lại trước khi sửa",
+      "classification": "KEEP",
+      "note": "Backend contract unchanged. Frontend errorMessages only rewrites known setup/NLP codes; meaningful validation and business errors retained."
+    },
+    {
+      "file": "server/src/core/time.js",
+      "line": 11,
+      "text": "Mã yêu cầu không hợp lệ",
+      "classification": "KEEP",
+      "note": "Backend contract unchanged. Frontend errorMessages only rewrites known setup/NLP codes; meaningful validation and business errors retained."
+    },
+    {
+      "file": "server/src/core/time.js",
+      "line": 15,
+      "text": "Không tìm thấy phiên",
+      "classification": "KEEP",
+      "note": "Backend contract unchanged. Frontend errorMessages only rewrites known setup/NLP codes; meaningful validation and business errors retained."
+    },
+    {
+      "file": "server/src/core/time.js",
+      "line": 15,
+      "text": "Phiên đã kết thúc",
+      "classification": "KEEP",
+      "note": "Backend contract unchanged. Frontend errorMessages only rewrites known setup/NLP codes; meaningful validation and business errors retained."
+    },
+    {
+      "file": "server/src/core/time.js",
+      "line": 18,
+      "text": "Phiên đã thay đổi",
+      "classification": "KEEP",
+      "note": "Backend contract unchanged. Frontend errorMessages only rewrites known setup/NLP codes; meaningful validation and business errors retained."
+    },
+    {
+      "file": "server/src/core/time.js",
+      "line": 21,
+      "text": "Không có phiên trong phạm vi doanh nghiệp",
+      "classification": "KEEP",
+      "note": "Backend contract unchanged. Frontend errorMessages only rewrites known setup/NLP codes; meaningful validation and business errors retained."
+    },
+    {
+      "file": "server/src/core/time.js",
+      "line": 24,
+      "text": "Điều chỉnh phải trong ngày UTC của phiên, thuộc phân công và không ở tương lai",
+      "classification": "KEEP",
+      "note": "Backend contract unchanged. Frontend errorMessages only rewrites known setup/NLP codes; meaningful validation and business errors retained."
+    },
+    {
+      "file": "server/src/core/time.js",
+      "line": 25,
+      "text": "Khoảng giờ trùng phiên khác",
+      "classification": "KEEP",
+      "note": "Backend contract unchanged. Frontend errorMessages only rewrites known setup/NLP codes; meaningful validation and business errors retained."
+    },
+    {
+      "file": "server/src/core/time.js",
+      "line": 28,
+      "text": "Phiên đã từ chối",
+      "classification": "KEEP",
+      "note": "Backend contract unchanged. Frontend errorMessages only rewrites known setup/NLP codes; meaningful validation and business errors retained."
+    },
+    {
+      "file": "server/src/core/time.js",
+      "line": 30,
+      "text": "Cần hoàn tất hoặc điều chỉnh phiên trước khi duyệt",
+      "classification": "KEEP",
+      "note": "Backend contract unchanged. Frontend errorMessages only rewrites known setup/NLP codes; meaningful validation and business errors retained."
+    },
+    {
+      "file": "server/src/core/time.js",
+      "line": 31,
+      "text": "Trạng thái không đổi",
+      "classification": "KEEP",
+      "note": "Backend contract unchanged. Frontend errorMessages only rewrites known setup/NLP codes; meaningful validation and business errors retained."
+    },
+    {
+      "file": "server/src/core/time.js",
+      "line": 34,
+      "text": "Phiên đã thay đổi",
+      "classification": "KEEP",
+      "note": "Backend contract unchanged. Frontend errorMessages only rewrites known setup/NLP codes; meaningful validation and business errors retained."
+    },
+    {
+      "file": "server/src/core/time.js",
+      "line": 40,
+      "text": "Khoảng ngày đảo ngược",
+      "classification": "KEEP",
+      "note": "Backend contract unchanged. Frontend errorMessages only rewrites known setup/NLP codes; meaningful validation and business errors retained."
+    },
+    {
+      "file": "server/src/core/unifiedPlacements.js",
+      "line": 9,
+      "text": "Email đã tồn tại; không tự gộp",
+      "classification": "KEEP",
+      "note": "Backend contract unchanged. Frontend errorMessages only rewrites known setup/NLP codes; meaningful validation and business errors retained."
+    },
+    {
+      "file": "server/src/core/unifiedPlacements.js",
+      "line": 17,
+      "text": "Cần từ1 đến20 tiêu chí KPI",
+      "classification": "KEEP",
+      "note": "Backend contract unchanged. Frontend errorMessages only rewrites known setup/NLP codes; meaningful validation and business errors retained."
+    },
+    {
+      "file": "server/src/core/unifiedPlacements.js",
+      "line": 19,
+      "text": "Tổng trọng số phải100",
+      "classification": "KEEP",
+      "note": "Backend contract unchanged. Frontend errorMessages only rewrites known setup/NLP codes; meaningful validation and business errors retained."
+    },
+    {
+      "file": "server/src/core/unifiedPlacements.js",
+      "line": 36,
+      "text": "Không có đề tài/kỳ",
+      "classification": "KEEP",
+      "note": "Backend contract unchanged. Frontend errorMessages only rewrites known setup/NLP codes; meaningful validation and business errors retained."
+    },
+    {
+      "file": "server/src/core/unifiedPlacements.js",
+      "line": 37,
+      "text": "Đề tài ngoài quyền",
+      "classification": "KEEP",
+      "note": "Backend contract unchanged. Frontend errorMessages only rewrites known setup/NLP codes; meaningful validation and business errors retained."
+    },
+    {
+      "file": "server/src/core/unifiedPlacements.js",
+      "line": 40,
+      "text": "Thành viên không hợp lệ",
+      "classification": "KEEP",
+      "note": "Backend contract unchanged. Frontend errorMessages only rewrites known setup/NLP codes; meaningful validation and business errors retained."
+    },
+    {
+      "file": "server/src/core/unifiedPlacements.js",
+      "line": 41,
+      "text": "Sinh viên chưa được doanh nghiệp chấp nhận ứng tuyển",
+      "classification": "KEEP",
+      "note": "Backend contract unchanged. Frontend errorMessages only rewrites known setup/NLP codes; meaningful validation and business errors retained."
+    },
+    {
+      "file": "server/src/core/unifiedPlacements.js",
+      "line": 42,
+      "text": "Sinh viên cần hoàn thiện tài khoản",
+      "classification": "KEEP",
+      "note": "Backend contract unchanged. Frontend errorMessages only rewrites known setup/NLP codes; meaningful validation and business errors retained."
+    },
+    {
+      "file": "server/src/core/unifiedPlacements.js",
+      "line": 44,
+      "text": "Kỳ/ngày/rubric không hợp lệ",
+      "classification": "KEEP",
+      "note": "Backend contract unchanged. Frontend errorMessages only rewrites known setup/NLP codes; meaningful validation and business errors retained."
+    },
+    {
+      "file": "server/src/core/unifiedPlacements.js",
+      "line": 49,
+      "text": "Chỉ sửa trước khi hoạt động",
+      "classification": "KEEP",
+      "note": "Backend contract unchanged. Frontend errorMessages only rewrites known setup/NLP codes; meaningful validation and business errors retained."
+    },
+    {
+      "file": "server/src/core/unifiedPlacements.js",
+      "line": 50,
+      "text": "Giảng viên/kỳ không hợp lệ",
+      "classification": "KEEP",
+      "note": "Backend contract unchanged. Frontend errorMessages only rewrites known setup/NLP codes; meaningful validation and business errors retained."
+    },
+    {
+      "file": "server/src/core/unifiedPlacements.js",
+      "line": 51,
+      "text": "Ngày không hợp lệ",
+      "classification": "KEEP",
+      "note": "Backend contract unchanged. Frontend errorMessages only rewrites known setup/NLP codes; meaningful validation and business errors retained."
+    },
+    {
+      "file": "server/src/core/web3.js",
+      "line": 7,
+      "text": "Web3 mutations chỉ bật trong TEST exact-allowlist",
+      "classification": "KEEP",
+      "note": "Backend contract unchanged. Frontend errorMessages only rewrites known setup/NLP codes; meaningful validation and business errors retained."
+    },
+    {
+      "file": "server/src/core/web3.js",
+      "line": 11,
+      "text": "Không có báo cáo",
+      "classification": "KEEP",
+      "note": "Backend contract unchanged. Frontend errorMessages only rewrites known setup/NLP codes; meaningful validation and business errors retained."
+    },
+    {
+      "file": "server/src/core/web3.js",
+      "line": 15,
+      "text": "Chỉ chủ báo cáo upload",
+      "classification": "KEEP",
+      "note": "Backend contract unchanged. Frontend errorMessages only rewrites known setup/NLP codes; meaningful validation and business errors retained."
+    },
+    {
+      "file": "server/src/core/web3.js",
+      "line": 18,
+      "text": "Cần byte PDF/DOCX",
+      "classification": "KEEP",
+      "note": "Backend contract unchanged. Frontend errorMessages only rewrites known setup/NLP codes; meaningful validation and business errors retained."
+    },
+    {
+      "file": "server/src/core/web3.js",
+      "line": 18,
+      "text": "Chỉ PDF/DOCX",
+      "classification": "KEEP",
+      "note": "Backend contract unchanged. Frontend errorMessages only rewrites known setup/NLP codes; meaningful validation and business errors retained."
+    },
+    {
+      "file": "server/src/core/web3.js",
+      "line": 19,
+      "text": "Cần xác nhận upload ciphertext",
+      "classification": "KEEP",
+      "note": "Backend contract unchanged. Frontend errorMessages only rewrites known setup/NLP codes; meaningful validation and business errors retained."
+    },
+    {
+      "file": "server/src/core/web3.js",
+      "line": 25,
+      "text": "Plaintext readback khác hash",
+      "classification": "KEEP",
+      "note": "Backend contract unchanged. Frontend errorMessages only rewrites known setup/NLP codes; meaningful validation and business errors retained."
+    },
+    {
+      "file": "server/src/core/web3.js",
+      "line": 27,
+      "text": "IPFS chưa readback/xác minh thành công",
+      "classification": "KEEP",
+      "note": "Backend contract unchanged. Frontend errorMessages only rewrites known setup/NLP codes; meaningful validation and business errors retained."
+    },
+    {
+      "file": "server/src/core/web3.js",
+      "line": 33,
+      "text": "Chỉ anchor báo cáo cuối kỳ hiện hành đã được duyệt",
+      "classification": "KEEP",
+      "note": "Backend contract unchanged. Frontend errorMessages only rewrites known setup/NLP codes; meaningful validation and business errors retained."
+    },
+    {
+      "file": "server/src/core/web3.js",
+      "line": 34,
+      "text": "Cần artifact readback verified của đúng báo cáo",
+      "classification": "KEEP",
+      "note": "Backend contract unchanged. Frontend errorMessages only rewrites known setup/NLP codes; meaningful validation and business errors retained."
+    },
+    {
+      "file": "server/src/core/web3.js",
+      "line": 39,
+      "text": "Không có phiên",
+      "classification": "KEEP",
+      "note": "Backend contract unchanged. Frontend errorMessages only rewrites known setup/NLP codes; meaningful validation and business errors retained."
+    },
+    {
+      "file": "server/src/core/web3.js",
+      "line": 39,
+      "text": "Chỉ ghi bằng chứng giờ làm đã duyệt và có phút dương",
+      "classification": "KEEP",
+      "note": "Backend contract unchanged. Frontend errorMessages only rewrites known setup/NLP codes; meaningful validation and business errors retained."
+    },
+    {
+      "file": "server/src/core/web3.js",
+      "line": 43,
+      "text": "Phân công/KPI chưa hoàn tất",
+      "classification": "KEEP",
+      "note": "Backend contract unchanged. Frontend errorMessages only rewrites known setup/NLP codes; meaningful validation and business errors retained."
+    },
+    {
+      "file": "server/src/core/web3.js",
+      "line": 44,
+      "text": "Cần báo cáo cuối kỳ đã duyệt",
+      "classification": "KEEP",
+      "note": "Backend contract unchanged. Frontend errorMessages only rewrites known setup/NLP codes; meaningful validation and business errors retained."
+    },
+    {
+      "file": "server/src/core/web3.js",
+      "line": 45,
+      "text": "Cần giờ làm dương đã duyệt, không còn phiên chờ",
+      "classification": "KEEP",
+      "note": "Backend contract unchanged. Frontend errorMessages only rewrites known setup/NLP codes; meaningful validation and business errors retained."
+    },
+    {
+      "file": "server/src/core/web3.js",
+      "line": 47,
+      "text": "Cần anchor báo cáo cuối kỳ và snapshot giờ đã duyệt hiện hành",
+      "classification": "KEEP",
+      "note": "Backend contract unchanged. Frontend errorMessages only rewrites known setup/NLP codes; meaningful validation and business errors retained."
+    },
+    {
+      "file": "server/src/core/web3.js",
+      "line": 48,
+      "text": "Latest report on-chain khác snapshot đã duyệt",
+      "classification": "KEEP",
+      "note": "Backend contract unchanged. Frontend errorMessages only rewrites known setup/NLP codes; meaningful validation and business errors retained."
+    },
+    {
+      "file": "server/src/core/web3.js",
+      "line": 53,
+      "text": "Cần bằng chứng phê duyệt hoàn tất đúng snapshot",
+      "classification": "KEEP",
+      "note": "Backend contract unchanged. Frontend errorMessages only rewrites known setup/NLP codes; meaningful validation and business errors retained."
+    },
+    {
+      "file": "server/src/core/web3.js",
+      "line": 56,
+      "text": "Không có operation",
+      "classification": "KEEP",
+      "note": "Backend contract unchanged. Frontend errorMessages only rewrites known setup/NLP codes; meaningful validation and business errors retained."
+    },
+    {
+      "file": "server/src/core/web3.js",
+      "line": 56,
+      "text": "Chỉ người gửi hoặc Admin đối chiếu",
+      "classification": "KEEP",
+      "note": "Backend contract unchanged. Frontend errorMessages only rewrites known setup/NLP codes; meaningful validation and business errors retained."
+    },
+    {
+      "file": "server/src/core/work.js",
+      "line": 5,
+      "text": "Không có bản ghi trong phạm vi quyền",
+      "classification": "KEEP",
+      "note": "Backend contract unchanged. Frontend errorMessages only rewrites known setup/NLP codes; meaningful validation and business errors retained."
+    },
+    {
+      "file": "server/src/core/work.js",
+      "line": 12,
+      "text": "Hạn task ngoài thời gian phân công",
+      "classification": "KEEP",
+      "note": "Backend contract unchanged. Frontend errorMessages only rewrites known setup/NLP codes; meaningful validation and business errors retained."
+    },
+    {
+      "file": "server/src/core/work.js",
+      "line": 19,
+      "text": "Hạn ngoài phân công",
+      "classification": "KEEP",
+      "note": "Backend contract unchanged. Frontend errorMessages only rewrites known setup/NLP codes; meaningful validation and business errors retained."
+    },
+    {
+      "file": "server/src/core/work.js",
+      "line": 21,
+      "text": "Task Xong phải có tiến độ100%; task khác chưa đủ100%",
+      "classification": "KEEP",
+      "note": "Backend contract unchanged. Frontend errorMessages only rewrites known setup/NLP codes; meaningful validation and business errors retained."
+    },
+    {
+      "file": "server/src/core/work.js",
+      "line": 33,
+      "text": "Nhật ký đã duyệt không được sửa",
+      "classification": "KEEP",
+      "note": "Backend contract unchanged. Frontend errorMessages only rewrites known setup/NLP codes; meaningful validation and business errors retained."
+    },
+    {
+      "file": "server/src/core/work.js",
+      "line": 37,
+      "text": "Chỉ duyệt nhật ký vừa nộp",
+      "classification": "KEEP",
+      "note": "Backend contract unchanged. Frontend errorMessages only rewrites known setup/NLP codes; meaningful validation and business errors retained."
+    },
+    {
+      "file": "server/src/middleware/auth.js",
+      "line": 10,
+      "text": "Thiếu token xác thực",
+      "classification": "KEEP",
+      "note": "Backend contract unchanged. Frontend errorMessages only rewrites known setup/NLP codes; meaningful validation and business errors retained."
+    },
+    {
+      "file": "server/src/middleware/auth.js",
+      "line": 15,
+      "text": "Token không hợp lệ hoặc đã hết hạn",
+      "classification": "KEEP",
+      "note": "Backend contract unchanged. Frontend errorMessages only rewrites known setup/NLP codes; meaningful validation and business errors retained."
+    },
+    {
+      "file": "server/src/middleware/auth.js",
+      "line": 18,
+      "text": "Tài khoản không tồn tại",
+      "classification": "KEEP",
+      "note": "Backend contract unchanged. Frontend errorMessages only rewrites known setup/NLP codes; meaningful validation and business errors retained."
+    },
+    {
+      "file": "server/src/middleware/auth.js",
+      "line": 19,
+      "text": "Phiên đã hết hiệu lực, hãy đăng nhập lại",
+      "classification": "KEEP",
+      "note": "Backend contract unchanged. Frontend errorMessages only rewrites known setup/NLP codes; meaningful validation and business errors retained."
+    },
+    {
+      "file": "server/src/middleware/auth.js",
+      "line": 20,
+      "text": "Phương thức đăng nhập không còn hợp lệ",
+      "classification": "KEEP",
+      "note": "Backend contract unchanged. Frontend errorMessages only rewrites known setup/NLP codes; meaningful validation and business errors retained."
+    },
+    {
+      "file": "server/src/middleware/auth.js",
+      "line": 21,
+      "text": "Google identity không còn liên kết",
+      "classification": "KEEP",
+      "note": "Backend contract unchanged. Frontend errorMessages only rewrites known setup/NLP codes; meaningful validation and business errors retained."
+    },
+    {
+      "file": "server/src/middleware/auth.js",
+      "line": 22,
+      "text": "Tài khoản đã bị khóa",
+      "classification": "KEEP",
+      "note": "Backend contract unchanged. Frontend errorMessages only rewrites known setup/NLP codes; meaningful validation and business errors retained."
+    },
+    {
+      "file": "server/src/middleware/auth.js",
+      "line": 25,
+      "text": "Hãy liên kết ví bằng chữ ký để sử dụng nghiệp vụ này",
+      "classification": "KEEP",
+      "note": "Backend contract unchanged. Frontend errorMessages only rewrites known setup/NLP codes; meaningful validation and business errors retained."
+    },
+    {
+      "file": "server/src/middleware/auth.js",
+      "line": 32,
+      "text": "`Cần vai trò: ${roles.join(\" / \")}`",
+      "classification": "KEEP",
+      "note": "Backend contract unchanged. Frontend errorMessages only rewrites known setup/NLP codes; meaningful validation and business errors retained."
+    },
+    {
+      "file": "server/src/middleware/auth.js",
+      "line": 39,
+      "text": "ID đề tài không hợp lệ",
+      "classification": "KEEP",
+      "note": "Backend contract unchanged. Frontend errorMessages only rewrites known setup/NLP codes; meaningful validation and business errors retained."
+    },
+    {
+      "file": "server/src/middleware/auth.js",
+      "line": 41,
+      "text": "Không tìm thấy đề tài",
+      "classification": "KEEP",
+      "note": "Backend contract unchanged. Frontend errorMessages only rewrites known setup/NLP codes; meaningful validation and business errors retained."
+    },
+    {
+      "file": "server/src/middleware/auth.js",
+      "line": 49,
+      "text": "Bạn không phải công ty sở hữu đề tài này",
+      "classification": "KEEP",
+      "note": "Backend contract unchanged. Frontend errorMessages only rewrites known setup/NLP codes; meaningful validation and business errors retained."
+    },
+    {
+      "file": "server/src/middleware/auth.js",
+      "line": 59,
+      "text": "Bạn không có quyền đánh giá đề tài này",
+      "classification": "KEEP",
+      "note": "Backend contract unchanged. Frontend errorMessages only rewrites known setup/NLP codes; meaningful validation and business errors retained."
+    },
+    {
+      "file": "server/src/middleware/auth.js",
+      "line": 66,
+      "text": "Bạn không phải sinh viên được phân công",
+      "classification": "KEEP",
+      "note": "Backend contract unchanged. Frontend errorMessages only rewrites known setup/NLP codes; meaningful validation and business errors retained."
+    },
+    {
+      "file": "server/src/middleware/errorHandler.js",
+      "line": 3,
+      "text": "Không tìm thấy endpoint",
+      "classification": "KEEP",
+      "note": "Backend contract unchanged. Frontend errorMessages only rewrites known setup/NLP codes; meaningful validation and business errors retained."
+    },
+    {
+      "file": "server/src/middleware/errorHandler.js",
+      "line": 10,
+      "text": "Dữ liệu không hợp lệ. Vui lòng kiểm tra các trường đã nhập.",
+      "classification": "KEEP",
+      "note": "Backend contract unchanged. Frontend errorMessages only rewrites known setup/NLP codes; meaningful validation and business errors retained."
+    },
+    {
+      "file": "server/src/middleware/errorHandler.js",
+      "line": 11,
+      "text": "Tham số không hợp lệ",
+      "classification": "KEEP",
+      "note": "Backend contract unchanged. Frontend errorMessages only rewrites known setup/NLP codes; meaningful validation and business errors retained."
+    },
+    {
+      "file": "server/src/middleware/errorHandler.js",
+      "line": 12,
+      "text": "JSON không hợp lệ",
+      "classification": "KEEP",
+      "note": "Backend contract unchanged. Frontend errorMessages only rewrites known setup/NLP codes; meaningful validation and business errors retained."
+    },
+    {
+      "file": "server/src/middleware/errorHandler.js",
+      "line": 13,
+      "text": "Nội dung vượt giới hạn cho phép",
+      "classification": "KEEP",
+      "note": "Backend contract unchanged. Frontend errorMessages only rewrites known setup/NLP codes; meaningful validation and business errors retained."
+    },
+    {
+      "file": "server/src/middleware/errorHandler.js",
+      "line": 14,
+      "text": "Bản ghi đã tồn tại",
+      "classification": "KEEP",
+      "note": "Backend contract unchanged. Frontend errorMessages only rewrites known setup/NLP codes; meaningful validation and business errors retained."
+    },
+    {
+      "file": "server/src/middleware/errorHandler.js",
+      "line": 16,
+      "text": "Lỗi máy chủ nội bộ",
+      "classification": "KEEP",
+      "note": "Backend contract unchanged. Frontend errorMessages only rewrites known setup/NLP codes; meaningful validation and business errors retained."
+    },
+    {
+      "file": "server/src/middleware/permissions.js",
+      "line": 9,
+      "text": "Vai trò không được phép",
+      "classification": "KEEP",
+      "note": "Backend contract unchanged. Frontend errorMessages only rewrites known setup/NLP codes; meaningful validation and business errors retained."
+    },
+    {
+      "file": "server/src/middleware/permissions.js",
+      "line": 18,
+      "text": "Không xác minh được quan hệ phân công",
+      "classification": "KEEP",
+      "note": "Backend contract unchanged. Frontend errorMessages only rewrites known setup/NLP codes; meaningful validation and business errors retained."
+    },
+    {
+      "file": "server/src/middleware/permissions.js",
+      "line": 21,
+      "text": "ID đề tài không hợp lệ",
+      "classification": "KEEP",
+      "note": "Backend contract unchanged. Frontend errorMessages only rewrites known setup/NLP codes; meaningful validation and business errors retained."
+    },
+    {
+      "file": "server/src/middleware/permissions.js",
+      "line": 25,
+      "text": "Bạn không thuộc phân công này",
+      "classification": "KEEP",
+      "note": "Backend contract unchanged. Frontend errorMessages only rewrites known setup/NLP codes; meaningful validation and business errors retained."
+    },
+    {
+      "file": "server/src/middleware/permissions.js",
+      "line": 30,
+      "text": "ID đề tài không hợp lệ",
+      "classification": "KEEP",
+      "note": "Backend contract unchanged. Frontend errorMessages only rewrites known setup/NLP codes; meaningful validation and business errors retained."
+    },
+    {
+      "file": "server/src/middleware/permissions.js",
+      "line": 33,
+      "text": "Cần chọn một phân công đang hoạt động hợp lệ",
+      "classification": "KEEP",
+      "note": "Backend contract unchanged. Frontend errorMessages only rewrites known setup/NLP codes; meaningful validation and business errors retained."
+    },
+    {
+      "file": "server/src/middleware/permissions.js",
+      "line": 46,
+      "text": "Vai trò không được phép",
+      "classification": "KEEP",
+      "note": "Backend contract unchanged. Frontend errorMessages only rewrites known setup/NLP codes; meaningful validation and business errors retained."
+    },
+    {
+      "file": "server/src/middleware/permissions.js",
+      "line": 49,
+      "text": "Ví không hợp lệ",
+      "classification": "KEEP",
+      "note": "Backend contract unchanged. Frontend errorMessages only rewrites known setup/NLP codes; meaningful validation and business errors retained."
+    },
+    {
+      "file": "server/src/middleware/permissions.js",
+      "line": 50,
+      "text": "Không được đọc dữ liệu sinh viên khác",
+      "classification": "KEEP",
+      "note": "Backend contract unchanged. Frontend errorMessages only rewrites known setup/NLP codes; meaningful validation and business errors retained."
+    },
+    {
+      "file": "server/src/models/KPIEvaluation.js",
+      "line": 12,
+      "text": "At least one KPI criterion is required",
+      "classification": "KEEP",
+      "note": "Backend contract unchanged. Frontend errorMessages only rewrites known setup/NLP codes; meaningful validation and business errors retained."
+    },
+    {
+      "file": "server/src/routes/auth.routes.js",
+      "line": 36,
+      "text": "Địa chỉ ví không hợp lệ",
+      "classification": "KEEP",
+      "note": "Backend contract unchanged. Frontend errorMessages only rewrites known setup/NLP codes; meaningful validation and business errors retained."
+    },
+    {
+      "file": "server/src/routes/auth.routes.js",
+      "line": 45,
+      "text": "Địa chỉ ví không hợp lệ",
+      "classification": "KEEP",
+      "note": "Backend contract unchanged. Frontend errorMessages only rewrites known setup/NLP codes; meaningful validation and business errors retained."
+    },
+    {
+      "file": "server/src/routes/auth.routes.js",
+      "line": 46,
+      "text": "Thiếu chữ ký ví",
+      "classification": "KEEP",
+      "note": "Backend contract unchanged. Frontend errorMessages only rewrites known setup/NLP codes; meaningful validation and business errors retained."
+    },
+    {
+      "file": "server/src/routes/auth.routes.js",
+      "line": 52,
+      "text": "Tài khoản đã bị khóa",
+      "classification": "KEEP",
+      "note": "Backend contract unchanged. Frontend errorMessages only rewrites known setup/NLP codes; meaningful validation and business errors retained."
+    },
+    {
+      "file": "server/src/routes/auth.routes.js",
+      "line": 54,
+      "text": "Vai trò đăng ký không hợp lệ (company hoặc student)",
+      "classification": "KEEP",
+      "note": "Backend contract unchanged. Frontend errorMessages only rewrites known setup/NLP codes; meaningful validation and business errors retained."
+    },
+    {
+      "file": "server/src/routes/auth.routes.js",
+      "line": 64,
+      "text": "Tài khoản đã bị khóa",
+      "classification": "KEEP",
+      "note": "Backend contract unchanged. Frontend errorMessages only rewrites known setup/NLP codes; meaningful validation and business errors retained."
+    },
+    {
+      "file": "server/src/routes/auth.routes.js",
+      "line": 77,
+      "text": "Đăng nhập demo chưa được bật trên database demo riêng",
+      "classification": "KEEP",
+      "note": "Backend contract unchanged. Frontend errorMessages only rewrites known setup/NLP codes; meaningful validation and business errors retained."
+    },
+    {
+      "file": "server/src/routes/auth.routes.js",
+      "line": 80,
+      "text": "Vai trò demo không hợp lệ",
+      "classification": "KEEP",
+      "note": "Backend contract unchanged. Frontend errorMessages only rewrites known setup/NLP codes; meaningful validation and business errors retained."
+    },
+    {
+      "file": "server/src/routes/auth.routes.js",
+      "line": 94,
+      "text": "Tài khoản đã bị khóa",
+      "classification": "KEEP",
+      "note": "Backend contract unchanged. Frontend errorMessages only rewrites known setup/NLP codes; meaningful validation and business errors retained."
+    },
+    {
+      "file": "server/src/routes/auth.routes.js",
+      "line": 121,
+      "text": "Không tìm thấy người dùng",
+      "classification": "KEEP",
+      "note": "Backend contract unchanged. Frontend errorMessages only rewrites known setup/NLP codes; meaningful validation and business errors retained."
+    },
+    {
+      "file": "server/src/routes/auth.routes.js",
+      "line": 128,
+      "text": "Chỉ được sửa hồ sơ của chính mình",
+      "classification": "KEEP",
+      "note": "Backend contract unchanged. Frontend errorMessages only rewrites known setup/NLP codes; meaningful validation and business errors retained."
+    },
+    {
+      "file": "server/src/routes/data.routes.js",
+      "line": 23,
+      "text": "Query filter phải là giá trị đơn",
+      "classification": "KEEP",
+      "note": "Backend contract unchanged. Frontend errorMessages only rewrites known setup/NLP codes; meaningful validation and business errors retained."
+    },
+    {
+      "file": "server/src/routes/data.routes.js",
+      "line": 24,
+      "text": "ID filter không hợp lệ",
+      "classification": "KEEP",
+      "note": "Backend contract unchanged. Frontend errorMessages only rewrites known setup/NLP codes; meaningful validation and business errors retained."
+    },
+    {
+      "file": "server/src/routes/data.routes.js",
+      "line": 26,
+      "text": "Dữ liệu quản trị cần quyền admin",
+      "classification": "KEEP",
+      "note": "Backend contract unchanged. Frontend errorMessages only rewrites known setup/NLP codes; meaningful validation and business errors retained."
+    },
+    {
+      "file": "server/src/routes/data.routes.js",
+      "line": 42,
+      "text": "Filter ngoài phạm vi được phép",
+      "classification": "KEEP",
+      "note": "Backend contract unchanged. Frontend errorMessages only rewrites known setup/NLP codes; meaningful validation and business errors retained."
+    },
+    {
+      "file": "server/src/routes/data.routes.js",
+      "line": 50,
+      "text": "Không tìm thấy hồ sơ",
+      "classification": "KEEP",
+      "note": "Backend contract unchanged. Frontend errorMessages only rewrites known setup/NLP codes; meaningful validation and business errors retained."
+    },
+    {
+      "file": "server/src/routes/data.routes.js",
+      "line": 52,
+      "text": "ID không hợp lệ",
+      "classification": "KEEP",
+      "note": "Backend contract unchanged. Frontend errorMessages only rewrites known setup/NLP codes; meaningful validation and business errors retained."
+    },
+    {
+      "file": "server/src/routes/data.routes.js",
+      "line": 53,
+      "text": "Không được xem hồ sơ/đề tài này",
+      "classification": "KEEP",
+      "note": "Backend contract unchanged. Frontend errorMessages only rewrites known setup/NLP codes; meaningful validation and business errors retained."
+    },
+    {
+      "file": "server/src/routes/data.routes.js",
+      "line": 94,
+      "text": "Student not found",
+      "classification": "KEEP",
+      "note": "Backend contract unchanged. Frontend errorMessages only rewrites known setup/NLP codes; meaningful validation and business errors retained."
+    },
+    {
+      "file": "server/src/routes/data.routes.js",
+      "line": 106,
+      "text": "Student not found",
+      "classification": "KEEP",
+      "note": "Backend contract unchanged. Frontend errorMessages only rewrites known setup/NLP codes; meaningful validation and business errors retained."
+    },
+    {
+      "file": "server/src/routes/data.routes.js",
+      "line": 107,
+      "text": "Chỉ chủ hồ sơ mới được sửa",
+      "classification": "KEEP",
+      "note": "Backend contract unchanged. Frontend errorMessages only rewrites known setup/NLP codes; meaningful validation and business errors retained."
+    },
+    {
+      "file": "server/src/routes/data.routes.js",
+      "line": 134,
+      "text": "Company not found",
+      "classification": "KEEP",
+      "note": "Backend contract unchanged. Frontend errorMessages only rewrites known setup/NLP codes; meaningful validation and business errors retained."
+    },
+    {
+      "file": "server/src/routes/data.routes.js",
+      "line": 146,
+      "text": "Company not found",
+      "classification": "KEEP",
+      "note": "Backend contract unchanged. Frontend errorMessages only rewrites known setup/NLP codes; meaningful validation and business errors retained."
+    },
+    {
+      "file": "server/src/routes/data.routes.js",
+      "line": 147,
+      "text": "Chỉ chủ hồ sơ mới được sửa",
+      "classification": "KEEP",
+      "note": "Backend contract unchanged. Frontend errorMessages only rewrites known setup/NLP codes; meaningful validation and business errors retained."
+    },
+    {
+      "file": "server/src/routes/data.routes.js",
+      "line": 173,
+      "text": "Invalid topic ID",
+      "classification": "KEEP",
+      "note": "Backend contract unchanged. Frontend errorMessages only rewrites known setup/NLP codes; meaningful validation and business errors retained."
+    },
+    {
+      "file": "server/src/routes/data.routes.js",
+      "line": 175,
+      "text": "Topic not found",
+      "classification": "KEEP",
+      "note": "Backend contract unchanged. Frontend errorMessages only rewrites known setup/NLP codes; meaningful validation and business errors retained."
+    },
+    {
+      "file": "server/src/routes/email.routes.js",
+      "line": 6,
+      "text": "Email hoặc mật khẩu không đúng",
+      "classification": "KEEP",
+      "note": "Backend contract unchanged. Frontend errorMessages only rewrites known setup/NLP codes; meaningful validation and business errors retained."
+    },
+    {
+      "file": "server/src/routes/email.routes.js",
+      "line": 10,
+      "text": "Email không hợp lệ",
+      "classification": "KEEP",
+      "note": "Backend contract unchanged. Frontend errorMessages only rewrites known setup/NLP codes; meaningful validation and business errors retained."
+    },
+    {
+      "file": "server/src/routes/email.routes.js",
+      "line": 11,
+      "text": "Mật khẩu cần ít nhất 10 ký tự, tối đa 72 byte UTF-8",
+      "classification": "KEEP",
+      "note": "Backend contract unchanged. Frontend errorMessages only rewrites known setup/NLP codes; meaningful validation and business errors retained."
+    },
+    {
+      "file": "server/src/routes/email.routes.js",
+      "line": 15,
+      "text": "Đăng nhập email chưa được bật trên môi trường này",
+      "classification": "KEEP",
+      "note": "Backend contract unchanged. Frontend errorMessages only rewrites known setup/NLP codes; meaningful validation and business errors retained."
+    },
+    {
+      "file": "server/src/routes/email.routes.js",
+      "line": 18,
+      "text": "Cần chuẩn bị identity indexes trên TEST mới; không tự thay index database cũ",
+      "classification": "KEEP",
+      "note": "Backend contract unchanged. Frontend errorMessages only rewrites known setup/NLP codes; meaningful validation and business errors retained."
+    },
+    {
+      "file": "server/src/routes/email.routes.js",
+      "line": 22,
+      "text": "Mật khẩu xác nhận không khớp",
+      "classification": "KEEP",
+      "note": "Backend contract unchanged. Frontend errorMessages only rewrites known setup/NLP codes; meaningful validation and business errors retained."
+    },
+    {
+      "file": "server/src/routes/email.routes.js",
+      "line": 23,
+      "text": "Tên cần từ 1 đến 200 ký tự",
+      "classification": "KEEP",
+      "note": "Backend contract unchanged. Frontend errorMessages only rewrites known setup/NLP codes; meaningful validation and business errors retained."
+    },
+    {
+      "file": "server/src/routes/email.routes.js",
+      "line": 25,
+      "text": "Không thể đăng ký email này. Nếu đã có tài khoản, hãy dùng phương thức đăng nhập cũ.",
+      "classification": "KEEP",
+      "note": "Backend contract unchanged. Frontend errorMessages only rewrites known setup/NLP codes; meaningful validation and business errors retained."
+    },
+    {
+      "file": "server/src/routes/email.routes.js",
+      "line": 38,
+      "text": "Mật khẩu xác nhận không khớp",
+      "classification": "KEEP",
+      "note": "Backend contract unchanged. Frontend errorMessages only rewrites known setup/NLP codes; meaningful validation and business errors retained."
+    },
+    {
+      "file": "server/src/routes/email.routes.js",
+      "line": 39,
+      "text": "Mật khẩu mới cần khác mật khẩu hiện tại",
+      "classification": "KEEP",
+      "note": "Backend contract unchanged. Frontend errorMessages only rewrites known setup/NLP codes; meaningful validation and business errors retained."
+    },
+    {
+      "file": "server/src/routes/email.routes.js",
+      "line": 41,
+      "text": "Tài khoản đã thay đổi; hãy đăng nhập lại",
+      "classification": "KEEP",
+      "note": "Backend contract unchanged. Frontend errorMessages only rewrites known setup/NLP codes; meaningful validation and business errors retained."
+    },
+    {
+      "file": "server/src/routes/email.routes.js",
+      "line": 45,
+      "text": "Tài khoản đã có ví; không tự đổi khóa sở hữu",
+      "classification": "KEEP",
+      "note": "Backend contract unchanged. Frontend errorMessages only rewrites known setup/NLP codes; meaningful validation and business errors retained."
+    },
+    {
+      "file": "server/src/routes/email.routes.js",
+      "line": 46,
+      "text": "Địa chỉ ví không hợp lệ",
+      "classification": "KEEP",
+      "note": "Backend contract unchanged. Frontend errorMessages only rewrites known setup/NLP codes; meaningful validation and business errors retained."
+    },
+    {
+      "file": "server/src/routes/email.routes.js",
+      "line": 47,
+      "text": "Origin không hợp lệ",
+      "classification": "KEEP",
+      "note": "Backend contract unchanged. Frontend errorMessages only rewrites known setup/NLP codes; meaningful validation and business errors retained."
+    },
+    {
+      "file": "server/src/routes/email.routes.js",
+      "line": 55,
+      "text": "Challenge không hợp lệ",
+      "classification": "KEEP",
+      "note": "Backend contract unchanged. Frontend errorMessages only rewrites known setup/NLP codes; meaningful validation and business errors retained."
+    },
+    {
+      "file": "server/src/routes/email.routes.js",
+      "line": 57,
+      "text": "Phiên liên kết không hợp lệ hoặc đã hết hạn",
+      "classification": "KEEP",
+      "note": "Backend contract unchanged. Frontend errorMessages only rewrites known setup/NLP codes; meaningful validation and business errors retained."
+    },
+    {
+      "file": "server/src/routes/email.routes.js",
+      "line": 58,
+      "text": "Chữ ký không hợp lệ",
+      "classification": "KEEP",
+      "note": "Backend contract unchanged. Frontend errorMessages only rewrites known setup/NLP codes; meaningful validation and business errors retained."
+    },
+    {
+      "file": "server/src/routes/email.routes.js",
+      "line": 59,
+      "text": "Chữ ký không khớp ví",
+      "classification": "KEEP",
+      "note": "Backend contract unchanged. Frontend errorMessages only rewrites known setup/NLP codes; meaningful validation and business errors retained."
+    },
+    {
+      "file": "server/src/routes/email.routes.js",
+      "line": 60,
+      "text": "Ví đã thuộc tài khoản khác; không tự gộp",
+      "classification": "KEEP",
+      "note": "Backend contract unchanged. Frontend errorMessages only rewrites known setup/NLP codes; meaningful validation and business errors retained."
+    },
+    {
+      "file": "server/src/routes/email.routes.js",
+      "line": 61,
+      "text": "Challenge đã được dùng",
+      "classification": "KEEP",
+      "note": "Backend contract unchanged. Frontend errorMessages only rewrites known setup/NLP codes; meaningful validation and business errors retained."
+    },
+    {
+      "file": "server/src/routes/email.routes.js",
+      "line": 63,
+      "text": "Tài khoản đã thay đổi",
+      "classification": "KEEP",
+      "note": "Backend contract unchanged. Frontend errorMessages only rewrites known setup/NLP codes; meaningful validation and business errors retained."
+    },
+    {
+      "file": "server/src/routes/google.routes.js",
+      "line": 14,
+      "text": "Phiên xác thực hết hạn hoặc không hợp lệ. Hãy bắt đầu lại.",
+      "classification": "KEEP",
+      "note": "Backend contract unchanged. Frontend errorMessages only rewrites known setup/NLP codes; meaningful validation and business errors retained."
+    },
+    {
+      "file": "server/src/routes/google.routes.js",
+      "line": 20,
+      "text": "Google Login chưa được cấu hình",
+      "classification": "KEEP",
+      "note": "Backend contract unchanged. Frontend errorMessages only rewrites known setup/NLP codes; meaningful validation and business errors retained."
+    },
+    {
+      "file": "server/src/routes/google.routes.js",
+      "line": 21,
+      "text": "Origin không được phép",
+      "classification": "KEEP",
+      "note": "Backend contract unchanged. Frontend errorMessages only rewrites known setup/NLP codes; meaningful validation and business errors retained."
+    },
+    {
+      "file": "server/src/routes/google.routes.js",
+      "line": 26,
+      "text": "Index ví cũ chưa được chuyển theo kế hoạch đã duyệt",
+      "classification": "KEEP",
+      "note": "Backend contract unchanged. Frontend errorMessages only rewrites known setup/NLP codes; meaningful validation and business errors retained."
+    },
+    {
+      "file": "server/src/routes/google.routes.js",
+      "line": 27,
+      "text": "Cần phê duyệt và chuẩn bị identity indexes trước khi bật Google Login",
+      "classification": "KEEP",
+      "note": "Backend contract unchanged. Frontend errorMessages only rewrites known setup/NLP codes; meaningful validation and business errors retained."
+    },
+    {
+      "file": "server/src/routes/google.routes.js",
+      "line": 32,
+      "text": "Mục đích không hợp lệ",
+      "classification": "KEEP",
+      "note": "Backend contract unchanged. Frontend errorMessages only rewrites known setup/NLP codes; meaningful validation and business errors retained."
+    },
+    {
+      "file": "server/src/routes/google.routes.js",
+      "line": 41,
+      "text": "Tài khoản đã có ví; không đổi khóa sở hữu nghiệp vụ",
+      "classification": "KEEP",
+      "note": "Backend contract unchanged. Frontend errorMessages only rewrites known setup/NLP codes; meaningful validation and business errors retained."
+    },
+    {
+      "file": "server/src/routes/google.routes.js",
+      "line": 42,
+      "text": "Địa chỉ ví không hợp lệ",
+      "classification": "KEEP",
+      "note": "Backend contract unchanged. Frontend errorMessages only rewrites known setup/NLP codes; meaningful validation and business errors retained."
+    },
+    {
+      "file": "server/src/routes/google.routes.js",
+      "line": 64,
+      "text": "Google tự đăng ký chỉ cấp vai trò sinh viên",
+      "classification": "KEEP",
+      "note": "Backend contract unchanged. Frontend errorMessages only rewrites known setup/NLP codes; meaningful validation and business errors retained."
+    },
+    {
+      "file": "server/src/routes/google.routes.js",
+      "line": 66,
+      "text": "Email đã tồn tại. Đăng nhập tài khoản hiện có và liên kết Google.",
+      "classification": "KEEP",
+      "note": "Backend contract unchanged. Frontend errorMessages only rewrites known setup/NLP codes; meaningful validation and business errors retained."
+    },
+    {
+      "file": "server/src/routes/google.routes.js",
+      "line": 69,
+      "text": "Tài khoản vừa được đăng ký; hãy đăng nhập lại",
+      "classification": "KEEP",
+      "note": "Backend contract unchanged. Frontend errorMessages only rewrites known setup/NLP codes; meaningful validation and business errors retained."
+    },
+    {
+      "file": "server/src/routes/google.routes.js",
+      "line": 70,
+      "text": "Tài khoản đã bị khóa",
+      "classification": "KEEP",
+      "note": "Backend contract unchanged. Frontend errorMessages only rewrites known setup/NLP codes; meaningful validation and business errors retained."
+    },
+    {
+      "file": "server/src/routes/google.routes.js",
+      "line": 70,
+      "text": "Tài khoản đã bị khóa",
+      "classification": "KEEP",
+      "note": "Backend contract unchanged. Frontend errorMessages only rewrites known setup/NLP codes; meaningful validation and business errors retained."
+    },
+    {
+      "file": "server/src/routes/google.routes.js",
+      "line": 79,
+      "text": "Cần xác thực lại bằng mật khẩu tài khoản",
+      "classification": "KEEP",
+      "note": "Backend contract unchanged. Frontend errorMessages only rewrites known setup/NLP codes; meaningful validation and business errors retained."
+    },
+    {
+      "file": "server/src/routes/google.routes.js",
+      "line": 82,
+      "text": "Tài khoản đã liên kết Google khác",
+      "classification": "KEEP",
+      "note": "Backend contract unchanged. Frontend errorMessages only rewrites known setup/NLP codes; meaningful validation and business errors retained."
+    },
+    {
+      "file": "server/src/routes/google.routes.js",
+      "line": 83,
+      "text": "Google đã thuộc tài khoản khác",
+      "classification": "KEEP",
+      "note": "Backend contract unchanged. Frontend errorMessages only rewrites known setup/NLP codes; meaningful validation and business errors retained."
+    },
+    {
+      "file": "server/src/routes/google.routes.js",
+      "line": 85,
+      "text": "Email đã thuộc tài khoản khác; không tự gộp",
+      "classification": "KEEP",
+      "note": "Backend contract unchanged. Frontend errorMessages only rewrites known setup/NLP codes; meaningful validation and business errors retained."
+    },
+    {
+      "file": "server/src/routes/google.routes.js",
+      "line": 88,
+      "text": "Tài khoản đã thay đổi",
+      "classification": "KEEP",
+      "note": "Backend contract unchanged. Frontend errorMessages only rewrites known setup/NLP codes; meaningful validation and business errors retained."
+    },
+    {
+      "file": "server/src/routes/google.routes.js",
+      "line": 95,
+      "text": "Ví đã thuộc tài khoản khác; không tự gộp",
+      "classification": "KEEP",
+      "note": "Backend contract unchanged. Frontend errorMessages only rewrites known setup/NLP codes; meaningful validation and business errors retained."
+    },
+    {
+      "file": "server/src/routes/google.routes.js",
+      "line": 98,
+      "text": "Tài khoản đã thay đổi",
+      "classification": "KEEP",
+      "note": "Backend contract unchanged. Frontend errorMessages only rewrites known setup/NLP codes; meaningful validation and business errors retained."
+    },
+    {
+      "file": "server/src/routes/google.routes.js",
+      "line": 104,
+      "text": "Không được xóa phương thức đăng nhập cuối cùng",
+      "classification": "KEEP",
+      "note": "Backend contract unchanged. Frontend errorMessages only rewrites known setup/NLP codes; meaningful validation and business errors retained."
+    },
+    {
+      "file": "server/src/routes/google.routes.js",
+      "line": 107,
+      "text": "Tài khoản đã thay đổi",
+      "classification": "KEEP",
+      "note": "Backend contract unchanged. Frontend errorMessages only rewrites known setup/NLP codes; meaningful validation and business errors retained."
+    },
+    {
+      "file": "server/src/routes/internship.routes.js",
+      "line": 19,
+      "text": "`${name} không hợp lệ`",
+      "classification": "KEEP",
+      "note": "Backend contract unchanged. Frontend errorMessages only rewrites known setup/NLP codes; meaningful validation and business errors retained."
+    },
+    {
+      "file": "server/src/routes/internship.routes.js",
+      "line": 22,
+      "text": "ID không hợp lệ",
+      "classification": "KEEP",
+      "note": "Backend contract unchanged. Frontend errorMessages only rewrites known setup/NLP codes; meaningful validation and business errors retained."
+    },
+    {
+      "file": "server/src/routes/internship.routes.js",
+      "line": 57,
+      "text": "Danh sách không hợp lệ",
+      "classification": "KEEP",
+      "note": "Backend contract unchanged. Frontend errorMessages only rewrites known setup/NLP codes; meaningful validation and business errors retained."
+    },
+    {
+      "file": "server/src/routes/internship.routes.js",
+      "line": 61,
+      "text": "Số lượng không hợp lệ",
+      "classification": "KEEP",
+      "note": "Backend contract unchanged. Frontend errorMessages only rewrites known setup/NLP codes; meaningful validation and business errors retained."
+    },
+    {
+      "file": "server/src/routes/internship.routes.js",
+      "line": 69,
+      "text": "Hồ sơ matching không hợp lệ",
+      "classification": "KEEP",
+      "note": "Backend contract unchanged. Frontend errorMessages only rewrites known setup/NLP codes; meaningful validation and business errors retained."
+    },
+    {
+      "file": "server/src/routes/internship.routes.js",
+      "line": 78,
+      "text": "Ví công ty không hợp lệ",
+      "classification": "KEEP",
+      "note": "Backend contract unchanged. Frontend errorMessages only rewrites known setup/NLP codes; meaningful validation and business errors retained."
+    },
+    {
+      "file": "server/src/routes/internship.routes.js",
+      "line": 78,
+      "text": "Không có quyền",
+      "classification": "KEEP",
+      "note": "Backend contract unchanged. Frontend errorMessages only rewrites known setup/NLP codes; meaningful validation and business errors retained."
+    },
+    {
+      "file": "server/src/routes/internship.routes.js",
+      "line": 83,
+      "text": "Cần chọn sinh viên được phân công",
+      "classification": "KEEP",
+      "note": "Backend contract unchanged. Frontend errorMessages only rewrites known setup/NLP codes; meaningful validation and business errors retained."
+    },
+    {
+      "file": "server/src/routes/internship.routes.js",
+      "line": 85,
+      "text": "Phân công không còn hoạt động",
+      "classification": "KEEP",
+      "note": "Backend contract unchanged. Frontend errorMessages only rewrites known setup/NLP codes; meaningful validation and business errors retained."
+    },
+    {
+      "file": "server/src/routes/internship.routes.js",
+      "line": 87,
+      "text": "Ưu tiên/hạn không hợp lệ",
+      "classification": "KEEP",
+      "note": "Backend contract unchanged. Frontend errorMessages only rewrites known setup/NLP codes; meaningful validation and business errors retained."
+    },
+    {
+      "file": "server/src/routes/internship.routes.js",
+      "line": 93,
+      "text": "Trạng thái không hợp lệ",
+      "classification": "KEEP",
+      "note": "Backend contract unchanged. Frontend errorMessages only rewrites known setup/NLP codes; meaningful validation and business errors retained."
+    },
+    {
+      "file": "server/src/routes/internship.routes.js",
+      "line": 94,
+      "text": "Không tìm thấy nhiệm vụ",
+      "classification": "KEEP",
+      "note": "Backend contract unchanged. Frontend errorMessages only rewrites known setup/NLP codes; meaningful validation and business errors retained."
+    },
+    {
+      "file": "server/src/routes/internship.routes.js",
+      "line": 94,
+      "text": "Công việc theo kỳ phải cập nhật qua API core để bảo toàn lịch sử",
+      "classification": "KEEP",
+      "note": "Backend contract unchanged. Frontend errorMessages only rewrites known setup/NLP codes; meaningful validation and business errors retained."
+    },
+    {
+      "file": "server/src/routes/internship.routes.js",
+      "line": 96,
+      "text": "Không có quyền",
+      "classification": "KEEP",
+      "note": "Backend contract unchanged. Frontend errorMessages only rewrites known setup/NLP codes; meaningful validation and business errors retained."
+    },
+    {
+      "file": "server/src/routes/internship.routes.js",
+      "line": 97,
+      "text": "Không có quyền",
+      "classification": "KEEP",
+      "note": "Backend contract unchanged. Frontend errorMessages only rewrites known setup/NLP codes; meaningful validation and business errors retained."
+    },
+    {
+      "file": "server/src/routes/internship.routes.js",
+      "line": 118,
+      "text": "Tuần không hợp lệ",
+      "classification": "KEEP",
+      "note": "Backend contract unchanged. Frontend errorMessages only rewrites known setup/NLP codes; meaningful validation and business errors retained."
+    },
+    {
+      "file": "server/src/routes/internship.routes.js",
+      "line": 125,
+      "text": "Trạng thái đánh giá không hợp lệ",
+      "classification": "KEEP",
+      "note": "Backend contract unchanged. Frontend errorMessages only rewrites known setup/NLP codes; meaningful validation and business errors retained."
+    },
+    {
+      "file": "server/src/routes/internship.routes.js",
+      "line": 126,
+      "text": "Không tìm thấy nhật ký",
+      "classification": "KEEP",
+      "note": "Backend contract unchanged. Frontend errorMessages only rewrites known setup/NLP codes; meaningful validation and business errors retained."
+    },
+    {
+      "file": "server/src/routes/internship.routes.js",
+      "line": 126,
+      "text": "Nhật ký theo kỳ phải đánh giá qua API core",
+      "classification": "KEEP",
+      "note": "Backend contract unchanged. Frontend errorMessages only rewrites known setup/NLP codes; meaningful validation and business errors retained."
+    },
+    {
+      "file": "server/src/routes/internship.routes.js",
+      "line": 127,
+      "text": "Không được tự duyệt nhật ký",
+      "classification": "KEEP",
+      "note": "Backend contract unchanged. Frontend errorMessages only rewrites known setup/NLP codes; meaningful validation and business errors retained."
+    },
+    {
+      "file": "server/src/routes/internship.routes.js",
+      "line": 137,
+      "text": "Không tìm thấy chứng nhận",
+      "classification": "KEEP",
+      "note": "Backend contract unchanged. Frontend errorMessages only rewrites known setup/NLP codes; meaningful validation and business errors retained."
+    },
+    {
+      "file": "server/src/routes/internship.routes.js",
+      "line": 139,
+      "text": "Chưa có bộ xác minh token on-chain được cấu hình",
+      "classification": "KEEP",
+      "note": "Backend contract unchanged. Frontend errorMessages only rewrites known setup/NLP codes; meaningful validation and business errors retained."
+    },
+    {
+      "file": "server/src/routes/internship.routes.js",
+      "line": 143,
+      "text": "Đồng bộ chain chưa được bật",
+      "classification": "KEEP",
+      "note": "Backend contract unchanged. Frontend errorMessages only rewrites known setup/NLP codes; meaningful validation and business errors retained."
+    },
+    {
+      "file": "server/src/routes/internship.routes.js",
+      "line": 145,
+      "text": "Contract chưa sẵn sàng",
+      "classification": "KEEP",
+      "note": "Backend contract unchanged. Frontend errorMessages only rewrites known setup/NLP codes; meaningful validation and business errors retained."
+    },
+    {
+      "file": "server/src/routes/topic.routes.js",
+      "line": 37,
+      "text": "Đề tài cần ít nhất một KPI milestone",
+      "classification": "KEEP",
+      "note": "Backend contract unchanged. Frontend errorMessages only rewrites known setup/NLP codes; meaningful validation and business errors retained."
+    },
+    {
+      "file": "server/src/routes/topic.routes.js",
+      "line": 44,
+      "text": "`KPI #${milestoneIndex + 1}: cần tiêu đề và tiêu chí`",
+      "classification": "KEEP",
+      "note": "Backend contract unchanged. Frontend errorMessages only rewrites known setup/NLP codes; meaningful validation and business errors retained."
+    },
+    {
+      "file": "server/src/routes/topic.routes.js",
+      "line": 46,
+      "text": "`KPI #${milestoneIndex + 1}: trọng số phải là số nguyên 1–100`",
+      "classification": "KEEP",
+      "note": "Backend contract unchanged. Frontend errorMessages only rewrites known setup/NLP codes; meaningful validation and business errors retained."
+    },
+    {
+      "file": "server/src/routes/topic.routes.js",
+      "line": 48,
+      "text": "`KPI #${milestoneIndex + 1}: hạn nộp không hợp lệ`",
+      "classification": "KEEP",
+      "note": "Backend contract unchanged. Frontend errorMessages only rewrites known setup/NLP codes; meaningful validation and business errors retained."
+    },
+    {
+      "file": "server/src/routes/topic.routes.js",
+      "line": 51,
+      "text": "Tổng trọng số KPI phải bằng 100%",
+      "classification": "KEEP",
+      "note": "Backend contract unchanged. Frontend errorMessages only rewrites known setup/NLP codes; meaningful validation and business errors retained."
+    },
+    {
+      "file": "server/src/routes/topic.routes.js",
+      "line": 76,
+      "text": "Ví filter không hợp lệ",
+      "classification": "KEEP",
+      "note": "Backend contract unchanged. Frontend errorMessages only rewrites known setup/NLP codes; meaningful validation and business errors retained."
+    },
+    {
+      "file": "server/src/routes/topic.routes.js",
+      "line": 77,
+      "text": "Trạng thái filter không hợp lệ",
+      "classification": "KEEP",
+      "note": "Backend contract unchanged. Frontend errorMessages only rewrites known setup/NLP codes; meaningful validation and business errors retained."
+    },
+    {
+      "file": "server/src/routes/topic.routes.js",
+      "line": 123,
+      "text": "Tiêu đề/mô tả phải là chuỗi",
+      "classification": "KEEP",
+      "note": "Backend contract unchanged. Frontend errorMessages only rewrites known setup/NLP codes; meaningful validation and business errors retained."
+    },
+    {
+      "file": "server/src/routes/topic.routes.js",
+      "line": 124,
+      "text": "Cần nhập tiêu đề và mô tả đề tài",
+      "classification": "KEEP",
+      "note": "Backend contract unchanged. Frontend errorMessages only rewrites known setup/NLP codes; meaningful validation and business errors retained."
+    },
+    {
+      "file": "server/src/routes/topic.routes.js",
+      "line": 125,
+      "text": "Độ khó không hợp lệ",
+      "classification": "KEEP",
+      "note": "Backend contract unchanged. Frontend errorMessages only rewrites known setup/NLP codes; meaningful validation and business errors retained."
+    },
+    {
+      "file": "server/src/routes/topic.routes.js",
+      "line": 127,
+      "text": "maxSlots phải là số nguyên >= 1",
+      "classification": "KEEP",
+      "note": "Backend contract unchanged. Frontend errorMessages only rewrites known setup/NLP codes; meaningful validation and business errors retained."
+    },
+    {
+      "file": "server/src/routes/topic.routes.js",
+      "line": 133,
+      "text": "endDate không hợp lệ",
+      "classification": "KEEP",
+      "note": "Backend contract unchanged. Frontend errorMessages only rewrites known setup/NLP codes; meaningful validation and business errors retained."
+    },
+    {
+      "file": "server/src/routes/topic.routes.js",
+      "line": 175,
+      "text": "Cần nhập tên và tiêu chí KPI",
+      "classification": "KEEP",
+      "note": "Backend contract unchanged. Frontend errorMessages only rewrites known setup/NLP codes; meaningful validation and business errors retained."
+    },
+    {
+      "file": "server/src/routes/topic.routes.js",
+      "line": 176,
+      "text": "Chỉ được thêm KPI khi đề tài đang mở",
+      "classification": "KEEP",
+      "note": "Backend contract unchanged. Frontend errorMessages only rewrites known setup/NLP codes; meaningful validation and business errors retained."
+    },
+    {
+      "file": "server/src/routes/topic.routes.js",
+      "line": 179,
+      "text": "Trọng số KPI không hợp lệ hoặc tổng vượt quá 100%",
+      "classification": "KEEP",
+      "note": "Backend contract unchanged. Frontend errorMessages only rewrites known setup/NLP codes; meaningful validation and business errors retained."
+    },
+    {
+      "file": "server/src/routes/topic.routes.js",
+      "line": 182,
+      "text": "Hạn KPI không hợp lệ",
+      "classification": "KEEP",
+      "note": "Backend contract unchanged. Frontend errorMessages only rewrites known setup/NLP codes; meaningful validation and business errors retained."
+    },
+    {
+      "file": "server/src/routes/topic.routes.js",
+      "line": 191,
+      "text": "Ví mentor không hợp lệ",
+      "classification": "KEEP",
+      "note": "Backend contract unchanged. Frontend errorMessages only rewrites known setup/NLP codes; meaningful validation and business errors retained."
+    },
+    {
+      "file": "server/src/routes/topic.routes.js",
+      "line": 193,
+      "text": "Ví này không thuộc tài khoản mentor",
+      "classification": "KEEP",
+      "note": "Backend contract unchanged. Frontend errorMessages only rewrites known setup/NLP codes; meaningful validation and business errors retained."
+    },
+    {
+      "file": "server/src/routes/topic.routes.js",
+      "line": 203,
+      "text": "Địa chỉ ví sinh viên không hợp lệ",
+      "classification": "KEEP",
+      "note": "Backend contract unchanged. Frontend errorMessages only rewrites known setup/NLP codes; meaningful validation and business errors retained."
+    },
+    {
+      "file": "server/src/routes/topic.routes.js",
+      "line": 204,
+      "text": "Đề tài không còn ở trạng thái mở",
+      "classification": "KEEP",
+      "note": "Backend contract unchanged. Frontend errorMessages only rewrites known setup/NLP codes; meaningful validation and business errors retained."
+    },
+    {
+      "file": "server/src/routes/topic.routes.js",
+      "line": 205,
+      "text": "Đề tài đã hết số lượng vị trí",
+      "classification": "KEEP",
+      "note": "Backend contract unchanged. Frontend errorMessages only rewrites known setup/NLP codes; meaningful validation and business errors retained."
+    },
+    {
+      "file": "server/src/routes/topic.routes.js",
+      "line": 207,
+      "text": "Đề tài cần có KPI với tổng trọng số đúng 100% trước khi phân công",
+      "classification": "KEEP",
+      "note": "Backend contract unchanged. Frontend errorMessages only rewrites known setup/NLP codes; meaningful validation and business errors retained."
+    },
+    {
+      "file": "server/src/routes/topic.routes.js",
+      "line": 210,
+      "text": "Không tìm thấy tài khoản sinh viên với ví này",
+      "classification": "KEEP",
+      "note": "Backend contract unchanged. Frontend errorMessages only rewrites known setup/NLP codes; meaningful validation and business errors retained."
+    },
+    {
+      "file": "server/src/routes/topic.routes.js",
+      "line": 230,
+      "text": "Nội dung báo cáo không được để trống",
+      "classification": "KEEP",
+      "note": "Backend contract unchanged. Frontend errorMessages only rewrites known setup/NLP codes; meaningful validation and business errors retained."
+    },
+    {
+      "file": "server/src/routes/topic.routes.js",
+      "line": 231,
+      "text": "Đề tài đã kết thúc, không thể nộp",
+      "classification": "KEEP",
+      "note": "Backend contract unchanged. Frontend errorMessages only rewrites known setup/NLP codes; meaningful validation and business errors retained."
+    },
+    {
+      "file": "server/src/routes/topic.routes.js",
+      "line": 234,
+      "text": "Không tìm thấy KPI milestone",
+      "classification": "KEEP",
+      "note": "Backend contract unchanged. Frontend errorMessages only rewrites known setup/NLP codes; meaningful validation and business errors retained."
+    },
+    {
+      "file": "server/src/routes/topic.routes.js",
+      "line": 235,
+      "text": "KPI đã được duyệt",
+      "classification": "KEEP",
+      "note": "Backend contract unchanged. Frontend errorMessages only rewrites known setup/NLP codes; meaningful validation and business errors retained."
+    },
+    {
+      "file": "server/src/routes/topic.routes.js",
+      "line": 236,
+      "text": "KPI đang chờ mentor đánh giá",
+      "classification": "KEEP",
+      "note": "Backend contract unchanged. Frontend errorMessages only rewrites known setup/NLP codes; meaningful validation and business errors retained."
+    },
+    {
+      "file": "server/src/routes/topic.routes.js",
+      "line": 293,
+      "text": "Không tìm thấy KPI milestone",
+      "classification": "KEEP",
+      "note": "Backend contract unchanged. Frontend errorMessages only rewrites known setup/NLP codes; meaningful validation and business errors retained."
+    },
+    {
+      "file": "server/src/routes/topic.routes.js",
+      "line": 294,
+      "text": "Chỉ có thể đánh giá KPI đã nộp",
+      "classification": "KEEP",
+      "note": "Backend contract unchanged. Frontend errorMessages only rewrites known setup/NLP codes; meaningful validation and business errors retained."
+    },
+    {
+      "file": "server/src/routes/topic.routes.js",
+      "line": 295,
+      "text": "Trạng thái đánh giá không hợp lệ",
+      "classification": "KEEP",
+      "note": "Backend contract unchanged. Frontend errorMessages only rewrites known setup/NLP codes; meaningful validation and business errors retained."
+    },
+    {
+      "file": "server/src/routes/topic.routes.js",
+      "line": 298,
+      "text": "Điểm phải nằm trong khoảng 0–100",
+      "classification": "KEEP",
+      "note": "Backend contract unchanged. Frontend errorMessages only rewrites known setup/NLP codes; meaningful validation and business errors retained."
+    },
+    {
+      "file": "server/src/routes/topic.routes.js",
+      "line": 304,
+      "text": "Không tìm thấy bản ghi phân công",
+      "classification": "KEEP",
+      "note": "Backend contract unchanged. Frontend errorMessages only rewrites known setup/NLP codes; meaningful validation and business errors retained."
+    },
+    {
+      "file": "server/src/routes/topic.routes.js",
+      "line": 332,
+      "text": "Đề tài đã hoàn thành",
+      "classification": "KEEP",
+      "note": "Backend contract unchanged. Frontend errorMessages only rewrites known setup/NLP codes; meaningful validation and business errors retained."
+    },
+    {
+      "file": "server/src/routes/topic.routes.js",
+      "line": 333,
+      "text": "Đề tài chưa được phân công sinh viên",
+      "classification": "KEEP",
+      "note": "Backend contract unchanged. Frontend errorMessages only rewrites known setup/NLP codes; meaningful validation and business errors retained."
+    },
+    {
+      "file": "server/src/routes/topic.routes.js",
+      "line": 335,
+      "text": "Tất cả KPI phải được duyệt và tổng trọng số phải bằng 100%",
+      "classification": "KEEP",
+      "note": "Backend contract unchanged. Frontend errorMessages only rewrites known setup/NLP codes; meaningful validation and business errors retained."
+    },
+    {
+      "file": "server/src/routes/topic.routes.js",
+      "line": 366,
+      "text": "Không được ghi giao dịch cho đề tài này",
+      "classification": "KEEP",
+      "note": "Backend contract unchanged. Frontend errorMessages only rewrites known setup/NLP codes; meaningful validation and business errors retained."
+    },
+    {
+      "file": "server/src/routes/topic.routes.js",
+      "line": 368,
+      "text": "Transaction hash không hợp lệ",
+      "classification": "KEEP",
+      "note": "Backend contract unchanged. Frontend errorMessages only rewrites known setup/NLP codes; meaningful validation and business errors retained."
+    },
+    {
+      "file": "server/src/routes/topic.routes.js",
+      "line": 369,
+      "text": "onChainId không hợp lệ",
+      "classification": "KEEP",
+      "note": "Backend contract unchanged. Frontend errorMessages only rewrites known setup/NLP codes; meaningful validation and business errors retained."
+    },
+    {
+      "file": "server/src/routes/topic.routes.js",
+      "line": 371,
+      "text": "On-chain ID đã gắn với đề tài khác",
+      "classification": "KEEP",
+      "note": "Backend contract unchanged. Frontend errorMessages only rewrites known setup/NLP codes; meaningful validation and business errors retained."
+    },
+    {
+      "file": "server/src/routes/walletIdentity.routes.js",
+      "line": 5,
+      "text": "Chức năng chỉ dùng trong hệ thống User ID thống nhất",
+      "classification": "KEEP",
+      "note": "Backend contract unchanged. Frontend errorMessages only rewrites known setup/NLP codes; meaningful validation and business errors retained."
+    },
+    {
+      "file": "server/src/routes/walletIdentity.routes.js",
+      "line": 6,
+      "text": "Chưa liên kết ví",
+      "classification": "KEEP",
+      "note": "Backend contract unchanged. Frontend errorMessages only rewrites known setup/NLP codes; meaningful validation and business errors retained."
+    },
+    {
+      "file": "server/src/routes/walletIdentity.routes.js",
+      "line": 7,
+      "text": "Origin không hợp lệ",
+      "classification": "KEEP",
+      "note": "Backend contract unchanged. Frontend errorMessages only rewrites known setup/NLP codes; meaningful validation and business errors retained."
+    },
+    {
+      "file": "server/src/routes/walletIdentity.routes.js",
+      "line": 13,
+      "text": "Chức năng chỉ dùng trong hệ thống thống nhất",
+      "classification": "KEEP",
+      "note": "Backend contract unchanged. Frontend errorMessages only rewrites known setup/NLP codes; meaningful validation and business errors retained."
+    },
+    {
+      "file": "server/src/routes/walletIdentity.routes.js",
+      "line": 14,
+      "text": "Không được xóa phương thức đăng nhập cuối",
+      "classification": "KEEP",
+      "note": "Backend contract unchanged. Frontend errorMessages only rewrites known setup/NLP codes; meaningful validation and business errors retained."
+    },
+    {
+      "file": "server/src/routes/walletIdentity.routes.js",
+      "line": 15,
+      "text": "Challenge không hợp lệ",
+      "classification": "KEEP",
+      "note": "Backend contract unchanged. Frontend errorMessages only rewrites known setup/NLP codes; meaningful validation and business errors retained."
+    },
+    {
+      "file": "server/src/routes/walletIdentity.routes.js",
+      "line": 17,
+      "text": "Challenge sai/hết hạn",
+      "classification": "KEEP",
+      "note": "Backend contract unchanged. Frontend errorMessages only rewrites known setup/NLP codes; meaningful validation and business errors retained."
+    },
+    {
+      "file": "server/src/routes/walletIdentity.routes.js",
+      "line": 18,
+      "text": "Chữ ký không hợp lệ",
+      "classification": "KEEP",
+      "note": "Backend contract unchanged. Frontend errorMessages only rewrites known setup/NLP codes; meaningful validation and business errors retained."
+    },
+    {
+      "file": "server/src/routes/walletIdentity.routes.js",
+      "line": 18,
+      "text": "Chữ ký không khớp",
+      "classification": "KEEP",
+      "note": "Backend contract unchanged. Frontend errorMessages only rewrites known setup/NLP codes; meaningful validation and business errors retained."
+    },
+    {
+      "file": "server/src/routes/walletIdentity.routes.js",
+      "line": 20,
+      "text": "Ví đã gắn với operation/chứng nhận blockchain; không tự hủy",
+      "classification": "KEEP",
+      "note": "Backend contract unchanged. Frontend errorMessages only rewrites known setup/NLP codes; meaningful validation and business errors retained."
+    },
+    {
+      "file": "server/src/routes/walletIdentity.routes.js",
+      "line": 21,
+      "text": "Cần đóng phiên giờ làm trước",
+      "classification": "KEEP",
+      "note": "Backend contract unchanged. Frontend errorMessages only rewrites known setup/NLP codes; meaningful validation and business errors retained."
+    },
+    {
+      "file": "server/src/routes/walletIdentity.routes.js",
+      "line": 24,
+      "text": "Cần mapping dữ liệu legacy trước khi hủy",
+      "classification": "KEEP",
+      "note": "Backend contract unchanged. Frontend errorMessages only rewrites known setup/NLP codes; meaningful validation and business errors retained."
+    },
+    {
+      "file": "server/src/routes/walletIdentity.routes.js",
+      "line": 26,
+      "text": "Challenge đã dùng",
+      "classification": "KEEP",
+      "note": "Backend contract unchanged. Frontend errorMessages only rewrites known setup/NLP codes; meaningful validation and business errors retained."
+    },
+    {
+      "file": "server/src/routes/walletIdentity.routes.js",
+      "line": 27,
+      "text": "Tài khoản vừa thay đổi",
+      "classification": "KEEP",
+      "note": "Backend contract unchanged. Frontend errorMessages only rewrites known setup/NLP codes; meaningful validation and business errors retained."
+    },
+    {
+      "file": "server/src/services/aiClient.js",
+      "line": 8,
+      "text": "Danh sách kỹ năng không hợp lệ",
+      "classification": "KEEP",
+      "note": "Backend contract unchanged. Frontend errorMessages only rewrites known setup/NLP codes; meaningful validation and business errors retained."
+    },
+    {
+      "file": "server/src/services/aiClient.js",
+      "line": 10,
+      "text": "Nội dung matching không hợp lệ",
+      "classification": "KEEP",
+      "note": "Backend contract unchanged. Frontend errorMessages only rewrites known setup/NLP codes; meaningful validation and business errors retained."
+    },
+    {
+      "file": "server/src/services/attendanceService.js",
+      "line": 18,
+      "text": "Chỉ công ty tạo phiên QR",
+      "classification": "KEEP",
+      "note": "Backend contract unchanged. Frontend errorMessages only rewrites known setup/NLP codes; meaningful validation and business errors retained."
+    },
+    {
+      "file": "server/src/services/attendanceService.js",
+      "line": 19,
+      "text": "Cần sinh viên và đề tài hợp lệ",
+      "classification": "KEEP",
+      "note": "Backend contract unchanged. Frontend errorMessages only rewrites known setup/NLP codes; meaningful validation and business errors retained."
+    },
+    {
+      "file": "server/src/services/attendanceService.js",
+      "line": 21,
+      "text": "Phân công không còn hoạt động",
+      "classification": "KEEP",
+      "note": "Backend contract unchanged. Frontend errorMessages only rewrites known setup/NLP codes; meaningful validation and business errors retained."
+    },
+    {
+      "file": "server/src/services/attendanceService.js",
+      "line": 23,
+      "text": "Phiên QR phải có hạn từ 15 đến 300 giây",
+      "classification": "KEEP",
+      "note": "Backend contract unchanged. Frontend errorMessages only rewrites known setup/NLP codes; meaningful validation and business errors retained."
+    },
+    {
+      "file": "server/src/services/attendanceService.js",
+      "line": 30,
+      "text": "Chưa có phiên QR hợp lệ",
+      "classification": "KEEP",
+      "note": "Backend contract unchanged. Frontend errorMessages only rewrites known setup/NLP codes; meaningful validation and business errors retained."
+    },
+    {
+      "file": "server/src/services/attendanceService.js",
+      "line": 34,
+      "text": "QR không hợp lệ",
+      "classification": "KEEP",
+      "note": "Backend contract unchanged. Frontend errorMessages only rewrites known setup/NLP codes; meaningful validation and business errors retained."
+    },
+    {
+      "file": "server/src/services/attendanceService.js",
+      "line": 37,
+      "text": "QR sai chữ ký hoặc đã hết hạn",
+      "classification": "KEEP",
+      "note": "Backend contract unchanged. Frontend errorMessages only rewrites known setup/NLP codes; meaningful validation and business errors retained."
+    },
+    {
+      "file": "server/src/services/attendanceService.js",
+      "line": 38,
+      "text": "QR không dành cho sinh viên này",
+      "classification": "KEEP",
+      "note": "Backend contract unchanged. Frontend errorMessages only rewrites known setup/NLP codes; meaningful validation and business errors retained."
+    },
+    {
+      "file": "server/src/services/attendanceService.js",
+      "line": 40,
+      "text": "Phiên QR không còn hợp lệ",
+      "classification": "KEEP",
+      "note": "Backend contract unchanged. Frontend errorMessages only rewrites known setup/NLP codes; meaningful validation and business errors retained."
+    },
+    {
+      "file": "server/src/services/attendanceService.js",
+      "line": 41,
+      "text": "QR đã được sử dụng",
+      "classification": "KEEP",
+      "note": "Backend contract unchanged. Frontend errorMessages only rewrites known setup/NLP codes; meaningful validation and business errors retained."
+    },
+    {
+      "file": "server/src/services/attendanceService.js",
+      "line": 43,
+      "text": "Phân công không còn hoạt động",
+      "classification": "KEEP",
+      "note": "Backend contract unchanged. Frontend errorMessages only rewrites known setup/NLP codes; meaningful validation and business errors retained."
+    },
+    {
+      "file": "server/src/services/attendanceService.js",
+      "line": 44,
+      "text": "Bạn đã điểm danh hôm nay",
+      "classification": "KEEP",
+      "note": "Backend contract unchanged. Frontend errorMessages only rewrites known setup/NLP codes; meaningful validation and business errors retained."
+    },
+    {
+      "file": "server/src/services/attendanceService.js",
+      "line": 47,
+      "text": "QR đã được sử dụng",
+      "classification": "KEEP",
+      "note": "Backend contract unchanged. Frontend errorMessages only rewrites known setup/NLP codes; meaningful validation and business errors retained."
+    },
+    {
+      "file": "server/src/services/attendanceService.js",
+      "line": 52,
+      "text": "Đã ghi nhận điểm danh qua phiên QR",
+      "classification": "KEEP",
+      "note": "Backend contract unchanged. Frontend errorMessages only rewrites known setup/NLP codes; meaningful validation and business errors retained."
+    },
+    {
+      "file": "server/src/services/attendanceService.js",
+      "line": 54,
+      "text": "Bạn đã điểm danh hôm nay",
+      "classification": "KEEP",
+      "note": "Backend contract unchanged. Frontend errorMessages only rewrites known setup/NLP codes; meaningful validation and business errors retained."
+    },
+    {
+      "file": "server/src/services/authService.js",
+      "line": 36,
+      "text": "Nonce vừa được sử dụng; hãy thử lại",
+      "classification": "KEEP",
+      "note": "Backend contract unchanged. Frontend errorMessages only rewrites known setup/NLP codes; meaningful validation and business errors retained."
+    },
+    {
+      "file": "server/src/services/authService.js",
+      "line": 48,
+      "text": "Nonce không tồn tại hoặc đã hết hạn, hãy yêu cầu nonce mới",
+      "classification": "KEEP",
+      "note": "Backend contract unchanged. Frontend errorMessages only rewrites known setup/NLP codes; meaningful validation and business errors retained."
+    },
+    {
+      "file": "server/src/services/authService.js",
+      "line": 54,
+      "text": "Chữ ký không hợp lệ",
+      "classification": "KEEP",
+      "note": "Backend contract unchanged. Frontend errorMessages only rewrites known setup/NLP codes; meaningful validation and business errors retained."
+    },
+    {
+      "file": "server/src/services/authService.js",
+      "line": 57,
+      "text": "Chữ ký không khớp với ví",
+      "classification": "KEEP",
+      "note": "Backend contract unchanged. Frontend errorMessages only rewrites known setup/NLP codes; meaningful validation and business errors retained."
+    },
+    {
+      "file": "server/src/services/authService.js",
+      "line": 60,
+      "text": "Nonce đã được sử dụng hoặc hết hạn",
+      "classification": "KEEP",
+      "note": "Backend contract unchanged. Frontend errorMessages only rewrites known setup/NLP codes; meaningful validation and business errors retained."
+    },
+    {
+      "file": "server/src/services/businessIdentity.js",
+      "line": 13,
+      "text": "Thiếu danh tính sinh viên đã xác minh",
+      "classification": "KEEP",
+      "note": "Backend contract unchanged. Frontend errorMessages only rewrites known setup/NLP codes; meaningful validation and business errors retained."
+    },
+    {
+      "file": "server/src/services/businessIdentity.js",
+      "line": 17,
+      "text": "Sinh viên cần liên kết ví đã xác minh để sử dụng chức năng này",
+      "classification": "KEEP",
+      "note": "Backend contract unchanged. Frontend errorMessages only rewrites known setup/NLP codes; meaningful validation and business errors retained."
+    },
+    {
+      "file": "server/src/services/chainListener.js",
+      "line": 116,
+      "text": "Contract chưa sẵn sàng",
+      "classification": "KEEP",
+      "note": "Backend contract unchanged. Frontend errorMessages only rewrites known setup/NLP codes; meaningful validation and business errors retained."
+    },
+    {
+      "file": "server/src/services/chainListener.js",
+      "line": 147,
+      "text": "`Đã quét và đồng bộ ${count} events`",
+      "classification": "KEEP",
+      "note": "Backend contract unchanged. Frontend errorMessages only rewrites known setup/NLP codes; meaningful validation and business errors retained."
+    },
+    {
+      "file": "server/src/services/chainVerificationService.js",
+      "line": 7,
+      "text": "Sai mạng blockchain",
+      "classification": "KEEP",
+      "note": "Backend contract unchanged. Frontend errorMessages only rewrites known setup/NLP codes; meaningful validation and business errors retained."
+    },
+    {
+      "file": "server/src/services/chainVerificationService.js",
+      "line": 8,
+      "text": "Receipt không xác minh được contract hoặc người ký",
+      "classification": "KEEP",
+      "note": "Backend contract unchanged. Frontend errorMessages only rewrites known setup/NLP codes; meaningful validation and business errors retained."
+    },
+    {
+      "file": "server/src/services/chainVerificationService.js",
+      "line": 37,
+      "text": "Không có event hợp lệ thuộc đề tài này",
+      "classification": "KEEP",
+      "note": "Backend contract unchanged. Frontend errorMessages only rewrites known setup/NLP codes; meaningful validation and business errors retained."
+    },
+    {
+      "file": "server/src/services/chainVerificationService.js",
+      "line": 41,
+      "text": "Chưa cấu hình xác minh receipt blockchain",
+      "classification": "KEEP",
+      "note": "Backend contract unchanged. Frontend errorMessages only rewrites known setup/NLP codes; meaningful validation and business errors retained."
+    },
+    {
+      "file": "server/src/services/chainVerificationService.js",
+      "line": 48,
+      "text": "Giao dịch chưa được xác nhận",
+      "classification": "KEEP",
+      "note": "Backend contract unchanged. Frontend errorMessages only rewrites known setup/NLP codes; meaningful validation and business errors retained."
+    },
+    {
+      "file": "server/src/services/chainVerificationService.js",
+      "line": 49,
+      "text": "Receipt không khớp transaction hash",
+      "classification": "KEEP",
+      "note": "Backend contract unchanged. Frontend errorMessages only rewrites known setup/NLP codes; meaningful validation and business errors retained."
+    },
+    {
+      "file": "server/src/services/chainVerificationService.js",
+      "line": 51,
+      "text": "RPC không khả dụng",
+      "classification": "KEEP",
+      "note": "Backend contract unchanged. Frontend errorMessages only rewrites known setup/NLP codes; meaningful validation and business errors retained."
+    },
+    {
+      "file": "server/src/services/cvParser.js",
+      "line": 6,
+      "text": "Bộ xử lý CV đang bận; thử lại sau",
+      "classification": "KEEP",
+      "note": "Backend contract unchanged. Frontend errorMessages only rewrites known setup/NLP codes; meaningful validation and business errors retained."
+    },
+    {
+      "file": "server/src/services/cvParser.js",
+      "line": 14,
+      "text": "Tệp quá phức tạp hoặc xử lý vượt thời gian",
+      "classification": "KEEP",
+      "note": "Backend contract unchanged. Frontend errorMessages only rewrites known setup/NLP codes; meaningful validation and business errors retained."
+    },
+    {
+      "file": "server/src/services/cvParser.js",
+      "line": 15,
+      "text": "Nội dung trích xuất vượt giới hạn",
+      "classification": "KEEP",
+      "note": "Backend contract unchanged. Frontend errorMessages only rewrites known setup/NLP codes; meaningful validation and business errors retained."
+    },
+    {
+      "file": "server/src/services/cvParser.js",
+      "line": 17,
+      "text": "Python parser chưa sẵn sàng",
+      "classification": "KEEP",
+      "note": "Backend contract unchanged. Frontend errorMessages only rewrites known setup/NLP codes; meaningful validation and business errors retained."
+    },
+    {
+      "file": "server/src/services/cvParser.js",
+      "line": 19,
+      "text": "Không thể xử lý tệp CV",
+      "classification": "KEEP",
+      "note": "Backend contract unchanged. Frontend errorMessages only rewrites known setup/NLP codes; meaningful validation and business errors retained."
+    },
+    {
+      "file": "server/src/services/googleIdentity.js",
+      "line": 11,
+      "text": "Thông tin xác thực Google không hợp lệ hoặc đã hết hạn",
+      "classification": "KEEP",
+      "note": "Backend contract unchanged. Frontend errorMessages only rewrites known setup/NLP codes; meaningful validation and business errors retained."
+    },
+    {
+      "file": "server/src/services/googleIdentity.js",
+      "line": 16,
+      "text": "Thiếu Google ID token",
+      "classification": "KEEP",
+      "note": "Backend contract unchanged. Frontend errorMessages only rewrites known setup/NLP codes; meaningful validation and business errors retained."
+    },
+    {
+      "file": "server/src/services/googleIdentity.js",
+      "line": 23,
+      "text": "Không xác minh được Google. Hãy thử lại; kiểm tra cấu hình và kết nối mạng.",
+      "classification": "KEEP",
+      "note": "Backend contract unchanged. Frontend errorMessages only rewrites known setup/NLP codes; meaningful validation and business errors retained."
+    },
+    {
+      "file": "server/src/services/ipfsService.js",
+      "line": 12,
+      "text": "IPFS chưa được cấu hình: thiếu PINATA_JWT trong server/.env",
+      "classification": "KEEP",
+      "note": "Backend contract unchanged. Frontend errorMessages only rewrites known setup/NLP codes; meaningful validation and business errors retained."
+    },
+    {
+      "file": "server/src/services/ipfsService.js",
+      "line": 16,
+      "text": "Luồng IPFS legacy chưa bảo vệ dữ liệu; dùng upload báo cáo mã hóa theo kỳ",
+      "classification": "KEEP",
+      "note": "Backend contract unchanged. Frontend errorMessages only rewrites known setup/NLP codes; meaningful validation and business errors retained."
+    },
+    {
+      "file": "server/src/services/ipfsService.js",
+      "line": 24,
+      "text": "Upload IPFS thất bại; kiểm tra cấu hình hoặc thử lại sau.",
+      "classification": "KEEP",
+      "note": "Backend contract unchanged. Frontend errorMessages only rewrites known setup/NLP codes; meaningful validation and business errors retained."
+    },
+    {
+      "file": "server/src/services/localWeb3.js",
+      "line": 9,
+      "text": "Web3 local chưa bật/cấu hình",
+      "classification": "KEEP",
+      "note": "Backend contract unchanged. Frontend errorMessages only rewrites known setup/NLP codes; meaningful validation and business errors retained."
+    },
+    {
+      "file": "server/src/services/localWeb3.js",
+      "line": 10,
+      "text": "Không đọc được metadata deployment local",
+      "classification": "KEEP",
+      "note": "Backend contract unchanged. Frontend errorMessages only rewrites known setup/NLP codes; meaningful validation and business errors retained."
+    },
+    {
+      "file": "server/src/services/localWeb3.js",
+      "line": 11,
+      "text": "Deployment không thuộc môi trường Hardhat local được phép",
+      "classification": "KEEP",
+      "note": "Backend contract unchanged. Frontend errorMessages only rewrites known setup/NLP codes; meaningful validation and business errors retained."
+    },
+    {
+      "file": "server/src/services/localWeb3.js",
+      "line": 18,
+      "text": "Chain reset hoặc deployment/code không còn khớp; không xác minh",
+      "classification": "KEEP",
+      "note": "Backend contract unchanged. Frontend errorMessages only rewrites known setup/NLP codes; meaningful validation and business errors retained."
+    },
+    {
+      "file": "server/src/services/localWeb3.js",
+      "line": 20,
+      "text": "RPC Hardhat local không khả dụng",
+      "classification": "KEEP",
+      "note": "Backend contract unchanged. Frontend errorMessages only rewrites known setup/NLP codes; meaningful validation and business errors retained."
+    },
+    {
+      "file": "server/src/services/localWeb3.js",
+      "line": 27,
+      "text": "Chưa tìm được event duy nhất để reconciliation",
+      "classification": "KEEP",
+      "note": "Backend contract unchanged. Frontend errorMessages only rewrites known setup/NLP codes; meaningful validation and business errors retained."
+    },
+    {
+      "file": "server/src/services/localWeb3.js",
+      "line": 30,
+      "text": "Operation thuộc chain instance/deployment khác",
+      "classification": "KEEP",
+      "note": "Backend contract unchanged. Frontend errorMessages only rewrites known setup/NLP codes; meaningful validation and business errors retained."
+    },
+    {
+      "file": "server/src/services/localWeb3.js",
+      "line": 32,
+      "text": "Giao dịch chưa có receipt; cần đối chiếu lại",
+      "classification": "KEEP",
+      "note": "Backend contract unchanged. Frontend errorMessages only rewrites known setup/NLP codes; meaningful validation and business errors retained."
+    },
+    {
+      "file": "server/src/services/localWeb3.js",
+      "line": 33,
+      "text": "Giao dịch đã thất bại on-chain",
+      "classification": "KEEP",
+      "note": "Backend contract unchanged. Frontend errorMessages only rewrites known setup/NLP codes; meaningful validation and business errors retained."
+    },
+    {
+      "file": "server/src/services/localWeb3.js",
+      "line": 34,
+      "text": "Receipt/signer/address không khớp",
+      "classification": "KEEP",
+      "note": "Backend contract unchanged. Frontend errorMessages only rewrites known setup/NLP codes; meaningful validation and business errors retained."
+    },
+    {
+      "file": "server/src/services/localWeb3.js",
+      "line": 35,
+      "text": "Receipt không ở canonical block",
+      "classification": "KEEP",
+      "note": "Backend contract unchanged. Frontend errorMessages only rewrites known setup/NLP codes; meaningful validation and business errors retained."
+    },
+    {
+      "file": "server/src/services/localWeb3.js",
+      "line": 36,
+      "text": "Không đọc được calldata",
+      "classification": "KEEP",
+      "note": "Backend contract unchanged. Frontend errorMessages only rewrites known setup/NLP codes; meaningful validation and business errors retained."
+    },
+    {
+      "file": "server/src/services/localWeb3.js",
+      "line": 37,
+      "text": "Operation/assignment khác calldata",
+      "classification": "KEEP",
+      "note": "Backend contract unchanged. Frontend errorMessages only rewrites known setup/NLP codes; meaningful validation and business errors retained."
+    },
+    {
+      "file": "server/src/services/localWeb3.js",
+      "line": 42,
+      "text": "Mint event/calldata không khớp",
+      "classification": "KEEP",
+      "note": "Backend contract unchanged. Frontend errorMessages only rewrites known setup/NLP codes; meaningful validation and business errors retained."
+    },
+    {
+      "file": "server/src/services/localWeb3.js",
+      "line": 44,
+      "text": "Token không khớp người nhận/không soulbound",
+      "classification": "KEEP",
+      "note": "Backend contract unchanged. Frontend errorMessages only rewrites known setup/NLP codes; meaningful validation and business errors retained."
+    },
+    {
+      "file": "server/src/services/localWeb3.js",
+      "line": 47,
+      "text": "Evidence event/calldata không khớp",
+      "classification": "KEEP",
+      "note": "Backend contract unchanged. Frontend errorMessages only rewrites known setup/NLP codes; meaningful validation and business errors retained."
+    },
+    {
+      "file": "server/src/services/localWeb3.js",
+      "line": 48,
+      "text": "Evidence state không khớp",
+      "classification": "KEEP",
+      "note": "Backend contract unchanged. Frontend errorMessages only rewrites known setup/NLP codes; meaningful validation and business errors retained."
+    },
+    {
+      "file": "server/src/services/localWeb3.js",
+      "line": 58,
+      "text": "Operation payload không còn khớp",
+      "classification": "KEEP",
+      "note": "Backend contract unchanged. Frontend errorMessages only rewrites known setup/NLP codes; meaningful validation and business errors retained."
+    },
+    {
+      "file": "server/src/services/localWeb3.js",
+      "line": 60,
+      "text": "Operation đang được xử lý; không gửi trùng",
+      "classification": "KEEP",
+      "note": "Backend contract unchanged. Frontend errorMessages only rewrites known setup/NLP codes; meaningful validation and business errors retained."
+    },
+    {
+      "file": "server/src/services/localWeb3.js",
+      "line": 65,
+      "text": "Attestor không có quyền ghi",
+      "classification": "KEEP",
+      "note": "Backend contract unchanged. Frontend errorMessages only rewrites known setup/NLP codes; meaningful validation and business errors retained."
+    },
+    {
+      "file": "server/src/services/localWeb3.js",
+      "line": 69,
+      "text": "Transaction pending",
+      "classification": "KEEP",
+      "note": "Backend contract unchanged. Frontend errorMessages only rewrites known setup/NLP codes; meaningful validation and business errors retained."
+    },
+    {
+      "file": "server/src/services/localWeb3.js",
+      "line": 74,
+      "text": "Giao dịch pending; dùng đối chiếu, không gửi lại mù quáng",
+      "classification": "KEEP",
+      "note": "Backend contract unchanged. Frontend errorMessages only rewrites known setup/NLP codes; meaningful validation and business errors retained."
+    },
+    {
+      "file": "server/src/services/localWeb3.js",
+      "line": 74,
+      "text": "Giao dịch chưa được xác minh; dùng đối chiếu/retry, không tạo hash giả",
+      "classification": "KEEP",
+      "note": "Backend contract unchanged. Frontend errorMessages only rewrites known setup/NLP codes; meaningful validation and business errors retained."
+    },
+    {
+      "file": "server/src/services/localWeb3.js",
+      "line": 84,
+      "text": "Chưa có chứng nhận đã mint được xác nhận",
+      "classification": "KEEP",
+      "note": "Backend contract unchanged. Frontend errorMessages only rewrites known setup/NLP codes; meaningful validation and business errors retained."
+    },
+    {
+      "file": "server/src/services/nlpClient.js",
+      "line": 5,
+      "text": "NLP_SERVICE_URL không hợp lệ",
+      "classification": "KEEP",
+      "note": "Backend contract unchanged. Frontend errorMessages only rewrites known setup/NLP codes; meaningful validation and business errors retained."
+    },
+    {
+      "file": "server/src/services/nlpClient.js",
+      "line": 6,
+      "text": "NLP chỉ được gửi tới service loopback đã cấu hình",
+      "classification": "KEEP",
+      "note": "Backend contract unchanged. Frontend errorMessages only rewrites known setup/NLP codes; meaningful validation and business errors retained."
+    },
+    {
+      "file": "server/src/services/nlpClient.js",
+      "line": 11,
+      "text": "NLP đang bận; thử lại sau",
+      "classification": "KEEP",
+      "note": "Backend contract unchanged. Frontend errorMessages only rewrites known setup/NLP codes; meaningful validation and business errors retained."
+    },
+    {
+      "file": "server/src/services/privateIpfs.js",
+      "line": 4,
+      "text": "Chưa cấu hình khóa mã hóa báo cáo32byte",
+      "classification": "KEEP",
+      "note": "Backend contract unchanged. Frontend errorMessages only rewrites known setup/NLP codes; meaningful validation and business errors retained."
+    },
+    {
+      "file": "server/src/services/privateIpfs.js",
+      "line": 5,
+      "text": "Key ID không hợp lệ",
+      "classification": "KEEP",
+      "note": "Backend contract unchanged. Frontend errorMessages only rewrites known setup/NLP codes; meaningful validation and business errors retained."
+    },
+    {
+      "file": "server/src/services/privateIpfs.js",
+      "line": 7,
+      "text": "IPFS live chưa cấu hình hoặc chưa bật; không upload báo cáo công khai",
+      "classification": "KEEP",
+      "note": "Backend contract unchanged. Frontend errorMessages only rewrites known setup/NLP codes; meaningful validation and business errors retained."
+    },
+    {
+      "file": "server/src/services/privateIpfs.js",
+      "line": 9,
+      "text": "Tệp báo cáo phải từ1byte đến2MiB",
+      "classification": "KEEP",
+      "note": "Backend contract unchanged. Frontend errorMessages only rewrites known setup/NLP codes; meaningful validation and business errors retained."
+    },
+    {
+      "file": "server/src/services/privateIpfs.js",
+      "line": 23,
+      "text": "Không xác minh được ciphertext hoặc khóa",
+      "classification": "KEEP",
+      "note": "Backend contract unchanged. Frontend errorMessages only rewrites known setup/NLP codes; meaningful validation and business errors retained."
+    },
+    {
+      "file": "server/src/services/privateIpfs.js",
+      "line": 26,
+      "text": "CID Pinata không hợp lệ",
+      "classification": "KEEP",
+      "note": "Backend contract unchanged. Frontend errorMessages only rewrites known setup/NLP codes; meaningful validation and business errors retained."
+    },
+    {
+      "file": "server/src/services/privateIpfs.js",
+      "line": 29,
+      "text": "CID multihash không hợp lệ",
+      "classification": "KEEP",
+      "note": "Backend contract unchanged. Frontend errorMessages only rewrites known setup/NLP codes; meaningful validation and business errors retained."
+    },
+    {
+      "file": "server/src/services/privateIpfs.js",
+      "line": 31,
+      "text": "CID codec/hash không hỗ trợ",
+      "classification": "KEEP",
+      "note": "Backend contract unchanged. Frontend errorMessages only rewrites known setup/NLP codes; meaningful validation and business errors retained."
+    },
+    {
+      "file": "server/src/services/privateIpfs.js",
+      "line": 32,
+      "text": "Không nhận CID giả hoặc định dạng lạ",
+      "classification": "KEEP",
+      "note": "Backend contract unchanged. Frontend errorMessages only rewrites known setup/NLP codes; meaningful validation and business errors retained."
+    },
+    {
+      "file": "server/src/services/privateIpfs.js",
+      "line": 39,
+      "text": "Upload ciphertext Pinata thất bại hoặc timeout",
+      "classification": "KEEP",
+      "note": "Backend contract unchanged. Frontend errorMessages only rewrites known setup/NLP codes; meaningful validation and business errors retained."
+    },
+    {
+      "file": "server/src/services/privateIpfs.js",
+      "line": 41,
+      "text": "Readback khác ciphertext đã upload",
+      "classification": "KEEP",
+      "note": "Backend contract unchanged. Frontend errorMessages only rewrites known setup/NLP codes; meaningful validation and business errors retained."
+    },
+    {
+      "file": "server/src/services/privateIpfs.js",
+      "line": 42,
+      "text": "Gateway IPFS lỗi hoặc timeout",
+      "classification": "KEEP",
+      "note": "Backend contract unchanged. Frontend errorMessages only rewrites known setup/NLP codes; meaningful validation and business errors retained."
+    },
+    {
+      "file": "server/src/services/profileService.js",
+      "line": 6,
+      "text": "Email không hợp lệ",
+      "classification": "KEEP",
+      "note": "Backend contract unchanged. Frontend errorMessages only rewrites known setup/NLP codes; meaningful validation and business errors retained."
+    },
+    {
+      "file": "server/src/services/profileService.js",
+      "line": 10,
+      "text": "Hồ sơ đã thay đổi; tải lại trước khi sửa",
+      "classification": "KEEP",
+      "note": "Backend contract unchanged. Frontend errorMessages only rewrites known setup/NLP codes; meaningful validation and business errors retained."
+    },
+    {
+      "file": "server/src/services/qrGps.js",
+      "line": 10,
+      "text": "GPS quá cũ hoặc ở tương lai",
+      "classification": "KEEP",
+      "note": "Backend contract unchanged. Frontend errorMessages only rewrites known setup/NLP codes; meaningful validation and business errors retained."
+    },
+    {
+      "file": "server/src/services/qrGps.js",
+      "line": 11,
+      "text": "GPS chưa đủ chính xác; thử ngoài trời/gần tâm hơn",
+      "classification": "KEEP",
+      "note": "Backend contract unchanged. Frontend errorMessages only rewrites known setup/NLP codes; meaningful validation and business errors retained."
+    },
+    {
+      "file": "server/src/services/qrGps.js",
+      "line": 12,
+      "text": "GPS và vùng sai số nằm ngoài phạm vi cho phép",
+      "classification": "KEEP",
+      "note": "Backend contract unchanged. Frontend errorMessages only rewrites known setup/NLP codes; meaningful validation and business errors retained."
+    },
+    {
+      "file": "server/src/services/qrGps.js",
+      "line": 16,
+      "text": "Chỉ doanh nghiệp tạo QR",
+      "classification": "KEEP",
+      "note": "Backend contract unchanged. Frontend errorMessages only rewrites known setup/NLP codes; meaningful validation and business errors retained."
+    },
+    {
+      "file": "server/src/services/qrGps.js",
+      "line": 19,
+      "text": "Sai số tối đa không được lớn hơn bán kính",
+      "classification": "KEEP",
+      "note": "Backend contract unchanged. Frontend errorMessages only rewrites known setup/NLP codes; meaningful validation and business errors retained."
+    },
+    {
+      "file": "server/src/services/qrGps.js",
+      "line": 25,
+      "text": "Chỉ sinh viên dùng QR",
+      "classification": "KEEP",
+      "note": "Backend contract unchanged. Frontend errorMessages only rewrites known setup/NLP codes; meaningful validation and business errors retained."
+    },
+    {
+      "file": "server/src/services/qrGps.js",
+      "line": 25,
+      "text": "QR không hợp lệ",
+      "classification": "KEEP",
+      "note": "Backend contract unchanged. Frontend errorMessages only rewrites known setup/NLP codes; meaningful validation and business errors retained."
+    },
+    {
+      "file": "server/src/services/qrGps.js",
+      "line": 26,
+      "text": "QR sai hoặc hết hạn",
+      "classification": "KEEP",
+      "note": "Backend contract unchanged. Frontend errorMessages only rewrites known setup/NLP codes; meaningful validation and business errors retained."
+    },
+    {
+      "file": "server/src/services/qrGps.js",
+      "line": 27,
+      "text": "QR không dành cho tài khoản này",
+      "classification": "KEEP",
+      "note": "Backend contract unchanged. Frontend errorMessages only rewrites known setup/NLP codes; meaningful validation and business errors retained."
+    },
+    {
+      "file": "server/src/services/qrGps.js",
+      "line": 28,
+      "text": "PhiênQR không hợp lệ",
+      "classification": "KEEP",
+      "note": "Backend contract unchanged. Frontend errorMessages only rewrites known setup/NLP codes; meaningful validation and business errors retained."
+    },
+    {
+      "file": "server/src/services/qrGps.js",
+      "line": 29,
+      "text": "QR đã dùng",
+      "classification": "KEEP",
+      "note": "Backend contract unchanged. Frontend errorMessages only rewrites known setup/NLP codes; meaningful validation and business errors retained."
+    },
+    {
+      "file": "server/src/services/qrGps.js",
+      "line": 32,
+      "text": "Đã có phiên giờ làm hôm nay",
+      "classification": "KEEP",
+      "note": "Backend contract unchanged. Frontend errorMessages only rewrites known setup/NLP codes; meaningful validation and business errors retained."
+    },
+    {
+      "file": "server/src/services/qrGps.js",
+      "line": 33,
+      "text": "Chưa có phiên mở đểcheckout",
+      "classification": "KEEP",
+      "note": "Backend contract unchanged. Frontend errorMessages only rewrites known setup/NLP codes; meaningful validation and business errors retained."
+    },
+    {
+      "file": "server/src/services/qrGps.js",
+      "line": 34,
+      "text": "QR đã dùng",
+      "classification": "KEEP",
+      "note": "Backend contract unchanged. Frontend errorMessages only rewrites known setup/NLP codes; meaningful validation and business errors retained."
+    },
+    {
+      "file": "server/src/services/qrGps.js",
+      "line": 40,
+      "text": "Phiên vừa thay đổi",
+      "classification": "KEEP",
+      "note": "Backend contract unchanged. Frontend errorMessages only rewrites known setup/NLP codes; meaningful validation and business errors retained."
+    },
+    {
+      "file": "server/src/services/timeTracking.js",
+      "line": 3,
+      "text": "Khoảng giờ phải dương và không vượt16giờ",
+      "classification": "KEEP",
+      "note": "Backend contract unchanged. Frontend errorMessages only rewrites known setup/NLP codes; meaningful validation and business errors retained."
+    },
+    {
+      "file": "server/src/services/timeTracking.js",
+      "line": 4,
+      "text": "Kỳ tổng hợp không hợp lệ",
+      "classification": "KEEP",
+      "note": "Backend contract unchanged. Frontend errorMessages only rewrites known setup/NLP codes; meaningful validation and business errors retained."
+    }
+  ]
+}

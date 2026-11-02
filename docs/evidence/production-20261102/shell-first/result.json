@@ -1,0 +1,74 @@
+{
+  "time": "2026-11-02T06:06:32.946Z",
+  "tests": [
+    {
+      "name": "Production email login, private menu and clean shell: student",
+      "status": "FAIL",
+      "detail": "Timeout: document.querySelector('[aria-label=\"Thống kê nghiệp vụ theo kỳ\"]') && !document.querySelector('[role=dialog]')"
+    },
+    {
+      "name": "Production email login, private menu and clean shell: company",
+      "status": "FAIL",
+      "detail": "Timeout: document.querySelector('[aria-label=\"Thống kê nghiệp vụ theo kỳ\"]') && !document.querySelector('[role=dialog]')"
+    },
+    {
+      "name": "Production email login, private menu and clean shell: mentor",
+      "status": "FAIL",
+      "detail": "Timeout: document.querySelector('[aria-label=\"Thống kê nghiệp vụ theo kỳ\"]') && !document.querySelector('[role=dialog]')"
+    },
+    {
+      "name": "Production email login, private menu and clean shell: admin",
+      "status": "FAIL",
+      "detail": "Timeout: document.querySelector('[aria-label=\"Thống kê nghiệp vụ theo kỳ\"]') && !document.querySelector('[role=dialog]')"
+    },
+    {
+      "name": "Production tablet/mobile, Light/Dark and no automatic mutations",
+      "status": "PASS"
+    }
+  ],
+  "requests": [
+    {
+      "method": "GET",
+      "path": "/api/core/capabilities"
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/api/core/capabilities"
+    },
+    {
+      "method": "POST",
+      "path": "/api/auth/email/login"
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/api/auth/email/login"
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/api/auth/email/login"
+    },
+    {
+      "method": "POST",
+      "path": "/api/auth/email/login"
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/api/auth/email/login"
+    },
+    {
+      "method": "POST",
+      "path": "/api/auth/email/login"
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/api/auth/email/login"
+    },
+    {
+      "method": "POST",
+      "path": "/api/auth/email/login"
+    }
+  ],
+  "exceptions": [],
+  "blocked": [],
+  "environment": "Vite production build, Backend isolated TEST, no AI inference in this smoke suite"
+}

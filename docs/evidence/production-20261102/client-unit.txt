@@ -1,0 +1,52 @@
+TAP version 13
+# Subtest: 401 from an older request preserves a new session and emits no expiry event
+ok 1 - 401 from an older request preserves a new session and emits no expiry event
+  ---
+  duration_ms: 1.5636
+  type: 'test'
+  ...
+# Subtest: active rejected session is cleared and notifies the application once
+ok 2 - active rejected session is cleared and notifies the application once
+  ---
+  duration_ms: 0.2059
+  type: 'test'
+  ...
+# Subtest: API integration does not let a delayed 401 remove a newer token
+ok 3 - API integration does not let a delayed 401 remove a newer token
+  ---
+  duration_ms: 20.7853
+  type: 'test'
+  ...
+# Subtest: network errors do not expose internal URL or downstream details
+ok 4 - network errors do not expose internal URL or downstream details
+  ---
+  duration_ms: 0.2703
+  type: 'test'
+  ...
+# Subtest: wrong reauthentication password does not sign out an otherwise valid session
+ok 5 - wrong reauthentication password does not sign out an otherwise valid session
+  ---
+  duration_ms: 0.3449
+  type: 'test'
+  ...
+# Subtest: form waits for asynchronous post-save work and propagates its failure
+ok 6 - form waits for asynchronous post-save work and propagates its failure
+  ---
+  duration_ms: 4.193
+  type: 'test'
+  ...
+# Subtest: failed mutation never invokes success callback
+ok 7 - failed mutation never invokes success callback
+  ---
+  duration_ms: 0.3378
+  type: 'test'
+  ...
+1..7
+# tests 7
+# suites 0
+# pass 7
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 131.546

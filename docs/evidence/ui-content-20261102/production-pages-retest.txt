@@ -1,0 +1,9 @@
+TEST_DB_VERIFIED web3_internship_test_phase1_855638db_e49aebb6ed72
+PASS Minimal login/register preserves labels, validation and has no wallet/role selector
+PASS Production email login, private menu and clean shell: student
+PASS Production email login, private menu and clean shell: company
+PASS Production email login, private menu and clean shell: mentor
+PASS Production email login, private menu and clean shell: admin
+PASS Production tablet/mobile, Light/Dark and no automatic mutations
+Evidence: D:\Web3-Internship-Management\contracts\node_modules\.cache\production-shell-1793608417596
+Production shell 6/6; exceptions 0

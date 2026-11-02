@@ -16,11 +16,11 @@ async function waitHTTP(url){for(let i=0;i<80;i++){try{if((await fetch(url)).ok)
  browser=new BrowserHarness({port:9228,origin,api:h.baseURL,output:out});await browser.start();
  await browser.check('Login opens method chooser without calling MetaMask or writing database',async()=>{
   const count=await User.countDocuments(),writes=browser.mutations();await browser.click('#connect-wallet-btn');await browser.wait("document.querySelector('[role=dialog]')");
-  await browser.wait("document.body.textContent.includes('Tiếp tục với Google')");if(browser.mutations()!==writes||await User.countDocuments()!==count)throw Error('Unexpected writes');
+  await browser.wait("document.querySelector('[aria-label=\"Email đăng nhập\"]')");await pause(300);if(await browser.ev("Boolean(document.querySelector('#metamask-native-login-btn') || document.querySelector('[aria-label=\"Loại tài khoản đăng ký ví\"]'))"))throw Error('Wallet/role choice exposed in login');if(await browser.ev("document.querySelector('[role=dialog]').textContent.includes('Tiếp tục với Google')"))throw Error('Unconfigured Google offered');if(browser.mutations()!==writes||await User.countDocuments()!==count)throw Error('Unexpected writes');
  });
- await browser.check('Register explains student role, email form and optional Google BLOCKED; cancel closes dialog',async()=>{
-  await browser.click('button','Chưa có tài khoản? Đăng ký');await browser.wait("document.body.textContent.includes('Tạo tài khoản Internova')");
-  await browser.click('summary','Google OAuth');await browser.click('button','Tiếp tục với Google');await browser.wait("document.querySelector('[role=alert]')?.textContent.includes('BLOCKED')");
+ await browser.check('Register stays minimal; unconfigured Google is not offered; cancel closes dialog',async()=>{
+  await browser.click('button','Chưa có tài khoản? Đăng ký');await browser.wait("document.body.textContent.includes('Tạo tài khoản')");
+  if(await browser.ev("Boolean(document.querySelector('[aria-label=\"Loại tài khoản email\"]'))"))throw Error('Unnecessary role selector');if(!await browser.ev("document.querySelector('#register-password-hint')?.textContent.includes('10')"))throw Error('Missing password validation hint');
   await browser.screenshot('google-login-configuration-blocked');
   await browser.click('[aria-label="Đóng đăng nhập"]');await browser.wait("!document.querySelector('[role=dialog]')");
  });
@@ -45,7 +45,7 @@ async function waitHTTP(url){for(let i=0;i<80;i++){try{if((await fetch(url)).ok)
   for(const role of ['student','company','mentor','admin']){
    const wallet=Wallet.createRandom();if(['mentor','admin'].includes(role))await User.create({walletAddress:wallet.address,name:'TEST browser '+role,role});
    const actor=await h.loginAs(role,'TEST browser '+role,wallet);if(actor.res.status!==200)throw Error('Wallet regression '+role);
-   await browser.session(actor.token);await browser.nav('core-profile');await browser.wait("document.body.textContent.includes('Phương thức đăng nhập')");await browser.nav('dashboard');
+   await browser.session(actor.token);await browser.nav('core-profile');await browser.wait("document.body.textContent.includes('Phương thức đăng nhập')");if(await browser.ev("Boolean(document.querySelector('.runtime-details'))"))throw Error('Internal diagnostics exposed by default');if(!await browser.ev("[...document.querySelectorAll('button')].some(x=>x.textContent==='Kiểm tra mạng ví')"))throw Error('Wallet network action missing');await browser.nav('dashboard');
    const me=await h.api('GET','/auth/me',{token:actor.token});if(me.body.user.role!==role)throw Error('Role mismatch '+role);
   }
  });

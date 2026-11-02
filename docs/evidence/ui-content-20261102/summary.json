@@ -1,0 +1,119 @@
+{
+  "frontendFilesBefore": 45,
+  "frontendFilesAfter": 48,
+  "frontendOccurrencesBefore": 1179,
+  "frontendOccurrencesAfter": 1186,
+  "classification": {
+    "KEEP": 1036,
+    "REMOVE": 7,
+    "REWRITE": 72,
+    "CONDITIONAL": 10,
+    "SHORTEN": 30,
+    "RELOCATE": 24
+  },
+  "changeRecords": 149,
+  "sourceFilesChanged": [
+    "client/src/api/client.js",
+    "client/src/api/errorMessages.js",
+    "client/src/App.jsx",
+    "client/src/components/AppShell.jsx",
+    "client/src/components/AttendanceView.jsx",
+    "client/src/components/AuthModal.jsx",
+    "client/src/components/business/AiPage.jsx",
+    "client/src/components/business/content.js",
+    "client/src/components/business/Kpis.jsx",
+    "client/src/components/business/NativeQrScanner.jsx",
+    "client/src/components/business/Notifications.jsx",
+    "client/src/components/business/Placements.jsx",
+    "client/src/components/business/ProfileCv.jsx",
+    "client/src/components/business/Recruitment.jsx",
+    "client/src/components/business/Reports.jsx",
+    "client/src/components/business/Shared.jsx",
+    "client/src/components/business/Time.jsx",
+    "client/src/components/business/Web3Page.jsx",
+    "client/src/components/business/Work.jsx",
+    "client/src/components/CvJdView.jsx",
+    "client/src/components/EmailIdentity.jsx",
+    "client/src/components/identity.css",
+    "client/src/components/LegacyAuthModal.jsx",
+    "client/src/components/MyWallet.jsx",
+    "client/src/components/ui.jsx",
+    "client/src/components/Web3CertificateView.jsx"
+  ],
+  "screenshotsByRole": {
+    "student": [
+      "student-account-overview-after.png",
+      "student-core-ai-after.png",
+      "student-core-applications-after.png",
+      "student-core-cv-after.png",
+      "student-core-jds-after.png",
+      "student-core-placements-after.png",
+      "student-core-reports-after.png",
+      "student-core-time-after.png",
+      "student-core-web3-after.png",
+      "student-core-work-after.png",
+      "student-notifications-after.png",
+      "student-profile-after.png"
+    ],
+    "company": [
+      "company-account-overview-after.png",
+      "company-core-ai-after.png",
+      "company-core-applications-after.png",
+      "company-core-jds-after.png",
+      "company-core-placements-after.png",
+      "company-core-reports-after.png",
+      "company-core-time-after.png",
+      "company-core-web3-after.png",
+      "company-core-work-after.png",
+      "company-notifications-after.png",
+      "company-profile-after.png"
+    ],
+    "mentor": [
+      "mentor-account-overview-after.png",
+      "mentor-core-ai-after.png",
+      "mentor-core-placements-after.png",
+      "mentor-core-reports-after.png",
+      "mentor-core-time-after.png",
+      "mentor-core-web3-after.png",
+      "mentor-core-work-after.png",
+      "mentor-notifications-after.png",
+      "mentor-profile-after.png"
+    ],
+    "admin": [
+      "admin-account-overview-after.png",
+      "admin-core-accounts-after.png",
+      "admin-core-ai-after.png",
+      "admin-core-applications-after.png",
+      "admin-core-placements-after.png",
+      "admin-core-reports-after.png",
+      "admin-core-time-after.png",
+      "admin-core-web3-after.png",
+      "admin-core-work-after.png",
+      "admin-notifications-after.png",
+      "admin-profile-after.png"
+    ]
+  },
+  "productionNavigation": {
+    "pass": 6,
+    "fail": 0
+  },
+  "emailRegression": {
+    "pass": 6,
+    "fail": 0
+  },
+  "googleWalletRegression": {
+    "pass": 7,
+    "fail": 0
+  },
+  "clientUnit": {
+    "pass": 10,
+    "fail": 0
+  },
+  "backendAuthRegression": {
+    "pass": 40,
+    "fail": 0,
+    "skipped": 1,
+    "skipReason": "Actual local-chain anchor/mint intentionally not enabled for text-only QA"
+  },
+  "notes": "Counts are AST occurrences, not unique translations or proof of all dynamic user data. Legacy view remains in source behind DEV-only flag; new helper labels can increase source occurrence count."
+}

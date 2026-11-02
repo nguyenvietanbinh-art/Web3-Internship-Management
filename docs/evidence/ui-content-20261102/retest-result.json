@@ -1,0 +1,11 @@
+{
+  "production-pages-retest": {
+    "exit": 0
+  },
+  "email-regression-retest": {
+    "exit": 0
+  },
+  "google-wallet-regression-retest": {
+    "exit": 0
+  }
+}

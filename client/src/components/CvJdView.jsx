@@ -194,7 +194,7 @@ export default function CvJdView({ user, showToast, coreEnabled = false }) {
             Vị Trí Thực Tập Đang Tuyển Dụng ({jds.length})
           </h3>
           <span style={{ fontSize: '0.8rem', color: 'var(--text-muted)' }}>
-            Thứ tự theo API; chỉ có điểm sau khi chạy matching
+            Điểm phù hợp được hiển thị sau khi phân tích
           </span>
         </div>
 
@@ -249,7 +249,7 @@ export default function CvJdView({ user, showToast, coreEnabled = false }) {
 
                 {/* Skills Match Details */}
                 <div style={{ background: 'var(--surface-muted)', padding: '12px', borderRadius: '10px' }}>
-                  <div style={{ fontSize: '0.74rem', color: 'var(--text-dim)', marginBottom: '6px' }}>{jd.matchResult ? `Nguồn: ${jd.matchResult.engine || 'nlp-service'}${jd.matchResult.fallback ? ' (dự phòng)' : ''}` : 'Chưa chạy matching; chưa có kỹ năng được xác nhận khớp.'}</div>
+                  <div style={{ fontSize: '0.74rem', color: 'var(--text-dim)', marginBottom: '6px' }}>{jd.matchResult ? `Nguồn: ${jd.matchResult.engine || 'nlp-service'}${jd.matchResult.fallback ? ' (dự phòng)' : ''}` : 'Chưa phân tích độ phù hợp.'}</div>
                   <div style={{ display: 'flex', flexWrap: 'wrap', gap: '5px', marginBottom: '6px' }}>
                     {matchedSkills.map((sk, i) => (
                       <span key={i} style={{ background: 'rgba(16, 185, 129, 0.15)', color: 'var(--accent-emerald)', border: '1px solid rgba(16, 185, 129, 0.3)', padding: '2px 8px', borderRadius: '6px', fontSize: '0.74rem', fontWeight: 600 }}>

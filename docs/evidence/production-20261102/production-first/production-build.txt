@@ -1,0 +1,34 @@
+vite v8.3.4 building client environment for production...
+transforming...
+✓ 2348 modules transformed.
+rendering chunks...
+computing gzip size...
+../contracts/node_modules/.cache/unified-browser-1793599012499/production-dist/index.html                                1.01 kB │ gzip:   0.61 kB
+../contracts/node_modules/.cache/unified-browser-1793599012499/production-dist/assets/index-5D6-oJzO.css                29.47 kB │ gzip:   7.06 kB
+../contracts/node_modules/.cache/unified-browser-1793599012499/production-dist/assets/book-open-18Z5MJnE.js              0.31 kB │ gzip:   0.24 kB
+../contracts/node_modules/.cache/unified-browser-1793599012499/production-dist/assets/rolldown-runtime-hePW80VL.js       0.71 kB │ gzip:   0.42 kB
+../contracts/node_modules/.cache/unified-browser-1793599012499/production-dist/assets/hooks-CoEhCmgP.js                  0.90 kB │ gzip:   0.53 kB
+../contracts/node_modules/.cache/unified-browser-1793599012499/production-dist/assets/Notifications-BiPei6FG.js          2.20 kB │ gzip:   0.95 kB
+../contracts/node_modules/.cache/unified-browser-1793599012499/production-dist/assets/Shared-BR7io_qe.js                 9.20 kB │ gzip:   2.60 kB
+../contracts/node_modules/.cache/unified-browser-1793599012499/production-dist/assets/Web3CertificateView-R6wm2Bnk.js   15.22 kB │ gzip:   4.08 kB
+../contracts/node_modules/.cache/unified-browser-1793599012499/production-dist/assets/DashboardView-Dt63jQws.js         16.74 kB │ gzip:   4.42 kB
+../contracts/node_modules/.cache/unified-browser-1793599012499/production-dist/assets/Web3Page-CJKEc65N.js              18.05 kB │ gzip:   5.48 kB
+../contracts/node_modules/.cache/unified-browser-1793599012499/production-dist/assets/CvJdView-DcKv9Vye.js              20.20 kB │ gzip:   5.01 kB
+../contracts/node_modules/.cache/unified-browser-1793599012499/production-dist/assets/AttendanceView-DKJdyRgA.js        23.83 kB │ gzip:   5.33 kB
+../contracts/node_modules/.cache/unified-browser-1793599012499/production-dist/assets/QrCode-vfw2KJEX.js                24.50 kB │ gzip:   9.44 kB
+../contracts/node_modules/.cache/unified-browser-1793599012499/production-dist/assets/jsx-dev-runtime-zjkzv-QE.js       26.21 kB │ gzip:   8.36 kB
+../contracts/node_modules/.cache/unified-browser-1793599012499/production-dist/assets/CoreBusinessView-Cnm9tv1V.js      80.03 kB │ gzip:  16.35 kB
+../contracts/node_modules/.cache/unified-browser-1793599012499/production-dist/assets/lib.esm-DXGi7BZN.js              379.90 kB │ gzip: 142.14 kB
+../contracts/node_modules/.cache/unified-browser-1793599012499/production-dist/assets/NativeQrScanner-DNwOYEj_.js      436.81 kB │ gzip: 115.68 kB
+../contracts/node_modules/.cache/unified-browser-1793599012499/production-dist/assets/index-D386zdqJ.js                521.10 kB │ gzip: 149.36 kB
+
+✓ built in 893ms
+
+(!) outDir D:\Web3-Internship-Management\contracts\node_modules\.cache\unified-browser-1793599012499\production-dist is not inside project root and will not be emptied.
+Use --emptyOutDir to override.
+
+[plugin builtin:vite-reporter] 
+(!) Some chunks are larger than 500 kB after minification. Consider:
+- Using dynamic import() to code-split the application
+- Use build.rolldownOptions.output.codeSplitting to improve chunking: https://rolldown.rs/reference/OutputOptions.codeSplitting
+- Adjust chunk size limit for this warning via build.chunkSizeWarningLimit.
