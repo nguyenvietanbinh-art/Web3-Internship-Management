@@ -1,0 +1,2 @@
+# Optional PDF parser, approved for an isolated --target installation; no OCR/AI.
+pypdf==6.21.4

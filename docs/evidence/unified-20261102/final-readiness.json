@@ -1,0 +1,17 @@
+{
+  "at": "2026-11-02T04:59:48.490Z",
+  "protectedUnchangedAfterFinalBrowser": true,
+  "health": {
+    "status": "online",
+    "dbState": "connected",
+    "ipfsConfigured": false,
+    "demoEnabled": false,
+    "timestamp": "2026-11-02T04:59:48.382Z"
+  },
+  "capabilities": {
+    "enabled": true,
+    "authentication": "user-id",
+    "unified": true
+  },
+  "frontendHTTP": 200
+}

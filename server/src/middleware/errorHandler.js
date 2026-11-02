@@ -10,8 +10,9 @@ function errorHandler(err, _req, res, _next) {
   if (err.name === "ValidationError") return res.status(400).json({ error: err.message, code: "VALIDATION" });
   if (err.name === "CastError") return res.status(400).json({ error: "Tham số không hợp lệ", code: "BAD_ID" });
   if (err.type === "entity.parse.failed") return res.status(400).json({ error: "JSON không hợp lệ" });
+  if (err.type === 'entity.too.large') return res.status(413).json({ error: 'Nội dung vượt giới hạn cho phép', code: 'PAYLOAD_TOO_LARGE' });
   if (err.code === 11000) return res.status(409).json({ error: "Bản ghi đã tồn tại", code: "DUPLICATE" });
-  console.error("Unhandled error:", err);
+  console.error('Unhandled internal server error'); // Never log request bodies, headers or downstream error objects.
   res.status(500).json({ error: "Lỗi máy chủ nội bộ" });
 }
 

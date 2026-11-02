@@ -1,0 +1,66 @@
+import {useEffect,useRef,useState} from 'react';
+import {apiRequest,setToken} from '../api/client';
+import MyWallet from './MyWallet';
+import {PasswordSettings} from './EmailIdentity';
+let loadingScript;
+function loadGIS(){
+  if(window.google?.accounts?.id)return Promise.resolve();
+  if(!loadingScript)loadingScript=new Promise((resolve,reject)=>{
+    const script=document.createElement('script');script.src='https://accounts.google.com/gsi/client';script.async=true;
+    const timer=setTimeout(()=>reject(Error('Google tải quá lâu. Kiểm tra kết nối hoặc trình chặn popup.')),12000);
+    script.onload=()=>{clearTimeout(timer);resolve();};script.onerror=()=>{clearTimeout(timer);reject(Error('Không tải được Google Identity Services.'));};document.head.appendChild(script);
+  }).catch(error=>{loadingScript=undefined;throw error;});
+  return loadingScript;
+}
+export default function GoogleIdentity({purpose='login',onSession,user}){
+  const [state,setState]=useState(''),[error,setError]=useState(''),[ready,setReady]=useState(false),[pending,setPending]=useState(false),[reauth,setReauth]=useState('');
+  const button=useRef(null),alive=useRef(true),busy=useRef(false),generation=useRef(0);
+  useEffect(()=>{alive.current=true;return()=>{alive.current=false;};},[]);
+  async function begin(){
+    if(busy.current)return;busy.current=true;setPending(true);setError('');setState('Đang chuẩn bị Google…');setReady(false);
+    const run=++generation.current;
+    try{
+      let config;try{config=await apiRequest('/auth/google/status');}catch(e){if(e.status===404)throw Error('BLOCKED: Backend đang chạy bản cũ chưa có Google Login. Mở môi trường Google TEST theo hướng dẫn.');throw e;}
+      if(!config.enabled)throw Error('BLOCKED: Google Login chưa được cấu hình Client ID trên Backend.');
+      let signer,walletAddress;
+      if(purpose==='link-wallet'||(purpose==='link-google'&&user.walletAddress)||purpose==='unlink-google'){
+        if(!window.ethereum)throw Error('Cần MetaMask và ví TEST để ký xác nhận liên kết.');
+        const {BrowserProvider}=await import('ethers'),provider=new BrowserProvider(window.ethereum);
+        await provider.send('eth_requestAccounts',[]);signer=await provider.getSigner();walletAddress=(await signer.getAddress()).toLowerCase();
+        if(purpose!=='link-wallet'&&walletAddress!==user.walletAddress)throw Error('Chọn đúng ví đã liên kết với tài khoản hiện tại.');
+      }
+      const c=await apiRequest('/auth/google/challenge',{method:'POST',body:{purpose,...(purpose==='link-wallet'?{walletAddress}:{})}});
+      const signature=signer?await signer.signMessage(c.message):undefined;
+      await loadGIS();
+      if(!alive.current||run!==generation.current)return;
+      window.google.accounts.id.initialize({client_id:config.clientId,nonce:c.nonce,auto_select:false,ux_mode:'popup',
+        callback:async({credential})=>{
+          if(!alive.current||run!==generation.current||busy.current)return;
+          busy.current=true;setPending(true);setState('Đang xác minh…');setError('');
+          try{
+            const endpoint={login:'/auth/google/login','link-google':'/auth/google/link','link-wallet':'/auth/wallet/link','unlink-google':'/auth/google/unlink'}[purpose];
+            const result=await apiRequest(endpoint,{method:'POST',body:{credential,challengeId:c.challengeId,...(signature?{signature}:{}),...(purpose==='link-google'&&!user.walletAddress?{password:reauth}:{})}});
+            if(!alive.current||run!==generation.current)return;
+            if(result.token)setToken(result.token);await onSession(result);if(alive.current){setState('Đã xác thực');setReady(false);}
+          }catch(e){if(alive.current){setError(e.message);setReady(false);setState('');}}
+          finally{busy.current=false;if(alive.current)setPending(false);}
+        }});
+      window.google.accounts.id.renderButton(button.current,{type:'standard',theme:'outline',size:'large',text:purpose==='login'?'continue_with':'signin_with',locale:'vi',width:280});
+      setReady(true);setState('Chọn tài khoản Google. Nếu hủy popup hoặc quá 5 phút, bấm bắt đầu lại.');
+    }catch(e){if(alive.current)setError(e.code===-32002?'MetaMask đang có yêu cầu chờ; mở tiện ích để xử lý.':e.message);setState('');}
+    finally{busy.current=false;if(alive.current)setPending(false);}
+  }
+  return <section className="google-identity">{purpose==='link-google'&&!user.walletAddress&&<label>Mật khẩu hiện tại<input type="password" autoComplete="current-password" value={reauth} onChange={e=>setReauth(e.target.value)}/></label>}<button className="btn btn-secondary" type="button" onClick={begin} disabled={pending}>{ready?'Bắt đầu lại Google':'Tiếp tục với Google'}</button><div ref={button} />{state&&<p role="status">{state}</p>}{error&&<p className="inline-alert is-error" role="alert">{error}</p>}</section>;
+}
+export function IdentitySettings({user,onSession}){
+  const [action,setAction]=useState('');
+  return <section className="panel" style={{padding:20,marginBottom:20}}><h2>Phương thức đăng nhập</h2><p>{user.email||'Chưa có email hồ sơ'} · Google: {user.googleLinked?'Đã liên kết':'Chưa liên kết'} · Ví: {user.walletAddress||'Chưa liên kết'}</p>
+    {!user.walletAddress&&<p>Bạn có thể dùng nghiệp vụ thông thường bằng tài khoản. Liên kết ví TEST khi cần chức năng blockchain.</p>}
+    {!user.googleLinked&&(user.walletAddress||user.passwordEnabled)&&<button className="btn btn-secondary" onClick={()=>setAction('link-google')}>Liên kết Google</button>}
+    {user.googleLinked&&!user.walletAddress&&<button className="btn btn-secondary" onClick={()=>setAction('link-wallet')}>Liên kết ví MetaMask</button>}
+    {user.googleLinked&&user.walletAddress&&<button className="btn btn-secondary" onClick={()=>setAction('unlink-google')}>Hủy liên kết Google</button>}
+    <p className="muted">Không tự gộp tài khoản theo email. Không đổi/hủy ví đang làm khóa sở hữu nghiệp vụ. Không thể xóa phương thức đăng nhập cuối cùng.</p>
+    <MyWallet user={user} onSession={onSession}/>{user.passwordEnabled&&<PasswordSettings user={user} onSession={onSession} />}
+    {action&&<GoogleIdentity key={action} purpose={action} user={user} onSession={async result=>{await onSession(result);setAction('');}} />}
+  </section>;
+}

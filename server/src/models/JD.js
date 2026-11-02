@@ -19,4 +19,6 @@ const JDSchema = new mongoose.Schema(
   { timestamps: true, collection: "job_descriptions" }
 );
 
+JDSchema.add({history:{type:[require('../core/shared').HistorySchema],default:undefined}});
+require('./userOwnership')(JDSchema,'JD');
 module.exports = mongoose.model("JD", JDSchema);

@@ -1,0 +1,139 @@
+{
+  "time": "2026-11-02T02:57:22.000Z",
+  "tests": [
+    {
+      "name": "Opening login/register creates no account or business request",
+      "status": "PASS"
+    },
+    {
+      "name": "Browser registration persists real hashed student and signed JWT without Google/MetaMask",
+      "status": "PASS"
+    },
+    {
+      "name": "Reload restores session, profile-only scope, mobile/Dark theme without auto-write",
+      "status": "PASS"
+    },
+    {
+      "name": "Logout clears token; wrong password shows error and does not log in",
+      "status": "PASS"
+    },
+    {
+      "name": "Correct email/password login returns same User; password change works from UI",
+      "status": "PASS"
+    }
+  ],
+  "requests": [
+    {
+      "method": "OPTIONS",
+      "path": "/api/core/capabilities"
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/api/core/capabilities"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/capabilities"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/capabilities"
+    },
+    {
+      "method": "GET",
+      "path": "/api/topics"
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/api/topics"
+    },
+    {
+      "method": "POST",
+      "path": "/api/auth/email/register"
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/api/auth/email/register"
+    },
+    {
+      "method": "GET",
+      "path": "/api/auth/me"
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/api/auth/me"
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/api/core/capabilities"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/capabilities"
+    },
+    {
+      "method": "GET",
+      "path": "/api/auth/me"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/capabilities"
+    },
+    {
+      "method": "GET",
+      "path": "/api/auth/me"
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/api/core/capabilities"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/profile"
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/api/core/profile"
+    },
+    {
+      "method": "GET",
+      "path": "/api/topics"
+    },
+    {
+      "method": "POST",
+      "path": "/api/auth/email/login"
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/api/auth/email/login"
+    },
+    {
+      "method": "POST",
+      "path": "/api/auth/email/login"
+    },
+    {
+      "method": "GET",
+      "path": "/api/auth/me"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/profile"
+    },
+    {
+      "method": "POST",
+      "path": "/api/auth/email/change-password"
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/api/auth/email/change-password"
+    },
+    {
+      "method": "GET",
+      "path": "/api/auth/me"
+    }
+  ],
+  "exceptions": [],
+  "blocked": [],
+  "database": "web3_internship_test_phase1_aeaf218c_d25b5ba8bac2",
+  "auth": "Real email/password via browser, bcrypt and JWT; no Google or mocked success"
+}

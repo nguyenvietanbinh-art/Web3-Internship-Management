@@ -1,0 +1,1193 @@
+{
+  "time": "2026-11-02T02:57:36.844Z",
+  "databases": [
+    {
+      "name": "web3_internship",
+      "collections": [
+        {
+          "name": "ai_analyses",
+          "count": 0,
+          "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+          "indexes": [
+            {
+              "v": 2,
+              "key": {
+                "_id": 1
+              },
+              "name": "_id_"
+            },
+            {
+              "v": 2,
+              "key": {
+                "submissionId": 1
+              },
+              "name": "submissionId_1",
+              "background": true,
+              "unique": true
+            }
+          ]
+        },
+        {
+          "name": "assignments",
+          "count": 0,
+          "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+          "indexes": [
+            {
+              "v": 2,
+              "key": {
+                "_id": 1
+              },
+              "name": "_id_"
+            },
+            {
+              "v": 2,
+              "key": {
+                "studentId": 1,
+                "status": 1
+              },
+              "name": "studentId_1_status_1",
+              "background": true
+            },
+            {
+              "v": 2,
+              "key": {
+                "topicId": 1
+              },
+              "name": "topicId_1",
+              "background": true
+            }
+          ]
+        },
+        {
+          "name": "attendances",
+          "count": 0,
+          "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+          "indexes": [
+            {
+              "v": 2,
+              "key": {
+                "_id": 1
+              },
+              "name": "_id_"
+            },
+            {
+              "v": 2,
+              "key": {
+                "studentWallet": 1
+              },
+              "name": "studentWallet_1",
+              "background": true
+            },
+            {
+              "v": 2,
+              "key": {
+                "companyWallet": 1
+              },
+              "name": "companyWallet_1",
+              "background": true
+            },
+            {
+              "v": 2,
+              "key": {
+                "studentWallet": 1,
+                "date": 1
+              },
+              "name": "studentWallet_1_date_1",
+              "background": true,
+              "unique": true
+            }
+          ]
+        },
+        {
+          "name": "auth_nonces",
+          "count": 0,
+          "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+          "indexes": [
+            {
+              "v": 2,
+              "key": {
+                "_id": 1
+              },
+              "name": "_id_"
+            },
+            {
+              "v": 2,
+              "key": {
+                "walletAddress": 1
+              },
+              "name": "walletAddress_1",
+              "background": true,
+              "unique": true
+            },
+            {
+              "v": 2,
+              "key": {
+                "expiresAt": 1
+              },
+              "name": "expiresAt_1",
+              "background": true,
+              "expireAfterSeconds": 0
+            }
+          ]
+        },
+        {
+          "name": "chain_events",
+          "count": 0,
+          "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+          "indexes": [
+            {
+              "v": 2,
+              "key": {
+                "_id": 1
+              },
+              "name": "_id_"
+            },
+            {
+              "v": 2,
+              "key": {
+                "processed": 1
+              },
+              "name": "processed_1",
+              "background": true
+            },
+            {
+              "v": 2,
+              "key": {
+                "txHash": 1,
+                "logIndex": 1
+              },
+              "name": "txHash_1_logIndex_1",
+              "background": true,
+              "unique": true
+            }
+          ]
+        },
+        {
+          "name": "companies",
+          "count": 0,
+          "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+          "indexes": [
+            {
+              "v": 2,
+              "key": {
+                "_id": 1
+              },
+              "name": "_id_"
+            },
+            {
+              "v": 2,
+              "key": {
+                "userId": 1
+              },
+              "name": "userId_1",
+              "background": true,
+              "unique": true
+            }
+          ]
+        },
+        {
+          "name": "internship_tasks",
+          "count": 0,
+          "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+          "indexes": [
+            {
+              "v": 2,
+              "key": {
+                "_id": 1
+              },
+              "name": "_id_"
+            }
+          ]
+        },
+        {
+          "name": "job_descriptions",
+          "count": 3,
+          "sha256": "b53905677756d27d02edc6319993ce73cb832c97fd5a3626a53fe98d49f43dd8",
+          "indexes": [
+            {
+              "v": 2,
+              "key": {
+                "_id": 1
+              },
+              "name": "_id_"
+            }
+          ]
+        },
+        {
+          "name": "kpi_evaluations",
+          "count": 0,
+          "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+          "indexes": [
+            {
+              "v": 2,
+              "key": {
+                "_id": 1
+              },
+              "name": "_id_"
+            },
+            {
+              "v": 2,
+              "key": {
+                "assignmentId": 1
+              },
+              "name": "assignmentId_1",
+              "background": true
+            },
+            {
+              "v": 2,
+              "key": {
+                "assignmentId": 1,
+                "milestoneIndex": 1
+              },
+              "name": "assignmentId_1_milestoneIndex_1",
+              "background": true,
+              "unique": true
+            }
+          ]
+        },
+        {
+          "name": "students",
+          "count": 0,
+          "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+          "indexes": [
+            {
+              "v": 2,
+              "key": {
+                "_id": 1
+              },
+              "name": "_id_"
+            },
+            {
+              "v": 2,
+              "key": {
+                "userId": 1
+              },
+              "name": "userId_1",
+              "background": true,
+              "unique": true
+            },
+            {
+              "v": 2,
+              "key": {
+                "studentCode": 1
+              },
+              "name": "studentCode_1",
+              "background": true,
+              "unique": true,
+              "sparse": true
+            }
+          ]
+        },
+        {
+          "name": "submissions",
+          "count": 0,
+          "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+          "indexes": [
+            {
+              "v": 2,
+              "key": {
+                "_id": 1
+              },
+              "name": "_id_"
+            },
+            {
+              "v": 2,
+              "key": {
+                "assignmentId": 1,
+                "milestoneIndex": 1,
+                "version": 1
+              },
+              "name": "assignmentId_1_milestoneIndex_1_version_1",
+              "background": true,
+              "unique": true
+            }
+          ]
+        },
+        {
+          "name": "topics",
+          "count": 0,
+          "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+          "indexes": [
+            {
+              "v": 2,
+              "key": {
+                "_id": 1
+              },
+              "name": "_id_"
+            },
+            {
+              "v": 2,
+              "key": {
+                "onChainId": 1
+              },
+              "name": "onChainId_1",
+              "background": true
+            },
+            {
+              "v": 2,
+              "key": {
+                "companyId": 1
+              },
+              "name": "companyId_1",
+              "background": true
+            },
+            {
+              "v": 2,
+              "key": {
+                "companyId": 1,
+                "status": 1
+              },
+              "name": "companyId_1_status_1",
+              "background": true
+            }
+          ]
+        },
+        {
+          "name": "users",
+          "count": 0,
+          "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+          "indexes": [
+            {
+              "v": 2,
+              "key": {
+                "_id": 1
+              },
+              "name": "_id_"
+            },
+            {
+              "v": 2,
+              "key": {
+                "walletAddress": 1
+              },
+              "name": "walletAddress_1",
+              "background": true,
+              "unique": true
+            }
+          ]
+        },
+        {
+          "name": "work_logs",
+          "count": 0,
+          "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+          "indexes": [
+            {
+              "v": 2,
+              "key": {
+                "_id": 1
+              },
+              "name": "_id_"
+            },
+            {
+              "v": 2,
+              "key": {
+                "studentWallet": 1
+              },
+              "name": "studentWallet_1",
+              "background": true
+            },
+            {
+              "v": 2,
+              "key": {
+                "companyWallet": 1
+              },
+              "name": "companyWallet_1",
+              "background": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "web3_internship_demo_20261030_2340",
+      "collections": [
+        {
+          "name": "ai_analyses",
+          "count": 37,
+          "sha256": "e180721990cce589d073f252bc7582efcacfbae72a3b9bc4c976e9a1264e4bea",
+          "indexes": [
+            {
+              "v": 2,
+              "key": {
+                "_id": 1
+              },
+              "name": "_id_"
+            },
+            {
+              "v": 2,
+              "key": {
+                "submissionId": 1
+              },
+              "name": "submissionId_1",
+              "background": true,
+              "unique": true
+            }
+          ]
+        },
+        {
+          "name": "assignments",
+          "count": 20,
+          "sha256": "aa06829d31023f5c4af3d2141c19c13ce0b442e04be3caa205f0f952a4debc8f",
+          "indexes": [
+            {
+              "v": 2,
+              "key": {
+                "_id": 1
+              },
+              "name": "_id_"
+            },
+            {
+              "v": 2,
+              "key": {
+                "studentId": 1,
+                "status": 1
+              },
+              "name": "studentId_1_status_1",
+              "background": true
+            },
+            {
+              "v": 2,
+              "key": {
+                "topicId": 1
+              },
+              "name": "topicId_1",
+              "background": true
+            }
+          ]
+        },
+        {
+          "name": "attendances",
+          "count": 8,
+          "sha256": "5039ffead8e73a674f8709c4f2414e7edaae156e0a1e7bd954088283e4444a60",
+          "indexes": [
+            {
+              "v": 2,
+              "key": {
+                "_id": 1
+              },
+              "name": "_id_"
+            },
+            {
+              "v": 2,
+              "key": {
+                "studentWallet": 1
+              },
+              "name": "studentWallet_1",
+              "background": true
+            },
+            {
+              "v": 2,
+              "key": {
+                "companyWallet": 1
+              },
+              "name": "companyWallet_1",
+              "background": true
+            },
+            {
+              "v": 2,
+              "key": {
+                "studentWallet": 1,
+                "date": 1
+              },
+              "name": "studentWallet_1_date_1",
+              "background": true,
+              "unique": true
+            }
+          ]
+        },
+        {
+          "name": "auth_nonces",
+          "count": 0,
+          "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+          "indexes": [
+            {
+              "v": 2,
+              "key": {
+                "_id": 1
+              },
+              "name": "_id_"
+            },
+            {
+              "v": 2,
+              "key": {
+                "walletAddress": 1
+              },
+              "name": "walletAddress_1",
+              "background": true,
+              "unique": true
+            },
+            {
+              "v": 2,
+              "key": {
+                "expiresAt": 1
+              },
+              "name": "expiresAt_1",
+              "background": true,
+              "expireAfterSeconds": 0
+            }
+          ]
+        },
+        {
+          "name": "chain_events",
+          "count": 0,
+          "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+          "indexes": [
+            {
+              "v": 2,
+              "key": {
+                "_id": 1
+              },
+              "name": "_id_"
+            },
+            {
+              "v": 2,
+              "key": {
+                "processed": 1
+              },
+              "name": "processed_1",
+              "background": true
+            },
+            {
+              "v": 2,
+              "key": {
+                "txHash": 1,
+                "logIndex": 1
+              },
+              "name": "txHash_1_logIndex_1",
+              "background": true,
+              "unique": true
+            }
+          ]
+        },
+        {
+          "name": "companies",
+          "count": 8,
+          "sha256": "5f06051872f775da6874c7e3944be5fa40e7e5d66d864d27d987eb6c3016baf7",
+          "indexes": [
+            {
+              "v": 2,
+              "key": {
+                "_id": 1
+              },
+              "name": "_id_"
+            },
+            {
+              "v": 2,
+              "key": {
+                "userId": 1
+              },
+              "name": "userId_1",
+              "background": true,
+              "unique": true
+            }
+          ]
+        },
+        {
+          "name": "internship_tasks",
+          "count": 4,
+          "sha256": "0242f922ee76396bc3b780763bc0a1e89761de635297466069322ae399c70482",
+          "indexes": [
+            {
+              "v": 2,
+              "key": {
+                "_id": 1
+              },
+              "name": "_id_"
+            }
+          ]
+        },
+        {
+          "name": "job_descriptions",
+          "count": 5,
+          "sha256": "c1db279cf6383f192829dcefdb3235a003a51ecc33af123d6916b3422af7a53b",
+          "indexes": [
+            {
+              "v": 2,
+              "key": {
+                "_id": 1
+              },
+              "name": "_id_"
+            }
+          ]
+        },
+        {
+          "name": "kpi_evaluations",
+          "count": 32,
+          "sha256": "f24e79a8cf2b8cfc7c9d050259e30a2578dbd9a5aea5fdcbb61710105ed1e12c",
+          "indexes": [
+            {
+              "v": 2,
+              "key": {
+                "_id": 1
+              },
+              "name": "_id_"
+            },
+            {
+              "v": 2,
+              "key": {
+                "assignmentId": 1
+              },
+              "name": "assignmentId_1",
+              "background": true
+            },
+            {
+              "v": 2,
+              "key": {
+                "assignmentId": 1,
+                "milestoneIndex": 1
+              },
+              "name": "assignmentId_1_milestoneIndex_1",
+              "background": true,
+              "unique": true
+            }
+          ]
+        },
+        {
+          "name": "students",
+          "count": 17,
+          "sha256": "d7b7dc65ae8ff8ea8fcca35998186680b58f62a394ef49b287bf8f380fed8b37",
+          "indexes": [
+            {
+              "v": 2,
+              "key": {
+                "_id": 1
+              },
+              "name": "_id_"
+            },
+            {
+              "v": 2,
+              "key": {
+                "userId": 1
+              },
+              "name": "userId_1",
+              "background": true,
+              "unique": true
+            },
+            {
+              "v": 2,
+              "key": {
+                "studentCode": 1
+              },
+              "name": "studentCode_1",
+              "background": true,
+              "unique": true,
+              "sparse": true
+            }
+          ]
+        },
+        {
+          "name": "submissions",
+          "count": 37,
+          "sha256": "46ec4e2efce0e73fbb4d2ca6147a326a2df0dc8ce79af63f9e3d1a45363f540a",
+          "indexes": [
+            {
+              "v": 2,
+              "key": {
+                "_id": 1
+              },
+              "name": "_id_"
+            },
+            {
+              "v": 2,
+              "key": {
+                "assignmentId": 1,
+                "milestoneIndex": 1,
+                "version": 1
+              },
+              "name": "assignmentId_1_milestoneIndex_1_version_1",
+              "background": true,
+              "unique": true
+            }
+          ]
+        },
+        {
+          "name": "topics",
+          "count": 26,
+          "sha256": "e3e500c623dd04b071f1f1c36894358a1d6a13af027fab4407995ffcf8300c49",
+          "indexes": [
+            {
+              "v": 2,
+              "key": {
+                "_id": 1
+              },
+              "name": "_id_"
+            },
+            {
+              "v": 2,
+              "key": {
+                "onChainId": 1
+              },
+              "name": "onChainId_1",
+              "background": true
+            },
+            {
+              "v": 2,
+              "key": {
+                "companyId": 1
+              },
+              "name": "companyId_1",
+              "background": true
+            },
+            {
+              "v": 2,
+              "key": {
+                "companyId": 1,
+                "status": 1
+              },
+              "name": "companyId_1_status_1",
+              "background": true
+            }
+          ]
+        },
+        {
+          "name": "users",
+          "count": 26,
+          "sha256": "9d87ddee17727dfe2ac75793c7957b30fdbf0770401e6293d6abbcc56fd1e05a",
+          "indexes": [
+            {
+              "v": 2,
+              "key": {
+                "_id": 1
+              },
+              "name": "_id_"
+            },
+            {
+              "v": 2,
+              "key": {
+                "walletAddress": 1
+              },
+              "name": "walletAddress_1",
+              "background": true,
+              "unique": true
+            }
+          ]
+        },
+        {
+          "name": "work_logs",
+          "count": 3,
+          "sha256": "c09f464843afaa7e7dc71b36f314bb70d96d0f8edec7193619e6af642e043681",
+          "indexes": [
+            {
+              "v": 2,
+              "key": {
+                "_id": 1
+              },
+              "name": "_id_"
+            },
+            {
+              "v": 2,
+              "key": {
+                "studentWallet": 1
+              },
+              "name": "studentWallet_1",
+              "background": true
+            },
+            {
+              "v": 2,
+              "key": {
+                "companyWallet": 1
+              },
+              "name": "companyWallet_1",
+              "background": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "web3_internship_demo_20261030_2340_foundation",
+      "collections": [
+        {
+          "name": "ai_analyses",
+          "count": 4,
+          "sha256": "6a99b437de4e3afa6720e03dd1d410ca7fe9dbfa9c2219a3c2aac84ad419fd64",
+          "indexes": [
+            {
+              "v": 2,
+              "key": {
+                "_id": 1
+              },
+              "name": "_id_"
+            },
+            {
+              "v": 2,
+              "key": {
+                "submissionId": 1
+              },
+              "name": "submissionId_1",
+              "background": true,
+              "unique": true
+            }
+          ]
+        },
+        {
+          "name": "assignments",
+          "count": 3,
+          "sha256": "ed00cd55c4a2b872bb213c7ac6d52223863c472b246a0d23afa92726a3430593",
+          "indexes": [
+            {
+              "v": 2,
+              "key": {
+                "_id": 1
+              },
+              "name": "_id_"
+            },
+            {
+              "v": 2,
+              "key": {
+                "studentId": 1,
+                "status": 1
+              },
+              "name": "studentId_1_status_1",
+              "background": true
+            },
+            {
+              "v": 2,
+              "key": {
+                "topicId": 1
+              },
+              "name": "topicId_1",
+              "background": true
+            }
+          ]
+        },
+        {
+          "name": "attendances",
+          "count": 0,
+          "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+          "indexes": [
+            {
+              "v": 2,
+              "key": {
+                "_id": 1
+              },
+              "name": "_id_"
+            },
+            {
+              "v": 2,
+              "key": {
+                "studentWallet": 1
+              },
+              "name": "studentWallet_1",
+              "background": true
+            },
+            {
+              "v": 2,
+              "key": {
+                "companyWallet": 1
+              },
+              "name": "companyWallet_1",
+              "background": true
+            },
+            {
+              "v": 2,
+              "key": {
+                "studentWallet": 1,
+                "date": 1
+              },
+              "name": "studentWallet_1_date_1",
+              "background": true,
+              "unique": true
+            }
+          ]
+        },
+        {
+          "name": "auth_nonces",
+          "count": 0,
+          "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+          "indexes": [
+            {
+              "v": 2,
+              "key": {
+                "_id": 1
+              },
+              "name": "_id_"
+            },
+            {
+              "v": 2,
+              "key": {
+                "walletAddress": 1
+              },
+              "name": "walletAddress_1",
+              "background": true,
+              "unique": true
+            },
+            {
+              "v": 2,
+              "key": {
+                "expiresAt": 1
+              },
+              "name": "expiresAt_1",
+              "background": true,
+              "expireAfterSeconds": 0
+            }
+          ]
+        },
+        {
+          "name": "chain_events",
+          "count": 0,
+          "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+          "indexes": [
+            {
+              "v": 2,
+              "key": {
+                "_id": 1
+              },
+              "name": "_id_"
+            },
+            {
+              "v": 2,
+              "key": {
+                "processed": 1
+              },
+              "name": "processed_1",
+              "background": true
+            },
+            {
+              "v": 2,
+              "key": {
+                "txHash": 1,
+                "logIndex": 1
+              },
+              "name": "txHash_1_logIndex_1",
+              "background": true,
+              "unique": true
+            }
+          ]
+        },
+        {
+          "name": "companies",
+          "count": 9,
+          "sha256": "3adf7728532b15f7b8a8cf6b5f9a8947a5655fd54a87488d69bc7b9eff532299",
+          "indexes": [
+            {
+              "v": 2,
+              "key": {
+                "_id": 1
+              },
+              "name": "_id_"
+            },
+            {
+              "v": 2,
+              "key": {
+                "userId": 1
+              },
+              "name": "userId_1",
+              "background": true,
+              "unique": true
+            }
+          ]
+        },
+        {
+          "name": "internship_tasks",
+          "count": 0,
+          "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+          "indexes": [
+            {
+              "v": 2,
+              "key": {
+                "_id": 1
+              },
+              "name": "_id_"
+            }
+          ]
+        },
+        {
+          "name": "job_descriptions",
+          "count": 0,
+          "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+          "indexes": [
+            {
+              "v": 2,
+              "key": {
+                "_id": 1
+              },
+              "name": "_id_"
+            }
+          ]
+        },
+        {
+          "name": "kpi_evaluations",
+          "count": 3,
+          "sha256": "1a71148a3e39b8a6527e335aa8ea9168e576ce9e442c3fc86a17dd7ce4d3c95d",
+          "indexes": [
+            {
+              "v": 2,
+              "key": {
+                "_id": 1
+              },
+              "name": "_id_"
+            },
+            {
+              "v": 2,
+              "key": {
+                "assignmentId": 1
+              },
+              "name": "assignmentId_1",
+              "background": true
+            },
+            {
+              "v": 2,
+              "key": {
+                "assignmentId": 1,
+                "milestoneIndex": 1
+              },
+              "name": "assignmentId_1_milestoneIndex_1",
+              "background": true,
+              "unique": true
+            }
+          ]
+        },
+        {
+          "name": "students",
+          "count": 13,
+          "sha256": "7a32936eebd6261e7d787a84d3d525b6f0978105a787c088b56a4c7bef72fef5",
+          "indexes": [
+            {
+              "v": 2,
+              "key": {
+                "_id": 1
+              },
+              "name": "_id_"
+            },
+            {
+              "v": 2,
+              "key": {
+                "userId": 1
+              },
+              "name": "userId_1",
+              "background": true,
+              "unique": true
+            },
+            {
+              "v": 2,
+              "key": {
+                "studentCode": 1
+              },
+              "name": "studentCode_1",
+              "background": true,
+              "unique": true,
+              "sparse": true
+            }
+          ]
+        },
+        {
+          "name": "submissions",
+          "count": 4,
+          "sha256": "1e65740c36ce593d7f8c24d099193ff9a69f2a5682f0f89eb70166e4bc7a223a",
+          "indexes": [
+            {
+              "v": 2,
+              "key": {
+                "_id": 1
+              },
+              "name": "_id_"
+            },
+            {
+              "v": 2,
+              "key": {
+                "assignmentId": 1,
+                "milestoneIndex": 1,
+                "version": 1
+              },
+              "name": "assignmentId_1_milestoneIndex_1_version_1",
+              "background": true,
+              "unique": true
+            }
+          ]
+        },
+        {
+          "name": "topics",
+          "count": 6,
+          "sha256": "244bec78ec6b5c2b20a068c322629739986ab93be46b46b2d85bfab932d417ae",
+          "indexes": [
+            {
+              "v": 2,
+              "key": {
+                "_id": 1
+              },
+              "name": "_id_"
+            },
+            {
+              "v": 2,
+              "key": {
+                "onChainId": 1
+              },
+              "name": "onChainId_1",
+              "background": true
+            },
+            {
+              "v": 2,
+              "key": {
+                "companyId": 1
+              },
+              "name": "companyId_1",
+              "background": true
+            },
+            {
+              "v": 2,
+              "key": {
+                "companyId": 1,
+                "status": 1
+              },
+              "name": "companyId_1_status_1",
+              "background": true
+            }
+          ]
+        },
+        {
+          "name": "users",
+          "count": 24,
+          "sha256": "5b3584c46bfdea9305ff2a9f45910a9c8787ddd08798236aef954373056155af",
+          "indexes": [
+            {
+              "v": 2,
+              "key": {
+                "_id": 1
+              },
+              "name": "_id_"
+            },
+            {
+              "v": 2,
+              "key": {
+                "walletAddress": 1
+              },
+              "name": "walletAddress_1",
+              "background": true,
+              "unique": true
+            }
+          ]
+        },
+        {
+          "name": "work_logs",
+          "count": 0,
+          "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+          "indexes": [
+            {
+              "v": 2,
+              "key": {
+                "_id": 1
+              },
+              "name": "_id_"
+            },
+            {
+              "v": 2,
+              "key": {
+                "studentWallet": 1
+              },
+              "name": "studentWallet_1",
+              "background": true
+            },
+            {
+              "v": 2,
+              "key": {
+                "companyWallet": 1
+              },
+              "name": "companyWallet_1",
+              "background": true
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

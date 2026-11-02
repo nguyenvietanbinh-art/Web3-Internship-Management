@@ -1,0 +1,13 @@
+{
+  "verifiedAtUtc": "2026-10-31T19:08:53.063Z",
+  "database": "web3_internship_test_phase1_d48a71b3_d4749f1b9265",
+  "chainId": 31337,
+  "contract": "0x5FbDB2315678afecb367f032d93F642f64180aa3",
+  "tokenId": "9",
+  "txHash": "0x3e174575af9c15abd32e52f24bace48275f6c2453d82c0851fb65ce2518d9ca1",
+  "blockNumber": 37,
+  "verified": true,
+  "locked": true,
+  "owner": "0xfcdb72ae909bc152c0519f4b86f1c312a6dffd5c",
+  "origin": "PHASE6 patch real E2E token, read back during PHASE7; not a token minted for fresh manual accounts"
+}

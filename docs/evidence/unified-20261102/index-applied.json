@@ -1,0 +1,503 @@
+{
+  "at": "2026-11-02T04:38:00.337Z",
+  "database": "web3_internship_test_phase1_d8c3534f_0f4877b64b94",
+  "applied": [
+    {
+      "collection": "users",
+      "expectedCount": 2,
+      "previous": null,
+      "desired": {
+        "key": {
+          "googleSubject": 1
+        },
+        "unique": true,
+        "partialFilterExpression": {
+          "googleSubject": {
+            "$type": "string"
+          }
+        },
+        "background": true,
+        "name": "googleSubject_1"
+      }
+    },
+    {
+      "collection": "users",
+      "expectedCount": 2,
+      "previous": null,
+      "desired": {
+        "key": {
+          "googleEmail": 1
+        },
+        "unique": true,
+        "partialFilterExpression": {
+          "googleEmail": {
+            "$type": "string"
+          }
+        },
+        "background": true,
+        "name": "googleEmail_1"
+      }
+    },
+    {
+      "collection": "topics",
+      "expectedCount": 0,
+      "previous": null,
+      "desired": {
+        "key": {
+          "companyUserId": 1
+        },
+        "background": true,
+        "name": "companyUserId_1"
+      }
+    },
+    {
+      "collection": "assignments",
+      "expectedCount": 0,
+      "previous": null,
+      "desired": {
+        "key": {
+          "studentUserId": 1
+        },
+        "background": true,
+        "name": "studentUserId_1"
+      }
+    },
+    {
+      "collection": "assignments",
+      "expectedCount": 0,
+      "previous": null,
+      "desired": {
+        "key": {
+          "companyUserId": 1
+        },
+        "background": true,
+        "name": "companyUserId_1"
+      }
+    },
+    {
+      "collection": "assignments",
+      "expectedCount": 0,
+      "previous": null,
+      "desired": {
+        "key": {
+          "mentorUserId": 1
+        },
+        "background": true,
+        "name": "mentorUserId_1"
+      }
+    },
+    {
+      "collection": "job_descriptions",
+      "expectedCount": 0,
+      "previous": null,
+      "desired": {
+        "key": {
+          "companyUserId": 1
+        },
+        "background": true,
+        "name": "companyUserId_1"
+      }
+    },
+    {
+      "collection": "internship_tasks",
+      "expectedCount": 0,
+      "previous": null,
+      "desired": {
+        "key": {
+          "studentUserId": 1
+        },
+        "background": true,
+        "name": "studentUserId_1"
+      }
+    },
+    {
+      "collection": "internship_tasks",
+      "expectedCount": 0,
+      "previous": null,
+      "desired": {
+        "key": {
+          "companyUserId": 1
+        },
+        "background": true,
+        "name": "companyUserId_1"
+      }
+    },
+    {
+      "collection": "work_logs",
+      "expectedCount": 0,
+      "previous": null,
+      "desired": {
+        "key": {
+          "studentUserId": 1
+        },
+        "background": true,
+        "name": "studentUserId_1"
+      }
+    },
+    {
+      "collection": "work_logs",
+      "expectedCount": 0,
+      "previous": null,
+      "desired": {
+        "key": {
+          "companyUserId": 1
+        },
+        "background": true,
+        "name": "companyUserId_1"
+      }
+    },
+    {
+      "collection": "cvs",
+      "expectedCount": 0,
+      "previous": {
+        "v": 2,
+        "key": {
+          "ownerWallet": 1
+        },
+        "name": "ownerWallet_1",
+        "background": true,
+        "unique": true
+      },
+      "desired": {
+        "key": {
+          "ownerWallet": 1
+        },
+        "unique": true,
+        "partialFilterExpression": {
+          "ownerWallet": {
+            "$type": "string"
+          },
+          "ownerUserId": null
+        },
+        "background": true,
+        "name": "ownerWallet_1"
+      }
+    },
+    {
+      "collection": "cvs",
+      "expectedCount": 0,
+      "previous": null,
+      "desired": {
+        "key": {
+          "ownerUserId": 1
+        },
+        "unique": true,
+        "partialFilterExpression": {
+          "ownerUserId": {
+            "$type": "objectId"
+          }
+        },
+        "background": true,
+        "name": "ownerUserId_1"
+      }
+    },
+    {
+      "collection": "applications",
+      "expectedCount": 0,
+      "previous": null,
+      "desired": {
+        "key": {
+          "studentUserId": 1
+        },
+        "background": true,
+        "name": "studentUserId_1"
+      }
+    },
+    {
+      "collection": "applications",
+      "expectedCount": 0,
+      "previous": null,
+      "desired": {
+        "key": {
+          "companyUserId": 1
+        },
+        "background": true,
+        "name": "companyUserId_1"
+      }
+    },
+    {
+      "collection": "applications",
+      "expectedCount": 0,
+      "previous": {
+        "v": 2,
+        "key": {
+          "jdId": 1,
+          "studentWallet": 1
+        },
+        "name": "jdId_1_studentWallet_1",
+        "background": true,
+        "unique": true
+      },
+      "desired": {
+        "key": {
+          "jdId": 1,
+          "studentWallet": 1
+        },
+        "unique": true,
+        "partialFilterExpression": {
+          "studentWallet": {
+            "$type": "string"
+          },
+          "studentUserId": null
+        },
+        "background": true,
+        "name": "jdId_1_studentWallet_1"
+      }
+    },
+    {
+      "collection": "applications",
+      "expectedCount": 0,
+      "previous": null,
+      "desired": {
+        "key": {
+          "jdId": 1,
+          "studentUserId": 1
+        },
+        "unique": true,
+        "partialFilterExpression": {
+          "studentUserId": {
+            "$type": "objectId"
+          }
+        },
+        "background": true,
+        "name": "jdId_1_studentUserId_1"
+      }
+    },
+    {
+      "collection": "work_sessions",
+      "expectedCount": 0,
+      "previous": null,
+      "desired": {
+        "key": {
+          "studentUserId": 1
+        },
+        "background": true,
+        "name": "studentUserId_1"
+      }
+    },
+    {
+      "collection": "work_sessions",
+      "expectedCount": 0,
+      "previous": null,
+      "desired": {
+        "key": {
+          "companyUserId": 1
+        },
+        "background": true,
+        "name": "companyUserId_1"
+      }
+    },
+    {
+      "collection": "work_sessions",
+      "expectedCount": 0,
+      "previous": null,
+      "desired": {
+        "key": {
+          "mentorUserId": 1
+        },
+        "background": true,
+        "name": "mentorUserId_1"
+      }
+    },
+    {
+      "collection": "work_sessions",
+      "expectedCount": 0,
+      "previous": {
+        "v": 2,
+        "key": {
+          "studentWallet": 1,
+          "requestKey": 1
+        },
+        "name": "studentWallet_1_requestKey_1",
+        "background": true,
+        "unique": true
+      },
+      "desired": {
+        "key": {
+          "studentWallet": 1,
+          "requestKey": 1
+        },
+        "unique": true,
+        "background": true,
+        "partialFilterExpression": {
+          "studentWallet": {
+            "$type": "string"
+          },
+          "studentUserId": null
+        },
+        "name": "studentWallet_1_requestKey_1"
+      }
+    },
+    {
+      "collection": "work_sessions",
+      "expectedCount": 0,
+      "previous": {
+        "v": 2,
+        "key": {
+          "studentWallet": 1,
+          "day": 1
+        },
+        "name": "studentWallet_1_day_1",
+        "background": true,
+        "unique": true
+      },
+      "desired": {
+        "key": {
+          "studentWallet": 1,
+          "day": 1
+        },
+        "unique": true,
+        "partialFilterExpression": {
+          "studentWallet": {
+            "$type": "string"
+          },
+          "studentUserId": null
+        },
+        "background": true,
+        "name": "studentWallet_1_day_1"
+      }
+    },
+    {
+      "collection": "work_sessions",
+      "expectedCount": 0,
+      "previous": null,
+      "desired": {
+        "key": {
+          "activeStudentUserId": 1
+        },
+        "unique": true,
+        "partialFilterExpression": {
+          "activeStudentUserId": {
+            "$type": "objectId"
+          }
+        },
+        "background": true,
+        "name": "activeStudentUserId_1"
+      }
+    },
+    {
+      "collection": "work_sessions",
+      "expectedCount": 0,
+      "previous": null,
+      "desired": {
+        "key": {
+          "studentUserId": 1,
+          "requestKey": 1
+        },
+        "unique": true,
+        "partialFilterExpression": {
+          "studentUserId": {
+            "$type": "objectId"
+          }
+        },
+        "background": true,
+        "name": "studentUserId_1_requestKey_1"
+      }
+    },
+    {
+      "collection": "work_sessions",
+      "expectedCount": 0,
+      "previous": null,
+      "desired": {
+        "key": {
+          "studentUserId": 1,
+          "day": 1
+        },
+        "unique": true,
+        "partialFilterExpression": {
+          "studentUserId": {
+            "$type": "objectId"
+          }
+        },
+        "background": true,
+        "name": "studentUserId_1_day_1"
+      }
+    },
+    {
+      "collection": "business_reports",
+      "expectedCount": 0,
+      "previous": null,
+      "desired": {
+        "key": {
+          "studentUserId": 1
+        },
+        "background": true,
+        "name": "studentUserId_1"
+      }
+    },
+    {
+      "collection": "business_reports",
+      "expectedCount": 0,
+      "previous": null,
+      "desired": {
+        "key": {
+          "companyUserId": 1
+        },
+        "background": true,
+        "name": "companyUserId_1"
+      }
+    },
+    {
+      "collection": "business_reports",
+      "expectedCount": 0,
+      "previous": null,
+      "desired": {
+        "key": {
+          "mentorUserId": 1
+        },
+        "background": true,
+        "name": "mentorUserId_1"
+      }
+    },
+    {
+      "collection": "chain_operations",
+      "expectedCount": 0,
+      "previous": null,
+      "desired": {
+        "key": {
+          "actorUserId": 1
+        },
+        "background": true,
+        "name": "actorUserId_1"
+      }
+    },
+    {
+      "collection": "private_report_artifacts",
+      "expectedCount": 0,
+      "previous": null,
+      "desired": {
+        "key": {
+          "ownerUserId": 1
+        },
+        "background": true,
+        "name": "ownerUserId_1"
+      }
+    },
+    {
+      "collection": "core_qr_sessions",
+      "expectedCount": 0,
+      "previous": null,
+      "desired": {
+        "key": {
+          "studentUserId": 1
+        },
+        "background": true,
+        "name": "studentUserId_1"
+      }
+    },
+    {
+      "collection": "core_qr_sessions",
+      "expectedCount": 0,
+      "previous": null,
+      "desired": {
+        "key": {
+          "companyUserId": 1
+        },
+        "background": true,
+        "name": "companyUserId_1"
+      }
+    }
+  ],
+  "documentsUpdated": 0,
+  "documentsDeleted": 0
+}

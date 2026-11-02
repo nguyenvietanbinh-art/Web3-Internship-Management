@@ -1,0 +1,551 @@
+{
+  "time": "2026-11-02T04:53:59.531Z",
+  "tests": [
+    {
+      "name": "Direct /register -> real email signup -> Student Dashboard without wallet, one origin",
+      "status": "PASS"
+    },
+    {
+      "name": "Create CV through UI without wallet and retain data after logout/login",
+      "status": "PASS"
+    },
+    {
+      "name": "Company email Dashboard and JD UI create work without wallet",
+      "status": "PASS"
+    },
+    {
+      "name": "Real SBERT UI matching and application without wallet",
+      "status": "PASS"
+    },
+    {
+      "name": "Company/mentor/admin relationship workflow uses same User IDs; normal business before wallet",
+      "status": "PASS"
+    },
+    {
+      "name": "Wallet gate only protects Web3; real signature through TEST EIP1193 bridge links same account",
+      "status": "PASS"
+    },
+    {
+      "name": "Actual local report/hours/completion transactions and SBT verify on same frontend",
+      "status": "PASS"
+    },
+    {
+      "name": "Desktop/mobile Light/Dark, one frontend origin and no automatic mutations on navigation",
+      "status": "PASS"
+    }
+  ],
+  "requests": [
+    {
+      "method": "OPTIONS",
+      "path": "/api/core/capabilities"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/capabilities"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/capabilities"
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/api/core/capabilities"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/capabilities"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/capabilities"
+    },
+    {
+      "method": "POST",
+      "path": "/api/auth/email/register"
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/api/auth/email/register"
+    },
+    {
+      "method": "GET",
+      "path": "/api/auth/me"
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/api/auth/me"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/dashboard"
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/api/core/dashboard"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/cv"
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/api/core/cv"
+    },
+    {
+      "method": "PUT",
+      "path": "/api/core/cv"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/cv"
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/api/auth/email/login"
+    },
+    {
+      "method": "POST",
+      "path": "/api/auth/email/login"
+    },
+    {
+      "method": "GET",
+      "path": "/api/auth/me"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/dashboard"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/cv"
+    },
+    {
+      "method": "POST",
+      "path": "/api/auth/email/login"
+    },
+    {
+      "method": "GET",
+      "path": "/api/auth/me"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/dashboard"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/jds"
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/api/core/jds"
+    },
+    {
+      "method": "POST",
+      "path": "/api/core/jds"
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/api/core/jds"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/jds"
+    },
+    {
+      "method": "POST",
+      "path": "/api/auth/email/login"
+    },
+    {
+      "method": "GET",
+      "path": "/api/auth/me"
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/api/auth/me"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/dashboard"
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/api/core/dashboard"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/ai/status"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/jds"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/reports"
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/api/core/ai/status"
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/api/core/jds"
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/api/core/reports"
+    },
+    {
+      "method": "POST",
+      "path": "/api/core/ai/match"
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/api/core/ai/match"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/ai/status"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/jds"
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/api/core/jds"
+    },
+    {
+      "method": "POST",
+      "path": "/api/core/applications"
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/api/core/applications"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/jds"
+    },
+    {
+      "method": "POST",
+      "path": "/api/auth/email/login"
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/api/auth/email/login"
+    },
+    {
+      "method": "GET",
+      "path": "/api/auth/me"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/dashboard"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/placements"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/reports"
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/api/core/placements"
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/api/core/reports"
+    },
+    {
+      "method": "POST",
+      "path": "/api/auth/email/login"
+    },
+    {
+      "method": "GET",
+      "path": "/api/auth/me"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/dashboard"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/placements"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/reports"
+    },
+    {
+      "method": "POST",
+      "path": "/api/auth/email/login"
+    },
+    {
+      "method": "GET",
+      "path": "/api/auth/me"
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/api/auth/me"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/dashboard"
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/api/core/dashboard"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/placements"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/reports"
+    },
+    {
+      "method": "POST",
+      "path": "/api/auth/email/login"
+    },
+    {
+      "method": "GET",
+      "path": "/api/auth/me"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/dashboard"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/placements"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/tasks"
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/api/core/tasks"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/placements"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/time/sessions"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/time/totals"
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/api/core/time/sessions"
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/api/core/time/totals"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/placements"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/reports"
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/api/core/placements"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/placements"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/web3/status"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/reports"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/time/sessions"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/web3/status"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/web3/status"
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/api/core/web3/status"
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/api/core/reports"
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/api/core/time/sessions"
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/api/core/web3/status"
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/api/core/web3/status"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/profile"
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/api/core/profile"
+    },
+    {
+      "method": "POST",
+      "path": "/api/auth/email/wallet-challenge"
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/api/auth/email/wallet-challenge"
+    },
+    {
+      "method": "POST",
+      "path": "/api/auth/email/link-wallet"
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/api/auth/email/link-wallet"
+    },
+    {
+      "method": "GET",
+      "path": "/api/auth/me"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/dashboard"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/placements"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/web3/status"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/reports"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/time/sessions"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/web3/status"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/web3/status"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/reports"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/time/sessions"
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/api/core/reports"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/web3/placements/6ae8175c49904948909009e0/operations"
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/api/core/time/sessions"
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/api/core/web3/placements/6ae8175c49904948909009e0/operations"
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/api/core/web3/placements/6ae8175c49904948909009e0/certificate"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/web3/placements/6ae8175c49904948909009e0/certificate"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/web3/status"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/reports"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/time/sessions"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/web3/placements/6ae8175c49904948909009e0/operations"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/web3/status"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/dashboard"
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/api/core/dashboard"
+    }
+  ],
+  "exceptions": [],
+  "blocked": [],
+  "chainProof": {
+    "verified": true,
+    "locked": true,
+    "standard": "ERC721/ERC5192",
+    "tokenId": "24",
+    "owner": "0x51b035a1a8c94984f2943cca7c5ebd6e546d48a8",
+    "chainId": 31337,
+    "contractAddress": "0x5FbDB2315678afecb367f032d93F642f64180aa3",
+    "txHash": "0x8f6d9fae2d53f63faab11c785486bec83411adcc42936f578bd6226f01a5eec5",
+    "blockNumber": 97,
+    "blockHash": "0x9b3fc14241d2800e1848a82c49ee6cdc2c74672cb91f0d3ee47624a871ac5142",
+    "assignmentId": "6ae8175c49904948909009e0",
+    "metadataURI": "data:application/json;utf8,{\"name\":\"Internship Completion SBT\",\"description\":\"Issuer-attested completion. No personal report data in metadata.\",\"soulbound\":true}",
+    "signerMode": "local-hardhat-attestor-not-user-wallet"
+  },
+  "database": "web3_internship_test_phase1_35b95471_12ee66130cde",
+  "frontendOrigin": "http://127.0.0.1:5184",
+  "walletTransport": "TEST EIP1193/CDP bridge; actual EIP191 signature, not real MetaMask extension popup",
+  "blockchain": "Actual local Hardhat receipt and SBT verification",
+  "googleLive": "BLOCKED_NO_CLIENT_ID",
+  "ipfsLive": "BLOCKED_NO_CREDENTIALS",
+  "businessSetup": "Company/mentor/admin create relationships and synthetic audited two-minute hours through real APIs; major CV/JD/apply/AI/login/wallet/verify flows use UI"
+}

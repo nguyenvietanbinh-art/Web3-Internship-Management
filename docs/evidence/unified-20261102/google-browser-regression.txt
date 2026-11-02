@@ -1,0 +1,10 @@
+TEST_DB_VERIFIED web3_internship_test_phase1_35b95471_39d07dee403d
+PASS Login opens method chooser without calling MetaMask or writing database
+PASS Register explains student role, email form and optional Google BLOCKED; cancel closes dialog
+PASS Google-only fixture session restores, shows account settings and no wallet-scoped navigation
+PASS Profile form saves to isolated TEST database and preserves role
+PASS Responsive mobile and Dark/Light settings stay usable without automatic mutations
+PASS Logout clears JWT and authenticated account UI
+PASS All four existing wallet roles still log in through nonce/signature API and navigate profile/dashboard
+Browser evidence: D:\Web3-Internship-Management\contracts\node_modules\.cache\google-auth-browser-1793594639146
+Browser assertions 7/7; exceptions 0; blocked external requests 0

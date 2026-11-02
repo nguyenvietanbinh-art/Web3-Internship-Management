@@ -1,0 +1,58 @@
+{
+  "server": {
+    "changedLockEntries": [
+      "node_modules/body-parser",
+      "node_modules/follow-redirects",
+      "node_modules/qs"
+    ],
+    "installed": {
+      "body-parser": "1.20.9",
+      "follow-redirects": "1.16.2",
+      "qs": "6.16.1"
+    },
+    "addedOrRemovedPackages": false,
+    "manifestUnchanged": true,
+    "production": {
+      "info": 0,
+      "low": 0,
+      "moderate": 0,
+      "high": 0,
+      "critical": 0,
+      "total": 0
+    },
+    "all": {
+      "info": 0,
+      "low": 0,
+      "moderate": 2,
+      "high": 0,
+      "critical": 0,
+      "total": 2
+    }
+  },
+  "client": {
+    "changedLockEntries": [
+      "node_modules/follow-redirects"
+    ],
+    "installed": {
+      "follow-redirects": "1.16.2"
+    },
+    "addedOrRemovedPackages": false,
+    "manifestUnchanged": true,
+    "production": {
+      "info": 0,
+      "low": 0,
+      "moderate": 0,
+      "high": 0,
+      "critical": 0,
+      "total": 0
+    },
+    "all": {
+      "info": 0,
+      "low": 0,
+      "moderate": 0,
+      "high": 0,
+      "critical": 0,
+      "total": 0
+    }
+  }
+}

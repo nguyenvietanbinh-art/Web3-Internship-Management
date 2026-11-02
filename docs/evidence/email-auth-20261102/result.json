@@ -1,0 +1,25 @@
+{
+  "time": "2026-11-02T02:57:36.846Z",
+  "backend": {
+    "exit": 0,
+    "summary": [
+      "# tests 147",
+      "# pass 147",
+      "# fail 0",
+      "# skipped 0",
+      "# duration_ms 74568.0623"
+    ]
+  },
+  "browser": {
+    "exit": 0,
+    "summary": []
+  },
+  "googleRegression": {
+    "exit": 0,
+    "summary": []
+  },
+  "protectedUnchanged": true,
+  "googleRequired": false,
+  "liveEmailDelivery": "NOT_IMPLEMENTED",
+  "source": "Actual node:test and CDP browser runs; no success mocks in email E2E"
+}

@@ -1,0 +1,22 @@
+TAP version 13
+# Subtest: real QR encoder/decoder roundtrips 40 random long payloads across all masks; no fixed successful fixture
+ok 1 - real QR encoder/decoder roundtrips 40 random long payloads across all masks; no fixed successful fixture
+  ---
+  duration_ms: 1945.9262
+  type: 'test'
+  ...
+# Subtest: empty/blank pixels are rejected rather than returning invented QR content
+ok 2 - empty/blank pixels are rejected rather than returning invented QR content
+  ---
+  duration_ms: 6.2456
+  type: 'test'
+  ...
+1..2
+# tests 2
+# suites 0
+# pass 2
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 6718.2538

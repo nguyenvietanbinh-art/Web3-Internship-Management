@@ -1,0 +1,34 @@
+[
+  {
+    "name": "browser-result.json",
+    "sha256": "8282b191acf8c4e9d1eb83b08d0b410ec0cbd48907dc11f9bd1b7771537a7e26",
+    "source": "D:\\Web3-Internship-Management\\contracts\\node_modules\\.cache\\google-auth-browser-1793538106008\\result.json",
+    "edited": false,
+    "testFixture": true,
+    "googleRealLogin": false
+  },
+  {
+    "name": "google-login-configuration-blocked.png",
+    "sha256": "300354fd54b2f708ea48a4a505ec938214a27725eca38b82da5cd5977857dcd7",
+    "source": "D:\\Web3-Internship-Management\\contracts\\node_modules\\.cache\\google-auth-browser-1793538106008\\google-login-configuration-blocked.png",
+    "edited": false,
+    "testFixture": true,
+    "googleRealLogin": false
+  },
+  {
+    "name": "google-only-mobile-dark.png",
+    "sha256": "aeee10688cbc766aaa471193b69e47e238a4a03bc20b814c7b6bd7b1ecc8707b",
+    "source": "D:\\Web3-Internship-Management\\contracts\\node_modules\\.cache\\google-auth-browser-1793538106008\\google-only-mobile-dark.png",
+    "edited": false,
+    "testFixture": true,
+    "googleRealLogin": false
+  },
+  {
+    "name": "google-only-desktop-light.png",
+    "sha256": "595b732541c4bddde6551d8a32b5671f585451d39af2a9f33de0aee239c0e377",
+    "source": "D:\\Web3-Internship-Management\\contracts\\node_modules\\.cache\\google-auth-browser-1793538106008\\google-only-desktop-light.png",
+    "edited": false,
+    "testFixture": true,
+    "googleRealLogin": false
+  }
+]

@@ -1,0 +1,760 @@
+
+> web3-internship-server@1.0.0 test
+> node --test --test-concurrency=1 test/*.test.js
+
+TAP version 13
+# AI Service unavailable, using internal fallback matching: Deliberately unavailable adapter fixture
+# AI Service unavailable, using internal fallback matching: Deliberately unavailable adapter fixture
+# AI Service unavailable, using internal fallback report review: Deliberately unavailable adapter fixture
+# Subtest: unavailable AI matching exposes provenance, no invented semantic score or minimum match
+ok 1 - unavailable AI matching exposes provenance, no invented semantic score or minimum match
+  ---
+  duration_ms: 4.6614
+  type: 'test'
+  ...
+# Subtest: malformed AI adapter input is validation error, not a fabricated fallback result
+ok 2 - malformed AI adapter input is validation error, not a fabricated fallback result
+  ---
+  duration_ms: 1.2021
+  type: 'test'
+  ...
+# Subtest: receipt adapter rejects wrong chain/signer/contract/status and unbound topic events
+ok 3 - receipt adapter rejects wrong chain/signer/contract/status and unbound topic events
+  ---
+  duration_ms: 14.0824
+  type: 'test'
+  ...
+# Subtest: disabled verifier is unavailable rather than writing or fabricating receipt
+ok 4 - disabled verifier is unavailable rather than writing or fabricating receipt
+  ---
+  duration_ms: 0.6972
+  type: 'test'
+  ...
+# TEST_DB_VERIFIED web3_internship_test_phase1_0b94f7d8_4cc87ac771b7
+# Subtest: core accounts require JWT and admin, profile cannot elevate role
+ok 5 - core accounts require JWT and admin, profile cannot elevate role
+  ---
+  duration_ms: 997.2361
+  type: 'test'
+  ...
+# Subtest: profile persists allowed fields, audits atomically and rejects stale/invalid input
+ok 6 - profile persists allowed fields, audits atomically and rejects stale/invalid input
+  ---
+  duration_ms: 35.0613
+  type: 'test'
+  ...
+# Subtest: admin provisions mentor; public self-registration still cannot grant mentor
+ok 7 - admin provisions mentor; public self-registration still cannot grant mentor
+  ---
+  duration_ms: 77.2031
+  type: 'test'
+  ...
+# Subtest: admin disable invalidates existing JWT, enable restores; reasons/history required
+ok 8 - admin disable invalidates existing JWT, enable restores; reasons/history required
+  ---
+  duration_ms: 44.5416
+  type: 'test'
+  ...
+# Subtest: admin self-modification blocked; pagination validated; GET has zero persistence writes
+ok 9 - admin self-modification blocked; pagination validated; GET has zero persistence writes
+  ---
+  duration_ms: 48.7654
+  type: 'test'
+  ...
+# Subtest: legacy profile writes retain response shape while auditing and invalidating stale core versions
+ok 10 - legacy profile writes retain response shape while auditing and invalidating stale core versions
+  ---
+  duration_ms: 25.2273
+  type: 'test'
+  ...
+# Subtest: raw legacy users without __v can be edited explicitly, never backfilled by GET
+ok 11 - raw legacy users without __v can be edited explicitly, never backfilled by GET
+  ---
+  duration_ms: 43.2385
+  type: 'test'
+  ...
+# TEST_DB_VERIFIED web3_internship_test_phase1_0b94f7d8_01de6c8e072a
+# Subtest: AI APIs require live auth, strict role/ownership and forbid client-supplied private CV
+ok 12 - AI APIs require live auth, strict role/ownership and forbid client-supplied private CV
+  ---
+  duration_ms: 1113.5029
+  type: 'test'
+  ...
+# Subtest: real local TF-IDF matching uses own persisted CV, returns Top-K and zero database writes
+ok 13 - real local TF-IDF matching uses own persisted CV, returns Top-K and zero database writes
+  ---
+  duration_ms: 91.1019
+  type: 'test'
+  ...
+# Subtest: company ranking uses consented application snapshot only, never foreign CV collections
+ok 14 - company ranking uses consented application snapshot only, never foreign CV collections
+  ---
+  duration_ms: 63.443
+  type: 'test'
+  ...
+# Subtest: mentor report NLP uses actual task deadline/hours and clearly untrained classifier, read-only
+ok 15 - mentor report NLP uses actual task deadline/hours and clearly untrained classifier, read-only
+  ---
+  duration_ms: 63.3588
+  type: 'test'
+  ...
+# Subtest: SBERT response preserves real engine provenance or fails closed without baseline substitution
+ok 16 - SBERT response preserves real engine provenance or fails closed without baseline substitution
+  ---
+  duration_ms: 97.7878
+  type: 'test'
+  ...
+# Subtest: real SBERT student matching returns pinned model cosine with zero database changes
+ok 17 - real SBERT student matching returns pinned model cosine with zero database changes
+  ---
+  duration_ms: 39.0225
+  type: 'test'
+  ...
+# Subtest: real SBERT company ranking uses application snapshot and writes nothing
+ok 18 - real SBERT company ranking uses application snapshot and writes nothing
+  ---
+  duration_ms: 49.1035
+  type: 'test'
+  ...
+# Subtest: real SBERT report semantic analysis remains distinct from untrained risk classifier
+ok 19 - real SBERT report semantic analysis remains distinct from untrained risk classifier
+  ---
+  duration_ms: 60.7075
+  type: 'test'
+  ...
+# Subtest: unavailable AI and non-loopback configuration do not block backend health or write data
+ok 20 - unavailable AI and non-loopback configuration do not block backend health or write data
+  ---
+  duration_ms: 46.477
+  type: 'test'
+  ...
+# Subtest: real stalled local AI times out while Backend health stays responsive, no writes
+ok 21 - real stalled local AI times out while Backend health stays responsive, no writes
+  ---
+  duration_ms: 15052.9749
+  type: 'test'
+  ...
+# TEST_DB_VERIFIED web3_internship_test_phase1_0b94f7d8_5620a269146d
+# Subtest: calendar and search validation reject impossible dates and regex injection
+ok 22 - calendar and search validation reject impossible dates and regex injection
+  ---
+  duration_ms: 1028.8537
+  type: 'test'
+  ...
+# Subtest: school can correct mentor/dates before active, no tenancy mutation; locked after start
+ok 23 - school can correct mentor/dates before active, no tenancy mutation; locked after start
+  ---
+  duration_ms: 47.2559
+  type: 'test'
+  ...
+# Subtest: report revisions keep previous content, only latest version is reviewable
+ok 24 - report revisions keep previous content, only latest version is reviewable
+  ---
+  duration_ms: 58.7857
+  type: 'test'
+  ...
+# Subtest: final approval racing a new version cannot approve a superseded report or silently allow overwrite
+ok 25 - final approval racing a new version cannot approve a superseded report or silently allow overwrite
+  ---
+  duration_ms: 113.4641
+  type: 'test'
+  ...
+# Subtest: stale/missing checkout never auto-closes or auto-counts; invalid long session can be rejected with audit
+ok 26 - stale/missing checkout never auto-closes or auto-counts; invalid long session can be rejected with audit
+  ---
+  duration_ms: 51.8129
+  type: 'test'
+  ...
+# Subtest: foreign filters cannot expand canonical scopes or expose reports/CV
+ok 27 - foreign filters cannot expand canonical scopes or expose reports/CV
+  ---
+  duration_ms: 48.7455
+  type: 'test'
+  ...
+# TEST_DB_VERIFIED web3_internship_test_phase1_0b94f7d8_695dd603672e
+# Subtest: only Admin manages batches; date/role/foreign placement validations
+ok 28 - only Admin manages batches; date/role/foreign placement validations
+  ---
+  duration_ms: 1069.7045
+  type: 'test'
+  ...
+# Subtest: canonical placement lifecycle requires school approval and cannot complete without final review
+ok 29 - canonical placement lifecycle requires school approval and cannot complete without final review
+  ---
+  duration_ms: 43.9751
+  type: 'test'
+  ...
+# Subtest: duplicate placement unique key; legacy assignment APIs never expose or mutate canonical records
+ok 30 - duplicate placement unique key; legacy assignment APIs never expose or mutate canonical records
+  ---
+  duration_ms: 50.9293
+  type: 'test'
+  ...
+# TEST_DB_VERIFIED web3_internship_test_phase1_0b94f7d8_2cda0009847a
+# Subtest: CV owner CRUD has version validation, private storage and strict fields
+ok 31 - CV owner CRUD has version validation, private storage and strict fields
+  ---
+  duration_ms: 1049.2744
+  type: 'test'
+  ...
+# Subtest: CV DOCX extractor returns actual text; rejects MIME/magic/external/macro/oversize without writes
+ok 32 - CV DOCX extractor returns actual text; rejects MIME/magic/external/macro/oversize without writes
+  ---
+  duration_ms: 1482.6687
+  type: 'test'
+  ...
+# Subtest: PDF parser extracts actual fixture text, without AI or mock success
+ok 33 - PDF parser extracts actual fixture text, without AI or mock success
+  ---
+  duration_ms: 544.2306
+  type: 'test'
+  ...
+# Subtest: valid structured PDF active content/decompression bomb and encrypted/scan documents are rejected without writes
+ok 34 - valid structured PDF active content/decompression bomb and encrypted/scan documents are rejected without writes
+  ---
+  duration_ms: 2546.6537
+  type: 'test'
+  ...
+# Subtest: JD draft/edit/publish/close checks owner, dates, search and pagination
+ok 35 - JD draft/edit/publish/close checks owner, dates, search and pagination
+  ---
+  duration_ms: 44.1428
+  type: 'test'
+  ...
+# Subtest: applications persist immutable CV snapshot; concurrent duplicate succeeds only once
+ok 36 - applications persist immutable CV snapshot; concurrent duplicate succeeds only once
+  ---
+  duration_ms: 44.9084
+  type: 'test'
+  ...
+# Subtest: application review notifies only recipient; read GET zero writes and explicit mark-read persists
+ok 37 - application review notifies only recipient; read GET zero writes and explicit mark-read persists
+  ---
+  duration_ms: 70.7768
+  type: 'test'
+  ...
+# Subtest: closed JD blocks new applications, no implicit assignments or NFT
+ok 38 - closed JD blocks new applications, no implicit assignments or NFT
+  ---
+  duration_ms: 15.3962
+  type: 'test'
+  ...
+# TEST_DB_VERIFIED web3_internship_test_phase1_0b94f7d8_6e1779feb14f
+# Subtest: core task follows assignment ownership, deadlines and strict fields
+ok 39 - core task follows assignment ownership, deadlines and strict fields
+  ---
+  duration_ms: 1078.9983
+  type: 'test'
+  ...
+# Subtest: task status/progress and CAS preserve history, reject foreign/edit escalation
+ok 40 - task status/progress and CAS preserve history, reject foreign/edit escalation
+  ---
+  duration_ms: 37.9112
+  type: 'test'
+  ...
+# Subtest: weekly log edit/review history and duplicate week; approved log immutable to student
+ok 41 - weekly log edit/review history and duplicate week; approved log immutable to student
+  ---
+  duration_ms: 65.9245
+  type: 'test'
+  ...
+# Subtest: check-in is explicit, duplicate/open checks are atomic and GET never creates attendance
+ok 42 - check-in is explicit, duplicate/open checks are atomic and GET never creates attendance
+  ---
+  duration_ms: 50.9064
+  type: 'test'
+  ...
+# Subtest: checkout duration computed from persisted clock fixture; only company can approve with audit
+ok 43 - checkout duration computed from persisted clock fixture; only company can approve with audit
+  ---
+  duration_ms: 78.89
+  type: 'test'
+  ...
+# Subtest: daily duplicate after checkout rejected; adjustment needs reason, valid range and audit
+ok 44 - daily duplicate after checkout rejected; adjustment needs reason, valid range and audit
+  ---
+  duration_ms: 49.7348
+  type: 'test'
+  ...
+# Subtest: reports versioned, foreign/private content denied, roles must independently review latest
+ok 45 - reports versioned, foreign/private content denied, roles must independently review latest
+  ---
+  duration_ms: 65.7212
+  type: 'test'
+  ...
+# Subtest: canonical KPIs are scoped, preserve zero score and compute weighted result
+ok 46 - canonical KPIs are scoped, preserve zero score and compute weighted result
+  ---
+  duration_ms: 64.313
+  type: 'test'
+  ...
+# Subtest: school approval computes real review mean, locks final report; completion does not mint
+ok 47 - school approval computes real review mean, locks final report; completion does not mint
+  ---
+  duration_ms: 34.8277
+  type: 'test'
+  ...
+# Subtest: core dashboard reflects DB scope and reads are zero-write
+ok 48 - core dashboard reflects DB scope and reads are zero-write
+  ---
+  duration_ms: 62.34
+  type: 'test'
+  ...
+# TEST_DB_VERIFIED web3_internship_test_phase1_0b94f7d8_f770db1f942a
+# Subtest: runtime startup disables implicit schema writes outside TEST and rejects unsafe TEST URI before connecting
+ok 49 - runtime startup disables implicit schema writes outside TEST and rejects unsafe TEST URI before connecting
+  ---
+  duration_ms: 698.3166
+  type: 'test'
+  ...
+# Subtest: unique index readiness checks actual TEST indexes with no collection or document changes
+ok 50 - unique index readiness checks actual TEST indexes with no collection or document changes
+  ---
+  duration_ms: 64.8552
+  type: 'test'
+  ...
+# Subtest: patched body-parser handles gzip and trailing decompression errors without crashing isolated child
+ok 51 - patched body-parser handles gzip and trailing decompression errors without crashing isolated child
+  ---
+  duration_ms: 383.2654
+  type: 'test'
+  ...
+# Subtest: patched follow-redirects strips cross-realm custom sensitive headers across origins
+ok 52 - patched follow-redirects strips cross-realm custom sensitive headers across origins
+  ---
+  duration_ms: 54.3832
+  type: 'test'
+  ...
+# Subtest: patched qs safely stringifies comma arrays with non-callable own toString values
+ok 53 - patched qs safely stringifies comma arrays with non-callable own toString values
+  ---
+  duration_ms: 41.9081
+  type: 'test'
+  ...
+# Subtest: legacy public IPFS is privacy-blocked even with credentials; no private report or secret escapes
+ok 54 - legacy public IPFS is privacy-blocked even with credentials; no private report or secret escapes
+  ---
+  duration_ms: 560.9215
+  type: 'test'
+  ...
+# Subtest: oversized/unknown errors do not leak payloads in client response or logs
+ok 55 - oversized/unknown errors do not leak payloads in client response or logs
+  ---
+  duration_ms: 1.2603
+  type: 'test'
+  ...
+# TEST_DB_VERIFIED web3_internship_test_phase1_0b94f7d8_2bd7417a4341
+# Subtest: health trả về trạng thái DB và IPFS
+ok 56 - health trả về trạng thái DB và IPFS
+  ---
+  duration_ms: 586.7326
+  type: 'test'
+  ...
+# Subtest: endpoint không tồn tại trả 404 JSON
+ok 57 - endpoint không tồn tại trả 404 JSON
+  ---
+  duration_ms: 7.7496
+  type: 'test'
+  ...
+# Subtest: nonce: từ chối ví không hợp lệ
+ok 58 - nonce: từ chối ví không hợp lệ
+  ---
+  duration_ms: 16.7872
+  type: 'test'
+  ...
+# Subtest: login: không có chữ ký bị từ chối
+ok 59 - login: không có chữ ký bị từ chối
+  ---
+  duration_ms: 93.3774
+  type: 'test'
+  ...
+# Subtest: login: chữ ký của ví khác bị từ chối (401)
+ok 60 - login: chữ ký của ví khác bị từ chối (401)
+  ---
+  duration_ms: 40.535
+  type: 'test'
+  ...
+# Subtest: login: không có nonce thì từ chối
+ok 61 - login: không có nonce thì từ chối
+  ---
+  duration_ms: 16.7848
+  type: 'test'
+  ...
+# Subtest: login: nonce chỉ dùng được một lần (chống replay)
+ok 62 - login: nonce chỉ dùng được một lần (chống replay)
+  ---
+  duration_ms: 54.3874
+  type: 'test'
+  ...
+# Subtest: login: không cho tự đăng ký role mentor/admin
+ok 63 - login: không cho tự đăng ký role mentor/admin
+  ---
+  duration_ms: 53.9281
+  type: 'test'
+  ...
+# Subtest: login: user cũ giữ nguyên role dù gửi role khác
+ok 64 - login: user cũ giữ nguyên role dù gửi role khác
+  ---
+  duration_ms: 45.8929
+  type: 'test'
+  ...
+# Subtest: /me cần token hợp lệ
+ok 65 - /me cần token hợp lệ
+  ---
+  duration_ms: 36.9738
+  type: 'test'
+  ...
+# Subtest: profile: chỉ chủ tài khoản được sửa
+ok 66 - profile: chỉ chủ tài khoản được sửa
+  ---
+  duration_ms: 76.6224
+  type: 'test'
+  ...
+# Subtest: PUT /data/students|companies cần xác thực và đúng chủ
+ok 67 - PUT /data/students|companies cần xác thực và đúng chủ
+  ---
+  duration_ms: 99.6372
+  type: 'test'
+  ...
+# Subtest: tạo đề tài: cần đăng nhập, đúng role company
+ok 68 - tạo đề tài: cần đăng nhập, đúng role company
+  ---
+  duration_ms: 44.353
+  type: 'test'
+  ...
+# Subtest: tạo đề tài: tổng trọng số KPI phải = 100%
+ok 69 - tạo đề tài: tổng trọng số KPI phải = 100%
+  ---
+  duration_ms: 41.9415
+  type: 'test'
+  ...
+# Subtest: tạo đề tài: danh tính công ty lấy từ token, bỏ qua companyWallet trong body
+ok 70 - tạo đề tài: danh tính công ty lấy từ token, bỏ qua companyWallet trong body
+  ---
+  duration_ms: 39.1922
+  type: 'test'
+  ...
+# Subtest: công ty khác không được sửa/phân công/hoàn thành đề tài
+ok 71 - công ty khác không được sửa/phân công/hoàn thành đề tài
+  ---
+  duration_ms: 123.0692
+  type: 'test'
+  ...
+# Subtest: phân công: sinh viên phải là tài khoản student đã đăng ký
+ok 72 - phân công: sinh viên phải là tài khoản student đã đăng ký
+  ---
+  duration_ms: 86.3927
+  type: 'test'
+  ...
+# Subtest: luồng đầy đủ: assign → nộp → đánh giá → hoàn thành, kiểm tra phân quyền từng bước
+ok 73 - luồng đầy đủ: assign → nộp → đánh giá → hoàn thành, kiểm tra phân quyền từng bước
+  ---
+  duration_ms: 320.7034
+  type: 'test'
+  ...
+# Subtest: mentor được chỉ định có quyền chấm, mentor lạ thì không
+ok 74 - mentor được chỉ định có quyền chấm, mentor lạ thì không
+  ---
+  duration_ms: 184.8551
+  type: 'test'
+  ...
+# Subtest: nộp báo cáo khi chưa cấu hình PINATA_JWT trả 503, không tạo CID giả
+ok 75 - nộp báo cáo khi chưa cấu hình PINATA_JWT trả 503, không tạo CID giả
+  ---
+  duration_ms: 87.5811
+  type: 'test'
+  ...
+# Subtest: ID đề tài sai định dạng trả 400, không tồn tại trả 404
+ok 76 - ID đề tài sai định dạng trả 400, không tồn tại trả 404
+  ---
+  duration_ms: 5.1639
+  type: 'test'
+  ...
+# TEST_DB_VERIFIED web3_internship_test_phase1_0b94f7d8_77743990c0ad
+# Subtest: JWT absent/unsigned/expired/wrong-wallet/unknown-user fail without data changes
+ok 77 - JWT absent/unsigned/expired/wrong-wallet/unknown-user fail without data changes
+  ---
+  duration_ms: 1050.3929
+  type: 'test'
+  ...
+# Subtest: IDOR matrix rejects foreign tenant resource reads/writes and protected administrative functions
+ok 78 - IDOR matrix rejects foreign tenant resource reads/writes and protected administrative functions
+  ---
+  duration_ms: 115.2094
+  type: 'test'
+  ...
+# Subtest: Mongo/operator/prototype/regex inputs cannot broaden filters or escalate profile ownership
+ok 79 - Mongo/operator/prototype/regex inputs cannot broaden filters or escalate profile ownership
+  ---
+  duration_ms: 75.2015
+  type: 'test'
+  ...
+# Subtest: CORS denied mutation and preflight do not write; allowed origin has exact headers
+ok 80 - CORS denied mutation and preflight do not write; allowed origin has exact headers
+  ---
+  duration_ms: 34.9487
+  type: 'test'
+  ...
+# Subtest: invalid JSON, unsupported file and oversized body reject without partial CV writes
+ok 81 - invalid JSON, unsupported file and oversized body reject without partial CV writes
+  ---
+  duration_ms: 45.6246
+  type: 'test'
+  ...
+# Subtest: safe GET portfolio across four roles leaves every collection byte-equivalent
+ok 82 - safe GET portfolio across four roles leaves every collection byte-equivalent
+  ---
+  duration_ms: 306.7634
+  type: 'test'
+  ...
+# Subtest: old JWT sees DB role/disabled status immediately; no stale role privilege after a change
+ok 83 - old JWT sees DB role/disabled status immediately; no stale role privilege after a change
+  ---
+  duration_ms: 11.9241
+  type: 'test'
+  ...
+# Subtest: private IPFS artifact metadata is tenant-scoped and never exposes ciphertext envelope or encryption key
+ok 84 - private IPFS artifact metadata is tenant-scoped and never exposes ciphertext envelope or encryption key
+  ---
+  duration_ms: 79.937
+  type: 'test'
+  ...
+# Subtest: private report encryption is randomized, bound to report, authenticates ciphertext and never includes plaintext
+ok 85 - private report encryption is randomized, bound to report, authenticates ciphertext and never includes plaintext
+  ---
+  duration_ms: 5.5459
+  type: 'test'
+  ...
+# Subtest: missing credentials/key and invalid or oversized files fail closed before any network request
+ok 86 - missing credentials/key and invalid or oversized files fail closed before any network request
+  ---
+  duration_ms: 0.9734
+  type: 'test'
+  ...
+# Subtest: MOCK TRANSPORT ONLY: valid CID upload/readback bytes and decrypt hashes match, no real Pinata used
+ok 87 - MOCK TRANSPORT ONLY: valid CID upload/readback bytes and decrypt hashes match, no real Pinata used
+  ---
+  duration_ms: 1.6856
+  type: 'test'
+  ...
+# Subtest: MOCK TRANSPORT ONLY: fake CID, tampered readback and provider error never produce success/secrets
+ok 88 - MOCK TRANSPORT ONLY: fake CID, tampered readback and provider error never produce success/secrets
+  ---
+  duration_ms: 1.102
+  type: 'test'
+  ...
+# Subtest: GPS distance/accuracy policy is explicit client claim, no absolute anti-spoof badge
+ok 89 - GPS distance/accuracy policy is explicit client claim, no absolute anti-spoof badge
+  ---
+  duration_ms: 0.9566
+  type: 'test'
+  ...
+# Subtest: GPS rejects outside, stale, future, low accuracy, NaN and extra caller-controlled fields
+ok 90 - GPS rejects outside, stale, future, low accuracy, NaN and extra caller-controlled fields
+  ---
+  duration_ms: 0.3793
+  type: 'test'
+  ...
+# Subtest: test guard accepts only exact local allowlist with NODE_ENV=test
+ok 91 - test guard accepts only exact local allowlist with NODE_ENV=test
+  ---
+  duration_ms: 1.7608
+  type: 'test'
+  ...
+# Subtest: test guard rejects DEV/demo/production, missing configuration and URI tricks before connect
+ok 92 - test guard rejects DEV/demo/production, missing configuration and URI tricks before connect
+  ---
+  duration_ms: 0.6802
+  type: 'test'
+  ...
+# TEST_DB_VERIFIED web3_internship_test_phase1_0b94f7d8_229c2a4c26c6
+# Subtest: demo login is disabled by default and cannot be enabled on TEST/DEV by flag alone
+ok 93 - demo login is disabled by default and cannot be enabled on TEST/DEV by flag alone
+  ---
+  duration_ms: 536.1871
+  type: 'test'
+  ...
+# Subtest: invalid signature cannot consume victim nonce; two valid concurrent logins consume once
+ok 94 - invalid signature cannot consume victim nonce; two valid concurrent logins consume once
+  ---
+  duration_ms: 172.5898
+  type: 'test'
+  ...
+# Subtest: public repeated/concurrent nonce requests cannot invalidate an unexpired wallet challenge
+ok 95 - public repeated/concurrent nonce requests cannot invalidate an unexpired wallet challenge
+  ---
+  duration_ms: 47.4513
+  type: 'test'
+  ...
+# Subtest: public profile excludes email and bio; CORS denies unlisted origins
+ok 96 - public profile excludes email and bio; CORS denies unlisted origins
+  ---
+  duration_ms: 77.4651
+  type: 'test'
+  ...
+# Subtest: all four GET lists are read-only, including repeat reads and foreign filters
+ok 97 - all four GET lists are read-only, including repeat reads and foreign filters
+  ---
+  duration_ms: 265.9369
+  type: 'test'
+  ...
+# Subtest: task status requires real company/student relationship and rejects IDOR
+ok 98 - task status requires real company/student relationship and rejects IDOR
+  ---
+  duration_ms: 53.8571
+  type: 'test'
+  ...
+# Subtest: worklog review is scoped, cannot self-approve and validates transitions
+ok 99 - worklog review is scoped, cannot self-approve and validates transitions
+  ---
+  duration_ms: 47.0415
+  type: 'test'
+  ...
+# Subtest: normalized private data is authenticated and tenant-scoped; public topics redact reports
+ok 100 - normalized private data is authenticated and tenant-scoped; public topics redact reports
+  ---
+  duration_ms: 61.9505
+  type: 'test'
+  ...
+# Subtest: certificate and chain metadata are fail-closed, with no fake proof
+ok 101 - certificate and chain metadata are fail-closed, with no fake proof
+  ---
+  duration_ms: 39.4103
+  type: 'test'
+  ...
+# Subtest: QR sessions reject invalid/expired/wrong student and consume once under concurrency
+ok 102 - QR sessions reject invalid/expired/wrong student and consume once under concurrency
+  ---
+  duration_ms: 93.5645
+  type: 'test'
+  ...
+# Subtest: assigned mentor reads attendance and reviews worklog; unrelated mentor is denied
+ok 103 - assigned mentor reads attendance and reviews worklog; unrelated mentor is denied
+  ---
+  duration_ms: 79.5754
+  type: 'test'
+  ...
+# Subtest: admin read remains available; sync without enabled chain reports unavailable, never success
+ok 104 - admin read remains available; sync without enabled chain reports unavailable, never success
+  ---
+  duration_ms: 28.2261
+  type: 'test'
+  ...
+# Subtest: rate limiting and CORS allowlist/readiness retain explicit failure states
+ok 105 - rate limiting and CORS allowlist/readiness retain explicit failure states
+  ---
+  duration_ms: 15.3114
+  type: 'test'
+  ...
+# Subtest: invalid and structured filters cannot silently broaden data queries
+ok 106 - invalid and structured filters cannot silently broaden data queries
+  ---
+  duration_ms: 21.3712
+  type: 'test'
+  ...
+# Subtest: real src/index.js boots only after indexes ready on fresh exact-allowlisted TEST, loopback health/readiness pass
+ok 107 - real src/index.js boots only after indexes ready on fresh exact-allowlisted TEST, loopback health/readiness pass
+  ---
+  duration_ms: 1761.9126
+  type: 'test'
+  ...
+# Subtest: duration uses elapsed whole minutes, never invents a minimum credit
+ok 108 - duration uses elapsed whole minutes, never invents a minimum credit
+  ---
+  duration_ms: 1.1659
+  type: 'test'
+  ...
+# Subtest: UTC day/month/week boundaries are deterministic and missing checkout view is read-only
+ok 109 - UTC day/month/week boundaries are deterministic and missing checkout view is read-only
+  ---
+  duration_ms: 2.347
+  type: 'test'
+  ...
+# TEST_DB_VERIFIED web3_internship_test_phase1_0b94f7d8_8ec1e4050cea
+# Subtest: Web3 status/readiness GET is read-only and QR/chain writes require role/scope
+ok 110 - Web3 status/readiness GET is read-only and QR/chain writes require role/scope
+  ---
+  duration_ms: 1201.0401
+  type: 'test'
+  ...
+# Subtest: QR scope/signature/expiry and GPS invalid/stale/accuracy do not consume valid session
+ok 111 - QR scope/signature/expiry and GPS invalid/stale/accuracy do not consume valid session
+  ---
+  duration_ms: 90.0065
+  type: 'test'
+  ...
+# Subtest: actual QR check-in is one-use under concurrency and integrates canonical WorkSession
+ok 112 - actual QR check-in is one-use under concurrency and integrates canonical WorkSession
+  ---
+  duration_ms: 44.8043
+  type: 'test'
+  ...
+# Subtest: QR checkout preserves real zero-minute duration, company explicitly adjusts/approves TEST hours
+ok 113 - QR checkout preserves real zero-minute duration, company explicitly adjusts/approves TEST hours
+  ---
+  duration_ms: 98.5752
+  type: 'test'
+  ...
+# Subtest: IPFS missing configuration blocks upload with no artifact or business write
+ok 114 - IPFS missing configuration blocks upload with no artifact or business write
+  ---
+  duration_ms: 124.7296
+  type: 'test'
+  ...
+# Subtest: real pending transaction retains actual hash and explicit reconcile confirms after mining
+ok 115 - real pending transaction retains actual hash and explicit reconcile confirms after mining
+  ---
+  duration_ms: 5426.5173
+  type: 'test'
+  ...
+# Subtest: actual report/attendance receipts match calldata, events and state; repeat anchor sends no tx
+ok 116 - actual report/attendance receipts match calldata, events and state; repeat anchor sends no tx
+  ---
+  duration_ms: 302.1787
+  type: 'test'
+  ...
+# Subtest: school completion and mint produce a real ERC721/ERC5192 token with live verification
+ok 117 - school completion and mint produce a real ERC721/ERC5192 token with live verification
+  ---
+  duration_ms: 827.4821
+  type: 'test'
+  ...
+# Subtest: duplicate mint is idempotent, no extra token/transaction; foreign and absent certificates denied
+ok 118 - duplicate mint is idempotent, no extra token/transaction; foreign and absent certificates denied
+  ---
+  duration_ms: 237.2827
+  type: 'test'
+  ...
+# Subtest: lost DB confirmation/hash reconciles from actual event without duplicate mint
+ok 119 - lost DB confirmation/hash reconciles from actual event without duplicate mint
+  ---
+  duration_ms: 112.4019
+  type: 'test'
+  ...
+# Subtest: DB commitment mismatch never returns VERIFIED and live state can be restored in TEST
+ok 120 - DB commitment mismatch never returns VERIFIED and live state can be restored in TEST
+  ---
+  duration_ms: 53.7058
+  type: 'test'
+  ...
+# Subtest: wrong chain/deployment/instance or missing RPC config fail closed, no certificate fallback
+ok 121 - wrong chain/deployment/instance or missing RPC config fail closed, no certificate fallback
+  ---
+  duration_ms: 54.2275
+  type: 'test'
+  ...
+# Subtest: all Web3 GET views preserve business collection fingerprints
+ok 122 - all Web3 GET views preserve business collection fingerprints
+  ---
+  duration_ms: 168.6473
+  type: 'test'
+  ...
+1..122
+# tests 122
+# suites 0
+# pass 122
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 58865.6743

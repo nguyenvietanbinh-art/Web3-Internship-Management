@@ -7,6 +7,7 @@ const { requireAuth } = require("../middleware/auth");
 const { HttpError, asyncHandler, isWallet, normalizeWallet } = require("../utils/http");
 
 const router = express.Router();
+const config = require('../config/env');
 
 // Chỉ company/student được tự đăng ký. mentor/admin phải do hệ thống cấp, tránh tự nâng quyền.
 const SELF_REGISTER_ROLES = ["company", "student"];
@@ -48,6 +49,7 @@ router.post("/login-wallet", asyncHandler(async (req, res) => {
   await verifyLogin(wallet, signature);
 
   let user = await User.findOne({ walletAddress: wallet });
+  if (user?.disabled) throw new HttpError(403, 'Tài khoản đã bị khóa', 'ACCOUNT_DISABLED');
   if (!user) {
     if (!SELF_REGISTER_ROLES.includes(role)) throw new HttpError(400, "Vai trò đăng ký không hợp lệ (company hoặc student)");
     user = await User.create({
@@ -59,19 +61,23 @@ router.post("/login-wallet", asyncHandler(async (req, res) => {
   }
 
   // Đảm bảo có hồ sơ chuẩn hoá tương ứng với role.
+  if (user.disabled) throw new HttpError(403, 'Tài khoản đã bị khóa', 'ACCOUNT_DISABLED');
   if (user.role === "student") {
     await Student.findOneAndUpdate({ userId: user._id }, { $setOnInsert: { userId: user._id, fullName: user.name, skills: user.skills } }, { upsert: true, setDefaultsOnInsert: true });
   } else if (user.role === "company") {
     await Company.findOneAndUpdate({ userId: user._id }, { $setOnInsert: { userId: user._id, name: user.companyName || user.name } }, { upsert: true, setDefaultsOnInsert: true });
   }
 
+  if(!user.walletVerified){user=await User.findByIdAndUpdate(user._id,{$set:{walletVerified:true,walletVerifiedAt:new Date()}},{new:true});}
   res.json({ success: true, token: signToken(user), user });
 }));
 
 // Đăng nhập nhanh với ví mẫu Demo (khi người dùng chưa cài tiện ích MetaMask hoặc muốn kiểm thử tức thì)
 router.post("/demo-login", asyncHandler(async (req, res) => {
+  if (!config.demoMode) throw new HttpError(403, 'Đăng nhập demo chưa được bật trên database demo riêng', 'DEMO_DISABLED');
   const { role = "company" } = req.body;
-  const demoPreset = DEMO_ACCOUNTS[role] || DEMO_ACCOUNTS.company;
+  const demoPreset = DEMO_ACCOUNTS[role];
+  if (!demoPreset) throw new HttpError(400, 'Vai trò demo không hợp lệ');
   const wallet = demoPreset.wallet;
 
   let user = await User.findOne({ walletAddress: wallet });
@@ -85,6 +91,7 @@ router.post("/demo-login", asyncHandler(async (req, res) => {
     });
   }
 
+  if (user.disabled) throw new HttpError(403, 'Tài khoản đã bị khóa', 'ACCOUNT_DISABLED');
   if (user.role === "student") {
     await Student.findOneAndUpdate(
       { userId: user._id },
@@ -102,13 +109,17 @@ router.post("/demo-login", asyncHandler(async (req, res) => {
   res.json({ success: true, token: signToken(user), user, isDemo: true });
 }));
 
-router.get("/me", requireAuth, (req, res) => res.json({ user: req.user }));
+router.get("/me", requireAuth, asyncHandler(async(req,res)=>{
+  const linked=await User.findById(req.user._id).select('+googleSubject +googleEmail');
+  const passwordEnabled=Boolean(await User.exists({_id:req.user._id,passwordHash:{$type:'string'}}));
+  res.json({user:{...req.user.toObject(),passwordEnabled,googleLinked:Boolean(linked.googleSubject),emailVerified:Boolean(linked.googleSubject&&linked.googleEmail&&req.user.email?.toLowerCase()===linked.googleEmail),authProvider:req.authProvider}});
+}));
 
 // Hồ sơ công khai chỉ gồm thông tin không nhạy cảm.
 router.get("/profile/:wallet", asyncHandler(async (req, res) => {
   const user = await User.findOne({ walletAddress: normalizeWallet(req.params.wallet) });
   if (!user) throw new HttpError(404, "Không tìm thấy người dùng");
-  res.json(user);
+  res.json({ walletAddress: user.walletAddress, name: user.name, role: user.role, companyName: user.companyName });
 }));
 
 // Chỉ chủ tài khoản được sửa hồ sơ của chính mình; không upsert, không đổi role.
@@ -116,17 +127,10 @@ router.put("/profile/:wallet", requireAuth, asyncHandler(async (req, res) => {
   if (normalizeWallet(req.params.wallet) !== req.user.walletAddress) {
     throw new HttpError(403, "Chỉ được sửa hồ sơ của chính mình", "NOT_OWNER");
   }
-  const { name, email, companyName, skills, bio } = req.body;
-  if (skills !== undefined && (!Array.isArray(skills) || skills.some((s) => typeof s !== "string"))) {
-    throw new HttpError(400, "skills phải là mảng chuỗi");
-  }
-  const user = req.user;
-  if (name) user.name = String(name).trim();
-  if (email !== undefined) user.email = email;
-  if (companyName && user.role === "company") user.companyName = String(companyName).trim();
-  if (skills) user.skills = skills.map((s) => s.trim()).filter(Boolean);
-  if (bio !== undefined) user.bio = bio;
-  await user.save();
+  const { profileFields, legacyUpdate } = require('../services/profileService');
+  const allowed = {};
+  for (const key of ['name','email','skills','bio','companyName']) if (req.body[key] !== undefined && (key !== 'companyName' || req.user.role === 'company')) allowed[key] = req.body[key];
+  const user = await legacyUpdate(req.user, profileFields(allowed), 'profile.legacy_updated');
 
   if (user.role === "student") {
     await Student.findOneAndUpdate({ userId: user._id }, { $set: { fullName: user.name, skills: user.skills } }, { upsert: true, setDefaultsOnInsert: true });

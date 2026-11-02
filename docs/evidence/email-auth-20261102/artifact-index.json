@@ -1,0 +1,26 @@
+[
+  {
+    "name": "email-browser-result.json",
+    "sha256": "8ed728ff23b551f6070e2a041c9a2a2c619f8b277deacaf0f974ed66b6d4c0fa",
+    "source": "D:\\Web3-Internship-Management\\contracts\\node_modules\\.cache\\email-auth-browser-1793588233216\\result.json",
+    "edited": false
+  },
+  {
+    "name": "email-account-desktop.png",
+    "sha256": "5ce4001c2f97e9664cbf3cafa40ebfb2bd09fb8c08433aa1f089eb002995f37f",
+    "source": "D:\\Web3-Internship-Management\\contracts\\node_modules\\.cache\\email-auth-browser-1793588233216\\email-account-desktop.png",
+    "edited": false
+  },
+  {
+    "name": "email-account-mobile-dark.png",
+    "sha256": "95914b6caa059e56b3aa5e4ea7991ed64e0368ee5208c94ff262692c202eb77b",
+    "source": "D:\\Web3-Internship-Management\\contracts\\node_modules\\.cache\\email-auth-browser-1793588233216\\email-account-mobile-dark.png",
+    "edited": false
+  },
+  {
+    "name": "google-browser-result.json",
+    "sha256": "7262ddf6dda75955e11054552e8eacd397b019fafc7f808c2b7976e63927b84d",
+    "source": "D:\\Web3-Internship-Management\\contracts\\node_modules\\.cache\\google-auth-browser-1793588242200\\result.json",
+    "edited": false
+  }
+]

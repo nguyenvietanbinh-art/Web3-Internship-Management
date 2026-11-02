@@ -1,0 +1,145 @@
+ M README.md
+ M ai-service/main.py
+ M client/index.html
+ M client/package-lock.json
+ M client/package.json
+ M client/src/App.jsx
+ M client/src/api/client.js
+ M client/src/api/web3Client.js
+ M client/src/components/AttendanceView.jsx
+ M client/src/components/AuthModal.jsx
+ M client/src/components/CvJdView.jsx
+ M client/src/components/DashboardView.jsx
+ M client/src/components/Web3CertificateView.jsx
+ M client/src/index.css
+ M client/src/main.jsx
+ M client/vite.config.js
+ M contracts/package.json
+ M server/.env.example
+ M server/package-lock.json
+ M server/package.json
+ M server/src/app.js
+ M server/src/config/env.js
+ M server/src/index.js
+ M server/src/middleware/auth.js
+ M server/src/middleware/errorHandler.js
+ M server/src/models/Assignment.js
+ M server/src/models/JD.js
+ M server/src/models/Task.js
+ M server/src/models/User.js
+ M server/src/models/WorkLog.js
+ M server/src/routes/auth.routes.js
+ M server/src/routes/data.routes.js
+ M server/src/routes/internship.routes.js
+ M server/src/routes/topic.routes.js
+ M server/src/services/aiClient.js
+ M server/src/services/authService.js
+ M server/src/services/ipfsService.js
+ M server/test/helpers.js
+?? "Th\306\260 mu\314\243c m\306\241\314\201i.zip"
+?? "Th\306\260 mu\314\243c m\306\241\314\201i/"
+?? ai-service/__pycache__/main.cpython-313.pyc
+?? ai-service/evaluation/
+?? ai-service/nlp/
+?? ai-service/requirements-nlp-lock.txt
+?? ai-service/requirements-nlp.txt
+?? ai-service/tests/
+?? audit-reports/
+?? client/src/business.css
+?? client/src/components/AppShell.jsx
+?? client/src/components/EmailIdentity.jsx
+?? client/src/components/GoogleIdentity.jsx
+?? client/src/components/ViewBoundary.jsx
+?? client/src/components/business/
+?? client/src/components/identity.css
+?? client/src/components/navigation.js
+?? client/src/components/ui.jsx
+?? client/src/design-system.css
+?? client/test/
+?? contracts/contracts/InternshipEvidenceSBT.sol
+?? contracts/hardhat.local.cjs
+?? contracts/scripts/deploy-local.cjs
+?? contracts/scripts/local-hardhat.cjs
+?? contracts/test-local/
+?? docs/AI_IMPLEMENTATION.md
+?? docs/AI_RUNTIME_INFERENCE_RESULT.md
+?? docs/AI_RUNTIME_INSTALL_RESULT.md
+?? docs/ARCHITECTURE_UPDATED.md
+?? docs/DEMO_SCRIPT.md
+?? docs/DEPENDENCY_PATCH_PROPOSAL.md
+?? docs/DEPENDENCY_PATCH_RESULT.md
+?? docs/EMAIL_AUTH_DEMO.md
+?? docs/FEATURE_ACCEPTANCE_MATRIX.md
+?? docs/FINAL_INTEGRATION_TEST_REPORT.md
+?? docs/FINAL_KLCN129_ACCEPTANCE.md
+?? docs/FINAL_PROJECT_STATUS.md
+?? docs/GOOGLE_AUTH_IMPLEMENTATION_PLAN.md
+?? docs/GOOGLE_AUTH_RESULT.md
+?? docs/GOOGLE_AUTH_SETUP.md
+?? docs/IMPLEMENTATION_MASTER_PLAN.md
+?? docs/IMPLEMENTATION_PROGRESS.md
+?? docs/INSTALLATION_GUIDE.md
+?? docs/PERFORMANCE_REPORT.md
+?? docs/PHASE3_IMPLEMENTATION_PLAN.md
+?? docs/PHASE4_IMPLEMENTATION_PLAN.md
+?? docs/PHASE5_IMPLEMENTATION_PLAN.md
+?? docs/PHASE6_QA_PLAN.md
+?? docs/PROGRESS.md
+?? docs/REMAINING_ISSUES.md
+?? docs/SCREENSHOT_CHECKLIST.md
+?? docs/SECURITY_RETEST.md
+?? docs/TECHNICAL_DOCUMENTATION.md
+?? docs/TEST_RESULTS.md
+?? docs/UI_DESIGN_SYSTEM.md
+?? docs/WEB3_INTEGRATION_RESULT.md
+?? docs/evidence/
+?? scripts/
+?? server/parsers/
+?? server/src/config/testDatabaseGuard.js
+?? server/src/core/
+?? server/src/middleware/permissions.js
+?? server/src/models/AttendanceSession.js
+?? server/src/models/BusinessModels.js
+?? server/src/models/IdentityChallenge.js
+?? server/src/models/Web3Models.js
+?? server/src/routes/email.routes.js
+?? server/src/routes/google.routes.js
+?? server/src/services/accountProfiles.js
+?? server/src/services/attendanceService.js
+?? server/src/services/chainVerificationService.js
+?? server/src/services/cvParser.js
+?? server/src/services/databaseSafety.js
+?? server/src/services/googleIdentity.js
+?? server/src/services/localWeb3.js
+?? server/src/services/nlpClient.js
+?? server/src/services/privateIpfs.js
+?? server/src/services/profileService.js
+?? server/src/services/qrGps.js
+?? server/src/services/timeTracking.js
+?? server/test/ai-fallback.test.js
+?? server/test/chain-adapter.test.js
+?? server/test/core-accounts.test.js
+?? server/test/core-ai.test.js
+?? server/test/core-edge-cases.test.js
+?? server/test/core-placements.test.js
+?? server/test/core-recruitment.test.js
+?? server/test/core-work-time-reports.test.js
+?? server/test/coreFixtures.js
+?? server/test/cvDocuments.js
+?? server/test/database-safety.test.js
+?? server/test/dependency-patches.test.js
+?? server/test/email-auth.test.js
+?? server/test/error-safety.test.js
+?? server/test/fixtures/
+?? server/test/full-system-security.test.js
+?? server/test/google-auth.test.js
+?? server/test/google-crypto.test.js
+?? server/test/private-ipfs.test.js
+?? server/test/qr-gps.test.js
+?? server/test/runtime-safety.test.js
+?? server/test/security-regression.test.js
+?? server/test/startup-entry.test.js
+?? server/test/testEnvironment.js
+?? server/test/timeTracking.test.js
+?? server/test/web3-integration.test.js
+?? sunflower-assistant/

@@ -1,0 +1,36 @@
+{
+  "time": "2026-10-31T16:25:59.845Z",
+  "source": "contracts\\node_modules\\.cache\\phase6-patch-20261031\\qr\\qr-browser-results.json",
+  "sourceSha256": "e0b03e6290c4950d5922e3d866327634dcce86973c55d937d7957f49ca7c3028",
+  "tests": [
+    {
+      "name": "Company creates signed session and real QR image locally; image fits 320px",
+      "status": "PASS"
+    },
+    {
+      "name": "ZXing camera denial shows error, does not request GPS or POST attendance",
+      "status": "PASS"
+    },
+    {
+      "name": "ZXing independently decodes real generated PNG image without injecting decoded text",
+      "status": "PASS"
+    },
+    {
+      "name": "Actual ZXing decodes generated QR pixels from canvas MediaStream; scan fills input only and stops tracks",
+      "status": "PASS"
+    },
+    {
+      "name": "Explicit GPS redeem of decoded token creates one WorkSession; replay rejected",
+      "status": "PASS"
+    },
+    {
+      "name": "Cancel while camera permission is pending stops every late stream without business writes",
+      "status": "PASS"
+    },
+    {
+      "name": "QR/scanner produces no external request or uncaught exception",
+      "status": "PASS"
+    }
+  ],
+  "note": "Prior PHASE6 patch E2E on same production source/dependency lock versions; not rerun as full business E2E in PHASE7"
+}

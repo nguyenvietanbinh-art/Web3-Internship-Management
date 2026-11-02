@@ -1,0 +1,24 @@
+{
+  "atUtc": "2026-11-01T13:09:59.604533+00:00",
+  "runtime": {
+    "createdAt": "2026-11-01T13:09:42.022Z",
+    "pid": 24156,
+    "database": "web3_internship_test_phase1_b945bbcc_1f508b655dfe",
+    "baseURL": "http://localhost:57406/api",
+    "origin": "http://localhost:5178",
+    "googleRealE2E": "NOT_TESTED"
+  },
+  "documentationLinksMissing": [],
+  "imageHashesVerified": true,
+  "literalSecretPatternHits": [],
+  "secretScanLimit": "Pattern scan only, not a complete DLP/security guarantee",
+  "gitBranch": "branch_1",
+  "gitHead": "d11a1852c5f03963bbe260425a246b0e65fe1091",
+  "stagedFiles": [],
+  "frontendLint": {
+    "errors": 0,
+    "warnings": 0
+  },
+  "frontendBuild": "PASS; observed tool run, ignored client/dist/google-auth-acceptance",
+  "googleLive": "BLOCKED_NO_CLIENT_ID"
+}

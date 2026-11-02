@@ -1,0 +1,23 @@
+{
+  "runtime": {
+    "createdAt": "2026-11-02T02:59:13.0750835Z",
+    "pid": 17520,
+    "database": "web3_internship_test_phase1_d8c3534f_0f4877b64b94",
+    "baseURL": "http://localhost:57407/api",
+    "origin": "http://localhost:5182",
+    "emailEnabled": true,
+    "googleEnabled": false,
+    "resumeExistingTestDatabase": true
+  },
+  "missingDocLinks": [],
+  "literalSecretPatternHits": [],
+  "scanLimit": "Pattern scan only; not a DLP guarantee",
+  "lint": {
+    "errors": 0,
+    "warnings": 0
+  },
+  "build": "PASS; actual tool run; client/dist/email-auth-acceptance",
+  "gitBranch": "branch_1",
+  "head": "d11a1852c5f03963bbe260425a246b0e65fe1091",
+  "stagedFiles": []
+}

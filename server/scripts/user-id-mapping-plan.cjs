@@ -1,0 +1,15 @@
+// Dry-run only. No updates or automatic account merging; refuses original/demo databases.
+const fs=require('node:fs'),path=require('node:path'),{MongoClient}=require('mongodb');
+const uri=process.env.MONGODB_URI_TEST;require('../src/config/testDatabaseGuard').assertTestEnvironment({nodeEnv:process.env.NODE_ENV,uri,allowlistedUri:process.env.MONGODB_URI_TEST_ALLOWLIST});
+const output=path.resolve(process.argv[2]||''),cache=path.resolve(__dirname,'../../contracts/node_modules/.cache');if(!output.startsWith(cache+path.sep))throw Error('Use an ignored cache output');
+const pairs={cvs:[['ownerUserId','ownerWallet']],job_descriptions:[['companyUserId','companyWallet']],topics:[['companyUserId','companyWallet']],assignments:[['studentUserId','studentWallet'],['companyUserId','companyWallet'],['mentorUserId','mentorWallet']],applications:[['studentUserId','studentWallet'],['companyUserId','companyWallet']],work_sessions:[['studentUserId','studentWallet'],['companyUserId','companyWallet'],['mentorUserId','mentorWallet']],business_reports:[['studentUserId','studentWallet'],['companyUserId','companyWallet'],['mentorUserId','mentorWallet']],internship_tasks:[['studentUserId','assignedStudentWallet'],['companyUserId','companyWallet']],work_logs:[['studentUserId','studentWallet'],['companyUserId','companyWallet']]};
+(async()=>{const c=new MongoClient(uri);await c.connect();try{const db=c.db(),users=await db.collection('users').find({},{projection:{_id:1,walletAddress:1,walletVerified:1}}).toArray(),byWallet=new Map(),ids=new Set(users.map(u=>String(u._id)));for(const u of users)if(u.walletAddress){const w=u.walletAddress.toLowerCase();byWallet.set(w,[...(byWallet.get(w)||[]),u]);}
+ const changes=[],issues=[];for(const[col,fields]of Object.entries(pairs))for(const doc of await db.collection(col).find({}).toArray())for(const[id,wallet]of fields){
+  if(doc[id]){if(!ids.has(String(doc[id])))issues.push({collection:col,id:String(doc._id),field:id,reason:'DANGLING_USER_ID'});continue;}
+  if(doc[id]===null){issues.push({collection:col,id:String(doc._id),field:id,reason:'NULL_OWNER_ID_REQUIRES_REVIEW'});continue;}
+  const candidates=typeof doc[wallet]==='string'?byWallet.get(doc[wallet].toLowerCase())||[]:[];
+  if(candidates.length!==1||candidates[0].walletVerified!==true){issues.push({collection:col,id:String(doc._id),field:id,reason:candidates.length>1?'AMBIGUOUS_WALLET':'UNRESOLVED_OR_UNVERIFIED'});continue;}
+  changes.push({collection:col,id:String(doc._id),field:id,userId:String(candidates[0]._id),expectedVersion:doc.__v??null});
+ }
+ fs.writeFileSync(output,JSON.stringify({at:new Date().toISOString(),database:db.databaseName,applied:false,documentUpdates:0,changes,issues,policy:'Dry-run only. Review uniqueness/role/chain commitments; application requires a separately approved CAS manifest and backup/rollback. Never merge by email.'},null,2),{flag:'wx'});console.log('Mapping plan: '+changes.length+' candidates, '+issues.length+' issues; no writes');
+}finally{await c.close();}})().catch(e=>{console.error(e.message);process.exitCode=1;});

@@ -1,0 +1,11 @@
+# Đánh giá có nhãn độc lập
+
+Chưa có dataset được cung cấp; không có metrics chất lượng để công bố. Không tự tạo nhãn hoặc dùng output model làm ground truth. Dữ liệu TEST unit chỉ kiểm công thức, không benchmark CV/JD Việt.
+
+JSON input phải có provenance="independent-human-judgments", consent (mã tài liệu cho phép, không PII), annotators (mã người đánh giá), splits={train:[],validation:[],test:[]}. Mỗi query gồm id, group_id (cùng người/CV/JD/company/template phải cùng split), query={id,text,skills}, candidates=[{id,text,skills}], labels={candidateId:0..3}. Tối đa20candidate/query trong evaluator để AP tính đủ ranking. Mọi candidate phải có nhãn; không mặc định unjudged=negative. Tách nhóm trước khi chỉnh pipeline/threshold; không dùng test để tune. Validator chặn query/group/text leakage xuyên split; người phụ trách vẫn phải kiểm semantic near-duplicate, không chỉ hash.
+
+Rubric đề xuất để chuyên gia duyệt: 0 không đáp ứng nghề/kỹ năng cốt lõi; 1 liên quan nhưng thiếu yêu cầu trọng yếu; 2 phù hợp phần lớn; 3 phù hợp trực tiếp có bằng chứng. Ít nhất2người độc lập, adjudication và báo agreement; không dùng giới tính/địa chỉ/tuổi để quyết định. Đây là rubric dự kiến, chưa nhãn thật. Ghi sốquery, sốpair, ngôn ngữ, lĩnh vực, distribution, license/consent, annotator guideline/version và splitmanifest khi có dữ liệu.
+
+Chạy từ ai-service với môi trường local đã duyệt: `python -m evaluation.evaluate --dataset PATH --output NEW_PATH --k 5`. Đầu ra tạo mới exclusive, lỗi nếu đã tồn tại. P@K denominator K; R@K denominator tất cả nhãn relevant>0; AP trên fullpool; MAP macro; NDCG gain2^grade-1/log2(rank+1). Query không relevant bị từ chối, phải báo riêng sốquery loại chứ không âm thầm bỏ. So BERT/TF-IDF dùng cùngquery/candidates/labels/splits. CV dài có coverage/truncation giới hạn, phải ghi trong đánh giá.
+
+Risk labels dự kiến: tiến độ/deadline, thiếu bằng chứng báo cáo, bất nhất thời gian, cần hỗ trợ học tập; dữ liệu sự kiện và text phải được chuyên gia adjudicate theo từng bối cảnh kỳ. Chưa có tập nhãn/huấn luyện/heldout/calibration, vì vậy classifier NOT_TRAINED, risk_prediction/confidence=null. Rules không được gọi là BERT accuracy hoặc calibrated confidence. Cần tách student/company/batch và thời gian để tránh leakage tương lai; calibration chỉ trên validation riêng, test khóa độc lập. Không quyết định kỷ luật tự động.

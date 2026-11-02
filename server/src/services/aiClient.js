@@ -1,8 +1,13 @@
 const axios = require("axios");
+const { HttpError } = require('../utils/http');
 
 const AI_SERVICE_URL = process.env.AI_SERVICE_URL || "http://localhost:8000";
 
 async function matchStudentWithTopic({ studentSkills, studentBio, topicTitle, topicDescription, requiredSkills }) {
+  for (const skills of [studentSkills, requiredSkills]) {
+    if (skills != null && (!Array.isArray(skills) || skills.length > 100 || skills.some(s => typeof s !== 'string' || s.length > 200))) throw new HttpError(400, 'Danh sách kỹ năng không hợp lệ');
+  }
+  for (const value of [studentBio, topicTitle, topicDescription]) if (value != null && (typeof value !== 'string' || value.length > 20000)) throw new HttpError(400, 'Nội dung matching không hợp lệ');
   try {
     const response = await axios.post(
       `${AI_SERVICE_URL}/api/match`,
@@ -15,7 +20,7 @@ async function matchStudentWithTopic({ studentSkills, studentBio, topicTitle, to
       },
       { timeout: 5000 }
     );
-    return response.data;
+    return { ...response.data, engine: response.data.engine || 'nlp-service', fallback: Boolean(response.data.fallback) };
   } catch (err) {
     console.warn("AI Service unavailable, using internal fallback matching:", err.message);
     
@@ -24,12 +29,14 @@ async function matchStudentWithTopic({ studentSkills, studentBio, topicTitle, to
     const rSkills = (requiredSkills || []).map((s) => s.toLowerCase().trim());
     const matched = rSkills.filter((s) => sSkills.includes(s));
     const missing = rSkills.filter((s) => !sSkills.includes(s));
-    const ratio = rSkills.length > 0 ? (matched.length / rSkills.length) * 100 : 70;
-    const finalScore = Math.min(Math.max(Math.round(ratio), 20), 95);
+    const ratio = rSkills.length > 0 ? (matched.length / rSkills.length) * 100 : 0;
+    const finalScore = Math.min(Math.max(Math.round(ratio), 0), 100);
 
     return {
       similarity_score: finalScore,
-      semantic_affinity: finalScore,
+      semantic_affinity: null,
+      engine: 'skill-overlap-fallback',
+      fallback: true,
       skill_match_ratio: Math.round(ratio),
       matched_skills: matched,
       missing_skills: missing,

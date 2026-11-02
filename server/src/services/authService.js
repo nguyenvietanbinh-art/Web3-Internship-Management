@@ -17,23 +17,33 @@ function buildMessage(wallet, nonce, expiresAt) {
 
 /** Cấp (hoặc làm mới) nonce cho ví. Mỗi ví chỉ có một nonce hợp lệ tại một thời điểm. */
 async function issueNonce(wallet) {
+  const now = new Date();
+  const existing = await AuthNonce.findOne({walletAddress:wallet,expiresAt:{$gt:now}});
+  if (existing) return {nonce:existing.nonce,message:existing.message,expiresAt:existing.expiresAt};
   const nonce = crypto.randomBytes(16).toString("hex");
   const expiresAt = new Date(Date.now() + config.nonceTtlMs);
   const message = buildMessage(wallet, nonce, expiresAt);
-  await AuthNonce.findOneAndUpdate(
-    { walletAddress: wallet },
-    { $set: { nonce, message, expiresAt } },
-    { upsert: true, new: true, setDefaultsOnInsert: true }
-  );
-  return { nonce, message, expiresAt };
+  try {
+    const record=await AuthNonce.findOneAndUpdate(
+      { walletAddress:wallet,expiresAt:{$lte:now} },
+      { $set: { nonce, message, expiresAt } },
+      { upsert: true, new: true, setDefaultsOnInsert: true }
+    );
+    return {nonce:record.nonce,message:record.message,expiresAt:record.expiresAt};
+  } catch(error) {
+    if(error.code!==11000)throw error;
+    const record=await AuthNonce.findOne({walletAddress:wallet,expiresAt:{$gt:new Date()}});
+    if(!record)throw new HttpError(409,'Nonce vừa được sử dụng; hãy thử lại','NONCE_RETRY');
+    return {nonce:record.nonce,message:record.message,expiresAt:record.expiresAt};
+  }
 }
 
 /**
- * Xác minh chữ ký. Nonce bị xoá nguyên tử (findOneAndDelete) trước khi verify
- * nên mỗi nonce chỉ dùng được một lần, kể cả khi chữ ký sai.
+ * Verify before atomic consumption: an invalid signature cannot burn a valid nonce.
+ * The compare-and-delete also permits only one successful concurrent login.
  */
 async function verifyLogin(wallet, signature) {
-  const record = await AuthNonce.findOneAndDelete({ walletAddress: wallet });
+  const record = await AuthNonce.findOne({ walletAddress: wallet });
   if (!record || record.expiresAt.getTime() < Date.now()) {
     throw new HttpError(401, "Nonce không tồn tại hoặc đã hết hạn, hãy yêu cầu nonce mới", "NONCE_INVALID");
   }
@@ -46,10 +56,12 @@ async function verifyLogin(wallet, signature) {
   if (recovered.toLowerCase() !== wallet) {
     throw new HttpError(401, "Chữ ký không khớp với ví", "BAD_SIGNATURE");
   }
+  const consumed = await AuthNonce.findOneAndDelete({ walletAddress: wallet, nonce: record.nonce, expiresAt: { $gte: new Date() } });
+  if (!consumed) throw new HttpError(401, 'Nonce đã được sử dụng hoặc hết hạn', 'NONCE_INVALID');
 }
 
-function signToken(user) {
-  return jwt.sign({ sub: String(user._id), wallet: user.walletAddress, role: user.role }, config.jwtSecret, {
+function signToken(user, authProvider = 'wallet') {
+  return jwt.sign({ sub: String(user._id), wallet: user.walletAddress || null, role: user.role, authProvider, sessionVersion:user.authVersion||0 }, config.jwtSecret, {
     expiresIn: config.jwtExpiresIn,
   });
 }

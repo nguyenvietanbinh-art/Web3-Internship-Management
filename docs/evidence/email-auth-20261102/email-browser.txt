@@ -1,0 +1,8 @@
+TEST_DB_VERIFIED web3_internship_test_phase1_aeaf218c_d25b5ba8bac2
+PASS Opening login/register creates no account or business request
+PASS Browser registration persists real hashed student and signed JWT without Google/MetaMask
+PASS Reload restores session, profile-only scope, mobile/Dark theme without auto-write
+PASS Logout clears token; wrong password shows error and does not log in
+PASS Correct email/password login returns same User; password change works from UI
+Evidence: D:\Web3-Internship-Management\contracts\node_modules\.cache\email-auth-browser-1793588233216
+Email browser 5/5; exceptions 0; blocked 0

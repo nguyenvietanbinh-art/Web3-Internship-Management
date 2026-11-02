@@ -1,0 +1,9 @@
+.app-shell.auth-entry { display: flex; flex-direction: column; min-height: 100vh; }
+.auth-entry-header { display: flex; align-items: center; justify-content: space-between; padding: 24px clamp(20px, 5vw, 72px); border-bottom: 1px solid var(--border-glass); }
+.auth-entry-header .brand { padding: 0; margin: 0; }
+.auth-entry-main { flex: 1; display: grid; place-items: center; padding: 48px 20px; }
+.auth-entry-card { width: min(100%, 540px); padding: clamp(24px, 5vw, 48px); border: 1px solid var(--border-glass); border-radius: 24px; box-sizing: border-box; }
+.auth-entry-card h1 { font-size: clamp(1.7rem, 4vw, 2.4rem); line-height: 1.2; margin: 18px 0; }
+.auth-entry-card p { line-height: 1.7; margin: 18px 0; }
+.auth-entry-card .btn { width: 100%; justify-content: center; min-height: 46px; }
+.auth-entry-footer { padding: 24px; text-align: center; font-size: .8rem; color: var(--text-muted); }

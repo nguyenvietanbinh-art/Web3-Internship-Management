@@ -15,8 +15,14 @@ const requireAuth = asyncHandler(async (req, _res, next) => {
     throw new HttpError(401, "Token không hợp lệ hoặc đã hết hạn", "BAD_TOKEN");
   }
   const user = await User.findById(payload.sub);
-  if (!user || user.walletAddress !== payload.wallet) throw new HttpError(401, "Tài khoản không tồn tại", "NO_USER");
+  if (!user || (!require('../config/env').userIdBusiness && (user.walletAddress || null) !== (payload.wallet || null))) throw new HttpError(401, "Tài khoản không tồn tại", "NO_USER");
+  if((payload.sessionVersion||0)!==(user.authVersion||0))throw new HttpError(401,'Phiên đã hết hiệu lực, hãy đăng nhập lại','SESSION_REVOKED');
+  if(payload.authProvider==='password' && !await User.exists({_id:user._id,passwordHash:{$type:'string'}}))throw new HttpError(401,'Phương thức đăng nhập không còn hợp lệ','NO_USER');
+  if(payload.authProvider==='google' && !await User.exists({_id:user._id,googleSubject:{$type:'string'}}))throw new HttpError(401,'Google identity không còn liên kết','NO_USER');
+  if (user.disabled) throw new HttpError(401, 'Tài khoản đã bị khóa', 'ACCOUNT_DISABLED');
   req.user = user;
+  req.authProvider = payload.authProvider || 'wallet';
+  if(!require('../config/env').userIdBusiness && !user.walletAddress && !req.originalUrl.split('?')[0].startsWith('/api/auth/') && req.originalUrl.split('?')[0]!=='/api/core/profile')throw new HttpError(403,'Hãy liên kết ví bằng chữ ký để sử dụng nghiệp vụ này','WALLET_LINK_REQUIRED');
   next();
 });
 
@@ -62,4 +68,5 @@ const requireAssignedStudent = (req, _res, next) => {
   next();
 };
 
-module.exports = { requireAuth, requireRole, loadTopic, requireTopicOwner, requireTopicEvaluator, requireAssignedStudent };
+const optionalAuth = (req, res, next) => req.headers.authorization ? requireAuth(req, res, next) : next();
+module.exports = { requireAuth, optionalAuth, requireRole, loadTopic, requireTopicOwner, requireTopicEvaluator, requireAssignedStudent };

@@ -1,0 +1,15 @@
+{
+  "verified": true,
+  "locked": true,
+  "standard": "ERC721/ERC5192",
+  "tokenId": "24",
+  "owner": "0x51b035a1a8c94984f2943cca7c5ebd6e546d48a8",
+  "chainId": 31337,
+  "contractAddress": "0x5FbDB2315678afecb367f032d93F642f64180aa3",
+  "txHash": "0x8f6d9fae2d53f63faab11c785486bec83411adcc42936f578bd6226f01a5eec5",
+  "blockNumber": 97,
+  "blockHash": "0x9b3fc14241d2800e1848a82c49ee6cdc2c74672cb91f0d3ee47624a871ac5142",
+  "assignmentId": "6ae8175c49904948909009e0",
+  "metadataURI": "data:application/json;utf8,{\"name\":\"Internship Completion SBT\",\"description\":\"Issuer-attested completion. No personal report data in metadata.\",\"soulbound\":true}",
+  "signerMode": "local-hardhat-attestor-not-user-wallet"
+}

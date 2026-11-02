@@ -1,0 +1,8 @@
+{
+  "priorRun": "PHASE6 after approved three dependency patches",
+  "businessAndBrowserHarnessFilesChecked": 116,
+  "sourceFilesMatch": true,
+  "clientServerLocksMatchTestedPatch": true,
+  "contractsLockUnchanged": true,
+  "noFreshFullBusinessE2ERunClaimed": true
+}

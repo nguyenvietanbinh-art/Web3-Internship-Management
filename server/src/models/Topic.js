@@ -136,4 +136,5 @@ const TopicSchema = new mongoose.Schema(
 
 TopicSchema.index({ companyId: 1, status: 1 });
 
+require('./userOwnership')(TopicSchema,'Topic');
 module.exports = mongoose.model("Topic", TopicSchema);

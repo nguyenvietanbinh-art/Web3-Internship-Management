@@ -1,0 +1,7 @@
+.identity-credentials { display: grid; gap: 12px; border: 0; padding: 16px 0; margin: 0; min-width: 0; }
+.identity-credentials label { display: grid; gap: 6px; font-size: .85rem; color: var(--text-main); }
+.identity-credentials input { width: 100%; box-sizing: border-box; min-height: 42px; padding: 10px 12px; color: var(--text-main); background: transparent; border: 1px solid var(--border-glass); border-radius: 10px; }
+.identity-credentials:disabled { opacity: .65; }
+.google-identity { display: grid; justify-items: start; gap: 12px; padding: 12px 0; overflow-wrap: anywhere; }
+.google-identity > div { max-width: 100%; }
+.google-identity p { margin: 0; font-size: .85rem; line-height: 1.6; }

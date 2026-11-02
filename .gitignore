@@ -145,5 +145,19 @@ vite.config.ts.timestamp-*
 # Astro generated types
 .astro/
 
+# Local Python/runtime files and credentials (never share via Git)
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+*.dpapi
+manual-login*.txt
+staff-public.json
+
+# Unrelated local projects/archives: keep on disk, outside this repository's release
+/sunflower-assistant/
+/Thư mục mới/
+/Thư mục mới.zip
+
 # Turbo Repo
 .turbo

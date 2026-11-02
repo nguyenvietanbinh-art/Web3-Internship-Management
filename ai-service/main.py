@@ -7,6 +7,8 @@ import numpy as np
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.metrics.pairwise import cosine_similarity
 import re
+import os
+from fastapi.responses import JSONResponse
 
 app = FastAPI(
     title="Web3 Internship NLP Matching & Analysis Service",
@@ -16,7 +18,7 @@ app = FastAPI(
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],
+    allow_origins=os.environ.get('NLP_CORS_ORIGINS', 'http://127.0.0.1:5175').split(','),
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
@@ -25,15 +27,8 @@ app.add_middleware(
 # Optional Sentence-BERT model loader
 import os
 bert_model = None
-try:
-    if os.getenv('AI_ENGINE', 'tfidf').lower() in ['sbert', 'bert', 'sentence-transformers']:
-        from sentence_transformers import SentenceTransformer
-        print('[AI Service] Loading SentenceTransformer model...')
-        bert_model = SentenceTransformer('all-MiniLM-L6-v2')
-        print('[AI Service] SentenceTransformer model loaded successfully!')
-except Exception as e:
-    print(f'[AI Service] Falling back to TF-IDF ({e})')
-    bert_model = None
+# Legacy routes keep the TF-IDF baseline. Versioned NLP routes load only a
+# verified local ONNX artifact; imports/requests never download a model.
 
 # Input schemas
 class MatchRequest(BaseModel):
@@ -111,6 +106,8 @@ def match_student_topic(req: MatchRequest):
     recommendation = "Rất phù hợp" if final_score >= 80 else "Phù hợp" if final_score >= 60 else "Cần bổ sung kỹ năng"
 
     return {
+        "engine": "Sentence-BERT" if bert_model is not None else "TF-IDF",
+        "fallback": False,
         "similarity_score": final_score,
         "semantic_affinity": round(semantic_score * 100, 1),
         "skill_match_ratio": round(skill_ratio * 100, 1),
@@ -140,7 +137,7 @@ def analyze_kpi_report(req: ReportAnalysisRequest):
             missing_keywords.append(kw)
             
     relevance_score = round(relevance_sim * 100, 1)
-    suggested_score = int(min(max(relevance_score * 0.8 + (len(found_keywords) * 5), 50), 98))
+    suggested_score = int(min(max(relevance_score * 0.8 + (len(set(found_keywords)) * 5), 0), 98)) if clean_text(report_text) else 0
     
     return {
         "relevance_score": relevance_score,
@@ -155,5 +152,19 @@ def analyze_kpi_report(req: ReportAnalysisRequest):
         "engine": "Sentence-BERT" if bert_model is not None else "TF-IDF",
     }
 
+from nlp.api import router as nlp_router
+app.include_router(nlp_router)
+
+@app.middleware('http')
+async def bounded_nlp_body(request, call_next):
+    if request.url.path.startswith('/api/v1/nlp/') and request.method=='POST':
+        body=bytearray()
+        async for chunk in request.stream():
+            if len(body)+len(chunk)>4*1024*1024:
+                return JSONResponse(status_code=413,content={'detail':'NLP request exceeds 4 MiB'})
+            body.extend(chunk)
+        request._body=bytes(body)
+    return await call_next(request)
+
 if __name__ == "__main__":
-    uvicorn.run("main:app", host="0.0.0.0", port=8000, reload=True)
+    uvicorn.run("main:app", host="127.0.0.1", port=8000, reload=False)

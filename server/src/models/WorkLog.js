@@ -22,4 +22,7 @@ const WorkLogSchema = new mongoose.Schema(
   { timestamps: true, collection: "work_logs" }
 );
 
+WorkLogSchema.add({assignmentId:{type:mongoose.Schema.Types.ObjectId,ref:'Assignment'},history:{type:[require('../core/shared').HistorySchema],default:undefined}});
+WorkLogSchema.index({assignmentId:1,weekNumber:1},{unique:true,partialFilterExpression:{assignmentId:{$type:'objectId'}}});
+require('./userOwnership')(WorkLogSchema,'WorkLog');
 module.exports = mongoose.model("WorkLog", WorkLogSchema);

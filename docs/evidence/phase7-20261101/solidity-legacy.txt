@@ -1,0 +1,14 @@
+
+> contracts@1.0.0 test:legacy
+> node scripts/local-hardhat.cjs test test/InternshipPlatform.test.js
+
+
+
+  InternshipPlatform Smart Contract
+    √ Cho phep cong ty tao de tai moi (38ms)
+    √ Cho phep cong ty them KPI va phan cong sinh vien
+    √ Sinh vien nop bao cao va cong ty nghiem thu KPI tren blockchain (62ms)
+
+
+  3 passing (741ms)
+

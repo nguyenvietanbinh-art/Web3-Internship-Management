@@ -13,9 +13,19 @@ const { matchStudentWithTopic, analyzeKpiReport } = require("../services/aiClien
 // Dùng qua object module (không destructure) để test có thể thay thế bằng stub.
 const ipfs = require("../services/ipfsService");
 const {
-  requireAuth, requireRole, loadTopic, requireTopicOwner, requireTopicEvaluator, requireAssignedStudent,
+  requireAuth, optionalAuth, requireRole, loadTopic, requireTopicOwner, requireTopicEvaluator, requireAssignedStudent,
 } = require("../middleware/auth");
 const { HttpError, asyncHandler, isWallet, normalizeWallet } = require("../utils/http");
+
+const { canReadTopic } = require('../middleware/permissions');
+function topicResponse(user, topic) {
+  const obj=topic.toObject();
+  if(canReadTopic(user,obj))return obj;
+  obj.assignedStudentWallet=null; obj.assignedStudentName=''; obj.mentorWallet=null;
+  obj.kpis=(obj.kpis||[]).map(k=>({...k,submissionContent:'',submissionIpfsHash:'',mentorFeedback:'',aiAnalysis:undefined,score:null}));
+  obj.certificateIpfsHash='';obj.txHash='';
+  return obj;
+}
 
 const sumWeights = (kpis) => kpis.reduce((sum, k) => sum + Number(k.weightPercent || 0), 0);
 
@@ -61,18 +71,20 @@ async function ensureStudentProfile(user) {
 // ---- Đọc (công khai) ----
 
 // Danh sách đề tài; có studentWallet thì kèm điểm AI matching (chỉ tham khảo).
-router.get("/", asyncHandler(async (req, res) => {
+router.get("/", optionalAuth, asyncHandler(async (req, res) => {
   const { studentWallet, companyWallet, status } = req.query;
+  if ((studentWallet && !isWallet(studentWallet)) || (companyWallet && !isWallet(companyWallet))) throw new HttpError(400,'Ví filter không hợp lệ');
+  if (status && !['open','assigned','in_progress','completed','closed','terminated'].includes(status)) throw new HttpError(400,'Trạng thái filter không hợp lệ');
   const filter = {};
   if (companyWallet) filter.companyWallet = normalizeWallet(companyWallet);
   if (status) filter.status = status;
   const topics = await Topic.find(filter).sort({ createdAt: -1 });
 
-  if (studentWallet) {
+  if (studentWallet && req.user && normalizeWallet(studentWallet) === req.user.walletAddress) {
     const student = await User.findOne({ walletAddress: normalizeWallet(studentWallet) });
     if (student && student.skills?.length) {
       const enriched = await Promise.all(topics.map(async (topic) => {
-        const obj = topic.toObject();
+        const obj = topicResponse(req.user, topic);
         try {
           obj.aiMatch = await matchStudentWithTopic({
             studentSkills: student.skills,
@@ -89,7 +101,7 @@ router.get("/", asyncHandler(async (req, res) => {
       return res.json(enriched);
     }
   }
-  res.json(topics);
+  res.json(topics.map(topic => topicResponse(req.user, topic)));
 }));
 
 // Khai báo TRƯỚC "/:id" để không bị route động che mất.
@@ -98,7 +110,7 @@ router.post("/ai-match", requireAuth, asyncHandler(async (req, res) => {
   res.json(await matchStudentWithTopic({ studentSkills, studentBio, topicTitle, topicDescription, requiredSkills }));
 }));
 
-router.get("/:id", loadTopic, (req, res) => res.json(req.topic));
+router.get("/:id", optionalAuth, loadTopic, (req, res) => res.json(topicResponse(req.user, req.topic)));
 
 // ---- Ghi (cần xác thực + phân quyền) ----
 
@@ -108,6 +120,7 @@ router.post("/", requireAuth, requireRole("company"), asyncHandler(async (req, r
     title, description, requiredSkills, expectedKeywords, startDate, endDate, deadline,
     difficulty = "intermediate", maxSlots = 1, kpis,
   } = req.body;
+  if(typeof title!=='string'||typeof description!=='string') throw new HttpError(400,'Tiêu đề/mô tả phải là chuỗi');
   if (!String(title || "").trim() || !String(description || "").trim()) throw new HttpError(400, "Cần nhập tiêu đề và mô tả đề tài");
   if (!["beginner", "intermediate", "advanced"].includes(difficulty)) throw new HttpError(400, "Độ khó không hợp lệ");
   const slots = Number(maxSlots);
@@ -198,7 +211,7 @@ router.post("/:id/assign", requireAuth, loadTopic, requireTopicOwner, asyncHandl
   const student = await ensureStudentProfile(studentUser);
 
   const assignment = await Assignment.findOneAndUpdate(
-    { topicId: topic._id, studentId: student._id },
+    { topicId: topic._id, studentId: student._id, batchId: { $exists: false } },
     { $setOnInsert: { topicId: topic._id, studentId: student._id, kpiAtAssign: student.kpiScore || 0, status: "assigned" } },
     { upsert: true, new: true, setDefaultsOnInsert: true }
   );
@@ -235,7 +248,7 @@ router.post("/:id/kpis/:milestoneIndex/submit", requireAuth, loadTopic, requireA
 
   const student = await ensureStudentProfile(req.user);
   const assignment = await Assignment.findOneAndUpdate(
-    { topicId: topic._id, studentId: student._id },
+    { topicId: topic._id, studentId: student._id, batchId: { $exists: false } },
     { $setOnInsert: { topicId: topic._id, studentId: student._id, kpiAtAssign: student.kpiScore || 0 } },
     { upsert: true, new: true, setDefaultsOnInsert: true }
   );
@@ -287,7 +300,7 @@ router.post("/:id/kpis/:milestoneIndex/evaluate", requireAuth, loadTopic, requir
 
   const studentUser = await User.findOne({ walletAddress: topic.assignedStudentWallet });
   const student = studentUser ? await Student.findOne({ userId: studentUser._id }) : null;
-  const assignment = student ? await Assignment.findOne({ topicId: topic._id, studentId: student._id }) : null;
+  const assignment = student ? await Assignment.findOne({ topicId: topic._id, studentId: student._id, batchId: { $exists: false } }) : null;
   if (!assignment) throw new HttpError(409, "Không tìm thấy bản ghi phân công");
 
   kpi.status = status;
@@ -343,18 +356,22 @@ router.post("/:id/complete", requireAuth, loadTopic, requireTopicOwner, asyncHan
   const studentUser = await User.findOne({ walletAddress: topic.assignedStudentWallet });
   if (studentUser) {
     const student = await Student.findOneAndUpdate({ userId: studentUser._id }, { $set: { kpiScore: finalScore } }, { new: true });
-    if (student) await Assignment.updateMany({ topicId: topic._id, studentId: student._id }, { $set: { status: "evaluated" } });
+    if (student) await Assignment.updateMany({ topicId: topic._id, studentId: student._id, batchId: { $exists: false } }, { $set: { status: "evaluated" } });
   }
   res.json({ success: true, topic, certificateUrl: cert.url });
 }));
 
 // Ghi nhận txHash và onChainId sau khi hoàn tất giao dịch trên Smart Contract
 router.post("/:id/record-chain-tx", requireAuth, loadTopic, asyncHandler(async (req, res) => {
+  if (!canReadTopic(req.user, req.topic)) throw new HttpError(403, 'Không được ghi giao dịch cho đề tài này');
   const { txHash, onChainId } = req.body;
-  if (txHash) req.topic.txHash = txHash.toLowerCase();
-  if (onChainId !== undefined && onChainId !== null) req.topic.onChainId = Number(onChainId);
+  if (typeof txHash !== 'string' || !/^0x[a-f0-9]{64}$/i.test(txHash)) throw new HttpError(400, 'Transaction hash không hợp lệ');
+  if (onChainId != null && (!Number.isSafeInteger(Number(onChainId)) || Number(onChainId) < 1)) throw new HttpError(400, 'onChainId không hợp lệ');
+  const verified=await require('../services/chainVerificationService').verifyTopicTransaction({txHash,topic:req.topic,actorWallet:req.user.walletAddress,requestedId:onChainId});
+  if(await Topic.exists({_id:{$ne:req.topic._id},onChainId:verified.onChainId})) throw new HttpError(409,'On-chain ID đã gắn với đề tài khác');
+  req.topic.txHash=verified.txHash.toLowerCase();req.topic.onChainId=verified.onChainId;
   await req.topic.save();
-  res.json({ success: true, topic: req.topic });
+  res.json({success:true,topic:req.topic,transactionStatus:'confirmed',chainId:verified.chainId});
 }));
 
 module.exports = router;

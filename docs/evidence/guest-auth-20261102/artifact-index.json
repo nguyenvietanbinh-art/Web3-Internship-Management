@@ -1,0 +1,26 @@
+[
+  {
+    "name": "email-browser-result.json",
+    "sha256": "18a769ed503b77e3302c027c55d0b9d35b4996cab337e4528805f1a14fdec148",
+    "source": "D:\\Web3-Internship-Management\\contracts\\node_modules\\.cache\\email-auth-browser-1793589328230\\result.json",
+    "edited": false
+  },
+  {
+    "name": "google-browser-result.json",
+    "sha256": "5916ea9a4832b655287fd7a306437ba1c1199e75dd454e099e4c6f85d88c7ca5",
+    "source": "D:\\Web3-Internship-Management\\contracts\\node_modules\\.cache\\google-auth-browser-1793589338260\\result.json",
+    "edited": false
+  },
+  {
+    "name": "guest-desktop.png",
+    "sha256": "de7c24e866d02a67c408a64bfff3c06cfc1bc3d2fa38d11ac99d9ac73d93e4d4",
+    "source": "D:\\Web3-Internship-Management\\contracts\\node_modules\\.cache\\email-auth-browser-1793589328230\\guest-desktop.png",
+    "edited": false
+  },
+  {
+    "name": "guest-mobile.png",
+    "sha256": "6487b924a292bd504a4391d657ac611d069e18d0191b96aae97df7b005b14d2d",
+    "source": "D:\\Web3-Internship-Management\\contracts\\node_modules\\.cache\\email-auth-browser-1793589328230\\guest-mobile.png",
+    "edited": false
+  }
+]

@@ -1,0 +1,31 @@
+python : test_api_validation_and_status (test_nlp.NlpTests.test_api_validation_and_status) ... ok
+At line:2 char:108
++ ... thon-deps'; python -m unittest discover -s tests -p test_nlp.py -v *> ...
++                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (test_api_valida..._status) ... ok:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+test_dataset_requires_real_provenance (test_nlp.NlpTests.test_dataset_requires_real_provenance) ... ok
+test_empty_and_duplicate (test_nlp.NlpTests.test_empty_and_duplicate) ... ok
+test_empty_pool_and_negative_shape (test_nlp.NlpTests.test_empty_pool_and_negative_shape) ... ok
+test_formula_hand_calculated_not_quality (test_nlp.NlpTests.test_formula_hand_calculated_not_quality) ... ok
+test_group_and_text_leakage (test_nlp.NlpTests.test_group_and_text_leakage) ... ok
+test_http_body_limit (test_nlp.NlpTests.test_http_body_limit) ... ok
+test_metrics_boundaries_and_boolean_grade_rejected 
+(test_nlp.NlpTests.test_metrics_boundaries_and_boolean_grade_rejected) ... ok
+test_metrics_reject_unjudged_duplicate_and_empty_relevance 
+(test_nlp.NlpTests.test_metrics_reject_unjudged_duplicate_and_empty_relevance) ... ok
+test_model_download_requires_approval_and_isolated_path 
+(test_nlp.NlpTests.test_model_download_requires_approval_and_isolated_path) ... ok
+test_model_load_refuses_low_memory_before_import_or_network 
+(test_nlp.NlpTests.test_model_load_refuses_low_memory_before_import_or_network) ... ok
+test_no_implicit_download_or_fake_sbert (test_nlp.NlpTests.test_no_implicit_download_or_fake_sbert) ... ok
+test_real_tfidf_ranking (test_nlp.NlpTests.test_real_tfidf_ranking) ... ok
+test_report_empty_and_inconsistent_counts (test_nlp.NlpTests.test_report_empty_and_inconsistent_counts) ... ok
+test_report_rules_are_not_classifier (test_nlp.NlpTests.test_report_rules_are_not_classifier) ... ok
+test_unicode_and_skills (test_nlp.NlpTests.test_unicode_and_skills) ... ok
+
+----------------------------------------------------------------------
+Ran 16 tests in 0.045s
+
+OK

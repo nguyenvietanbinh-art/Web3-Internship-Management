@@ -1,0 +1,11 @@
+{
+  "lint": "PASS 0 error 0 warning",
+  "build": "PASS vite8.3.4",
+  "output": "client/dist/unified-acceptance (ignored)",
+  "entryRawKB": 303.86,
+  "entryGzipKB": 90.71,
+  "finalBrowser": "8/8 PASS; exceptions0; blocked0",
+  "finalBrowserResult": "browser-result.json",
+  "manualOrigin": "http://localhost:5182",
+  "automationOrigin": "http://127.0.0.1:5184 (isolated TEST, one origin per environment)"
+}

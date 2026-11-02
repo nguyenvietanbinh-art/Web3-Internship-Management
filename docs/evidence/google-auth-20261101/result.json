@@ -1,0 +1,24 @@
+{
+  "at": "2026-11-01T12:58:41.361Z",
+  "backend": {
+    "exit": 0,
+    "summary": [
+      "# tests 139",
+      "# pass 139",
+      "# fail 0",
+      "# skipped 0",
+      "# duration_ms 71215.5781"
+    ]
+  },
+  "browser": {
+    "exit": 0,
+    "retestedAt": "2026-11-01T13:02:00.051Z",
+    "source": "contracts\\node_modules\\.cache\\google-auth-browser-1793538106008",
+    "extensionsDisabled": true,
+    "priorFailedAttempt": "browser-attempt-extension-blocked.json"
+  },
+  "protectedUnchanged": true,
+  "comparison": "Full collection hashes, document counts and index definitions for three protected databases",
+  "googleRealE2E": "BLOCKED_NO_CLIENT_ID",
+  "dependency": "google-auth-library@11.3.2"
+}

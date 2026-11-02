@@ -1,0 +1,66 @@
+import { useState, useCallback, lazy, Suspense } from 'react';
+import { apiRequest } from '../../api/client';
+import { Panel, Select, Text, Area, ActionForm, ErrorNotice, AssignmentPicker, Status } from './Shared';
+import { useResource } from './hooks';
+const Scanner=lazy(()=>import('./NativeQrScanner'));
+const QrCode=lazy(()=>import('./QrCode'));
+function position(){return new Promise((resolve,reject)=>{if(!navigator.geolocation)return reject(new Error('Trình duyệt không có vị trí GPS.'));navigator.geolocation.getCurrentPosition(p=>resolve({latitude:p.coords.latitude,longitude:p.coords.longitude,accuracy:p.coords.accuracy,timestamp:p.timestamp}),e=>reject(new Error(e.code===1?'Quyền vị trí bị từ chối; chưa ghi điểm danh.':e.code===3?'GPS timeout; thử lại.':'Không lấy được vị trí; thử lại.')),{enableHighAccuracy:true,maximumAge:0,timeout:10000});});}
+export default function Web3Page({user,unified=false,onWalletSettings}) {
+  const [assignment,setAssignment]=useState(null),[revision,setRevision]=useState(0),[error,setError]=useState(''),[busy,setBusy]=useState(false),[last,setLast]=useState(null),[certificate,setCertificate]=useState(null),[reportId,setReportId]=useState(''),[timeId,setTimeId]=useState(''),[file,setFile]=useState(null),[qr,setQr]=useState(null),[token,setToken]=useState(''),[camera,setCamera]=useState(false),[walletNetwork,setWalletNetwork]=useState('Chưa kiểm tra mạng ví');
+  const [geo,setGeo]=useState({action:'checkin',centerLat:'',centerLon:'',radiusMeters:'100',maxAccuracyMeters:'30',ttlSeconds:'120'}),field=(k,v)=>setGeo(s=>({...s,[k]:v}));
+  const [artifactId,setArtifactId]=useState('');
+  const status=useResource('/core/web3/status',revision),suffix=assignment?'&assignmentId='+assignment._id:'';
+  const reports=useResource('/core/reports?limit=100'+suffix,revision),times=useResource('/core/time/sessions?limit=100'+suffix,revision),operations=useResource(assignment?'/core/web3/placements/'+assignment._id+'/operations':'/core/web3/status',revision);
+  const artifacts=useResource(reportId?'/core/web3/reports/'+reportId+'/artifacts':'/core/web3/status',revision);
+  const run=async fn=>{setError('');setCertificate(null);setLast(null);setBusy(true);try{const result=await fn();setLast(result);return result;}catch(e){setError(e.message);return null;}finally{setBusy(false);setRevision(n=>n+1);}};
+  const post=path=>run(()=>apiRequest(path,{method:'POST',body:{}}));
+  const selectedReport=reports.data?.items.find(r=>r._id===reportId);
+  const scoped=!!assignment,canChain=!unified||user.role!=='student'||user.walletVerified===true,ipfsReady=status.data?.ipfs.pinata&&status.data?.ipfs.externalUploadEnabled&&status.data?.ipfs.encryptionKey;
+  const decoded=useCallback(value=>{setToken(value);setCamera(false);},[]),cameraError=useCallback(message=>{setError(message);setCamera(false);},[]);
+  const changeAssignment=value=>{setAssignment(value);setReportId('');setArtifactId('');setTimeId('');setQr(null);setCertificate(null);setLast(null);setError('');};
+  return <div className="business-stack">
+    {!canChain&&<Panel title="Bạn cần liên kết ví để sử dụng chức năng blockchain" description="QR/GPS và nghiệp vụ thông thường vẫn hoạt động; chỉ anchor/chứng nhận cần ví đã xác minh."><button className="btn btn-primary" onClick={onWalletSettings}>Đi đến Cài đặt ví</button></Panel>}
+    <Panel title="Web3 theo kỳ — Hardhat local" description="Giao dịch do attestor Hardhat local gửi sau kiểm quyền JWT, không phải giao dịch từ ví người dùng. Không dùng mainnet hoặc private key thật.">
+      <ErrorNotice message={status.error||error} /><p role="status">{status.loading?'Đang kiểm tra RPC…':status.data?.chain.available?'RPC local đã xác minh · chain31337 · ERC721/ERC5192':'RPC chưa sẵn sàng: '+(status.data?.chain.message||'chưa cấu hình')}</p>
+      {status.data?.chain.contractAddress&&<p className="web3-reference">Contract: {status.data.chain.contractAddress} · Attestor: {status.data.chain.attestor}</p>}
+      <button className="btn btn-secondary" disabled={busy} onClick={()=>run(async()=>{if(!window.ethereum?.request)throw new Error('Chưa có provider ví; không gửi giao dịch ví.');const chainId=await window.ethereum.request({method:'eth_chainId'});setWalletNetwork('Mạng ví: '+Number(BigInt(chainId))+'; giao dịch tính năng này chỉ qua attestor local31337.');return{walletChainId:chainId};})}>Kiểm tra mạng ví (chỉ đọc)</button><p>{walletNetwork}</p>
+      <AssignmentPicker value={assignment} onChange={changeAssignment} />
+    </Panel>
+    <Panel title="Báo cáo: mã hóa IPFS và anchor hash" description="Chỉ ciphertext AES-GCM được gửi Pinata. Thiếu credentials/key thì BLOCKED; anchor hash không có CID không được coi là đã upload IPFS.">
+      <ErrorNotice message={reports.error} />{!ipfsReady&&<p className="is-error">IPFS live BLOCKED: thiếu Pinata/quyền bật upload/khóa mã hóa. Chưa readback thật.</p>}
+      <Select label="Báo cáo Web3" value={reportId} onChange={id=>{setReportId(id);setArtifactId('');}} options={[{value:'',label:'Chọn báo cáo được phép'},...(reports.data?.items||[]).map(r=>({value:r._id,label:r.title+' · '+r.kind+' · '+r.state}))]} />
+      <ErrorNotice message={artifacts.error} /><Select label="Artifact IPFS đã readback" value={artifactId} onChange={setArtifactId} options={[{value:'',label:'Chỉ hash nội dung báo cáo, không CID'},...(artifacts.data?.items||[]).filter(a=>a.state==='verified').map(a=>({value:a.id,label:a.cid}))]} />
+      {(artifacts.data?.items||[]).map(a=><p key={a.id} className="web3-reference">Artifact: {a.state} · CID: {a.cid||'chưa có'} · {a.errorCode||'không lỗi lưu'}</p>)}
+      {user.role==='student'&&<><button className="btn btn-secondary" disabled={busy||!scoped||!reportId||!ipfsReady} onClick={()=>run(()=>apiRequest('/core/web3/reports/'+reportId+'/ipfs',{method:'POST',body:{confirmEncryptedUpload:true}}))}>Mã hóa & upload báo cáo IPFS</button><input className="input-field" type="file" accept=".pdf,.docx" aria-label="Tệp báo cáo riêng tư PDF DOCX" onChange={e=>setFile(e.target.files?.[0]||null)} /><button className="btn btn-secondary" disabled={busy||!scoped||!reportId||!file||!ipfsReady} onClick={()=>run(()=>apiRequest('/core/web3/reports/'+reportId+'/ipfs/file',{method:'POST',body:file}))}>Mã hóa & upload tệp đính kèm</button></>}
+      <button className="btn btn-primary" disabled={busy||!canChain||!scoped||selectedReport?.kind!=='final'||selectedReport?.state!=='approved'||!selectedReport?.current} onClick={()=>run(()=>apiRequest('/core/web3/reports/'+reportId+'/anchor',{method:'POST',body:artifactId?{artifactId}:{}}))}>Anchor hash báo cáo đã duyệt</button>
+      <p className="muted">Không chọn artifact thì chỉ anchor hash nội dung, không tuyên bố IPFS đã upload. Chỉ báo cáo cuối kỳ hiện hành đã duyệt được anchor.</p>
+    </Panel>
+    {['company','admin'].includes(user.role)&&<Panel title="Bằng chứng giờ làm đã duyệt" description="Ghi commitment của phiên giờ đã duyệt, gồm nguồn manual/QR. Receipt xác minh việc ghi hash, không chứng minh GPS tuyệt đối.">
+      <ErrorNotice message={times.error} /><Select label="Phiên giờ làm Web3" value={timeId} onChange={setTimeId} options={[{value:'',label:'Chọn phiên đã duyệt có phút dương'},...(times.data?.items||[]).filter(t=>t.state==='approved'&&t.minutes>0).map(t=>({value:t._id,label:String(t.studentWallet||t.studentUserId||'').slice(0,8)+' · '+t.minutes+' phút · '+t.proof.provider}))]} />
+      <button className="btn btn-primary" disabled={busy||!scoped||!timeId} onClick={()=>post('/core/web3/time/'+timeId+'/anchor')}>Anchor giờ làm đã duyệt</button>
+    </Panel>}
+    {user.role==='admin'&&<Panel title="Nhà trường phê duyệt và phát hành SBT" description="Cần phân công completed, đủ KPI, finalreport approved, giờ dương đã duyệt và các proof đã anchor. Backend kiểm lại điều kiện, không mint khi render.">
+      <div className="business-actions"><button className="btn btn-secondary" disabled={busy||!scoped} onClick={()=>post('/core/web3/placements/'+assignment._id+'/complete')}>Anchor phê duyệt hoàn tất</button><button className="btn btn-primary" disabled={busy||!scoped} onClick={()=>post('/core/web3/placements/'+assignment._id+'/mint')}>Mint SBT local</button></div>
+    </Panel>}
+    <Panel title="Chứng nhận SBT — xác minh RPC hiện tại" description="Không dùng trạng thái DB làm VERIFIED. RPC lỗi/chain reset/token không tồn tại phải từ chối, không giữ badge cũ.">
+      <button className="btn btn-primary" disabled={busy||!canChain||!scoped} onClick={async()=>{const result=await run(()=>apiRequest('/core/web3/placements/'+assignment._id+'/certificate'));if(result?.verified)setCertificate(result);}}>Xác minh chứng nhận on-chain</button>
+      {certificate?.verified&&<div data-testid="live-sbt-certificate"><span className="badge badge-approved">VERIFIED ON-CHAIN · SBT LOCKED</span><p>Token ID: {certificate.tokenId} · chain: {certificate.chainId} · {certificate.standard}</p><p className="web3-reference">Owner: {certificate.owner}<br/>Contract: {certificate.contractAddress}<br/>Tx: {certificate.txHash}</p><p>Chứng nhận issuer-attested tại lúc phát hành, không metadata báo cáo cá nhân; không chuyển nhượng.</p></div>}
+    </Panel>
+    {user.role==='company'&&<Panel title="Tạo phiên QR theo phân công" description="Nhập tọa độ nơi thực tập hoặc lấy vị trí sau khi bấm nút; không có GPS mặc định giả.">
+      <button className="btn btn-secondary" disabled={busy} onClick={()=>run(async()=>{const p=await position();setGeo(s=>({...s,centerLat:String(p.latitude),centerLon:String(p.longitude)}));return{centerFromClient:true};})}>Lấy vị trí tâm từ thiết bị</button>
+      <ActionForm submit="Tạo QR có thời hạn" onSaved={setQr} onSubmit={()=>{if(!assignment)throw new Error('Chọn phân công active trước.');return apiRequest('/core/web3/qr/issue',{method:'POST',body:{assignmentId:assignment._id,action:geo.action,centerLat:Number(geo.centerLat),centerLon:Number(geo.centerLon),radiusMeters:Number(geo.radiusMeters),maxAccuracyMeters:Number(geo.maxAccuracyMeters),ttlSeconds:Number(geo.ttlSeconds)}});}}>
+        <Select label="Thao tác QR" value={geo.action} onChange={v=>field('action',v)} options={[{value:'checkin',label:'Check-in'},{value:'checkout',label:'Check-out'}]} />
+        <div className="business-grid"><Text label="Vĩ độ tâm QR" type="number" step="any" min="-90" max="90" required value={geo.centerLat} onChange={v=>field('centerLat',v)} /><Text label="Kinh độ tâm QR" type="number" step="any" min="-180" max="180" required value={geo.centerLon} onChange={v=>field('centerLon',v)} /><Text label="Bán kính QR mét" type="number" min="20" max="300" required value={geo.radiusMeters} onChange={v=>field('radiusMeters',v)} /><Text label="Sai số GPS tối đa mét" type="number" min="1" max="100" required value={geo.maxAccuracyMeters} onChange={v=>field('maxAccuracyMeters',v)} /><Text label="Thời hạn QR giây" type="number" min="15" max="300" required value={geo.ttlSeconds} onChange={v=>field('ttlSeconds',v)} /></div>
+      </ActionForm>{qr&&<div><p>Hết hạn: {new Date(qr.expiresAt).toLocaleString('vi-VN')} · {qr.action}</p><Suspense fallback={<p>Đang tải QR encoder…</p>}><QrCode token={qr.token} /></Suspense><textarea className="input-field" readOnly aria-label="Mã QR đã tạo" value={qr.token} rows={5} /><p className="muted">QR tạo cục bộ, có chữ ký và nonce một lần; chỉ chia sẻ cho sinh viên được phân công. Có thể nhập mã dự phòng.</p></div>}
+    </Panel>}
+    {user.role==='student'&&<Panel title="Quét QR và GPS → check-in/check-out" description="Camera/vị trí chỉ được hỏi sau thao tác. GPS là client claim; sai số+distance phải trong radius, không phải chống giả mạo tuyệt đối.">
+      <Area label="Mã phiên QR" value={token} onChange={setToken} maxLength={4096} /><div className="business-actions"><button className="btn btn-secondary" onClick={()=>{setError('');setCamera(true);}}>Mở camera quét QR</button><button className="btn btn-primary" disabled={busy||!token.trim()} onClick={()=>run(async()=>apiRequest('/core/web3/qr/redeem',{method:'POST',body:{token:token.trim(),position:await position()}}))}>Lấy GPS & xác thực QR giờ làm</button></div>
+      {camera&&<><Suspense fallback={<p>Đang tải scanner…</p>}><Scanner onDecoded={decoded} onError={cameraError} /></Suspense><button className="btn btn-secondary" onClick={()=>setCamera(false)}>Dừng camera</button></>}
+    </Panel>}
+    <Panel title="Tiến trình transaction và reconciliation" description="Trạng thái operation lưu DB; chỉ certificate viewer vừa xác minh RPC mới hiển thị VERIFIED. Pending/failed cần đối chiếu chủ động.">
+      <ErrorNotice message={operations.error} />{(operations.data?.items||[]).map(op=><div key={op.id} className="web3-operation"><strong>{op.kind}</strong> <Status value={op.state} /><p className="web3-reference">{op.txHash||'Chưa nhận transaction hash'} · {op.errorCode||'không lỗi lưu'}</p><button className="btn btn-secondary" disabled={busy} onClick={()=>post('/core/web3/operations/'+op.id+'/reconcile')}>Đối chiếu operation</button></div>)}
+      {!operations.data?.items?.length&&<p>Chưa có operation của phân công đã chọn.</p>}
+      {last&&<details data-testid="web3-last-result" open><summary>Kết quả thao tác thực tế</summary><pre>{JSON.stringify(last,null,2)}</pre></details>}
+    </Panel>
+  </div>;
+}

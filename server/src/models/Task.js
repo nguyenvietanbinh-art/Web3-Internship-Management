@@ -23,4 +23,6 @@ const TaskSchema = new mongoose.Schema(
   { timestamps: true, collection: "internship_tasks" }
 );
 
+TaskSchema.add({assignmentId:{type:mongoose.Schema.Types.ObjectId,ref:'Assignment'},progress:{type:Number,min:0,max:100,default:0},history:{type:[require('../core/shared').HistorySchema],default:undefined}});
+require('./userOwnership')(TaskSchema,'Task');
 module.exports = mongoose.model("Task", TaskSchema);

@@ -1,0 +1,4 @@
+# Optional CPU runtime. Install only into an approved isolated target, not AI/system Python.
+# Base FastAPI/NumPy/scikit-learn environment remains requirements.txt.
+onnxruntime==1.31.1
+tokenizers==0.23.3

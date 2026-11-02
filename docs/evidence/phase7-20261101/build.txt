@@ -1,0 +1,29 @@
+
+> client@0.0.0 build
+> vite build --outDir dist/phase7-acceptance
+
+vite v8.3.4 building client environment for production...
+transforming...
+✓ 2340 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/phase7-acceptance/index.html                                1.00 kB │ gzip:   0.61 kB
+dist/phase7-acceptance/assets/index-Re-nxda1.css                27.53 kB │ gzip:   6.68 kB
+dist/phase7-acceptance/assets/book-open-ChoJUri4.js              0.31 kB │ gzip:   0.24 kB
+dist/phase7-acceptance/assets/rolldown-runtime-hePW80VL.js       0.71 kB │ gzip:   0.42 kB
+dist/phase7-acceptance/assets/hooks-DD4LvfWE.js                  0.90 kB │ gzip:   0.53 kB
+dist/phase7-acceptance/assets/Notifications-CFAgAg_B.js          1.38 kB │ gzip:   0.78 kB
+dist/phase7-acceptance/assets/Shared-DL9y9uv6.js                 5.60 kB │ gzip:   2.16 kB
+dist/phase7-acceptance/assets/jsx-runtime-BNakU3Ej.js            8.24 kB │ gzip:   3.11 kB
+dist/phase7-acceptance/assets/DashboardView-qcYjQqNp.js         10.30 kB │ gzip:   3.68 kB
+dist/phase7-acceptance/assets/Web3CertificateView-Cnf5aAzs.js   10.55 kB │ gzip:   3.60 kB
+dist/phase7-acceptance/assets/Web3Page-vu1-xJ74.js              12.85 kB │ gzip:   4.78 kB
+dist/phase7-acceptance/assets/CvJdView-BMFJ6Nx6.js              14.55 kB │ gzip:   4.42 kB
+dist/phase7-acceptance/assets/AttendanceView-XzLiNR2F.js        16.52 kB │ gzip:   4.59 kB
+dist/phase7-acceptance/assets/QrCode-Dk9_6SuZ.js                24.24 kB │ gzip:   9.33 kB
+dist/phase7-acceptance/assets/CoreBusinessView-B4ohdZ1B.js      49.67 kB │ gzip:  12.51 kB
+dist/phase7-acceptance/assets/index-BGdulfhM.js                284.69 kB │ gzip:  86.21 kB
+dist/phase7-acceptance/assets/lib.esm-DXGi7BZN.js              379.90 kB │ gzip: 142.14 kB
+dist/phase7-acceptance/assets/NativeQrScanner-6Uq8AQmK.js      436.66 kB │ gzip: 115.57 kB
+
+✓ built in 1.15s

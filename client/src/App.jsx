@@ -1,42 +1,39 @@
-import React, { useState, useEffect } from 'react';
-import { 
-  ShieldCheck, 
-  Wallet, 
-  Sparkles, 
-  PlusCircle, 
-  FileCheck2, 
-  Award, 
-  CheckCircle2, 
-  Clock, 
-  ChevronRight, 
-  AlertCircle, 
-  BrainCircuit, 
-  Building2, 
-  GraduationCap, 
+import React, { useState, useEffect, useCallback, lazy, Suspense } from 'react';
+import {
+  ShieldCheck,
+  Sparkles,
+  PlusCircle,
+  FileCheck2,
+  Award,
+  CheckCircle2,
+  Clock,
+  ChevronRight,
+  BrainCircuit,
+  Building2,
   ExternalLink,
-  Layers,
-  Search,
-  Filter,
-  BarChart3,
-  Briefcase,
-  QrCode,
-  FileBadge
+  Search
 } from 'lucide-react';
 import { apiRequest, getToken, signInWithWallet, demoLoginWallet, restoreSession, logout } from './api/client';
-import { 
-  checkContractConnection, 
+import {
+  checkContractConnection,
   CONTRACT_ADDRESS,
-  createTopicOnChain, 
-  assignStudentOnChain, 
-  submitKpiOnChain, 
-  evaluateKpiOnChain, 
-  completeInternshipOnChain 
+  createTopicOnChain,
+  assignStudentOnChain,
+  submitKpiOnChain,
+  evaluateKpiOnChain,
+  completeInternshipOnChain
 } from './api/web3Client';
 import AuthModal from './components/AuthModal';
-import DashboardView from './components/DashboardView';
-import CvJdView from './components/CvJdView';
-import AttendanceView from './components/AttendanceView';
-import Web3CertificateView from './components/Web3CertificateView';
+import AccountOverview from './components/AccountOverview';
+import {IdentitySettings} from './components/GoogleIdentity';
+import AppShell from './components/AppShell';
+import ViewBoundary from './components/ViewBoundary';
+import { Dialog, EmptyState, LoadingSkeleton, UnavailableView } from './components/ui';
+const DashboardView = lazy(() => import('./components/DashboardView'));
+const CvJdView = lazy(() => import('./components/CvJdView'));
+const AttendanceView = lazy(() => import('./components/AttendanceView'));
+const Web3CertificateView = lazy(() => import('./components/Web3CertificateView'));
+const CoreBusinessView = lazy(() => import('./components/business/CoreBusinessView'));
 
 const isoDay = (days) => new Date(Date.now() + days * 86400000).toISOString().slice(0, 10);
 const newKpiRow = (days = 14, weightPercent = '') => ({ title: '', criteria: '', weightPercent, deadline: isoDay(days) });
@@ -47,15 +44,18 @@ export default function App() {
   const [walletAddress, setWalletAddress] = useState('');
   const [networkName, setNetworkName] = useState('');
   const [roleChoice, setRoleChoice] = useState('company'); // 'company' | 'student'
-  const userRole = user ? (user.role === 'student' ? 'student' : 'company') : roleChoice;
   const setUserRole = (role) => { if (!user) setRoleChoice(role); };
   const [contractConnected, setContractConnected] = useState(false);
 
   // Navigation Tabs: 'dashboard' | 'topics' | 'cv-jd' | 'attendance' | 'web3'
-  const [activeTab, setActiveTab] = useState('topics');
+  const [activeTab, setActiveTab] = useState('dashboard');
+  const [coreEnabled, setCoreEnabled] = useState(false);
+  const [unifiedMode,setUnifiedMode]=useState(false);
+  const [authMode,setAuthMode]=useState(location.pathname==='/register'?'register':'login');
+  const [sessionReady, setSessionReady] = useState(false);
 
   // Modals
-  const [showAuthModal, setShowAuthModal] = useState(false);
+  const [showAuthModal, setShowAuthModal] = useState(['/login','/register'].includes(location.pathname));
   const [showCreateTopicModal, setShowCreateTopicModal] = useState(false);
   const [showSubmitKPIModal, setShowSubmitKPIModal] = useState(null);
   const [showEvaluateModal, setShowEvaluateModal] = useState(null);
@@ -63,9 +63,13 @@ export default function App() {
   // Topics & Data State
   const [topics, setTopics] = useState([]);
   const [selectedTopic, setSelectedTopic] = useState(null);
+  const isTopicOwner = user?.role === 'company' && selectedTopic?.companyWallet === user.walletAddress;
+  const isAssignedStudent = user?.role === 'student' && selectedTopic?.assignedStudentWallet === user.walletAddress;
+  const canEvaluateTopic = isTopicOwner || (user?.role === 'mentor' && selectedTopic?.mentorWallet === user.walletAddress);
   const [searchTerm, setSearchTerm] = useState('');
   const [loading, setLoading] = useState(false);
   const [backendError, setBackendError] = useState('');
+  const [transactionStatus, setTransactionStatus] = useState('unavailable');
   const [toastMessage, setToastMessage] = useState('');
 
   // Forms
@@ -79,7 +83,7 @@ export default function App() {
   const kpiTotal = kpiRows.reduce((sum, row) => sum + (Number(row.weightPercent) || 0), 0);
   const updateKpiRow = (index, patch) => setKpiRows((rows) => rows.map((row, i) => (i === index ? { ...row, ...patch } : row)));
   const [submissionText, setSubmissionText] = useState('');
-  const [evalForm, setEvalForm] = useState({ score: 90, status: 'approved', feedback: 'Báo cáo nộp bài đạt tiêu chí đề ra.' });
+  const [evalForm, setEvalForm] = useState({ score: '', status: 'approved', feedback: '' });
   const [assigneeWallet, setAssigneeWallet] = useState('');
 
   const showToast = (msg) => {
@@ -90,36 +94,50 @@ export default function App() {
   const requireLogin = () => {
     if (user) return true;
     setShowAuthModal(true);
-    showToast('Hãy kết nối ví MetaMask hoặc chọn Ví mẫu để thực hiện thao tác.');
+    showToast('Hãy kết nối và xác thực ví để thực hiện thao tác.');
     return false;
   };
 
   // Restore session
   useEffect(() => {
-    restoreSession()
-      .then((restored) => {
-        if (restored) {
-          setUser(restored);
-          setWalletAddress(restored.walletAddress);
-          setNetworkName('Connected Web3');
+    let active = true;
+    const initialToken = getToken();
+    Promise.all([apiRequest('/core/capabilities').catch(()=>({enabled:false,unified:false})),restoreSession()])
+      .then(([capabilities,restored]) => {
+        if(!active)return;
+        setCoreEnabled(capabilities.enabled===true);setUnifiedMode(capabilities.unified===true);
+        if(getToken()===initialToken&&restored){
+          setUser(restored);setWalletAddress(restored.walletAddress||'');setNetworkName('Chưa kiểm tra mạng ví');
+          setActiveTab(capabilities.unified?'dashboard':restored.walletAddress?'dashboard':'core-profile');setShowAuthModal(false);
+          if(['/login','/register'].includes(location.pathname))history.replaceState({},'', '/');
         }
       })
-      .catch((err) => setBackendError(err.message));
-    checkContractConnection().then(setContractConnected).catch(() => setContractConnected(false));
+      .catch((err) => { if (active && getToken() === initialToken) setBackendError(err.message); })
+      .finally(() => { if (active) setSessionReady(true); });
+    return () => { active = false; };
   }, []);
+
+  useEffect(()=>{const update=()=>{if(user&&['/login','/register'].includes(location.pathname)){history.replaceState({},'','/');setShowAuthModal(false);return;}setAuthMode(location.pathname==='/register'?'register':'login');setShowAuthModal(['/login','/register'].includes(location.pathname));};window.addEventListener('popstate',update);return()=>window.removeEventListener('popstate',update);},[user]);
 
   // MetaMask listener
   useEffect(() => {
+    if(['google','password'].includes(user?.authProvider))return undefined;
     if (!window.ethereum?.on) return undefined;
     const onAccountsChanged = () => {
       logout();
       setUser(null);
       setWalletAddress('');
+      setNetworkName('');
+      setTopics([]);
+      setSelectedTopic(null);
+      setShowCreateTopicModal(false);
+      setShowSubmitKPIModal(null);
+      setShowEvaluateModal(null);
       showToast('Địa chỉ ví đã thay đổi, hãy xác thực lại.');
     };
     window.ethereum.on('accountsChanged', onAccountsChanged);
     return () => window.ethereum.removeListener?.('accountsChanged', onAccountsChanged);
-  }, []);
+  }, [user]);
 
   // Connect MetaMask or open modal if missing
   const connectWallet = async () => {
@@ -161,17 +179,41 @@ export default function App() {
 
   const disconnectWallet = () => {
     logout();
+    setTopics([]);
+    setSelectedTopic(null);
     setUser(null);
     setWalletAddress('');
     setNetworkName('');
     showToast('Đã đăng xuất tài khoản.');
   };
 
+  const handleGoogleSession = async () => {
+    const restored=await restoreSession();
+    if(!restored)throw new Error('Không khôi phục được phiên; hãy đăng nhập lại.');
+    setUser(restored);setWalletAddress(restored.walletAddress||'');setTopics([]);setSelectedTopic(null);
+    setNetworkName(restored.walletAddress?'Đã xác thực; chưa kiểm tra mạng':'Tài khoản · Chưa liên kết ví');
+    setShowAuthModal(false);history.replaceState({},'','/');setActiveTab(unifiedMode?'dashboard':'core-profile');setBackendError('');showToast('Đã cập nhật phiên đăng nhập.');
+  };
+
+  const handleProfileSaved = async () => {
+    const token=getToken();
+    try{
+      const restored=await restoreSession();
+      if(token!==getToken())return;
+      if(!restored){setUser(null);return;}
+      setUser(restored);setActiveTab('account-overview');setBackendError('');
+      showToast('Đã lưu hồ sơ thành công.');
+    }catch(error){if(token===getToken())setBackendError('Hồ sơ đã lưu nhưng chưa tải lại được tài khoản: '+error.message);}
+  };
+
   // Fetch topics
-  const fetchTopics = async () => {
+  const fetchTopics = useCallback(async () => {
+    if(unifiedMode || !user || !user.walletAddress)return;
+    const sessionToken = getToken();
     try {
       const query = user?.role === 'student' ? `?studentWallet=${user.walletAddress}` : '';
       const data = await apiRequest(`/topics${query}`);
+      if (sessionToken !== getToken()) return;
       setBackendError('');
       if (Array.isArray(data)) {
         setTopics(data);
@@ -180,11 +222,14 @@ export default function App() {
     } catch (err) {
       setBackendError(err.message);
     }
-  };
+  }, [user,unifiedMode]);
 
   useEffect(() => {
-    fetchTopics();
-  }, [user?.walletAddress]);
+    if (!sessionReady) return undefined;
+    // Scheduling avoids synchronous effect updates; the callback still performs GET only.
+    const timer = setTimeout(() => { void fetchTopics(); }, 0);
+    return () => clearTimeout(timer);
+  }, [fetchTopics, sessionReady]);
 
   const refreshTopic = async (id) => {
     const savedTopic = await apiRequest(`/topics/${id}`);
@@ -196,30 +241,37 @@ export default function App() {
   const handleAssignStudent = async () => {
     if (!requireLogin() || !selectedTopic) return;
     setLoading(true);
+    let chainResult = 'chưa ghi blockchain';
+    setTransactionStatus('unavailable');
     try {
       await apiRequest(`/topics/${selectedTopic._id}/assign`, { method: 'POST', body: { studentWallet: assigneeWallet.trim() } });
-      
+
       // Nếu có MetaMask, đồng bộ lên Smart Contract
       if (typeof window !== 'undefined' && window.ethereum && window.ethereum.selectedAddress && selectedTopic.onChainId) {
         try {
+          setTransactionStatus('pending');
           showToast('Đang gửi giao dịch phân công lên Blockchain...');
           const onChainRes = await assignStudentOnChain(selectedTopic.onChainId, assigneeWallet.trim());
           await apiRequest(`/topics/${selectedTopic._id}/record-chain-tx`, {
             method: 'POST',
             body: { txHash: onChainRes.txHash }
           });
+          setTransactionStatus('confirmed');
+          chainResult = 'receipt đã được server xác minh';
         } catch (chainErr) {
+          setTransactionStatus(chainErr.code === 'CHAIN_PENDING' ? 'pending' : 'failed');
+          chainResult = `giao dịch chưa được xác minh: ${chainErr.message}`;
           console.warn("Giao dịch on-chain phân công:", chainErr.message);
         }
       }
 
       await refreshTopic(selectedTopic._id);
       setAssigneeWallet('');
-      showToast('Đã phân công sinh viên cho đề tài.');
-    } catch (error) { 
-      showToast(`Không thể phân công: ${error.message}`); 
-    } finally { 
-      setLoading(false); 
+      showToast(`Đã lưu phân công trong database; ${chainResult}.`);
+    } catch (error) {
+      showToast(`Không thể phân công: ${error.message}`);
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -228,10 +280,12 @@ export default function App() {
     if (!requireLogin()) return;
     if (kpiTotal !== 100) return showToast('Tổng trọng số KPI phải đúng bằng 100%.');
     setLoading(true);
+    let chainResult = 'chưa ghi blockchain';
+    setTransactionStatus('unavailable');
     try {
       const toList = (text) => text.split(',').map((s) => s.trim()).filter(Boolean);
-      const result = await apiRequest('/topics', { 
-        method: 'POST', 
+      const result = await apiRequest('/topics', {
+        method: 'POST',
         body: {
           title: newTopicForm.title,
           description: newTopicForm.description,
@@ -240,17 +294,18 @@ export default function App() {
           startDate: new Date().toISOString(),
           endDate: new Date(Math.max(...kpiRows.map((r) => new Date(r.deadline).getTime()))).toISOString(),
           kpis: kpiRows.map((r) => ({
-            title: r.title, 
-            criteria: r.criteria, 
-            weightPercent: Number(r.weightPercent), 
+            title: r.title,
+            criteria: r.criteria,
+            weightPercent: Number(r.weightPercent),
             deadline: new Date(r.deadline).toISOString(),
           })),
-        } 
+        }
       });
 
       // Nếu có MetaMask, gửi giao dịch createTopic lên Smart Contract
       if (typeof window !== 'undefined' && window.ethereum && window.ethereum.selectedAddress) {
         try {
+          setTransactionStatus('pending');
           showToast('Đang gửi giao dịch khởi tạo lên Smart Contract...');
           const onChainRes = await createTopicOnChain({
             title: newTopicForm.title,
@@ -266,7 +321,11 @@ export default function App() {
           result.topic.txHash = onChainRes.txHash;
           result.topic.onChainId = onChainRes.onChainId;
           showToast(`Đã ghi nhận đề tài on-chain (Tx: ${onChainRes.txHash.slice(0, 10)}...)`);
+          setTransactionStatus('confirmed');
+          chainResult = 'receipt đã được server xác minh';
         } catch (chainErr) {
+          setTransactionStatus(chainErr.code === 'CHAIN_PENDING' ? 'pending' : 'failed');
+          chainResult = `giao dịch chưa được xác minh: ${chainErr.message}`;
           console.warn("Giao dịch on-chain tạo đề tài:", chainErr.message);
         }
       }
@@ -276,11 +335,11 @@ export default function App() {
       setShowCreateTopicModal(false);
       setNewTopicForm({ title: '', description: '', requiredSkills: 'Solidity, React', expectedKeywords: 'Web3, KPI' });
       setKpiRows([newKpiRow(15, 40), newKpiRow(45, 60)]);
-      showToast('Đã tạo đề tài thành công và lưu vết kiểm toán.');
+      showToast(`Đã lưu đề tài trong database; ${chainResult}.`);
     } catch (error) {
       showToast(`Không thể tạo đề tài: ${error.message}`);
-    } finally { 
-      setLoading(false); 
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -288,34 +347,41 @@ export default function App() {
     e.preventDefault();
     if (!requireLogin() || !selectedTopic) return;
     setLoading(true);
+    let chainResult = 'chưa ghi blockchain';
+    setTransactionStatus('unavailable');
     try {
       const result = await apiRequest(`/topics/${selectedTopic._id}/kpis/${showSubmitKPIModal.milestoneIndex}/submit`, {
-        method: 'POST', 
+        method: 'POST',
         body: { submissionContent: submissionText },
       });
 
       // Nếu có MetaMask và đề tài có onChainId, gửi tx submitKPI lên blockchain
       if (typeof window !== 'undefined' && window.ethereum && window.ethereum.selectedAddress && selectedTopic.onChainId) {
         try {
+          setTransactionStatus('pending');
           showToast('Đang gửi giao dịch nộp KPI lên Blockchain...');
           const onChainRes = await submitKpiOnChain(selectedTopic.onChainId, showSubmitKPIModal.milestoneIndex, result.ipfsHash);
           await apiRequest(`/topics/${selectedTopic._id}/record-chain-tx`, {
             method: 'POST',
             body: { txHash: onChainRes.txHash }
           });
+          setTransactionStatus('confirmed');
+          chainResult = 'receipt đã được server xác minh';
         } catch (chainErr) {
+          setTransactionStatus(chainErr.code === 'CHAIN_PENDING' ? 'pending' : 'failed');
+          chainResult = `giao dịch chưa được xác minh: ${chainErr.message}`;
           console.warn("Giao dịch on-chain nộp KPI:", chainErr.message);
         }
       }
 
       await refreshTopic(selectedTopic._id);
-      setShowSubmitKPIModal(null); 
+      setShowSubmitKPIModal(null);
       setSubmissionText('');
-      showToast(`Đã lưu báo cáo lên IPFS. AI (${result.aiAnalysis?.engine || 'NLP'}): liên quan ${result.aiAnalysis?.relevanceScore ?? '—'}%.`);
-    } catch (error) { 
-      showToast(`Không thể nộp KPI: ${error.message}`); 
-    } finally { 
-      setLoading(false); 
+      showToast(`Đã lưu báo cáo IPFS; AI ${result.aiAnalysis?.engine || 'không rõ engine'}; ${chainResult}.`);
+    } catch (error) {
+      showToast(`Không thể nộp KPI: ${error.message}`);
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -323,72 +389,86 @@ export default function App() {
     e.preventDefault();
     if (!requireLogin() || !selectedTopic) return;
     setLoading(true);
+    let chainResult = 'chưa ghi blockchain';
+    setTransactionStatus('unavailable');
     try {
       await apiRequest(`/topics/${selectedTopic._id}/kpis/${showEvaluateModal.milestoneIndex}/evaluate`, {
-        method: 'POST', 
+        method: 'POST',
         body: { status: evalForm.status, score: Number(evalForm.score), mentorFeedback: evalForm.feedback },
       });
 
       // Nếu có MetaMask và có onChainId, gửi tx evaluateKPI lên blockchain
       if (typeof window !== 'undefined' && window.ethereum && window.ethereum.selectedAddress && selectedTopic.onChainId) {
         try {
+          setTransactionStatus('pending');
           showToast('Đang gửi giao dịch nghiệm thu lên Blockchain...');
           const onChainRes = await evaluateKpiOnChain(
-            selectedTopic.onChainId, 
-            showEvaluateModal.milestoneIndex, 
-            evalForm.status, 
-            evalForm.score, 
+            selectedTopic.onChainId,
+            showEvaluateModal.milestoneIndex,
+            evalForm.status,
+            evalForm.score,
             evalForm.feedback
           );
           await apiRequest(`/topics/${selectedTopic._id}/record-chain-tx`, {
             method: 'POST',
             body: { txHash: onChainRes.txHash }
           });
+          setTransactionStatus('confirmed');
+          chainResult = 'receipt đã được server xác minh';
         } catch (chainErr) {
+          setTransactionStatus(chainErr.code === 'CHAIN_PENDING' ? 'pending' : 'failed');
+          chainResult = `giao dịch chưa được xác minh: ${chainErr.message}`;
           console.warn("Giao dịch on-chain nghiệm thu:", chainErr.message);
         }
       }
 
       await refreshTopic(selectedTopic._id);
       setShowEvaluateModal(null);
-      showToast(`Đã lưu kết quả nghiệm thu KPI: ${evalForm.score}/100.`);
-    } catch (error) { 
-      showToast(`Không thể đánh giá KPI: ${error.message}`); 
-    } finally { 
-      setLoading(false); 
+      showToast(`Đã lưu kết quả KPI ${evalForm.score}/100; ${chainResult}.`);
+    } catch (error) {
+      showToast(`Không thể đánh giá KPI: ${error.message}`);
+    } finally {
+      setLoading(false);
     }
   };
 
   const handleCompleteAndCertify = async () => {
     if (!requireLogin() || !selectedTopic) return;
     setLoading(true);
+    let chainResult = 'chưa ghi blockchain';
+    setTransactionStatus('unavailable');
     try {
       const result = await apiRequest(`/topics/${selectedTopic._id}/complete`, { method: 'POST', body: {} });
 
       // Nếu có MetaMask và có onChainId, gọi completeInternship mint SBT certificate
       if (typeof window !== 'undefined' && window.ethereum && window.ethereum.selectedAddress && selectedTopic.onChainId) {
         try {
-          showToast('Đang mint Soulbound Token (SBT) chứng nhận on-chain...');
+          setTransactionStatus('pending');
+          showToast('Đang ghi nhận kết quả tổng kết trên contract...');
           const onChainRes = await completeInternshipOnChain(selectedTopic.onChainId, result.topic.certificateIpfsHash);
           await apiRequest(`/topics/${selectedTopic._id}/record-chain-tx`, {
             method: 'POST',
             body: { txHash: onChainRes.txHash }
           });
+          setTransactionStatus('confirmed');
+          chainResult = 'receipt đã được server xác minh';
         } catch (chainErr) {
+          setTransactionStatus(chainErr.code === 'CHAIN_PENDING' ? 'pending' : 'failed');
+          chainResult = `giao dịch chưa được xác minh: ${chainErr.message}`;
           console.warn("Giao dịch on-chain cấp chứng nhận:", chainErr.message);
         }
       }
 
       await refreshTopic(selectedTopic._id);
-      showToast(`Đã hoàn thành thực tập và cấp chứng nhận Soulbound Token! Điểm: ${result.topic.finalScore}/100.`);
-    } catch (error) { 
-      showToast(`Chưa thể cấp chứng nhận: ${error.message}`); 
-    } finally { 
-      setLoading(false); 
+      showToast(`Đã lưu tổng kết ${result.topic.finalScore}/100; ${chainResult}. Chưa mint NFT/SBT.`);
+    } catch (error) {
+      showToast(`Chưa thể cấp chứng nhận: ${error.message}`);
+    } finally {
+      setLoading(false);
     }
   };
 
-  const filteredTopics = topics.filter(t => 
+  const filteredTopics = topics.filter(t =>
     t.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
     t.description.toLowerCase().includes(searchTerm.toLowerCase()) ||
     (t.requiredSkills && t.requiredSkills.some(s => s.toLowerCase().includes(searchTerm.toLowerCase())))
@@ -414,8 +494,8 @@ export default function App() {
           color: '#fff',
           fontWeight: 500,
           animation: 'modalEnter 0.2s ease-out'
-        }}>
-          <Sparkles size={18} color="#818cf8" />
+        }} role="status" aria-live="polite" className="toast">
+          <Sparkles size={18} color="var(--primary-light)" />
           <span>{toastMessage}</span>
         </div>
       )}
@@ -423,321 +503,63 @@ export default function App() {
       {/* Auth Modal for Quick Demo or MetaMask */}
       <AuthModal
         isOpen={showAuthModal}
-        onClose={() => setShowAuthModal(false)}
+        onClose={() => {setShowAuthModal(false);history.replaceState({},'','/');}}
         onMetaMaskLogin={connectWallet}
         onDemoLogin={handleDemoLogin}
+        onGoogleSession={handleGoogleSession}
+        mode={authMode}
+        onModeChange={mode=>{setAuthMode(mode);history.pushState({},'',mode==='register'?'/register':'/login');}}
+        roleChoice={roleChoice}
+        onRoleChoice={setUserRole}
         loading={loading}
       />
 
-      {/* Navigation Header */}
-      <header style={{
-        borderBottom: '1px solid var(--border-glass)',
-        background: 'rgba(10, 14, 23, 0.88)',
-        backdropFilter: 'blur(16px)',
-        position: 'sticky',
-        top: 0,
-        zIndex: 50,
-        padding: '14px 28px',
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'space-between',
-        flexWrap: 'wrap',
-        gap: '16px'
-      }}>
-        {/* Brand */}
-        <div style={{ display: 'flex', alignItems: 'center', gap: '14px' }}>
-          <div style={{
-            background: 'linear-gradient(135deg, #6366f1, #06b6d4)',
-            padding: '10px',
-            borderRadius: '12px',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            boxShadow: '0 4px 15px rgba(99, 102, 241, 0.4)'
-          }}>
-            <ShieldCheck size={26} color="#fff" />
-          </div>
-          <div>
-            <h1 style={{ fontSize: '1.25rem', fontWeight: 800, margin: 0, letterSpacing: '-0.02em' }}>
-              <span className="text-gradient">Web3 Internship</span> Hub
-            </h1>
-            <p style={{ margin: 0, fontSize: '0.75rem', color: 'var(--text-muted)' }}>
-              Nền Tảng Quản Lý Thực Tập Sinh • Minh Bạch KPI • AI Matching (BERT)
-            </p>
-          </div>
-        </div>
-
-        {/* Center Role Toggle */}
-        <div style={{
-          display: 'flex',
-          background: 'rgba(255, 255, 255, 0.05)',
-          padding: '4px',
-          borderRadius: '10px',
-          border: '1px solid var(--border-glass)'
-        }}>
-          <button
-            id="role-company-btn"
-            onClick={() => setUserRole('company')}
-            style={{
-              padding: '6px 14px',
-              borderRadius: '8px',
-              border: 'none',
-              cursor: 'pointer',
-              display: 'flex',
-              alignItems: 'center',
-              gap: '6px',
-              fontSize: '0.82rem',
-              fontWeight: 600,
-              background: userRole === 'company' ? 'linear-gradient(135deg, #6366f1, #4f46e5)' : 'transparent',
-              color: userRole === 'company' ? '#fff' : 'var(--text-muted)',
-              transition: 'all 0.2s ease'
-            }}
-          >
-            <Building2 size={15} />
-            Doanh nghiệp / Mentor
-          </button>
-          <button
-            id="role-student-btn"
-            onClick={() => setUserRole('student')}
-            style={{
-              padding: '6px 14px',
-              borderRadius: '8px',
-              border: 'none',
-              cursor: 'pointer',
-              display: 'flex',
-              alignItems: 'center',
-              gap: '6px',
-              fontSize: '0.82rem',
-              fontWeight: 600,
-              background: userRole === 'student' ? 'linear-gradient(135deg, #06b6d4, #0891b2)' : 'transparent',
-              color: userRole === 'student' ? '#fff' : 'var(--text-muted)',
-              transition: 'all 0.2s ease'
-            }}
-          >
-            <GraduationCap size={16} />
-            Sinh viên thực tập
-          </button>
-        </div>
-
-        {/* Right Wallet Status */}
-        <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
-          <div style={{
-            display: 'flex',
-            alignItems: 'center',
-            gap: '6px',
-            fontSize: '0.75rem',
-            padding: '6px 12px',
-            borderRadius: '10px',
-            background: contractConnected ? 'rgba(16, 185, 129, 0.12)' : 'rgba(99, 102, 241, 0.12)',
-            border: '1px solid var(--border-glass)',
-            color: contractConnected ? '#34d399' : '#818cf8'
-          }}>
-            <ShieldCheck size={14} color={contractConnected ? '#34d399' : '#818cf8'} />
-            <span>Contract: {CONTRACT_ADDRESS.slice(0, 6)}...{CONTRACT_ADDRESS.slice(-4)}</span>
-            <span style={{ fontSize: '0.68rem', padding: '1px 6px', borderRadius: '4px', background: contractConnected ? '#059669' : '#4f46e5', color: '#fff' }}>
-              {contractConnected ? 'Active' : 'Hardhat'}
-            </span>
-          </div>
-
-          {walletAddress ? (
-            <div style={{
-              display: 'flex',
-              alignItems: 'center',
-              gap: '8px',
-              background: 'rgba(255, 255, 255, 0.06)',
-              border: '1px solid var(--border-glass)',
-              padding: '6px 14px',
-              borderRadius: '10px',
-              fontSize: '0.82rem'
-            }}>
-              <div style={{ width: '8px', height: '8px', borderRadius: '50%', background: '#10b981' }} />
-              <span style={{ color: 'var(--text-muted)' }}>{networkName}</span>
-              <span style={{ fontWeight: 600, color: '#f8fafc' }}>
-                {walletAddress.substring(0, 6)}...{walletAddress.substring(38)}
-              </span>
-              {user && <span style={{ color: '#a5b4fc', fontSize: '0.75rem' }}>({user.role})</span>}
-              <button id="logout-btn" className="btn btn-secondary" style={{ padding: '2px 10px', fontSize: '0.75rem' }} onClick={disconnectWallet}>
-                Đăng xuất
-              </button>
-            </div>
-          ) : (
-            <div style={{ display: 'flex', gap: '8px' }}>
-              <button id="connect-wallet-btn" className="btn btn-primary" disabled={loading} onClick={connectWallet}>
-                <Wallet size={16} />
-                {loading ? 'Đang xác thực...' : 'Kết nối Ví MetaMask'}
-              </button>
-              <button className="btn btn-secondary" onClick={() => setShowAuthModal(true)} title="Đăng nhập nhanh với ví mẫu">
-                <Sparkles size={16} color="#f59e0b" />
-                Ví Demo
-              </button>
-            </div>
-          )}
-        </div>
-      </header>
-
-      {/* Backend Error Notice */}
-      {backendError && (
-        <div role="alert" style={{ background: 'rgba(239, 68, 68, 0.15)', borderBottom: '1px solid rgba(239, 68, 68, 0.4)', color: '#fca5a5', padding: '10px 28px', fontSize: '0.85rem' }}>
-          {backendError}
-        </div>
-      )}
-
-      {/* Main Tabs Navigation Bar */}
-      <nav style={{
-        background: 'rgba(15, 23, 42, 0.5)',
-        borderBottom: '1px solid var(--border-glass)',
-        padding: '0 28px',
-      }}>
-        <div style={{ maxWidth: '1400px', margin: '0 auto', display: 'flex', gap: '6px', overflowX: 'auto' }}>
-          <button
-            onClick={() => setActiveTab('dashboard')}
-            style={{
-              padding: '14px 18px',
-              border: 'none',
-              background: 'transparent',
-              color: activeTab === 'dashboard' ? '#818cf8' : 'var(--text-muted)',
-              fontWeight: 700,
-              fontSize: '0.88rem',
-              cursor: 'pointer',
-              display: 'flex',
-              alignItems: 'center',
-              gap: '8px',
-              borderBottom: activeTab === 'dashboard' ? '2px solid #6366f1' : '2px solid transparent',
-              transition: 'all 0.2s ease',
-              whiteSpace: 'nowrap'
-            }}
-          >
-            <BarChart3 size={17} /> Dashboard Tổng Quan
-          </button>
-
-          <button
-            onClick={() => setActiveTab('topics')}
-            style={{
-              padding: '14px 18px',
-              border: 'none',
-              background: 'transparent',
-              color: activeTab === 'topics' ? '#818cf8' : 'var(--text-muted)',
-              fontWeight: 700,
-              fontSize: '0.88rem',
-              cursor: 'pointer',
-              display: 'flex',
-              alignItems: 'center',
-              gap: '8px',
-              borderBottom: activeTab === 'topics' ? '2px solid #6366f1' : '2px solid transparent',
-              transition: 'all 0.2s ease',
-              whiteSpace: 'nowrap'
-            }}
-          >
-            <Layers size={17} /> Đề Tài & KPI Milestones ({topics.length})
-          </button>
-
-          <button
-            onClick={() => setActiveTab('cv-jd')}
-            style={{
-              padding: '14px 18px',
-              border: 'none',
-              background: 'transparent',
-              color: activeTab === 'cv-jd' ? '#38bdf8' : 'var(--text-muted)',
-              fontWeight: 700,
-              fontSize: '0.88rem',
-              cursor: 'pointer',
-              display: 'flex',
-              alignItems: 'center',
-              gap: '8px',
-              borderBottom: activeTab === 'cv-jd' ? '2px solid #06b6d4' : '2px solid transparent',
-              transition: 'all 0.2s ease',
-              whiteSpace: 'nowrap'
-            }}
-          >
-            <Briefcase size={17} /> CV & JD Tuyển Dụng (AI Matching)
-          </button>
-
-          <button
-            onClick={() => setActiveTab('attendance')}
-            style={{
-              padding: '14px 18px',
-              border: 'none',
-              background: 'transparent',
-              color: activeTab === 'attendance' ? '#34d399' : 'var(--text-muted)',
-              fontWeight: 700,
-              fontSize: '0.88rem',
-              cursor: 'pointer',
-              display: 'flex',
-              alignItems: 'center',
-              gap: '8px',
-              borderBottom: activeTab === 'attendance' ? '2px solid #10b981' : '2px solid transparent',
-              transition: 'all 0.2s ease',
-              whiteSpace: 'nowrap'
-            }}
-          >
-            <QrCode size={17} /> Nhiệm Vụ & QR Check-in
-          </button>
-
-          <button
-            onClick={() => setActiveTab('web3')}
-            style={{
-              padding: '14px 18px',
-              border: 'none',
-              background: 'transparent',
-              color: activeTab === 'web3' ? '#c084fc' : 'var(--text-muted)',
-              fontWeight: 700,
-              fontSize: '0.88rem',
-              cursor: 'pointer',
-              display: 'flex',
-              alignItems: 'center',
-              gap: '8px',
-              borderBottom: activeTab === 'web3' ? '2px solid #a855f7' : '2px solid transparent',
-              transition: 'all 0.2s ease',
-              whiteSpace: 'nowrap'
-            }}
-          >
-            <FileBadge size={17} /> Tra Cứu Chứng Chỉ On-Chain (SBT)
-          </button>
-        </div>
-      </nav>
-
-      {/* Main Container */}
-      <main style={{
-        maxWidth: '1400px',
-        width: '100%',
-        margin: '0 auto',
-        padding: '28px',
-        flex: 1,
-      }}>
+      <AppShell unified={unifiedMode} authReady={sessionReady} coreEnabled={coreEnabled} activeTab={activeTab} onNavigate={setActiveTab} user={user} walletAddress={walletAddress}
+        networkName={networkName} onConnect={() => {setAuthMode('login');history.pushState({},'','/login');setShowAuthModal(true);}} onDemo={() => setShowAuthModal(true)} onLogout={disconnectWallet} loading={loading}
+        roleChoice={roleChoice} onRoleChoice={setUserRole} transactionStatus={transactionStatus}
+        onCheckContract={() => checkContractConnection().then(setContractConnected).catch(() => setContractConnected(false))} contractConnected={contractConnected} contractAddress={CONTRACT_ADDRESS} error={backendError}>
+      {user&&activeTab==='core-profile'&&<IdentitySettings user={user} onSession={handleGoogleSession} />}
+      <ViewBoundary key={`${activeTab}-${user?._id || 'guest'}`}><Suspense fallback={<LoadingSkeleton label="Đang tải màn hình" />}>
+        {user&&!unifiedMode&&!user.walletAddress&&!['core-profile','account-overview'].includes(activeTab)?<EmptyState title="Cần liên kết ví">Mở Hồ sơ cá nhân để liên kết ví trước khi sử dụng nghiệp vụ.</EmptyState>:<>
+        {user&&activeTab==='account-overview'&&<AccountOverview user={user} onEdit={()=>setActiveTab('core-profile')} />}
+        {activeTab.startsWith('unavailable-') && <UnavailableView title="Chức năng chưa triển khai" />}
+        {coreEnabled && activeTab.startsWith('core-') && <CoreBusinessView key={`${activeTab}-${user?.walletAddress || 'guest'}`} view={activeTab} user={user} unified={unifiedMode} onNavigate={setActiveTab} onProfileSaved={handleProfileSaved} />}
         {/* VIEW 1: DASHBOARD */}
         {activeTab === 'dashboard' && (
-          <DashboardView 
-            user={user} 
-            topics={topics} 
-            onSelectTopic={(t) => { setSelectedTopic(t); setActiveTab('topics'); }} 
+          <DashboardView
+            unified={unifiedMode}
+            coreEnabled={coreEnabled}
+            user={user}
+            topics={topics}
+            onSelectTopic={(t) => { setSelectedTopic(t); setActiveTab('topics'); }}
           />
         )}
 
         {/* VIEW 2: CV & JD MATCHING */}
         {activeTab === 'cv-jd' && (
-          <CvJdView user={user} showToast={showToast} />
+          <CvJdView coreEnabled={coreEnabled} key={user?.walletAddress || 'guest'} user={user} showToast={showToast} />
         )}
 
         {/* VIEW 3: ATTENDANCE & QR CHECK-IN */}
         {activeTab === 'attendance' && (
-          <AttendanceView user={user} showToast={showToast} />
+          <AttendanceView key={user?.walletAddress || 'guest'} user={user} showToast={showToast} />
         )}
 
         {/* VIEW 4: WEB3 CERTIFICATE EXPLORER */}
         {activeTab === 'web3' && (
-          <Web3CertificateView showToast={showToast} />
+          <Web3CertificateView showToast={showToast} user={user} />
         )}
 
         {/* VIEW 5: TOPICS & KPI MILESTONES (PRIMARY WORKFLOW) */}
         {activeTab === 'topics' && (
-          <div style={{ display: 'grid', gridTemplateColumns: '380px 1fr', gap: '24px' }}>
+          <div className="topics-layout">
             {/* Left Column: Topics List */}
             <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
               <div style={{ display: 'flex', gap: '10px' }}>
                 <div style={{ position: 'relative', flex: 1 }}>
                   <Search size={16} color="var(--text-muted)" style={{ position: 'absolute', left: '12px', top: '14px' }} />
                   <input
-                    id="search-topics-input"
+                    id="search-topics-input" aria-label="Tìm đề tài, kỹ năng"
                     className="input-field"
                     placeholder="Tìm đề tài, kỹ năng..."
                     style={{ paddingLeft: '36px' }}
@@ -745,7 +567,7 @@ export default function App() {
                     onChange={(e) => setSearchTerm(e.target.value)}
                   />
                 </div>
-                {userRole === 'company' && (
+                {user?.role === 'company' && (
                   <button
                     id="create-topic-btn"
                     className="btn btn-primary"
@@ -763,18 +585,21 @@ export default function App() {
                   Danh Sách Đề Tài Thực Tập ({filteredTopics.length})
                 </div>
 
+                {!filteredTopics.length && <EmptyState title="Chưa có đề tài phù hợp">Thay đổi từ khóa hoặc chờ đề tài được công bố.</EmptyState>}
                 {filteredTopics.map((topic) => {
                   const isSelected = selectedTopic?._id === topic._id;
                   return (
                     <div
                       key={topic._id}
                       id={`topic-item-${topic._id}`}
-                      className="glass-panel"
+                      className="glass-panel topic-card"
+                      role="button" tabIndex={0} aria-pressed={isSelected}
+                      onKeyDown={e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); setSelectedTopic(topic); } }}
                       onClick={() => setSelectedTopic(topic)}
                       style={{
                         padding: '18px',
                         cursor: 'pointer',
-                        borderColor: isSelected ? '#818cf8' : 'var(--border-glass)',
+                        borderColor: isSelected ? 'var(--primary-light)' : 'var(--border-glass)',
                         boxShadow: isSelected ? '0 0 20px rgba(99, 102, 241, 0.25)' : 'none',
                       }}
                     >
@@ -782,7 +607,7 @@ export default function App() {
                         <span className={`badge badge-${topic.status}`}>
                           {topic.status === 'open' ? 'Đang tuyển' : topic.status === 'in_progress' ? 'Đang thực tập' : 'Đã hoàn thành'}
                         </span>
-                        <span style={{ fontSize: '0.72rem', color: '#c084fc', fontWeight: 700 }}>
+                        <span style={{ fontSize: '0.72rem', color: 'var(--accent-purple)', fontWeight: 700 }}>
                           {topic.onChainId ? `On-chain #${topic.onChainId}` : 'Off-chain'}
                         </span>
                       </div>
@@ -796,7 +621,7 @@ export default function App() {
 
                       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', fontSize: '0.75rem', color: 'var(--text-dim)' }}>
                         <span>{topic.companyName}</span>
-                        <span style={{ display: 'flex', alignItems: 'center', gap: '4px', color: '#818cf8' }}>
+                        <span style={{ display: 'flex', alignItems: 'center', gap: '4px', color: 'var(--primary-light)' }}>
                           {topic.kpis?.length || 0} mốc KPI <ChevronRight size={14} />
                         </span>
                       </div>
@@ -827,22 +652,22 @@ export default function App() {
                     </div>
 
                     {/* Status Action Buttons */}
-                    {userRole === 'company' && selectedTopic.status === 'open' && (
+                    {isTopicOwner && selectedTopic.status === 'open' && (
                       <div style={{ display: 'flex', gap: '8px', alignItems: 'center', flexWrap: 'wrap' }}>
-                        <input 
-                          className="input-field" 
-                          aria-label="Ví sinh viên" 
-                          placeholder="0x… ví sinh viên" 
-                          value={assigneeWallet} 
-                          onChange={(e) => setAssigneeWallet(e.target.value)} 
-                          style={{ width: '220px' }} 
+                        <input
+                          className="input-field"
+                          aria-label="Ví sinh viên"
+                          placeholder="0x… ví sinh viên"
+                          value={assigneeWallet}
+                          onChange={(e) => setAssigneeWallet(e.target.value)}
+                          style={{ width: '220px' }}
                         />
                         <button className="btn btn-primary" disabled={loading} onClick={handleAssignStudent}>
                           Phân công
                         </button>
                       </div>
                     )}
-                    {userRole === 'company' && selectedTopic.status !== 'completed' && selectedTopic.status !== 'open' && (
+                    {isTopicOwner && selectedTopic.status !== 'completed' && selectedTopic.status !== 'open' && (
                       <button
                         id="complete-internship-btn"
                         className="btn btn-emerald"
@@ -850,7 +675,7 @@ export default function App() {
                         onClick={handleCompleteAndCertify}
                       >
                         <Award size={18} />
-                        Nghiệm thu & Cấp Chứng Nhận
+                        Tổng kết thực tập (chưa mint token)
                       </button>
                     )}
                   </div>
@@ -860,7 +685,7 @@ export default function App() {
                   </p>
 
                   {/* Skills & Metadata Details */}
-                  <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))', gap: '16px', background: 'rgba(0, 0, 0, 0.25)', padding: '16px', borderRadius: '12px' }}>
+                  <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 260px), 1fr))', gap: '16px', background: 'var(--surface-muted)', padding: '16px', borderRadius: '12px' }}>
                     <div>
                       <div style={{ fontSize: '0.78rem', color: 'var(--text-dim)', marginBottom: '6px' }}>Yêu cầu Kỹ năng:</div>
                       <div style={{ display: 'flex', flexWrap: 'wrap', gap: '6px' }}>
@@ -875,11 +700,11 @@ export default function App() {
                     <div>
                       <div style={{ fontSize: '0.78rem', color: 'var(--text-dim)', marginBottom: '4px' }}>Mã lưu metadata:</div>
                       {!selectedTopic.ipfsDetailsHash ? (
-                        <span style={{ fontSize: '0.78rem', color: '#fbbf24', wordBreak: 'break-all' }}>
-                          Chưa upload IPFS (cần cấu hình PINATA_JWT)
+                        <span style={{ fontSize: '0.78rem', color: 'var(--accent-amber)', wordBreak: 'break-all' }}>
+                          Chưa upload IPFS · dịch vụ lưu trữ chưa khả dụng
                         </span>
                       ) : (
-                        <a href={`https://ipfs.io/ipfs/${selectedTopic.ipfsDetailsHash}`} target="_blank" rel="noreferrer" style={{ fontSize: '0.78rem', color: '#38bdf8', textDecoration: 'none', display: 'flex', alignItems: 'center', gap: '4px', wordBreak: 'break-all' }}>
+                        <a href={`https://ipfs.io/ipfs/${selectedTopic.ipfsDetailsHash}`} target="_blank" rel="noreferrer" style={{ fontSize: '0.78rem', color: 'var(--accent-cyan)', textDecoration: 'none', display: 'flex', alignItems: 'center', gap: '4px', wordBreak: 'break-all' }}>
                           {selectedTopic.ipfsDetailsHash} <ExternalLink size={12} />
                         </a>
                       )}
@@ -925,7 +750,7 @@ export default function App() {
                           </div>
 
                           <div style={{ textAlign: 'right' }}>
-                            <div style={{ fontSize: '0.8rem', color: 'var(--text-dim)' }}>Trọng số: <strong style={{ color: '#fff' }}>{kpi.weightPercent}%</strong></div>
+                            <div style={{ fontSize: '0.8rem', color: 'var(--text-dim)' }}>Trọng số: <strong style={{ color: 'var(--text-main)' }}>{kpi.weightPercent}%</strong></div>
                             <div style={{ fontSize: '0.78rem', color: 'var(--text-dim)', display: 'flex', alignItems: 'center', gap: '4px' }}>
                               <Clock size={12} /> Hạn chót: {kpi.deadline ? new Date(kpi.deadline).toLocaleDateString('vi-VN') : '—'}
                             </div>
@@ -935,10 +760,10 @@ export default function App() {
                         {/* Submission Details */}
                         {kpi.submissionContent && (
                           <div style={{ background: 'rgba(15, 23, 42, 0.6)', padding: '14px', borderRadius: '10px', borderLeft: '3px solid #6366f1' }}>
-                            <div style={{ fontSize: '0.78rem', color: '#a5b4fc', fontWeight: 600, marginBottom: '4px' }}>
+                            <div style={{ fontSize: '0.78rem', color: 'var(--primary-light)', fontWeight: 600, marginBottom: '4px' }}>
                               Báo cáo nộp bài:
                             </div>
-                            <div style={{ fontSize: '0.85rem', color: '#e2e8f0', marginBottom: '8px' }}>
+                            <div style={{ fontSize: '0.85rem', color: 'var(--text-main)', marginBottom: '8px' }}>
                               "{kpi.submissionContent}"
                             </div>
 
@@ -955,15 +780,15 @@ export default function App() {
                                 gap: '12px'
                               }}>
                                 <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                                  <BrainCircuit size={18} color="#c084fc" />
+                                  <BrainCircuit size={18} color="var(--accent-purple)" />
                                   <div style={{ fontSize: '0.8rem' }}>
-                                    <span style={{ fontWeight: 700, color: '#c084fc' }}>AI tham khảo ({kpi.aiAnalysis.engine || 'BERT'}): </span>
+                                    <span style={{ fontWeight: 700, color: 'var(--accent-purple)' }}>AI tham khảo ({kpi.aiAnalysis.engine || 'chưa rõ engine'}): </span>
                                     <span style={{ color: 'var(--text-muted)' }}>{kpi.aiAnalysis.feedbackSummary}</span>
                                   </div>
                                 </div>
                                 <div style={{ textAlign: 'right', whiteSpace: 'nowrap' }}>
                                   <span style={{ fontSize: '0.75rem', color: 'var(--text-dim)' }}>Độ bám sát: </span>
-                                  <strong style={{ color: '#38bdf8' }}>{kpi.aiAnalysis.relevanceScore}%</strong>
+                                  <strong style={{ color: 'var(--accent-cyan)' }}>{kpi.aiAnalysis.relevanceScore}%</strong>
                                 </div>
                               </div>
                             )}
@@ -971,17 +796,17 @@ export default function App() {
                         )}
 
                         {/* Mentor Evaluation */}
-                        {kpi.score > 0 && (
+                        {['approved', 'rejected'].includes(kpi.status) && (
                           <div style={{ display: 'flex', alignItems: 'center', gap: '10px', fontSize: '0.85rem' }}>
-                            <CheckCircle2 size={16} color="#10b981" />
-                            <span>Điểm nghiệm thu: <strong style={{ color: '#10b981' }}>{kpi.score}/100</strong></span>
+                            <CheckCircle2 size={16} color="var(--accent-emerald)" />
+                            <span>Điểm nghiệm thu: <strong style={{ color: 'var(--accent-emerald)' }}>{kpi.score}/100</strong></span>
                             {kpi.mentorFeedback && <span style={{ color: 'var(--text-muted)' }}>— Nhận xét: "{kpi.mentorFeedback}"</span>}
                           </div>
                         )}
 
                         {/* Actions */}
                         <div style={{ display: 'flex', justifyContent: 'flex-end', gap: '10px' }}>
-                          {userRole === 'student' && kpi.status !== 'approved' && (
+                          {isAssignedStudent && ['pending', 'rejected'].includes(kpi.status) && (
                             <button
                               id={`submit-kpi-${kpi.milestoneIndex}-btn`}
                               className="btn btn-secondary"
@@ -997,14 +822,14 @@ export default function App() {
                             </button>
                           )}
 
-                          {userRole === 'company' && kpi.status === 'submitted' && (
+                          {canEvaluateTopic && kpi.status === 'submitted' && (
                             <button
                               id={`evaluate-kpi-${kpi.milestoneIndex}-btn`}
                               className="btn btn-primary"
                               onClick={() => {
                                 if (requireLogin()) {
                                   setShowEvaluateModal(kpi);
-                                  setEvalForm({ score: kpi.aiAnalysis?.suggestedScore || 90, status: 'approved', feedback: 'Báo cáo đạt chuẩn tiêu chí KPI đề ra.' });
+                                  setEvalForm({ score: kpi.aiAnalysis?.suggestedScore ?? '', status: 'approved', feedback: '' });
                                 }
                               }}
                             >
@@ -1025,11 +850,13 @@ export default function App() {
             )}
           </div>
         )}
-      </main>
+      </>}
+      </Suspense></ViewBoundary>
+      </AppShell>
 
       {/* MODAL: Create Topic */}
       {showCreateTopicModal && (
-        <div className="modal-overlay">
+        <Dialog label="Tạo đề tài" onClose={() => setShowCreateTopicModal(false)}>
           <div className="modal-content" style={{ padding: '28px' }}>
             <h3 style={{ fontSize: '1.3rem', fontWeight: 800, marginBottom: '6px' }}>Tạo Đề Tài Thực Tập Mới</h3>
             <p style={{ fontSize: '0.85rem', color: 'var(--text-muted)', marginBottom: '20px' }}>
@@ -1039,7 +866,7 @@ export default function App() {
             <form onSubmit={handleCreateTopic} style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
               <div>
                 <label style={{ fontSize: '0.8rem', fontWeight: 600, display: 'block', marginBottom: '6px' }}>Tiêu đề Đề tài:</label>
-                <input
+                <input aria-label="Ví dụ: Xây dựng Smart Contract DAO & DApp Voting"
                   id="new-topic-title"
                   className="input-field"
                   required
@@ -1051,7 +878,7 @@ export default function App() {
 
               <div>
                 <label style={{ fontSize: '0.8rem', fontWeight: 600, display: 'block', marginBottom: '6px' }}>Mô tả chi tiết:</label>
-                <textarea
+                <textarea aria-label="Mô tả mục tiêu và sản phẩm thực tập..."
                   id="new-topic-description"
                   className="input-field"
                   rows={3}
@@ -1064,7 +891,7 @@ export default function App() {
 
               <div>
                 <label style={{ fontSize: '0.8rem', fontWeight: 600, display: 'block', marginBottom: '6px' }}>Yêu cầu Kỹ năng (cách nhau dấu phẩy):</label>
-                <input
+                <input aria-label="Kỹ năng yêu cầu"
                   id="new-topic-skills"
                   className="input-field"
                   value={newTopicForm.requiredSkills}
@@ -1076,17 +903,17 @@ export default function App() {
               <div>
                 <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '8px' }}>
                   <label style={{ fontSize: '0.8rem', fontWeight: 600 }}>KPI milestones (bắt buộc tổng = 100%):</label>
-                  <strong id="kpi-weight-total" style={{ fontSize: '0.85rem', color: kpiTotal === 100 ? '#34d399' : '#f87171' }}>
+                  <strong id="kpi-weight-total" style={{ fontSize: '0.85rem', color: kpiTotal === 100 ? 'var(--accent-emerald)' : 'var(--accent-rose)' }}>
                     Tổng: {kpiTotal}%
                   </strong>
                 </div>
                 {kpiRows.map((row, i) => (
                   <div key={i} style={{ display: 'grid', gridTemplateColumns: '1.2fr 1.6fr 70px 140px auto', gap: '6px', marginBottom: '6px' }}>
-                    <input className="input-field" placeholder="Tên KPI" required value={row.title} onChange={(e) => updateKpiRow(i, { title: e.target.value })} />
-                    <input className="input-field" placeholder="Tiêu chí đánh giá" required value={row.criteria} onChange={(e) => updateKpiRow(i, { criteria: e.target.value })} />
-                    <input className="input-field" type="number" min="1" max="100" required value={row.weightPercent} onChange={(e) => updateKpiRow(i, { weightPercent: e.target.value })} />
-                    <input className="input-field" type="date" required value={row.deadline} onChange={(e) => updateKpiRow(i, { deadline: e.target.value })} />
-                    <button type="button" className="btn btn-secondary" disabled={kpiRows.length <= 1} onClick={() => setKpiRows((rows) => rows.filter((_, idx) => idx !== i))}>✕</button>
+                    <label>Tên KPI<input aria-label="Tên KPI" className="input-field" placeholder="Tên KPI" required value={row.title} onChange={(e) => updateKpiRow(i, { title: e.target.value })} /></label>
+                    <label>Tiêu chí<input aria-label="Tiêu chí đánh giá" className="input-field" placeholder="Tiêu chí đánh giá" required value={row.criteria} onChange={(e) => updateKpiRow(i, { criteria: e.target.value })} /></label>
+                    <label>Trọng số (%)<input aria-label="Trọng số KPI (%)" className="input-field" type="number" min="1" max="100" required value={row.weightPercent} onChange={(e) => updateKpiRow(i, { weightPercent: e.target.value })} /></label>
+                    <label>Hạn nộp<input aria-label="Hạn nộp KPI" className="input-field" type="date" required value={row.deadline} onChange={(e) => updateKpiRow(i, { deadline: e.target.value })} /></label>
+                    <button type="button" aria-label="Xóa dòng KPI chưa lưu" className="btn btn-secondary" disabled={kpiRows.length <= 1} onClick={() => setKpiRows((rows) => rows.filter((_, idx) => idx !== i))}>✕</button>
                   </div>
                 ))}
                 <button type="button" className="btn btn-secondary" onClick={() => setKpiRows((rows) => [...rows, newKpiRow(30)])}>
@@ -1102,12 +929,12 @@ export default function App() {
               </div>
             </form>
           </div>
-        </div>
+        </Dialog>
       )}
 
       {/* MODAL: Submit KPI */}
       {showSubmitKPIModal && (
-        <div className="modal-overlay">
+        <Dialog label="Nộp báo cáo KPI" onClose={() => setShowSubmitKPIModal(null)}>
           <div className="modal-content" style={{ padding: '28px' }}>
             <h3 style={{ fontSize: '1.3rem', fontWeight: 800, marginBottom: '6px' }}>Nộp Báo Cáo Nghiệm Thu KPI</h3>
             <p style={{ fontSize: '0.85rem', color: 'var(--text-muted)', marginBottom: '16px' }}>
@@ -1119,7 +946,7 @@ export default function App() {
                 <label style={{ fontSize: '0.8rem', fontWeight: 600, display: 'block', marginBottom: '6px' }}>
                   Nội dung Báo cáo & Minh chứng kết quả:
                 </label>
-                <textarea
+                <textarea aria-label="Trình bày chi tiết kết quả đã hoàn thành, đường dẫn commit github, file kết quả..."
                   id="kpi-submission-textarea"
                   className="input-field"
                   rows={5}
@@ -1138,12 +965,12 @@ export default function App() {
               </div>
             </form>
           </div>
-        </div>
+        </Dialog>
       )}
 
       {/* MODAL: Evaluate KPI */}
       {showEvaluateModal && (
-        <div className="modal-overlay">
+        <Dialog label="Đánh giá KPI" onClose={() => setShowEvaluateModal(null)}>
           <div className="modal-content" style={{ padding: '28px' }}>
             <h3 style={{ fontSize: '1.3rem', fontWeight: 800, marginBottom: '6px' }}>Nghiệm Thu & Chấm Điểm KPI</h3>
             <p style={{ fontSize: '0.85rem', color: 'var(--text-muted)', marginBottom: '16px' }}>
@@ -1153,7 +980,7 @@ export default function App() {
             <form onSubmit={handleEvaluateKPI} style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
               <div>
                 <label style={{ fontSize: '0.8rem', fontWeight: 600, display: 'block', marginBottom: '6px' }}>Điểm số (Thang điểm 0 - 100):</label>
-                <input
+                <input aria-label="eval-score-input"
                   id="eval-score-input"
                   type="number"
                   min="0"
@@ -1167,7 +994,7 @@ export default function App() {
 
               <div>
                 <label style={{ fontSize: '0.8rem', fontWeight: 600, display: 'block', marginBottom: '6px' }}>Trạng thái nghiệm thu:</label>
-                <select
+                <select aria-label="eval-status-select"
                   id="eval-status-select"
                   className="input-field"
                   value={evalForm.status}
@@ -1180,7 +1007,7 @@ export default function App() {
 
               <div>
                 <label style={{ fontSize: '0.8rem', fontWeight: 600, display: 'block', marginBottom: '6px' }}>Nhận xét chi tiết của Mentor:</label>
-                <textarea
+                <textarea aria-label="eval-feedback-textarea"
                   id="eval-feedback-textarea"
                   className="input-field"
                   rows={3}
@@ -1197,20 +1024,10 @@ export default function App() {
               </div>
             </form>
           </div>
-        </div>
+        </Dialog>
       )}
 
-      {/* Footer */}
-      <footer style={{
-        borderTop: '1px solid var(--border-glass)',
-        padding: '20px 28px',
-        textAlign: 'center',
-        fontSize: '0.8rem',
-        color: 'var(--text-dim)',
-        background: 'rgba(10, 14, 23, 0.95)'
-      }}>
-        Nền tảng Quản lý Thực tập sinh Web3 dựa trên KPI & AI (BERT) • MERN Stack + Solidity + IPFS (Pinata)
-      </footer>
+
     </div>
   );
 }

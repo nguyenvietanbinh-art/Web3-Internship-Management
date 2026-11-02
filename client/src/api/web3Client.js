@@ -1,13 +1,14 @@
-import { ethers } from "ethers";
+import { getToken } from './client';
 import contractArtifact from "../contracts/InternshipPlatform.json";
 
-export const CONTRACT_ADDRESS = contractArtifact.address || "0x5FbDB2315678afecb367f032d93F642f64180aa3";
+export const CONTRACT_ADDRESS = contractArtifact.address || '';
 export const CONTRACT_ABI = contractArtifact.abi || [];
 
 /**
  * Kiểm tra xem Smart Contract có đang khả dụng trên mạng không
  */
 export async function checkContractConnection() {
+  const ethers = await import('ethers');
   try {
     let provider;
     if (typeof window !== "undefined" && window.ethereum) {
@@ -26,12 +27,20 @@ export async function checkContractConnection() {
  * Lấy đối tượng Contract (có signer nếu cần ký giao dịch)
  */
 export async function getInternshipContract(requireSigner = false) {
+  const ethers = await import('ethers');
+  if (!ethers.isAddress(CONTRACT_ADDRESS)) throw new Error('Chưa có địa chỉ contract hợp lệ.');
   if (requireSigner) {
     if (typeof window === "undefined" || !window.ethereum) {
       throw new Error("Cần kết nối tiện ích MetaMask để gửi giao dịch Blockchain.");
     }
     const provider = new ethers.BrowserProvider(window.ethereum);
     const signer = await provider.getSigner();
+    const network = await provider.getNetwork();
+    if (!contractArtifact.chainId || Number(network.chainId) !== Number(contractArtifact.chainId)) throw new Error('Ví đang ở sai mạng blockchain.');
+    let session;
+    try { session = JSON.parse(atob(getToken().split('.')[1].replace(/-/g, '+').replace(/_/g, '/'))); }
+    catch { throw new Error('Cần xác thực ví trước khi gửi giao dịch.'); }
+    if (!session.wallet || (await signer.getAddress()).toLowerCase() !== session.wallet.toLowerCase()) throw new Error('Ví ký không khớp tài khoản đã xác thực.');
     return new ethers.Contract(CONTRACT_ADDRESS, CONTRACT_ABI, signer);
   }
 
@@ -85,15 +94,16 @@ export async function createTopicOnChain({ title, ipfsHash, startDate, endDate, 
         );
         await kpiTx.wait();
       } catch (err) {
-        console.warn(`[Web3] Không thể thêm KPI "${kpi.title}" on-chain:`, err.message);
+        throw new Error(`Đề tài đã gửi nhưng KPI "${kpi.title}" chưa hoàn tất: ${err.message}`);
       }
     }
   }
 
+  if (!onChainId) throw new Error('Không tìm thấy TopicCreated trong receipt; chưa xác minh ID.');
   return {
     txHash: receipt.hash,
     blockNumber: receipt.blockNumber,
-    onChainId: onChainId || 1,
+    onChainId,
   };
 }
 

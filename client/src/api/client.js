@@ -1,4 +1,3 @@
-import { BrowserProvider } from 'ethers';
 
 /**
  * Lớp giao tiếp API duy nhất của frontend.
@@ -6,6 +5,7 @@ import { BrowserProvider } from 'ethers';
  * - Ném Error có `status` / `code` để UI hiển thị thông báo rõ ràng.
  */
 export const API_BASE = import.meta.env.VITE_API_URL || 'http://localhost:5000/api';
+export const DEMO_ENABLED = import.meta.env.VITE_ENABLE_DEMO === 'true';
 const TOKEN_KEY = 'w3i_token';
 
 export const getToken = () => localStorage.getItem(TOKEN_KEY) || '';
@@ -13,13 +13,16 @@ export const setToken = (token) => (token ? localStorage.setItem(TOKEN_KEY, toke
 
 export async function apiRequest(path, { method = 'GET', body, headers = {} } = {}) {
   const token = getToken();
+  const multipart = typeof FormData !== 'undefined' && body instanceof FormData;
+  const binary = typeof Blob !== 'undefined' && body instanceof Blob;
   let response;
   try {
     response = await fetch(`${API_BASE}${path}`, {
       method,
-      headers: { 'Content-Type': 'application/json', ...(token && { Authorization: `Bearer ${token}` }), ...headers },
+      credentials: 'include',
+      headers: { ...(!multipart && { 'Content-Type': binary ? body.type || 'application/octet-stream' : 'application/json' }), ...(token && { Authorization: `Bearer ${token}` }), ...headers },
       // Chấp nhận cả object lẫn chuỗi JSON đã stringify.
-      body: body === undefined ? undefined : typeof body === 'string' ? body : JSON.stringify(body),
+      body: body === undefined ? undefined : multipart || binary || typeof body === 'string' ? body : JSON.stringify(body),
     });
   } catch {
     const err = new Error(`Không kết nối được backend (${API_BASE}). Hãy chạy server và MongoDB.`);
@@ -45,6 +48,7 @@ export async function signInWithWallet(role, name) {
   if (typeof window === 'undefined' || !window.ethereum) {
     throw new Error('Chưa phát hiện MetaMask. Hãy cài tiện ích MetaMask để đăng nhập.');
   }
+  const { BrowserProvider } = await import('ethers');
   const provider = new BrowserProvider(window.ethereum);
   await provider.send('eth_requestAccounts', []);
   const signer = await provider.getSigner();
@@ -59,6 +63,7 @@ export async function signInWithWallet(role, name) {
 
 /** Đăng nhập tức thì với tài khoản Demo mà không cần MetaMask extension */
 export async function demoLoginWallet(role = 'company') {
+  if (!DEMO_ENABLED) throw new Error('Demo chưa được bật cho môi trường riêng.');
   const result = await apiRequest('/auth/demo-login', { method: 'POST', body: { role } });
   setToken(result.token);
   return {

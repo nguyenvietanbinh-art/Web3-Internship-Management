@@ -1,0 +1,300 @@
+{
+  "time": "2026-10-31T16:25:36.152Z",
+  "source": "contracts\\node_modules\\.cache\\phase6-patch-20261031\\browser-results.json",
+  "sourceSha256": "e2cf2d78afcbd99aa3787bcd390f37e9ee07489eeecd7e4ef9dfc5161e690d76",
+  "tests": [
+    {
+      "name": "Guest: core capability read, no demo bypass or automatic write",
+      "status": "PASS"
+    },
+    {
+      "name": "Admin provisions mentor through real account UI, then real nonce signature login works",
+      "status": "PASS"
+    },
+    {
+      "name": "Admin account role filtering is server-side, self/admin changes disabled",
+      "status": "PASS"
+    },
+    {
+      "name": "Student profile persists and refreshes account display, role remains student",
+      "status": "PASS"
+    },
+    {
+      "name": "Late profile session response cannot restore user after wallet account-change logout",
+      "status": "PASS"
+    },
+    {
+      "name": "Student CV CRUD and PDF upload extract actual text with private file storage",
+      "status": "PASS"
+    },
+    {
+      "name": "Company JD form publishes a real vacancy with explicit fields",
+      "status": "PASS"
+    },
+    {
+      "name": "Student applies through UI with immutable CV snapshot, duplicate rejected",
+      "status": "PASS"
+    },
+    {
+      "name": "Company reviews actual application; foreign company list is empty",
+      "status": "PASS"
+    },
+    {
+      "name": "Notifications read is GET-only; mark read is explicit and persists receipt",
+      "status": "PASS"
+    },
+    {
+      "name": "School creates actual internship batch from form",
+      "status": "PASS"
+    },
+    {
+      "name": "Company proposes scoped student-company-mentor assignment via UI",
+      "status": "PASS"
+    },
+    {
+      "name": "School approves assignment through UI",
+      "status": "PASS"
+    },
+    {
+      "name": "Company begins only approved assignment through UI",
+      "status": "PASS"
+    },
+    {
+      "name": "Company creates canonical task with correct assignee and deadline",
+      "status": "PASS"
+    },
+    {
+      "name": "Student updates task progress via UI; history persists",
+      "status": "PASS"
+    },
+    {
+      "name": "Student submits weekly worklog through real form",
+      "status": "PASS"
+    },
+    {
+      "name": "Assigned mentor reviews student worklog, scope follows canonical Assignment",
+      "status": "PASS"
+    },
+    {
+      "name": "Student check-in/out via UI has no fake minimum minutes or QR/chain verification",
+      "status": "PASS"
+    },
+    {
+      "name": "Company explicitly corrects times with audit then approves real 55 minutes",
+      "status": "PASS"
+    },
+    {
+      "name": "Student submits KPI evidence specific to this assignment",
+      "status": "PASS"
+    },
+    {
+      "name": "Company evaluates canonical KPI; weighted score is persisted, Topic remains independent",
+      "status": "PASS"
+    },
+    {
+      "name": "Student submits final report version through UI, no IPFS or NFT claim",
+      "status": "PASS"
+    },
+    {
+      "name": "company independently reviews final report through UI",
+      "status": "PASS"
+    },
+    {
+      "name": "mentor independently reviews final report through UI",
+      "status": "PASS"
+    },
+    {
+      "name": "School closes reviewed report at mean85 and completes assignment without minting",
+      "status": "PASS"
+    },
+    {
+      "name": "student dashboard shows actual scoped counts/minutes, read navigation never writes",
+      "status": "PASS"
+    },
+    {
+      "name": "company dashboard shows actual scoped counts/minutes, read navigation never writes",
+      "status": "PASS"
+    },
+    {
+      "name": "mentor dashboard shows actual scoped counts/minutes, read navigation never writes",
+      "status": "PASS"
+    },
+    {
+      "name": "admin dashboard shows actual scoped counts/minutes, read navigation never writes",
+      "status": "PASS"
+    },
+    {
+      "name": "Foreign identities cannot query protected application/CV/placement/report/time data",
+      "status": "PASS"
+    },
+    {
+      "name": "student core pages responsive mobile/tablet/desktop, both themes, no auto-write",
+      "status": "PASS",
+      "detail": {
+        "layouts": 30
+      }
+    },
+    {
+      "name": "company core pages responsive mobile/tablet/desktop, both themes, no auto-write",
+      "status": "PASS",
+      "detail": {
+        "layouts": 27
+      }
+    },
+    {
+      "name": "mentor core pages responsive mobile/tablet/desktop, both themes, no auto-write",
+      "status": "PASS",
+      "detail": {
+        "layouts": 21
+      }
+    },
+    {
+      "name": "admin core pages responsive mobile/tablet/desktop, both themes, no auto-write",
+      "status": "PASS",
+      "detail": {
+        "layouts": 27
+      }
+    },
+    {
+      "name": "No uncaught browser exception, external request, forged chain transaction or fake verified badge",
+      "status": "PASS"
+    },
+    {
+      "name": "PHASE4 student: NLP page mount only GET, responsive, no business writes",
+      "status": "PASS"
+    },
+    {
+      "name": "PHASE4 student: real TF-IDF matching/ranking via explicit UI, no invented confidence",
+      "status": "PASS"
+    },
+    {
+      "name": "PHASE4 student: actual SBERT matching/ranking displayed with live model status, zero writes",
+      "status": "PASS"
+    },
+    {
+      "name": "PHASE4 company: NLP page mount only GET, responsive, no business writes",
+      "status": "PASS"
+    },
+    {
+      "name": "PHASE4 company: real TF-IDF matching/ranking via explicit UI, no invented confidence",
+      "status": "PASS"
+    },
+    {
+      "name": "PHASE4 company: real report analysis shows separate rules and NOT_TRAINED classifier",
+      "status": "PASS"
+    },
+    {
+      "name": "PHASE4 company: actual SBERT matching/ranking displayed with live model status, zero writes",
+      "status": "PASS"
+    },
+    {
+      "name": "PHASE4 company: actual SBERT report relevance is not presented as trained risk prediction",
+      "status": "PASS"
+    },
+    {
+      "name": "PHASE4 mentor: NLP page mount only GET, responsive, no business writes",
+      "status": "PASS"
+    },
+    {
+      "name": "PHASE4 mentor: real report analysis shows separate rules and NOT_TRAINED classifier",
+      "status": "PASS"
+    },
+    {
+      "name": "PHASE4 mentor: actual SBERT report relevance is not presented as trained risk prediction",
+      "status": "PASS"
+    },
+    {
+      "name": "PHASE4 admin: NLP page mount only GET, responsive, no business writes",
+      "status": "PASS"
+    },
+    {
+      "name": "PHASE4 admin: real report analysis shows separate rules and NOT_TRAINED classifier",
+      "status": "PASS"
+    },
+    {
+      "name": "PHASE4 admin: actual SBERT report relevance is not presented as trained risk prediction",
+      "status": "PASS"
+    },
+    {
+      "name": "PHASE4 injected transport failure clears stale result; explicit baseline recovery uses actual API",
+      "status": "PASS"
+    },
+    {
+      "name": "PHASE5 student: Web3 mount/responsive/themes use only GET and preserve every TEST collection",
+      "status": "PASS"
+    },
+    {
+      "name": "PHASE5 company: Web3 mount/responsive/themes use only GET and preserve every TEST collection",
+      "status": "PASS"
+    },
+    {
+      "name": "PHASE5 mentor: Web3 mount/responsive/themes use only GET and preserve every TEST collection",
+      "status": "PASS"
+    },
+    {
+      "name": "PHASE5 admin: Web3 mount/responsive/themes use only GET and preserve every TEST collection",
+      "status": "PASS"
+    },
+    {
+      "name": "PHASE5 missing Pinata stays BLOCKED; report anchor sends real local transaction without fake CID",
+      "status": "PASS"
+    },
+    {
+      "name": "PHASE5 unminted certificate never shows VERIFIED",
+      "status": "PASS"
+    },
+    {
+      "name": "PHASE5 camera and location denial cause no attendance POST or business write",
+      "status": "PASS"
+    },
+    {
+      "name": "PHASE5 company anchors approved real TEST work snapshot",
+      "status": "PASS"
+    },
+    {
+      "name": "PHASE5 school completion and SBT mint use real receipts, not browser fixtures",
+      "status": "PASS"
+    },
+    {
+      "name": "PHASE5 actual RPC certificate viewer verifies owner, chain and locked SBT; repeat mint idempotent",
+      "status": "PASS"
+    },
+    {
+      "name": "PHASE5 certificate transport failure removes prior VERIFIED badge, does not write",
+      "status": "PASS"
+    },
+    {
+      "name": "PHASE5 foreign user cannot fetch certificate; no uncaught exception or external request",
+      "status": "PASS"
+    },
+    {
+      "name": "PHASE5 QR issue/redeem UI integrates check-in/out; explicit CDP GPS fixture, no physical camera claim",
+      "status": "PASS"
+    },
+    {
+      "name": "PHASE6 stored XSS payload stays inert text across profile/sidebar/reload",
+      "status": "PASS"
+    },
+    {
+      "name": "PHASE6 new Web3 form controls have labels and live errors expose no credential",
+      "status": "PASS"
+    },
+    {
+      "name": "PHASE6 repeated all-role dashboard/AI/Web3 navigation performs no automatic mutation",
+      "status": "PASS"
+    },
+    {
+      "name": "PHASE6 measured API/AI latencies use successful real responses and do not persist analysis",
+      "status": "PASS"
+    },
+    {
+      "name": "PHASE6 verify current local SBT remains read-only; every confirmed operation has real hash",
+      "status": "PASS"
+    },
+    {
+      "name": "PHASE6 no browser exception or outbound request after integrated four-role flows",
+      "status": "PASS"
+    }
+  ],
+  "note": "Prior PHASE6 patch E2E on same production source/dependency lock versions; not rerun as full business E2E in PHASE7"
+}

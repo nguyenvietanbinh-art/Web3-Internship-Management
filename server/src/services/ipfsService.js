@@ -11,14 +11,17 @@ function assertConfigured() {
   if (!config.pinataJwt) {
     throw new HttpError(503, "IPFS chưa được cấu hình: thiếu PINATA_JWT trong server/.env", "IPFS_NOT_CONFIGURED");
   }
+  // Legacy callers submit unprotected JSON/files, including private reports.
+  // Keep the API shape but fail closed; Phase5 encrypted core flow replaces it.
+  throw new HttpError(503,'Luồng IPFS legacy chưa bảo vệ dữ liệu; dùng upload báo cáo mã hóa theo kỳ','IPFS_PRIVACY_BLOCKED');
 }
 
 const auth = () => ({ Authorization: `Bearer ${config.pinataJwt}` });
 
 function wrapPinataError(err) {
   if (err instanceof HttpError) return err;
-  const detail = err.response?.data?.error?.details || err.response?.data?.error || err.message;
-  return new HttpError(502, `Upload IPFS thất bại: ${typeof detail === "string" ? detail : JSON.stringify(detail)}`, "IPFS_UPLOAD_FAILED");
+  // A provider may echo credentials or submitted content in its error details.
+  return new HttpError(502, 'Upload IPFS thất bại; kiểm tra cấu hình hoặc thử lại sau.', 'IPFS_UPLOAD_FAILED');
 }
 
 /** Upload JSON lên IPFS. Trả { ipfsHash, url }. */

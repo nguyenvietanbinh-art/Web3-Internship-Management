@@ -1,0 +1,107 @@
+{
+  "preparedAtUtc": "2026-10-31T19:10:36.425235+00:00",
+  "proposalFile": "Thư mục mới\\KLCN129_Trần-Việt-Hùng.docx",
+  "proposalSha256": "7e1eb833c56cdf247171ca7cb39577ad39594cae882b66de5dc132f1e7568b52",
+  "images": [
+    {
+      "file": "01-student-login.png",
+      "source": "contracts\\node_modules\\.cache\\phase7-20261031\\manual\\manual-student.png",
+      "capturedAtSourceUtc": "2026-10-31T19:04:02.120494+00:00",
+      "sha256": "b05c6ad53bfb1117c0e1a0a135a493618f19444a3eebdab2910fda4a05d6fa4a",
+      "caption": "PHASE7 actual signature login, fresh manual TEST account; profile only",
+      "syntheticTestData": true,
+      "imageEdited": false
+    },
+    {
+      "file": "01-company-login.png",
+      "source": "contracts\\node_modules\\.cache\\phase7-20261031\\manual\\manual-company.png",
+      "capturedAtSourceUtc": "2026-10-31T19:00:54.371979+00:00",
+      "sha256": "ec2c39d0037c1bc6c370ccbdbc633cec4340bfda36ef6280d3ff3f17feb4be86",
+      "caption": "PHASE7 actual signature login, fresh manual TEST account; profile only",
+      "syntheticTestData": true,
+      "imageEdited": false
+    },
+    {
+      "file": "01-mentor-login.png",
+      "source": "contracts\\node_modules\\.cache\\phase7-20261031\\manual\\manual-mentor.png",
+      "capturedAtSourceUtc": "2026-10-31T19:00:57.307791+00:00",
+      "sha256": "c8d0df5a5701cedb51f8291b149809fca69cc5ba1010f6849b3803eef85f4cc4",
+      "caption": "PHASE7 actual signature login, fresh manual TEST account; profile only",
+      "syntheticTestData": true,
+      "imageEdited": false
+    },
+    {
+      "file": "01-admin-login.png",
+      "source": "contracts\\node_modules\\.cache\\phase7-20261031\\manual\\manual-admin.png",
+      "capturedAtSourceUtc": "2026-10-31T19:01:00.254159+00:00",
+      "sha256": "63bf01009d2c0208bf6c38b8df1b07dc3dfa4dbd3b228f17a455fd19175b65c8",
+      "caption": "PHASE7 actual signature login, fresh manual TEST account; profile only",
+      "syntheticTestData": true,
+      "imageEdited": false
+    },
+    {
+      "file": "02-cv-parser.png",
+      "source": "contracts\\node_modules\\.cache\\phase6-patch-20261031\\student-cv.png",
+      "capturedAtSourceUtc": "2026-10-31T16:22:22.080579+00:00",
+      "sha256": "c2b277764695426653c4ba333cc73d9689ba2668a8cda4b789db8d429a4bc439",
+      "caption": "PHASE6-patch real PDF upload/parser in synthetic E2E dataset",
+      "syntheticTestData": true,
+      "imageEdited": false
+    },
+    {
+      "file": "03-sbert-ranking.png",
+      "source": "contracts\\node_modules\\.cache\\phase6-patch-20261031\\student-sbert-ranking.png",
+      "capturedAtSourceUtc": "2026-10-31T16:24:35.694759+00:00",
+      "sha256": "5ae8d859835e98acbc322f0e86583dcb3054298af07baa419a389eeea8ef3fc3",
+      "caption": "PHASE6-patch actual local SBERT result, not quality benchmark",
+      "syntheticTestData": true,
+      "imageEdited": false
+    },
+    {
+      "file": "04-report-nlp.png",
+      "source": "contracts\\node_modules\\.cache\\phase6-patch-20261031\\mentor-sbert-report.png",
+      "capturedAtSourceUtc": "2026-10-31T16:24:41.556877+00:00",
+      "sha256": "76dceb0c7ddd25d28150388f72a4a2beb45c43b7b86e15f374fbbb8d4a35e05d",
+      "caption": "PHASE6-patch actual semantic analysis; NOT_TRAINED classifier remains visible",
+      "syntheticTestData": true,
+      "imageEdited": false
+    },
+    {
+      "file": "05-time-mobile.png",
+      "source": "contracts\\node_modules\\.cache\\phase6-patch-20261031\\student-time-mobile.png",
+      "capturedAtSourceUtc": "2026-10-31T16:23:48.900119+00:00",
+      "sha256": "32e00bcebf4fdb9123e08df43ffdb70452c021b23ea8533eb683a03bb0081cda",
+      "caption": "PHASE6-patch actual TEST hours; correction is explicit synthetic human review",
+      "syntheticTestData": true,
+      "imageEdited": false
+    },
+    {
+      "file": "06-completed-placement.png",
+      "source": "contracts\\node_modules\\.cache\\phase6-patch-20261031\\school-completed-placement.png",
+      "capturedAtSourceUtc": "2026-10-31T16:23:01.179348+00:00",
+      "sha256": "a3df43620fba0ee411d4cdbb014da5930d10050d719c9e114a56c7f6ec2b7f60",
+      "caption": "PHASE6-patch actual business approval/completed placement",
+      "syntheticTestData": true,
+      "imageEdited": false
+    },
+    {
+      "file": "07-verified-sbt.png",
+      "source": "contracts\\node_modules\\.cache\\phase6-patch-20261031\\real-local-sbt-certificate.png",
+      "capturedAtSourceUtc": "2026-10-31T16:25:04.411343+00:00",
+      "sha256": "ecfe635459f36a08af1b40283c3009759c3fd48a523f1b0b6e1d26f14a50b681",
+      "caption": "PHASE6-patch real Hardhat SBT9; not a certificate for new manual accounts",
+      "syntheticTestData": true,
+      "imageEdited": false
+    },
+    {
+      "file": "08-web3-dark.png",
+      "source": "contracts\\node_modules\\.cache\\phase6-patch-20261031\\admin-web3-dark.png",
+      "capturedAtSourceUtc": "2026-10-31T16:24:55.796383+00:00",
+      "sha256": "e8f431e62964196f39405c19b014e8244e769e95d3795178f23a785312f5df90",
+      "caption": "PHASE6-patch actual Web3 UI in Dark Mode",
+      "syntheticTestData": true,
+      "imageEdited": false
+    }
+  ],
+  "notEvidence": "No fake screenshots, no live IPFS proof, no physical camera/GPS proof; no vault/private key/JWT copied"
+}

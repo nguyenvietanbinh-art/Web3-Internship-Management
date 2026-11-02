@@ -5,8 +5,7 @@ const UserSchema = new mongoose.Schema(
   {
     walletAddress: {
       type: String,
-      required: true,
-      unique: true,
+      required: function () { return !this.googleSubject && !this.passwordHash; },
       lowercase: true,
       trim: true,
     },
@@ -49,4 +48,25 @@ const UserSchema = new mongoose.Schema(
   { timestamps: true }
 );
 
+UserSchema.add({
+  walletVerified:{type:Boolean,default:false},walletVerifiedAt:Date,
+  loginEmail: {type:String,select:false},
+  passwordHash: {type:String,select:false},
+  authVersion: {type:Number,default:0},
+  googleSubject: {type:String,select:false},
+  googleEmail: {type:String,select:false},
+  identityHistory: {type:[new mongoose.Schema({action:String,at:Date},{_id:false})],select:false,default:undefined},
+  disabled: { type: Boolean, default: false },
+  auditHistory: { type: [require('../core/shared').HistorySchema], default: undefined, select: false },
+});
+// Legacy databases retain their existing index until an explicitly reviewed migration.
+// A Google-enabled runtime needs the new indexes provisioned and verified before login.
+UserSchema.index({walletAddress:1}, process.env.GOOGLE_AUTH_ENABLED==='true'||process.env.EMAIL_AUTH_ENABLED==='true'
+  ? {unique:true,partialFilterExpression:{walletAddress:{$type:'string'}}}
+  : {unique:true});
+if(process.env.GOOGLE_AUTH_ENABLED==='true'){
+  UserSchema.index({googleSubject:1},{unique:true,partialFilterExpression:{googleSubject:{$type:'string'}}});
+  UserSchema.index({googleEmail:1},{unique:true,partialFilterExpression:{googleEmail:{$type:'string'}}});
+}
+if(process.env.EMAIL_AUTH_ENABLED==='true')UserSchema.index({loginEmail:1},{unique:true,partialFilterExpression:{loginEmail:{$type:'string'}}});
 module.exports = mongoose.model("User", UserSchema);

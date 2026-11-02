@@ -1,0 +1,389 @@
+{
+  "time": "2026-11-01T13:02:00.051Z",
+  "tests": [
+    {
+      "name": "Login opens method chooser without calling MetaMask or writing database",
+      "status": "PASS"
+    },
+    {
+      "name": "Register explains student-only Google and password unavailable; cancel closes dialog",
+      "status": "PASS"
+    },
+    {
+      "name": "Google-only fixture session restores, shows account settings and no wallet-scoped navigation",
+      "status": "PASS"
+    },
+    {
+      "name": "Profile form saves to isolated TEST database and preserves role",
+      "status": "PASS"
+    },
+    {
+      "name": "Responsive mobile and Dark/Light settings stay usable without automatic mutations",
+      "status": "PASS"
+    },
+    {
+      "name": "Logout clears JWT and authenticated account UI",
+      "status": "PASS"
+    },
+    {
+      "name": "All four existing wallet roles still log in through nonce/signature API and navigate profile/dashboard",
+      "status": "PASS"
+    }
+  ],
+  "requests": [
+    {
+      "method": "GET",
+      "path": "/api/core/capabilities"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/capabilities"
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/api/core/capabilities"
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/api/core/capabilities"
+    },
+    {
+      "method": "GET",
+      "path": "/api/topics"
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/api/topics"
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/api/auth/google/status"
+    },
+    {
+      "method": "GET",
+      "path": "/api/auth/google/status"
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/api/core/capabilities"
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/api/auth/me"
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/api/core/capabilities"
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/api/auth/me"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/capabilities"
+    },
+    {
+      "method": "GET",
+      "path": "/api/auth/me"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/capabilities"
+    },
+    {
+      "method": "GET",
+      "path": "/api/auth/me"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/profile"
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/api/core/profile"
+    },
+    {
+      "method": "PATCH",
+      "path": "/api/core/profile"
+    },
+    {
+      "method": "GET",
+      "path": "/api/auth/me"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/profile"
+    },
+    {
+      "method": "GET",
+      "path": "/api/topics"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/capabilities"
+    },
+    {
+      "method": "GET",
+      "path": "/api/auth/me"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/capabilities"
+    },
+    {
+      "method": "GET",
+      "path": "/api/auth/me"
+    },
+    {
+      "method": "GET",
+      "path": "/api/topics"
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/api/topics"
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/api/internship/dashboard"
+    },
+    {
+      "method": "GET",
+      "path": "/api/internship/dashboard"
+    },
+    {
+      "method": "GET",
+      "path": "/api/internship/dashboard"
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/api/internship/dashboard"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/dashboard"
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/api/core/dashboard"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/profile"
+    },
+    {
+      "method": "GET",
+      "path": "/api/internship/dashboard"
+    },
+    {
+      "method": "GET",
+      "path": "/api/internship/dashboard"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/dashboard"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/capabilities"
+    },
+    {
+      "method": "GET",
+      "path": "/api/auth/me"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/capabilities"
+    },
+    {
+      "method": "GET",
+      "path": "/api/auth/me"
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/api/internship/dashboard"
+    },
+    {
+      "method": "GET",
+      "path": "/api/internship/dashboard"
+    },
+    {
+      "method": "GET",
+      "path": "/api/internship/dashboard"
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/api/internship/dashboard"
+    },
+    {
+      "method": "GET",
+      "path": "/api/topics"
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/api/topics"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/dashboard"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/profile"
+    },
+    {
+      "method": "GET",
+      "path": "/api/internship/dashboard"
+    },
+    {
+      "method": "GET",
+      "path": "/api/internship/dashboard"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/dashboard"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/capabilities"
+    },
+    {
+      "method": "GET",
+      "path": "/api/auth/me"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/capabilities"
+    },
+    {
+      "method": "GET",
+      "path": "/api/auth/me"
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/api/core/capabilities"
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/api/auth/me"
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/api/core/capabilities"
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/api/auth/me"
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/api/internship/dashboard"
+    },
+    {
+      "method": "GET",
+      "path": "/api/internship/dashboard"
+    },
+    {
+      "method": "GET",
+      "path": "/api/internship/dashboard"
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/api/internship/dashboard"
+    },
+    {
+      "method": "GET",
+      "path": "/api/topics"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/dashboard"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/profile"
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/api/core/profile"
+    },
+    {
+      "method": "GET",
+      "path": "/api/internship/dashboard"
+    },
+    {
+      "method": "GET",
+      "path": "/api/internship/dashboard"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/dashboard"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/capabilities"
+    },
+    {
+      "method": "GET",
+      "path": "/api/auth/me"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/capabilities"
+    },
+    {
+      "method": "GET",
+      "path": "/api/auth/me"
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/api/internship/dashboard"
+    },
+    {
+      "method": "GET",
+      "path": "/api/internship/dashboard"
+    },
+    {
+      "method": "GET",
+      "path": "/api/internship/dashboard"
+    },
+    {
+      "method": "GET",
+      "path": "/api/topics"
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/api/internship/dashboard"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/dashboard"
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/api/core/dashboard"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/profile"
+    },
+    {
+      "method": "GET",
+      "path": "/api/internship/dashboard"
+    },
+    {
+      "method": "GET",
+      "path": "/api/internship/dashboard"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/dashboard"
+    }
+  ],
+  "exceptions": [],
+  "blocked": [],
+  "database": "web3_internship_test_phase1_dce42e67_f79726e9df37",
+  "googleRealE2E": "BLOCKED_NO_CLIENT_ID",
+  "verifierMocked": false,
+  "fixtureSession": "Explicit TEST User plus application JWT; not Google login"
+}

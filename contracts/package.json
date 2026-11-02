@@ -4,7 +4,11 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "node scripts/local-hardhat.cjs test",
+    "test:legacy": "node scripts/local-hardhat.cjs test test/InternshipPlatform.test.js",
+    "compile:local": "node scripts/local-hardhat.cjs compile",
+    "node:local": "node scripts/local-hardhat.cjs node --hostname 127.0.0.1 --port 18545",
+    "deploy:local": "node scripts/local-hardhat.cjs run scripts/deploy-local.cjs --network localhost"
   },
   "keywords": [],
   "author": "",

@@ -1,0 +1,806 @@
+{
+  "time": "2026-10-31T16:26:07.798Z",
+  "source": "contracts\\node_modules\\.cache\\phase6-patch-20261031\\compat\\browser-results.json",
+  "sourceSha256": "1caa29d0f3e5cc0caf54bf3f0f1ddc7ff56b4139a9c7bd7fc14874f40c243730",
+  "tests": [
+    {
+      "name": "Guest: Light mặc định, demo ẩn, không mutation khi mở trang",
+      "status": "PASS"
+    },
+    {
+      "name": "Guest: Auth dialog Escape và trả focus",
+      "status": "PASS"
+    },
+    {
+      "name": "company: dashboard đúng số liệu API, không KPI giả",
+      "status": "PASS"
+    },
+    {
+      "name": "company: menu vai trò và mục chưa có Backend trung thực",
+      "status": "PASS"
+    },
+    {
+      "name": "company: 5 màn hình, 320/375/768/1024/1440px, không tràn trang/auto-write",
+      "status": "PASS",
+      "detail": [
+        {
+          "width": 320,
+          "id": "dashboard",
+          "scroll": 313
+        },
+        {
+          "width": 320,
+          "id": "topics",
+          "scroll": 313
+        },
+        {
+          "width": 320,
+          "id": "cv-jd",
+          "scroll": 313
+        },
+        {
+          "width": 320,
+          "id": "attendance",
+          "scroll": 313
+        },
+        {
+          "width": 320,
+          "id": "web3",
+          "scroll": 313
+        },
+        {
+          "width": 375,
+          "id": "dashboard",
+          "scroll": 368
+        },
+        {
+          "width": 375,
+          "id": "topics",
+          "scroll": 368
+        },
+        {
+          "width": 375,
+          "id": "cv-jd",
+          "scroll": 368
+        },
+        {
+          "width": 375,
+          "id": "attendance",
+          "scroll": 368
+        },
+        {
+          "width": 375,
+          "id": "web3",
+          "scroll": 368
+        },
+        {
+          "width": 768,
+          "id": "dashboard",
+          "scroll": 761
+        },
+        {
+          "width": 768,
+          "id": "topics",
+          "scroll": 761
+        },
+        {
+          "width": 768,
+          "id": "cv-jd",
+          "scroll": 761
+        },
+        {
+          "width": 768,
+          "id": "attendance",
+          "scroll": 761
+        },
+        {
+          "width": 768,
+          "id": "web3",
+          "scroll": 761
+        },
+        {
+          "width": 1024,
+          "id": "dashboard",
+          "scroll": 1017
+        },
+        {
+          "width": 1024,
+          "id": "topics",
+          "scroll": 1017
+        },
+        {
+          "width": 1024,
+          "id": "cv-jd",
+          "scroll": 1017
+        },
+        {
+          "width": 1024,
+          "id": "attendance",
+          "scroll": 1017
+        },
+        {
+          "width": 1024,
+          "id": "web3",
+          "scroll": 1017
+        },
+        {
+          "width": 1440,
+          "id": "dashboard",
+          "scroll": 1433
+        },
+        {
+          "width": 1440,
+          "id": "topics",
+          "scroll": 1433
+        },
+        {
+          "width": 1440,
+          "id": "cv-jd",
+          "scroll": 1433
+        },
+        {
+          "width": 1440,
+          "id": "attendance",
+          "scroll": 1440
+        },
+        {
+          "width": 1440,
+          "id": "web3",
+          "scroll": 1433
+        }
+      ]
+    },
+    {
+      "name": "company: Light/Dark và preference sau reload",
+      "status": "PASS"
+    },
+    {
+      "name": "student: dashboard đúng số liệu API, không KPI giả",
+      "status": "PASS"
+    },
+    {
+      "name": "student: menu vai trò và mục chưa có Backend trung thực",
+      "status": "PASS"
+    },
+    {
+      "name": "student: 5 màn hình, 320/375/768/1024/1440px, không tràn trang/auto-write",
+      "status": "PASS",
+      "detail": [
+        {
+          "width": 320,
+          "id": "dashboard",
+          "scroll": 313
+        },
+        {
+          "width": 320,
+          "id": "topics",
+          "scroll": 313
+        },
+        {
+          "width": 320,
+          "id": "cv-jd",
+          "scroll": 313
+        },
+        {
+          "width": 320,
+          "id": "attendance",
+          "scroll": 313
+        },
+        {
+          "width": 320,
+          "id": "web3",
+          "scroll": 313
+        },
+        {
+          "width": 375,
+          "id": "dashboard",
+          "scroll": 368
+        },
+        {
+          "width": 375,
+          "id": "topics",
+          "scroll": 368
+        },
+        {
+          "width": 375,
+          "id": "cv-jd",
+          "scroll": 368
+        },
+        {
+          "width": 375,
+          "id": "attendance",
+          "scroll": 368
+        },
+        {
+          "width": 375,
+          "id": "web3",
+          "scroll": 368
+        },
+        {
+          "width": 768,
+          "id": "dashboard",
+          "scroll": 761
+        },
+        {
+          "width": 768,
+          "id": "topics",
+          "scroll": 761
+        },
+        {
+          "width": 768,
+          "id": "cv-jd",
+          "scroll": 761
+        },
+        {
+          "width": 768,
+          "id": "attendance",
+          "scroll": 761
+        },
+        {
+          "width": 768,
+          "id": "web3",
+          "scroll": 761
+        },
+        {
+          "width": 1024,
+          "id": "dashboard",
+          "scroll": 1017
+        },
+        {
+          "width": 1024,
+          "id": "topics",
+          "scroll": 1017
+        },
+        {
+          "width": 1024,
+          "id": "cv-jd",
+          "scroll": 1017
+        },
+        {
+          "width": 1024,
+          "id": "attendance",
+          "scroll": 1017
+        },
+        {
+          "width": 1024,
+          "id": "web3",
+          "scroll": 1017
+        },
+        {
+          "width": 1440,
+          "id": "dashboard",
+          "scroll": 1433
+        },
+        {
+          "width": 1440,
+          "id": "topics",
+          "scroll": 1433
+        },
+        {
+          "width": 1440,
+          "id": "cv-jd",
+          "scroll": 1433
+        },
+        {
+          "width": 1440,
+          "id": "attendance",
+          "scroll": 1440
+        },
+        {
+          "width": 1440,
+          "id": "web3",
+          "scroll": 1433
+        }
+      ]
+    },
+    {
+      "name": "student: Light/Dark và preference sau reload",
+      "status": "PASS"
+    },
+    {
+      "name": "mentor: dashboard đúng số liệu API, không KPI giả",
+      "status": "PASS"
+    },
+    {
+      "name": "mentor: menu vai trò và mục chưa có Backend trung thực",
+      "status": "PASS"
+    },
+    {
+      "name": "mentor: 5 màn hình, 320/375/768/1024/1440px, không tràn trang/auto-write",
+      "status": "PASS",
+      "detail": [
+        {
+          "width": 320,
+          "id": "dashboard",
+          "scroll": 313
+        },
+        {
+          "width": 320,
+          "id": "topics",
+          "scroll": 313
+        },
+        {
+          "width": 320,
+          "id": "cv-jd",
+          "scroll": 313
+        },
+        {
+          "width": 320,
+          "id": "attendance",
+          "scroll": 313
+        },
+        {
+          "width": 320,
+          "id": "web3",
+          "scroll": 313
+        },
+        {
+          "width": 375,
+          "id": "dashboard",
+          "scroll": 368
+        },
+        {
+          "width": 375,
+          "id": "topics",
+          "scroll": 368
+        },
+        {
+          "width": 375,
+          "id": "cv-jd",
+          "scroll": 368
+        },
+        {
+          "width": 375,
+          "id": "attendance",
+          "scroll": 368
+        },
+        {
+          "width": 375,
+          "id": "web3",
+          "scroll": 368
+        },
+        {
+          "width": 768,
+          "id": "dashboard",
+          "scroll": 761
+        },
+        {
+          "width": 768,
+          "id": "topics",
+          "scroll": 761
+        },
+        {
+          "width": 768,
+          "id": "cv-jd",
+          "scroll": 761
+        },
+        {
+          "width": 768,
+          "id": "attendance",
+          "scroll": 768
+        },
+        {
+          "width": 768,
+          "id": "web3",
+          "scroll": 761
+        },
+        {
+          "width": 1024,
+          "id": "dashboard",
+          "scroll": 1017
+        },
+        {
+          "width": 1024,
+          "id": "topics",
+          "scroll": 1017
+        },
+        {
+          "width": 1024,
+          "id": "cv-jd",
+          "scroll": 1017
+        },
+        {
+          "width": 1024,
+          "id": "attendance",
+          "scroll": 1024
+        },
+        {
+          "width": 1024,
+          "id": "web3",
+          "scroll": 1017
+        },
+        {
+          "width": 1440,
+          "id": "dashboard",
+          "scroll": 1433
+        },
+        {
+          "width": 1440,
+          "id": "topics",
+          "scroll": 1433
+        },
+        {
+          "width": 1440,
+          "id": "cv-jd",
+          "scroll": 1433
+        },
+        {
+          "width": 1440,
+          "id": "attendance",
+          "scroll": 1440
+        },
+        {
+          "width": 1440,
+          "id": "web3",
+          "scroll": 1433
+        }
+      ]
+    },
+    {
+      "name": "mentor: Light/Dark và preference sau reload",
+      "status": "PASS"
+    },
+    {
+      "name": "admin: dashboard đúng số liệu API, không KPI giả",
+      "status": "PASS"
+    },
+    {
+      "name": "admin: menu vai trò và mục chưa có Backend trung thực",
+      "status": "PASS"
+    },
+    {
+      "name": "admin: 5 màn hình, 320/375/768/1024/1440px, không tràn trang/auto-write",
+      "status": "PASS",
+      "detail": [
+        {
+          "width": 320,
+          "id": "dashboard",
+          "scroll": 313
+        },
+        {
+          "width": 320,
+          "id": "topics",
+          "scroll": 313
+        },
+        {
+          "width": 320,
+          "id": "cv-jd",
+          "scroll": 313
+        },
+        {
+          "width": 320,
+          "id": "attendance",
+          "scroll": 313
+        },
+        {
+          "width": 320,
+          "id": "web3",
+          "scroll": 313
+        },
+        {
+          "width": 375,
+          "id": "dashboard",
+          "scroll": 368
+        },
+        {
+          "width": 375,
+          "id": "topics",
+          "scroll": 368
+        },
+        {
+          "width": 375,
+          "id": "cv-jd",
+          "scroll": 368
+        },
+        {
+          "width": 375,
+          "id": "attendance",
+          "scroll": 368
+        },
+        {
+          "width": 375,
+          "id": "web3",
+          "scroll": 368
+        },
+        {
+          "width": 768,
+          "id": "dashboard",
+          "scroll": 761
+        },
+        {
+          "width": 768,
+          "id": "topics",
+          "scroll": 761
+        },
+        {
+          "width": 768,
+          "id": "cv-jd",
+          "scroll": 761
+        },
+        {
+          "width": 768,
+          "id": "attendance",
+          "scroll": 768
+        },
+        {
+          "width": 768,
+          "id": "web3",
+          "scroll": 761
+        },
+        {
+          "width": 1024,
+          "id": "dashboard",
+          "scroll": 1017
+        },
+        {
+          "width": 1024,
+          "id": "topics",
+          "scroll": 1017
+        },
+        {
+          "width": 1024,
+          "id": "cv-jd",
+          "scroll": 1017
+        },
+        {
+          "width": 1024,
+          "id": "attendance",
+          "scroll": 1024
+        },
+        {
+          "width": 1024,
+          "id": "web3",
+          "scroll": 1017
+        },
+        {
+          "width": 1440,
+          "id": "dashboard",
+          "scroll": 1433
+        },
+        {
+          "width": 1440,
+          "id": "topics",
+          "scroll": 1433
+        },
+        {
+          "width": 1440,
+          "id": "cv-jd",
+          "scroll": 1433
+        },
+        {
+          "width": 1440,
+          "id": "attendance",
+          "scroll": 1440
+        },
+        {
+          "width": 1440,
+          "id": "web3",
+          "scroll": 1433
+        }
+      ]
+    },
+    {
+      "name": "admin: Light/Dark và preference sau reload",
+      "status": "PASS"
+    },
+    {
+      "name": "Sidebar thu gọn/mở rộng giữ điều hướng và keyboard",
+      "status": "PASS"
+    },
+    {
+      "name": "Bảng: tìm/lọc/phân trang hoạt động trên API scoped",
+      "status": "PASS"
+    },
+    {
+      "name": "Modal JD: validation, Escape, focus trap; không ghi khi mở/hủy",
+      "status": "PASS"
+    },
+    {
+      "name": "JD: form hiện có ghi đúng TEST, tìm kiếm và Apply disabled",
+      "status": "PASS"
+    },
+    {
+      "name": "AI matching gọi service thật, hiển thị engine và không lưu CV giả",
+      "status": "PASS"
+    },
+    {
+      "name": "Company task form: dữ liệu thật và assignee giữ nguyên",
+      "status": "PASS"
+    },
+    {
+      "name": "Company tạo QR có chủ đích trên TEST",
+      "status": "PASS"
+    },
+    {
+      "name": "Student không có quyền tạo đề tài/JD/task",
+      "status": "PASS"
+    },
+    {
+      "name": "Student cập nhật task thật qua UI",
+      "status": "PASS"
+    },
+    {
+      "name": "Student nhật ký qua UI lưu đúng TEST",
+      "status": "PASS"
+    },
+    {
+      "name": "Student check-in thật; không claim GPS/chain",
+      "status": "PASS"
+    },
+    {
+      "name": "Web3 unknown404 và known503: không verified hoặc tự sync",
+      "status": "PASS"
+    },
+    {
+      "name": "Thông báo chưa có Backend: không unread giả/auto-write",
+      "status": "PASS"
+    },
+    {
+      "name": "Keyboard mobile drawer: Escape, focus restore, chuyển trang đóng drawer",
+      "status": "PASS"
+    },
+    {
+      "name": "Tên truy cập cho input/select/textarea và button trong các trang",
+      "status": "PASS"
+    },
+    {
+      "name": "Dữ liệu đã ghi: responsive cho JD/task/nhật ký/lịch sử trên mobile",
+      "status": "PASS"
+    },
+    {
+      "name": "Loading skeleton dùng request thật chờ phản hồi; không số liệu mẫu",
+      "status": "PASS"
+    },
+    {
+      "name": "Lỗi mạng dashboard hiển thị error; retry tải API thật",
+      "status": "PASS"
+    },
+    {
+      "name": "Contrast semantic tokens >=4.5:1 trong cả Light/Dark",
+      "status": "PASS",
+      "detail": [
+        {
+          "theme": "light",
+          "fg": "text-main",
+          "bg": "bg-card",
+          "ratio": 15.97
+        },
+        {
+          "theme": "light",
+          "fg": "text-muted",
+          "bg": "bg-card",
+          "ratio": 6.36
+        },
+        {
+          "theme": "light",
+          "fg": "text-dim",
+          "bg": "bg-card",
+          "ratio": 4.92
+        },
+        {
+          "theme": "light",
+          "fg": "text-main",
+          "bg": "bg-dark",
+          "ratio": 15.05
+        },
+        {
+          "theme": "light",
+          "fg": "text-muted",
+          "bg": "bg-dark",
+          "ratio": 5.99
+        },
+        {
+          "theme": "light",
+          "fg": "text-dim",
+          "bg": "bg-dark",
+          "ratio": 4.63
+        },
+        {
+          "theme": "light",
+          "fg": "primary-light",
+          "bg": "primary-soft",
+          "ratio": 5.45
+        },
+        {
+          "theme": "light",
+          "fg": "accent-emerald",
+          "bg": "success-bg",
+          "ratio": 5.21
+        },
+        {
+          "theme": "light",
+          "fg": "accent-amber",
+          "bg": "warning-bg",
+          "ratio": 6.84
+        },
+        {
+          "theme": "light",
+          "fg": "accent-rose",
+          "bg": "danger-bg",
+          "ratio": 5.91
+        },
+        {
+          "theme": "light",
+          "fg": "button-white",
+          "bg": "primary",
+          "ratio": 6.29
+        },
+        {
+          "theme": "dark",
+          "fg": "text-main",
+          "bg": "bg-card",
+          "ratio": 15.24
+        },
+        {
+          "theme": "dark",
+          "fg": "text-muted",
+          "bg": "bg-card",
+          "ratio": 10.12
+        },
+        {
+          "theme": "dark",
+          "fg": "text-dim",
+          "bg": "bg-card",
+          "ratio": 7.86
+        },
+        {
+          "theme": "dark",
+          "fg": "text-main",
+          "bg": "bg-dark",
+          "ratio": 16.67
+        },
+        {
+          "theme": "dark",
+          "fg": "text-muted",
+          "bg": "bg-dark",
+          "ratio": 11.07
+        },
+        {
+          "theme": "dark",
+          "fg": "text-dim",
+          "bg": "bg-dark",
+          "ratio": 8.6
+        },
+        {
+          "theme": "dark",
+          "fg": "primary-light",
+          "bg": "primary-soft",
+          "ratio": 7.29
+        },
+        {
+          "theme": "dark",
+          "fg": "accent-emerald",
+          "bg": "success-bg",
+          "ratio": 7.91
+        },
+        {
+          "theme": "dark",
+          "fg": "accent-amber",
+          "bg": "warning-bg",
+          "ratio": 10.43
+        },
+        {
+          "theme": "dark",
+          "fg": "accent-rose",
+          "bg": "danger-bg",
+          "ratio": 7.57
+        },
+        {
+          "theme": "dark",
+          "fg": "button-white",
+          "bg": "primary",
+          "ratio": 6.29
+        }
+      ]
+    },
+    {
+      "name": "Wallet reject vẫn giữ DB saved/chain failed; không mint giả sau code splitting",
+      "status": "PASS"
+    },
+    {
+      "name": "Không uncaught JavaScript exception hoặc request ngoài loopback TEST",
+      "status": "PASS"
+    }
+  ],
+  "note": "Prior PHASE6 patch E2E on same production source/dependency lock versions; not rerun as full business E2E in PHASE7"
+}
