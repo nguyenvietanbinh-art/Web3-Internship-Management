@@ -61,7 +61,7 @@ async function verifyLogin(wallet, signature) {
 }
 
 function signToken(user, authProvider = 'wallet') {
-  return jwt.sign({ sub: String(user._id), wallet: user.walletAddress || null, role: user.role, authProvider, sessionVersion:user.authVersion||0 }, config.jwtSecret, {
+  return jwt.sign({ sub: String(user._id), sid: crypto.randomUUID(), wallet: user.walletAddress || null, role: user.role, authProvider, sessionVersion:user.authVersion||0 }, config.jwtSecret, {
     expiresIn: config.jwtExpiresIn,
   });
 }

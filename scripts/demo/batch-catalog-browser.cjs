@@ -1,0 +1,12 @@
+// Verify the user's existing period and student, without submitting an application.
+const fs=require('fs'),path=require('path'),assert=require('node:assert/strict');
+const {vault}=require('./common.cjs'),{BrowserHarness}=require('../../client/test/browserHarness.cjs');
+const dir=path.resolve('contracts/node_modules/.cache/workflow-b-20261106-205837'),accounts=JSON.parse(vault('unprotect',fs.readFileSync(path.join(dir,'accounts.dpapi'),'utf8'))),base='http://localhost:57418/api';
+const browser=new BrowserHarness({port:9238,origin:'http://localhost:5188',api:base,output:dir});
+async function get(token,url){const r=await fetch(base+url,{headers:{Authorization:'Bearer '+token}});assert.equal(r.status,200);return r.json();}
+(async()=>{try{const account=accounts.accounts.find(a=>a.email==='engineer-090@example.invalid');const r=await fetch(base+'/auth/email/login',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({email:account.email,password:accounts.passwords[account.role]})});assert.equal(r.status,200);const session=await r.json();const mine=await get(session.token,'/core/my/internships'),membership=mine.items.find(e=>e.batch.code==='abshd');assert.ok(membership);assert.ok(membership.registeredAt);
+ const catalog=await get(session.token,`/core/my/internships/${membership._id}/opportunities?limit=100`);assert.equal(catalog.total,41);assert.equal(catalog.registrationOpen,true);assert.equal(catalog.applicationCount,0);
+ await browser.start();await browser.session(session.token);
+ await browser.check('Existing new period shows 41 available topics to engineer 090',async()=>{await browser.nav('core-my-internship');await browser.field('Kỳ thực tập được cấp',membership._id);await browser.wait("document.querySelectorAll('main tbody tr').length===41");assert.equal(await browser.ev("document.querySelectorAll('main tbody button.btn-primary:not(:disabled)').length"),41);await browser.screenshot('batch-catalog-engineer090-desktop');await browser.viewport(390);assert.equal(await browser.ev('document.documentElement.scrollWidth>innerWidth'),false);await browser.screenshot('batch-catalog-engineer090-mobile');});
+ assert.equal(browser.exceptions.length,0,JSON.stringify(browser.exceptions));assert.equal(browser.tests.every(t=>t.status==='PASS'),true);
+ }finally{fs.writeFileSync(path.join(dir,'batch-catalog-browser-results.json'),JSON.stringify(browser.result(),null,2));await browser.close();}})().catch(e=>{console.error(e.message);process.exitCode=1});

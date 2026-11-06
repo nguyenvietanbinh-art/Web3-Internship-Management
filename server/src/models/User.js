@@ -49,10 +49,13 @@ const UserSchema = new mongoose.Schema(
 );
 
 UserSchema.add({
+  recruitmentLeaseToken: {type:String,select:false},
+  recruitmentLeaseUntil: {type:Date,select:false},
   walletVerified:{type:Boolean,default:false},walletVerifiedAt:Date,
   loginEmail: {type:String,select:false},
   passwordHash: {type:String,select:false},
   authVersion: {type:Number,default:0},
+  walletLinkVersion: {type:Number,default:0},
   googleSubject: {type:String,select:false},
   googleEmail: {type:String,select:false},
   identityHistory: {type:[new mongoose.Schema({action:String,at:Date},{_id:false})],select:false,default:undefined},

@@ -22,6 +22,7 @@ const requireAuth = asyncHandler(async (req, _res, next) => {
   if (user.disabled) throw new HttpError(401, 'Tài khoản đã bị khóa', 'ACCOUNT_DISABLED');
   req.user = user;
   req.authProvider = payload.authProvider || 'wallet';
+  req.authSid = payload.sid || null;
   if(!require('../config/env').userIdBusiness && !user.walletAddress && !req.originalUrl.split('?')[0].startsWith('/api/auth/') && req.originalUrl.split('?')[0]!=='/api/core/profile')throw new HttpError(403,'Hãy liên kết ví bằng chữ ký để sử dụng nghiệp vụ này','WALLET_LINK_REQUIRED');
   next();
 });

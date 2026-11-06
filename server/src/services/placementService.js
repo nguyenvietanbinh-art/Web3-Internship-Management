@@ -7,6 +7,13 @@ const { InternshipBatch, Application } = require('../models/BusinessModels');
 const identity = require('./businessIdentity');
 const { HttpError } = require('../utils/http');
 const v = require('../core/shared');
+const {
+  applicantKey,
+  assistanceAllowed,
+  withStudentLock,
+  reserveTopic,
+  releaseTopic,
+} = require('./topicRecruitment');
 
 async function existingPlacement(student, batchId) {
   return Assignment.findOne({
@@ -17,6 +24,11 @@ async function existingPlacement(student, batchId) {
 }
 
 async function createPlacement(actor, body, registration = null) {
+  return withStudentLock(v.id(body.studentUserId), () =>
+    performPlacement(actor, body, registration)
+  );
+}
+async function performPlacement(actor, body, registration = null) {
   if (
     body.approveImmediately !== undefined &&
     (actor.role !== 'admin' || typeof body.approveImmediately !== 'boolean')
@@ -48,8 +60,31 @@ async function createPlacement(actor, body, registration = null) {
     : await User.findOne({ walletAddress: topic.companyWallet });
   if (!student || !mentor || !company || company.role !== 'company' || company.disabled)
     throw new HttpError(400, 'Thành viên không hợp lệ');
+  const pendingRegistration = await BatchRegistration.findOne({
+    batchId: batch._id,
+    studentUserId: student._id,
+    status: { $in: ['submitted', 'processing'] },
+  });
+  const selected = pendingRegistration?.selectedTopicId;
+  if (selected && String(selected) !== String(topic._id))
+    throw new HttpError(
+      409,
+      'Sinh viên đã chọn một đề tài khác; phân công phải theo đề tài đã chọn'
+    );
+  if (actor.role === 'admin' && !selected && !assistanceAllowed(batch))
+    throw new HttpError(
+      409,
+      'Sinh viên cần chọn đề tài đã được nhận; nhà trường hỗ trợ phân công từ 7 ngày trước khi kỳ bắt đầu'
+    );
   if (
     actor.role === 'company' &&
+    !(
+      selected &&
+      String(selected) === String(topic._id) &&
+      pendingRegistration.choices.some(
+        (c) => String(c.topicId) === String(topic._id) && c.status === 'accepted'
+      )
+    ) &&
     !(await Application.exists({
       $and: [
         identity.owned(actor, 'companyUserId', 'companyWallet'),
@@ -128,7 +163,10 @@ async function createPlacement(actor, body, registration = null) {
       throw new HttpError(409, 'Đăng ký đã thay đổi; tải lại trước khi phân công', 'STALE_VERSION');
   }
   let assignment;
+  let reserved = false;
+  const key = applicantKey(batch._id, student._id);
   try {
+    reserved = await reserveTopic(topic._id, key);
     assignment = await Assignment.create({
       topicId: topic._id,
       studentId: normalized._id,
@@ -157,6 +195,7 @@ async function createPlacement(actor, body, registration = null) {
       ],
     });
   } catch (error) {
+    if (reserved) await releaseTopic(topic._id, key);
     if (claimed)
       await BatchRegistration.updateOne(
         { _id: claimed._id, status: 'processing' },
@@ -181,6 +220,23 @@ async function createPlacement(actor, body, registration = null) {
       $push: { history: v.event(actor, 'registration.placed', { assignmentId: assignment._id }) },
     }
   );
+  if (pendingRegistration) {
+    const updatedChoices = pendingRegistration.choices.map((c) => ({
+      ...c.toObject(),
+      status:
+        String(c.topicId) === String(topic._id)
+          ? c.status
+          : ['submitted', 'accepted'].includes(c.status)
+          ? 'declined'
+          : c.status,
+    }));
+    await BatchRegistration.updateOne(
+      { _id: pendingRegistration._id, assignmentId: assignment._id },
+      { $set: { choices: updatedChoices, topicId: topic._id, selectedTopicId: topic._id } }
+    );
+    for (const c of pendingRegistration.choices)
+      if (String(c.topicId) !== String(topic._id)) await releaseTopic(c.topicId, key);
+  }
   return assignment;
 }
 

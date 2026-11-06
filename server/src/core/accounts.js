@@ -31,6 +31,10 @@ router.patch('/accounts/:id',requireRole('admin'),asyncHandler(async(req,res)=>{
   if(req.body.role!==undefined)set.role=v.choice(req.body.role,roles,'Vai trò');
   if(req.body.disabled!==undefined){if(typeof req.body.disabled!=='boolean')throw new HttpError(400,'Trạng thái khóa không hợp lệ');set.disabled=req.body.disabled;}
   if(!Object.keys(set).length)throw new HttpError(400,'Chưa chọn thay đổi');v.integer(req.body.version,0,Number.MAX_SAFE_INTEGER,'Phiên bản');
+  if(require('../config/env').schoolWorkflowEnabled){
+    if(set.role&&set.role!==user.role)throw new HttpError(409,'Tạo tài khoản đúng vai trò riêng; không chuyển vai trò có thể làm mất phạm vi lịch sử');
+    if(set.disabled===true&&await require('../workflow/models').SupportPayment.exists({$or:[{companyUserId:user._id},{studentUserId:user._id}],state:{$in:['prepared','submitted','needs_reconciliation']}}))throw new HttpError(409,'Cần đối chiếu/hủy ủy quyền hỗ trợ còn treo trước khi khóa tài khoản');
+  }
   const updated=await User.findOneAndUpdate({_id:user._id,...v.versionMatch(req.body.version),role:{$ne:'admin'}},{$set:set,$inc:{__v:1},$push:{auditHistory:v.event(req.user,'account.updated',{before:{role:user.role,disabled:Boolean(user.disabled)},after:set,reason})}},{new:true,runValidators:true});
   if(!updated)throw new HttpError(409,'Tài khoản đã thay đổi','STALE_VERSION');res.json(dto(updated));
 }));

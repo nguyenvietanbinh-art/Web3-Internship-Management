@@ -26,6 +26,16 @@ export function TopicsPanel({ user, revision = 0, createdTopic = null, onChanged
         search={false}
         columns={[
           { key: 'title', title: 'Tên đề tài', render: (r) => <strong>{r.title}</strong> },
+          { key: 'company', title: 'Doanh nghiệp', render: (r) => r.companyName },
+          {
+            key: 'capacity',
+            title: 'Chỉ tiêu ứng tuyển',
+            render: (r) => (
+              <>
+                {r.applicantCount || 0}/{r.maxSlots || 1} · còn {r.remainingSlots || 0} chỗ
+              </>
+            ),
+          },
           {
             key: 'description',
             title: 'Mô tả',
@@ -66,6 +76,12 @@ export function TopicsPanel({ user, revision = 0, createdTopic = null, onChanged
                         <div className="business-actions">
                           <button
                             className="btn btn-secondary"
+                            onClick={() => setModal({ type: 'capacity', data: r })}
+                          >
+                            Chỉ tiêu
+                          </button>
+                          <button
+                            className="btn btn-secondary"
                             disabled={!!locked}
                             onClick={() => {
                               setMessage('');
@@ -99,7 +115,9 @@ export function TopicsPanel({ user, revision = 0, createdTopic = null, onChanged
           title={modal.type === 'delete' ? 'Xác nhận xóa đề tài' : 'Chỉnh sửa đề tài'}
           onClose={() => setModal(null)}
         >
-          {modal.type === 'edit' ? (
+          {modal.type === 'capacity' ? (
+            <CapacityForm data={modal.data} onSaved={saved} />
+          ) : modal.type === 'edit' ? (
             <TopicEditForm data={modal.data} onSaved={saved} />
           ) : (
             <ActionForm
@@ -198,8 +216,15 @@ function TopicEditForm({ data, onSaved }) {
     </ActionForm>
   );
 }
-export function TopicCreator({ onSaved }) {
-  const emptyForm = { title: '', description: '', kpi: '', criteria: '', deadline: '' };
+export function TopicCreator({ onSaved, endpoint="/core/topics" }) {
+  const emptyForm = {
+    title: '',
+    description: '',
+    kpi: '',
+    criteria: '',
+    deadline: '',
+    maxSlots: 3,
+  };
   const [form, setForm] = useState(emptyForm),
     set = (k, v) => setForm((s) => ({ ...s, [k]: v }));
   return (
@@ -211,11 +236,12 @@ export function TopicCreator({ onSaved }) {
           setForm(emptyForm);
         }}
         onSubmit={() =>
-          apiRequest('/core/topics', {
+          apiRequest(endpoint, {
             method: 'POST',
             body: {
               title: form.title,
               description: form.description,
+              maxSlots: Number(form.maxSlots),
               kpis: [
                 {
                   title: form.kpi,
@@ -228,6 +254,15 @@ export function TopicCreator({ onSaved }) {
           })
         }
       >
+        <Text
+          label="Số lượng nhận ứng tuyển"
+          type="number"
+          required
+          min="1"
+          max="1000"
+          value={form.maxSlots}
+          onChange={(v) => set('maxSlots', v)}
+        />
         <Text label="Tên đề tài" required value={form.title} onChange={(v) => set('title', v)} />
         <Area
           label="Mô tả đề tài"
@@ -251,5 +286,33 @@ export function TopicCreator({ onSaved }) {
         />
       </ActionForm>
     </Panel>
+  );
+}
+function CapacityForm({ data, onSaved }) {
+  const [maxSlots, setMaxSlots] = useState(data.maxSlots || 1);
+  return (
+    <ActionForm
+      submit="Lưu chỉ tiêu ứng tuyển"
+      onSaved={onSaved}
+      onSubmit={() =>
+        apiRequest(`/core/topics/${data._id}/capacity`, {
+          method: 'PATCH',
+          body: { maxSlots: Number(maxSlots), version: data.__v },
+        })
+      }
+    >
+      <p>
+        {data.title} · đang giữ {data.applicantCount || 0} chỗ. Không thể giảm dưới số chỗ đã giữ.
+      </p>
+      <Text
+        label="Chỉ tiêu ứng tuyển của đề tài"
+        type="number"
+        min={Math.max(1, data.applicantCount || 0)}
+        max="1000"
+        required
+        value={maxSlots}
+        onChange={setMaxSlots}
+      />
+    </ActionForm>
   );
 }

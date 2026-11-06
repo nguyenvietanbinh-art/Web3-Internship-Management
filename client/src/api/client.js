@@ -12,7 +12,7 @@ export const DEMO_ENABLED =
 
 export async function apiRequest(
   path,
-  { method = 'GET', body, headers = {}, responseType = 'json' } = {}
+  { method = 'GET', body, headers = {}, responseType = 'json', signal } = {}
 ) {
   const token = getToken();
   const multipart = typeof FormData !== 'undefined' && body instanceof FormData;
@@ -21,6 +21,7 @@ export async function apiRequest(
   try {
     response = await fetch(`${API_BASE}${path}`, {
       method,
+      signal,
       credentials: 'include',
       headers: {
         ...(!multipart && {
@@ -37,7 +38,8 @@ export async function apiRequest(
           ? body
           : JSON.stringify(body),
     });
-  } catch {
+  } catch (error) {
+    if (error.name === 'AbortError') throw error;
     const err = new Error('Không thể kết nối hệ thống. Vui lòng thử lại sau.');
     err.code = 'NETWORK';
     throw err;

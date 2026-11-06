@@ -1,0 +1,13 @@
+import {useState} from 'react';
+import {apiRequest} from '../../../api/client';
+import {Panel,ActionForm,MutationDialog,Text,Area,Select,ErrorNotice} from '../Shared';
+import {LoadingSkeleton,EmptyState} from '../../ui';
+export function Resource({state,children}){return state.loading?<LoadingSkeleton/>:state.error?<ErrorNotice message={state.error}/>:children;}
+export function Rows({items,columns,empty='Chưa có dữ liệu trong phạm vi của bạn'}){return !items?.length?<EmptyState title={empty}/>:<div className="table-scroll" role="region" tabIndex={0} aria-label="Danh sách nghiệp vụ"><table><thead><tr>{columns.map(c=><th key={c.key}>{c.title}</th>)}</tr></thead><tbody>{items.map(r=><tr key={r._id}>{columns.map(c=><td key={c.key}>{c.render?c.render(r):r[c.key]}</td>)}</tr>)}</tbody></table></div>;}
+export function Pager({data,page,onPage}){return <div className="table-pagination"><span>{data?.total||0} sinh viên/bản ghi · Trang {page}/{data?.pages||1}</span><div className="business-actions"><button className="btn btn-secondary" disabled={page<=1} onClick={()=>onPage(page-1)}>Trước</button><button className="btn btn-secondary" disabled={page>=(data?.pages||1)} onClick={()=>onPage(page+1)}>Sau</button></div></div>;}
+export function CommandDialog({title,path,method='POST',initial={},fields=[],onSaved,onClose,children,submit='Xác nhận',transform}){
+ const [form,setForm]=useState(initial);
+ return <MutationDialog title={title} onClose={onClose}><ActionForm submit={submit} onSaved={onSaved} onSubmit={()=>{const body={...form};for(const f of fields)if(f.type==='datetime-local'&&body[f.key])body[f.key]=new Date(body[f.key]).toISOString();return apiRequest(path,{method,body:transform?transform(body):body});}}>{children}{fields.map(f=>f.type==='checkbox'?<label key={f.key}><input type="checkbox" checked={Boolean(form[f.key])} onChange={e=>setForm(s=>({...s,[f.key]:e.target.checked}))}/>{f.label}</label>:f.options?<Select key={f.key} label={f.label} value={form[f.key]||''} required={f.required!==false} options={f.options} onChange={value=>setForm(s=>({...s,[f.key]:value}))}/>:f.type==='area'?<Area key={f.key} label={f.label} value={form[f.key]||''} required={f.required!==false} onChange={value=>setForm(s=>({...s,[f.key]:value}))}/>:<Text key={f.key} label={f.label} required={f.required!==false} type={f.type||'text'} value={form[f.key]??''} onChange={value=>setForm(s=>({...s,[f.key]:f.type==='number'?Number(value):value}))}/>)}</ActionForm></MutationDialog>;
+}
+export {Panel};
+export function ReloadApplications({onClick}){return <button className="btn btn-secondary" onClick={onClick}>Tải lại hồ sơ</button>;}

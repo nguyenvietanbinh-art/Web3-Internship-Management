@@ -1,0 +1,23 @@
+import {useState} from 'react';
+import {useSchoolResource as useData} from './useSchoolResource';
+import {Panel,Resource,Rows,CommandDialog} from './common';
+import {choices,stateLabel,vnDate,reasonField} from './constants';
+import {Select} from '../Shared';
+export default function MyInternship({user}){
+ const [selected,setSelected]=useState(''),[company,setCompany]=useState(''),[revision,setRevision]=useState(0),[modal,setModal]=useState(null);
+ const mine=useData('/core/my/internships',revision),current=mine.data?.items.find(e=>e._id===selected)||null;
+ const apps=useData(current?`/core/my/internships/${current._id}/applications?limit=100`:null,revision),catalog=useData(current&&current.registeredAt&&!current.admission?.state?.includes('active')?`/core/my/internships/${current._id}/opportunities?limit=100`:null,revision);
+ const saved=()=>{setModal(null);setRevision(n=>n+1);};const companies=[...new Map((catalog.data?.items||[]).map(o=>[o.companyUserId,{_id:o.companyUserId,name:o.companyName}])).values()];
+ const enrollments=mine.data?.items||[];
+ return <div className="business-stack"><Panel title="Thực tập của tôi" description="Chỉ những kỳ nhà trường đã cấp quyền cho bạn. Được cấp quyền, đăng ký và phân công là các bước riêng.">
+ <Resource state={mine}><Select label="Kỳ thực tập được cấp" value={selected} onChange={id=>{setSelected(id);setCompany('');}} options={choices(enrollments,e=>`${e.batch.name} · ${e.batch.type==='bachelor'?'Cử nhân':'Kỹ sư'}`)}/></Resource>
+ {current&&<><p>Thời gian: {vnDate(current.batch.startDate)} → {vnDate(current.batch.endDate)} (giờ Việt Nam)</p><p>Đăng ký: {current.registeredAt?'Đã đăng ký':'Chưa đăng ký'} · Đã ứng tuyển <strong>{current.applicationCount}/3 đề tài</strong></p><p>Đề tài: {current.admission?.state==='active'?current.admission.title:'Chưa nhận đề tài'} · Doanh nghiệp: {current.admission?.state==='active'?current.admission.companyName:'Chưa có'}</p><p>Phân công: {current.assignmentId?'Nhà trường đã phân công chính thức':'Chưa phân công chính thức / chờ giảng viên'}</p>{!current.registeredAt&&<button className="btn btn-primary" onClick={()=>setModal({title:'Đăng ký tham gia kỳ',path:`/core/my/internships/${current._id}/register`,fields:[],initial:{}})}>Đăng ký tham gia kỳ</button>}</>}
+ {!user.walletVerified&&<p className="inline-alert">Bạn chưa liên kết ví TEST. Các chức năng task, nhật ký, chấm công và báo cáo vẫn dùng được; thao tác Web3 cần ví đã xác minh.</p>}
+ </Panel>
+ {current?.registeredAt&&current.admission?.state!=='active'&&<Panel title="Cơ hội còn tuyển trong kỳ" description="Nộp hồ sơ không giữ chỗ. Hồ sơ đã rút hoặc bị từ chối vẫn tính vào giới hạn 3."><Resource state={catalog}>
+ <Select label="Lọc doanh nghiệp ứng tuyển" value={company} onChange={setCompany} options={[{value:'',label:'Tất cả doanh nghiệp còn chỗ'},...companies.map(c=>({value:c._id,label:c.name}))]}/>
+ <Rows items={(catalog.data?.items||[]).filter(o=>!company||o.companyUserId===company)} columns={[{key:'title',title:'Đề tài',render:o=><><strong>{o.title}</strong><p>{o.companyName}</p><p>{o.description}</p></>},{key:'quota',title:'Chỉ tiêu',render:o=>`Còn ${o.remainingSlots}/${o.capacity} chỗ`},{key:'action',title:'Thao tác',render:o=><button className="btn btn-primary" disabled={current.applicationCount>=3||!catalog.data?.registrationOpen} onClick={()=>setModal({title:'Ứng tuyển đề tài',path:`/core/my/internships/${current._id}/applications`,initial:{opportunityId:o._id,message:''},fields:[{key:'message',label:'Nguyện vọng gửi doanh nghiệp',type:'area',required:false}]})}>Ứng tuyển đề tài</button>}]} empty={current.applicationCount>=3?'Bạn đã dùng đủ 3 lượt ứng tuyển trong kỳ.':'Chưa có cơ hội phù hợp còn chỗ.'}/></Resource></Panel>}
+ {current&&<Panel title="Đã ứng tuyển" description="Hồ sơ được gửi trực tiếp đến doanh nghiệp bạn ứng tuyển. Từ 7 ngày trước khi kỳ bắt đầu, nếu chưa có nơi tiếp nhận, nhà trường sẽ xử lý phân công."><Resource state={apps}><Rows items={apps.data?.items} columns={[{key:'title',title:'Đề tài / doanh nghiệp',render:a=><>{a.title}<p>{a.companyName}</p></>},{key:'state',title:'Trạng thái',render:a=><>{stateLabel[a.state]}<p>{a.decisionReason}</p></>},{key:'actions',title:'Thao tác',render:a=><div className="business-actions">{['submitted','dispatched','under_review','offered'].includes(a.state)&&<button className="btn btn-secondary" onClick={()=>setModal({title:'Rút hồ sơ — không hoàn lượt ứng tuyển',path:`/core/my/applications/${a._id}/withdraw`,initial:{version:a.__v,reason:''},fields:[reasonField]})}>Rút hồ sơ</button>}</div>}]} /></Resource></Panel>}
+ {modal&&<CommandDialog {...modal} onClose={()=>setModal(null)} onSaved={saved}>{modal.note&&<p>{modal.note}</p>}</CommandDialog>}
+ </div>;
+}

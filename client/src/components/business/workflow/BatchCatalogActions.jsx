@@ -1,0 +1,6 @@
+import {useState} from 'react';
+import {CommandDialog} from './common';
+export default function BatchCatalogActions({batch,onChanged}){
+ const [open,setOpen]=useState(false),[message,setMessage]=useState('');
+ return <div><p>Kỳ mới tự có các đề tài doanh nghiệp đang mở tuyển. Mỗi kỳ giữ chỉ tiêu riêng; đề tài đã có trong kỳ không bị tạo lại hoặc mở lại khi đồng bộ.</p>{batch.status==='open'&&<button className="btn btn-secondary" onClick={()=>setOpen(true)}>Bổ sung đề tài đang mở vào kỳ</button>}{message&&<p role="status">{message}</p>}{open&&<CommandDialog title="Bổ sung đề tài doanh nghiệp vào kỳ" path={`/core/admin/batches/${batch._id}/sync-opportunities`} initial={{}} onClose={()=>setOpen(false)} onSaved={result=>{setOpen(false);setMessage(`Đã thêm ${result.catalog.created} đề tài; giữ nguyên ${result.catalog.existing} đề tài đã có.${result.catalog.skipped.length?` Có ${result.catalog.skipped.length} đề tài cần kiểm tra lại tiêu chí hoặc chỉ tiêu.`:''}`);onChanged();}}><p>Chỉ bổ sung đề tài còn thiếu của doanh nghiệp đang hoạt động và đang mở tuyển. Không thay đổi hồ sơ, phân công hoặc số chỗ đã nhận.</p><p>Hạn KPI nằm ngoài kỳ sẽ được đặt vào ngày kết thúc kỳ mới, không sửa đề tài gốc.</p></CommandDialog>}</div>;
+}

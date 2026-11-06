@@ -1,0 +1,4 @@
+export const stateLabel={submitted:'Quyền xét hồ sơ đang tạm thu hồi',dispatched:'Đã gửi doanh nghiệp · Chờ xét tuyển',under_review:'Doanh nghiệp đang xét',offered:'Chờ doanh nghiệp chốt tiếp nhận',confirmed:'Đã được doanh nghiệp tiếp nhận',rejected:'Không chấp nhận',withdrawn:'Đã rút (vẫn tính lượt)',closed_other_selected:'Đã tự động rút do đã nhận vị trí khác',approved:'Đã phân công',active:'Đang thực tập',completed:'Hoàn tất',cancelled:'Đã hủy',prepared:'Chờ ký chuyển',needs_reconciliation:'Cần đối chiếu',failed_onchain:'Giao dịch thất bại'};
+export const choices=(rows,label)=>[{value:'',label:'Chọn'},...(rows||[]).map(r=>({value:r._id,label:label(r)}))];
+export const vnDate=value=>value?new Date(value).toLocaleString('vi-VN',{timeZone:'Asia/Ho_Chi_Minh'}):'Chưa có';
+export const reasonField={key:'reason',label:'Lý do / nhận xét',type:'area'};

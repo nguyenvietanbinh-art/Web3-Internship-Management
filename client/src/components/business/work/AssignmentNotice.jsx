@@ -14,6 +14,7 @@ export default function AssignmentNotice({ assignment }) {
         thời gian thực tập mới được giao/nộp bài.
       </p>
     );
+  if(assignment.pendingAssignment)return <p className="inline-alert">{assignment.participantNames?.student||'Sinh viên'} đã được doanh nghiệp tiếp nhận, đang chờ nhà trường phân công chính thức và gắn giảng viên. Thời gian kỳ: {dateLabel(assignment.startDate)} → {dateLabel(assignment.endDate)}. Cần hoàn tất phân công trước khi giao công việc.{Date.parse(assignment.startDate)>now?' Kỳ thực tập cũng chưa đến ngày bắt đầu.':''}</p>;
   const future = Date.parse(assignment.startDate) > now,
     ended = Date.parse(assignment.endDate) < now;
   let hint = '';
@@ -27,7 +28,7 @@ export default function AssignmentNotice({ assignment }) {
     )}. Nếu ngày bị nhập nhầm, Nhà trường có thể sửa tại Kỳ & phân công → Sửa giảng viên / ngày.`;
   else if (assignment.lifecycle === 'approved')
     hint =
-      'Nhà trường đã duyệt. Doanh nghiệp vào Kỳ & phân công → Cập nhật phân công → Đang thực tập để bắt đầu.';
+      'Nhà trường đã duyệt. Doanh nghiệp cần chuyển phân công sang trạng thái Đang thực tập trước khi giao việc.';
   return (
     <p className={active(assignment) ? 'muted' : 'inline-alert is-error'}>
       Trạng thái: {displayLabel(assignment.lifecycle)} · {dateLabel(assignment.startDate)} →{' '}

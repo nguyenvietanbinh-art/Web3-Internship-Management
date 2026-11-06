@@ -42,7 +42,7 @@ router.get(
   asyncHandler(async (req, res) => {
     const filter =
         req.user.role === 'admin' ? {} : identity.owned(req.user, 'companyUserId', 'companyWallet'),
-      page = await v.paged(Topic, filter, req.query);
+      page = await v.paged(Topic, filter, req.query, { select: '+applicantKeys' });
     const assigned = new Set(
       (
         await Assignment.distinct('topicId', { topicId: { $in: page.items.map((t) => t._id) } })
@@ -50,7 +50,10 @@ router.get(
     );
     res.json({
       ...page,
-      items: page.items.map((t) => ({ ...t, hasAssignments: assigned.has(String(t._id)) })),
+      items: page.items.map((t) => ({
+        ...require('../services/topicRecruitment').publicTopic(t),
+        hasAssignments: assigned.has(String(t._id)) || t.applicantKeys?.length > 0,
+      })),
     });
   })
 );
@@ -73,6 +76,8 @@ function topicInput(body) {
     title: v.text(body.title, 'Đề tài', { required: true, max: 200 }),
     description: v.text(body.description, 'Mô tả', { required: true }),
     kpis,
+    maxSlots:
+      body.maxSlots === undefined ? 1 : v.integer(body.maxSlots, 1, 1000, 'Chỉ tiêu ứng tuyển'),
   };
 }
 async function editableTopic(req) {
@@ -84,7 +89,7 @@ async function editableTopic(req) {
   if (
     (await Assignment.exists({ topicId: topic._id })) ||
     (await require('../models/BatchRegistration').exists({
-      topicId: topic._id,
+      $or: [{ topicId: topic._id }, { 'choices.topicId': topic._id }],
       status: { $in: ['submitted', 'processing'] },
     })) ||
     topic.status !== 'open' ||
@@ -104,7 +109,7 @@ router.post(
   '/topics',
   requireRole('company'),
   asyncHandler(async (req, res) => {
-    v.keys(req.body, ['title', 'description', 'kpis']);
+    v.keys(req.body, ['title', 'description', 'kpis', 'maxSlots']);
     res.status(201).json(
       await Topic.create({
         ...identity.refs(req.user, 'companyUserId', 'companyWallet'),
@@ -115,12 +120,40 @@ router.post(
   })
 );
 router.patch(
+  '/topics/:id/capacity',
+  requireRole('company'),
+  asyncHandler(async (req, res) => {
+    v.keys(req.body, ['maxSlots', 'version']);
+    const maxSlots = v.integer(req.body.maxSlots, 1, 1000, 'Chỉ tiêu ứng tuyển');
+    v.integer(req.body.version, 0, Number.MAX_SAFE_INTEGER, 'Phiên bản');
+    const topic = await Topic.findOne({
+      _id: v.id(req.params.id),
+      ...identity.owned(req.user, 'companyUserId', 'companyWallet'),
+    }).select('+applicantKeys');
+    if (!topic) throw new HttpError(404, 'Không tìm thấy đề tài của doanh nghiệp');
+    if (topic.applicantKeys.length > maxSlots)
+      throw new HttpError(409, 'Không thể giảm chỉ tiêu dưới số chỗ đã giữ');
+    const updated = await Topic.findOneAndUpdate(
+      {
+        _id: topic._id,
+        ...v.versionMatch(req.body.version),
+        $expr: { $lte: [{ $size: { $ifNull: ['$applicantKeys', []] } }, maxSlots] },
+      },
+      { $set: { maxSlots }, $inc: { __v: 1 } },
+      { new: true, runValidators: true }
+    ).select('+applicantKeys');
+    if (!updated) throw new HttpError(409, 'Chỉ tiêu đã thay đổi; vui lòng tải lại');
+    res.json(require('../services/topicRecruitment').publicTopic(updated.toObject()));
+  })
+);
+router.patch(
   '/topics/:id',
   requireRole('company'),
   asyncHandler(async (req, res) => {
-    v.keys(req.body, ['title', 'description', 'kpis', 'version']);
+    v.keys(req.body, ['title', 'description', 'kpis', 'maxSlots', 'version']);
     const topic = await editableTopic(req),
       input = topicInput(req.body);
+    if (req.body.maxSlots === undefined) input.maxSlots = topic.maxSlots;
     const saved = await Topic.findOneAndUpdate(
       { _id: topic._id, ...v.versionMatch(req.body.version) },
       { $set: input, $inc: { __v: 1 } },
@@ -236,3 +269,5 @@ router.patch(
   })
 );
 module.exports = router;
+
+module.exports.topicInput = topicInput;

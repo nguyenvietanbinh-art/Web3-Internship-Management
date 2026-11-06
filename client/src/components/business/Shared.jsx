@@ -58,7 +58,7 @@ export function Area({ label, value, onChange, required = false, ...props }) {
     </Field>
   );
 }
-export function Select({ label, value, onChange, options, required = false }) {
+export function Select({ label, value, onChange, options, required = false, disabled = false }) {
   return (
     <Field label={label}>
       <select
@@ -66,6 +66,7 @@ export function Select({ label, value, onChange, options, required = false }) {
         aria-label={label}
         value={value}
         required={required}
+        disabled={disabled}
         onChange={(e) => onChange(e.target.value)}
       >
         {options.map((option) => (
@@ -271,28 +272,33 @@ export function ServerTable({
     </section>
   );
 }
-export function AssignmentPicker({ value, onChange, revision = 0 }) {
-  const state = useResource('/core/placements?limit=100', revision);
+export function AssignmentPicker({ value, onChange, revision = 0, batchId='', requireBatch=false, includeAdmissions=false }) {
+  const path=includeAdmissions&&batchId?'/core/work/students?limit=100&batchId='+encodeURIComponent(batchId):'/core/placements?limit=100'+(batchId?'&batchId='+encodeURIComponent(batchId):'');
+  const state = useResource(requireBatch&&!batchId?null:path, revision);
+  const items=(state.data?.items||[]).filter(a=>!batchId||a.batchId===batchId);
   return (
     <div>
       <ErrorNotice message={state.error} />
       <Select
         label="Phân công theo kỳ"
+        disabled={requireBatch&&!batchId}
         value={value?._id || ''}
-        onChange={(id) => onChange(state.data?.items.find((a) => a._id === id) || null)}
+        onChange={(id) => onChange(items.find((a) => a._id === id) || null)}
         options={[
-          { value: '', label: state.loading ? 'Đang tải phân công…' : 'Chọn phân công' },
-          ...(state.data?.items || []).map((a) => ({
+          { value: '', label: requireBatch&&!batchId?'Chọn kỳ thực tập trước':state.loading ? 'Đang tải phân công…' : 'Chọn sinh viên / phân công' },
+          ...items.map((a) => ({
             value: a._id,
             label: `${a.topic?.title || a._id} · ${
               a.participantNames?.student || shortWallet(a.studentWallet)
-            } · ${displayLabel(a.lifecycle)}`,
+            } · ${a.pendingAssignment?'Đã tiếp nhận · Chờ nhà trường phân công':displayLabel(a.lifecycle)}`,
           })),
         ]}
       />
       <small className="muted">
-        Hiển thị tối đa 100 phân công. Thời gian theo múi giờ thiết bị.
+        Hiển thị tối đa 100 sinh viên/phân công. Thời gian theo múi giờ thiết bị.
       </small>
+      {batchId&&!state.loading&&!state.error&&!items.length&&<p className="muted">Chưa có sinh viên được phân công chính thức cho bạn trong kỳ này. Nhà trường cần hoàn tất phân công và giảng viên trước khi doanh nghiệp giao công việc.</p>}
+      {items.some(a=>a.pendingAssignment)&&<p className="muted">Có sinh viên đã được doanh nghiệp tiếp nhận, đang chờ nhà trường phân công chính thức. Chọn sinh viên để xem trạng thái.</p>}
     </div>
   );
 }

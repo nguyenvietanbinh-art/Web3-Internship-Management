@@ -51,6 +51,7 @@ router.post("/login-wallet", asyncHandler(async (req, res) => {
   let user = await User.findOne({ walletAddress: wallet });
   if (user?.disabled) throw new HttpError(403, 'Tài khoản đã bị khóa', 'ACCOUNT_DISABLED');
   if (!user) {
+    if (config.schoolWorkflowEnabled) throw new HttpError(403, 'Tài khoản do nhà trường cấp; hãy đăng nhập và liên kết ví từ hồ sơ', 'PUBLIC_REGISTRATION_DISABLED');
     if (!SELF_REGISTER_ROLES.includes(role)) throw new HttpError(400, "Vai trò đăng ký không hợp lệ (company hoặc student)");
     user = await User.create({
       walletAddress: wallet,
@@ -112,7 +113,7 @@ router.post("/demo-login", asyncHandler(async (req, res) => {
 router.get("/me", requireAuth, asyncHandler(async(req,res)=>{
   const linked=await User.findById(req.user._id).select('+googleSubject +googleEmail');
   const passwordEnabled=Boolean(await User.exists({_id:req.user._id,passwordHash:{$type:'string'}}));
-  res.json({user:{...req.user.toObject(),passwordEnabled,googleLinked:Boolean(linked.googleSubject),emailVerified:Boolean(linked.googleSubject&&linked.googleEmail&&req.user.email?.toLowerCase()===linked.googleEmail),authProvider:req.authProvider}});
+  res.json({user:{...req.user.toObject(),authSessionId:req.authSid,passwordEnabled,googleLinked:Boolean(linked.googleSubject),emailVerified:Boolean(linked.googleSubject&&linked.googleEmail&&req.user.email?.toLowerCase()===linked.googleEmail),authProvider:req.authProvider}});
 }));
 
 // Hồ sơ công khai chỉ gồm thông tin không nhạy cảm.

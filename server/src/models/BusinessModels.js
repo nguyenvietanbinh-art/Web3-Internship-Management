@@ -68,6 +68,10 @@ const InternshipBatch = model(
   'InternshipBatch',
   {
     code: { type: String, required: true, unique: true },
+    type: { type: String, enum: ['bachelor', 'engineer'] },
+    registrationOpensAt: Date,
+    registrationClosesAt: Date,
+    workflowRevision: {type:Number,default:0},
     name: { type: String, required: true },
     startDate: { type: Date, required: true },
     endDate: { type: Date, required: true },

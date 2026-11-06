@@ -4,11 +4,12 @@ const {HttpError}=require('../utils/http'),{assertTestEnvironment}=require('../c
 const {ChainOperation}=require('../models/Web3Models'),v=require('../core/shared');
 const hash=text=>ethers.keccak256(ethers.toUtf8Bytes(text));
 const kindId={report:1,attendance:2,completion:3};
-function assertTest(){assertTestEnvironment({nodeEnv:process.env.NODE_ENV,uri:process.env.MONGODB_URI,allowlistedUri:process.env.MONGODB_URI_TEST_ALLOWLIST});}
+function assertTest(){if(process.env.SCHOOL_WORKFLOW_ENABLED==='true')return require('../config/workflowTestGuard').assertWorkflowTest();assertTestEnvironment({nodeEnv:process.env.NODE_ENV,uri:process.env.MONGODB_URI,allowlistedUri:process.env.MONGODB_URI_TEST_ALLOWLIST});}
 function metadata(){
  if(process.env.WEB3_LOCAL_ENABLED!=='true'||!process.env.WEB3_LOCAL_DEPLOYMENT)throw new HttpError(503,'Web3 local chưa bật/cấu hình','WEB3_NOT_CONFIGURED');
  assertTest();let d;try{d=JSON.parse(fs.readFileSync(process.env.WEB3_LOCAL_DEPLOYMENT,'utf8'));}catch{throw new HttpError(503,'Không đọc được metadata deployment local','WEB3_NOT_CONFIGURED');}
- if(d.chainId!==31337||d.rpcUrl!=='http://127.0.0.1:18545'||!ethers.isAddress(d.address)||!ethers.isAddress(d.deployer)||d.localTestOnly!==true||!Array.isArray(d.abi)||!/^0x[a-f0-9]{64}$/i.test(d.deploymentTx))throw new HttpError(503,'Deployment không thuộc môi trường Hardhat local được phép','WEB3_UNSAFE_CONFIG');return d;
+ const rpc=process.env.SCHOOL_WORKFLOW_ENABLED==='true'?'http://127.0.0.1:18546':'http://127.0.0.1:18545';
+ if(d.chainId!==31337||d.rpcUrl!==rpc||!ethers.isAddress(d.address)||!ethers.isAddress(d.deployer)||d.localTestOnly!==true||!Array.isArray(d.abi)||!/^0x[a-f0-9]{64}$/i.test(d.deploymentTx))throw new HttpError(503,'Deployment không thuộc môi trường Hardhat local được phép','WEB3_UNSAFE_CONFIG');return d;
 }
 async function context(){
  const d=metadata(),request=new ethers.FetchRequest(d.rpcUrl);request.timeout=4000;

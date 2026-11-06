@@ -4,14 +4,14 @@ import { apiRequest } from '../../api/client';
 import { Panel, Select, Text, ActionForm, ErrorNotice } from './Shared';
 import { useResource } from './hooks';
 
-export default function AiPage({user}) {
+export default function AiPage({user,schoolWorkflow=false}) {
   const [engine,setEngine]=useState('sbert'),[topK,setTopK]=useState('5'),[jdId,setJdId]=useState(''),[reportId,setReportId]=useState(''),[result,setResult]=useState(null);
   const [statusRevision,setStatusRevision]=useState(0);
   const status=useResource('/core/ai/status',statusRevision);
-  const jds=useResource(user.role==='company'?'/core/jds?mine=true&limit=50':'/core/jds?limit=1');
+  const jds=useResource(schoolWorkflow?(user.role==='company'?'/core/school/opportunities?limit=100':user.role==='student'?'/core/my/internships':null):user.role==='company'?'/core/jds?mine=true&limit=50':'/core/jds?limit=1');
   const reports=useResource('/core/reports?limit=50');
   const matching=['student','company'].includes(user.role);
-  const run=async path=>{setResult(null);try{return await apiRequest(path,{method:'POST',body:{engine,topK:Number(topK),...(user.role==='company'&&path.endsWith('rank-applicants')?{jdId}:{})}});}finally{setStatusRevision(n=>n+1);}};
+  const run=async path=>{setResult(null);const matching=path.endsWith('rank-applicants')||path.endsWith('/match');try{return await apiRequest(schoolWorkflow&&matching?path.replace('/core/ai/','/core/school/ai/'):path,{method:'POST',body:{engine,topK:Number(topK),...(matching?(schoolWorkflow?user.role==='company'?{opportunityId:jdId}:{enrollmentId:jdId}:user.role==='company'?{jdId}:{}):{})}});}finally{setStatusRevision(n=>n+1);}};
   return <div className="business-stack">
     <Panel title="Phân tích mức độ phù hợp" description="Nội dung CV và báo cáo được xử lý nội bộ, không gửi đến dịch vụ AI bên ngoài.">
       <ErrorNotice message={status.error} /><p role="status">{status.loading?'Đang kiểm tra…':status.data?.sbert.ready?'Sentence-BERT sẵn sàng':'Sentence-BERT chưa sẵn sàng'}</p>
@@ -22,6 +22,7 @@ export default function AiPage({user}) {
       <ErrorNotice message={jds.error} /><ActionForm submit="Phân tích độ phù hợp" onSaved={setResult} onSubmit={()=>run(user.role==='student'?'/core/ai/match':'/core/ai/rank-applicants')}>
         <Text label="Số kết quả" type="number" min="1" max="20" required value={topK} onChange={setTopK} />
         {user.role==='company'&&<Select label="Tin tuyển dụng" required value={jdId} onChange={setJdId} options={[{value:'',label:'Chọn JD của bạn'},...(jds.data?.items||[]).map(j=>({value:j._id,label:j.title}))]} />}
+        {schoolWorkflow&&user.role==='student'&&<Select label="Kỳ được cấp để đối chiếu CV" required value={jdId} onChange={setJdId} options={[{value:'',label:'Chọn kỳ'},...(jds.data?.items||[]).map(e=>({value:e._id,label:e.batch.name}))]}/>}
       </ActionForm>
     </Panel>}
     {user.role!=='student'&&<Panel title="Phân tích báo cáo & yếu tố cần xem xét" description="Chỉ báo cáo trong phạm vi phụ trách; kết quả hỗ trợ người hướng dẫn, không chấm điểm hay kỷ luật tự động.">

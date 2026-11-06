@@ -7,6 +7,7 @@ export function useResource(path, revision = 0) {
     let active = true;
     Promise.resolve().then(() => {
       if (!active) return;
+      if(!path){setState({data:null,loading:false,error:''});return;}
       setState(current => ({ ...current, loading: true, error: '' }));
       return apiRequest(path).then(data => { if (active) setState({ data, loading: false, error: '' }); }).catch(error => { if (active) setState({ data: null, loading: false, error: error.message }); });
     });

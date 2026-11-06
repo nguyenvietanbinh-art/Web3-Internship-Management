@@ -1,0 +1,20 @@
+const router=require('express').Router(),{asyncHandler,HttpError}=require('../utils/http'),v=require('../core/shared'),{Application,Enrollment}=require('./models'),{NotificationReceipt}=require('../models/BusinessModels'),Assignment=require('../models/Assignment'),svc=require('./service');
+async function items(user){
+ // Terminal events remain visible to the company that received this application,
+ // even though closing it immediately revokes access to the CV and review API.
+ const companyFilter={$or:[svc.companyGrant(user),{companyUserId:user._id,'dispatch.at':{$type:'date'},state:{$in:['withdrawn','closed_other_selected']}}]};
+ const apps=await Application.find(user.role==='admin'?{}:user.role==='student'?{studentUserId:user._id}:user.role==='company'?companyFilter:{_id:{$in:[]}}).select('title studentName state history').lean();
+ const enrollments=user.role==='student'?await Enrollment.find({studentUserId:user._id}).select('history').lean():[];
+ const assignments=await Assignment.find(require('../core/placementPolicy').scope(user)).select('topicSnapshot history').lean();
+ const receipts=await NotificationReceipt.find({userId:user._id}).select('eventId').lean(),read=new Set(receipts.map(r=>r.eventId));
+ const labels={'school.application_sent_to_company':'Đã gửi hồ sơ trực tiếp cho doanh nghiệp','school.application_routed_directly':'Hồ sơ đã chuyển sang xét tuyển trực tiếp','school.application_submitted':'Hồ sơ ứng tuyển đã nộp','school.dispatched':'Nhà trường đã giao hồ sơ cho doanh nghiệp','school.dispatch_revoked':'Nhà trường đã thu hồi quyền xét hồ sơ','school.application_decision':'Doanh nghiệp đã có kết quả xét hồ sơ','school.offer_confirmed':'Sinh viên đã xác nhận tiếp nhận','school.closed_other_selected':'Hồ sơ đã đóng vì nhận đề tài khác','school.withdrawn':'Hồ sơ đã rút','school.official_assignment':'Đã phân công giảng viên chính thức','school.mentor_changed':'Đã thay đổi giảng viên phụ trách','school.assignment_state':'Trạng thái phân công đã thay đổi','school.assignment_cancelled':'Phân công đã được hủy','school.eligibility_granted':'Được cấp quyền tham gia kỳ','school.registered':'Đã đăng ký tham gia kỳ','school.admission_confirmed':'Đã nhận một đề tài trong kỳ','school.admission_cancelled':'Đã hủy nhận đề tài'};
+ return [...apps,...enrollments,...assignments].flatMap(row=>(row.history||[]).filter(e=>{
+  if(!labels[e.action])return false;
+  if(user.role!=='company')return true;
+  if(['withdrawn','closed_other_selected'].includes(row.state))return e.action==='school.withdrawn'||e.action==='school.closed_other_selected';
+  return e.action!=='school.application_submitted';
+ }).map(e=>({id:String(e._id),at:e.at,title:row.title||row.topicSnapshot?.title||'Thực tập theo kỳ',message:e.action==='school.closed_other_selected'?`${row.studentName||'Sinh viên'}: hồ sơ đã tự động rút do đã được tiếp nhận ở vị trí thực tập khác.`:e.action==='school.withdrawn'?`${row.studentName||'Sinh viên'} đã rút hồ sơ ứng tuyển.`:labels[e.action]+(e.data?.state?` · ${e.data.state}`:''),read:read.has(String(e._id))}))).sort((a,b)=>new Date(b.at)-new Date(a.at));
+}
+router.get('/notifications',asyncHandler(async(req,res)=>{const {page,limit,skip}=v.pagination(req.query),all=await items(req.user);res.json({items:all.slice(skip,skip+limit),total:all.length,unread:all.filter(x=>!x.read).length,page,limit,pages:Math.max(1,Math.ceil(all.length/limit))});}));
+router.patch('/notifications/:id/read',asyncHandler(async(req,res)=>{v.keys(req.body,[]);v.id(req.params.id);if(!(await items(req.user)).some(x=>x.id===req.params.id))throw new HttpError(404,'Thông báo ngoài phạm vi');await NotificationReceipt.updateOne({userId:req.user._id,eventId:req.params.id},{$setOnInsert:{readAt:new Date()}},{upsert:true});res.json({read:true});}));
+module.exports=router;

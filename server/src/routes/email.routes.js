@@ -73,7 +73,7 @@ router.get('/email/status', (_req, res) =>
   res.json({
     enabled: config.emailEnabled,
     emailVerification: false,
-    registrationRoles: ['student'],
+    registrationRoles: config.schoolWorkflowEnabled ? [] : ['student'],
   })
 );
 router.use((req, _res, next) => {
@@ -106,6 +106,7 @@ router.use(
 router.post(
   '/email/register',
   asyncHandler(async (req, res) => {
+    if (config.schoolWorkflowEnabled) throw new HttpError(403, 'Tài khoản do nhà trường cấp; đăng ký công khai đã tắt', 'PUBLIC_REGISTRATION_DISABLED');
     keys(req.body, ['name', 'email', 'password', 'confirmPassword']);
     const loginEmail = email(req.body.email),
       plain = password(req.body.password);
@@ -276,7 +277,7 @@ router.post(
       },
       {
         $set: { walletAddress: c.wallet, walletVerified: true, walletVerifiedAt: new Date() },
-        $inc: { authVersion: 1 },
+        $inc: { authVersion: 1, walletLinkVersion: 1 },
         $push: { identityHistory: { action: 'password.wallet_linked', at: new Date() } },
       },
       { new: true, runValidators: true }

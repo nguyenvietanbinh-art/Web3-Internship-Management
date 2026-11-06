@@ -311,6 +311,7 @@ function LegacyPlacementDetails({ data, onSaved }) {
   );
 }
 function UnifiedPlacementForm({ user, onSaved }) {
+  const [companyId, setCompanyId] = useState('');
   const [form, setForm] = useState({
       batchId: '',
       topicId: '',
@@ -322,9 +323,14 @@ function UnifiedPlacementForm({ user, onSaved }) {
     }),
     set = (k, v) => setForm((s) => ({ ...s, [k]: v }));
   const batches = useResource('/core/batches?limit=100'),
-    topics = useResource('/core/topics?limit=100'),
+    topics = useResource(
+      user.role === 'admin' && form.batchId && form.studentUserId
+        ? `/core/batches/${form.batchId}/opportunities?studentUserId=${form.studentUserId}`
+        : '/core/topics?limit=100'
+    ),
     students = useResource('/core/directory?role=student&limit=100'),
-    mentors = useResource('/core/directory?role=mentor&limit=100');
+    mentors = useResource('/core/directory?role=mentor&limit=100'),
+    companies = useResource('/core/directory?role=company&limit=100');
   const choose = (label, key, state, filter = () => true) => (
     <Select
       label={label}
@@ -371,7 +377,31 @@ function UnifiedPlacementForm({ user, onSaved }) {
             nằm trong khoảng này.
           </p>
         ))}
-      {choose('Đề tài thực tập', 'topicId', topics)}
+      {choose(
+        user.role === 'admin' ? 'Sinh viên cần phân công' : 'Sinh viên đã chấp nhận',
+        'studentUserId',
+        students
+      )}
+      {user.role === 'admin' && (
+        <Select
+          label="Doanh nghiệp nhận phân công"
+          required
+          value={companyId}
+          onChange={(value) => {
+            setCompanyId(value);
+            set('topicId', '');
+          }}
+          options={[
+            { value: '', label: 'Chọn doanh nghiệp' },
+            ...(companies.data?.items || []).map((c) => ({ value: c._id, label: c.name })),
+          ]}
+        />
+      )}
+      {choose('Đề tài thực tập', 'topicId', topics, (t) =>
+        user.role !== 'admin'
+          ? t.remainingSlots > 0
+          : Boolean(form.batchId && form.studentUserId && String(t.companyUserId) === companyId)
+      )}
       {topics.data?.items
         ?.filter((t) => t._id === form.topicId)
         .map((t) => (
@@ -386,11 +416,6 @@ function UnifiedPlacementForm({ user, onSaved }) {
             </ul>
           </div>
         ))}
-      {choose(
-        user.role === 'admin' ? 'Sinh viên cần phân công' : 'Sinh viên đã chấp nhận',
-        'studentUserId',
-        students
-      )}
       {choose('Giảng viên phụ trách', 'mentorUserId', mentors)}
       <Text
         label="Ngày bắt đầu thực tập"

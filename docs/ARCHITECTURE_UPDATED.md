@@ -1,3 +1,5 @@
+> **Workflow Phase B ? 2026-11-06:** School-managed workflow is running in isolated TEST at `http://localhost:5188` (Mongo replica set `27018`, Hardhat `18546`). New evidence: 9/9 real HTTP/DB/NLP/SBT tests and 5/5 browser scenarios; frontend lint/build pass. See [current implementation and test report](WORKFLOW_PHASE_B_RESULT.md). The original database is unchanged. ERC20 support payments remain unimplemented pending the explicit pinned dependency approval in D06; source migration and full Phase B acceptance are not complete. Historical results below do not prove the new workflow or payments. Credentials are local ignored files only.
+
 ## Kiến trúc runtime unified
 
 ```mermaid

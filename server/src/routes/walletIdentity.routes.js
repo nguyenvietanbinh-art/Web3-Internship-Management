@@ -17,6 +17,7 @@ router.post('/wallet/unlink',requireAuth,asyncHandler(async(req,res)=>{
  const c=await Challenge.findOne({_id:req.body.challengeId,purpose:'user-unlink-wallet',userId:current._id,wallet:current.walletAddress,browserHash:hash(secret),usedAt:{$exists:false},expiresAt:{$gt:new Date()}});if(!c)throw new HttpError(401,'Challenge sai/hết hạn');
  let recovered;try{recovered=ethers.verifyMessage(c.message,req.body.signature).toLowerCase();}catch{throw new HttpError(401,'Chữ ký không hợp lệ');}if(recovered!==current.walletAddress)throw new HttpError(401,'Chữ ký không khớp');
  const {ChainOperation}=require('../models/Web3Models'),{WorkSession}=require('../models/BusinessModels');
+ if(config.schoolWorkflowEnabled&&await require('../workflow/models').SupportPayment.exists({$or:[{companyUserId:current._id},{studentUserId:current._id}],state:{$in:['prepared','submitted','needs_reconciliation']}}))throw new HttpError(409,'Cần đối chiếu hoặc hủy ủy quyền hỗ trợ còn treo trước khi đổi ví','PAYMENT_UNRESOLVED');
  if(await ChainOperation.exists({$or:[{studentWallet:current.walletAddress},{actorWallet:current.walletAddress},{actorUserId:current._id}]}))throw new HttpError(409,'Ví đã gắn với operation/chứng nhận blockchain; không tự hủy','WALLET_IN_USE');
  if(await WorkSession.exists({studentUserId:current._id,state:'open'}))throw new HttpError(409,'Cần đóng phiên giờ làm trước','WALLET_IN_USE');
  for(const[name,id,wallet]of [['CV','ownerUserId','ownerWallet'],['JD','companyUserId','companyWallet'],['Topic','companyUserId','companyWallet'],['Assignment',current.role+'UserId',current.role+'Wallet']]){
@@ -24,7 +25,7 @@ router.post('/wallet/unlink',requireAuth,asyncHandler(async(req,res)=>{
   if(await M.exists({[id]:{$exists:false},[wallet]:current.walletAddress}))throw new HttpError(409,'Cần mapping dữ liệu legacy trước khi hủy','LEGACY_MAPPING_REQUIRED');
  }
  const consumed=await Challenge.updateOne({_id:c._id,usedAt:{$exists:false},expiresAt:{$gt:new Date()}},{$set:{usedAt:new Date()}});if(consumed.modifiedCount!==1)throw new HttpError(409,'Challenge đã dùng');
- const saved=await User.findOneAndUpdate({_id:current._id,walletAddress:c.wallet,authVersion:current.authVersion,disabled:{$ne:true},$or:[{passwordHash:{$type:'string'}},{googleSubject:{$type:'string'}}]},{$unset:{walletAddress:1,walletVerifiedAt:1},$set:{walletVerified:false},$inc:{authVersion:1},$push:{identityHistory:{action:'wallet.unlinked',at:new Date()}}},{new:true});if(!saved)throw new HttpError(409,'Tài khoản vừa thay đổi');
+ const saved=await User.findOneAndUpdate({_id:current._id,walletAddress:c.wallet,authVersion:current.authVersion,disabled:{$ne:true},$or:[{passwordHash:{$type:'string'}},{googleSubject:{$type:'string'}}]},{$unset:{walletAddress:1,walletVerifiedAt:1},$set:{walletVerified:false},$inc:{authVersion:1,walletLinkVersion:1},$push:{identityHistory:{action:'wallet.unlinked',at:new Date()}}},{new:true});if(!saved)throw new HttpError(409,'Tài khoản vừa thay đổi');
  const provider=req.authProvider==='wallet'?(current.passwordHash?'password':'google'):req.authProvider;res.json({token:signToken(saved,provider),user:{_id:saved._id,walletAddress:null,walletVerified:false}});
 }));
 module.exports=router;

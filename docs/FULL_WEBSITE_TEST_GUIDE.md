@@ -1,3 +1,13 @@
+> **2026-11-06 ? company work period selection:** Company Work & Diary now selects the period first, then its official student placement. Task/diary tables and both assignment forms use that period; switching periods clears stale selection. See [behavior and current tests](COMPANY_WORK_PERIOD_FILTER.md).
+
+> **2026-11-06 ? catalog for new periods:** Creating a period now automatically publishes open company topic templates with independent period quotas. The two existing empty periods were repaired with 41 opportunities each. See [rules and current verification](NEW_BATCH_TOPIC_CATALOG_RESULT.md). GET requests never populate data, and synchronization never reopens or overwrites an existing opportunity.
+
+> **2026-11-06 ? first company acceptance:** The owner explicitly chose immediate acceptance by the first company, with automatic withdrawal of the student's other open applications and notifications to their companies. This supersedes the earlier offer/student-confirmation rule (D03). See [implementation, current bachelor-001 result and tests](FIRST_COMPANY_ACCEPTANCE_RESULT.md).
+
+> **2026-11-06 ? direct applications:** The owner clarified that students apply directly to the selected company. This supersedes the earlier school-dispatch gate (D01). Admin intervention is the fallback from seven days before the period starts when no placement has been secured. See [updated policy, data fix and verification](DIRECT_APPLICATION_ROUTING_FIX.md).
+
+> **Workflow Phase B ? 2026-11-06:** School-managed workflow is running in isolated TEST at `http://localhost:5188` (Mongo replica set `27018`, Hardhat `18546`). New evidence: 9/9 real HTTP/DB/NLP/SBT tests and 5/5 browser scenarios; frontend lint/build pass. See [current implementation and test report](WORKFLOW_PHASE_B_RESULT.md). The original database is unchanged. ERC20 support payments remain unimplemented pending the explicit pinned dependency approval in D06; source migration and full Phase B acceptance are not complete. Historical results below do not prove the new workflow or payments. Credentials are local ignored files only.
+
 # Kiểm thử Internova — một website, email trước, ví sau
 
 Cập nhật 02/11/2026. Chỉ mở **http://localhost:5182/**. Backend57407, database TEST `web3_internship_test_phase1_d8c3534f_0f4877b64b94`. Không chuyển sang5177/5178 hoặc sao chép tài khoản giữa database.

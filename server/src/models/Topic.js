@@ -112,6 +112,7 @@ const TopicSchema = new mongoose.Schema(
     deadline: Date,
     difficulty: { type: String, enum: ["beginner", "intermediate", "advanced"], default: "intermediate" },
     maxSlots: { type: Number, min: 1, default: 1 },
+    applicantKeys: { type: [String], default: [], select: false },
     assignedCount: { type: Number, min: 0, default: 0 },
     ipfsDetailsHash: {
       type: String,

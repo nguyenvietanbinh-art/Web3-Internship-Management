@@ -10,9 +10,10 @@ const { scope, resource } = require('./workPolicy');
 router.get(
   '/tasks',
   asyncHandler(async (req, res) => {
-    const filter = await scope(req.user);
+    const filter = await scope(req.user,{batchId:req.query.batchId});
     if (req.query.assignmentId) {
-      await policy.load(req.user, req.query.assignmentId);
+      const assignment=await policy.load(req.user, req.query.assignmentId);
+      if(req.query.batchId&&String(assignment.batchId)!==req.query.batchId)throw new HttpError(400,'Phân công không thuộc kỳ đã chọn');
       filter.assignmentId = req.query.assignmentId;
     }
     if (req.query.status)

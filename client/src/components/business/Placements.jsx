@@ -83,7 +83,7 @@ export default function PlacementsPage({ user, unified = false }) {
           ]}
         />
       </Panel>
-      {unified && ['admin', 'student'].includes(user.role) && (
+      {unified && ['admin', 'student', 'company'].includes(user.role) && (
         <BatchRegistrationsPanel user={user} revision={revision} onChanged={closeAndRefresh} />
       )}
       <Panel

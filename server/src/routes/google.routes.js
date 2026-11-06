@@ -61,6 +61,7 @@ router.post('/google/login',asyncHandler(async(req,res)=>{
   const c=await challenge(req,'login'),p=await verify(req,c);
   let user=await User.findOne({googleSubject:p.sub}).select('+googleSubject +googleEmail');
   if(!user){
+    if(config.schoolWorkflowEnabled)throw new HttpError(403,'Tài khoản do nhà trường cấp','PUBLIC_REGISTRATION_DISABLED');
     if(req.body.role!==undefined && req.body.role!=='student')throw new HttpError(400,'Google tự đăng ký chỉ cấp vai trò sinh viên','REGISTRATION_ROLE_DENIED');
     const escaped=p.email.replace(/[.*+?^${}()|[\]\\]/g,'\\$&');
     if(await User.exists({email:new RegExp('^'+escaped+'$','i')}))throw new HttpError(409,'Email đã tồn tại. Đăng nhập tài khoản hiện có và liên kết Google.','ACCOUNT_LINK_REQUIRED');
@@ -94,7 +95,7 @@ router.post('/wallet/link',requireAuth,asyncHandler(async(req,res)=>{
   walletProof(c,req.body.signature,c.wallet);
   if(await User.exists({walletAddress:c.wallet}))throw new HttpError(409,'Ví đã thuộc tài khoản khác; không tự gộp','IDENTITY_CONFLICT');
   await consume(c);
-  const u=await User.findOneAndUpdate({_id:current._id,walletAddress:{$exists:false},disabled:{$ne:true}},{$set:{walletAddress:c.wallet,walletVerified:true,walletVerifiedAt:new Date()},$inc:{__v:1},$push:{identityHistory:audit('wallet.linked')}},{new:true,runValidators:true}).select('+googleSubject +googleEmail');
+  const u=await User.findOneAndUpdate({_id:current._id,walletAddress:{$exists:false},disabled:{$ne:true}},{$set:{walletAddress:c.wallet,walletVerified:true,walletVerifiedAt:new Date()},$inc:{__v:1,walletLinkVersion:1},$push:{identityHistory:audit('wallet.linked')}},{new:true,runValidators:true}).select('+googleSubject +googleEmail');
   if(!u)throw new HttpError(409,'Tài khoản đã thay đổi');
   await ensureProfile(u);
   res.json({token:signToken(u,'google'),user:identityDTO(u)});

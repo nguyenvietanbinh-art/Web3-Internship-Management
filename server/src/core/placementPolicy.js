@@ -2,7 +2,7 @@ const Assignment=require('../models/Assignment');
 const {HttpError}=require('../utils/http');
 const v=require('./shared');
 function scope(user){
- const base={batchId:{$type:'objectId'}};
+ const base={batchId:{$type:'objectId'},...(require('../config/env').schoolWorkflowEnabled?{workflow:true,activePlacement:true}:{})};
  if(user.role==='admin')return base;
  const field={student:'studentWallet',company:'companyWallet',mentor:'mentorWallet'}[user.role];
  if(!field)throw new HttpError(403,'Vai trò không hợp lệ');return{...base,...require('../services/businessIdentity').owned(user,field.replace('Wallet','UserId'),field)};

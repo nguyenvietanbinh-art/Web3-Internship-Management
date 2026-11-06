@@ -5,7 +5,7 @@ import { active, dateLabel, localInput, asIso } from '../hooks';
 import { Text, Area, Select, ActionForm, AssignmentPicker, Field } from '../Shared';
 import AssignmentNotice from './AssignmentNotice';
 import { TaskSubmission } from './TaskSubmission';
-export function TaskForm({ data, assignment, user, onAssignment, onSaved }) {
+export function TaskForm({ data, assignment, user, onAssignment, onSaved, batchId='' }) {
   const [form, setForm] = useState({
       title: data?.title || '',
       description: data?.description || '',
@@ -43,7 +43,7 @@ export function TaskForm({ data, assignment, user, onAssignment, onSaved }) {
     >
       {!data && (
         <>
-          <AssignmentPicker value={assignment} onChange={onAssignment} />
+          <AssignmentPicker value={assignment} onChange={onAssignment} batchId={batchId} includeAdmissions={Boolean(batchId)}/>
           <AssignmentNotice assignment={assignment} />
           {assignment && (
             <p>

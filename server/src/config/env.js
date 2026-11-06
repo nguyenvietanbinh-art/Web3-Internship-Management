@@ -7,6 +7,7 @@ require("dotenv").config({ path: path.join(__dirname, "..", "..", "..", ".env") 
  * Các giá trị được đọc lười (getter) để test có thể đổi process.env trước khi dùng.
  */
 const config = {
+  get schoolWorkflowEnabled() { return process.env.SCHOOL_WORKFLOW_ENABLED === 'true'; },
   get userIdBusiness() { return process.env.USER_ID_BUSINESS_ENABLED==='true'; },
   get emailEnabled() { return process.env.EMAIL_AUTH_ENABLED === 'true'; },
   get googleEnabled() { return process.env.GOOGLE_AUTH_ENABLED === 'true' && /^[a-zA-Z0-9_-]+\.apps\.googleusercontent\.com$/.test(this.googleClientId); },

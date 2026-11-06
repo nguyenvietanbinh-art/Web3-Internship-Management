@@ -35,11 +35,21 @@ const coreItems = [
   {id:'core-reports',label:'Báo cáo & kết quả',icon:Layers,roles:['student','company','mentor','admin']},
   {id:'core-accounts',label:'Tài khoản & phân quyền',icon:Users,roles:['admin']},
 ];
-export default function AppShell({ children, activeTab, onNavigate, user, unified=false, authReady = true, coreEnabled = false, walletAddress, networkName, onConnect, onDemo, onLogout, loading, roleChoice, onRoleChoice, transactionStatus, onCheckContract, contractConnected, contractAddress, error }) {
+const workflowItems=[
+  {id:'core-school-applications',label:'Hồ sơ ứng tuyển',icon:Users,roles:['admin']},
+  {id:'core-my-internship',label:'Kỳ thực tập của tôi',icon:GraduationCap,roles:['student']},
+  {id:'core-company-applicants',label:'Hồ sơ ứng tuyển',icon:Users,roles:['company']},
+  {id:'core-company-opportunities',label:'Đề tài tuyển theo kỳ',icon:BriefcaseBusiness,roles:['company']},
+  {id:'core-company-students',label:'Sinh viên thực tập tại doanh nghiệp',icon:GraduationCap,roles:['company']},
+  {id:'core-mentor-students',label:'Sinh viên được phân công',icon:GraduationCap,roles:['mentor']},
+];
+export default function AppShell({ children, activeTab, onNavigate, user, unified=false, schoolWorkflow=false, authReady = true, coreEnabled = false, walletAddress, networkName, onConnect, onDemo, onLogout, loading, roleChoice, onRoleChoice, transactionStatus, onCheckContract, contractConnected, contractAddress, error }) {
   const [collapsed, setCollapsed] = useState(false), [mobileOpen, setMobileOpen] = useState(false), [notifications, setNotifications] = useState(false);
   const [theme, setTheme] = useState(() => { try { return localStorage.getItem('w3i_theme') === 'dark' ? 'dark' : 'light'; } catch { return 'light'; } });
   const main = useRef(null);
-  const role = user?.role || 'guest', available = unified&&user?[items[0],...coreItems]:coreEnabled && user ? [...items.filter(item => !item.unavailable || item.id === 'unavailable-alerts'),...coreItems] : items, allowed = available.filter(item => item.roles.includes(role) && (unified || !user || user.walletAddress || ['core-profile','account-overview'].includes(item.id)));
+  const role = user?.role || 'guest';
+  const schoolItems=[items[0],...workflowItems,...coreItems.filter(i=>!['core-jds','core-applications'].includes(i.id)).map(i=>i.id==='core-placements'?{...i,roles:['admin']}:i)];
+  const available = schoolWorkflow&&user?schoolItems:unified&&user?[items[0],...coreItems]:coreEnabled && user ? [...items.filter(item => !item.unavailable || item.id === 'unavailable-alerts'),...coreItems] : items, allowed = available.filter(item => item.roles.includes(role) && (schoolWorkflow || unified || !user || user.walletAddress || ['core-profile','account-overview'].includes(item.id)));
   const fallbackCurrent={id:'core-profile',label:'Hồ sơ cá nhân'};
   const current = allowed.find(item => item.id === activeTab) || allowed[0] || fallbackCurrent;
   useEffect(() => { document.documentElement.dataset.theme = theme; try { localStorage.setItem('w3i_theme', theme); } catch { /* Preference persistence is optional. */ } }, [theme]);
@@ -49,7 +59,7 @@ export default function AppShell({ children, activeTab, onNavigate, user, unifie
     <a href="#main-content" className="skip-link">Đi tới nội dung chính</a>
     <header className="auth-entry-header"><div className="brand"><span className="brand-mark"><Layers size={24} /></span><div><strong>internova<span>®</span></strong><small>WEB3 INTERNSHIP</small></div></div><button className="icon-button" aria-label={theme==='light'?'Bật Dark Mode':'Bật Light Mode'} onClick={()=>setTheme(theme==='light'?'dark':'light')}>{theme==='light'?<Moon size={19}/>:<Sun size={19}/>}</button></header>
     <main id="main-content" className="auth-entry-main" tabIndex={-1} ref={main}>
-      {!authReady?<LoadingSkeleton label="Đang kiểm tra phiên đăng nhập" rows={2}/>:<section className="auth-entry-card"><span className="eyebrow">CHÀO MỪNG ĐẾN INTERNOVA</span><h1>Không gian thực tập của bạn</h1><p>Đăng nhập hoặc tạo tài khoản để truy cập hệ thống theo vai trò được cấp.</p><button id="connect-wallet-btn" className="btn btn-primary" disabled={loading} onClick={onConnect}>Đăng nhập / Đăng ký</button>{error&&<p role="alert" className="inline-alert is-error">{error}</p>}</section>}
+      {!authReady?<LoadingSkeleton label="Đang kiểm tra phiên đăng nhập" rows={2}/>:<section className="auth-entry-card"><span className="eyebrow">CHÀO MỪNG ĐẾN INTERNOVA</span><h1>Không gian thực tập của bạn</h1><p>{schoolWorkflow?'Sử dụng tài khoản do nhà trường cấp để tham gia kỳ thực tập.':'Đăng nhập hoặc tạo tài khoản để truy cập hệ thống theo vai trò được cấp.'}</p><button id="connect-wallet-btn" className="btn btn-primary" disabled={loading} onClick={onConnect}>{schoolWorkflow?'Đăng nhập':'Đăng nhập / Đăng ký'}</button>{error&&<p role="alert" className="inline-alert is-error">{error}</p>}</section>}
     </main><footer className="auth-entry-footer">Internova · Web3 Internship Management</footer>
   </div>;
   const sidebar = <><div className="brand"><span className="brand-mark"><Layers size={24} /></span><div className="sidebar-label"><strong>internova<span>®</span></strong><small>WEB3 INTERNSHIP</small></div></div>

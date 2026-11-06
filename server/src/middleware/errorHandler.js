@@ -9,6 +9,7 @@ function errorHandler(err, _req, res, _next) {
   }
   if (err.name === "ValidationError") return res.status(400).json({ error: "Dữ liệu không hợp lệ. Vui lòng kiểm tra các trường đã nhập.", code: "VALIDATION" });
   if (err.name === "CastError") return res.status(400).json({ error: "Tham số không hợp lệ", code: "BAD_ID" });
+  if (err.name === 'VersionError') return res.status(409).json({error:'Dữ liệu đã thay đổi; vui lòng tải lại trước khi lưu',code:'STALE_VERSION'});
   if (err.type === "entity.parse.failed") return res.status(400).json({ error: "JSON không hợp lệ" });
   if (err.type === 'entity.too.large') return res.status(413).json({ error: 'Nội dung vượt giới hạn cho phép', code: 'PAYLOAD_TOO_LARGE' });
   if (err.code === 11000) return res.status(409).json({ error: "Bản ghi đã tồn tại", code: "DUPLICATE" });

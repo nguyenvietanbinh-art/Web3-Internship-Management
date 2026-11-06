@@ -14,6 +14,11 @@ AssignmentSchema.index({ studentId: 1, status: 1 });
 AssignmentSchema.index({ topicId: 1 });
 
 AssignmentSchema.add({
+  workflow: { type: Boolean, default: false },
+  topicSnapshot: mongoose.Schema.Types.Mixed,
+  enrollmentId: { type: mongoose.Schema.Types.ObjectId, ref: 'BatchEnrollment' },
+  opportunityId: { type: mongoose.Schema.Types.ObjectId, ref: 'TopicOpportunity' },
+  activePlacement: Boolean,
   studentBatchKey: { type: String, default: undefined },
   batchId: {type:mongoose.Schema.Types.ObjectId,ref:'InternshipBatch'},
   companyWallet: String, studentWallet: String, mentorWallet: String,
@@ -24,7 +29,8 @@ AssignmentSchema.add({
   kpis: {type:[new mongoose.Schema({milestoneIndex:Number,title:String,description:String,weightPercent:Number,deadline:Date,status:{type:String,enum:['pending','submitted','approved','rejected'],default:'pending'},content:{type:String,default:''},score:{type:Number,min:0,max:100,default:null},feedback:{type:String,default:''},submittedAt:Date,evaluatedAt:Date,submittedLate:{type:Boolean,default:false}})],default:undefined},
 });
 AssignmentSchema.index({ studentBatchKey: 1 }, { unique: true, partialFilterExpression: { studentBatchKey: { $type: 'string' } } });
-AssignmentSchema.index({topicId:1,studentId:1,batchId:1},{unique:true,partialFilterExpression:{batchId:{$type:'objectId'}}});
+if (process.env.SCHOOL_WORKFLOW_ENABLED === 'true') AssignmentSchema.index({batchId:1,studentUserId:1},{unique:true,partialFilterExpression:{activePlacement:true}});
+else AssignmentSchema.index({topicId:1,studentId:1,batchId:1},{unique:true,partialFilterExpression:{batchId:{$type:'objectId'}}});
 // Role-scoped lists/dashboard queries otherwise scan every internship placement.
 // Non-TEST startup keeps autoIndex disabled; production rollout is a separate operation.
 AssignmentSchema.index({studentWallet:1,createdAt:-1});

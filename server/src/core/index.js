@@ -1,6 +1,13 @@
 const router=require('express').Router();
 const {requireAuth}=require('../middleware/auth');
 router.use(requireAuth);
+router.use((req,res,next)=>require('../config/env').schoolWorkflowEnabled?require('../workflow/routes')(req,res,next):next());
+router.use((req,_res,next)=>{
+ if(!require('../config/env').schoolWorkflowEnabled)return next();
+ if((req.method==='GET'&&/^\/placements\/[a-f0-9]{24}$/.test(req.path))||(req.method==='POST'&&/^\/placements\/[a-f0-9]{24}\/kpis\/\d+\/(submit|evaluate)$/.test(req.path)))return next();
+ if(/^\/(batches|directory|placements|topics|batch-registrations|applications|jds)(\/|$)/.test(req.path)||req.path==='/ai/rank-applicants'||req.path==='/ai/match')return next(new (require('../utils/http').HttpError)(403,'Sử dụng trang nghiệp vụ theo phạm vi nhà trường cấp','SCHOOL_SCOPE_REQUIRED'));
+ next();
+});
 router.use(require('./accounts'));
 router.use(require('./unifiedPlacements'));
 router.use(require('./batchRegistrations'));

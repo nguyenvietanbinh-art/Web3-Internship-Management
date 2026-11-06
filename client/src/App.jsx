@@ -30,6 +30,7 @@ import AppShell from './components/AppShell';
 import ViewBoundary from './components/ViewBoundary';
 import { Dialog, EmptyState, LoadingSkeleton, UnavailableView } from './components/ui';
 const DashboardView = lazy(() => import('./components/DashboardView'));
+const WorkflowDashboard = lazy(() => import('./components/business/workflow/Dashboard'));
 const CvJdView = lazy(() => import('./components/CvJdView'));
 const AttendanceView = lazy(() => import('./components/AttendanceView'));
 const Web3CertificateView = lazy(() => import('./components/Web3CertificateView'));
@@ -51,6 +52,7 @@ export default function App() {
   const [activeTab, setActiveTab] = useState('dashboard');
   const [coreEnabled, setCoreEnabled] = useState(false);
   const [unifiedMode,setUnifiedMode]=useState(false);
+  const [schoolWorkflow,setSchoolWorkflow]=useState(false);
   const [authMode,setAuthMode]=useState(location.pathname==='/register'?'register':'login');
   const [sessionReady, setSessionReady] = useState(false);
 
@@ -116,7 +118,7 @@ export default function App() {
     Promise.all([apiRequest('/core/capabilities').catch(()=>({enabled:false,unified:false})),restoreSession()])
       .then(([capabilities,restored]) => {
         if(!active)return;
-        setCoreEnabled(capabilities.enabled===true);setUnifiedMode(capabilities.unified===true);
+        setCoreEnabled(capabilities.enabled===true);setUnifiedMode(capabilities.unified===true);setSchoolWorkflow(capabilities.schoolWorkflow===true);
         if(getToken()===initialToken&&restored){
           setUser(restored);setWalletAddress(restored.walletAddress||'');setNetworkName('Chưa kiểm tra mạng ví');
           setActiveTab(capabilities.unified?'dashboard':restored.walletAddress?'dashboard':'core-profile');setShowAuthModal(false);
@@ -513,6 +515,7 @@ export default function App() {
 
       {/* Auth Modal for Quick Demo or MetaMask */}
       <AuthModal
+        schoolWorkflow={schoolWorkflow}
         isOpen={showAuthModal}
         onClose={() => {setShowAuthModal(false);history.replaceState({},'','/');}}
         onMetaMaskLogin={connectWallet}
@@ -525,7 +528,7 @@ export default function App() {
         loading={loading}
       />
 
-      <AppShell unified={unifiedMode} authReady={sessionReady} coreEnabled={coreEnabled} activeTab={activeTab} onNavigate={setActiveTab} user={user} walletAddress={walletAddress}
+      <AppShell schoolWorkflow={schoolWorkflow} unified={unifiedMode} authReady={sessionReady} coreEnabled={coreEnabled} activeTab={activeTab} onNavigate={setActiveTab} user={user} walletAddress={walletAddress}
         networkName={networkName} onConnect={() => {setAuthMode('login');history.pushState({},'','/login');setShowAuthModal(true);}} onDemo={() => setShowAuthModal(true)} onLogout={disconnectWallet} loading={loading}
         roleChoice={roleChoice} onRoleChoice={setUserRole} transactionStatus={transactionStatus}
         onCheckContract={() => checkContractConnection().then(setContractConnected).catch(() => setContractConnected(false))} contractConnected={contractConnected} contractAddress={CONTRACT_ADDRESS} error={backendError}>
@@ -534,9 +537,10 @@ export default function App() {
         {user&&!unifiedMode&&!user.walletAddress&&!['core-profile','account-overview'].includes(activeTab)?<EmptyState title="Cần liên kết ví">Mở Hồ sơ cá nhân để liên kết ví trước khi sử dụng nghiệp vụ.</EmptyState>:<>
         {user&&activeTab==='account-overview'&&<AccountOverview user={user} onEdit={()=>setActiveTab('core-profile')} />}
         {activeTab.startsWith('unavailable-') && <UnavailableView title="Chức năng chưa triển khai" />}
-        {coreEnabled && activeTab.startsWith('core-') && <CoreBusinessView key={`${activeTab}-${user?.walletAddress || 'guest'}`} view={activeTab} user={user} unified={unifiedMode} onNavigate={setActiveTab} onProfileSaved={handleProfileSaved} />}
+        {coreEnabled && activeTab.startsWith('core-') && <CoreBusinessView key={`${activeTab}-${user?._id || 'guest'}`} view={activeTab} user={user} schoolWorkflow={schoolWorkflow} unified={unifiedMode} onNavigate={setActiveTab} onProfileSaved={handleProfileSaved} />}
         {/* VIEW 1: DASHBOARD */}
-        {activeTab === 'dashboard' && (
+        {activeTab === 'dashboard' && schoolWorkflow && user && <WorkflowDashboard user={user} onNavigate={setActiveTab} />}
+        {activeTab === 'dashboard' && !schoolWorkflow && (
           <DashboardView
             unified={unifiedMode}
             coreEnabled={coreEnabled}
