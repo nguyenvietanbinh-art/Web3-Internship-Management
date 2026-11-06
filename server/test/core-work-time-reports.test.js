@@ -17,8 +17,10 @@ test('task status/progress and CAS preserve history, reject foreign/edit escalat
  assert.equal((await h.api('PATCH','/core/tasks/'+task._id,{token:f.foreignStudent.token,body:{status:'done',progress:100,version:0}})).status,404);
  assert.equal((await h.api('PATCH','/core/tasks/'+task._id,{token:f.student.token,body:{title:'spoof',version:0}})).status,400);
  assert.equal((await h.api('PATCH','/core/tasks/'+task._id,{token:f.student.token,body:{status:'done',progress:20,version:0}})).status,400);
- const rs=await Promise.all([1,2].map(()=>h.api('PATCH','/core/tasks/'+task._id,{token:f.student.token,body:{status:'done',progress:100,version:0}})));assert.deepEqual(rs.map(r=>r.status).sort(),[200,409]);task=rs.find(r=>r.status===200).body;
+ const rs=await Promise.all([1,2].map(()=>h.api('PATCH','/core/tasks/'+task._id,{token:f.student.token,body:{status:'in_progress',progress:50,version:0}})));assert.deepEqual(rs.map(r=>r.status).sort(),[200,409]);task=rs.find(r=>r.status===200).body;
  assert.equal((await Task.findById(task._id)).history.length,2);
+ let r=await h.api('POST','/core/tasks/'+task._id+'/submit',{token:f.student.token,body:{content:'TEST completed delivery',version:task.__v}});assert.equal(r.status,200);task=r.body;
+ r=await h.api('POST','/core/tasks/'+task._id+'/review',{token:f.company.token,body:{decision:'approved',comment:'TEST accepted',version:task.__v}});assert.equal(r.status,200);task=r.body;
 });
 test('weekly log edit/review history and duplicate week; approved log immutable to student',async()=>{
  const body={assignmentId:p.doc._id,weekNumber:1,title:'TEST worklog',tasksDone:'Actual TEST work input',challenges:'',nextPlan:''};

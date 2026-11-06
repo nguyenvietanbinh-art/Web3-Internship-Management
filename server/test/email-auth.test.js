@@ -16,6 +16,12 @@ test('duplicate/case collision and concurrent registration cannot create multipl
  assert.equal((await api('register',registration('test.email@gmail.com'))).status,409);
  const results=await Promise.all([api('register',registration('race@example.invalid')),api('register',registration('race@example.invalid'))]);assert.deepEqual(results.map(x=>x.status).sort(),[201,409]);assert.equal(await User.countDocuments({loginEmail:'race@example.invalid'}),1);
 });
+test('eight-character passwords register and log in; seven-character passwords are rejected',async()=>{
+ const email='eight-character@example.invalid',password='DN123456';
+ assert.equal((await api('register',{name:'TEST minimum password',email,password,confirmPassword:password})).status,201);
+ assert.equal((await api('login',{email,password})).status,200);
+ assert.equal((await api('register',{name:'TEST short password',email:'seven-character@example.invalid',password:'1234567',confirmPassword:'1234567'})).status,400);
+});
 test('reject privilege injection, malformed email, password mismatch and bcrypt truncation',async()=>{
  for(const body of [{...registration('role@example.invalid'),role:'admin'},{...registration('role@example.invalid'),role:'company'},{...registration('bad')},{...registration('short@example.invalid'),password:'123',confirmPassword:'123'},{...registration('mismatch@example.invalid'),confirmPassword:'different'},{...registration('long@example.invalid'),password:'x'.repeat(73),confirmPassword:'x'.repeat(73)},{...registration('unicode@example.invalid'),password:'ệ'.repeat(30),confirmPassword:'ệ'.repeat(30)}])assert.equal((await api('register',body)).status,400);
 });

@@ -7,7 +7,7 @@ function connectionOptions(env,uri){
 const stable=value=>JSON.stringify(value,(_key,item)=>item&&typeof item==='object'&&!Array.isArray(item)?Object.fromEntries(Object.entries(item).sort(([a],[b])=>a.localeCompare(b))):item);
 async function verifyIndexes(coreEnabled=false){
  const models=[require('../models/User'),require('../models/AuthNonce'),require('../models/Attendance')];
- if(coreEnabled){const {CV,Application,WorkSession,Report,NotificationReceipt}=require('../models/BusinessModels');models.push(CV,Application,WorkSession,Report,NotificationReceipt,require('../models/Assignment'),require('../models/WorkLog'));}
+ if(coreEnabled){const {CV,Application,WorkSession,Report,NotificationReceipt}=require('../models/BusinessModels');models.push(CV,Application,WorkSession,Report,NotificationReceipt,require('../models/Assignment'),require('../models/WorkLog'),require('../models/BatchRegistration'));}
  if(coreEnabled&&process.env.WEB3_LOCAL_ENABLED==='true'){const {ChainOperation,PrivateReportArtifact}=require('../models/Web3Models');models.push(ChainOperation,PrivateReportArtifact);}
  for(const Model of models){
   let actual;try{actual=await Model.collection.indexes();}catch{const e=new Error(`Cần kiểm tra/migration đã duyệt cho collection ${Model.collection.name}`);e.code='INDEX_REVIEW_REQUIRED';throw e;}

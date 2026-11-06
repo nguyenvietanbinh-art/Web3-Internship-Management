@@ -76,4 +76,19 @@ test('closed JD blocks new applications, no implicit assignments or NFT',async()
  assert.equal((await h.api('POST','/core/applications',{token:f.foreignStudent.token,body:{jdId:jd._id}})).status,409);
  assert.equal(await require('../src/models/Assignment').countDocuments(),0);
 });
+test('file upload creates CV directly for a student with no manual CV and preserves Vietnamese filename',async()=>{
+ assert.equal(await CV.findOne({ownerWallet:f.foreignStudent.address}),null);
+ const name='CV sinh viên tiếng Việt.docx',r=await upload(docx(),name,docxMime,f.foreignStudent.token);assert.equal(r.status,200,JSON.stringify(r.body));assert.equal(r.body.fileName,name);assert.equal(r.body.fileData,undefined);assert.ok(r.body.extractedText.includes('TEST CV React developer'));
+ assert.equal(await CV.countDocuments({ownerWallet:f.foreignStudent.address}),1);assert.equal((await CV.findOne({ownerWallet:f.student.address})).fileName,'actual.pdf');
+});
+test('URL import stores parsed private CV, preserves manual fields and rejects unauthorized/failed imports',async()=>{
+ const downloader=require('../src/services/cvDownload'),original=downloader.downloadCv;let calls=0;
+ downloader.downloadCv=async url=>{calls++;assert.equal(url,'https://example.com/cv.docx');return{buffer:docx({xml:'TEST remote CV React MongoDB'}),name:'CV trên mạng.docx',mime:docxMime};};
+ try{
+  assert.equal((await h.api('POST','/core/cv/import-url',{token:f.company.token,body:{url:'https://example.com/cv.docx'}})).status,403);assert.equal(calls,0);
+  const before=await CV.findOne({ownerWallet:f.student.address});let r=await h.api('POST','/core/cv/import-url',{token:f.student.token,body:{url:'https://example.com/cv.docx'}});assert.equal(r.status,200,JSON.stringify(r.body));assert.equal(r.body.title,before.title);assert.equal(r.body.summary,before.summary);assert.equal(r.body.fileName,'CV trên mạng.docx');assert.ok(r.body.extractedText.includes('TEST remote CV'));assert.equal(r.body.fileData,undefined);
+  const saved=JSON.stringify(await CV.findOne({ownerWallet:f.student.address}).lean());downloader.downloadCv=async()=>({buffer:Buffer.from('not-a-docx'),name:'bad.docx',mime:docxMime});r=await h.api('POST','/core/cv/import-url',{token:f.student.token,body:{url:'https://example.com/bad.docx'}});assert.equal(r.status,422);assert.equal(JSON.stringify(await CV.findOne({ownerWallet:f.student.address}).lean()),saved);
+ }finally{downloader.downloadCv=original;}
+ assert.equal((await h.api('POST','/core/cv/import-url',{token:f.student.token,body:{url:'https://127.0.0.1/cv.pdf'}})).status,400);
+});
 module.exports={docx,pdf};

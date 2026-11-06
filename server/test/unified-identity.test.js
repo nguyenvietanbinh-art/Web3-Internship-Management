@@ -55,7 +55,8 @@ test('User ID topic/rubric and accepted-student directory; reject unaccepted/for
 test('walletless tasks/progress/logs/reviews enforce relationships and preserve audits by User ID',async()=>{
  task=check(await request('/core/tasks',{assignmentId:placement._id,title:'TEST task',priority:'high',dueDate:new Date(Date.now()+864e5).toISOString()},company),201);
  assert.equal((await patch('/core/tasks/'+task._id,{status:'done',progress:100,version:task.__v},other)).status,404);
- task=check(await patch('/core/tasks/'+task._id,{status:'done',progress:100,version:task.__v},student));assert.equal(String(task.history[0].actorUserId),company.user._id);
+ task=check(await request('/core/tasks/'+task._id+'/submit',{content:'TEST completed task delivery',version:task.__v},student));
+ task=check(await request('/core/tasks/'+task._id+'/review',{decision:'approved',comment:'TEST delivery approved',version:task.__v},company));assert.equal(String(task.history[0].actorUserId),company.user._id);
  const log=check(await request('/core/worklogs',{assignmentId:placement._id,weekNumber:1,title:'TEST log',tasksDone:'React Solidity',challenges:'None',nextPlan:'Tests'},student),201);
  assert.equal((await patch('/core/worklogs/'+log._id+'/review',{status:'approved',mentorFeedback:'steal',version:log.__v},foreignMentor)).status,404);
  check(await patch('/core/worklogs/'+log._id+'/review',{status:'approved',mentorFeedback:'TEST reviewed',version:log.__v},mentor));

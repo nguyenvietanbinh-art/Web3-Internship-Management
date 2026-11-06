@@ -1,28 +1,50 @@
-const mongoose = require("mongoose");
+const mongoose = require('mongoose');
 
 const TaskSchema = new mongoose.Schema(
   {
-    topicId: { type: mongoose.Schema.Types.ObjectId, ref: "Topic" },
+    topicId: { type: mongoose.Schema.Types.ObjectId, ref: 'Topic' },
     title: { type: String, required: true, trim: true },
-    description: { type: String, default: "" },
+    description: { type: String, default: '' },
     assignedStudentWallet: { type: String, required: true, lowercase: true, trim: true },
     companyWallet: { type: String, required: true, lowercase: true, trim: true },
     status: {
       type: String,
-      enum: ["todo", "in_progress", "review", "done"],
-      default: "todo",
+      enum: ['todo', 'in_progress', 'review', 'done'],
+      default: 'todo',
     },
     priority: {
       type: String,
-      enum: ["low", "medium", "high", "urgent"],
-      default: "medium",
+      enum: ['low', 'medium', 'high', 'urgent'],
+      default: 'medium',
     },
     dueDate: { type: Date, default: () => new Date(Date.now() + 7 * 86400000) },
     completedAt: { type: Date },
   },
-  { timestamps: true, collection: "internship_tasks" }
+  { timestamps: true, collection: 'internship_tasks' }
 );
 
-TaskSchema.add({assignmentId:{type:mongoose.Schema.Types.ObjectId,ref:'Assignment'},progress:{type:Number,min:0,max:100,default:0},history:{type:[require('../core/shared').HistorySchema],default:undefined}});
-require('./userOwnership')(TaskSchema,'Task');
-module.exports = mongoose.model("Task", TaskSchema);
+TaskSchema.add({
+  assignmentId: { type: mongoose.Schema.Types.ObjectId, ref: 'Assignment' },
+  progress: { type: Number, min: 0, max: 100, default: 0 },
+  history: { type: [require('../core/shared').HistorySchema], default: undefined },
+});
+TaskSchema.add({
+  submission: {
+    content: String,
+    link: String,
+    submittedAt: Date,
+    late: Boolean,
+    fileName: String,
+    mime: String,
+    size: Number,
+  },
+  submissionFileData: { type: Buffer, select: false },
+  review: {
+    decision: { type: String, enum: ['approved', 'need_revision'] },
+    comment: String,
+    reviewedAt: Date,
+    reviewerUserId: { type: mongoose.Schema.Types.ObjectId, ref: 'User' },
+  },
+});
+require('./userOwnership')(TaskSchema, 'Task');
+module.exports = mongoose.model('Task', TaskSchema);

@@ -3,6 +3,7 @@ const {requireAuth}=require('../middleware/auth');
 router.use(requireAuth);
 router.use(require('./accounts'));
 router.use(require('./unifiedPlacements'));
+router.use(require('./batchRegistrations'));
 router.use(require('./recruitment'));
 router.use(require('./placements'));
 router.use(require('./kpis'));

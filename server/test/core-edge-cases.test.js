@@ -51,3 +51,12 @@ test('foreign filters cannot expand canonical scopes or expose reports/CV',async
  assert.equal((await h.api('GET','/core/jds?q[x]=injection',{token:f.student.token})).status,400);
  assert.equal((await Assignment.findById(p.doc._id)).studentWallet,f.student.address);
 });
+test('company and mentor can mark reports incorrect or needing revision, preserving distinct outcomes and requiring a new version',async()=>{
+ for(const role of ['company','mentor'])for(const decision of ['need_revision','incorrect']){
+  let r=await h.api('POST','/core/reports',{token:f.student.token,body:{assignmentId:p.doc._id,kind:'weekly',title:'TEST '+role+' '+decision,content:'TEST delivery for three-way assessment'}});assert.equal(r.status,201);const report=r.body;
+  r=await h.api('POST','/core/reports/'+report._id+'/reviews',{token:f[role].token,body:{score:0,comment:'TEST explain '+decision,decision,version:report.__v}});assert.equal(r.status,200,JSON.stringify(r.body));assert.equal(r.body.state,'need_revision');assert.equal(r.body.reviews[0].decision,decision);assert.equal(r.body.reviews[0].score,0);assert.equal(r.body.finalScore,null);
+  assert.equal((await h.api('POST','/core/reports/'+report._id+'/approve',{token:f.admin.token,body:{version:r.body.__v,reason:'Cannot finalize failed/revision report'}})).status,409);
+  assert.equal((await Report.findById(report._id)).reviews[0].decision,decision);
+  const next=await h.api('POST','/core/reports',{token:f.student.token,body:{assignmentId:p.doc._id,kind:'weekly',title:'TEST corrected delivery',content:'TEST correction'}});assert.equal(next.status,201);assert.equal(next.body.version,report.version+1);assert.equal(next.body.reviews.length,0);assert.equal((await Report.findById(report._id)).current,false);
+ }
+});

@@ -1,4 +1,3 @@
-
 /**
  * Lớp giao tiếp API duy nhất của frontend.
  * - Tự gắn Bearer JWT.
@@ -8,9 +7,13 @@ import { getToken, setToken, invalidateSession } from './session.js';
 import { errorMessage } from './errorMessages.js';
 export { getToken, setToken };
 export const API_BASE = import.meta.env?.VITE_API_URL || 'http://localhost:5000/api';
-export const DEMO_ENABLED = import.meta.env?.DEV === true && import.meta.env?.VITE_ENABLE_DEMO === 'true';
+export const DEMO_ENABLED =
+  import.meta.env?.DEV === true && import.meta.env?.VITE_ENABLE_DEMO === 'true';
 
-export async function apiRequest(path, { method = 'GET', body, headers = {} } = {}) {
+export async function apiRequest(
+  path,
+  { method = 'GET', body, headers = {}, responseType = 'json' } = {}
+) {
   const token = getToken();
   const multipart = typeof FormData !== 'undefined' && body instanceof FormData;
   const binary = typeof Blob !== 'undefined' && body instanceof Blob;
@@ -19,20 +22,42 @@ export async function apiRequest(path, { method = 'GET', body, headers = {} } = 
     response = await fetch(`${API_BASE}${path}`, {
       method,
       credentials: 'include',
-      headers: { ...(!multipart && { 'Content-Type': binary ? body.type || 'application/octet-stream' : 'application/json' }), ...(token && { Authorization: `Bearer ${token}` }), ...headers },
+      headers: {
+        ...(!multipart && {
+          'Content-Type': binary ? body.type || 'application/octet-stream' : 'application/json',
+        }),
+        ...(token && { Authorization: `Bearer ${token}` }),
+        ...headers,
+      },
       // Chấp nhận cả object lẫn chuỗi JSON đã stringify.
-      body: body === undefined ? undefined : multipart || binary || typeof body === 'string' ? body : JSON.stringify(body),
+      body:
+        body === undefined
+          ? undefined
+          : multipart || binary || typeof body === 'string'
+          ? body
+          : JSON.stringify(body),
     });
   } catch {
     const err = new Error('Không thể kết nối hệ thống. Vui lòng thử lại sau.');
     err.code = 'NETWORK';
     throw err;
   }
+  // Binary file requests must share the same authentication/error lifecycle as JSON.
+  if (response.ok && responseType === 'response') return response;
   const data = await response.json().catch(() => ({}));
   if (!response.ok) {
-    const sessionCodes = ['BAD_TOKEN','NO_TOKEN','NO_USER','SESSION_REVOKED','ACCOUNT_DISABLED'];
-    if (response.status === 401 && (!path.startsWith('/auth/') || sessionCodes.includes(data.code))) invalidateSession(token);
-    const err = new Error(errorMessage(data.error || 'Không thể hoàn tất thao tác. Vui lòng thử lại.',data.code));
+    const sessionCodes = [
+      'BAD_TOKEN',
+      'NO_TOKEN',
+      'NO_USER',
+      'SESSION_REVOKED',
+      'ACCOUNT_DISABLED',
+    ];
+    if (response.status === 401 && (!path.startsWith('/auth/') || sessionCodes.includes(data.code)))
+      invalidateSession(token);
+    const err = new Error(
+      errorMessage(data.error || 'Không thể hoàn tất thao tác. Vui lòng thử lại.', data.code)
+    );
     err.status = response.status;
     err.code = data.code;
     throw err;
@@ -53,12 +78,23 @@ export async function signInWithWallet(role, name) {
   await provider.send('eth_requestAccounts', []);
   const signer = await provider.getSigner();
   const address = await signer.getAddress();
-  const { message } = await apiRequest('/auth/nonce', { method: 'POST', body: { walletAddress: address } });
+  const { message } = await apiRequest('/auth/nonce', {
+    method: 'POST',
+    body: { walletAddress: address },
+  });
   const signature = await signer.signMessage(message);
-  const result = await apiRequest('/auth/login-wallet', { method: 'POST', body: { walletAddress: address, signature, role, name } });
+  const result = await apiRequest('/auth/login-wallet', {
+    method: 'POST',
+    body: { walletAddress: address, signature, role, name },
+  });
   setToken(result.token);
   const network = await provider.getNetwork();
-  return { user: result.user, address, chainId: Number(network.chainId), networkName: network.name };
+  return {
+    user: result.user,
+    address,
+    chainId: Number(network.chainId),
+    networkName: network.name,
+  };
 }
 
 /** Đăng nhập tức thì với tài khoản Demo mà không cần MetaMask extension */

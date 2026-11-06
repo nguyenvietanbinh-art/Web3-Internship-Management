@@ -76,6 +76,6 @@ router.patch('/placements/:id',requireRole('admin','company'),asyncHandler(async
   if(!doc.kpis?.length||doc.kpis.some(k=>k.status!=='approved')||doc.kpiScore===null)throw new HttpError(409,'Cần duyệt đủ KPI theo phân công');
   const {Report,WorkSession}=require('../models/BusinessModels');if(!await Report.exists({assignmentId:doc._id,kind:'final',state:'approved',current:true}))throw new HttpError(409,'Cần báo cáo cuối kỳ đã duyệt');if(await WorkSession.exists({assignmentId:doc._id,state:{$in:['open','pending','needs_adjustment']}}))throw new HttpError(409,'Cần xử lý phiên giờ làm chưa duyệt');
  }
- const reason=v.text(req.body.reason,'Lý do',{required:true,max:1000});res.json(await v.updateVersion(Assignment,doc,req.body.version,{lifecycle:target},v.event(req.user,'placement.state',{before:doc.lifecycle,after:target,reason})));
+ const reason=v.text(req.body.reason,'Lý do',{required:true,max:1000});res.json(await v.updateVersion(Assignment,doc,req.body.version,{lifecycle:target,...(target==='cancelled'?{studentBatchKey:null}:{})},v.event(req.user,'placement.state',{before:doc.lifecycle,after:target,reason})));
 }));
 module.exports=router;

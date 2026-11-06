@@ -33,6 +33,22 @@ test('form waits for asynchronous post-save work and propagates its failure',asy
  const action=completeAction(async()=>({id:'saved'}),async value=>{assert.equal(value.id,'saved');await wait;throw Error('Refresh failed');}).finally(()=>{finished=true;});
  const rejected=assert.rejects(action,/Refresh failed/);await new Promise(r=>setTimeout(r,0));assert.equal(finished,false);resolve();await rejected;
 });
+test('file requests return raw success responses and invalidate rejected sessions',async()=>{
+ const original=globalThis.fetch;
+ try{
+  const response=new Response('TEST private file',{status:200,headers:{'Content-Type':'text/plain'}});globalThis.fetch=async()=>response;
+  assert.equal(await apiRequest('/core/tasks/test/submission/file',{responseType:'response'}),response);
+  for(const suffix of ['file','preview']){
+   setToken('EXPIRED_FILE_SESSION');globalThis.fetch=async()=>new Response(JSON.stringify({error:'Expired',code:'BAD_TOKEN'}),{status:401});
+   await assert.rejects(apiRequest('/core/tasks/test/submission/'+suffix,{responseType:'response'}),e=>e.status===401&&e.code==='BAD_TOKEN');assert.equal(getToken(),'');
+  }
+ }finally{globalThis.fetch=original;setToken('');}
+});
+test('a delayed file 401 preserves a newer login',async()=>{
+ const original=globalThis.fetch;setToken('OLD_FILE_SESSION');
+ globalThis.fetch=async()=>{setToken('NEW_FILE_SESSION');return new Response(JSON.stringify({error:'Expired',code:'BAD_TOKEN'}),{status:401});};
+ try{await assert.rejects(apiRequest('/core/tasks/test/submission/preview',{responseType:'response'}),e=>e.status===401);assert.equal(getToken(),'NEW_FILE_SESSION');}finally{globalThis.fetch=original;setToken('');}
+});
 test('failed mutation never invokes success callback',async()=>{
  let called=false;await assert.rejects(completeAction(async()=>{throw Error('Rejected');},()=>{called=true;}),/Rejected/);assert.equal(called,false);
 });
