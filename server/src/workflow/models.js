@@ -11,7 +11,8 @@ const Enrollment = make('BatchEnrollment', 'batch_enrollments', {
   studentUserId: ref('User'), batchId: ref('InternshipBatch'),
   eligibility: { type: String, enum: ['eligible', 'suspended', 'exempt', 'removed'], default: 'eligible' },
   registeredAt: { type: Date, default: null },
-  usedOpportunities: { type: [Schema.Types.ObjectId], default: [], validate: values => values.length <= 3 && new Set(values.map(String)).size === values.length },
+  usedOpportunities: { type: [Schema.Types.ObjectId], default: [], validate: values => new Set(values.map(String)).size === values.length },
+  refundedOpportunities: { type: [Schema.Types.ObjectId], default: [], validate: function(values){return new Set(values.map(String)).size===values.length&&values.every(id=>this.usedOpportunities.some(used=>String(used)===String(id)));} },
   admission: { type: new Schema({ opportunityId: ref('TopicOpportunity'), companyUserId: ref('User'), applicationId: ref('SchoolApplication', false), state: { type: String, enum: ['active', 'cancelled'], required: true }, confirmedAt: Date, allocationId: String, title: String, companyName: String }, { _id: false }), default: null },
   assignmentId: ref('Assignment', false), history,
 }, [[{ batchId: 1, studentUserId: 1 }, { unique: true }], [{ batchId: 1, eligibility: 1, registeredAt: 1 }, {}]]);
@@ -20,6 +21,7 @@ const Opportunity = make('TopicOpportunity', 'topic_opportunities', {
   title: { type: String, required: true }, companyName: { type: String, required: true }, description: String,
   capacity: { type: Number, required: true, min: 1, max: 1000 }, confirmedCount: { type: Number, default: 0, min: 0 },
   status: { type: String, enum: ['open', 'closed'], default: 'open' }, schoolAllocationAllowed: { type: Boolean, default: false },
+  closureReason: {type:String,default:''},
   topicVersion: Number, kpis: { type: [Schema.Types.Mixed], required: true }, history,
 }, [[{ batchId: 1, topicId: 1 }, { unique: true }], [{ batchId: 1, companyUserId: 1, status: 1 }, {}]]);
 // A separate collection avoids conflicting legacy (jdId, studentUserId) unique indexes.
@@ -27,7 +29,8 @@ const Opportunity = make('TopicOpportunity', 'topic_opportunities', {
 const Application = make('SchoolApplication', 'school_applications', {
   enrollmentId: ref('BatchEnrollment'), studentUserId: ref('User'), companyUserId: ref('User'), batchId: ref('InternshipBatch'), opportunityId: ref('TopicOpportunity'),
   studentName: String, title: String, companyName: String,
-  state: { type: String, enum: ['submitted', 'dispatched', 'under_review', 'offered', 'rejected', 'withdrawn', 'confirmed', 'closed_other_selected', 'cancelled'], default: 'submitted' },
+  state: { type: String, enum: ['submitted', 'dispatched', 'under_review', 'offered', 'rejected', 'withdrawn', 'confirmed', 'closed_other_selected', 'closed_full', 'cancelled'], default: 'submitted' },
+  closedAt: Date, quotaRefundedAt: Date, closeReason: String,
   cvSnapshot: Schema.Types.Mixed, cvFileData: { type: Buffer, select: false }, cvMime: String, cvFileName: String,
   dispatch: { by: ref('User', false), at: Date, revokedAt: { type: Date, default: null }, version: Number },
   message: String, decisionReason: String, history,

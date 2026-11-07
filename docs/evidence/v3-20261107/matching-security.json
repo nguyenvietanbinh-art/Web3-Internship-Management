@@ -1,0 +1,297 @@
+{
+  "time": "2026-11-07T10:29:59.749Z",
+  "tests": [
+    {
+      "name": "One card, period scope, compact numeric field and responsive layouts",
+      "status": "PASS"
+    },
+    {
+      "name": "Changing controls does not call analysis and choices survive navigation",
+      "status": "PASS"
+    },
+    {
+      "name": "Enter sends correct payload once and locks controls while processing",
+      "status": "PASS"
+    },
+    {
+      "name": "Stale results clear and all three methods keep the existing payload contract",
+      "status": "PASS"
+    },
+    {
+      "name": "Security cards align, adapt to mobile and work in light/dark themes",
+      "status": "PASS"
+    },
+    {
+      "name": "Password modal visibility, focus, cancellation and confirmation validation",
+      "status": "PASS"
+    },
+    {
+      "name": "Password changes through real API and the prior session becomes invalid",
+      "status": "PASS"
+    }
+  ],
+  "requests": [
+    {
+      "method": "GET",
+      "path": "/api/core/capabilities"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/capabilities"
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/api/core/capabilities"
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/api/core/capabilities"
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/api/core/capabilities"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/capabilities"
+    },
+    {
+      "method": "GET",
+      "path": "/api/auth/me"
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/api/auth/me"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/capabilities"
+    },
+    {
+      "method": "GET",
+      "path": "/api/auth/me"
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/api/core/capabilities"
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/api/auth/me"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/placements"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/tasks"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/reports"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/time/totals"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/dashboard"
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/api/core/placements"
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/api/core/tasks"
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/api/core/reports"
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/api/core/time/totals"
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/api/core/dashboard"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/ai/status"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/my/internships"
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/api/core/ai/status"
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/api/core/my/internships"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/profile"
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/api/core/profile"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/ai/status"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/my/internships"
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/api/core/school/ai/match"
+    },
+    {
+      "method": "POST",
+      "path": "/api/core/school/ai/match"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/ai/status"
+    },
+    {
+      "method": "POST",
+      "path": "/api/core/school/ai/match"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/ai/status"
+    },
+    {
+      "method": "POST",
+      "path": "/api/core/school/ai/match"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/ai/status"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/capabilities"
+    },
+    {
+      "method": "GET",
+      "path": "/api/auth/me"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/capabilities"
+    },
+    {
+      "method": "GET",
+      "path": "/api/auth/me"
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/api/core/capabilities"
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/api/auth/me"
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/api/core/capabilities"
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/api/auth/me"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/ai/status"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/my/internships"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/profile"
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/api/auth/email/change-password"
+    },
+    {
+      "method": "POST",
+      "path": "/api/auth/email/change-password"
+    },
+    {
+      "method": "POST",
+      "path": "/api/auth/email/change-password"
+    },
+    {
+      "method": "GET",
+      "path": "/api/auth/me"
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/api/auth/me"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/placements"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/tasks"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/reports"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/time/totals"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/dashboard"
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/api/core/placements"
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/api/core/tasks"
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/api/core/reports"
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/api/core/time/totals"
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/api/core/dashboard"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/profile"
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/api/core/profile"
+    }
+  ],
+  "exceptions": [],
+  "blocked": []
+}

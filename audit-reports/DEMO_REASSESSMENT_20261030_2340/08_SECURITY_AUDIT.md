@@ -1,0 +1,32 @@
+# BẢO MẬT — TỪ SOURCE/MOCK ĐẾN HTTP THỰC
+
+Ngày 30/10/2026, Asia/Bangkok. Branch `branch_1`, HEAD `d11a1852c5f03963bbe260425a246b0e65fe1091`. Đánh giá lại bằng demo và test thực trên database riêng. Không sửa source, schema, manifest/lock file hoặc .env; không cài dependency, deploy hay giao dịch blockchain. Báo cáo cũ giữ nguyên tại [FINAL_FULL_AUDIT](../FINAL_FULL_AUDIT/00_EXECUTIVE_SUMMARY.md).
+
+Giữ 21 nhóm nguyên nhân: **0 CRITICAL đã xác nhận,10 HIGH,8 MEDIUM,3 LOW**. Không tăng con số bằng cộng 17 FAIL test chồng lặp. Nhiều lỗi trước chỉ đọc source/mocknayđãtáihiệntrênHTTPthậtvàDBdemo; chưa cóbảnvácode. Cấu hình allowlist/bind demo hoặc guard là cô lập kiểm thử,không sửa ACL/default production.
+
+| ID | Severity | Lỗi | File/dòng | Bằng chứng cập nhật | Hướng sửa |
+| --- | --- | --- | --- | --- | --- |
+| S01 | HIGH | Demo login cấp JWT không cần chữ ký | `server/src/routes/auth.routes.js:72` | FAIL HTTP và UI demo JWT không ký | Tắt mặc định; demo mode riêng với DB riêng, không cấp quyền dữ liệu thật. |
+| S02 | HIGH | Ghi receipt/chain ID vào topic người khác | `server/src/routes/topic.routes.js:352` | FAIL HTTP student ghi Topic người khác 200/tx giả | Owner/assignment guard, validate hash, RPC receipt chainId/address/event match, idempotency. |
+| S03 | HIGH | Task status IDOR | `server/src/routes/internship.routes.js:255` | FAIL HTTP unrelated company patch task 200 | Lọc đồng thời _id + tenant + assignee; trả 403/404 khi không quyền. |
+| S04 | HIGH | Worklog review thiếu role/owner và enum | `server/src/routes/internship.routes.js:396` | FAIL HTTP student self approve worklog 200 | Chỉ mentor/DN phụ trách; validate transition/status và runValidators. |
+| S05 | HIGH | Check-in chấp nhận QR bất kỳ | `server/src/routes/internship.routes.js:286` | FAIL HTTP QR sai 200; duplicate 409 đúng | Phiên ngẫu nhiên/HMAC, thời hạn, company+assignment, chống reuse; server validate GPS theo chính sách. |
+| S06 | HIGH | GET công khai tạo dữ liệu giả | `server/src/routes/internship.routes.js:95` | FAIL HTTP 4 GET ghi 3/3/7/2 mẫu trên DB demo | Bỏ writes ở jds/tasks/history/worklogs; test assertions zero mutations. |
+| S07 | HIGH | Chứng nhận giả xác minh thành công | `server/src/routes/internship.routes.js:422` | FAIL HTTP unknown cert+UI VERIFIED badge thật | 404/verifiedfalse; chỉ xác minh receipt/token tồn tại đúng chain, bỏ fake tx/CID. |
+| S08 | HIGH | Public sync và UI tự gọi thao tác ghi | `server/src/routes/internship.routes.js:470` | FAIL public sync 200; browser mount POST 2 lần | Auth quản trị + giới hạn range/checkpoint; UI GET-only khi mount, queue worker có retry. |
+| S09 | HIGH | Dữ liệu nội bộ được đọc công khai | `server/src/routes/data.routes.js:33` | GET public thấy hồ sơ/báo cáo mẫu; chưa thử dữ liệu thật | Auth/tenant scope và projection tối thiểu cho CV, email, báo cáo, đánh giá; DTO public riêng. |
+| S10 | HIGH | DB xác nhận trước chain, UI vẫn báo thành công | `client/src/App.jsx:212` | Source catch console.warn sau REST; chưa gửi tx | Trạng thái pending/confirmed/failed; verify receipt phía server; không cấp chứng nhận từ DB status. |
+| S11 | MEDIUM | Không giới hạn Origin mặc định | `server/src/app.js:10` | Demo allowlist process-only; default source vẫn rộng, không coi đã sửa chung | Allowlist origin chính xác theo môi trường; không coi CORS là authentication. |
+| S12 | MEDIUM | Không rate-limit nonce/login/AI/sync | `server/src/app.js:11` | Source chỉ body limit 1 MB; chưa load test | Giới hạn per IP/wallet, cooldown nonce, quota AI, timeout/retry bounded. |
+| S13 | MEDIUM | Nonce bị tiêu thụ trước khi chữ ký được kiểm | `server/src/services/authService.js:32` | Unit wrong sig bị từ chối nhưng nonce đã mất; nguy cơ DoS ví mục tiêu | Chỉ consume hợp lệ bằng atomic compare; rate-limit; bổ sung domain/URI/chain theo chính sách SIWE. |
+| S14 | MEDIUM | Không kiểm chainId/signer so với JWT | `client/src/api/web3Client.js:34` | Source signer lấy từ ví hiện hành, không so JWT/chain | Kiểm expected chain + address; invalid session khi chain/account thay đổi; server verify receipt. |
+| S15 | MEDIUM | Listener scope yếu/processed sớm/payload mất | `server/src/services/chainListener.js:44` | Unit ethers payload thiếu topicId; source match title OR chainID, chưa tenant/network | Decode theo fragment; chainId+contract+onChainID unique; processed sau atomic apply; replay/reorg handling. |
+| S16 | MEDIUM | Nhiều collection ghi không nguyên tử/cạnh tranh | `server/src/routes/topic.routes.js:243` | Source lastversion+1, thiếu unique Assignment(topic,student), không transaction | Unique compound sau kiểm dữ liệu; transactions khi replica set hoặc outbox/compensation có idempotency. |
+| S17 | MEDIUM | Task/worklog dùng công ty hardcode | `server/src/routes/internship.routes.js:247` | Source company fallback và thiếu kiểm quan hệ thực tập | Suy company từ assignment đã xác thực, không từ body/fallback ví mẫu. |
+| S18 | MEDIUM | Backend nghe mọi interface | `server/src/index.js:22` | Demo bind 127.0.0.1 do guard; Backend gốc vẫn:::5000 | Local demo bind loopback khi được duyệt; production firewall/reverse proxy/TLS, allowlist. |
+| S19 | LOW | JWT trong localStorage cần bảo vệ XSS | `client/src/api/client.js:9` | Source localStorage; chưa phát hiện sink dangerouslySetInnerHTML; không chứng minh XSS | CSP, hạn chế third-party; cân nhắc cookie HttpOnly+CSRF theo kiến trúc. |
+| S20 | LOW | Thông báo lỗi downstream trả chi tiết | `server/src/services/ipfsService.js:20` | Source trả Pinata error details; chưa có token leak quan sát | Thông báo public ổn định + error code; log nội bộ redact secret, không log credential. |
+| S21 | LOW | Venv/cache và metadata tracked gây vệ sinh repo kém | `ai-service/venv/pyvenv.cfg:1` | 8336 tracked files gồm venv; artifact/address local không chứng minh deploy | Sau duyệt loại generated khỏi tracking một cách bảo toàn; giữ lock/dependency và hướng dẫn tái tạo. |
+
+
+Không fuzzing phá hoại/DoS/khai thác ngoài localhost,không scan secret lịch sử Git hoặc CVE online. Không có XSS injection đã chứng minh,không nói 0 lỗCRITICALtứcan toàn. Schema/sig/JWT positive guards thực sự đạt ở topic profile không bảo vệ các route internship thiếu guard. Thông tin đăng nhập thử không lưu JWT/private key trong report/log; browser profile kiểm định riêng lưu JWT demo để restore test và được giữ trong ignored staging,không dùng lại cho production. Edge headless và debug port đã đóng.

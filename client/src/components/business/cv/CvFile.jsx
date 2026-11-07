@@ -1,12 +1,14 @@
+import {cvDisplayText} from '../cvPresentation';
 import { useState } from 'react';
 import { apiRequest } from '../../../api/client';
 import { downloadFile } from '../../../api/files';
-import { ActionForm, Text, Field, ErrorNotice } from '../Shared';
-export default function CvFile({ data, onSaved }) {
+import { ActionForm, Text, Field, ErrorNotice, MutationDialog } from '../Shared';
+export default function CvFile({ data, onSaved, onRemoved }) {
   const [file, setFile] = useState(null),
     [error, setError] = useState(''),
     [mode, setMode] = useState('local'),
-    [cvUrl, setCvUrl] = useState('');
+    [cvUrl, setCvUrl] = useState(''),
+    [removing, setRemoving] = useState(false);
   return (
     <div className="business-stack">
       <div className="business-actions">
@@ -79,13 +81,14 @@ export default function CvFile({ data, onSaved }) {
         </ActionForm>
       )}
       <p className="muted">
-        Không cần lưu CV thủ công trước. Nếu đã có tệp CV, tải tệp mới sẽ thay tệp cũ và giữ phần
-        thông tin CV bạn đã nhập.
+        Tải tệp mới sẽ thay tệp cũ. Sau khi tải, kiểm tra các mục đọc được và chọn
+        “Đưa vào thông tin CV”, sau đó nhấn “Lưu CV” để cập nhật hồ sơ.
       </p>
       <p className="business-content">
         {data?.fileName ? `Tệp CV hiện tại: ${data.fileName}` : 'Chưa có tệp CV được tải lên.'}
       </p>
       {data?.fileName && (
+        <div className="business-actions">
         <button
           type="button"
           className="btn btn-secondary"
@@ -100,12 +103,20 @@ export default function CvFile({ data, onSaved }) {
         >
           Tải tệp CV của tôi
         </button>
+        <button type="button" className="btn btn-secondary" onClick={()=>setRemoving(true)}>Xóa tệp CV</button>
+        </div>
       )}
+      {removing&&<MutationDialog title="Xóa tệp CV đã tải lên?" onClose={()=>setRemoving(false)}>
+        <p>Tệp “{data.fileName}” và nội dung đọc từ tệp sẽ bị xóa. Thông tin CV nhập tay và hồ sơ đã gửi khi ứng tuyển được giữ nguyên.</p>
+        <ActionForm submit="Xác nhận xóa tệp" onSubmit={()=>apiRequest('/core/cv/file',{method:'DELETE',body:{version:data.__v??0}})} onSaved={saved=>{setRemoving(false);setFile(null);onRemoved?.(saved);}}>
+          <button type="button" className="btn btn-secondary" onClick={()=>setRemoving(false)}>Hủy</button>
+        </ActionForm>
+      </MutationDialog>}
       <ErrorNotice message={error} />
       {data?.extractedText && (
         <details>
           <summary>Xem nội dung đọc từ CV</summary>
-          <pre className="business-content">{data.extractedText}</pre>
+          <pre className="business-content">{cvDisplayText(data.extractedText)}</pre>
         </details>
       )}
     </div>

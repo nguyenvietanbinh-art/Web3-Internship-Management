@@ -1,3 +1,5 @@
+> **Hiện hành:** user yêu cầu chia sẻ dữ liệu đã có. Dùng [TEAM_ACTUAL_DATABASE.md](TEAM_ACTUAL_DATABASE.md) để khôi phục snapshot thật; các hướng dẫn seed/tự tạo dữ liệu bên dưới là lịch sử.
+
 # Clone và chạy Internova trên máy thành viên
 
 Hướng dẫn Windows PowerShell, chạy từ **root repository** trừ khi ghi rõ. Không cần database/cloud/mật khẩu của máy tác giả. Mỗi người có MongoDB TEST và tài khoản riêng; database dùng chung sẽ cấu hình sau. Không đưa `manual-login.txt`, `.env`, vault hoặc dữ liệu MongoDB vào Git.

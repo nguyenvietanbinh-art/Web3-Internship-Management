@@ -1,4 +1,4 @@
-const names = new Set(['web3_internship_test_phase1_workflow_20261106_a', 'web3_internship_test_phase1_workflow_qa_20261106_a']);
+const names = new Set(['internova_role_qa_20261107', 'web3_internship_test_phase1_workflow_20261106_a', 'web3_internship_test_phase1_workflow_qa_20261106_a', 'internova_demo_cunhan_kysu_20261107']);
 function assertWorkflowTest(env = process.env) {
   const uri = env.MONGODB_URI;
   if (env.NODE_ENV !== 'test' || env.SCHOOL_WORKFLOW_ENABLED !== 'true' || !uri || uri !== env.WORKFLOW_TEST_URI_ALLOWLIST) throw Error('Workflow requires exact TEST allowlist');

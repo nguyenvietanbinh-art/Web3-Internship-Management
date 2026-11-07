@@ -1,0 +1,20 @@
+const Assignment=require('../models/Assignment'),User=require('../models/User'),Student=require('../models/Student'),Topic=require('../models/Topic');
+const {InternshipBatch:Batch}=require('../models/BusinessModels');
+async function contexts(assignments){
+ const peopleIds=assignments.flatMap(a=>[a.studentUserId,a.companyUserId,a.mentorUserId].filter(Boolean));
+ const [people,students,batches,topics]=await Promise.all([User.find({_id:{$in:peopleIds}}).select('name').lean(),Student.find({userId:{$in:assignments.map(a=>a.studentUserId)}}).select('userId studentCode').lean(),Batch.find({_id:{$in:assignments.map(a=>a.batchId)}}).select('name').lean(),Topic.find({_id:{$in:assignments.map(a=>a.topicId)}}).select('title').lean()]);
+ const byId=rows=>new Map(rows.map(r=>[String(r._id),r])),users=byId(people),bs=byId(batches),ts=byId(topics),codes=new Map(students.map(s=>[String(s.userId),s.studentCode]));
+ return new Map(assignments.map(a=>[String(a._id),{studentName:users.get(String(a.studentUserId))?.name||'',studentCode:codes.get(String(a.studentUserId))||'',batchName:bs.get(String(a.batchId))?.name||'',topicTitle:a.topicSnapshot?.title||ts.get(String(a.topicId))?.title||'',companyName:users.get(String(a.companyUserId))?.name||'',mentorName:users.get(String(a.mentorUserId))?.name||'Chưa phân công'}]));
+}
+async function list(user,query,v,policy,Report){
+ const placementFilter=policy.scope(user);if(query.batchId)placementFilter.batchId=v.id(query.batchId);
+ if(query.assignmentId){await policy.load(user,query.assignmentId);placementFilter._id=v.id(query.assignmentId);}
+ const assignments=await Assignment.find(placementFilter).lean(),context=await contexts(assignments),search=v.search(query.q);
+ const matching=search?assignments.filter(a=>Object.values(context.get(String(a._id))).some(x=>search.test(x))):assignments;
+ const filter=search?{$or:[{assignmentId:{$in:matching.map(a=>a._id)}},{assignmentId:{$in:assignments.map(a=>a._id)},title:search}]}:{assignmentId:{$in:assignments.map(a=>a._id)}};
+ if(query.kind)filter.kind=v.choice(query.kind,['weekly','final'],'Loại báo cáo');
+ if(query.state)filter.state=v.choice(query.state,['submitted','reviewed','approved','need_revision'],'Trạng thái báo cáo');
+ const weekly=await Report.aggregate([{$match:{assignmentId:{$in:assignments.map(a=>a._id)},kind:'weekly',weekNumber:{$exists:true}}},{$group:{_id:{assignmentId:'$assignmentId',weekNumber:'$weekNumber'},version:{$max:'$version'}}}]);const latestWeeks=new Map(weekly.map(r=>[String(r._id.assignmentId)+':'+r._id.weekNumber,r.version]));
+ const data=await v.paged(Report,filter,query);return {...data,items:data.items.map(r=>{const row={...r,context:context.get(String(r.assignmentId))};if(r.kind==='weekly'&&r.weekNumber)row.current=latestWeeks.get(String(r.assignmentId)+':'+r.weekNumber)===r.version;row.reviewDrafts=(r.reviewDrafts||[]).filter(d=>d.actorUserId===String(user._id));if(['admin','company'].includes(user.role)){delete row.selfGrading;delete row.selfGradingHistory;delete row.evaluationHistory;delete row.evidenceChecks;row.reviews=(row.reviews||[]).map(review=>{if(!review.grading)return review;const {proposed,...grading}=review.grading;return{...review,grading};});}if(user.role==='student'&&r.state!=='approved'){row.contentFeedback=r.evaluationHistory?.at(-1)?.semantic;delete row.evaluationHistory;delete row.evidenceChecks;row.finalScore=null;const comment=text=>typeof text==='string'&&text.includes('NHẬN XÉT VÀ YÊU CẦU BỔ SUNG\n')?text.split('NHẬN XÉT VÀ YÊU CẦU BỔ SUNG\n').slice(1).join('\n'):text;row.reviews=(r.reviews||[]).map(({score,grading,...review})=>({...review,comment:comment(review.comment)}));row.history=(r.history||[]).map(e=>e.action==='report.reviewed'?{...e,data:{decision:e.data?.decision,comment:comment(e.data?.comment)}}:e);}return row;})};
+}
+module.exports={contexts,list};

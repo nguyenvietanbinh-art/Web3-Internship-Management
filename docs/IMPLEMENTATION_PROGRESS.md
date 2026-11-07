@@ -1,3 +1,43 @@
+## Đối chiếu ngữ nghĩa và giao diện gợi ý — kết quả cuối 07/11/2026
+
+Đã xác minh BERT thật sau khi giải phóng RAM, thêm so sánh TF-IDF/BERT trên cùng đầu vào, giữ điểm raw và hạng thật, phân loại kỹ năng thành trùng/tương đương/liên quan/chưa có bằng chứng. Card gợi ý responsive, một ghi chú chung, chi tiết thu gọn. Không train, sửa CV/JD, đổi quota hay cài dependency. 53 test theo các suite liên quan PASS; build/lint PASS. 10 collection nghiệp vụ và index giữ nguyên; đăng nhập kiểm thử có thêm auth audit/timestamp. [Báo cáo và giới hạn nghiệm thu](SEMANTIC_MATCHING_REVIEW.md).
+
+## Cập nhật luồng sinh viên — 07/11/2026
+
+Đã nhập bộ200 CV/20 JD vào tài khoản website5188 và TEST5189:thêm mới841 bản ghi mỗi môi trường,1 kỳ riêng,20 Topic/Opportunity còn tuyển. Tài khoản/cv cũ không bị ghi đè; toàn bộ hash/index các document cũ được bảo toàn. API TF-IDF/SBERT thật200, browser3/3 mỗi môi trường, retry không ghi trùng. Không train model. [File đăng nhập và cách thử](REFERENCE200_WEB_IMPORT.md).
+
+Hoàn thiện modal liên kết ví: ẩn công cụ liên kết Google, không hiện sẵn ô password ví, xác thực mật khẩu trước khi xin tài khoản MetaMask, nonce gắn chain/user/wallet/purpose/expiry, kiểm browser/origin và chống replay. Giữ Google OAuth/fallback tài khoản không mật khẩu và phân quyền.41 tests/lint/build PASS; CV/JD/nghiệp vụ giữ nguyên hash/index. [Chi tiết](WALLET_LINK_MODAL_RESULT.md).
+
+Bổ sung bộ đánh giá CV/JD:200 CV,20 JD,4.000 phiếu tham chiếu có căn cứ,200 file CV và200 file nhận xét. Chạy400 request thật TF-IDF/SBERT local, không lỗi; không train model hoặc ghi MongoDB. TF-IDF tốt hơn trên bộ tổng hợp có thiên lệch từ khóa, không đảo nhãn để làm đẹp BERT.4 unit tests PASS; nhãn chuyên gia vẫn chưa được xác nhận. [Kết quả và cách xem](CV_JD_EVALUATION_200.md).
+
+Đã gộp Tổng quan/tài khoản sinh viên; đổi Công việc được giao, chuyển báo cáo tuần5 mục vào công việc và tách trang Báo cáo kết quả chỉ cuối kỳ. Backend kiểm nộp lại chỉ khi cần bổ sung, giữ phiên bản/quy trình duyệt. Chấm công giải thích lý do khóa, chạy1 phút thực tế không cần ví trên TEST. Có8 bộ CV PDF/DOCX/Markdown/HTML và16 upload/parser thật; TF-IDF/SBERT đã chạy. Integration5, hồi quy workflow13(+1 SKIP), core/security/QR33, unit10, browser11+5+3 đều PASS; lint/build PASS.4 database gốc/demo giữ nguyên hash/index. Không cài dependency/migration/commit/push. Camera/GPS thiết bị thật, IPFS cloud và chất lượng AI trên người thật chưa được nghiệm thu trong nhóm này. [Báo cáo, file và cách tự thử](STUDENT_WORKFLOW_UPDATE.md).
+
+## Bài báo cáo đọc/phân tích đầy đủ — 07/11/2026
+
+Đã tạo48 bài mẫu chi tiết cho báo cáo đã nộp/hoàn tất ở môi trường5188, và12 mẫu TEST; chỉ thêm file local, không sửa MongoDB hoặc điểm đã chốt. Trang phân tích có Xem bài báo cáo và chọn nguồn bài đã nộp/bài mẫu. NLP dùng đúng nội dung hiển thị, trả hash nguồn, không lưu điểm mẫu. 3 unit +10 AI regression +3 browser PASS; API TF-IDF/SBERT thật, lint/build PASS. [Nội dung mẫu, cách dùng và bằng chứng](REPORT_READING_SAMPLES.md).
+
+# Tiếp tục sau gián đoạn — 07/11/2026
+
+Đã khôi phục bốn file quota/transaction đang dở và giữ thay đổi đã có. Hoàn tất xử lý chỗ cuối/đóng tuyển/hoàn lượt đúng một lần, API và UI quota mới; ngừng gợi ý AI doanh nghiệp; tìm kiếm/lọc/phân trang cơ hội; context và quyền báo cáo/tệp; atomic report replacement trong workflow; state theo tài khoản/vai trò, Back/Forward, vùng mở và unsaved guard. Không đổi database gốc/demo.
+
+Nghiệm thu: integration mới12/12, workflow kèm local SBT14/14, unit Backend18/18, regression nghiệp vụ/bảo mật51/51, AI API10/10, Frontend20/20, Python34 PASS/1 SKIP, contract9/9, browser16/16; lint0error/0warning, buildPASS. Hash nội dung/indexes bốn DB gốc/demo không đổi. Có mint/verify SBT thật trên chain QA18546; Pinata live vẫn BLOCKED, chất lượng AI trên dữ liệu chuyên gia chưa nghiệm thu. Không tuyên bố hoàn chỉnh 100%.
+
+[Báo cáo chi tiết, file đã sửa, dữ liệu và giới hạn](ROLE_WORKFLOW_COMPLETION.md) · [Chạy và tự kiểm thử](RUN_FULL_WORKFLOW.md) · [Quyền báo cáo](REPORT_ACCESS_MATRIX.md) · [State](UI_STATE_PERSISTENCE.md). Nội dung các giai đoạn bên dưới là lịch sử theo lần thực hiện.
+
+> **Bài báo cáo ngắn cho kỳ đã hoàn thành — 07/11/2026:** Có 36 bài/12 sinh viên tổng hợp, ba mức nội dung. Giảng viên xem/sửa bài trên form, chấm trước và hoàn tất phiếu thử riêng, xuất JSON; giữ nguyên báo cáo/điểm đã chốt. API scope tests PASS; 2 browser tests PASS gồm sửa form và tải file, không gọi API ghi điểm chính thức. Unit/rubric tests, lint/build PASS. Dataset chờ nhãn tại ai-service/datasets/completed-report-exercises-v1, chưa tự huấn luyện lại. [Hướng dẫn và bằng chứng](COMPLETED_REPORT_EXERCISES.md).
+> **Đối chiếu kỹ năng và BERT đã nối đủ — 07/11/2026:** Sửa API workflow trước đây gửi kỹ năng đề tài rỗng; hiện dùng Topic.requiredSkills đã có. Bổ sung yêu cầu cụ thể cho 60 đề tài/144 cơ hội do script tạo, giữ 73 CV ứng tuyển. Giao diện hiện kỹ năng yêu cầu/đáp ứng/cần bổ sung và doanh nghiệp có ô nhập kỹ năng. Bốn nhóm CV × TF-IDF/SBERT đều HTTP 200, BERT inference thật; 8 unit/route/guard tests, lint/build PASS. Browser NOT TESTED; không coi toàn dự án đã production-ready. [Bằng chứng, tài khoản và giới hạn](SKILLS_MATCHING_IMPLEMENTATION.md).
+> **GPA/kỹ năng — 07/11/2026:** Bổ sung đồng bộ 271 sinh viên tổng hợp và CV, giữ một hồ sơ đã thay đổi. GPA 2–4, kỹ năng 2/4/7/10 thuộc 8 hướng; 73 CV ứng tuyển đã gửi giữ nguyên. Bốn nhóm đăng nhập/CV/gợi ý TF-IDF HTTP 200; BERT BLOCKED (503, RAM dưới 1 GiB), không fallback giả. GPA chưa tham gia xếp hạng. [Tài khoản thử và bằng chứng](STUDENT_GPA_SKILLS_EXAMPLES.md).
+> **Luồng mới: chấm trước, giảng viên kiểm tra — 07/11/2026:** Kết quả phân tích có điểm đề xuất 7 tiêu chí (official:false); giảng viên mở phiếu đã điền sẵn để sửa/xác nhận. Không tự lưu điểm; bài đầy đủ 82,33 và bài thiếu 32,84 trong lần thử API, báo cáo trước/sau không đổi. Chuẩn bị 6 bài mẫu thiếu và xuất 48 file đọc thử; thêm nút Xem bài báo cáo. 5 test chấm trước + 16 NLP + 5 phiếu chấm, lint/build PASS; browser NOT TESTED. [Hướng dẫn và giới hạn cách chấm](PROPOSED_REPORT_GRADING.md).
+> **Phiếu chấm giảng viên — 07/11/2026:** Thêm 7 tiêu chí tổng 100 điểm, căn cứ và nhận xét do giảng viên nhập; lưu chi tiết vào nhận xét theo API hiện có. Gợi ý phân tích dùng lời dễ hiểu, không biến điểm tương đồng thành điểm chấm. Lint/build và 5 unit tests PASS; chưa ghi điểm/test lưu bằng trình duyệt. [Hướng dẫn, phạm vi và giới hạn](TEACHER_REPORT_GRADING.md).
+> **Classifier tổng hợp đã tích hợp local — 07/11/2026:** TF-IDF + Logistic Regression fit trên 600/1.000 báo cáo synthetic; AI 8003 bật opt-in và kiểm SHA-256. API trả EXPERIMENTAL_SYNTHETIC, confidence null, không sửa điểm/dữ liệu. BERT vẫn dùng để đối chiếu ngữ nghĩa, không được fine-tune. 26 test Python, lint/build PASS; 4 lần phân tích qua Backend HTTP 200. Chất lượng trên dữ liệu thật chưa nghiệm thu; browser NOT TESTED. [Chi tiết và giới hạn đã quan sát](SYNTHETIC_CLASSIFIER_INTEGRATION.md).
+> **Báo cáo đầy đủ — 07/11/2026:** Đã bổ sung 48 báo cáo tổng hợp (10 mục/bài, 3.358–3.630 ký tự), giữ nguyên điểm/nhận xét/trạng thái. Giảng viên 1 và 12 thấy đủ bốn bài; TF-IDF/SBERT thực tế HTTP 200 trên báo cáo đang nộp và đã duyệt. Một bài SBERT bị giới hạn 13/1.021 token; classifier NOT_TRAINED. [Cách thử và giới hạn](FULL_REPORT_EXAMPLES_20261107.md). Browser NOT TESTED.
+> **Bổ sung dữ liệu theo công đoạn — 07/11/2026:** Giữ nguyên database hiện tại, thêm 72 sinh viên (6 nhóm × 12 doanh nghiệp), 2 kỳ theo năm học (đang thực tập/đã đóng), 72 task, 48 nhật ký, 60 phiên giờ và 48 báo cáo tổng hợp. Không coi giờ/điểm mẫu là hoạt động người thật. Lint/build và 3 unit/route tests PASS; API đọc dữ liệu theo 5 tình huống đăng nhập PASS, truy cập chéo sinh viên 404; phân tích báo cáo TF-IDF HTTP 200, classifier NOT_TRAINED. Browser E2E NOT TESTED, IPFS/blockchain BLOCKED. [Tài khoản, từng bước thử và bằng chứng](LIFECYCLE_EXAMPLES_20261107.md).
+# Combined demo - 07/11/2026
+
+[Runtime/data/login](COMBINED_DEMO_20261107.md): source8aa463b; new DB on27018; 43legacy documents preserved,226new synthetic accounts,200students (100registered/100unregistered),2new periods. Health/ready and4role login/dashboard API PASS; guard unit2/2PASS. Browser CDP timeout FAIL, not full E2E acceptance. No fake transactions/hours, no source DB changes, no commit/push.
+
+---
+
 > **2026-11-06 ? accepted student roster:** Company Work selectors now also show accepted students awaiting school formalization, including engineer-090 in period abshd, with an explicit pending label. This does not create an Assignment or grant task submission rights. See [updated roster behavior and tests](COMPANY_WORK_PERIOD_FILTER.md).
 
 > **2026-11-06 ? company work period selection:** Company Work & Diary now selects the period first, then its official student placement. Task/diary tables and both assignment forms use that period; switching periods clears stale selection. See [behavior and current tests](COMPANY_WORK_PERIOD_FILTER.md).
@@ -443,3 +483,15 @@ Git `branch_1`, HEAD`d11a1852c5f03963bbe260425a246b0e65fe1091` không đổi, kh
 - Seed cũ vẫn nguy hiểm/hardcode và không chạy. Không áp schema/migration/model mới vào DB gốc/demo; rollout vào đó là công việc riêng.
 
 **PHASE2 hoàn thành phạm vi UI hiện có; sẵn sàng để người dùng đánh giá trước PHASE3.** Chưa đáp ứng toàn bộ bảy yêu cầu đề cương, chưa production-ready, chưa triển khai nghiệp vụ PHASE3.
+
+
+## V3 — cập nhật thực tế 07/11/2026
+
+BERT local ready; task theo tiêu chí/phiên bản, báo cáo tuần và rubric/chấm riêng tư đã kiểm thực tế trên TEST. Backend integration23/23, unit42/42, security32/32, workflow17/17, client10/10, Python3/3, Solidity12/12; browser8/8 +5/5 +7/7; AI role API6/6; QA Web3 ký/QR/hash/mint/verify5/5. Không cộng thành số test duy nhất vì có lần chạy lặp. Main31collection/index/hash không đổi khi reload/health. IPFS/Maps/nhãn độc lập BLOCKED; deadline/roster/tuần on-chain còn PARTIAL. Không tuyên bố hoàn thành V3. Xem [báo cáo](INTERNOVA_PRODUCTION_READINESS/FINAL_READINESS_REPORT.md), [test](INTERNOVA_PRODUCTION_READINESS/E2E_TEST_RESULTS.md), [hướng dẫn](RUN_V3_FULL_WORKFLOW.md).
+
+E2E bổ sung báo cáo liên kết hai task và giảng viên đề xuất/nhà trường duyệt rubric:3/3PASS; xem `docs/evidence/v3-20261107/weekly-rubric.json`.
+
+
+## AI auto grading — 07/11/2026
+
+Đã thay giới hạn6mụcnull bằngBERTtruyxuất+report-rules-v1.1. Phúc77.5/100,self80,officialnull. Backend28/28,browser8/8+4/4,frontendunit10/10,lint/buildPASS. Chấm sơ bộ theo luậtcôngkhai, không phải mô hình đã fine-tune/hiệu chuẩn bằng điểm giảng viên; hint tùy chỉnh ngoài luậtcầnreview. [Báo cáo](INTERNOVA_PRODUCTION_READINESS/AI_AUTO_GRADING/FINAL_AI_GRADING_REPORT.md). User yêu cầu tiếp chia sẻ source vàdatabase thật quaGit; snapshotsAESmãhóa đã restoreTEST/đốichiếuhash/indexes,khóariêngkhôngGit.

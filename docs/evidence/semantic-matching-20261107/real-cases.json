@@ -1,0 +1,196 @@
+[
+  {
+    "engine": "tfidf",
+    "status": "PASS",
+    "tests": [
+      "identical input reproduced",
+      "duplicate JD vectors/scores identical",
+      "clearly unrelated JD below identical JD",
+      "different query changes ranking/cache key",
+      "controlled aliases normalized"
+    ],
+    "results": [
+      {
+        "id": "same-a",
+        "cosine": 1.0,
+        "raw_cosine": 0.9999999999999998,
+        "matched_skills": [
+          "javascript"
+        ],
+        "missing_query_skills": [],
+        "coverage": null,
+        "explanation": "Cosine TF-IDF trên cùng tập ứng viên; kỹ năng giao nhau đối chiếu trực tiếp."
+      },
+      {
+        "id": "same-b",
+        "cosine": 1.0,
+        "raw_cosine": 0.9999999999999998,
+        "matched_skills": [
+          "javascript"
+        ],
+        "missing_query_skills": [],
+        "coverage": null,
+        "explanation": "Cosine TF-IDF trên cùng tập ứng viên; kỹ năng giao nhau đối chiếu trực tiếp."
+      },
+      {
+        "id": "other",
+        "cosine": 0.0,
+        "raw_cosine": 0.0,
+        "matched_skills": [],
+        "missing_query_skills": [
+          "javascript"
+        ],
+        "coverage": null,
+        "explanation": "Cosine TF-IDF trên cùng tập ứng viên; kỹ năng giao nhau đối chiếu trực tiếp."
+      }
+    ],
+    "changed_query": [
+      {
+        "id": "other",
+        "cosine": 1.0,
+        "raw_cosine": 0.9999999999999998,
+        "matched_skills": [],
+        "missing_query_skills": [],
+        "coverage": null,
+        "explanation": "Cosine TF-IDF trên cùng tập ứng viên; kỹ năng giao nhau đối chiếu trực tiếp."
+      },
+      {
+        "id": "same-a",
+        "cosine": 0.0,
+        "raw_cosine": 0.0,
+        "matched_skills": [],
+        "missing_query_skills": [],
+        "coverage": null,
+        "explanation": "Cosine TF-IDF trên cùng tập ứng viên; kỹ năng giao nhau đối chiếu trực tiếp."
+      },
+      {
+        "id": "same-b",
+        "cosine": 0.0,
+        "raw_cosine": 0.0,
+        "matched_skills": [],
+        "missing_query_skills": [],
+        "coverage": null,
+        "explanation": "Cosine TF-IDF trên cùng tập ứng viên; kỹ năng giao nhau đối chiếu trực tiếp."
+      }
+    ],
+    "model": {
+      "name": "TF-IDF word unigram/bigram"
+    }
+  },
+  {
+    "engine": "sbert",
+    "status": "PASS",
+    "tests": [
+      "identical input reproduced",
+      "duplicate JD vectors/scores identical",
+      "clearly unrelated JD below identical JD",
+      "different query changes ranking/cache key",
+      "controlled aliases normalized"
+    ],
+    "results": [
+      {
+        "id": "same-a",
+        "cosine": 1.0,
+        "raw_cosine": 1.0,
+        "matched_skills": [
+          "javascript"
+        ],
+        "missing_query_skills": [],
+        "coverage": {
+          "total_tokens": 7,
+          "used_tokens": 7,
+          "chunks": 1,
+          "truncated": false
+        },
+        "explanation": "Cosine của embedding cục bộ; kỹ năng giao nhau lấy từ trường khai báo, không phải lý do nhân quả hoặc xác suất trúng tuyển."
+      },
+      {
+        "id": "same-b",
+        "cosine": 1.0,
+        "raw_cosine": 1.0,
+        "matched_skills": [
+          "javascript"
+        ],
+        "missing_query_skills": [],
+        "coverage": {
+          "total_tokens": 7,
+          "used_tokens": 7,
+          "chunks": 1,
+          "truncated": false
+        },
+        "explanation": "Cosine của embedding cục bộ; kỹ năng giao nhau lấy từ trường khai báo, không phải lý do nhân quả hoặc xác suất trúng tuyển."
+      },
+      {
+        "id": "other",
+        "cosine": -0.023851,
+        "raw_cosine": -0.023850961711979635,
+        "matched_skills": [],
+        "missing_query_skills": [
+          "javascript"
+        ],
+        "coverage": {
+          "total_tokens": 7,
+          "used_tokens": 7,
+          "chunks": 1,
+          "truncated": false
+        },
+        "explanation": "Cosine của embedding cục bộ; kỹ năng giao nhau lấy từ trường khai báo, không phải lý do nhân quả hoặc xác suất trúng tuyển."
+      }
+    ],
+    "changed_query": [
+      {
+        "id": "other",
+        "cosine": 1.0,
+        "raw_cosine": 0.9999999999999999,
+        "matched_skills": [],
+        "missing_query_skills": [],
+        "coverage": {
+          "total_tokens": 7,
+          "used_tokens": 7,
+          "chunks": 1,
+          "truncated": false
+        },
+        "explanation": "Cosine của embedding cục bộ; kỹ năng giao nhau lấy từ trường khai báo, không phải lý do nhân quả hoặc xác suất trúng tuyển."
+      },
+      {
+        "id": "same-a",
+        "cosine": -0.023851,
+        "raw_cosine": -0.02385096171197963,
+        "matched_skills": [],
+        "missing_query_skills": [],
+        "coverage": {
+          "total_tokens": 7,
+          "used_tokens": 7,
+          "chunks": 1,
+          "truncated": false
+        },
+        "explanation": "Cosine của embedding cục bộ; kỹ năng giao nhau lấy từ trường khai báo, không phải lý do nhân quả hoặc xác suất trúng tuyển."
+      },
+      {
+        "id": "same-b",
+        "cosine": -0.023851,
+        "raw_cosine": -0.02385096171197963,
+        "matched_skills": [],
+        "missing_query_skills": [],
+        "coverage": {
+          "total_tokens": 7,
+          "used_tokens": 7,
+          "chunks": 1,
+          "truncated": false
+        },
+        "explanation": "Cosine của embedding cục bộ; kỹ năng giao nhau lấy từ trường khai báo, không phải lý do nhân quả hoặc xác suất trúng tuyển."
+      }
+    ],
+    "model": {
+      "ready": true,
+      "configured": true,
+      "model_id": "sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2",
+      "revision": "e8f8c211226b894fcb81acc59f3b34ba3efd5f42",
+      "expected_revision": "e8f8c211226b894fcb81acc59f3b34ba3efd5f42",
+      "backend": "onnx-cpu-int8",
+      "reason": null,
+      "available_memory_mib": 1221.9140625,
+      "network_inference": false
+    }
+  }
+]

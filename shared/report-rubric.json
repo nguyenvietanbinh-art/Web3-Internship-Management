@@ -1,0 +1,19 @@
+{
+  "version": "report-rubric-v2",
+  "criteria": [
+    {"id":"goals","label":"Mục tiêu và yêu cầu đề tài","max":10,"hint":"Nêu rõ vấn đề, phạm vi và mục tiêu; đối chiếu yêu cầu được giao."},
+    {"id":"method","label":"Phân tích và cách thực hiện","max":20,"hint":"Trình bày thiết kế, cách thực hiện và lý do chọn giải pháp."},
+    {"id":"results","label":"Kết quả và mức độ hoàn thành","max":25,"hint":"Đối chiếu sản phẩm và kết quả với từng yêu cầu."},
+    {"id":"evidence","label":"Kiểm thử và bằng chứng","max":20,"hint":"Có tài liệu, sản phẩm và kết quả kiểm thử được kiểm tra."},
+    {"id":"progress","label":"Tiến độ và quá trình thực tập","max":10,"hint":"Đối chiếu tiêu chí công việc đã xác nhận, nhật ký và giờ được duyệt."},
+    {"id":"reflection","label":"Khó khăn, bài học và cải tiến","max":10,"hint":"Giải thích khó khăn cụ thể, cách giải quyết và bài học."},
+    {"id":"presentation","label":"Trình bày và nguồn tài liệu","max":5,"hint":"Bố cục rõ ràng, diễn đạt phù hợp và dẫn nguồn."}
+  ],
+  "levels": [
+    {"level":0,"label":"Chưa đạt","description":"Không có nội dung đáp ứng hoặc bằng chứng cho thấy chưa đạt."},
+    {"level":1,"label":"Cần bổ sung nhiều","description":"Có nội dung nhưng thiếu phần lớn yêu cầu và căn cứ."},
+    {"level":2,"label":"Đạt một phần","description":"Có nội dung và bằng chứng đáp ứng một phần yêu cầu."},
+    {"level":3,"label":"Đạt","description":"Nội dung và bằng chứng đã kiểm tra đáp ứng yêu cầu chính."},
+    {"level":4,"label":"Tốt","description":"Đáp ứng đầy đủ, giải thích rõ và có bằng chứng được kiểm tra."}
+  ]
+}

@@ -17,12 +17,16 @@ const dto = (u) => ({
   email: u.email || '',
   role: u.role,
   walletAddress: u.walletAddress || null,
+  walletVerified: u.walletVerified === true,
   emailVerified: false,
   passwordEnabled: true,
   authProvider: 'password',
   __v: u.__v || 0,
 });
 const hash = (v) => crypto.createHash('sha256').update(v).digest('hex');
+function walletOrigin(req){if(!config.corsOrigin.split(',').map(x=>x.trim()).includes(req.headers.origin))throw new HttpError(403,'Origin không hợp lệ');}
+function chainId(value){try{if(typeof value!=='string'||!(/^(0x[0-9a-fA-F]+|[1-9][0-9]*)$/).test(value))throw Error();const n=BigInt(value);if(n<=0n||n>18446744073709551615n)throw Error();return n.toString();}catch{throw new HttpError(400,'Chain ID không hợp lệ');}}
+function bindCookie(res,secret){res.cookie('internova_email_bind',secret,{httpOnly:true,sameSite:'strict',secure:process.env.NODE_ENV==='production',path:'/api/auth',maxAge:300000});}
 const dummy = bcrypt.hashSync(crypto.randomBytes(32).toString('hex'), 12);
 function email(value) {
   if (
@@ -186,12 +190,27 @@ router.post(
     res.json({ token: signToken(saved, 'password'), user: dto(saved) });
   })
 );
+router.post('/email/wallet-reauth',requireAuth,asyncHandler(async(req,res)=>{
+ keys(req.body,['password']);walletOrigin(req);const u=await proof(req.user,req.body.password);
+ if(u.walletAddress)throw new HttpError(409,'Tài khoản đã có ví');
+ const secret=crypto.randomBytes(32).toString('hex'),id=crypto.randomBytes(32).toString('hex'),expiresAt=new Date(Date.now()+300000);
+ await Challenge.create({_id:id,nonce:crypto.randomBytes(32).toString('hex'),browserHash:hash(secret),purpose:'password-wallet-reauth',userId:u._id,authVersion:u.authVersion||0,expiresAt});
+ bindCookie(res,secret);res.json({reauthId:id,expiresAt});
+}));
 router.post(
   '/email/wallet-challenge',
   requireAuth,
   asyncHandler(async (req, res) => {
-    keys(req.body, ['password', 'walletAddress']);
-    await proof(req.user, req.body.password);
+    keys(req.body, ['password', 'walletAddress','reauthId','chainId']);
+    walletOrigin(req);
+    const network=chainId(req.body.chainId||'31337');
+    let reauth=null;
+    if(req.body.reauthId){
+      if(req.body.password!==undefined||typeof req.body.reauthId!=='string'||!/^[a-f0-9]{64}$/.test(req.body.reauthId))throw new HttpError(401,'Phiên xác thực không hợp lệ');
+      reauth=await Challenge.findOne({_id:req.body.reauthId,purpose:'password-wallet-reauth',userId:req.user._id,browserHash:hash(cookie(req)),authVersion:req.user.authVersion||0,usedAt:{$exists:false},expiresAt:{$gt:new Date()}});
+      if(!reauth)throw new HttpError(401,'Phiên xác thực đã hết hạn hoặc đã sử dụng');
+      if(!req.body.chainId)throw new HttpError(400,'Cần chain ID của ví');
+    }else await proof(req.user, req.body.password);
     if (req.user.walletAddress)
       throw new HttpError(409, 'Tài khoản đã có ví; không tự đổi khóa sở hữu');
     if (!isWallet(req.body.walletAddress)) throw new HttpError(400, 'Địa chỉ ví không hợp lệ');
@@ -202,7 +221,7 @@ router.post(
         .includes(req.headers.origin)
     )
       throw new HttpError(403, 'Origin không hợp lệ');
-    const secret = crypto.randomBytes(32).toString('hex'),
+    const secret = reauth?cookie(req):crypto.randomBytes(32).toString('hex'),
       nonce = crypto.randomBytes(32).toString('hex'),
       id = crypto.randomBytes(32).toString('hex'),
       wallet = req.body.walletAddress.toLowerCase(),
@@ -211,10 +230,13 @@ router.post(
       'Internova - Link wallet to email account',
       `User: ${req.user._id}`,
       `Wallet: ${wallet}`,
+      `Chain ID: ${network}`,
+      'Purpose: password-link-wallet',
       `Nonce: ${nonce}`,
       `Origin: ${req.headers.origin}`,
       `Expires: ${expiresAt.toISOString()}`,
     ].join('\n');
+    if(reauth){const consumed=await Challenge.updateOne({_id:reauth._id,usedAt:{$exists:false},expiresAt:{$gt:new Date()}},{$set:{usedAt:new Date()}});if(consumed.modifiedCount!==1)throw new HttpError(401,'Phiên xác thực đã sử dụng');}
     await Challenge.create({
       _id: id,
       nonce,
@@ -222,6 +244,8 @@ router.post(
       userId: req.user._id,
       browserHash: hash(secret),
       wallet,
+      chainId:network,
+      authVersion:req.user.authVersion||0,
       message,
       expiresAt,
     });
@@ -232,15 +256,16 @@ router.post(
       path: '/api/auth',
       maxAge: 300000,
     });
-    res.json({ challengeId: id, message, expiresAt });
+    res.json({ challengeId: id, message, expiresAt,chainId:network });
   })
 );
 router.post(
   '/email/link-wallet',
   requireAuth,
   asyncHandler(async (req, res) => {
-    keys(req.body, ['password', 'challengeId', 'signature']);
-    const u = await proof(req.user, req.body.password);
+    keys(req.body, ['password', 'challengeId', 'signature','chainId']);walletOrigin(req);
+    const u = req.body.password!==undefined?await proof(req.user, req.body.password):await User.findById(req.user._id).select('+passwordHash');
+    if(!u||!u.passwordHash)throw new HttpError(401,'Cần xác thực tài khoản có mật khẩu');
     if (typeof req.body.challengeId !== 'string' || !/^[a-f0-9]{64}$/.test(req.body.challengeId))
       throw new HttpError(401, 'Challenge không hợp lệ');
     const c = await Challenge.findOne({
@@ -253,6 +278,9 @@ router.post(
     });
     if (!c || u.walletAddress)
       throw new HttpError(401, 'Phiên liên kết không hợp lệ hoặc đã hết hạn');
+    if(c.authVersion!==undefined&&c.authVersion!==(u.authVersion||0))throw new HttpError(401,'Phiên xác thực đã thay đổi');
+    if(req.body.password===undefined&&(!c.chainId||!req.body.chainId))throw new HttpError(401,'Cần phiên xác thực và chain ID');
+    if(req.body.chainId!==undefined&&chainId(req.body.chainId)!==c.chainId)throw new HttpError(401,'Mạng ví đã thay đổi; hãy liên kết lại');
     let recovered;
     try {
       recovered = ethers.verifyMessage(c.message, req.body.signature).toLowerCase();

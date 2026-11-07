@@ -9,8 +9,16 @@ router.get('/web3/status',asyncHandler(async(_req,res)=>res.json({chain:await ch
 router.post('/web3/qr/issue',requireRole('company'),asyncHandler(async(req,res)=>res.status(201).json(await qr.issue(req.user,req.body))));
 router.post('/web3/qr/redeem',requireRole('student'),asyncHandler(async(req,res)=>res.json(await qr.redeem(req.user,req.body))));
 async function reportScope(user,id){const report=await Report.findById(v.id(id));if(!report)throw new HttpError(404,'Không có báo cáo');const assignment=await policy.load(user,String(report.assignmentId));return{report,assignment};}
-function artifactDto(a){return{id:a._id,reportId:a.reportId,cid:a.cid||null,state:a.state,plaintextHash:a.plaintextHash,ciphertextHash:a.ciphertextHash,mime:a.mime,bytes:a.bytes,verifiedAt:a.verifiedAt||null,errorCode:a.errorCode};}
+function artifactDto(a){return{id:a._id,reportId:a.reportId,source:a.source,cid:a.cid||null,state:a.state,plaintextHash:a.plaintextHash,ciphertextHash:a.ciphertextHash,mime:a.mime,bytes:a.bytes,verifiedAt:a.verifiedAt||null,errorCode:a.errorCode};}
 router.get('/web3/reports/:id/artifacts',asyncHandler(async(req,res)=>{const {report}=await reportScope(req.user,req.params.id);res.json({items:(await PrivateReportArtifact.find({reportId:report._id}).sort({createdAt:-1})).map(artifactDto)});}));
+router.get('/web3/artifacts/:id/file',asyncHandler(async(req,res)=>{
+ const artifact=await PrivateReportArtifact.findById(v.id(req.params.id)).select('+envelope');if(!artifact)throw new HttpError(404,'Không có tệp báo cáo');
+ await reportScope(req.user,String(artifact.reportId));
+ const extensions={'application/pdf':'pdf','application/vnd.openxmlformats-officedocument.wordprocessingml.document':'docx'},extension=extensions[artifact.mime];
+ if(artifact.source!=='attachment'||artifact.state!=='verified'||!artifact.verifiedAt||!artifact.envelope||!extension)throw new HttpError(409,'Tệp chưa được tải lên và xác minh thành công');
+ const bytes=ipfs.decrypt(artifact.envelope,artifact.reportId);if(bytes.length!==artifact.bytes||ipfs.sha(bytes)!==artifact.plaintextHash)throw new HttpError(409,'Tệp không khớp bằng chứng đã lưu');
+ res.set({'Content-Type':artifact.mime,'Content-Disposition':`attachment; filename="bao-cao-${artifact.reportId}.${extension}"`,'Cache-Control':'no-store','X-Content-Type-Options':'nosniff'}).send(bytes);
+}));
 async function uploadReport(req,res,attachment){
  const {report}=await reportScope(req.user,req.params.id);if(req.user.role!=='student'||!identity.belongs(report,req.user,'studentUserId','studentWallet'))throw new HttpError(403,'Chỉ chủ báo cáo upload');ipfs.assertConfigured();
  let bytes,mime,source;

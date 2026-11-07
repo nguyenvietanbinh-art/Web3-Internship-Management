@@ -1,0 +1,621 @@
+{
+  "time": "2026-11-07T02:37:43.882Z",
+  "tests": [
+    {
+      "name": "Student has one overview with real account/internship data and no school assignment tools",
+      "status": "PASS"
+    },
+    {
+      "name": "Manual check-in works without wallet; open session displays a useful blocking reason",
+      "status": "PASS"
+    },
+    {
+      "name": "Student uploads a real PDF and reads Vietnamese extracted text",
+      "status": "PASS"
+    },
+    {
+      "name": "Weekly report belongs to assigned work, has five content sections and submits to the company",
+      "status": "PASS"
+    },
+    {
+      "name": "Final results page contains only final reports, allows submit/read and prevents duplicate submission",
+      "status": "PASS"
+    },
+    {
+      "name": "Actual minute checkout and company approval update only approved totals",
+      "status": "PASS"
+    },
+    {
+      "name": "company retains access to the scoped weekly/final reports and existing account overview",
+      "status": "PASS"
+    },
+    {
+      "name": "mentor retains access to the scoped weekly/final reports and existing account overview",
+      "status": "PASS"
+    },
+    {
+      "name": "admin retains access to the scoped weekly/final reports and existing account overview",
+      "status": "PASS"
+    },
+    {
+      "name": "Unplaced student has a clear attendance reason and real semantic topic suggestions",
+      "status": "PASS"
+    },
+    {
+      "name": "Mobile and theme remain usable without console errors",
+      "status": "PASS"
+    }
+  ],
+  "requests": [
+    {
+      "method": "OPTIONS",
+      "path": "/api/core/capabilities"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/capabilities"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/capabilities"
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/api/core/capabilities"
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/api/core/capabilities"
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/api/auth/me"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/capabilities"
+    },
+    {
+      "method": "GET",
+      "path": "/api/auth/me"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/capabilities"
+    },
+    {
+      "method": "GET",
+      "path": "/api/auth/me"
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/api/core/capabilities"
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/api/auth/me"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/placements"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/tasks"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/reports"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/time/totals"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/dashboard"
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/api/core/placements"
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/api/core/tasks"
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/api/core/reports"
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/api/core/time/totals"
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/api/core/dashboard"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/placements"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/time/sessions"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/time/totals"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/time/sessions"
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/api/core/time/sessions"
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/api/core/time/totals"
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/api/core/time/sessions"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/time/totals"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/time/sessions"
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/api/core/time/totals"
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/api/core/time/sessions"
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/api/core/time/check-in"
+    },
+    {
+      "method": "POST",
+      "path": "/api/core/time/check-in"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/time/sessions"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/time/totals"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/time/sessions"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/cv"
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/api/core/cv"
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/api/core/cv/file"
+    },
+    {
+      "method": "POST",
+      "path": "/api/core/cv/file"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/cv"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/placements"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/tasks"
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/api/core/tasks"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/tasks"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/placements/6aee8e59eb12fa7c9d125263"
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/api/core/tasks"
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/api/core/placements/6aee8e59eb12fa7c9d125263"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/reports"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/worklogs"
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/api/core/reports"
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/api/core/worklogs"
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/api/core/tasks"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/tasks"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/tasks"
+    },
+    {
+      "method": "POST",
+      "path": "/api/core/reports"
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/api/core/reports"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/reports"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/placements"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/reports"
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/api/core/reports"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/reports"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/reports"
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/api/core/reports"
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/api/core/reports"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/tasks"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/tasks"
+    },
+    {
+      "method": "POST",
+      "path": "/api/core/reports"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/reports"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/reports"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/web3/reports/6aee8eb5f6e9715ac71effe8/artifacts"
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/api/core/web3/reports/6aee8eb5f6e9715ac71effe8/artifacts"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/placements"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/time/sessions"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/time/totals"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/time/sessions"
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/api/core/placements"
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/api/core/time/sessions"
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/api/core/time/totals"
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/api/core/time/sessions"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/time/totals"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/time/sessions"
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/api/core/time/totals"
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/api/core/time/sessions"
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/api/core/time/6aee8eb1f6e9715ac71eff20/check-out"
+    },
+    {
+      "method": "POST",
+      "path": "/api/core/time/6aee8eb1f6e9715ac71eff20/check-out"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/time/sessions"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/time/totals"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/time/sessions"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/capabilities"
+    },
+    {
+      "method": "GET",
+      "path": "/api/auth/me"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/capabilities"
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/api/core/capabilities"
+    },
+    {
+      "method": "GET",
+      "path": "/api/auth/me"
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/api/auth/me"
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/api/core/capabilities"
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/api/auth/me"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/placements"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/time/sessions"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/time/totals"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/placements"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/reports"
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/api/core/reports"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/capabilities"
+    },
+    {
+      "method": "GET",
+      "path": "/api/auth/me"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/capabilities"
+    },
+    {
+      "method": "GET",
+      "path": "/api/auth/me"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/placements"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/reports"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/placements"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/capabilities"
+    },
+    {
+      "method": "GET",
+      "path": "/api/auth/me"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/capabilities"
+    },
+    {
+      "method": "GET",
+      "path": "/api/auth/me"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/placements"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/reports"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/admin/batches"
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/api/core/admin/batches"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/capabilities"
+    },
+    {
+      "method": "GET",
+      "path": "/api/auth/me"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/capabilities"
+    },
+    {
+      "method": "GET",
+      "path": "/api/auth/me"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/placements"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/reports"
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/api/core/placements"
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/api/core/reports"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/placements"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/time/sessions"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/time/totals"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/time/sessions"
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/api/core/time/sessions"
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/api/core/time/totals"
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/api/core/time/sessions"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/ai/status"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/my/internships"
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/api/core/ai/status"
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/api/core/my/internships"
+    },
+    {
+      "method": "POST",
+      "path": "/api/core/school/ai/match"
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/api/core/school/ai/match"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/ai/status"
+    }
+  ],
+  "exceptions": [],
+  "blocked": []
+}

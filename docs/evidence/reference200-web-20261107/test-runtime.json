@@ -1,0 +1,87 @@
+{
+  "environment": "test",
+  "database": "internova_role_qa_20261107",
+  "student": "2699000004@gmail.com",
+  "login": 200,
+  "cvSkillCount": 6,
+  "batchId": "f7db376f23b77a162341a7d0",
+  "enrollmentId": "fd4a4502b2cf481bf0d10f91",
+  "catalog": 20,
+  "engines": [
+    {
+      "engine": "tfidf",
+      "http": 200,
+      "inference_performed": true,
+      "candidate_count": 20,
+      "first": {
+        "id": "84c14411bf1ed3610692c580",
+        "cosine": 0.31696,
+        "matched_skills": [
+          "css",
+          "javascript",
+          "react",
+          "git"
+        ],
+        "missing_query_skills": [
+          "html",
+          "node.js"
+        ],
+        "coverage": null,
+        "explanation": "Cosine TF-IDF trên cùng tập ứng viên; kỹ năng giao nhau đối chiếu trực tiếp.",
+        "title": "JD-01-2 — Phát triển giao diện web — Tích hợp và kiểm thử",
+        "required_skills": [
+          "css",
+          "javascript",
+          "react",
+          "git"
+        ],
+        "missing_required_skills": [],
+        "skill_match_count": 4,
+        "required_skill_count": 4,
+        "requirements_declared": true,
+        "skill_coverage_percent": 100,
+        "assessment_basis": "declared-skills-not-verified-proficiency"
+      }
+    },
+    {
+      "engine": "sbert",
+      "http": 200,
+      "inference_performed": true,
+      "candidate_count": 20,
+      "first": {
+        "id": "84c14411bf1ed3610692c580",
+        "cosine": 0.799235,
+        "matched_skills": [
+          "css",
+          "javascript",
+          "react",
+          "git"
+        ],
+        "missing_query_skills": [
+          "html",
+          "node.js"
+        ],
+        "coverage": {
+          "total_tokens": 129,
+          "used_tokens": 129,
+          "chunks": 2,
+          "truncated": false
+        },
+        "explanation": "Cosine của embedding cục bộ; kỹ năng giao nhau lấy từ trường khai báo, không phải lý do nhân quả hoặc xác suất trúng tuyển.",
+        "title": "JD-01-2 — Phát triển giao diện web — Tích hợp và kiểm thử",
+        "required_skills": [
+          "css",
+          "javascript",
+          "react",
+          "git"
+        ],
+        "missing_required_skills": [],
+        "skill_match_count": 4,
+        "required_skill_count": 4,
+        "requirements_declared": true,
+        "skill_coverage_percent": 100,
+        "assessment_basis": "declared-skills-not-verified-proficiency"
+      }
+    }
+  ]
+}

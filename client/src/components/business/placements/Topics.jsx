@@ -220,6 +220,7 @@ export function TopicCreator({ onSaved, endpoint="/core/topics" }) {
   const emptyForm = {
     title: '',
     description: '',
+    requiredSkills: '',
     kpi: '',
     criteria: '',
     deadline: '',
@@ -241,6 +242,7 @@ export function TopicCreator({ onSaved, endpoint="/core/topics" }) {
             body: {
               title: form.title,
               description: form.description,
+              requiredSkills: form.requiredSkills.split(',').map(s=>s.trim()).filter(Boolean),
               maxSlots: Number(form.maxSlots),
               kpis: [
                 {
@@ -264,6 +266,8 @@ export function TopicCreator({ onSaved, endpoint="/core/topics" }) {
           onChange={(v) => set('maxSlots', v)}
         />
         <Text label="Tên đề tài" required value={form.title} onChange={(v) => set('title', v)} />
+        <Text label="Kỹ năng yêu cầu (cách nhau bằng dấu phẩy)" value={form.requiredSkills} onChange={v=>set('requiredSkills',v)} hint="Ví dụ: JavaScript, Node.js, MongoDB. Dùng để đối chiếu với CV sinh viên."/>
+        <p className="muted">Nêu mục tiêu, nhiệm vụ, kỹ năng bắt buộc/ưu tiên, cách phối hợp, trách nhiệm và đúng hạn, lịch thực tập và kết quả mong đợi. Phẩm chất tự khai báo cần được trao đổi và xác minh thêm.</p>
         <Area
           label="Mô tả đề tài"
           required

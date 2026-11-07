@@ -4,7 +4,7 @@ import { REPORT_DECISION_LABELS } from './reportDecisions';
 export function ReportReview({ review }) {
   return review ? (
     <div>
-      <strong>{review.score}/100</strong>
+      <strong>{review.score==null?'Điểm chưa được công bố':review.score+'/100'}</strong>{review.grading&&<details><summary>{review.grading.proposed?'Điểm đề xuất và điểm xác nhận':'Điểm giảng viên xác nhận'}</summary><p>{review.grading.proposed&&<>Đề xuất: {review.grading.proposed.total??'Chưa đủ căn cứ'} · </>}Xác nhận: {review.grading.confirmedTotal}/100{review.grading.proposed&&<> · Chênh lệch: {review.grading.difference??'Chưa xác định'}</>}</p><p>{review.grading.adjustmentReason}</p><p>Rubric: {review.grading.rubricVersion} · Báo cáo v{review.grading.reportVersion}</p></details>}
       <p>
         <Status value={review.decision} label={REPORT_DECISION_LABELS[review.decision]} />
       </p>
@@ -39,6 +39,7 @@ export function ReportActions({ report: r, user, onReview, onApprove }) {
     reason = 'Bạn đã chấm phiên bản này. Đang chờ bên còn lại hoặc Nhà trường.';
   else if (!reviewer && r.state !== 'reviewed')
     reason = 'Cần Doanh nghiệp và Giảng viên cùng đánh giá đồng ý.';
+  if(reason)return <p className="muted">{reason}</p>;
   return (
     <div>
       <button

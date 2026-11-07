@@ -1,0 +1,194 @@
+{
+  "dataset": "cv-jd-reference-200-v1",
+  "provenance": "synthetic-rubric-reference-not-independent-expert",
+  "expert_confirmed": false,
+  "real_world_quality_established": false,
+  "corpus_cv_count": 200,
+  "job_count": 20,
+  "judgment_count": 4000,
+  "k": 5,
+  "binary_relevant_min_grade": 2,
+  "model_status_before": {
+    "sbert": {
+      "ready": true,
+      "configured": true,
+      "model_id": "sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2",
+      "revision": "e8f8c211226b894fcb81acc59f3b34ba3efd5f42",
+      "expected_revision": "e8f8c211226b894fcb81acc59f3b34ba3efd5f42",
+      "backend": "onnx-cpu-int8",
+      "reason": null,
+      "available_memory_mib": 716.265625,
+      "network_inference": false
+    },
+    "baseline": "tfidf",
+    "risk_classifier": "EXPERIMENTAL_SYNTHETIC",
+    "classifier": {
+      "status": "EXPERIMENTAL_SYNTHETIC",
+      "risk_prediction": null,
+      "confidence": null,
+      "reason": "Huấn luyện thử bằng TF-IDF + Logistic Regression trên 1.000 báo cáo tổng hợp; nhãn theo kịch bản, chưa được giảng viên xác nhận. Chưa đánh giá trên sinh viên thật hoặc hiệu chuẩn độ tin cậy. Không phải mô hình BERT được fine-tune.",
+      "model": "tfidf-logistic-regression",
+      "synthetic": true,
+      "real_world_validated": false,
+      "confidence_calibrated": false,
+      "automatic_decisions": false
+    },
+    "quality_metrics": null,
+    "data_leaves_machine": false
+  },
+  "engines": {
+    "tfidf": {
+      "status": "PASS_EXECUTION",
+      "not_run": 0,
+      "errors": [],
+      "groups": {
+        "all": {
+          "successful_queries": 200,
+          "metric_queries": 150,
+          "no_suitable_job_queries": 50,
+          "metrics": {
+            "precision_at_k": 0.3373333333333334,
+            "recall_at_k": 1.0,
+            "ndcg_at_k": 0.9938421042126016,
+            "map": 1.0
+          },
+          "mean_latency_ms": 19.508251501247287,
+          "truncated_queries": 0
+        },
+        "train": {
+          "successful_queries": 120,
+          "metric_queries": 90,
+          "no_suitable_job_queries": 30,
+          "metrics": {
+            "precision_at_k": 0.34,
+            "recall_at_k": 1.0,
+            "ndcg_at_k": 0.9937978138254581,
+            "map": 1.0
+          },
+          "mean_latency_ms": 20.04920166703717,
+          "truncated_queries": 0
+        },
+        "validation": {
+          "successful_queries": 40,
+          "metric_queries": 30,
+          "no_suitable_job_queries": 10,
+          "metrics": {
+            "precision_at_k": 0.33333333333333337,
+            "recall_at_k": 1.0,
+            "ndcg_at_k": 0.9939074571755863,
+            "map": 1.0
+          },
+          "mean_latency_ms": 18.18030000431463,
+          "truncated_queries": 0
+        },
+        "test": {
+          "successful_queries": 40,
+          "metric_queries": 30,
+          "no_suitable_job_queries": 10,
+          "metrics": {
+            "precision_at_k": 0.33333333333333337,
+            "recall_at_k": 1.0,
+            "ndcg_at_k": 0.9939096224110471,
+            "map": 1.0
+          },
+          "mean_latency_ms": 19.213352500810288,
+          "truncated_queries": 0
+        }
+      }
+    },
+    "sbert": {
+      "status": "PASS_EXECUTION",
+      "not_run": 0,
+      "errors": [],
+      "groups": {
+        "all": {
+          "successful_queries": 200,
+          "metric_queries": 150,
+          "no_suitable_job_queries": 50,
+          "metrics": {
+            "precision_at_k": 0.324,
+            "recall_at_k": 0.9466666666666667,
+            "ndcg_at_k": 0.8754419702372682,
+            "map": 0.8258496873496873
+          },
+          "mean_latency_ms": 68.03990449872799,
+          "truncated_queries": 0
+        },
+        "train": {
+          "successful_queries": 120,
+          "metric_queries": 90,
+          "no_suitable_job_queries": 30,
+          "metrics": {
+            "precision_at_k": 0.32666666666666666,
+            "recall_at_k": 0.9444444444444444,
+            "ndcg_at_k": 0.8816935392429597,
+            "map": 0.8391097482764149
+          },
+          "mean_latency_ms": 69.36874583091897,
+          "truncated_queries": 0
+        },
+        "validation": {
+          "successful_queries": 40,
+          "metric_queries": 30,
+          "no_suitable_job_queries": 10,
+          "metrics": {
+            "precision_at_k": 0.32,
+            "recall_at_k": 0.95,
+            "ndcg_at_k": 0.8703789962399623,
+            "map": 0.8091414141414142
+          },
+          "mean_latency_ms": 65.2557550027268,
+          "truncated_queries": 0
+        },
+        "test": {
+          "successful_queries": 40,
+          "metric_queries": 30,
+          "no_suitable_job_queries": 10,
+          "metrics": {
+            "precision_at_k": 0.32,
+            "recall_at_k": 0.95,
+            "ndcg_at_k": 0.8617502372174999,
+            "map": 0.8027777777777778
+          },
+          "mean_latency_ms": 66.83752999815624,
+          "truncated_queries": 0
+        }
+      }
+    }
+  },
+  "limitations": [
+    "CV/JD text and labels share generation rules; strong construction bias.",
+    "CV families grouped, but templates and job catalog shared across splits.",
+    "Self-reported skills, GPA and projects are not independently verified.",
+    "Reference points are not calibrated probabilities or official grades."
+  ],
+  "training_performed": false,
+  "model_status_after": {
+    "sbert": {
+      "ready": true,
+      "configured": true,
+      "model_id": "sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2",
+      "revision": "e8f8c211226b894fcb81acc59f3b34ba3efd5f42",
+      "expected_revision": "e8f8c211226b894fcb81acc59f3b34ba3efd5f42",
+      "backend": "onnx-cpu-int8",
+      "reason": null,
+      "available_memory_mib": 796.53515625,
+      "network_inference": false
+    },
+    "baseline": "tfidf",
+    "risk_classifier": "EXPERIMENTAL_SYNTHETIC",
+    "classifier": {
+      "status": "EXPERIMENTAL_SYNTHETIC",
+      "risk_prediction": null,
+      "confidence": null,
+      "reason": "Huấn luyện thử bằng TF-IDF + Logistic Regression trên 1.000 báo cáo tổng hợp; nhãn theo kịch bản, chưa được giảng viên xác nhận. Chưa đánh giá trên sinh viên thật hoặc hiệu chuẩn độ tin cậy. Không phải mô hình BERT được fine-tune.",
+      "model": "tfidf-logistic-regression",
+      "synthetic": true,
+      "real_world_validated": false,
+      "confidence_calibrated": false,
+      "automatic_decisions": false
+    },
+    "quality_metrics": null,
+    "data_leaves_machine": false
+  }
+}

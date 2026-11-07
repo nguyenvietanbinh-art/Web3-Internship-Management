@@ -1,0 +1,114 @@
+﻿[
+    {
+        "slug":  "01-frontend",
+        "kind":  "pdf",
+        "bytes":  62735,
+        "characters":  1918,
+        "parser":  "pypdf-6.21.4"
+    },
+    {
+        "slug":  "01-frontend",
+        "kind":  "docx",
+        "bytes":  2190,
+        "characters":  1914,
+        "parser":  "docx-stdlib-v1"
+    },
+    {
+        "slug":  "02-backend",
+        "kind":  "pdf",
+        "bytes":  63966,
+        "characters":  1944,
+        "parser":  "pypdf-6.21.4"
+    },
+    {
+        "slug":  "02-backend",
+        "kind":  "docx",
+        "bytes":  2226,
+        "characters":  1940,
+        "parser":  "docx-stdlib-v1"
+    },
+    {
+        "slug":  "03-fullstack",
+        "kind":  "pdf",
+        "bytes":  63699,
+        "characters":  1915,
+        "parser":  "pypdf-6.21.4"
+    },
+    {
+        "slug":  "03-fullstack",
+        "kind":  "docx",
+        "bytes":  2211,
+        "characters":  1912,
+        "parser":  "docx-stdlib-v1"
+    },
+    {
+        "slug":  "04-qa",
+        "kind":  "pdf",
+        "bytes":  63391,
+        "characters":  1949,
+        "parser":  "pypdf-6.21.4"
+    },
+    {
+        "slug":  "04-qa",
+        "kind":  "docx",
+        "bytes":  2215,
+        "characters":  1945,
+        "parser":  "docx-stdlib-v1"
+    },
+    {
+        "slug":  "05-data",
+        "kind":  "pdf",
+        "bytes":  64102,
+        "characters":  1904,
+        "parser":  "pypdf-6.21.4"
+    },
+    {
+        "slug":  "05-data",
+        "kind":  "docx",
+        "bytes":  2189,
+        "characters":  1900,
+        "parser":  "docx-stdlib-v1"
+    },
+    {
+        "slug":  "06-ai-nlp",
+        "kind":  "pdf",
+        "bytes":  63600,
+        "characters":  1965,
+        "parser":  "pypdf-6.21.4"
+    },
+    {
+        "slug":  "06-ai-nlp",
+        "kind":  "docx",
+        "bytes":  2238,
+        "characters":  1961,
+        "parser":  "docx-stdlib-v1"
+    },
+    {
+        "slug":  "07-blockchain",
+        "kind":  "pdf",
+        "bytes":  63351,
+        "characters":  1949,
+        "parser":  "pypdf-6.21.4"
+    },
+    {
+        "slug":  "07-blockchain",
+        "kind":  "docx",
+        "bytes":  2202,
+        "characters":  1945,
+        "parser":  "docx-stdlib-v1"
+    },
+    {
+        "slug":  "08-beginner",
+        "kind":  "pdf",
+        "bytes":  64180,
+        "characters":  1913,
+        "parser":  "pypdf-6.21.4"
+    },
+    {
+        "slug":  "08-beginner",
+        "kind":  "docx",
+        "bytes":  2184,
+        "characters":  1909,
+        "parser":  "docx-stdlib-v1"
+    }
+]

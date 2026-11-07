@@ -14,7 +14,8 @@ from sklearn.feature_extraction.text import TfidfVectorizer
 MODEL_ID = 'sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2'
 MODEL_REVISION = 'e8f8c211226b894fcb81acc59f3b34ba3efd5f42'
 ARTIFACT_HASHES = {'model.onnx':'783fea82d71a58179b830a4dbd2d58447e640609e98eedf9ffa12622d375a672','tokenizer.json':'2c3387be76557bd40970cec13153b3bbf80407865484b209e655e5e4729076b8'}
-ALIASES = {'nodejs': 'node.js', 'reactjs': 'react', 'javascript': 'javascript', 'js': 'javascript', 'ts': 'typescript'}
+SKILL_CATALOG = json.loads((Path(__file__).resolve().parents[2]/'shared'/'skill-catalog.json').read_text(encoding='utf8'))
+ALIASES = SKILL_CATALOG['aliases']
 
 class NotReady(Exception):
     pass
@@ -167,6 +168,6 @@ def rank(req):
         if not math.isfinite(score):
             raise NotReady('NONFINITE_MODEL_OUTPUT')
         candidate_skills = set(skills(doc.skills))
-        results.append({'id': doc.id, 'cosine': round(score, 6), 'matched_skills': sorted(required & candidate_skills), 'missing_query_skills': sorted(required-candidate_skills), 'coverage': coverage[i+1] if coverage else None, 'explanation': 'Cosine của embedding cục bộ; kỹ năng giao nhau lấy từ trường khai báo, không phải lý do nhân quả hoặc xác suất trúng tuyển.' if req.engine=='sbert' else 'Cosine TF-IDF trên cùng tập ứng viên; kỹ năng giao nhau đối chiếu trực tiếp.'})
-    results.sort(key=lambda x:(-x['cosine'],x['id']))
-    return {'engine': req.engine, 'inference_performed': True, 'model': encoder.status() if req.engine=='sbert' else {'name':'TF-IDF word unigram/bigram'}, 'results': results[:req.top_k], 'candidate_count': len(candidates), 'excluded_empty': len(ids)-len(candidates), 'query_coverage': coverage[0] if coverage else None, 'confidence': None, 'score_is_probability': False, 'elapsed_ms': round((time.perf_counter()-started)*1000,2)}
+        results.append({'id': doc.id, 'cosine': round(score, 6), 'raw_cosine':score, 'matched_skills': sorted(required & candidate_skills), 'missing_query_skills': sorted(required-candidate_skills), 'coverage': coverage[i+1] if coverage else None, 'explanation': 'Cosine của embedding cục bộ; kỹ năng giao nhau lấy từ trường khai báo, không phải lý do nhân quả hoặc xác suất trúng tuyển.' if req.engine=='sbert' else 'Cosine TF-IDF trên cùng tập ứng viên; kỹ năng giao nhau đối chiếu trực tiếp.'})
+    results.sort(key=lambda x:(-x['raw_cosine'],x['id']))
+    return {'engine': req.engine, 'inference_performed': True, 'model': encoder.status() if req.engine=='sbert' else {'name':'TF-IDF word unigram/bigram'}, 'results': results[:req.top_k], **({'all_results':results} if req.include_all_scores else {}), 'candidate_count': len(candidates), 'excluded_empty': len(ids)-len(candidates), 'query_coverage': coverage[0] if coverage else None, 'confidence': None, 'score_is_probability': False, 'elapsed_ms': round((time.perf_counter()-started)*1000,2)}

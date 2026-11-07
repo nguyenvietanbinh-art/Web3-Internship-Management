@@ -1,0 +1,117 @@
+{
+  "time": "2026-11-07T06:15:44.341Z",
+  "tests": [
+    {
+      "name": "Mentor opens the actual submitted report directly on the analysis page",
+      "status": "PASS"
+    },
+    {
+      "name": "Detailed sample is readable in full and clearly separate from the submitted report",
+      "status": "PASS"
+    },
+    {
+      "name": "Real semantic analysis identifies the same sample source and never saves an official grade",
+      "status": "PASS"
+    }
+  ],
+  "requests": [
+    {
+      "method": "OPTIONS",
+      "path": "/api/core/capabilities"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/capabilities"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/capabilities"
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/api/core/capabilities"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/capabilities"
+    },
+    {
+      "method": "GET",
+      "path": "/api/auth/me"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/capabilities"
+    },
+    {
+      "method": "GET",
+      "path": "/api/auth/me"
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/api/core/capabilities"
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/api/auth/me"
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/api/core/capabilities"
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/api/auth/me"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/dashboard"
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/api/core/dashboard"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/ai/status"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/reports"
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/api/core/ai/status"
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/api/core/reports"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/reports/6aee627f16e71f9ab5920a1f/reading-sample"
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/api/core/reports/6aee627f16e71f9ab5920a1f/reading-sample"
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/api/core/ai/reports/6aee627f16e71f9ab5920a1f/analyze"
+    },
+    {
+      "method": "POST",
+      "path": "/api/core/ai/reports/6aee627f16e71f9ab5920a1f/analyze"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/ai/status"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/reports"
+    }
+  ],
+  "exceptions": [],
+  "blocked": []
+}

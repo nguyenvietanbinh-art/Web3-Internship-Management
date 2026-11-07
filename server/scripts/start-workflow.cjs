@@ -1,5 +1,6 @@
 const fs=require('node:fs'),path=require('node:path'),crypto=require('node:crypto');
 const dir=path.resolve(process.argv[2]||''),root=path.resolve(__dirname,'../..');if(!dir.startsWith(path.join(root,'contracts/node_modules/.cache')+path.sep))throw Error('Use ignored workflow evidence directory');
+const parserModules=path.join(root,'contracts/node_modules/.cache/phase3-20261031/python-deps');if(!process.env.CV_PARSER_MODULE_PATH&&fs.existsSync(path.join(parserModules,'pypdf')))process.env.CV_PARSER_MODULE_PATH=parserModules;
 const plan=JSON.parse(fs.readFileSync(path.join(dir,'workflow-plan.json')));const ready=JSON.parse(fs.readFileSync(path.join(dir,'demo-ready.json')));if(ready.uri!==plan.demoUri)throw Error('Target mismatch');
 const {vault}=require('../../scripts/demo/common.cjs'),secretPath=path.join(dir,'session.dpapi');let secrets;
 if(fs.existsSync(secretPath))secrets=JSON.parse(vault('unprotect',fs.readFileSync(secretPath,'utf8')));else{secrets={jwt:crypto.randomBytes(32).toString('hex')};fs.writeFileSync(secretPath,vault('protect',JSON.stringify(secrets)),{flag:'wx'});}

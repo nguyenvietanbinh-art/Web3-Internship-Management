@@ -6,6 +6,8 @@ import CvForm from './CvForm';
 import CvFile from './CvFile';
 export default function CvPage() {
   const [revision, setRevision] = useState(0),
+    [uploadedCv, setUploadedCv] = useState(null),
+    [importOpen, setImportOpen] = useState(false),
     [message, setMessage] = useState(''),
     state = useResource('/core/cv', revision);
   if (state.loading) return <LoadingSkeleton />;
@@ -23,10 +25,16 @@ export default function CvPage() {
         description="Chọn file từ máy hoặc nhập link CV công khai. Hỗ trợ PDF/DOCX tối đa 2 MiB; PDF dạng văn bản tối đa 20 trang."
       >
         <CvFile
-          data={state.data}
+          data={uploadedCv || state.data}
+          onRemoved={saved=>{
+            setUploadedCv(saved);
+            setImportOpen(false);
+            setMessage('Đã xóa tệp CV. Thông tin CV nhập tay được giữ nguyên.');
+          }}
           onSaved={(saved) => {
-            setMessage(`Đã lưu tệp CV “${saved.fileName}” và đọc nội dung thành công.`);
-            setRevision((n) => n + 1);
+            setMessage(`Đã lưu tệp CV “${saved.fileName}”. Kiểm tra thông tin đọc được bên dưới trước khi lưu vào form.`);
+            setUploadedCv(saved);
+            setImportOpen(true);
           }}
         />
       </Panel>
@@ -36,9 +44,13 @@ export default function CvPage() {
       >
         <CvForm
           key={state.data?.__v ?? 'new'}
-          data={state.data}
+          data={uploadedCv || state.data}
+          importOpen={importOpen}
+          onImportOpen={setImportOpen}
           onSaved={() => {
             setMessage('Đã lưu thông tin CV.');
+            setUploadedCv(null);
+            setImportOpen(false);
             setRevision((n) => n + 1);
           }}
         />

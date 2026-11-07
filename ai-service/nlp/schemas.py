@@ -21,6 +21,7 @@ class RankingRequest(Strict):
     candidates: list[Document] = Field(max_length=50)
     engine: Literal['tfidf', 'sbert'] = 'sbert'
     top_k: int = Field(default=5, ge=1, le=20, strict=True)
+    include_all_scores: bool = Field(default=False, strict=True)
 
 class ReportRequest(Strict):
     content: str = Field(min_length=1, max_length=50000)
@@ -32,3 +33,17 @@ class ReportRequest(Strict):
     open_sessions: int = Field(default=0, ge=0, le=100000, strict=True)
     approved_minutes: int = Field(default=0, ge=0, le=100000000, strict=True)
     report_versions: int = Field(default=0, ge=0, le=100000, strict=True)
+
+class EvaluationCriterion(Strict):
+    id: str = Field(min_length=1, max_length=60)
+    text: str = Field(min_length=1, max_length=2000)
+
+class EvidenceDocument(Strict):
+    id: str = Field(min_length=1, max_length=100)
+    text: str = Field(min_length=1, max_length=20000)
+
+class EvidenceRequest(Strict):
+    content: str = Field(min_length=1, max_length=50000)
+    criteria: list[EvaluationCriterion] = Field(min_length=1, max_length=10)
+    attachments: list[EvidenceDocument] = Field(default_factory=list, max_length=3)
+    engine: Literal['sbert', 'tfidf'] = 'sbert'

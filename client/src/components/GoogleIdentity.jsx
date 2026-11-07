@@ -1,6 +1,7 @@
 import {useEffect,useRef,useState} from 'react';
 import {apiRequest,setToken} from '../api/client';
 import MyWallet from './MyWallet';
+import {Dialog} from './ui';
 import {PasswordSettings} from './EmailIdentity';
 let loadingScript;
 function loadGIS(){
@@ -22,14 +23,15 @@ export default function GoogleIdentity({purpose='login',onSession,user}){
     try{
       let config;try{config=await apiRequest('/auth/google/status');}catch(e){if(e.status===404)throw Error('Đăng nhập Google hiện chưa khả dụng. Vui lòng dùng email hoặc phương thức đã liên kết.');throw e;}
       if(!config.enabled)throw Error('Đăng nhập Google chưa được cấu hình. Vui lòng dùng phương thức khác.');
-      let signer,walletAddress;
+      let signer,walletAddress,chainId;
       if(purpose==='link-wallet'||(purpose==='link-google'&&user.walletAddress)||purpose==='unlink-google'){
         if(!window.ethereum)throw Error('Cần cài MetaMask để ký xác nhận liên kết.');
         const {BrowserProvider}=await import('ethers'),provider=new BrowserProvider(window.ethereum);
         await provider.send('eth_requestAccounts',[]);signer=await provider.getSigner();walletAddress=(await signer.getAddress()).toLowerCase();
         if(purpose!=='link-wallet'&&walletAddress!==user.walletAddress)throw Error('Chọn đúng ví đã liên kết với tài khoản hiện tại.');
       }
-      const c=await apiRequest('/auth/google/challenge',{method:'POST',body:{purpose,...(purpose==='link-wallet'?{walletAddress}:{})}});
+      if(purpose==='link-wallet')chainId=await window.ethereum.request({method:'eth_chainId'});
+      const c=await apiRequest('/auth/google/challenge',{method:'POST',body:{purpose,...(purpose==='link-wallet'?{walletAddress,chainId}:{})}});
       const signature=signer?await signer.signMessage(c.message):undefined;
       await loadGIS();
       if(!alive.current||run!==generation.current)return;
@@ -54,13 +56,9 @@ export default function GoogleIdentity({purpose='login',onSession,user}){
 }
 export function IdentitySettings({user,onSession}){
   const [action,setAction]=useState('');
-  return <section className="glass-panel identity-settings"><h2>Phương thức đăng nhập</h2><p>{user.email||'Chưa có email hồ sơ'} · Google: {user.googleLinked?'Đã liên kết':'Chưa liên kết'} · Ví: {user.walletAddress||'Chưa liên kết'}</p>
-
-    {!user.googleLinked&&(user.walletAddress||user.passwordEnabled)&&<button className="btn btn-secondary" onClick={()=>setAction('link-google')}>Liên kết Google</button>}
-    {user.googleLinked&&!user.walletAddress&&<button className="btn btn-secondary" onClick={()=>setAction('link-wallet')}>Liên kết ví MetaMask</button>}
-    {user.googleLinked&&user.walletAddress&&<button className="btn btn-secondary" onClick={()=>setAction('unlink-google')}>Hủy liên kết Google</button>}
-    <p className="muted">Tài khoản không tự gộp theo email. Không thể gỡ phương thức đăng nhập cuối cùng hoặc ví còn ràng buộc với dữ liệu blockchain.</p>
-    <MyWallet user={user} onSession={onSession}/>{user.passwordEnabled&&<PasswordSettings user={user} onSession={onSession} />}
-    {action&&<GoogleIdentity key={action} purpose={action} user={user} onSession={async result=>{await onSession(result);setAction('');}} />}
+  if(['admin','mentor'].includes(user.role))return <section className="glass-panel identity-settings"><h2>Bảo mật tài khoản</h2><div className="account-security-grid account-security-single"><PasswordSettings user={user} onSession={onSession}/></div></section>;
+  return <section className="glass-panel identity-settings">
+    <h2>Bảo mật tài khoản</h2><div className="account-security-grid"><MyWallet user={user} onSession={onSession} onGoogleVerify={()=>setAction('link-wallet')}/><PasswordSettings user={user} onSession={onSession}/></div>
+    {action&&<Dialog label="Xác minh danh tính để liên kết ví" onClose={()=>setAction('')}><div className="modal-content"><h2>Xác minh danh tính</h2><p>Tài khoản chưa có mật khẩu website. Xác minh lại bằng phương thức Google đã liên kết; không tạo hoặc bỏ phương thức đăng nhập hiện tại.</p><GoogleIdentity key={action} purpose={action} user={user} onSession={async result=>{await onSession(result);setAction('');}} /></div></Dialog>}
   </section>;
 }

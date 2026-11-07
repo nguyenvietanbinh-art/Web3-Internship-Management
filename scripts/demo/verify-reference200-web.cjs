@@ -1,0 +1,11 @@
+const fs=require('fs'),path=require('path'),assert=require('assert/strict');
+const mode=process.argv[2];if(!['test','main'].includes(mode))throw Error('Use test or main');
+const dir=path.resolve('contracts/node_modules/.cache/cv-jd-reference-web-20261107'),fixture=JSON.parse(fs.readFileSync(path.join(dir,mode+'-result.json'),'utf8')),base=mode==='main'?'http://localhost:57418/api':'http://localhost:57419/api';
+(async()=>{const code='2699000004',r=await fetch(base+'/auth/email/login',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({email:code+'@gmail.com',password:code})});assert.equal(r.status,200,'Imported account must log in');const {token}=await r.json();
+ const get=async p=>{const r=await fetch(base+p,{headers:{Authorization:'Bearer '+token}});assert.equal(r.status,200);return r.json();};
+ const cv=await get('/core/cv'),mine=await get('/core/my/internships'),enrollment=mine.items.find(e=>e.batch?._id===fixture.batchId);assert.ok(enrollment);assert.ok(enrollment.registeredAt);assert.equal(enrollment.admission,null);assert.ok(cv.summary&&cv.experience&&cv.skills.length>=4);
+ const catalog=await get('/core/my/internships/'+enrollment._id+'/opportunities?limit=50');assert.equal(catalog.total,20);assert.ok(catalog.items.every(j=>j.requiredSkills?.length));
+ const result={environment:mode,database:fixture.database,student:code+'@gmail.com',login:200,cvSkillCount:cv.skills.length,batchId:fixture.batchId,enrollmentId:enrollment._id,catalog:catalog.total,engines:[]};
+ for(const engine of ['tfidf','sbert']){const r=await fetch(base+'/core/school/ai/match',{method:'POST',headers:{'Content-Type':'application/json',Authorization:'Bearer '+token},body:JSON.stringify({enrollmentId:enrollment._id,engine,topK:5})}),data=await r.json();result.engines.push({engine,http:r.status,inference_performed:data.inference_performed,candidate_count:data.candidate_count,first:data.items?.[0],error:r.ok?undefined:data});}
+ fs.writeFileSync(path.join(dir,mode+'-runtime.json'),JSON.stringify(result,null,2),{flag:'wx'});console.log(JSON.stringify(result));assert.ok(result.engines.every(e=>e.http===200&&e.inference_performed&&e.candidate_count===20),'Both engines must perform actual inference');
+})().catch(e=>{console.error(e.message);process.exitCode=1});

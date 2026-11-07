@@ -1,0 +1,10 @@
+{
+  "matchingAndBusinessCollectionsUnchanged": true,
+  "indexesUnchanged": true,
+  "changedCollections": [
+    "users",
+    "students"
+  ],
+  "note": "Login explicitly appends password.login and ensureProfile updates profile timestamp; do not delete or hide these changes.",
+  "authenticationAuditAccountCount": 3
+}

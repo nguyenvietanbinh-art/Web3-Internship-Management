@@ -1,0 +1,247 @@
+{
+  "reportId": "6aef023b9bad339073f6e9a9",
+  "studentName": "Nguyễn Hoàng Phúc",
+  "suggestedTotal": 77.5,
+  "officialScore": null,
+  "model": {
+    "ready": true,
+    "configured": true,
+    "model_id": "sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2",
+    "revision": "e8f8c211226b894fcb81acc59f3b34ba3efd5f42",
+    "expected_revision": "e8f8c211226b894fcb81acc59f3b34ba3efd5f42",
+    "backend": "onnx-cpu-int8",
+    "reason": null,
+    "available_memory_mib": 847.1171875,
+    "network_inference": false
+  },
+  "scoringEngineVersion": "report-rules-v1.1",
+  "criteria": [
+    {
+      "id": "goals",
+      "label": "Mục tiêu và yêu cầu đề tài",
+      "maxScore": 10,
+      "suggestedScore": 7.5,
+      "scoringLevel": {
+        "level": 3,
+        "label": "Đạt"
+      },
+      "matchedRequirements": [
+        "Nêu mục tiêu hoặc vấn đề cụ thể",
+        "Giới hạn phạm vi và phần chưa thực hiện",
+        "Nêu sản phẩm cần bàn giao",
+        "Liên hệ yêu cầu nhiệm vụ"
+      ],
+      "missingRequirements": [],
+      "explanation": "Quy tắc report-rules-v1.1: đáp ứng 4/4 dấu hiệu được mô tả; mức 3/4, tự động tối đa 3/4. Không xác minh thay giảng viên.",
+      "confidenceStatus": "NOT_CALIBRATED",
+      "evaluationStatus": "PROPOSED_NOT_APPROVED"
+    },
+    {
+      "id": "method",
+      "label": "Phân tích và cách thực hiện",
+      "maxScore": 20,
+      "suggestedScore": 15,
+      "scoringLevel": {
+        "level": 3,
+        "label": "Đạt"
+      },
+      "matchedRequirements": [
+        "Giải thích đầu vào, đầu ra hoặc thiết kế",
+        "Có cơ chế thực hiện cụ thể",
+        "Nêu lý do hoặc giới hạn giải pháp",
+        "Có phần việc thực hiện liên hệ nhiệm vụ"
+      ],
+      "missingRequirements": [],
+      "explanation": "Quy tắc report-rules-v1.1: đáp ứng 4/4 dấu hiệu được mô tả; mức 3/4, tự động tối đa 3/4. Không xác minh thay giảng viên.",
+      "confidenceStatus": "NOT_CALIBRATED",
+      "evaluationStatus": "PROPOSED_NOT_APPROVED"
+    },
+    {
+      "id": "results",
+      "label": "Kết quả và mức độ hoàn thành",
+      "maxScore": 25,
+      "suggestedScore": 18.75,
+      "scoringLevel": {
+        "level": 3,
+        "label": "Đạt"
+      },
+      "matchedRequirements": [
+        "Trình bày kết quả cụ thể",
+        "Có tệp đúng phiên bản được doanh nghiệp xác nhận",
+        "Ghi rõ phần chưa kiểm chứng hoặc giới hạn"
+      ],
+      "missingRequirements": [
+        "Đối chiếu yêu cầu"
+      ],
+      "explanation": "Quy tắc report-rules-v1.1: đáp ứng 3/4 dấu hiệu được mô tả; mức 3/4, tự động tối đa 3/4. Không xác minh thay giảng viên.",
+      "confidenceStatus": "NOT_CALIBRATED",
+      "evaluationStatus": "PROPOSED_NOT_APPROVED"
+    },
+    {
+      "id": "evidence",
+      "label": "Kiểm thử và bằng chứng",
+      "maxScore": 20,
+      "suggestedScore": 15,
+      "scoringLevel": {
+        "level": 3,
+        "label": "Đạt"
+      },
+      "matchedRequirements": [
+        "Có tệp đọc được và hash/phiên bản khớp",
+        "Có mô tả ca kiểm tra và kết quả",
+        "Tệp bằng chứng có nội dung kiểm thử/kết quả",
+        "Có xác nhận doanh nghiệp của đúng bài nộp"
+      ],
+      "missingRequirements": [],
+      "explanation": "Quy tắc report-rules-v1.1: đáp ứng 4/4 dấu hiệu được mô tả; mức 3/4, tự động tối đa 3/4. Không xác minh thay giảng viên.",
+      "confidenceStatus": "NOT_CALIBRATED",
+      "evaluationStatus": "PROPOSED_NOT_APPROVED"
+    },
+    {
+      "id": "progress",
+      "label": "Tiến độ và quá trình thực tập",
+      "maxScore": 10,
+      "suggestedScore": 10,
+      "scoringLevel": null,
+      "matchedRequirements": [],
+      "missingRequirements": [],
+      "explanation": "Từ tiến độ công việc đã được doanh nghiệp xác nhận: 100.00%.",
+      "confidenceStatus": "NOT_CALIBRATED",
+      "evaluationStatus": "PROPOSED_NOT_APPROVED"
+    },
+    {
+      "id": "reflection",
+      "label": "Khó khăn, bài học và cải tiến",
+      "maxScore": 10,
+      "suggestedScore": 7.5,
+      "scoringLevel": {
+        "level": 3,
+        "label": "Đạt"
+      },
+      "matchedRequirements": [
+        "Nêu khó khăn cụ thể",
+        "Giải thích cách xử lý",
+        "Có bài học rút ra",
+        "Có kế hoạch tiếp theo cụ thể"
+      ],
+      "missingRequirements": [],
+      "explanation": "Quy tắc report-rules-v1.1: đáp ứng 4/4 dấu hiệu được mô tả; mức 3/4, tự động tối đa 3/4. Không xác minh thay giảng viên.",
+      "confidenceStatus": "NOT_CALIBRATED",
+      "evaluationStatus": "PROPOSED_NOT_APPROVED"
+    },
+    {
+      "id": "presentation",
+      "label": "Trình bày và nguồn tài liệu",
+      "maxScore": 5,
+      "suggestedScore": 3.75,
+      "scoringLevel": {
+        "level": 3,
+        "label": "Đạt"
+      },
+      "matchedRequirements": [
+        "Có bố cục đánh số rõ",
+        "Có nội dung trong nhiều mục",
+        "Có nguồn tài liệu nhận diện được"
+      ],
+      "missingRequirements": [
+        "Có đường dẫn hoặc trích dẫn tài liệu cụ thể"
+      ],
+      "explanation": "Quy tắc report-rules-v1.1: đáp ứng 3/4 dấu hiệu được mô tả; mức 3/4, tự động tối đa 3/4. Không xác minh thay giảng viên.",
+      "confidenceStatus": "NOT_CALIBRATED",
+      "evaluationStatus": "PROPOSED_NOT_APPROVED"
+    }
+  ],
+  "checks": [
+    {
+      "name": "BERT real inference scores all seven criteria and preserves confirmed progress",
+      "status": "PASS",
+      "detail": {
+        "model": {
+          "ready": true,
+          "configured": true,
+          "model_id": "sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2",
+          "revision": "e8f8c211226b894fcb81acc59f3b34ba3efd5f42",
+          "expected_revision": "e8f8c211226b894fcb81acc59f3b34ba3efd5f42",
+          "backend": "onnx-cpu-int8",
+          "reason": null,
+          "available_memory_mib": 851.16015625,
+          "network_inference": false
+        },
+        "points": [
+          {
+            "id": "goals",
+            "max": 10,
+            "score": 7.5
+          },
+          {
+            "id": "method",
+            "max": 20,
+            "score": 15
+          },
+          {
+            "id": "results",
+            "max": 25,
+            "score": 18.75
+          },
+          {
+            "id": "evidence",
+            "max": 20,
+            "score": 15
+          },
+          {
+            "id": "progress",
+            "max": 10,
+            "score": 10
+          },
+          {
+            "id": "reflection",
+            "max": 10,
+            "score": 7.5
+          },
+          {
+            "id": "presentation",
+            "max": 5,
+            "score": 3.75
+          }
+        ],
+        "total": 77.5,
+        "analysisId": "39229505-5831-45cb-abe3-dfcaa85bc648"
+      }
+    },
+    {
+      "name": "Repeated and concurrent requests reuse one snapshot without duplicate records",
+      "status": "PASS",
+      "detail": {
+        "sameAnalysisId": true,
+        "duplicateCount": 0
+      }
+    },
+    {
+      "name": "Self assessment, AI proposal and official grade stay separate; mentor draft is private",
+      "status": "PASS",
+      "detail": {
+        "self": 80,
+        "ai": 77.5,
+        "official": null,
+        "draftAdjusted": true
+      }
+    },
+    {
+      "name": "Role and ownership gates protect AI, teacher marks and publication",
+      "status": "PASS",
+      "detail": {
+        "wrongRoleAndOwnerDenied": true,
+        "adminCannotPublishAI": true
+      }
+    },
+    {
+      "name": "Original submission and all earlier analyses remain unchanged",
+      "status": "PASS",
+      "detail": {
+        "originalAnalysesPreserved": 4,
+        "reportHashUnchanged": true,
+        "officialGrade": null
+      }
+    }
+  ]
+}

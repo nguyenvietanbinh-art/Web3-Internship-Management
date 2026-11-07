@@ -1,3 +1,4 @@
+import {useViewState} from '../../viewStateStore';
 import {useState} from 'react';
 import {Panel,Resource,Rows,Pager,CommandDialog} from './common';
 import {choices,stateLabel,reasonField,vnDate} from './constants';
@@ -5,7 +6,7 @@ import {Select,Text} from '../Shared';
 import {useSchoolResource as useData} from './useSchoolResource';
 
 export default function ApplicationInbox({batchId:fixedBatchId=''}){
- const [batchId,setBatchId]=useState(''),[state,setState]=useState(''),[query,setQuery]=useState(''),[page,setPage]=useState(1),[revision,setRevision]=useState(0),[modal,setModal]=useState(null),[message,setMessage]=useState('');
+ const [batchId,setBatchId]=useViewState('inbox:batchId',''),[state,setState]=useViewState('inbox:state',''),[query,setQuery]=useViewState('inbox:query',''),[page,setPage]=useViewState('inbox:page',1),[revision,setRevision]=useState(0),[modal,setModal]=useState(null),[message,setMessage]=useState('');
  const batches=useData('/core/admin/batches?limit=100');
  const params=new URLSearchParams({page:String(page),limit:'20'});
  if(fixedBatchId||batchId)params.set('batchId',fixedBatchId||batchId);
@@ -15,7 +16,7 @@ export default function ApplicationInbox({batchId:fixedBatchId=''}){
  const reload=()=>{setPage(1);setRevision(n=>n+1);};
  return <Panel title="Theo dõi hồ sơ ứng tuyển" description="Sinh viên ứng tuyển trực tiếp đến doanh nghiệp. Nhà trường theo dõi và phải xử lý phân công nếu tới mốc 7 ngày trước khi kỳ bắt đầu mà sinh viên chưa có nơi tiếp nhận." actions={<button className="btn btn-secondary" onClick={reload}>Tải lại hồ sơ</button>}>
  {!fixedBatchId&&<Resource state={batches}><Select label="Kỳ của hồ sơ ứng tuyển" value={batchId} onChange={value=>{setBatchId(value);setPage(1);}} options={[{value:'',label:'Tất cả kỳ'},...choices(batches.data?.items,b=>`${b.code} · ${b.name}`).filter(x=>x.value)]}/></Resource>}
- <Select label="Trạng thái hồ sơ ứng tuyển" value={state} onChange={value=>{setState(value);setPage(1);}} options={[{value:'',label:'Tất cả trạng thái'},...['submitted','dispatched','under_review','offered','confirmed','withdrawn','rejected','closed_other_selected','cancelled'].map(value=>({value,label:stateLabel[value]}))]}/>
+ <Select label="Trạng thái hồ sơ ứng tuyển" value={state} onChange={value=>{setState(value);setPage(1);}} options={[{value:'',label:'Tất cả trạng thái'},...['submitted','dispatched','under_review','offered','confirmed','withdrawn','rejected','closed_other_selected','closed_full','cancelled'].map(value=>({value,label:stateLabel[value]}))]}/>
  <Text label="Tìm hồ sơ theo sinh viên, doanh nghiệp hoặc đề tài" value={query} onChange={value=>{setQuery(value);setPage(1);}}/>
  {message&&<p role="status">{message}</p>}
  <Resource state={applications}><p>{applications.data?.total||0} hồ sơ{!fixedBatchId&&!batchId?' · Tất cả kỳ':''}.</p><Rows items={applications.data?.items} empty="Không có hồ sơ khớp bộ lọc. Chọn tất cả kỳ/trạng thái hoặc bấm Tải lại hồ sơ để kiểm tra hồ sơ mới." columns={[

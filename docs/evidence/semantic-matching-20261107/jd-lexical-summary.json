@@ -1,0 +1,1064 @@
+{
+  "opportunities": 152,
+  "unique_inputs": 80,
+  "pair_count": 3160,
+  "lexical_threshold": 0.95,
+  "lexical_near_pairs": 222,
+  "same_period_near_pairs": 222,
+  "exact_description_and_skills_groups": [
+    [
+      {
+        "id": "6aee0cd67ce0d5be203d4701",
+        "title": "Website thương mại điện tử — Công ty TNHH An Lạc Digital",
+        "company": "Công ty TNHH An Lạc Digital",
+        "batchId": "6aee0cd67ce0d5be203d46f6"
+      },
+      {
+        "id": "6aee0cd67ce0d5be203d4705",
+        "title": "Website thương mại điện tử — Công ty TNHH An Lạc Digital",
+        "company": "Công ty TNHH An Lạc Digital",
+        "batchId": "6aee0cd67ce0d5be203d46fa"
+      },
+      {
+        "id": "6aee0cd67ce0d5be203d476f",
+        "title": "Website thương mại điện tử — Công ty TNHH Hải Đăng Solutions",
+        "company": "Công ty TNHH Hải Đăng Solutions",
+        "batchId": "6aee0cd67ce0d5be203d46f6"
+      },
+      {
+        "id": "6aee0cd67ce0d5be203d4773",
+        "title": "Website thương mại điện tử — Công ty TNHH Hải Đăng Solutions",
+        "company": "Công ty TNHH Hải Đăng Solutions",
+        "batchId": "6aee0cd67ce0d5be203d46fa"
+      },
+      {
+        "id": "6aee0cd67ce0d5be203d47dd",
+        "title": "Website thương mại điện tử — Công ty TNHH Bình Minh Data",
+        "company": "Công ty TNHH Bình Minh Data",
+        "batchId": "6aee0cd67ce0d5be203d46f6"
+      },
+      {
+        "id": "6aee0cd67ce0d5be203d47e1",
+        "title": "Website thương mại điện tử — Công ty TNHH Bình Minh Data",
+        "company": "Công ty TNHH Bình Minh Data",
+        "batchId": "6aee0cd67ce0d5be203d46fa"
+      },
+      {
+        "id": "6aee0cd67ce0d5be203d484b",
+        "title": "Website thương mại điện tử — Công ty TNHH Đông Phương Systems",
+        "company": "Công ty TNHH Đông Phương Systems",
+        "batchId": "6aee0cd67ce0d5be203d46f6"
+      },
+      {
+        "id": "6aee0cd67ce0d5be203d484f",
+        "title": "Website thương mại điện tử — Công ty TNHH Đông Phương Systems",
+        "company": "Công ty TNHH Đông Phương Systems",
+        "batchId": "6aee0cd67ce0d5be203d46fa"
+      },
+      {
+        "id": "6aee0cd67ce0d5be203d48b9",
+        "title": "Website thương mại điện tử — Công ty TNHH Tân Hưng Commerce",
+        "company": "Công ty TNHH Tân Hưng Commerce",
+        "batchId": "6aee0cd67ce0d5be203d46f6"
+      },
+      {
+        "id": "6aee0cd67ce0d5be203d48bd",
+        "title": "Website thương mại điện tử — Công ty TNHH Tân Hưng Commerce",
+        "company": "Công ty TNHH Tân Hưng Commerce",
+        "batchId": "6aee0cd67ce0d5be203d46fa"
+      },
+      {
+        "id": "6aee0cd77ce0d5be203d4927",
+        "title": "Website thương mại điện tử — Công ty TNHH Hoàng Gia Web",
+        "company": "Công ty TNHH Hoàng Gia Web",
+        "batchId": "6aee0cd67ce0d5be203d46f6"
+      },
+      {
+        "id": "6aee0cd77ce0d5be203d492b",
+        "title": "Website thương mại điện tử — Công ty TNHH Hoàng Gia Web",
+        "company": "Công ty TNHH Hoàng Gia Web",
+        "batchId": "6aee0cd67ce0d5be203d46fa"
+      },
+      {
+        "id": "6aee2166efaa43343027d957",
+        "title": "Website thương mại điện tử — Công ty TNHH An Lạc Digital",
+        "company": "Công ty TNHH An Lạc Digital",
+        "batchId": "6aee2166efaa43343027d919"
+      },
+      {
+        "id": "6aee2166efaa43343027da8d",
+        "title": "Website thương mại điện tử — Công ty TNHH Hải Đăng Solutions",
+        "company": "Công ty TNHH Hải Đăng Solutions",
+        "batchId": "6aee2166efaa43343027d919"
+      },
+      {
+        "id": "6aee2166efaa43343027dbc2",
+        "title": "Website thương mại điện tử — Công ty TNHH Bình Minh Data",
+        "company": "Công ty TNHH Bình Minh Data",
+        "batchId": "6aee2166efaa43343027d919"
+      },
+      {
+        "id": "6aee2166efaa43343027dcf9",
+        "title": "Website thương mại điện tử — Công ty TNHH Đông Phương Systems",
+        "company": "Công ty TNHH Đông Phương Systems",
+        "batchId": "6aee2166efaa43343027d919"
+      },
+      {
+        "id": "6aee2166efaa43343027de2f",
+        "title": "Website thương mại điện tử — Công ty TNHH Tân Hưng Commerce",
+        "company": "Công ty TNHH Tân Hưng Commerce",
+        "batchId": "6aee2166efaa43343027d919"
+      },
+      {
+        "id": "6aee2166efaa43343027df64",
+        "title": "Website thương mại điện tử — Công ty TNHH Hoàng Gia Web",
+        "company": "Công ty TNHH Hoàng Gia Web",
+        "batchId": "6aee2166efaa43343027d919"
+      }
+    ],
+    [
+      {
+        "id": "6aee0cd67ce0d5be203d470c",
+        "title": "Hệ thống quản lý nhân sự — Công ty TNHH An Lạc Digital",
+        "company": "Công ty TNHH An Lạc Digital",
+        "batchId": "6aee0cd67ce0d5be203d46f6"
+      },
+      {
+        "id": "6aee0cd67ce0d5be203d4710",
+        "title": "Hệ thống quản lý nhân sự — Công ty TNHH An Lạc Digital",
+        "company": "Công ty TNHH An Lạc Digital",
+        "batchId": "6aee0cd67ce0d5be203d46fa"
+      },
+      {
+        "id": "6aee0cd67ce0d5be203d4743",
+        "title": "Hệ thống quản lý nhân sự — Công ty TNHH Minh Quang Software",
+        "company": "Công ty TNHH Minh Quang Software",
+        "batchId": "6aee0cd67ce0d5be203d46f6"
+      },
+      {
+        "id": "6aee0cd67ce0d5be203d4747",
+        "title": "Hệ thống quản lý nhân sự — Công ty TNHH Minh Quang Software",
+        "company": "Công ty TNHH Minh Quang Software",
+        "batchId": "6aee0cd67ce0d5be203d46fa"
+      },
+      {
+        "id": "6aee0cd67ce0d5be203d477a",
+        "title": "Hệ thống quản lý nhân sự — Công ty TNHH Hải Đăng Solutions",
+        "company": "Công ty TNHH Hải Đăng Solutions",
+        "batchId": "6aee0cd67ce0d5be203d46f6"
+      },
+      {
+        "id": "6aee0cd67ce0d5be203d477e",
+        "title": "Hệ thống quản lý nhân sự — Công ty TNHH Hải Đăng Solutions",
+        "company": "Công ty TNHH Hải Đăng Solutions",
+        "batchId": "6aee0cd67ce0d5be203d46fa"
+      },
+      {
+        "id": "6aee0cd67ce0d5be203d47b1",
+        "title": "Hệ thống quản lý nhân sự — Công ty TNHH Nam Việt Cloud",
+        "company": "Công ty TNHH Nam Việt Cloud",
+        "batchId": "6aee0cd67ce0d5be203d46f6"
+      },
+      {
+        "id": "6aee0cd67ce0d5be203d47b5",
+        "title": "Hệ thống quản lý nhân sự — Công ty TNHH Nam Việt Cloud",
+        "company": "Công ty TNHH Nam Việt Cloud",
+        "batchId": "6aee0cd67ce0d5be203d46fa"
+      },
+      {
+        "id": "6aee0cd67ce0d5be203d47e8",
+        "title": "Hệ thống quản lý nhân sự — Công ty TNHH Bình Minh Data",
+        "company": "Công ty TNHH Bình Minh Data",
+        "batchId": "6aee0cd67ce0d5be203d46f6"
+      },
+      {
+        "id": "6aee0cd67ce0d5be203d47ec",
+        "title": "Hệ thống quản lý nhân sự — Công ty TNHH Bình Minh Data",
+        "company": "Công ty TNHH Bình Minh Data",
+        "batchId": "6aee0cd67ce0d5be203d46fa"
+      },
+      {
+        "id": "6aee0cd67ce0d5be203d481f",
+        "title": "Hệ thống quản lý nhân sự — Công ty TNHH Thiên Sơn Tech",
+        "company": "Công ty TNHH Thiên Sơn Tech",
+        "batchId": "6aee0cd67ce0d5be203d46f6"
+      },
+      {
+        "id": "6aee0cd67ce0d5be203d4823",
+        "title": "Hệ thống quản lý nhân sự — Công ty TNHH Thiên Sơn Tech",
+        "company": "Công ty TNHH Thiên Sơn Tech",
+        "batchId": "6aee0cd67ce0d5be203d46fa"
+      },
+      {
+        "id": "6aee0cd67ce0d5be203d4856",
+        "title": "Hệ thống quản lý nhân sự — Công ty TNHH Đông Phương Systems",
+        "company": "Công ty TNHH Đông Phương Systems",
+        "batchId": "6aee0cd67ce0d5be203d46f6"
+      },
+      {
+        "id": "6aee0cd67ce0d5be203d485a",
+        "title": "Hệ thống quản lý nhân sự — Công ty TNHH Đông Phương Systems",
+        "company": "Công ty TNHH Đông Phương Systems",
+        "batchId": "6aee0cd67ce0d5be203d46fa"
+      },
+      {
+        "id": "6aee0cd67ce0d5be203d488d",
+        "title": "Hệ thống quản lý nhân sự — Công ty TNHH Trường Phát AI",
+        "company": "Công ty TNHH Trường Phát AI",
+        "batchId": "6aee0cd67ce0d5be203d46f6"
+      },
+      {
+        "id": "6aee0cd67ce0d5be203d4891",
+        "title": "Hệ thống quản lý nhân sự — Công ty TNHH Trường Phát AI",
+        "company": "Công ty TNHH Trường Phát AI",
+        "batchId": "6aee0cd67ce0d5be203d46fa"
+      },
+      {
+        "id": "6aee0cd67ce0d5be203d48c4",
+        "title": "Hệ thống quản lý nhân sự — Công ty TNHH Tân Hưng Commerce",
+        "company": "Công ty TNHH Tân Hưng Commerce",
+        "batchId": "6aee0cd67ce0d5be203d46f6"
+      },
+      {
+        "id": "6aee0cd67ce0d5be203d48c8",
+        "title": "Hệ thống quản lý nhân sự — Công ty TNHH Tân Hưng Commerce",
+        "company": "Công ty TNHH Tân Hưng Commerce",
+        "batchId": "6aee0cd67ce0d5be203d46fa"
+      },
+      {
+        "id": "6aee0cd67ce0d5be203d48fb",
+        "title": "Hệ thống quản lý nhân sự — Công ty TNHH Vạn Phúc Networks",
+        "company": "Công ty TNHH Vạn Phúc Networks",
+        "batchId": "6aee0cd67ce0d5be203d46f6"
+      },
+      {
+        "id": "6aee0cd67ce0d5be203d48ff",
+        "title": "Hệ thống quản lý nhân sự — Công ty TNHH Vạn Phúc Networks",
+        "company": "Công ty TNHH Vạn Phúc Networks",
+        "batchId": "6aee0cd67ce0d5be203d46fa"
+      },
+      {
+        "id": "6aee0cd77ce0d5be203d4932",
+        "title": "Hệ thống quản lý nhân sự — Công ty TNHH Hoàng Gia Web",
+        "company": "Công ty TNHH Hoàng Gia Web",
+        "batchId": "6aee0cd67ce0d5be203d46f6"
+      },
+      {
+        "id": "6aee0cd77ce0d5be203d4936",
+        "title": "Hệ thống quản lý nhân sự — Công ty TNHH Hoàng Gia Web",
+        "company": "Công ty TNHH Hoàng Gia Web",
+        "batchId": "6aee0cd67ce0d5be203d46fa"
+      },
+      {
+        "id": "6aee0cd77ce0d5be203d4969",
+        "title": "Hệ thống quản lý nhân sự — Công ty TNHH Phú An Security",
+        "company": "Công ty TNHH Phú An Security",
+        "batchId": "6aee0cd67ce0d5be203d46f6"
+      },
+      {
+        "id": "6aee0cd77ce0d5be203d496d",
+        "title": "Hệ thống quản lý nhân sự — Công ty TNHH Phú An Security",
+        "company": "Công ty TNHH Phú An Security",
+        "batchId": "6aee0cd67ce0d5be203d46fa"
+      }
+    ],
+    [
+      {
+        "id": "6aee0cd67ce0d5be203d4717",
+        "title": "Ứng dụng theo dõi kho hàng — Công ty TNHH An Lạc Digital",
+        "company": "Công ty TNHH An Lạc Digital",
+        "batchId": "6aee0cd67ce0d5be203d46f6"
+      },
+      {
+        "id": "6aee0cd67ce0d5be203d471b",
+        "title": "Ứng dụng theo dõi kho hàng — Công ty TNHH An Lạc Digital",
+        "company": "Công ty TNHH An Lạc Digital",
+        "batchId": "6aee0cd67ce0d5be203d46fa"
+      },
+      {
+        "id": "6aee0cd67ce0d5be203d4785",
+        "title": "Ứng dụng theo dõi kho hàng — Công ty TNHH Hải Đăng Solutions",
+        "company": "Công ty TNHH Hải Đăng Solutions",
+        "batchId": "6aee0cd67ce0d5be203d46f6"
+      },
+      {
+        "id": "6aee0cd67ce0d5be203d4789",
+        "title": "Ứng dụng theo dõi kho hàng — Công ty TNHH Hải Đăng Solutions",
+        "company": "Công ty TNHH Hải Đăng Solutions",
+        "batchId": "6aee0cd67ce0d5be203d46fa"
+      },
+      {
+        "id": "6aee0cd67ce0d5be203d47f3",
+        "title": "Ứng dụng theo dõi kho hàng — Công ty TNHH Bình Minh Data",
+        "company": "Công ty TNHH Bình Minh Data",
+        "batchId": "6aee0cd67ce0d5be203d46f6"
+      },
+      {
+        "id": "6aee0cd67ce0d5be203d47f7",
+        "title": "Ứng dụng theo dõi kho hàng — Công ty TNHH Bình Minh Data",
+        "company": "Công ty TNHH Bình Minh Data",
+        "batchId": "6aee0cd67ce0d5be203d46fa"
+      },
+      {
+        "id": "6aee0cd67ce0d5be203d4861",
+        "title": "Ứng dụng theo dõi kho hàng — Công ty TNHH Đông Phương Systems",
+        "company": "Công ty TNHH Đông Phương Systems",
+        "batchId": "6aee0cd67ce0d5be203d46f6"
+      },
+      {
+        "id": "6aee0cd67ce0d5be203d4865",
+        "title": "Ứng dụng theo dõi kho hàng — Công ty TNHH Đông Phương Systems",
+        "company": "Công ty TNHH Đông Phương Systems",
+        "batchId": "6aee0cd67ce0d5be203d46fa"
+      },
+      {
+        "id": "6aee0cd67ce0d5be203d48cf",
+        "title": "Ứng dụng theo dõi kho hàng — Công ty TNHH Tân Hưng Commerce",
+        "company": "Công ty TNHH Tân Hưng Commerce",
+        "batchId": "6aee0cd67ce0d5be203d46f6"
+      },
+      {
+        "id": "6aee0cd67ce0d5be203d48d3",
+        "title": "Ứng dụng theo dõi kho hàng — Công ty TNHH Tân Hưng Commerce",
+        "company": "Công ty TNHH Tân Hưng Commerce",
+        "batchId": "6aee0cd67ce0d5be203d46fa"
+      },
+      {
+        "id": "6aee0cd77ce0d5be203d493d",
+        "title": "Ứng dụng theo dõi kho hàng — Công ty TNHH Hoàng Gia Web",
+        "company": "Công ty TNHH Hoàng Gia Web",
+        "batchId": "6aee0cd67ce0d5be203d46f6"
+      },
+      {
+        "id": "6aee0cd77ce0d5be203d4941",
+        "title": "Ứng dụng theo dõi kho hàng — Công ty TNHH Hoàng Gia Web",
+        "company": "Công ty TNHH Hoàng Gia Web",
+        "batchId": "6aee0cd67ce0d5be203d46fa"
+      }
+    ],
+    [
+      {
+        "id": "6aee0cd67ce0d5be203d4722",
+        "title": "Dashboard phân tích doanh thu — Công ty TNHH An Lạc Digital",
+        "company": "Công ty TNHH An Lạc Digital",
+        "batchId": "6aee0cd67ce0d5be203d46f6"
+      },
+      {
+        "id": "6aee0cd67ce0d5be203d4726",
+        "title": "Dashboard phân tích doanh thu — Công ty TNHH An Lạc Digital",
+        "company": "Công ty TNHH An Lạc Digital",
+        "batchId": "6aee0cd67ce0d5be203d46fa"
+      },
+      {
+        "id": "6aee0cd67ce0d5be203d4759",
+        "title": "Dashboard phân tích doanh thu — Công ty TNHH Minh Quang Software",
+        "company": "Công ty TNHH Minh Quang Software",
+        "batchId": "6aee0cd67ce0d5be203d46f6"
+      },
+      {
+        "id": "6aee0cd67ce0d5be203d475d",
+        "title": "Dashboard phân tích doanh thu — Công ty TNHH Minh Quang Software",
+        "company": "Công ty TNHH Minh Quang Software",
+        "batchId": "6aee0cd67ce0d5be203d46fa"
+      },
+      {
+        "id": "6aee0cd67ce0d5be203d4790",
+        "title": "Dashboard phân tích doanh thu — Công ty TNHH Hải Đăng Solutions",
+        "company": "Công ty TNHH Hải Đăng Solutions",
+        "batchId": "6aee0cd67ce0d5be203d46f6"
+      },
+      {
+        "id": "6aee0cd67ce0d5be203d4794",
+        "title": "Dashboard phân tích doanh thu — Công ty TNHH Hải Đăng Solutions",
+        "company": "Công ty TNHH Hải Đăng Solutions",
+        "batchId": "6aee0cd67ce0d5be203d46fa"
+      },
+      {
+        "id": "6aee0cd67ce0d5be203d47c7",
+        "title": "Dashboard phân tích doanh thu — Công ty TNHH Nam Việt Cloud",
+        "company": "Công ty TNHH Nam Việt Cloud",
+        "batchId": "6aee0cd67ce0d5be203d46f6"
+      },
+      {
+        "id": "6aee0cd67ce0d5be203d47cb",
+        "title": "Dashboard phân tích doanh thu — Công ty TNHH Nam Việt Cloud",
+        "company": "Công ty TNHH Nam Việt Cloud",
+        "batchId": "6aee0cd67ce0d5be203d46fa"
+      },
+      {
+        "id": "6aee0cd67ce0d5be203d47fe",
+        "title": "Dashboard phân tích doanh thu — Công ty TNHH Bình Minh Data",
+        "company": "Công ty TNHH Bình Minh Data",
+        "batchId": "6aee0cd67ce0d5be203d46f6"
+      },
+      {
+        "id": "6aee0cd67ce0d5be203d4802",
+        "title": "Dashboard phân tích doanh thu — Công ty TNHH Bình Minh Data",
+        "company": "Công ty TNHH Bình Minh Data",
+        "batchId": "6aee0cd67ce0d5be203d46fa"
+      },
+      {
+        "id": "6aee0cd67ce0d5be203d4835",
+        "title": "Dashboard phân tích doanh thu — Công ty TNHH Thiên Sơn Tech",
+        "company": "Công ty TNHH Thiên Sơn Tech",
+        "batchId": "6aee0cd67ce0d5be203d46f6"
+      },
+      {
+        "id": "6aee0cd67ce0d5be203d4839",
+        "title": "Dashboard phân tích doanh thu — Công ty TNHH Thiên Sơn Tech",
+        "company": "Công ty TNHH Thiên Sơn Tech",
+        "batchId": "6aee0cd67ce0d5be203d46fa"
+      },
+      {
+        "id": "6aee0cd67ce0d5be203d486c",
+        "title": "Dashboard phân tích doanh thu — Công ty TNHH Đông Phương Systems",
+        "company": "Công ty TNHH Đông Phương Systems",
+        "batchId": "6aee0cd67ce0d5be203d46f6"
+      },
+      {
+        "id": "6aee0cd67ce0d5be203d4870",
+        "title": "Dashboard phân tích doanh thu — Công ty TNHH Đông Phương Systems",
+        "company": "Công ty TNHH Đông Phương Systems",
+        "batchId": "6aee0cd67ce0d5be203d46fa"
+      },
+      {
+        "id": "6aee0cd67ce0d5be203d48a3",
+        "title": "Dashboard phân tích doanh thu — Công ty TNHH Trường Phát AI",
+        "company": "Công ty TNHH Trường Phát AI",
+        "batchId": "6aee0cd67ce0d5be203d46f6"
+      },
+      {
+        "id": "6aee0cd67ce0d5be203d48a7",
+        "title": "Dashboard phân tích doanh thu — Công ty TNHH Trường Phát AI",
+        "company": "Công ty TNHH Trường Phát AI",
+        "batchId": "6aee0cd67ce0d5be203d46fa"
+      },
+      {
+        "id": "6aee0cd67ce0d5be203d48da",
+        "title": "Dashboard phân tích doanh thu — Công ty TNHH Tân Hưng Commerce",
+        "company": "Công ty TNHH Tân Hưng Commerce",
+        "batchId": "6aee0cd67ce0d5be203d46f6"
+      },
+      {
+        "id": "6aee0cd67ce0d5be203d48de",
+        "title": "Dashboard phân tích doanh thu — Công ty TNHH Tân Hưng Commerce",
+        "company": "Công ty TNHH Tân Hưng Commerce",
+        "batchId": "6aee0cd67ce0d5be203d46fa"
+      },
+      {
+        "id": "6aee0cd77ce0d5be203d4911",
+        "title": "Dashboard phân tích doanh thu — Công ty TNHH Vạn Phúc Networks",
+        "company": "Công ty TNHH Vạn Phúc Networks",
+        "batchId": "6aee0cd67ce0d5be203d46f6"
+      },
+      {
+        "id": "6aee0cd77ce0d5be203d4915",
+        "title": "Dashboard phân tích doanh thu — Công ty TNHH Vạn Phúc Networks",
+        "company": "Công ty TNHH Vạn Phúc Networks",
+        "batchId": "6aee0cd67ce0d5be203d46fa"
+      },
+      {
+        "id": "6aee0cd77ce0d5be203d4948",
+        "title": "Dashboard phân tích doanh thu — Công ty TNHH Hoàng Gia Web",
+        "company": "Công ty TNHH Hoàng Gia Web",
+        "batchId": "6aee0cd67ce0d5be203d46f6"
+      },
+      {
+        "id": "6aee0cd77ce0d5be203d494c",
+        "title": "Dashboard phân tích doanh thu — Công ty TNHH Hoàng Gia Web",
+        "company": "Công ty TNHH Hoàng Gia Web",
+        "batchId": "6aee0cd67ce0d5be203d46fa"
+      },
+      {
+        "id": "6aee0cd77ce0d5be203d497f",
+        "title": "Dashboard phân tích doanh thu — Công ty TNHH Phú An Security",
+        "company": "Công ty TNHH Phú An Security",
+        "batchId": "6aee0cd67ce0d5be203d46f6"
+      },
+      {
+        "id": "6aee0cd77ce0d5be203d4983",
+        "title": "Dashboard phân tích doanh thu — Công ty TNHH Phú An Security",
+        "company": "Công ty TNHH Phú An Security",
+        "batchId": "6aee0cd67ce0d5be203d46fa"
+      }
+    ],
+    [
+      {
+        "id": "6aee0cd67ce0d5be203d472d",
+        "title": "Cổng tuyển dụng và quản lý hồ sơ — Công ty TNHH An Lạc Digital",
+        "company": "Công ty TNHH An Lạc Digital",
+        "batchId": "6aee0cd67ce0d5be203d46f6"
+      },
+      {
+        "id": "6aee0cd67ce0d5be203d4731",
+        "title": "Cổng tuyển dụng và quản lý hồ sơ — Công ty TNHH An Lạc Digital",
+        "company": "Công ty TNHH An Lạc Digital",
+        "batchId": "6aee0cd67ce0d5be203d46fa"
+      },
+      {
+        "id": "6aee0cd67ce0d5be203d479b",
+        "title": "Cổng tuyển dụng và quản lý hồ sơ — Công ty TNHH Hải Đăng Solutions",
+        "company": "Công ty TNHH Hải Đăng Solutions",
+        "batchId": "6aee0cd67ce0d5be203d46f6"
+      },
+      {
+        "id": "6aee0cd67ce0d5be203d479f",
+        "title": "Cổng tuyển dụng và quản lý hồ sơ — Công ty TNHH Hải Đăng Solutions",
+        "company": "Công ty TNHH Hải Đăng Solutions",
+        "batchId": "6aee0cd67ce0d5be203d46fa"
+      },
+      {
+        "id": "6aee0cd67ce0d5be203d4809",
+        "title": "Cổng tuyển dụng và quản lý hồ sơ — Công ty TNHH Bình Minh Data",
+        "company": "Công ty TNHH Bình Minh Data",
+        "batchId": "6aee0cd67ce0d5be203d46f6"
+      },
+      {
+        "id": "6aee0cd67ce0d5be203d480d",
+        "title": "Cổng tuyển dụng và quản lý hồ sơ — Công ty TNHH Bình Minh Data",
+        "company": "Công ty TNHH Bình Minh Data",
+        "batchId": "6aee0cd67ce0d5be203d46fa"
+      },
+      {
+        "id": "6aee0cd67ce0d5be203d4877",
+        "title": "Cổng tuyển dụng và quản lý hồ sơ — Công ty TNHH Đông Phương Systems",
+        "company": "Công ty TNHH Đông Phương Systems",
+        "batchId": "6aee0cd67ce0d5be203d46f6"
+      },
+      {
+        "id": "6aee0cd67ce0d5be203d487b",
+        "title": "Cổng tuyển dụng và quản lý hồ sơ — Công ty TNHH Đông Phương Systems",
+        "company": "Công ty TNHH Đông Phương Systems",
+        "batchId": "6aee0cd67ce0d5be203d46fa"
+      },
+      {
+        "id": "6aee0cd67ce0d5be203d48e5",
+        "title": "Cổng tuyển dụng và quản lý hồ sơ — Công ty TNHH Tân Hưng Commerce",
+        "company": "Công ty TNHH Tân Hưng Commerce",
+        "batchId": "6aee0cd67ce0d5be203d46f6"
+      },
+      {
+        "id": "6aee0cd67ce0d5be203d48e9",
+        "title": "Cổng tuyển dụng và quản lý hồ sơ — Công ty TNHH Tân Hưng Commerce",
+        "company": "Công ty TNHH Tân Hưng Commerce",
+        "batchId": "6aee0cd67ce0d5be203d46fa"
+      },
+      {
+        "id": "6aee0cd77ce0d5be203d4953",
+        "title": "Cổng tuyển dụng và quản lý hồ sơ — Công ty TNHH Hoàng Gia Web",
+        "company": "Công ty TNHH Hoàng Gia Web",
+        "batchId": "6aee0cd67ce0d5be203d46f6"
+      },
+      {
+        "id": "6aee0cd77ce0d5be203d4957",
+        "title": "Cổng tuyển dụng và quản lý hồ sơ — Công ty TNHH Hoàng Gia Web",
+        "company": "Công ty TNHH Hoàng Gia Web",
+        "batchId": "6aee0cd67ce0d5be203d46fa"
+      }
+    ],
+    [
+      {
+        "id": "6aee0cd67ce0d5be203d4738",
+        "title": "Website thương mại điện tử — Công ty TNHH Minh Quang Software",
+        "company": "Công ty TNHH Minh Quang Software",
+        "batchId": "6aee0cd67ce0d5be203d46f6"
+      },
+      {
+        "id": "6aee0cd67ce0d5be203d473c",
+        "title": "Website thương mại điện tử — Công ty TNHH Minh Quang Software",
+        "company": "Công ty TNHH Minh Quang Software",
+        "batchId": "6aee0cd67ce0d5be203d46fa"
+      },
+      {
+        "id": "6aee0cd67ce0d5be203d47a6",
+        "title": "Website thương mại điện tử — Công ty TNHH Nam Việt Cloud",
+        "company": "Công ty TNHH Nam Việt Cloud",
+        "batchId": "6aee0cd67ce0d5be203d46f6"
+      },
+      {
+        "id": "6aee0cd67ce0d5be203d47aa",
+        "title": "Website thương mại điện tử — Công ty TNHH Nam Việt Cloud",
+        "company": "Công ty TNHH Nam Việt Cloud",
+        "batchId": "6aee0cd67ce0d5be203d46fa"
+      },
+      {
+        "id": "6aee0cd67ce0d5be203d4814",
+        "title": "Website thương mại điện tử — Công ty TNHH Thiên Sơn Tech",
+        "company": "Công ty TNHH Thiên Sơn Tech",
+        "batchId": "6aee0cd67ce0d5be203d46f6"
+      },
+      {
+        "id": "6aee0cd67ce0d5be203d4818",
+        "title": "Website thương mại điện tử — Công ty TNHH Thiên Sơn Tech",
+        "company": "Công ty TNHH Thiên Sơn Tech",
+        "batchId": "6aee0cd67ce0d5be203d46fa"
+      },
+      {
+        "id": "6aee0cd67ce0d5be203d4882",
+        "title": "Website thương mại điện tử — Công ty TNHH Trường Phát AI",
+        "company": "Công ty TNHH Trường Phát AI",
+        "batchId": "6aee0cd67ce0d5be203d46f6"
+      },
+      {
+        "id": "6aee0cd67ce0d5be203d4886",
+        "title": "Website thương mại điện tử — Công ty TNHH Trường Phát AI",
+        "company": "Công ty TNHH Trường Phát AI",
+        "batchId": "6aee0cd67ce0d5be203d46fa"
+      },
+      {
+        "id": "6aee0cd67ce0d5be203d48f0",
+        "title": "Website thương mại điện tử — Công ty TNHH Vạn Phúc Networks",
+        "company": "Công ty TNHH Vạn Phúc Networks",
+        "batchId": "6aee0cd67ce0d5be203d46f6"
+      },
+      {
+        "id": "6aee0cd67ce0d5be203d48f4",
+        "title": "Website thương mại điện tử — Công ty TNHH Vạn Phúc Networks",
+        "company": "Công ty TNHH Vạn Phúc Networks",
+        "batchId": "6aee0cd67ce0d5be203d46fa"
+      },
+      {
+        "id": "6aee0cd77ce0d5be203d495e",
+        "title": "Website thương mại điện tử — Công ty TNHH Phú An Security",
+        "company": "Công ty TNHH Phú An Security",
+        "batchId": "6aee0cd67ce0d5be203d46f6"
+      },
+      {
+        "id": "6aee0cd77ce0d5be203d4962",
+        "title": "Website thương mại điện tử — Công ty TNHH Phú An Security",
+        "company": "Công ty TNHH Phú An Security",
+        "batchId": "6aee0cd67ce0d5be203d46fa"
+      },
+      {
+        "id": "6aee2166efaa43343027d9f1",
+        "title": "Website thương mại điện tử — Công ty TNHH Minh Quang Software",
+        "company": "Công ty TNHH Minh Quang Software",
+        "batchId": "6aee2166efaa43343027d919"
+      },
+      {
+        "id": "6aee2166efaa43343027db28",
+        "title": "Website thương mại điện tử — Công ty TNHH Nam Việt Cloud",
+        "company": "Công ty TNHH Nam Việt Cloud",
+        "batchId": "6aee2166efaa43343027d919"
+      },
+      {
+        "id": "6aee2166efaa43343027dc5e",
+        "title": "Website thương mại điện tử — Công ty TNHH Thiên Sơn Tech",
+        "company": "Công ty TNHH Thiên Sơn Tech",
+        "batchId": "6aee2166efaa43343027d919"
+      },
+      {
+        "id": "6aee2166efaa43343027dd93",
+        "title": "Website thương mại điện tử — Công ty TNHH Trường Phát AI",
+        "company": "Công ty TNHH Trường Phát AI",
+        "batchId": "6aee2166efaa43343027d919"
+      },
+      {
+        "id": "6aee2166efaa43343027deca",
+        "title": "Website thương mại điện tử — Công ty TNHH Vạn Phúc Networks",
+        "company": "Công ty TNHH Vạn Phúc Networks",
+        "batchId": "6aee2166efaa43343027d919"
+      },
+      {
+        "id": "6aee2167efaa43343027e000",
+        "title": "Website thương mại điện tử — Công ty TNHH Phú An Security",
+        "company": "Công ty TNHH Phú An Security",
+        "batchId": "6aee2166efaa43343027d919"
+      }
+    ],
+    [
+      {
+        "id": "6aee0cd67ce0d5be203d474e",
+        "title": "Ứng dụng theo dõi kho hàng — Công ty TNHH Minh Quang Software",
+        "company": "Công ty TNHH Minh Quang Software",
+        "batchId": "6aee0cd67ce0d5be203d46f6"
+      },
+      {
+        "id": "6aee0cd67ce0d5be203d4752",
+        "title": "Ứng dụng theo dõi kho hàng — Công ty TNHH Minh Quang Software",
+        "company": "Công ty TNHH Minh Quang Software",
+        "batchId": "6aee0cd67ce0d5be203d46fa"
+      },
+      {
+        "id": "6aee0cd67ce0d5be203d47bc",
+        "title": "Ứng dụng theo dõi kho hàng — Công ty TNHH Nam Việt Cloud",
+        "company": "Công ty TNHH Nam Việt Cloud",
+        "batchId": "6aee0cd67ce0d5be203d46f6"
+      },
+      {
+        "id": "6aee0cd67ce0d5be203d47c0",
+        "title": "Ứng dụng theo dõi kho hàng — Công ty TNHH Nam Việt Cloud",
+        "company": "Công ty TNHH Nam Việt Cloud",
+        "batchId": "6aee0cd67ce0d5be203d46fa"
+      },
+      {
+        "id": "6aee0cd67ce0d5be203d482a",
+        "title": "Ứng dụng theo dõi kho hàng — Công ty TNHH Thiên Sơn Tech",
+        "company": "Công ty TNHH Thiên Sơn Tech",
+        "batchId": "6aee0cd67ce0d5be203d46f6"
+      },
+      {
+        "id": "6aee0cd67ce0d5be203d482e",
+        "title": "Ứng dụng theo dõi kho hàng — Công ty TNHH Thiên Sơn Tech",
+        "company": "Công ty TNHH Thiên Sơn Tech",
+        "batchId": "6aee0cd67ce0d5be203d46fa"
+      },
+      {
+        "id": "6aee0cd67ce0d5be203d4898",
+        "title": "Ứng dụng theo dõi kho hàng — Công ty TNHH Trường Phát AI",
+        "company": "Công ty TNHH Trường Phát AI",
+        "batchId": "6aee0cd67ce0d5be203d46f6"
+      },
+      {
+        "id": "6aee0cd67ce0d5be203d489c",
+        "title": "Ứng dụng theo dõi kho hàng — Công ty TNHH Trường Phát AI",
+        "company": "Công ty TNHH Trường Phát AI",
+        "batchId": "6aee0cd67ce0d5be203d46fa"
+      },
+      {
+        "id": "6aee0cd67ce0d5be203d4906",
+        "title": "Ứng dụng theo dõi kho hàng — Công ty TNHH Vạn Phúc Networks",
+        "company": "Công ty TNHH Vạn Phúc Networks",
+        "batchId": "6aee0cd67ce0d5be203d46f6"
+      },
+      {
+        "id": "6aee0cd67ce0d5be203d490a",
+        "title": "Ứng dụng theo dõi kho hàng — Công ty TNHH Vạn Phúc Networks",
+        "company": "Công ty TNHH Vạn Phúc Networks",
+        "batchId": "6aee0cd67ce0d5be203d46fa"
+      },
+      {
+        "id": "6aee0cd77ce0d5be203d4974",
+        "title": "Ứng dụng theo dõi kho hàng — Công ty TNHH Phú An Security",
+        "company": "Công ty TNHH Phú An Security",
+        "batchId": "6aee0cd67ce0d5be203d46f6"
+      },
+      {
+        "id": "6aee0cd77ce0d5be203d4978",
+        "title": "Ứng dụng theo dõi kho hàng — Công ty TNHH Phú An Security",
+        "company": "Công ty TNHH Phú An Security",
+        "batchId": "6aee0cd67ce0d5be203d46fa"
+      }
+    ],
+    [
+      {
+        "id": "6aee0cd67ce0d5be203d4764",
+        "title": "Cổng tuyển dụng và quản lý hồ sơ — Công ty TNHH Minh Quang Software",
+        "company": "Công ty TNHH Minh Quang Software",
+        "batchId": "6aee0cd67ce0d5be203d46f6"
+      },
+      {
+        "id": "6aee0cd67ce0d5be203d4768",
+        "title": "Cổng tuyển dụng và quản lý hồ sơ — Công ty TNHH Minh Quang Software",
+        "company": "Công ty TNHH Minh Quang Software",
+        "batchId": "6aee0cd67ce0d5be203d46fa"
+      },
+      {
+        "id": "6aee0cd67ce0d5be203d47d2",
+        "title": "Cổng tuyển dụng và quản lý hồ sơ — Công ty TNHH Nam Việt Cloud",
+        "company": "Công ty TNHH Nam Việt Cloud",
+        "batchId": "6aee0cd67ce0d5be203d46f6"
+      },
+      {
+        "id": "6aee0cd67ce0d5be203d47d6",
+        "title": "Cổng tuyển dụng và quản lý hồ sơ — Công ty TNHH Nam Việt Cloud",
+        "company": "Công ty TNHH Nam Việt Cloud",
+        "batchId": "6aee0cd67ce0d5be203d46fa"
+      },
+      {
+        "id": "6aee0cd67ce0d5be203d4840",
+        "title": "Cổng tuyển dụng và quản lý hồ sơ — Công ty TNHH Thiên Sơn Tech",
+        "company": "Công ty TNHH Thiên Sơn Tech",
+        "batchId": "6aee0cd67ce0d5be203d46f6"
+      },
+      {
+        "id": "6aee0cd67ce0d5be203d4844",
+        "title": "Cổng tuyển dụng và quản lý hồ sơ — Công ty TNHH Thiên Sơn Tech",
+        "company": "Công ty TNHH Thiên Sơn Tech",
+        "batchId": "6aee0cd67ce0d5be203d46fa"
+      },
+      {
+        "id": "6aee0cd67ce0d5be203d48ae",
+        "title": "Cổng tuyển dụng và quản lý hồ sơ — Công ty TNHH Trường Phát AI",
+        "company": "Công ty TNHH Trường Phát AI",
+        "batchId": "6aee0cd67ce0d5be203d46f6"
+      },
+      {
+        "id": "6aee0cd67ce0d5be203d48b2",
+        "title": "Cổng tuyển dụng và quản lý hồ sơ — Công ty TNHH Trường Phát AI",
+        "company": "Công ty TNHH Trường Phát AI",
+        "batchId": "6aee0cd67ce0d5be203d46fa"
+      },
+      {
+        "id": "6aee0cd77ce0d5be203d491c",
+        "title": "Cổng tuyển dụng và quản lý hồ sơ — Công ty TNHH Vạn Phúc Networks",
+        "company": "Công ty TNHH Vạn Phúc Networks",
+        "batchId": "6aee0cd67ce0d5be203d46f6"
+      },
+      {
+        "id": "6aee0cd77ce0d5be203d4920",
+        "title": "Cổng tuyển dụng và quản lý hồ sơ — Công ty TNHH Vạn Phúc Networks",
+        "company": "Công ty TNHH Vạn Phúc Networks",
+        "batchId": "6aee0cd67ce0d5be203d46fa"
+      },
+      {
+        "id": "6aee0cd77ce0d5be203d498a",
+        "title": "Cổng tuyển dụng và quản lý hồ sơ — Công ty TNHH Phú An Security",
+        "company": "Công ty TNHH Phú An Security",
+        "batchId": "6aee0cd67ce0d5be203d46f6"
+      },
+      {
+        "id": "6aee0cd77ce0d5be203d498e",
+        "title": "Cổng tuyển dụng và quản lý hồ sơ — Công ty TNHH Phú An Security",
+        "company": "Công ty TNHH Phú An Security",
+        "batchId": "6aee0cd67ce0d5be203d46fa"
+      }
+    ]
+  ],
+  "top_pairs": [
+    {
+      "left": "6aee0cd67ce0d5be203d474e",
+      "right": "6aee0cd67ce0d5be203d4898",
+      "cosine": 0.975007799510303,
+      "same_period": true,
+      "left_title": "Ứng dụng theo dõi kho hàng — Công ty TNHH Minh Quang Software",
+      "right_title": "Ứng dụng theo dõi kho hàng — Công ty TNHH Trường Phát AI"
+    },
+    {
+      "left": "6aee0cd67ce0d5be203d4764",
+      "right": "6aee0cd67ce0d5be203d48ae",
+      "cosine": 0.9746970568137084,
+      "same_period": true,
+      "left_title": "Cổng tuyển dụng và quản lý hồ sơ — Công ty TNHH Minh Quang Software",
+      "right_title": "Cổng tuyển dụng và quản lý hồ sơ — Công ty TNHH Trường Phát AI"
+    },
+    {
+      "left": "6aee0cd67ce0d5be203d4898",
+      "right": "6aee0cd77ce0d5be203d4974",
+      "cosine": 0.9740311845561912,
+      "same_period": true,
+      "left_title": "Ứng dụng theo dõi kho hàng — Công ty TNHH Trường Phát AI",
+      "right_title": "Ứng dụng theo dõi kho hàng — Công ty TNHH Phú An Security"
+    },
+    {
+      "left": "6aee0cd67ce0d5be203d474e",
+      "right": "6aee0cd77ce0d5be203d4974",
+      "cosine": 0.9740221576124747,
+      "same_period": true,
+      "left_title": "Ứng dụng theo dõi kho hàng — Công ty TNHH Minh Quang Software",
+      "right_title": "Ứng dụng theo dõi kho hàng — Công ty TNHH Phú An Security"
+    },
+    {
+      "left": "6aee0cd67ce0d5be203d48ae",
+      "right": "6aee0cd77ce0d5be203d498a",
+      "cosine": 0.9737085369413192,
+      "same_period": true,
+      "left_title": "Cổng tuyển dụng và quản lý hồ sơ — Công ty TNHH Trường Phát AI",
+      "right_title": "Cổng tuyển dụng và quản lý hồ sơ — Công ty TNHH Phú An Security"
+    },
+    {
+      "left": "6aee0cd67ce0d5be203d4764",
+      "right": "6aee0cd77ce0d5be203d498a",
+      "cosine": 0.9736994929433007,
+      "same_period": true,
+      "left_title": "Cổng tuyển dụng và quản lý hồ sơ — Công ty TNHH Minh Quang Software",
+      "right_title": "Cổng tuyển dụng và quản lý hồ sơ — Công ty TNHH Phú An Security"
+    },
+    {
+      "left": "6aee0cd67ce0d5be203d47bc",
+      "right": "6aee0cd67ce0d5be203d4898",
+      "cosine": 0.9733447549474634,
+      "same_period": true,
+      "left_title": "Ứng dụng theo dõi kho hàng — Công ty TNHH Nam Việt Cloud",
+      "right_title": "Ứng dụng theo dõi kho hàng — Công ty TNHH Trường Phát AI"
+    },
+    {
+      "left": "6aee0cd67ce0d5be203d482a",
+      "right": "6aee0cd67ce0d5be203d4898",
+      "cosine": 0.9733447549474634,
+      "same_period": true,
+      "left_title": "Ứng dụng theo dõi kho hàng — Công ty TNHH Thiên Sơn Tech",
+      "right_title": "Ứng dụng theo dõi kho hàng — Công ty TNHH Trường Phát AI"
+    },
+    {
+      "left": "6aee0cd67ce0d5be203d4898",
+      "right": "6aee0cd67ce0d5be203d4906",
+      "cosine": 0.9733447549474634,
+      "same_period": true,
+      "left_title": "Ứng dụng theo dõi kho hàng — Công ty TNHH Trường Phát AI",
+      "right_title": "Ứng dụng theo dõi kho hàng — Công ty TNHH Vạn Phúc Networks"
+    },
+    {
+      "left": "6aee0cd67ce0d5be203d474e",
+      "right": "6aee0cd67ce0d5be203d47bc",
+      "cosine": 0.9733357343653034,
+      "same_period": true,
+      "left_title": "Ứng dụng theo dõi kho hàng — Công ty TNHH Minh Quang Software",
+      "right_title": "Ứng dụng theo dõi kho hàng — Công ty TNHH Nam Việt Cloud"
+    },
+    {
+      "left": "6aee0cd67ce0d5be203d474e",
+      "right": "6aee0cd67ce0d5be203d482a",
+      "cosine": 0.9733357343653034,
+      "same_period": true,
+      "left_title": "Ứng dụng theo dõi kho hàng — Công ty TNHH Minh Quang Software",
+      "right_title": "Ứng dụng theo dõi kho hàng — Công ty TNHH Thiên Sơn Tech"
+    },
+    {
+      "left": "6aee0cd67ce0d5be203d474e",
+      "right": "6aee0cd67ce0d5be203d4906",
+      "cosine": 0.9733357343653034,
+      "same_period": true,
+      "left_title": "Ứng dụng theo dõi kho hàng — Công ty TNHH Minh Quang Software",
+      "right_title": "Ứng dụng theo dõi kho hàng — Công ty TNHH Vạn Phúc Networks"
+    },
+    {
+      "left": "6aee0cd67ce0d5be203d47d2",
+      "right": "6aee0cd67ce0d5be203d48ae",
+      "cosine": 0.9730138267168422,
+      "same_period": true,
+      "left_title": "Cổng tuyển dụng và quản lý hồ sơ — Công ty TNHH Nam Việt Cloud",
+      "right_title": "Cổng tuyển dụng và quản lý hồ sơ — Công ty TNHH Trường Phát AI"
+    },
+    {
+      "left": "6aee0cd67ce0d5be203d4840",
+      "right": "6aee0cd67ce0d5be203d48ae",
+      "cosine": 0.9730138267168422,
+      "same_period": true,
+      "left_title": "Cổng tuyển dụng và quản lý hồ sơ — Công ty TNHH Thiên Sơn Tech",
+      "right_title": "Cổng tuyển dụng và quản lý hồ sơ — Công ty TNHH Trường Phát AI"
+    },
+    {
+      "left": "6aee0cd67ce0d5be203d48ae",
+      "right": "6aee0cd77ce0d5be203d491c",
+      "cosine": 0.9730138267168422,
+      "same_period": true,
+      "left_title": "Cổng tuyển dụng và quản lý hồ sơ — Công ty TNHH Trường Phát AI",
+      "right_title": "Cổng tuyển dụng và quản lý hồ sơ — Công ty TNHH Vạn Phúc Networks"
+    },
+    {
+      "left": "6aee0cd67ce0d5be203d4764",
+      "right": "6aee0cd67ce0d5be203d47d2",
+      "cosine": 0.9730047891714348,
+      "same_period": true,
+      "left_title": "Cổng tuyển dụng và quản lý hồ sơ — Công ty TNHH Minh Quang Software",
+      "right_title": "Cổng tuyển dụng và quản lý hồ sơ — Công ty TNHH Nam Việt Cloud"
+    },
+    {
+      "left": "6aee0cd67ce0d5be203d4764",
+      "right": "6aee0cd67ce0d5be203d4840",
+      "cosine": 0.9730047891714348,
+      "same_period": true,
+      "left_title": "Cổng tuyển dụng và quản lý hồ sơ — Công ty TNHH Minh Quang Software",
+      "right_title": "Cổng tuyển dụng và quản lý hồ sơ — Công ty TNHH Thiên Sơn Tech"
+    },
+    {
+      "left": "6aee0cd67ce0d5be203d4764",
+      "right": "6aee0cd77ce0d5be203d491c",
+      "cosine": 0.9730047891714348,
+      "same_period": true,
+      "left_title": "Cổng tuyển dụng và quản lý hồ sơ — Công ty TNHH Minh Quang Software",
+      "right_title": "Cổng tuyển dụng và quản lý hồ sơ — Công ty TNHH Vạn Phúc Networks"
+    },
+    {
+      "left": "6aee0cd67ce0d5be203d47bc",
+      "right": "6aee0cd77ce0d5be203d4974",
+      "cosine": 0.9723607942324813,
+      "same_period": true,
+      "left_title": "Ứng dụng theo dõi kho hàng — Công ty TNHH Nam Việt Cloud",
+      "right_title": "Ứng dụng theo dõi kho hàng — Công ty TNHH Phú An Security"
+    },
+    {
+      "left": "6aee0cd67ce0d5be203d482a",
+      "right": "6aee0cd77ce0d5be203d4974",
+      "cosine": 0.9723607942324813,
+      "same_period": true,
+      "left_title": "Ứng dụng theo dõi kho hàng — Công ty TNHH Thiên Sơn Tech",
+      "right_title": "Ứng dụng theo dõi kho hàng — Công ty TNHH Phú An Security"
+    },
+    {
+      "left": "6aee0cd67ce0d5be203d4906",
+      "right": "6aee0cd77ce0d5be203d4974",
+      "cosine": 0.9723607942324813,
+      "same_period": true,
+      "left_title": "Ứng dụng theo dõi kho hàng — Công ty TNHH Vạn Phúc Networks",
+      "right_title": "Ứng dụng theo dõi kho hàng — Công ty TNHH Phú An Security"
+    },
+    {
+      "left": "6aee0cd67ce0d5be203d47d2",
+      "right": "6aee0cd77ce0d5be203d498a",
+      "cosine": 0.972017985565827,
+      "same_period": true,
+      "left_title": "Cổng tuyển dụng và quản lý hồ sơ — Công ty TNHH Nam Việt Cloud",
+      "right_title": "Cổng tuyển dụng và quản lý hồ sơ — Công ty TNHH Phú An Security"
+    },
+    {
+      "left": "6aee0cd67ce0d5be203d4840",
+      "right": "6aee0cd77ce0d5be203d498a",
+      "cosine": 0.972017985565827,
+      "same_period": true,
+      "left_title": "Cổng tuyển dụng và quản lý hồ sơ — Công ty TNHH Thiên Sơn Tech",
+      "right_title": "Cổng tuyển dụng và quản lý hồ sơ — Công ty TNHH Phú An Security"
+    },
+    {
+      "left": "6aee0cd77ce0d5be203d491c",
+      "right": "6aee0cd77ce0d5be203d498a",
+      "cosine": 0.972017985565827,
+      "same_period": true,
+      "left_title": "Cổng tuyển dụng và quản lý hồ sơ — Công ty TNHH Vạn Phúc Networks",
+      "right_title": "Cổng tuyển dụng và quản lý hồ sơ — Công ty TNHH Phú An Security"
+    },
+    {
+      "left": "6aee0cd67ce0d5be203d47bc",
+      "right": "6aee0cd67ce0d5be203d482a",
+      "cosine": 0.9716755417989792,
+      "same_period": true,
+      "left_title": "Ứng dụng theo dõi kho hàng — Công ty TNHH Nam Việt Cloud",
+      "right_title": "Ứng dụng theo dõi kho hàng — Công ty TNHH Thiên Sơn Tech"
+    },
+    {
+      "left": "6aee0cd67ce0d5be203d47bc",
+      "right": "6aee0cd67ce0d5be203d4906",
+      "cosine": 0.9716755417989792,
+      "same_period": true,
+      "left_title": "Ứng dụng theo dõi kho hàng — Công ty TNHH Nam Việt Cloud",
+      "right_title": "Ứng dụng theo dõi kho hàng — Công ty TNHH Vạn Phúc Networks"
+    },
+    {
+      "left": "6aee0cd67ce0d5be203d482a",
+      "right": "6aee0cd67ce0d5be203d4906",
+      "cosine": 0.9716755417989792,
+      "same_period": true,
+      "left_title": "Ứng dụng theo dõi kho hàng — Công ty TNHH Thiên Sơn Tech",
+      "right_title": "Ứng dụng theo dõi kho hàng — Công ty TNHH Vạn Phúc Networks"
+    },
+    {
+      "left": "6aee0cd67ce0d5be203d47d2",
+      "right": "6aee0cd67ce0d5be203d4840",
+      "cosine": 0.9713244814962659,
+      "same_period": true,
+      "left_title": "Cổng tuyển dụng và quản lý hồ sơ — Công ty TNHH Nam Việt Cloud",
+      "right_title": "Cổng tuyển dụng và quản lý hồ sơ — Công ty TNHH Thiên Sơn Tech"
+    },
+    {
+      "left": "6aee0cd67ce0d5be203d47d2",
+      "right": "6aee0cd77ce0d5be203d491c",
+      "cosine": 0.9713244814962659,
+      "same_period": true,
+      "left_title": "Cổng tuyển dụng và quản lý hồ sơ — Công ty TNHH Nam Việt Cloud",
+      "right_title": "Cổng tuyển dụng và quản lý hồ sơ — Công ty TNHH Vạn Phúc Networks"
+    },
+    {
+      "left": "6aee0cd67ce0d5be203d4840",
+      "right": "6aee0cd77ce0d5be203d491c",
+      "cosine": 0.9713244814962659,
+      "same_period": true,
+      "left_title": "Cổng tuyển dụng và quản lý hồ sơ — Công ty TNHH Thiên Sơn Tech",
+      "right_title": "Cổng tuyển dụng và quản lý hồ sơ — Công ty TNHH Vạn Phúc Networks"
+    }
+  ],
+  "notes": [
+    "TF-IDF fit on the entire 80-document audit corpus; scores are not the live CV recommendation scores.",
+    "No DB mutation, no model training, no independent expert labels."
+  ]
+}

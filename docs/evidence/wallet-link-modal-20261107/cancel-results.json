@@ -1,0 +1,394 @@
+{
+  "time": "2026-11-07T04:29:07.636Z",
+  "tests": [
+    {
+      "name": "Profile shows only wallet settings, no Google linking or visible password until requested",
+      "status": "PASS"
+    },
+    {
+      "name": "Modal opens, toggles password visibility and cancels without any auth request",
+      "status": "PASS"
+    },
+    {
+      "name": "Wrong password is refused before any wallet connection",
+      "status": "PASS"
+    },
+    {
+      "name": "Missing MetaMask produces a clear error after successful password verification",
+      "status": "PASS"
+    },
+    {
+      "name": "Connection and signature rejection never link the account",
+      "status": "PASS"
+    },
+    {
+      "name": "Stop while wallet connection is pending ignores a late connection result",
+      "status": "PASS"
+    },
+    {
+      "name": "Escape while signing is pending discards the late real signature without saving the wallet",
+      "status": "PASS"
+    },
+    {
+      "name": "Real test-key signature links via the actual API and survives re-login",
+      "status": "PASS"
+    },
+    {
+      "name": "company: role-specific wallet visibility remains unchanged",
+      "status": "PASS"
+    },
+    {
+      "name": "mentor: role-specific wallet visibility remains unchanged",
+      "status": "PASS"
+    },
+    {
+      "name": "admin: role-specific wallet visibility remains unchanged",
+      "status": "PASS"
+    }
+  ],
+  "requests": [
+    {
+      "method": "GET",
+      "path": "/api/core/capabilities"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/capabilities"
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/api/core/capabilities"
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/api/core/capabilities"
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/api/core/capabilities"
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/api/auth/me"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/capabilities"
+    },
+    {
+      "method": "GET",
+      "path": "/api/auth/me"
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/api/core/capabilities"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/capabilities"
+    },
+    {
+      "method": "GET",
+      "path": "/api/auth/me"
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/api/auth/me"
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/api/core/placements"
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/api/core/tasks"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/placements"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/tasks"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/reports"
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/api/core/reports"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/time/totals"
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/api/core/time/totals"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/dashboard"
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/api/core/dashboard"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/profile"
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/api/core/profile"
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/api/auth/email/wallet-reauth"
+    },
+    {
+      "method": "POST",
+      "path": "/api/auth/email/wallet-reauth"
+    },
+    {
+      "method": "POST",
+      "path": "/api/auth/email/wallet-reauth"
+    },
+    {
+      "method": "POST",
+      "path": "/api/auth/email/wallet-reauth"
+    },
+    {
+      "method": "POST",
+      "path": "/api/auth/email/wallet-reauth"
+    },
+    {
+      "method": "POST",
+      "path": "/api/auth/email/wallet-challenge"
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/api/auth/email/wallet-challenge"
+    },
+    {
+      "method": "POST",
+      "path": "/api/auth/email/wallet-reauth"
+    },
+    {
+      "method": "POST",
+      "path": "/api/auth/email/wallet-reauth"
+    },
+    {
+      "method": "POST",
+      "path": "/api/auth/email/wallet-challenge"
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/api/auth/email/wallet-reauth"
+    },
+    {
+      "method": "POST",
+      "path": "/api/auth/email/wallet-reauth"
+    },
+    {
+      "method": "POST",
+      "path": "/api/auth/email/wallet-challenge"
+    },
+    {
+      "method": "POST",
+      "path": "/api/auth/email/link-wallet"
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/api/auth/email/link-wallet"
+    },
+    {
+      "method": "GET",
+      "path": "/api/auth/me"
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/api/auth/me"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/placements"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/tasks"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/reports"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/time/totals"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/dashboard"
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/api/core/placements"
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/api/core/tasks"
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/api/core/reports"
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/api/core/time/totals"
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/api/core/dashboard"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/profile"
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/api/core/profile"
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/api/core/capabilities"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/capabilities"
+    },
+    {
+      "method": "GET",
+      "path": "/api/auth/me"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/capabilities"
+    },
+    {
+      "method": "GET",
+      "path": "/api/auth/me"
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/api/core/capabilities"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/profile"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/capabilities"
+    },
+    {
+      "method": "GET",
+      "path": "/api/auth/me"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/capabilities"
+    },
+    {
+      "method": "GET",
+      "path": "/api/auth/me"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/profile"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/capabilities"
+    },
+    {
+      "method": "GET",
+      "path": "/api/auth/me"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/capabilities"
+    },
+    {
+      "method": "GET",
+      "path": "/api/auth/me"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/profile"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/capabilities"
+    },
+    {
+      "method": "GET",
+      "path": "/api/auth/me"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/capabilities"
+    },
+    {
+      "method": "GET",
+      "path": "/api/auth/me"
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/api/auth/me"
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/api/auth/me"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/profile"
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/api/core/profile"
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/api/core/capabilities"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/capabilities"
+    },
+    {
+      "method": "GET",
+      "path": "/api/auth/me"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/capabilities"
+    },
+    {
+      "method": "GET",
+      "path": "/api/auth/me"
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/api/core/capabilities"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/profile"
+    }
+  ],
+  "exceptions": [],
+  "blocked": [],
+  "walletProvider": "test EIP-1193 adapter with real random-key signatures; not a MetaMask extension test"
+}

@@ -1,0 +1,165 @@
+{
+  "time": "2026-11-07T04:44:56.333Z",
+  "tests": [
+    {
+      "name": "Imported student sees the dedicated period and recruitment opportunities",
+      "status": "PASS"
+    },
+    {
+      "name": "Real tfidf recommendations use the imported CV and all 20 jobs",
+      "status": "PASS"
+    },
+    {
+      "name": "Real sbert recommendations use the imported CV and all 20 jobs",
+      "status": "PASS"
+    }
+  ],
+  "requests": [
+    {
+      "method": "GET",
+      "path": "/api/core/capabilities"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/capabilities"
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/api/core/capabilities"
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/api/core/capabilities"
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/api/core/capabilities"
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/api/auth/me"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/capabilities"
+    },
+    {
+      "method": "GET",
+      "path": "/api/auth/me"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/capabilities"
+    },
+    {
+      "method": "GET",
+      "path": "/api/auth/me"
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/api/core/capabilities"
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/api/auth/me"
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/api/core/placements"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/placements"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/tasks"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/reports"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/time/totals"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/dashboard"
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/api/core/tasks"
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/api/core/reports"
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/api/core/time/totals"
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/api/core/dashboard"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/my/internships"
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/api/core/my/internships"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/my/internships/7cfde17ed73363115d085e90/applications"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/my/internships/7cfde17ed73363115d085e90/opportunities"
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/api/core/my/internships/7cfde17ed73363115d085e90/applications"
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/api/core/my/internships/7cfde17ed73363115d085e90/opportunities"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/ai/status"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/my/internships"
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/api/core/ai/status"
+    },
+    {
+      "method": "POST",
+      "path": "/api/core/school/ai/match"
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/api/core/school/ai/match"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/ai/status"
+    },
+    {
+      "method": "POST",
+      "path": "/api/core/school/ai/match"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/ai/status"
+    }
+  ],
+  "exceptions": [],
+  "blocked": []
+}

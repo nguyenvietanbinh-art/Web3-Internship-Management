@@ -1,15 +1,20 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import { apiRequest } from '../../../api/client';
 import { loadReportTasks, reportDraftFromTask } from '../../../api/reportTasks';
 import { displayLabel } from '../content';
 import { ActionForm, Select, Text, Area, ErrorNotice } from '../Shared';
-export default function ReportForm({ assignment, onSaved }) {
-  const [kind, setKind] = useState('weekly'),
+import ReportSelfAssessment from './ReportSelfAssessment';
+export default function ReportForm({ assignment, onSaved,fixedKind }) {
+  const creationKey=useRef(crypto.randomUUID());
+  const [selfGrading,setSelfGrading]=useState(null);
+  const [kind, setKind] = useState(fixedKind||'weekly'),
     [title, setTitle] = useState(''),
-    [content, setContent] = useState('');
+    [content, setContent] = useState(''),[weekNumber,setWeekNumber]=useState('1'),[selfAssessment,setSelfAssessment]=useState('');
+  const [weekly,setWeekly]=useState({work:'',results:'',challenges:'',support:'',plan:''});
+  const weeklyFields=[['work','Công việc đã làm'],['results','Kết quả đạt được'],['challenges','Khó khăn gặp phải'],['support','Phần cần doanh nghiệp hỗ trợ'],['plan','Kế hoạch tiếp theo']];
   const [tasks, setTasks] = useState({ loading: true, items: [], error: '' }),
     [retry, setRetry] = useState(0),
-    [selected, setSelected] = useState(''),
+    [selected, setSelected] = useState(''),[linkedTasks,setLinkedTasks]=useState([]),
     [lastFill, setLastFill] = useState(null),
     [needsFill, setNeedsFill] = useState(false);
   useEffect(() => {
@@ -29,11 +34,13 @@ export default function ReportForm({ assignment, onSaved }) {
     const draft = reportDraftFromTask(task);
     setTitle(draft.title);
     setContent(draft.content);
+    if(fixedKind==='weekly')setWeekly(s=>({...s,work:task.title,results:draft.content}));
     setLastFill(draft);
     setNeedsFill(false);
   };
   const chooseTask = (id) => {
     setSelected(id);
+    if(id)setLinkedTasks(items=>items.includes(id)?items:[...items,id]);
     setNeedsFill(false);
     const task = tasks.items.find((t) => t._id === id);
     if (!task) return;
@@ -48,14 +55,17 @@ export default function ReportForm({ assignment, onSaved }) {
     <ActionForm
       submit="Nộp phiên bản báo cáo"
       onSaved={onSaved}
-      onSubmit={() =>
-        apiRequest('/core/reports', {
+      onSubmit={async() => {
+        const created=await apiRequest('/core/reports', {
           method: 'POST',
-          body: { assignmentId: assignment._id, kind, title, content },
-        })
-      }
+          headers:{'Idempotency-Key':creationKey.current},
+          body: { assignmentId: assignment._id,...((fixedKind||kind)==='weekly'?{weekNumber:Number(weekNumber),taskIds:linkedTasks}:linkedTasks.length?{taskIds:linkedTasks}:{}),selfAssessment,...(selfGrading?.scores?.length?{selfGrading}:{}), kind:fixedKind||kind, title, content:fixedKind==='weekly'?weeklyFields.map(([key,label])=>label+'\n'+weekly[key].trim()).join('\n\n'):content },
+        });
+        if((fixedKind||kind)==='final'){try{await apiRequest('/core/ai/reports/'+created._id+'/analyze',{method:'POST',body:{engine:'sbert',reportSource:'submitted'}});}catch{/* The submitted report remains saved; its detail view offers a retry. */}}
+        return created;
+      }}
     >
-      <Select
+      {!fixedKind&&<Select
         label="Loại báo cáo"
         value={kind}
         onChange={setKind}
@@ -63,7 +73,8 @@ export default function ReportForm({ assignment, onSaved }) {
           { value: 'weekly', label: 'Báo cáo tuần' },
           { value: 'final', label: 'Báo cáo cuối kỳ' },
         ]}
-      />
+      />}
+      {(fixedKind||kind)==='weekly'&&<Text label="Tuần báo cáo" type="number" min="1" max="104" step="1" required value={weekNumber} onChange={setWeekNumber}/>}
       <Select
         label="Chọn công việc đã làm / đã nộp"
         value={selected}
@@ -81,6 +92,7 @@ export default function ReportForm({ assignment, onSaved }) {
           })),
         ]}
       />
+      {!!tasks.items.length&&<fieldset className="business-field"><legend>Công việc liên quan trong báo cáo (có thể chọn nhiều)</legend>{tasks.items.map(task=><label key={task._id}><input type="checkbox" checked={linkedTasks.includes(task._id)} onChange={e=>setLinkedTasks(items=>e.target.checked?[...items,task._id]:items.filter(id=>id!==task._id))}/>{' '}{task.title}</label>)}</fieldset>}
       <ErrorNotice message={tasks.error} />
       {tasks.error && (
         <button
@@ -126,13 +138,15 @@ export default function ReportForm({ assignment, onSaved }) {
         value={title}
         onChange={setTitle}
       />
-      <Area
+      <Area label="Tự đánh giá và phần cần hỗ trợ" maxLength={5000} value={selfAssessment} onChange={setSelfAssessment}/>
+      {(fixedKind||kind)==='final'&&<ReportSelfAssessment batchId={assignment.batchId} value={selfGrading} onChange={setSelfGrading}/>}
+      {fixedKind==='weekly'?weeklyFields.map(([key,label])=><Area key={key} label={label} required={key!=='support'} maxLength={8000} value={weekly[key]} onChange={value=>setWeekly(s=>({...s,[key]:value}))}/>):<Area
         label="Nội dung báo cáo theo kỳ"
         required
         maxLength={50000}
         value={content}
         onChange={setContent}
-      />
+      />}
     </ActionForm>
   );
 }

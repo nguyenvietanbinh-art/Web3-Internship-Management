@@ -1,0 +1,389 @@
+{
+  "time": "2026-11-07T10:38:41.684Z",
+  "tests": [
+    {
+      "name": "One weekly report links two submitted tasks through UI without auto-confirming progress",
+      "status": "PASS"
+    },
+    {
+      "name": "Assigned mentor proposes academic rubric without publishing it automatically",
+      "status": "PASS"
+    },
+    {
+      "name": "School explicitly adopts proposed rubric and preserves its provenance",
+      "status": "PASS"
+    }
+  ],
+  "requests": [
+    {
+      "method": "OPTIONS",
+      "path": "/api/core/capabilities"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/capabilities"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/capabilities"
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/api/core/capabilities"
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/api/core/capabilities"
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/api/auth/me"
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/api/core/capabilities"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/capabilities"
+    },
+    {
+      "method": "GET",
+      "path": "/api/auth/me"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/capabilities"
+    },
+    {
+      "method": "GET",
+      "path": "/api/auth/me"
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/api/auth/me"
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/api/core/placements"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/placements"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/tasks"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/reports"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/time/totals"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/dashboard"
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/api/core/tasks"
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/api/core/reports"
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/api/core/time/totals"
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/api/core/dashboard"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/placements"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/tasks"
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/api/core/tasks"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/tasks"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/tasks/progress/summary"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/placements/6aeeffa79bad339073f6e75c"
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/api/core/tasks"
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/api/core/tasks/progress/summary"
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/api/core/placements/6aeeffa79bad339073f6e75c"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/reports"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/worklogs"
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/api/core/reports"
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/api/core/worklogs"
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/api/core/tasks"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/tasks"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/tasks"
+    },
+    {
+      "method": "POST",
+      "path": "/api/core/reports"
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/api/core/reports"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/reports"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/capabilities"
+    },
+    {
+      "method": "GET",
+      "path": "/api/auth/me"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/capabilities"
+    },
+    {
+      "method": "GET",
+      "path": "/api/auth/me"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/placements"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/tasks"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/ai/status"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/reports"
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/api/core/ai/status"
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/api/core/reports"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/report-rubrics"
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/api/core/report-rubrics"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/report-rubrics/6aeeffa679a55f7e6ea2d627"
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/api/core/report-rubrics/6aeeffa679a55f7e6ea2d627"
+    },
+    {
+      "method": "POST",
+      "path": "/api/core/report-rubrics/6aeeffa679a55f7e6ea2d627/proposals"
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/api/core/report-rubrics/6aeeffa679a55f7e6ea2d627/proposals"
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/api/core/capabilities"
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/api/auth/me"
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/api/core/capabilities"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/capabilities"
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/api/auth/me"
+    },
+    {
+      "method": "GET",
+      "path": "/api/auth/me"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/capabilities"
+    },
+    {
+      "method": "GET",
+      "path": "/api/auth/me"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/admin/batches"
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/api/core/admin/batches"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/admin/batches/6aeeffa679a55f7e6ea2d627/students"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/admin/batches"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/admin/applications"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/admin/batches/6aeeffa679a55f7e6ea2d627/exclusions"
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/api/core/admin/batches/6aeeffa679a55f7e6ea2d627/students"
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/api/core/admin/batches"
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/api/core/admin/applications"
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/api/core/admin/batches/6aeeffa679a55f7e6ea2d627/exclusions"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/admin/batches"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/admin/applications"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/admin/batches"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/admin/applications"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/report-rubrics/6aeeffa679a55f7e6ea2d627"
+    },
+    {
+      "method": "PUT",
+      "path": "/api/core/report-rubrics/6aeeffa679a55f7e6ea2d627"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/admin/batches/6aeeffa679a55f7e6ea2d627/exclusions"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/admin/batches"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/admin/batches/6aeeffa679a55f7e6ea2d627/students"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/admin/batches"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/admin/applications"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/admin/batches"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/admin/applications"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/admin/batches"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/admin/applications"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/admin/batches"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/admin/applications"
+    }
+  ],
+  "exceptions": [],
+  "blocked": []
+}

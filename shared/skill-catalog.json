@@ -1,0 +1,20 @@
+{
+  "version": "controlled-skills-v1-20261107",
+  "aliases": {
+    "js": "javascript",
+    "javascript": "javascript",
+    "ts": "typescript",
+    "reactjs": "react",
+    "react.js": "react",
+    "nodejs": "node.js",
+    "node js": "node.js",
+    "restful api": "rest api",
+    "restful apis": "rest api"
+  },
+  "related": [
+    ["express", "node.js"],
+    ["react", "javascript"],
+    ["spring boot", "java"]
+  ],
+  "policy": "Aliases represent spelling/name equivalence. Related edges are direct, symmetric context links, never proof of proficiency or a fulfilled requirement. No transitive inference."
+}

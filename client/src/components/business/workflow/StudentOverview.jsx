@@ -1,0 +1,10 @@
+import AccountOverview from '../../AccountOverview';
+import {useResource} from '../hooks';
+import {Panel,ErrorNotice} from '../Shared';
+import {Resource} from './common';
+export default function StudentOverview({user,internships,loading,error,onNavigate}){
+ const placements=useResource('/core/placements?limit=100'),tasks=useResource('/core/tasks?limit=1'),reports=useResource('/core/reports?kind=final&limit=1'),time=useResource('/core/time/totals?group=batch');
+ return <div className="business-stack"><AccountOverview user={user} onEdit={()=>onNavigate('core-profile')}/>
+ <Panel title="Thực tập của tôi"><Resource state={{loading:loading||placements.loading,error:error||placements.error}}>{(internships||[]).map(e=>{const p=placements.data?.items.find(a=>a.enrollmentId===e._id);return <div key={e._id} className="business-panel"><h3>{e.batch?.name}</h3><p>{e.admission?.state==='active'?e.admission.title:'Chưa có đề tài tiếp nhận'}</p><p>Doanh nghiệp: {e.admission?.state==='active'?e.admission.companyName:'Chưa có'}</p><p>Giảng viên: {p?.participantNames?.mentor||'Chờ nhà trường phân công'}</p><p>{e.registeredAt?'Đã đăng ký tham gia':'Chưa đăng ký tham gia'} · {p?.lifecycle==='completed'?'Đã hoàn thành thực tập':p?.lifecycle==='active'?'Đang thực tập':e.assignmentId?'Đã được phân công':'Chưa có phân công chính thức'}</p></div>;})}{!internships?.length&&<p>Nhà trường chưa cấp kỳ thực tập cho bạn.</p>}</Resource></Panel>
+ <Panel title="Công việc và kết quả"><ErrorNotice message={tasks.error||reports.error||time.error}/><div className="business-grid"><p>Công việc trong hồ sơ: <strong>{tasks.data?.total??'—'}</strong></p><p>Báo cáo cuối kỳ đã nộp: <strong>{reports.data?.total??'—'}</strong></p><p>Giờ được duyệt: <strong>{time.data?`${time.data.totalMinutes} phút`:'—'}</strong></p></div><div className="business-actions"><button className="btn btn-primary" onClick={()=>onNavigate('core-work')}>Công việc được giao</button><button className="btn btn-secondary" onClick={()=>onNavigate('core-time')}>Chấm công</button><button className="btn btn-secondary" onClick={()=>onNavigate('core-reports')}>Báo cáo kết quả</button></div></Panel></div>;
+}

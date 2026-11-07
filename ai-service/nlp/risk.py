@@ -1,5 +1,7 @@
 from .schemas import Document, RankingRequest
 from .engine import rank
+from .risk_classifier import predict
+from .report_grading import propose
 
 def analyze(req):
     if not req.content.strip():
@@ -16,4 +18,4 @@ def analyze(req):
     semantic = None
     if req.criteria.strip():
         semantic = rank(RankingRequest(query=Document(id='criteria',text=req.criteria),candidates=[Document(id='report',text=req.content)],engine=req.engine,top_k=1))
-    return {'rule_alert_level':'review' if factors else 'no_observed_rule_alert','rule_factors':factors,'semantic_relevance':semantic,'classifier':{'status':'NOT_TRAINED','risk_prediction':None,'confidence':None,'reason':'Chưa có tập báo cáo được chuyên gia gán nhãn, chưa huấn luyện/hiệu chuẩn classifier.'},'observations':{'total_tasks':req.total_tasks,'done_tasks':req.done_tasks,'approved_minutes':req.approved_minutes,'report_versions':req.report_versions},'decision':'Hỗ trợ người hướng dẫn xem xét; không quyết định kỷ luật hoặc tự chấm điểm.'}
+    return {'rule_alert_level':'review' if factors else 'no_observed_rule_alert','rule_factors':factors,'semantic_relevance':semantic,'classifier':predict(req),'proposed_grading':propose(req),'observations':{'total_tasks':req.total_tasks,'done_tasks':req.done_tasks,'approved_minutes':req.approved_minutes,'report_versions':req.report_versions},'decision':'Hỗ trợ người hướng dẫn xem xét; không quyết định kỷ luật hoặc tự chấm điểm.'}

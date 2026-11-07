@@ -1,0 +1,3770 @@
+{
+  "environment": "main",
+  "scope_count": 20,
+  "tfidf": "PASS",
+  "deterministic": true,
+  "mapping_and_rank": "PASS",
+  "auth_idor": "PASS",
+  "sbert": "PASS",
+  "compare": "PASS",
+  "tfidfResponse": {
+    "engine": "tfidf",
+    "inference_performed": true,
+    "model": {
+      "name": "TF-IDF word unigram/bigram"
+    },
+    "results": [
+      {
+        "id": "5599a4d00f69abce7f455846",
+        "cosine": 0.31696,
+        "raw_cosine": 0.3169600635196145,
+        "matched_skills": [
+          "css",
+          "git",
+          "javascript",
+          "react"
+        ],
+        "missing_query_skills": [
+          "html",
+          "node.js"
+        ],
+        "coverage": null,
+        "explanation": "Cosine TF-IDF trên cùng tập ứng viên; kỹ năng giao nhau đối chiếu trực tiếp."
+      },
+      {
+        "id": "53cc320aed40ed68f75be643",
+        "cosine": 0.310937,
+        "raw_cosine": 0.31093718057549297,
+        "matched_skills": [
+          "css",
+          "html",
+          "javascript",
+          "react"
+        ],
+        "missing_query_skills": [
+          "git",
+          "node.js"
+        ],
+        "coverage": null,
+        "explanation": "Cosine TF-IDF trên cùng tập ứng viên; kỹ năng giao nhau đối chiếu trực tiếp."
+      },
+      {
+        "id": "1507abe5284e3d3366d3e741",
+        "cosine": 0.185496,
+        "raw_cosine": 0.18549642214971865,
+        "matched_skills": [
+          "git",
+          "node.js"
+        ],
+        "missing_query_skills": [
+          "css",
+          "html",
+          "javascript",
+          "react"
+        ],
+        "coverage": null,
+        "explanation": "Cosine TF-IDF trên cùng tập ứng viên; kỹ năng giao nhau đối chiếu trực tiếp."
+      },
+      {
+        "id": "70c97795fbd20d7c9935a0c0",
+        "cosine": 0.180602,
+        "raw_cosine": 0.18060241677539157,
+        "matched_skills": [
+          "javascript",
+          "node.js"
+        ],
+        "missing_query_skills": [
+          "css",
+          "git",
+          "html",
+          "react"
+        ],
+        "coverage": null,
+        "explanation": "Cosine TF-IDF trên cùng tập ứng viên; kỹ năng giao nhau đối chiếu trực tiếp."
+      },
+      {
+        "id": "2e9c7f4bdadc467f933ab965",
+        "cosine": 0.122188,
+        "raw_cosine": 0.12218789640158223,
+        "matched_skills": [
+          "git"
+        ],
+        "missing_query_skills": [
+          "css",
+          "html",
+          "javascript",
+          "node.js",
+          "react"
+        ],
+        "coverage": null,
+        "explanation": "Cosine TF-IDF trên cùng tập ứng viên; kỹ năng giao nhau đối chiếu trực tiếp."
+      },
+      {
+        "id": "3769475200b078aee0e49de9",
+        "cosine": 0.116452,
+        "raw_cosine": 0.11645155837271247,
+        "matched_skills": [
+          "git"
+        ],
+        "missing_query_skills": [
+          "css",
+          "html",
+          "javascript",
+          "node.js",
+          "react"
+        ],
+        "coverage": null,
+        "explanation": "Cosine TF-IDF trên cùng tập ứng viên; kỹ năng giao nhau đối chiếu trực tiếp."
+      },
+      {
+        "id": "1edd6cc85f2699473b24dc68",
+        "cosine": 0.106071,
+        "raw_cosine": 0.10607053414502877,
+        "matched_skills": [
+          "git"
+        ],
+        "missing_query_skills": [
+          "css",
+          "html",
+          "javascript",
+          "node.js",
+          "react"
+        ],
+        "coverage": null,
+        "explanation": "Cosine TF-IDF trên cùng tập ứng viên; kỹ năng giao nhau đối chiếu trực tiếp."
+      },
+      {
+        "id": "0379dc62b18cca09ed318b02",
+        "cosine": 0.102666,
+        "raw_cosine": 0.10266557050528906,
+        "matched_skills": [],
+        "missing_query_skills": [
+          "css",
+          "git",
+          "html",
+          "javascript",
+          "node.js",
+          "react"
+        ],
+        "coverage": null,
+        "explanation": "Cosine TF-IDF trên cùng tập ứng viên; kỹ năng giao nhau đối chiếu trực tiếp."
+      },
+      {
+        "id": "96a7c567cee83b3793009f72",
+        "cosine": 0.101495,
+        "raw_cosine": 0.10149451668191597,
+        "matched_skills": [
+          "git"
+        ],
+        "missing_query_skills": [
+          "css",
+          "html",
+          "javascript",
+          "node.js",
+          "react"
+        ],
+        "coverage": null,
+        "explanation": "Cosine TF-IDF trên cùng tập ứng viên; kỹ năng giao nhau đối chiếu trực tiếp."
+      },
+      {
+        "id": "b39a528063b61a10cec1ed8d",
+        "cosine": 0.100384,
+        "raw_cosine": 0.10038359804918572,
+        "matched_skills": [],
+        "missing_query_skills": [
+          "css",
+          "git",
+          "html",
+          "javascript",
+          "node.js",
+          "react"
+        ],
+        "coverage": null,
+        "explanation": "Cosine TF-IDF trên cùng tập ứng viên; kỹ năng giao nhau đối chiếu trực tiếp."
+      },
+      {
+        "id": "8ceb81c5467f892609b18a76",
+        "cosine": 0.099453,
+        "raw_cosine": 0.09945313729040053,
+        "matched_skills": [],
+        "missing_query_skills": [
+          "css",
+          "git",
+          "html",
+          "javascript",
+          "node.js",
+          "react"
+        ],
+        "coverage": null,
+        "explanation": "Cosine TF-IDF trên cùng tập ứng viên; kỹ năng giao nhau đối chiếu trực tiếp."
+      },
+      {
+        "id": "bf2c44f76426cb945aa60ac5",
+        "cosine": 0.094361,
+        "raw_cosine": 0.09436140522349995,
+        "matched_skills": [],
+        "missing_query_skills": [
+          "css",
+          "git",
+          "html",
+          "javascript",
+          "node.js",
+          "react"
+        ],
+        "coverage": null,
+        "explanation": "Cosine TF-IDF trên cùng tập ứng viên; kỹ năng giao nhau đối chiếu trực tiếp."
+      },
+      {
+        "id": "2030d9436adc83a86a372364",
+        "cosine": 0.093517,
+        "raw_cosine": 0.09351690239481433,
+        "matched_skills": [
+          "javascript"
+        ],
+        "missing_query_skills": [
+          "css",
+          "git",
+          "html",
+          "node.js",
+          "react"
+        ],
+        "coverage": null,
+        "explanation": "Cosine TF-IDF trên cùng tập ứng viên; kỹ năng giao nhau đối chiếu trực tiếp."
+      },
+      {
+        "id": "332bfc6f189645bfd7d11904",
+        "cosine": 0.089796,
+        "raw_cosine": 0.0897955321164713,
+        "matched_skills": [],
+        "missing_query_skills": [
+          "css",
+          "git",
+          "html",
+          "javascript",
+          "node.js",
+          "react"
+        ],
+        "coverage": null,
+        "explanation": "Cosine TF-IDF trên cùng tập ứng viên; kỹ năng giao nhau đối chiếu trực tiếp."
+      },
+      {
+        "id": "41e66dc080ce6a3a2e558a20",
+        "cosine": 0.089133,
+        "raw_cosine": 0.0891325536778596,
+        "matched_skills": [],
+        "missing_query_skills": [
+          "css",
+          "git",
+          "html",
+          "javascript",
+          "node.js",
+          "react"
+        ],
+        "coverage": null,
+        "explanation": "Cosine TF-IDF trên cùng tập ứng viên; kỹ năng giao nhau đối chiếu trực tiếp."
+      },
+      {
+        "id": "55a18d41c472ead850b92255",
+        "cosine": 0.087445,
+        "raw_cosine": 0.0874449404466986,
+        "matched_skills": [],
+        "missing_query_skills": [
+          "css",
+          "git",
+          "html",
+          "javascript",
+          "node.js",
+          "react"
+        ],
+        "coverage": null,
+        "explanation": "Cosine TF-IDF trên cùng tập ứng viên; kỹ năng giao nhau đối chiếu trực tiếp."
+      },
+      {
+        "id": "43f116dfe9ad643847a1fb3b",
+        "cosine": 0.085441,
+        "raw_cosine": 0.08544147864562313,
+        "matched_skills": [
+          "git"
+        ],
+        "missing_query_skills": [
+          "css",
+          "html",
+          "javascript",
+          "node.js",
+          "react"
+        ],
+        "coverage": null,
+        "explanation": "Cosine TF-IDF trên cùng tập ứng viên; kỹ năng giao nhau đối chiếu trực tiếp."
+      },
+      {
+        "id": "24da10613c35e8f5dd8609ae",
+        "cosine": 0.083663,
+        "raw_cosine": 0.08366331145502597,
+        "matched_skills": [],
+        "missing_query_skills": [
+          "css",
+          "git",
+          "html",
+          "javascript",
+          "node.js",
+          "react"
+        ],
+        "coverage": null,
+        "explanation": "Cosine TF-IDF trên cùng tập ứng viên; kỹ năng giao nhau đối chiếu trực tiếp."
+      },
+      {
+        "id": "acf9468bc1c67e4401c56e71",
+        "cosine": 0.074828,
+        "raw_cosine": 0.07482830465548855,
+        "matched_skills": [],
+        "missing_query_skills": [
+          "css",
+          "git",
+          "html",
+          "javascript",
+          "node.js",
+          "react"
+        ],
+        "coverage": null,
+        "explanation": "Cosine TF-IDF trên cùng tập ứng viên; kỹ năng giao nhau đối chiếu trực tiếp."
+      },
+      {
+        "id": "adbd5c2f86ffbc015490e294",
+        "cosine": 0.071658,
+        "raw_cosine": 0.0716583894709844,
+        "matched_skills": [
+          "git"
+        ],
+        "missing_query_skills": [
+          "css",
+          "html",
+          "javascript",
+          "node.js",
+          "react"
+        ],
+        "coverage": null,
+        "explanation": "Cosine TF-IDF trên cùng tập ứng viên; kỹ năng giao nhau đối chiếu trực tiếp."
+      }
+    ],
+    "candidate_count": 20,
+    "excluded_empty": 0,
+    "query_coverage": null,
+    "confidence": null,
+    "score_is_probability": false,
+    "elapsed_ms": 5.63,
+    "input_fingerprint": "0a992bff2badfbaecf984e9e02678264160701c0e6bf2bcc3249a537a5f86f99",
+    "cv_skills": [
+      "HTML",
+      "CSS",
+      "JavaScript",
+      "React",
+      "Git",
+      "Node.js"
+    ],
+    "catalog_total": 20,
+    "catalog_limit": 50,
+    "excluded_insufficient_job_content": 0,
+    "scope": "own-eligible-period/available-opportunities",
+    "items": [
+      {
+        "id": "5599a4d00f69abce7f455846",
+        "cosine": 0.31696,
+        "raw_cosine": 0.3169600635196145,
+        "matched_skills": [
+          "css",
+          "javascript",
+          "react",
+          "git"
+        ],
+        "missing_query_skills": [
+          "html",
+          "node.js"
+        ],
+        "coverage": null,
+        "explanation": "Cosine TF-IDF trên cùng tập ứng viên; kỹ năng giao nhau đối chiếu trực tiếp.",
+        "rank": 1,
+        "title": "JD-01-2 — Phát triển giao diện web — Tích hợp và kiểm thử",
+        "company_name": "Công ty TNHH Vạn Phúc Networks",
+        "description": "Phát triển giao diện web — Tích hợp và kiểm thử. Nhiệm vụ: xây dựng biểu mẫu, danh sách và xử lý lỗi nhập liệu. Yêu cầu: CSS, JavaScript, React, Git. Ưu tiên mô tả được bài tập đã thực hiện, biết phối hợp nhóm, chủ động báo khó khăn và ghi lại cách kiểm tra. Làm việc 4 ngày mỗi tuần trong 12 tuần. Chấp nhận sinh viên chưa có kinh nghiệm doanh nghiệp; không xem các phẩm chất tự khai là đã xác minh.",
+        "duplicate_content_count": 1,
+        "required_skills": [
+          "css",
+          "javascript",
+          "react",
+          "git"
+        ],
+        "missing_required_skills": [],
+        "exact_matches": [
+          {
+            "required": "CSS",
+            "declared": "CSS",
+            "canonical": "css"
+          },
+          {
+            "required": "JavaScript",
+            "declared": "JavaScript",
+            "canonical": "javascript"
+          },
+          {
+            "required": "React",
+            "declared": "React",
+            "canonical": "react"
+          },
+          {
+            "required": "Git",
+            "declared": "Git",
+            "canonical": "git"
+          }
+        ],
+        "equivalent_matches": [],
+        "related_matches": [],
+        "no_direct_evidence_skills": [],
+        "skill_catalog_version": "controlled-skills-v1-20261107",
+        "skill_match_count": 4,
+        "required_skill_count": 4,
+        "requirements_declared": true,
+        "skill_coverage_percent": 100,
+        "assessment_basis": "declared-skills-not-verified-proficiency"
+      },
+      {
+        "id": "53cc320aed40ed68f75be643",
+        "cosine": 0.310937,
+        "raw_cosine": 0.31093718057549297,
+        "matched_skills": [
+          "html",
+          "css",
+          "javascript",
+          "react"
+        ],
+        "missing_query_skills": [
+          "git",
+          "node.js"
+        ],
+        "coverage": null,
+        "explanation": "Cosine TF-IDF trên cùng tập ứng viên; kỹ năng giao nhau đối chiếu trực tiếp.",
+        "rank": 2,
+        "title": "JD-01-1 — Phát triển giao diện web — Nghiệp vụ cơ bản",
+        "company_name": "Công ty TNHH Vạn Phúc Networks",
+        "description": "Phát triển giao diện web — Nghiệp vụ cơ bản. Nhiệm vụ: xây dựng biểu mẫu, danh sách và xử lý lỗi nhập liệu. Yêu cầu: HTML, CSS, JavaScript, React. Ưu tiên mô tả được bài tập đã thực hiện, biết phối hợp nhóm, chủ động báo khó khăn và ghi lại cách kiểm tra. Làm việc 3 ngày mỗi tuần trong 12 tuần. Chấp nhận sinh viên chưa có kinh nghiệm doanh nghiệp; không xem các phẩm chất tự khai là đã xác minh.",
+        "duplicate_content_count": 1,
+        "required_skills": [
+          "html",
+          "css",
+          "javascript",
+          "react"
+        ],
+        "missing_required_skills": [],
+        "exact_matches": [
+          {
+            "required": "HTML",
+            "declared": "HTML",
+            "canonical": "html"
+          },
+          {
+            "required": "CSS",
+            "declared": "CSS",
+            "canonical": "css"
+          },
+          {
+            "required": "JavaScript",
+            "declared": "JavaScript",
+            "canonical": "javascript"
+          },
+          {
+            "required": "React",
+            "declared": "React",
+            "canonical": "react"
+          }
+        ],
+        "equivalent_matches": [],
+        "related_matches": [],
+        "no_direct_evidence_skills": [],
+        "skill_catalog_version": "controlled-skills-v1-20261107",
+        "skill_match_count": 4,
+        "required_skill_count": 4,
+        "requirements_declared": true,
+        "skill_coverage_percent": 100,
+        "assessment_basis": "declared-skills-not-verified-proficiency"
+      },
+      {
+        "id": "1507abe5284e3d3366d3e741",
+        "cosine": 0.185496,
+        "raw_cosine": 0.18549642214971865,
+        "matched_skills": [
+          "node.js",
+          "git"
+        ],
+        "missing_query_skills": [
+          "css",
+          "html",
+          "javascript",
+          "react"
+        ],
+        "coverage": null,
+        "explanation": "Cosine TF-IDF trên cùng tập ứng viên; kỹ năng giao nhau đối chiếu trực tiếp.",
+        "rank": 3,
+        "title": "JD-02-2 — Phát triển API Node.js — Tích hợp và kiểm thử",
+        "company_name": "Công ty TNHH Hoàng Gia Web",
+        "description": "Phát triển API Node.js — Tích hợp và kiểm thử. Nhiệm vụ: thiết kế API, kiểm tra đầu vào và phân quyền người dùng. Yêu cầu: Node.js, Express, MongoDB, Git. Ưu tiên mô tả được bài tập đã thực hiện, biết phối hợp nhóm, chủ động báo khó khăn và ghi lại cách kiểm tra. Làm việc 4 ngày mỗi tuần trong 12 tuần. Chấp nhận sinh viên chưa có kinh nghiệm doanh nghiệp; không xem các phẩm chất tự khai là đã xác minh.",
+        "duplicate_content_count": 1,
+        "required_skills": [
+          "node.js",
+          "express",
+          "mongodb",
+          "git"
+        ],
+        "missing_required_skills": [
+          "express",
+          "mongodb"
+        ],
+        "exact_matches": [
+          {
+            "required": "Node.js",
+            "declared": "Node.js",
+            "canonical": "node.js"
+          },
+          {
+            "required": "Git",
+            "declared": "Git",
+            "canonical": "git"
+          }
+        ],
+        "equivalent_matches": [],
+        "related_matches": [
+          {
+            "required": "express",
+            "declared": "node.js"
+          }
+        ],
+        "no_direct_evidence_skills": [
+          "express",
+          "mongodb"
+        ],
+        "skill_catalog_version": "controlled-skills-v1-20261107",
+        "skill_match_count": 2,
+        "required_skill_count": 4,
+        "requirements_declared": true,
+        "skill_coverage_percent": 50,
+        "assessment_basis": "declared-skills-not-verified-proficiency"
+      },
+      {
+        "id": "70c97795fbd20d7c9935a0c0",
+        "cosine": 0.180602,
+        "raw_cosine": 0.18060241677539157,
+        "matched_skills": [
+          "javascript",
+          "node.js"
+        ],
+        "missing_query_skills": [
+          "css",
+          "git",
+          "html",
+          "react"
+        ],
+        "coverage": null,
+        "explanation": "Cosine TF-IDF trên cùng tập ứng viên; kỹ năng giao nhau đối chiếu trực tiếp.",
+        "rank": 4,
+        "title": "JD-02-1 — Phát triển API Node.js — Nghiệp vụ cơ bản",
+        "company_name": "Công ty TNHH Hoàng Gia Web",
+        "description": "Phát triển API Node.js — Nghiệp vụ cơ bản. Nhiệm vụ: thiết kế API, kiểm tra đầu vào và phân quyền người dùng. Yêu cầu: JavaScript, Node.js, Express, MongoDB. Ưu tiên mô tả được bài tập đã thực hiện, biết phối hợp nhóm, chủ động báo khó khăn và ghi lại cách kiểm tra. Làm việc 3 ngày mỗi tuần trong 12 tuần. Chấp nhận sinh viên chưa có kinh nghiệm doanh nghiệp; không xem các phẩm chất tự khai là đã xác minh.",
+        "duplicate_content_count": 1,
+        "required_skills": [
+          "javascript",
+          "node.js",
+          "express",
+          "mongodb"
+        ],
+        "missing_required_skills": [
+          "express",
+          "mongodb"
+        ],
+        "exact_matches": [
+          {
+            "required": "JavaScript",
+            "declared": "JavaScript",
+            "canonical": "javascript"
+          },
+          {
+            "required": "Node.js",
+            "declared": "Node.js",
+            "canonical": "node.js"
+          }
+        ],
+        "equivalent_matches": [],
+        "related_matches": [
+          {
+            "required": "express",
+            "declared": "node.js"
+          }
+        ],
+        "no_direct_evidence_skills": [
+          "express",
+          "mongodb"
+        ],
+        "skill_catalog_version": "controlled-skills-v1-20261107",
+        "skill_match_count": 2,
+        "required_skill_count": 4,
+        "requirements_declared": true,
+        "skill_coverage_percent": 50,
+        "assessment_basis": "declared-skills-not-verified-proficiency"
+      },
+      {
+        "id": "2e9c7f4bdadc467f933ab965",
+        "cosine": 0.122188,
+        "raw_cosine": 0.12218789640158223,
+        "matched_skills": [
+          "git"
+        ],
+        "missing_query_skills": [
+          "css",
+          "html",
+          "javascript",
+          "node.js",
+          "react"
+        ],
+        "coverage": null,
+        "explanation": "Cosine TF-IDF trên cùng tập ứng viên; kỹ năng giao nhau đối chiếu trực tiếp.",
+        "rank": 5,
+        "title": "JD-04-2 — Kiểm thử phần mềm — Tích hợp và kiểm thử",
+        "company_name": "Công ty TNHH An Lạc Digital",
+        "description": "Kiểm thử phần mềm — Tích hợp và kiểm thử. Nhiệm vụ: thiết kế ca kiểm thử, tái hiện lỗi và kiểm tra API. Yêu cầu: Test Cases, Postman, SQL, Git. Ưu tiên mô tả được bài tập đã thực hiện, biết phối hợp nhóm, chủ động báo khó khăn và ghi lại cách kiểm tra. Làm việc 4 ngày mỗi tuần trong 12 tuần. Chấp nhận sinh viên chưa có kinh nghiệm doanh nghiệp; không xem các phẩm chất tự khai là đã xác minh.",
+        "duplicate_content_count": 1,
+        "required_skills": [
+          "test cases",
+          "postman",
+          "sql",
+          "git"
+        ],
+        "missing_required_skills": [
+          "test cases",
+          "postman",
+          "sql"
+        ],
+        "exact_matches": [
+          {
+            "required": "Git",
+            "declared": "Git",
+            "canonical": "git"
+          }
+        ],
+        "equivalent_matches": [],
+        "related_matches": [],
+        "no_direct_evidence_skills": [
+          "test cases",
+          "postman",
+          "sql"
+        ],
+        "skill_catalog_version": "controlled-skills-v1-20261107",
+        "skill_match_count": 1,
+        "required_skill_count": 4,
+        "requirements_declared": true,
+        "skill_coverage_percent": 25,
+        "assessment_basis": "declared-skills-not-verified-proficiency"
+      },
+      {
+        "id": "3769475200b078aee0e49de9",
+        "cosine": 0.116452,
+        "raw_cosine": 0.11645155837271247,
+        "matched_skills": [
+          "git"
+        ],
+        "missing_query_skills": [
+          "css",
+          "html",
+          "javascript",
+          "node.js",
+          "react"
+        ],
+        "coverage": null,
+        "explanation": "Cosine TF-IDF trên cùng tập ứng viên; kỹ năng giao nhau đối chiếu trực tiếp.",
+        "rank": 6,
+        "title": "JD-03-2 — Phát triển ứng dụng Java — Tích hợp và kiểm thử",
+        "company_name": "Công ty TNHH Phú An Security",
+        "description": "Phát triển ứng dụng Java — Tích hợp và kiểm thử. Nhiệm vụ: xây dựng nghiệp vụ mượn trả, API và truy vấn dữ liệu. Yêu cầu: Spring Boot, SQL, MySQL, Git. Ưu tiên mô tả được bài tập đã thực hiện, biết phối hợp nhóm, chủ động báo khó khăn và ghi lại cách kiểm tra. Làm việc 4 ngày mỗi tuần trong 12 tuần. Chấp nhận sinh viên chưa có kinh nghiệm doanh nghiệp; không xem các phẩm chất tự khai là đã xác minh.",
+        "duplicate_content_count": 1,
+        "required_skills": [
+          "spring boot",
+          "sql",
+          "mysql",
+          "git"
+        ],
+        "missing_required_skills": [
+          "spring boot",
+          "sql",
+          "mysql"
+        ],
+        "exact_matches": [
+          {
+            "required": "Git",
+            "declared": "Git",
+            "canonical": "git"
+          }
+        ],
+        "equivalent_matches": [],
+        "related_matches": [],
+        "no_direct_evidence_skills": [
+          "spring boot",
+          "sql",
+          "mysql"
+        ],
+        "skill_catalog_version": "controlled-skills-v1-20261107",
+        "skill_match_count": 1,
+        "required_skill_count": 4,
+        "requirements_declared": true,
+        "skill_coverage_percent": 25,
+        "assessment_basis": "declared-skills-not-verified-proficiency"
+      },
+      {
+        "id": "1edd6cc85f2699473b24dc68",
+        "cosine": 0.106071,
+        "raw_cosine": 0.10607053414502877,
+        "matched_skills": [
+          "git"
+        ],
+        "missing_query_skills": [
+          "css",
+          "html",
+          "javascript",
+          "node.js",
+          "react"
+        ],
+        "coverage": null,
+        "explanation": "Cosine TF-IDF trên cùng tập ứng viên; kỹ năng giao nhau đối chiếu trực tiếp.",
+        "rank": 7,
+        "title": "JD-06-2 — Lập trình Android — Tích hợp và kiểm thử",
+        "company_name": "Công ty TNHH Hải Đăng Solutions",
+        "description": "Lập trình Android — Tích hợp và kiểm thử. Nhiệm vụ: thiết kế màn hình, lưu dữ liệu và xử lý lỗi kết nối. Yêu cầu: Android, REST API, SQLite, Git. Ưu tiên mô tả được bài tập đã thực hiện, biết phối hợp nhóm, chủ động báo khó khăn và ghi lại cách kiểm tra. Làm việc 4 ngày mỗi tuần trong 12 tuần. Chấp nhận sinh viên chưa có kinh nghiệm doanh nghiệp; không xem các phẩm chất tự khai là đã xác minh.",
+        "duplicate_content_count": 1,
+        "required_skills": [
+          "android",
+          "rest api",
+          "sqlite",
+          "git"
+        ],
+        "missing_required_skills": [
+          "android",
+          "rest api",
+          "sqlite"
+        ],
+        "exact_matches": [
+          {
+            "required": "Git",
+            "declared": "Git",
+            "canonical": "git"
+          }
+        ],
+        "equivalent_matches": [],
+        "related_matches": [],
+        "no_direct_evidence_skills": [
+          "android",
+          "rest api",
+          "sqlite"
+        ],
+        "skill_catalog_version": "controlled-skills-v1-20261107",
+        "skill_match_count": 1,
+        "required_skill_count": 4,
+        "requirements_declared": true,
+        "skill_coverage_percent": 25,
+        "assessment_basis": "declared-skills-not-verified-proficiency"
+      },
+      {
+        "id": "0379dc62b18cca09ed318b02",
+        "cosine": 0.102666,
+        "raw_cosine": 0.10266557050528906,
+        "matched_skills": [],
+        "missing_query_skills": [
+          "css",
+          "git",
+          "html",
+          "javascript",
+          "node.js",
+          "react"
+        ],
+        "coverage": null,
+        "explanation": "Cosine TF-IDF trên cùng tập ứng viên; kỹ năng giao nhau đối chiếu trực tiếp.",
+        "rank": 8,
+        "title": "JD-05-2 — Phân tích dữ liệu — Tích hợp và kiểm thử",
+        "company_name": "Công ty TNHH Minh Quang Software",
+        "description": "Phân tích dữ liệu — Tích hợp và kiểm thử. Nhiệm vụ: làm sạch dữ liệu, viết truy vấn và giải thích biểu đồ. Yêu cầu: SQL, Pandas, Excel, Power BI. Ưu tiên mô tả được bài tập đã thực hiện, biết phối hợp nhóm, chủ động báo khó khăn và ghi lại cách kiểm tra. Làm việc 4 ngày mỗi tuần trong 12 tuần. Chấp nhận sinh viên chưa có kinh nghiệm doanh nghiệp; không xem các phẩm chất tự khai là đã xác minh.",
+        "duplicate_content_count": 1,
+        "required_skills": [
+          "sql",
+          "pandas",
+          "excel",
+          "power bi"
+        ],
+        "missing_required_skills": [
+          "sql",
+          "pandas",
+          "excel",
+          "power bi"
+        ],
+        "exact_matches": [],
+        "equivalent_matches": [],
+        "related_matches": [],
+        "no_direct_evidence_skills": [
+          "sql",
+          "pandas",
+          "excel",
+          "power bi"
+        ],
+        "skill_catalog_version": "controlled-skills-v1-20261107",
+        "skill_match_count": 0,
+        "required_skill_count": 4,
+        "requirements_declared": true,
+        "skill_coverage_percent": 0,
+        "assessment_basis": "declared-skills-not-verified-proficiency"
+      },
+      {
+        "id": "96a7c567cee83b3793009f72",
+        "cosine": 0.101495,
+        "raw_cosine": 0.10149451668191597,
+        "matched_skills": [
+          "git"
+        ],
+        "missing_query_skills": [
+          "css",
+          "html",
+          "javascript",
+          "node.js",
+          "react"
+        ],
+        "coverage": null,
+        "explanation": "Cosine TF-IDF trên cùng tập ứng viên; kỹ năng giao nhau đối chiếu trực tiếp.",
+        "rank": 9,
+        "title": "JD-10-2 — Lập trình hợp đồng thông minh — Tích hợp và kiểm thử",
+        "company_name": "Công ty TNHH Đông Phương Systems",
+        "description": "Lập trình hợp đồng thông minh — Tích hợp và kiểm thử. Nhiệm vụ: viết kiểm thử quyền, đọc sự kiện và kiểm tra receipt. Yêu cầu: Solidity, Hardhat, ethers.js, Git. Ưu tiên mô tả được bài tập đã thực hiện, biết phối hợp nhóm, chủ động báo khó khăn và ghi lại cách kiểm tra. Làm việc 4 ngày mỗi tuần trong 12 tuần. Chấp nhận sinh viên chưa có kinh nghiệm doanh nghiệp; không xem các phẩm chất tự khai là đã xác minh.",
+        "duplicate_content_count": 1,
+        "required_skills": [
+          "solidity",
+          "hardhat",
+          "ethers.js",
+          "git"
+        ],
+        "missing_required_skills": [
+          "solidity",
+          "hardhat",
+          "ethers.js"
+        ],
+        "exact_matches": [
+          {
+            "required": "Git",
+            "declared": "Git",
+            "canonical": "git"
+          }
+        ],
+        "equivalent_matches": [],
+        "related_matches": [],
+        "no_direct_evidence_skills": [
+          "solidity",
+          "hardhat",
+          "ethers.js"
+        ],
+        "skill_catalog_version": "controlled-skills-v1-20261107",
+        "skill_match_count": 1,
+        "required_skill_count": 4,
+        "requirements_declared": true,
+        "skill_coverage_percent": 25,
+        "assessment_basis": "declared-skills-not-verified-proficiency"
+      },
+      {
+        "id": "b39a528063b61a10cec1ed8d",
+        "cosine": 0.100384,
+        "raw_cosine": 0.10038359804918572,
+        "matched_skills": [],
+        "missing_query_skills": [
+          "css",
+          "git",
+          "html",
+          "javascript",
+          "node.js",
+          "react"
+        ],
+        "coverage": null,
+        "explanation": "Cosine TF-IDF trên cùng tập ứng viên; kỹ năng giao nhau đối chiếu trực tiếp.",
+        "rank": 10,
+        "title": "JD-09-2 — Xử lý ngôn ngữ — Tích hợp và kiểm thử",
+        "company_name": "Công ty TNHH Thiên Sơn Tech",
+        "description": "Xử lý ngôn ngữ — Tích hợp và kiểm thử. Nhiệm vụ: chuẩn hóa văn bản, chia tập dữ liệu và phân tích trường hợp sai. Yêu cầu: Pandas, NLP, scikit-learn, SQL. Ưu tiên mô tả được bài tập đã thực hiện, biết phối hợp nhóm, chủ động báo khó khăn và ghi lại cách kiểm tra. Làm việc 4 ngày mỗi tuần trong 12 tuần. Chấp nhận sinh viên chưa có kinh nghiệm doanh nghiệp; không xem các phẩm chất tự khai là đã xác minh.",
+        "duplicate_content_count": 1,
+        "required_skills": [
+          "pandas",
+          "nlp",
+          "scikit-learn",
+          "sql"
+        ],
+        "missing_required_skills": [
+          "pandas",
+          "nlp",
+          "scikit-learn",
+          "sql"
+        ],
+        "exact_matches": [],
+        "equivalent_matches": [],
+        "related_matches": [],
+        "no_direct_evidence_skills": [
+          "pandas",
+          "nlp",
+          "scikit-learn",
+          "sql"
+        ],
+        "skill_catalog_version": "controlled-skills-v1-20261107",
+        "skill_match_count": 0,
+        "required_skill_count": 4,
+        "requirements_declared": true,
+        "skill_coverage_percent": 0,
+        "assessment_basis": "declared-skills-not-verified-proficiency"
+      },
+      {
+        "id": "8ceb81c5467f892609b18a76",
+        "cosine": 0.099453,
+        "raw_cosine": 0.09945313729040053,
+        "matched_skills": [],
+        "missing_query_skills": [
+          "css",
+          "git",
+          "html",
+          "javascript",
+          "node.js",
+          "react"
+        ],
+        "coverage": null,
+        "explanation": "Cosine TF-IDF trên cùng tập ứng viên; kỹ năng giao nhau đối chiếu trực tiếp.",
+        "rank": 11,
+        "title": "JD-04-1 — Kiểm thử phần mềm — Nghiệp vụ cơ bản",
+        "company_name": "Công ty TNHH An Lạc Digital",
+        "description": "Kiểm thử phần mềm — Nghiệp vụ cơ bản. Nhiệm vụ: thiết kế ca kiểm thử, tái hiện lỗi và kiểm tra API. Yêu cầu: Manual Testing, Test Cases, Postman, SQL. Ưu tiên mô tả được bài tập đã thực hiện, biết phối hợp nhóm, chủ động báo khó khăn và ghi lại cách kiểm tra. Làm việc 3 ngày mỗi tuần trong 12 tuần. Chấp nhận sinh viên chưa có kinh nghiệm doanh nghiệp; không xem các phẩm chất tự khai là đã xác minh.",
+        "duplicate_content_count": 1,
+        "required_skills": [
+          "manual testing",
+          "test cases",
+          "postman",
+          "sql"
+        ],
+        "missing_required_skills": [
+          "manual testing",
+          "test cases",
+          "postman",
+          "sql"
+        ],
+        "exact_matches": [],
+        "equivalent_matches": [],
+        "related_matches": [],
+        "no_direct_evidence_skills": [
+          "manual testing",
+          "test cases",
+          "postman",
+          "sql"
+        ],
+        "skill_catalog_version": "controlled-skills-v1-20261107",
+        "skill_match_count": 0,
+        "required_skill_count": 4,
+        "requirements_declared": true,
+        "skill_coverage_percent": 0,
+        "assessment_basis": "declared-skills-not-verified-proficiency"
+      },
+      {
+        "id": "bf2c44f76426cb945aa60ac5",
+        "cosine": 0.094361,
+        "raw_cosine": 0.09436140522349995,
+        "matched_skills": [],
+        "missing_query_skills": [
+          "css",
+          "git",
+          "html",
+          "javascript",
+          "node.js",
+          "react"
+        ],
+        "coverage": null,
+        "explanation": "Cosine TF-IDF trên cùng tập ứng viên; kỹ năng giao nhau đối chiếu trực tiếp.",
+        "rank": 12,
+        "title": "JD-05-1 — Phân tích dữ liệu — Nghiệp vụ cơ bản",
+        "company_name": "Công ty TNHH Minh Quang Software",
+        "description": "Phân tích dữ liệu — Nghiệp vụ cơ bản. Nhiệm vụ: làm sạch dữ liệu, viết truy vấn và giải thích biểu đồ. Yêu cầu: Python, SQL, Pandas, Excel. Ưu tiên mô tả được bài tập đã thực hiện, biết phối hợp nhóm, chủ động báo khó khăn và ghi lại cách kiểm tra. Làm việc 3 ngày mỗi tuần trong 12 tuần. Chấp nhận sinh viên chưa có kinh nghiệm doanh nghiệp; không xem các phẩm chất tự khai là đã xác minh.",
+        "duplicate_content_count": 1,
+        "required_skills": [
+          "python",
+          "sql",
+          "pandas",
+          "excel"
+        ],
+        "missing_required_skills": [
+          "python",
+          "sql",
+          "pandas",
+          "excel"
+        ],
+        "exact_matches": [],
+        "equivalent_matches": [],
+        "related_matches": [],
+        "no_direct_evidence_skills": [
+          "python",
+          "sql",
+          "pandas",
+          "excel"
+        ],
+        "skill_catalog_version": "controlled-skills-v1-20261107",
+        "skill_match_count": 0,
+        "required_skill_count": 4,
+        "requirements_declared": true,
+        "skill_coverage_percent": 0,
+        "assessment_basis": "declared-skills-not-verified-proficiency"
+      },
+      {
+        "id": "2030d9436adc83a86a372364",
+        "cosine": 0.093517,
+        "raw_cosine": 0.09351690239481433,
+        "matched_skills": [
+          "javascript"
+        ],
+        "missing_query_skills": [
+          "css",
+          "git",
+          "html",
+          "node.js",
+          "react"
+        ],
+        "coverage": null,
+        "explanation": "Cosine TF-IDF trên cùng tập ứng viên; kỹ năng giao nhau đối chiếu trực tiếp.",
+        "rank": 13,
+        "title": "JD-10-1 — Lập trình hợp đồng thông minh — Nghiệp vụ cơ bản",
+        "company_name": "Công ty TNHH Đông Phương Systems",
+        "description": "Lập trình hợp đồng thông minh — Nghiệp vụ cơ bản. Nhiệm vụ: viết kiểm thử quyền, đọc sự kiện và kiểm tra receipt. Yêu cầu: JavaScript, Solidity, Hardhat, ethers.js. Ưu tiên mô tả được bài tập đã thực hiện, biết phối hợp nhóm, chủ động báo khó khăn và ghi lại cách kiểm tra. Làm việc 3 ngày mỗi tuần trong 12 tuần. Chấp nhận sinh viên chưa có kinh nghiệm doanh nghiệp; không xem các phẩm chất tự khai là đã xác minh.",
+        "duplicate_content_count": 1,
+        "required_skills": [
+          "javascript",
+          "solidity",
+          "hardhat",
+          "ethers.js"
+        ],
+        "missing_required_skills": [
+          "solidity",
+          "hardhat",
+          "ethers.js"
+        ],
+        "exact_matches": [
+          {
+            "required": "JavaScript",
+            "declared": "JavaScript",
+            "canonical": "javascript"
+          }
+        ],
+        "equivalent_matches": [],
+        "related_matches": [],
+        "no_direct_evidence_skills": [
+          "solidity",
+          "hardhat",
+          "ethers.js"
+        ],
+        "skill_catalog_version": "controlled-skills-v1-20261107",
+        "skill_match_count": 1,
+        "required_skill_count": 4,
+        "requirements_declared": true,
+        "skill_coverage_percent": 25,
+        "assessment_basis": "declared-skills-not-verified-proficiency"
+      },
+      {
+        "id": "332bfc6f189645bfd7d11904",
+        "cosine": 0.089796,
+        "raw_cosine": 0.0897955321164713,
+        "matched_skills": [],
+        "missing_query_skills": [
+          "css",
+          "git",
+          "html",
+          "javascript",
+          "node.js",
+          "react"
+        ],
+        "coverage": null,
+        "explanation": "Cosine TF-IDF trên cùng tập ứng viên; kỹ năng giao nhau đối chiếu trực tiếp.",
+        "rank": 14,
+        "title": "JD-03-1 — Phát triển ứng dụng Java — Nghiệp vụ cơ bản",
+        "company_name": "Công ty TNHH Phú An Security",
+        "description": "Phát triển ứng dụng Java — Nghiệp vụ cơ bản. Nhiệm vụ: xây dựng nghiệp vụ mượn trả, API và truy vấn dữ liệu. Yêu cầu: Java, Spring Boot, SQL, MySQL. Ưu tiên mô tả được bài tập đã thực hiện, biết phối hợp nhóm, chủ động báo khó khăn và ghi lại cách kiểm tra. Làm việc 3 ngày mỗi tuần trong 12 tuần. Chấp nhận sinh viên chưa có kinh nghiệm doanh nghiệp; không xem các phẩm chất tự khai là đã xác minh.",
+        "duplicate_content_count": 1,
+        "required_skills": [
+          "java",
+          "spring boot",
+          "sql",
+          "mysql"
+        ],
+        "missing_required_skills": [
+          "java",
+          "spring boot",
+          "sql",
+          "mysql"
+        ],
+        "exact_matches": [],
+        "equivalent_matches": [],
+        "related_matches": [],
+        "no_direct_evidence_skills": [
+          "java",
+          "spring boot",
+          "sql",
+          "mysql"
+        ],
+        "skill_catalog_version": "controlled-skills-v1-20261107",
+        "skill_match_count": 0,
+        "required_skill_count": 4,
+        "requirements_declared": true,
+        "skill_coverage_percent": 0,
+        "assessment_basis": "declared-skills-not-verified-proficiency"
+      },
+      {
+        "id": "41e66dc080ce6a3a2e558a20",
+        "cosine": 0.089133,
+        "raw_cosine": 0.0891325536778596,
+        "matched_skills": [],
+        "missing_query_skills": [
+          "css",
+          "git",
+          "html",
+          "javascript",
+          "node.js",
+          "react"
+        ],
+        "coverage": null,
+        "explanation": "Cosine TF-IDF trên cùng tập ứng viên; kỹ năng giao nhau đối chiếu trực tiếp.",
+        "rank": 15,
+        "title": "JD-08-2 — An toàn ứng dụng web — Tích hợp và kiểm thử",
+        "company_name": "Công ty TNHH Bình Minh Data",
+        "description": "An toàn ứng dụng web — Tích hợp và kiểm thử. Nhiệm vụ: kiểm tra phân quyền và xác thực trong phạm vi được phép. Yêu cầu: Networking, OWASP, Python, HTTP. Ưu tiên mô tả được bài tập đã thực hiện, biết phối hợp nhóm, chủ động báo khó khăn và ghi lại cách kiểm tra. Làm việc 4 ngày mỗi tuần trong 12 tuần. Chấp nhận sinh viên chưa có kinh nghiệm doanh nghiệp; không xem các phẩm chất tự khai là đã xác minh.",
+        "duplicate_content_count": 1,
+        "required_skills": [
+          "networking",
+          "owasp",
+          "python",
+          "http"
+        ],
+        "missing_required_skills": [
+          "networking",
+          "owasp",
+          "python",
+          "http"
+        ],
+        "exact_matches": [],
+        "equivalent_matches": [],
+        "related_matches": [],
+        "no_direct_evidence_skills": [
+          "networking",
+          "owasp",
+          "python",
+          "http"
+        ],
+        "skill_catalog_version": "controlled-skills-v1-20261107",
+        "skill_match_count": 0,
+        "required_skill_count": 4,
+        "requirements_declared": true,
+        "skill_coverage_percent": 0,
+        "assessment_basis": "declared-skills-not-verified-proficiency"
+      },
+      {
+        "id": "55a18d41c472ead850b92255",
+        "cosine": 0.087445,
+        "raw_cosine": 0.0874449404466986,
+        "matched_skills": [],
+        "missing_query_skills": [
+          "css",
+          "git",
+          "html",
+          "javascript",
+          "node.js",
+          "react"
+        ],
+        "coverage": null,
+        "explanation": "Cosine TF-IDF trên cùng tập ứng viên; kỹ năng giao nhau đối chiếu trực tiếp.",
+        "rank": 16,
+        "title": "JD-09-1 — Xử lý ngôn ngữ — Nghiệp vụ cơ bản",
+        "company_name": "Công ty TNHH Thiên Sơn Tech",
+        "description": "Xử lý ngôn ngữ — Nghiệp vụ cơ bản. Nhiệm vụ: chuẩn hóa văn bản, chia tập dữ liệu và phân tích trường hợp sai. Yêu cầu: Python, Pandas, NLP, scikit-learn. Ưu tiên mô tả được bài tập đã thực hiện, biết phối hợp nhóm, chủ động báo khó khăn và ghi lại cách kiểm tra. Làm việc 3 ngày mỗi tuần trong 12 tuần. Chấp nhận sinh viên chưa có kinh nghiệm doanh nghiệp; không xem các phẩm chất tự khai là đã xác minh.",
+        "duplicate_content_count": 1,
+        "required_skills": [
+          "python",
+          "pandas",
+          "nlp",
+          "scikit-learn"
+        ],
+        "missing_required_skills": [
+          "python",
+          "pandas",
+          "nlp",
+          "scikit-learn"
+        ],
+        "exact_matches": [],
+        "equivalent_matches": [],
+        "related_matches": [],
+        "no_direct_evidence_skills": [
+          "python",
+          "pandas",
+          "nlp",
+          "scikit-learn"
+        ],
+        "skill_catalog_version": "controlled-skills-v1-20261107",
+        "skill_match_count": 0,
+        "required_skill_count": 4,
+        "requirements_declared": true,
+        "skill_coverage_percent": 0,
+        "assessment_basis": "declared-skills-not-verified-proficiency"
+      },
+      {
+        "id": "43f116dfe9ad643847a1fb3b",
+        "cosine": 0.085441,
+        "raw_cosine": 0.08544147864562313,
+        "matched_skills": [
+          "git"
+        ],
+        "missing_query_skills": [
+          "css",
+          "html",
+          "javascript",
+          "node.js",
+          "react"
+        ],
+        "coverage": null,
+        "explanation": "Cosine TF-IDF trên cùng tập ứng viên; kỹ năng giao nhau đối chiếu trực tiếp.",
+        "rank": 17,
+        "title": "JD-07-2 — Vận hành ứng dụng — Tích hợp và kiểm thử",
+        "company_name": "Công ty TNHH Nam Việt Cloud",
+        "description": "Vận hành ứng dụng — Tích hợp và kiểm thử. Nhiệm vụ: đóng gói ứng dụng, viết quy trình triển khai và theo dõi log. Yêu cầu: Docker, Git, CI/CD, Networking. Ưu tiên mô tả được bài tập đã thực hiện, biết phối hợp nhóm, chủ động báo khó khăn và ghi lại cách kiểm tra. Làm việc 4 ngày mỗi tuần trong 12 tuần. Chấp nhận sinh viên chưa có kinh nghiệm doanh nghiệp; không xem các phẩm chất tự khai là đã xác minh.",
+        "duplicate_content_count": 1,
+        "required_skills": [
+          "docker",
+          "git",
+          "ci/cd",
+          "networking"
+        ],
+        "missing_required_skills": [
+          "docker",
+          "ci/cd",
+          "networking"
+        ],
+        "exact_matches": [
+          {
+            "required": "Git",
+            "declared": "Git",
+            "canonical": "git"
+          }
+        ],
+        "equivalent_matches": [],
+        "related_matches": [],
+        "no_direct_evidence_skills": [
+          "docker",
+          "ci/cd",
+          "networking"
+        ],
+        "skill_catalog_version": "controlled-skills-v1-20261107",
+        "skill_match_count": 1,
+        "required_skill_count": 4,
+        "requirements_declared": true,
+        "skill_coverage_percent": 25,
+        "assessment_basis": "declared-skills-not-verified-proficiency"
+      },
+      {
+        "id": "24da10613c35e8f5dd8609ae",
+        "cosine": 0.083663,
+        "raw_cosine": 0.08366331145502597,
+        "matched_skills": [],
+        "missing_query_skills": [
+          "css",
+          "git",
+          "html",
+          "javascript",
+          "node.js",
+          "react"
+        ],
+        "coverage": null,
+        "explanation": "Cosine TF-IDF trên cùng tập ứng viên; kỹ năng giao nhau đối chiếu trực tiếp.",
+        "rank": 18,
+        "title": "JD-06-1 — Lập trình Android — Nghiệp vụ cơ bản",
+        "company_name": "Công ty TNHH Hải Đăng Solutions",
+        "description": "Lập trình Android — Nghiệp vụ cơ bản. Nhiệm vụ: thiết kế màn hình, lưu dữ liệu và xử lý lỗi kết nối. Yêu cầu: Kotlin, Android, REST API, SQLite. Ưu tiên mô tả được bài tập đã thực hiện, biết phối hợp nhóm, chủ động báo khó khăn và ghi lại cách kiểm tra. Làm việc 3 ngày mỗi tuần trong 12 tuần. Chấp nhận sinh viên chưa có kinh nghiệm doanh nghiệp; không xem các phẩm chất tự khai là đã xác minh.",
+        "duplicate_content_count": 1,
+        "required_skills": [
+          "kotlin",
+          "android",
+          "rest api",
+          "sqlite"
+        ],
+        "missing_required_skills": [
+          "kotlin",
+          "android",
+          "rest api",
+          "sqlite"
+        ],
+        "exact_matches": [],
+        "equivalent_matches": [],
+        "related_matches": [],
+        "no_direct_evidence_skills": [
+          "kotlin",
+          "android",
+          "rest api",
+          "sqlite"
+        ],
+        "skill_catalog_version": "controlled-skills-v1-20261107",
+        "skill_match_count": 0,
+        "required_skill_count": 4,
+        "requirements_declared": true,
+        "skill_coverage_percent": 0,
+        "assessment_basis": "declared-skills-not-verified-proficiency"
+      },
+      {
+        "id": "acf9468bc1c67e4401c56e71",
+        "cosine": 0.074828,
+        "raw_cosine": 0.07482830465548855,
+        "matched_skills": [],
+        "missing_query_skills": [
+          "css",
+          "git",
+          "html",
+          "javascript",
+          "node.js",
+          "react"
+        ],
+        "coverage": null,
+        "explanation": "Cosine TF-IDF trên cùng tập ứng viên; kỹ năng giao nhau đối chiếu trực tiếp.",
+        "rank": 19,
+        "title": "JD-08-1 — An toàn ứng dụng web — Nghiệp vụ cơ bản",
+        "company_name": "Công ty TNHH Bình Minh Data",
+        "description": "An toàn ứng dụng web — Nghiệp vụ cơ bản. Nhiệm vụ: kiểm tra phân quyền và xác thực trong phạm vi được phép. Yêu cầu: Linux, Networking, OWASP, Python. Ưu tiên mô tả được bài tập đã thực hiện, biết phối hợp nhóm, chủ động báo khó khăn và ghi lại cách kiểm tra. Làm việc 3 ngày mỗi tuần trong 12 tuần. Chấp nhận sinh viên chưa có kinh nghiệm doanh nghiệp; không xem các phẩm chất tự khai là đã xác minh.",
+        "duplicate_content_count": 1,
+        "required_skills": [
+          "linux",
+          "networking",
+          "owasp",
+          "python"
+        ],
+        "missing_required_skills": [
+          "linux",
+          "networking",
+          "owasp",
+          "python"
+        ],
+        "exact_matches": [],
+        "equivalent_matches": [],
+        "related_matches": [],
+        "no_direct_evidence_skills": [
+          "linux",
+          "networking",
+          "owasp",
+          "python"
+        ],
+        "skill_catalog_version": "controlled-skills-v1-20261107",
+        "skill_match_count": 0,
+        "required_skill_count": 4,
+        "requirements_declared": true,
+        "skill_coverage_percent": 0,
+        "assessment_basis": "declared-skills-not-verified-proficiency"
+      },
+      {
+        "id": "adbd5c2f86ffbc015490e294",
+        "cosine": 0.071658,
+        "raw_cosine": 0.0716583894709844,
+        "matched_skills": [
+          "git"
+        ],
+        "missing_query_skills": [
+          "css",
+          "html",
+          "javascript",
+          "node.js",
+          "react"
+        ],
+        "coverage": null,
+        "explanation": "Cosine TF-IDF trên cùng tập ứng viên; kỹ năng giao nhau đối chiếu trực tiếp.",
+        "rank": 20,
+        "title": "JD-07-1 — Vận hành ứng dụng — Nghiệp vụ cơ bản",
+        "company_name": "Công ty TNHH Nam Việt Cloud",
+        "description": "Vận hành ứng dụng — Nghiệp vụ cơ bản. Nhiệm vụ: đóng gói ứng dụng, viết quy trình triển khai và theo dõi log. Yêu cầu: Linux, Docker, Git, CI/CD. Ưu tiên mô tả được bài tập đã thực hiện, biết phối hợp nhóm, chủ động báo khó khăn và ghi lại cách kiểm tra. Làm việc 3 ngày mỗi tuần trong 12 tuần. Chấp nhận sinh viên chưa có kinh nghiệm doanh nghiệp; không xem các phẩm chất tự khai là đã xác minh.",
+        "duplicate_content_count": 1,
+        "required_skills": [
+          "linux",
+          "docker",
+          "git",
+          "ci/cd"
+        ],
+        "missing_required_skills": [
+          "linux",
+          "docker",
+          "ci/cd"
+        ],
+        "exact_matches": [
+          {
+            "required": "Git",
+            "declared": "Git",
+            "canonical": "git"
+          }
+        ],
+        "equivalent_matches": [],
+        "related_matches": [],
+        "no_direct_evidence_skills": [
+          "linux",
+          "docker",
+          "ci/cd"
+        ],
+        "skill_catalog_version": "controlled-skills-v1-20261107",
+        "skill_match_count": 1,
+        "required_skill_count": 4,
+        "requirements_declared": true,
+        "skill_coverage_percent": 25,
+        "assessment_basis": "declared-skills-not-verified-proficiency"
+      }
+    ]
+  },
+  "sbertResponse": {
+    "http": 200,
+    "body": {
+      "engine": "sbert",
+      "inference_performed": true,
+      "model": {
+        "ready": true,
+        "configured": true,
+        "model_id": "sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2",
+        "revision": "e8f8c211226b894fcb81acc59f3b34ba3efd5f42",
+        "expected_revision": "e8f8c211226b894fcb81acc59f3b34ba3efd5f42",
+        "backend": "onnx-cpu-int8",
+        "reason": null,
+        "available_memory_mib": 991.83984375,
+        "network_inference": false
+      },
+      "results": [
+        {
+          "id": "5599a4d00f69abce7f455846",
+          "cosine": 0.799235,
+          "raw_cosine": 0.7992346663845215,
+          "matched_skills": [
+            "css",
+            "git",
+            "javascript",
+            "react"
+          ],
+          "missing_query_skills": [
+            "html",
+            "node.js"
+          ],
+          "coverage": {
+            "total_tokens": 129,
+            "used_tokens": 129,
+            "chunks": 2,
+            "truncated": false
+          },
+          "explanation": "Cosine của embedding cục bộ; kỹ năng giao nhau lấy từ trường khai báo, không phải lý do nhân quả hoặc xác suất trúng tuyển."
+        },
+        {
+          "id": "53cc320aed40ed68f75be643",
+          "cosine": 0.669082,
+          "raw_cosine": 0.6690818005855917,
+          "matched_skills": [
+            "css",
+            "html",
+            "javascript",
+            "react"
+          ],
+          "missing_query_skills": [
+            "git",
+            "node.js"
+          ],
+          "coverage": {
+            "total_tokens": 125,
+            "used_tokens": 125,
+            "chunks": 1,
+            "truncated": false
+          },
+          "explanation": "Cosine của embedding cục bộ; kỹ năng giao nhau lấy từ trường khai báo, không phải lý do nhân quả hoặc xác suất trúng tuyển."
+        },
+        {
+          "id": "1507abe5284e3d3366d3e741",
+          "cosine": 0.574751,
+          "raw_cosine": 0.5747511704497068,
+          "matched_skills": [
+            "git",
+            "node.js"
+          ],
+          "missing_query_skills": [
+            "css",
+            "html",
+            "javascript",
+            "react"
+          ],
+          "coverage": {
+            "total_tokens": 141,
+            "used_tokens": 141,
+            "chunks": 2,
+            "truncated": false
+          },
+          "explanation": "Cosine của embedding cục bộ; kỹ năng giao nhau lấy từ trường khai báo, không phải lý do nhân quả hoặc xác suất trúng tuyển."
+        },
+        {
+          "id": "70c97795fbd20d7c9935a0c0",
+          "cosine": 0.545444,
+          "raw_cosine": 0.5454439083982678,
+          "matched_skills": [
+            "javascript",
+            "node.js"
+          ],
+          "missing_query_skills": [
+            "css",
+            "git",
+            "html",
+            "react"
+          ],
+          "coverage": {
+            "total_tokens": 136,
+            "used_tokens": 136,
+            "chunks": 2,
+            "truncated": false
+          },
+          "explanation": "Cosine của embedding cục bộ; kỹ năng giao nhau lấy từ trường khai báo, không phải lý do nhân quả hoặc xác suất trúng tuyển."
+        },
+        {
+          "id": "24da10613c35e8f5dd8609ae",
+          "cosine": 0.522232,
+          "raw_cosine": 0.5222318107440709,
+          "matched_skills": [],
+          "missing_query_skills": [
+            "css",
+            "git",
+            "html",
+            "javascript",
+            "node.js",
+            "react"
+          ],
+          "coverage": {
+            "total_tokens": 127,
+            "used_tokens": 127,
+            "chunks": 2,
+            "truncated": false
+          },
+          "explanation": "Cosine của embedding cục bộ; kỹ năng giao nhau lấy từ trường khai báo, không phải lý do nhân quả hoặc xác suất trúng tuyển."
+        },
+        {
+          "id": "2030d9436adc83a86a372364",
+          "cosine": 0.462991,
+          "raw_cosine": 0.46299149240888887,
+          "matched_skills": [
+            "javascript"
+          ],
+          "missing_query_skills": [
+            "css",
+            "git",
+            "html",
+            "node.js",
+            "react"
+          ],
+          "coverage": {
+            "total_tokens": 137,
+            "used_tokens": 137,
+            "chunks": 2,
+            "truncated": false
+          },
+          "explanation": "Cosine của embedding cục bộ; kỹ năng giao nhau lấy từ trường khai báo, không phải lý do nhân quả hoặc xác suất trúng tuyển."
+        },
+        {
+          "id": "1edd6cc85f2699473b24dc68",
+          "cosine": 0.459325,
+          "raw_cosine": 0.4593254143166727,
+          "matched_skills": [
+            "git"
+          ],
+          "missing_query_skills": [
+            "css",
+            "html",
+            "javascript",
+            "node.js",
+            "react"
+          ],
+          "coverage": {
+            "total_tokens": 130,
+            "used_tokens": 130,
+            "chunks": 2,
+            "truncated": false
+          },
+          "explanation": "Cosine của embedding cục bộ; kỹ năng giao nhau lấy từ trường khai báo, không phải lý do nhân quả hoặc xác suất trúng tuyển."
+        },
+        {
+          "id": "bf2c44f76426cb945aa60ac5",
+          "cosine": 0.445148,
+          "raw_cosine": 0.44514808536673683,
+          "matched_skills": [],
+          "missing_query_skills": [
+            "css",
+            "git",
+            "html",
+            "javascript",
+            "node.js",
+            "react"
+          ],
+          "coverage": {
+            "total_tokens": 124,
+            "used_tokens": 124,
+            "chunks": 1,
+            "truncated": false
+          },
+          "explanation": "Cosine của embedding cục bộ; kỹ năng giao nhau lấy từ trường khai báo, không phải lý do nhân quả hoặc xác suất trúng tuyển."
+        },
+        {
+          "id": "96a7c567cee83b3793009f72",
+          "cosine": 0.43382,
+          "raw_cosine": 0.43382030731261395,
+          "matched_skills": [
+            "git"
+          ],
+          "missing_query_skills": [
+            "css",
+            "html",
+            "javascript",
+            "node.js",
+            "react"
+          ],
+          "coverage": {
+            "total_tokens": 142,
+            "used_tokens": 142,
+            "chunks": 2,
+            "truncated": false
+          },
+          "explanation": "Cosine của embedding cục bộ; kỹ năng giao nhau lấy từ trường khai báo, không phải lý do nhân quả hoặc xác suất trúng tuyển."
+        },
+        {
+          "id": "2e9c7f4bdadc467f933ab965",
+          "cosine": 0.429467,
+          "raw_cosine": 0.4294670130263827,
+          "matched_skills": [
+            "git"
+          ],
+          "missing_query_skills": [
+            "css",
+            "html",
+            "javascript",
+            "node.js",
+            "react"
+          ],
+          "coverage": {
+            "total_tokens": 133,
+            "used_tokens": 133,
+            "chunks": 2,
+            "truncated": false
+          },
+          "explanation": "Cosine của embedding cục bộ; kỹ năng giao nhau lấy từ trường khai báo, không phải lý do nhân quả hoặc xác suất trúng tuyển."
+        },
+        {
+          "id": "b39a528063b61a10cec1ed8d",
+          "cosine": 0.41182,
+          "raw_cosine": 0.41182049031999646,
+          "matched_skills": [],
+          "missing_query_skills": [
+            "css",
+            "git",
+            "html",
+            "javascript",
+            "node.js",
+            "react"
+          ],
+          "coverage": {
+            "total_tokens": 143,
+            "used_tokens": 143,
+            "chunks": 2,
+            "truncated": false
+          },
+          "explanation": "Cosine của embedding cục bộ; kỹ năng giao nhau lấy từ trường khai báo, không phải lý do nhân quả hoặc xác suất trúng tuyển."
+        },
+        {
+          "id": "adbd5c2f86ffbc015490e294",
+          "cosine": 0.40055,
+          "raw_cosine": 0.4005497757373439,
+          "matched_skills": [
+            "git"
+          ],
+          "missing_query_skills": [
+            "css",
+            "html",
+            "javascript",
+            "node.js",
+            "react"
+          ],
+          "coverage": {
+            "total_tokens": 129,
+            "used_tokens": 129,
+            "chunks": 2,
+            "truncated": false
+          },
+          "explanation": "Cosine của embedding cục bộ; kỹ năng giao nhau lấy từ trường khai báo, không phải lý do nhân quả hoặc xác suất trúng tuyển."
+        },
+        {
+          "id": "0379dc62b18cca09ed318b02",
+          "cosine": 0.389604,
+          "raw_cosine": 0.3896040123798957,
+          "matched_skills": [],
+          "missing_query_skills": [
+            "css",
+            "git",
+            "html",
+            "javascript",
+            "node.js",
+            "react"
+          ],
+          "coverage": {
+            "total_tokens": 129,
+            "used_tokens": 129,
+            "chunks": 2,
+            "truncated": false
+          },
+          "explanation": "Cosine của embedding cục bộ; kỹ năng giao nhau lấy từ trường khai báo, không phải lý do nhân quả hoặc xác suất trúng tuyển."
+        },
+        {
+          "id": "55a18d41c472ead850b92255",
+          "cosine": 0.385272,
+          "raw_cosine": 0.38527231334997647,
+          "matched_skills": [],
+          "missing_query_skills": [
+            "css",
+            "git",
+            "html",
+            "javascript",
+            "node.js",
+            "react"
+          ],
+          "coverage": {
+            "total_tokens": 139,
+            "used_tokens": 139,
+            "chunks": 2,
+            "truncated": false
+          },
+          "explanation": "Cosine của embedding cục bộ; kỹ năng giao nhau lấy từ trường khai báo, không phải lý do nhân quả hoặc xác suất trúng tuyển."
+        },
+        {
+          "id": "8ceb81c5467f892609b18a76",
+          "cosine": 0.359712,
+          "raw_cosine": 0.3597121640052749,
+          "matched_skills": [],
+          "missing_query_skills": [
+            "css",
+            "git",
+            "html",
+            "javascript",
+            "node.js",
+            "react"
+          ],
+          "coverage": {
+            "total_tokens": 131,
+            "used_tokens": 131,
+            "chunks": 2,
+            "truncated": false
+          },
+          "explanation": "Cosine của embedding cục bộ; kỹ năng giao nhau lấy từ trường khai báo, không phải lý do nhân quả hoặc xác suất trúng tuyển."
+        },
+        {
+          "id": "43f116dfe9ad643847a1fb3b",
+          "cosine": 0.357603,
+          "raw_cosine": 0.35760310184951677,
+          "matched_skills": [
+            "git"
+          ],
+          "missing_query_skills": [
+            "css",
+            "html",
+            "javascript",
+            "node.js",
+            "react"
+          ],
+          "coverage": {
+            "total_tokens": 133,
+            "used_tokens": 133,
+            "chunks": 2,
+            "truncated": false
+          },
+          "explanation": "Cosine của embedding cục bộ; kỹ năng giao nhau lấy từ trường khai báo, không phải lý do nhân quả hoặc xác suất trúng tuyển."
+        },
+        {
+          "id": "41e66dc080ce6a3a2e558a20",
+          "cosine": 0.343143,
+          "raw_cosine": 0.34314294938566875,
+          "matched_skills": [],
+          "missing_query_skills": [
+            "css",
+            "git",
+            "html",
+            "javascript",
+            "node.js",
+            "react"
+          ],
+          "coverage": {
+            "total_tokens": 131,
+            "used_tokens": 131,
+            "chunks": 2,
+            "truncated": false
+          },
+          "explanation": "Cosine của embedding cục bộ; kỹ năng giao nhau lấy từ trường khai báo, không phải lý do nhân quả hoặc xác suất trúng tuyển."
+        },
+        {
+          "id": "acf9468bc1c67e4401c56e71",
+          "cosine": 0.320963,
+          "raw_cosine": 0.32096346414329413,
+          "matched_skills": [],
+          "missing_query_skills": [
+            "css",
+            "git",
+            "html",
+            "javascript",
+            "node.js",
+            "react"
+          ],
+          "coverage": {
+            "total_tokens": 128,
+            "used_tokens": 128,
+            "chunks": 2,
+            "truncated": false
+          },
+          "explanation": "Cosine của embedding cục bộ; kỹ năng giao nhau lấy từ trường khai báo, không phải lý do nhân quả hoặc xác suất trúng tuyển."
+        },
+        {
+          "id": "3769475200b078aee0e49de9",
+          "cosine": 0.312388,
+          "raw_cosine": 0.31238800119132726,
+          "matched_skills": [
+            "git"
+          ],
+          "missing_query_skills": [
+            "css",
+            "html",
+            "javascript",
+            "node.js",
+            "react"
+          ],
+          "coverage": {
+            "total_tokens": 133,
+            "used_tokens": 133,
+            "chunks": 2,
+            "truncated": false
+          },
+          "explanation": "Cosine của embedding cục bộ; kỹ năng giao nhau lấy từ trường khai báo, không phải lý do nhân quả hoặc xác suất trúng tuyển."
+        },
+        {
+          "id": "332bfc6f189645bfd7d11904",
+          "cosine": 0.302728,
+          "raw_cosine": 0.3027279241091314,
+          "matched_skills": [],
+          "missing_query_skills": [
+            "css",
+            "git",
+            "html",
+            "javascript",
+            "node.js",
+            "react"
+          ],
+          "coverage": {
+            "total_tokens": 129,
+            "used_tokens": 129,
+            "chunks": 2,
+            "truncated": false
+          },
+          "explanation": "Cosine của embedding cục bộ; kỹ năng giao nhau lấy từ trường khai báo, không phải lý do nhân quả hoặc xác suất trúng tuyển."
+        }
+      ],
+      "candidate_count": 20,
+      "excluded_empty": 0,
+      "query_coverage": {
+        "total_tokens": 254,
+        "used_tokens": 254,
+        "chunks": 3,
+        "truncated": false
+      },
+      "confidence": null,
+      "score_is_probability": false,
+      "elapsed_ms": 569.27,
+      "input_fingerprint": "0a992bff2badfbaecf984e9e02678264160701c0e6bf2bcc3249a537a5f86f99",
+      "cv_skills": [
+        "HTML",
+        "CSS",
+        "JavaScript",
+        "React",
+        "Git",
+        "Node.js"
+      ],
+      "catalog_total": 20,
+      "catalog_limit": 50,
+      "excluded_insufficient_job_content": 0,
+      "scope": "own-eligible-period/available-opportunities",
+      "items": [
+        {
+          "id": "5599a4d00f69abce7f455846",
+          "cosine": 0.799235,
+          "raw_cosine": 0.7992346663845215,
+          "matched_skills": [
+            "css",
+            "javascript",
+            "react",
+            "git"
+          ],
+          "missing_query_skills": [
+            "html",
+            "node.js"
+          ],
+          "coverage": {
+            "total_tokens": 129,
+            "used_tokens": 129,
+            "chunks": 2,
+            "truncated": false
+          },
+          "explanation": "Cosine của embedding cục bộ; kỹ năng giao nhau lấy từ trường khai báo, không phải lý do nhân quả hoặc xác suất trúng tuyển.",
+          "rank": 1,
+          "title": "JD-01-2 — Phát triển giao diện web — Tích hợp và kiểm thử",
+          "company_name": "Công ty TNHH Vạn Phúc Networks",
+          "description": "Phát triển giao diện web — Tích hợp và kiểm thử. Nhiệm vụ: xây dựng biểu mẫu, danh sách và xử lý lỗi nhập liệu. Yêu cầu: CSS, JavaScript, React, Git. Ưu tiên mô tả được bài tập đã thực hiện, biết phối hợp nhóm, chủ động báo khó khăn và ghi lại cách kiểm tra. Làm việc 4 ngày mỗi tuần trong 12 tuần. Chấp nhận sinh viên chưa có kinh nghiệm doanh nghiệp; không xem các phẩm chất tự khai là đã xác minh.",
+          "duplicate_content_count": 1,
+          "required_skills": [
+            "css",
+            "javascript",
+            "react",
+            "git"
+          ],
+          "missing_required_skills": [],
+          "exact_matches": [
+            {
+              "required": "CSS",
+              "declared": "CSS",
+              "canonical": "css"
+            },
+            {
+              "required": "JavaScript",
+              "declared": "JavaScript",
+              "canonical": "javascript"
+            },
+            {
+              "required": "React",
+              "declared": "React",
+              "canonical": "react"
+            },
+            {
+              "required": "Git",
+              "declared": "Git",
+              "canonical": "git"
+            }
+          ],
+          "equivalent_matches": [],
+          "related_matches": [],
+          "no_direct_evidence_skills": [],
+          "skill_catalog_version": "controlled-skills-v1-20261107",
+          "skill_match_count": 4,
+          "required_skill_count": 4,
+          "requirements_declared": true,
+          "skill_coverage_percent": 100,
+          "assessment_basis": "declared-skills-not-verified-proficiency"
+        },
+        {
+          "id": "53cc320aed40ed68f75be643",
+          "cosine": 0.669082,
+          "raw_cosine": 0.6690818005855917,
+          "matched_skills": [
+            "html",
+            "css",
+            "javascript",
+            "react"
+          ],
+          "missing_query_skills": [
+            "git",
+            "node.js"
+          ],
+          "coverage": {
+            "total_tokens": 125,
+            "used_tokens": 125,
+            "chunks": 1,
+            "truncated": false
+          },
+          "explanation": "Cosine của embedding cục bộ; kỹ năng giao nhau lấy từ trường khai báo, không phải lý do nhân quả hoặc xác suất trúng tuyển.",
+          "rank": 2,
+          "title": "JD-01-1 — Phát triển giao diện web — Nghiệp vụ cơ bản",
+          "company_name": "Công ty TNHH Vạn Phúc Networks",
+          "description": "Phát triển giao diện web — Nghiệp vụ cơ bản. Nhiệm vụ: xây dựng biểu mẫu, danh sách và xử lý lỗi nhập liệu. Yêu cầu: HTML, CSS, JavaScript, React. Ưu tiên mô tả được bài tập đã thực hiện, biết phối hợp nhóm, chủ động báo khó khăn và ghi lại cách kiểm tra. Làm việc 3 ngày mỗi tuần trong 12 tuần. Chấp nhận sinh viên chưa có kinh nghiệm doanh nghiệp; không xem các phẩm chất tự khai là đã xác minh.",
+          "duplicate_content_count": 1,
+          "required_skills": [
+            "html",
+            "css",
+            "javascript",
+            "react"
+          ],
+          "missing_required_skills": [],
+          "exact_matches": [
+            {
+              "required": "HTML",
+              "declared": "HTML",
+              "canonical": "html"
+            },
+            {
+              "required": "CSS",
+              "declared": "CSS",
+              "canonical": "css"
+            },
+            {
+              "required": "JavaScript",
+              "declared": "JavaScript",
+              "canonical": "javascript"
+            },
+            {
+              "required": "React",
+              "declared": "React",
+              "canonical": "react"
+            }
+          ],
+          "equivalent_matches": [],
+          "related_matches": [],
+          "no_direct_evidence_skills": [],
+          "skill_catalog_version": "controlled-skills-v1-20261107",
+          "skill_match_count": 4,
+          "required_skill_count": 4,
+          "requirements_declared": true,
+          "skill_coverage_percent": 100,
+          "assessment_basis": "declared-skills-not-verified-proficiency"
+        },
+        {
+          "id": "1507abe5284e3d3366d3e741",
+          "cosine": 0.574751,
+          "raw_cosine": 0.5747511704497068,
+          "matched_skills": [
+            "node.js",
+            "git"
+          ],
+          "missing_query_skills": [
+            "css",
+            "html",
+            "javascript",
+            "react"
+          ],
+          "coverage": {
+            "total_tokens": 141,
+            "used_tokens": 141,
+            "chunks": 2,
+            "truncated": false
+          },
+          "explanation": "Cosine của embedding cục bộ; kỹ năng giao nhau lấy từ trường khai báo, không phải lý do nhân quả hoặc xác suất trúng tuyển.",
+          "rank": 3,
+          "title": "JD-02-2 — Phát triển API Node.js — Tích hợp và kiểm thử",
+          "company_name": "Công ty TNHH Hoàng Gia Web",
+          "description": "Phát triển API Node.js — Tích hợp và kiểm thử. Nhiệm vụ: thiết kế API, kiểm tra đầu vào và phân quyền người dùng. Yêu cầu: Node.js, Express, MongoDB, Git. Ưu tiên mô tả được bài tập đã thực hiện, biết phối hợp nhóm, chủ động báo khó khăn và ghi lại cách kiểm tra. Làm việc 4 ngày mỗi tuần trong 12 tuần. Chấp nhận sinh viên chưa có kinh nghiệm doanh nghiệp; không xem các phẩm chất tự khai là đã xác minh.",
+          "duplicate_content_count": 1,
+          "required_skills": [
+            "node.js",
+            "express",
+            "mongodb",
+            "git"
+          ],
+          "missing_required_skills": [
+            "express",
+            "mongodb"
+          ],
+          "exact_matches": [
+            {
+              "required": "Node.js",
+              "declared": "Node.js",
+              "canonical": "node.js"
+            },
+            {
+              "required": "Git",
+              "declared": "Git",
+              "canonical": "git"
+            }
+          ],
+          "equivalent_matches": [],
+          "related_matches": [
+            {
+              "required": "express",
+              "declared": "node.js"
+            }
+          ],
+          "no_direct_evidence_skills": [
+            "express",
+            "mongodb"
+          ],
+          "skill_catalog_version": "controlled-skills-v1-20261107",
+          "skill_match_count": 2,
+          "required_skill_count": 4,
+          "requirements_declared": true,
+          "skill_coverage_percent": 50,
+          "assessment_basis": "declared-skills-not-verified-proficiency"
+        },
+        {
+          "id": "70c97795fbd20d7c9935a0c0",
+          "cosine": 0.545444,
+          "raw_cosine": 0.5454439083982678,
+          "matched_skills": [
+            "javascript",
+            "node.js"
+          ],
+          "missing_query_skills": [
+            "css",
+            "git",
+            "html",
+            "react"
+          ],
+          "coverage": {
+            "total_tokens": 136,
+            "used_tokens": 136,
+            "chunks": 2,
+            "truncated": false
+          },
+          "explanation": "Cosine của embedding cục bộ; kỹ năng giao nhau lấy từ trường khai báo, không phải lý do nhân quả hoặc xác suất trúng tuyển.",
+          "rank": 4,
+          "title": "JD-02-1 — Phát triển API Node.js — Nghiệp vụ cơ bản",
+          "company_name": "Công ty TNHH Hoàng Gia Web",
+          "description": "Phát triển API Node.js — Nghiệp vụ cơ bản. Nhiệm vụ: thiết kế API, kiểm tra đầu vào và phân quyền người dùng. Yêu cầu: JavaScript, Node.js, Express, MongoDB. Ưu tiên mô tả được bài tập đã thực hiện, biết phối hợp nhóm, chủ động báo khó khăn và ghi lại cách kiểm tra. Làm việc 3 ngày mỗi tuần trong 12 tuần. Chấp nhận sinh viên chưa có kinh nghiệm doanh nghiệp; không xem các phẩm chất tự khai là đã xác minh.",
+          "duplicate_content_count": 1,
+          "required_skills": [
+            "javascript",
+            "node.js",
+            "express",
+            "mongodb"
+          ],
+          "missing_required_skills": [
+            "express",
+            "mongodb"
+          ],
+          "exact_matches": [
+            {
+              "required": "JavaScript",
+              "declared": "JavaScript",
+              "canonical": "javascript"
+            },
+            {
+              "required": "Node.js",
+              "declared": "Node.js",
+              "canonical": "node.js"
+            }
+          ],
+          "equivalent_matches": [],
+          "related_matches": [
+            {
+              "required": "express",
+              "declared": "node.js"
+            }
+          ],
+          "no_direct_evidence_skills": [
+            "express",
+            "mongodb"
+          ],
+          "skill_catalog_version": "controlled-skills-v1-20261107",
+          "skill_match_count": 2,
+          "required_skill_count": 4,
+          "requirements_declared": true,
+          "skill_coverage_percent": 50,
+          "assessment_basis": "declared-skills-not-verified-proficiency"
+        },
+        {
+          "id": "24da10613c35e8f5dd8609ae",
+          "cosine": 0.522232,
+          "raw_cosine": 0.5222318107440709,
+          "matched_skills": [],
+          "missing_query_skills": [
+            "css",
+            "git",
+            "html",
+            "javascript",
+            "node.js",
+            "react"
+          ],
+          "coverage": {
+            "total_tokens": 127,
+            "used_tokens": 127,
+            "chunks": 2,
+            "truncated": false
+          },
+          "explanation": "Cosine của embedding cục bộ; kỹ năng giao nhau lấy từ trường khai báo, không phải lý do nhân quả hoặc xác suất trúng tuyển.",
+          "rank": 5,
+          "title": "JD-06-1 — Lập trình Android — Nghiệp vụ cơ bản",
+          "company_name": "Công ty TNHH Hải Đăng Solutions",
+          "description": "Lập trình Android — Nghiệp vụ cơ bản. Nhiệm vụ: thiết kế màn hình, lưu dữ liệu và xử lý lỗi kết nối. Yêu cầu: Kotlin, Android, REST API, SQLite. Ưu tiên mô tả được bài tập đã thực hiện, biết phối hợp nhóm, chủ động báo khó khăn và ghi lại cách kiểm tra. Làm việc 3 ngày mỗi tuần trong 12 tuần. Chấp nhận sinh viên chưa có kinh nghiệm doanh nghiệp; không xem các phẩm chất tự khai là đã xác minh.",
+          "duplicate_content_count": 1,
+          "required_skills": [
+            "kotlin",
+            "android",
+            "rest api",
+            "sqlite"
+          ],
+          "missing_required_skills": [
+            "kotlin",
+            "android",
+            "rest api",
+            "sqlite"
+          ],
+          "exact_matches": [],
+          "equivalent_matches": [],
+          "related_matches": [],
+          "no_direct_evidence_skills": [
+            "kotlin",
+            "android",
+            "rest api",
+            "sqlite"
+          ],
+          "skill_catalog_version": "controlled-skills-v1-20261107",
+          "skill_match_count": 0,
+          "required_skill_count": 4,
+          "requirements_declared": true,
+          "skill_coverage_percent": 0,
+          "assessment_basis": "declared-skills-not-verified-proficiency"
+        },
+        {
+          "id": "2030d9436adc83a86a372364",
+          "cosine": 0.462991,
+          "raw_cosine": 0.46299149240888887,
+          "matched_skills": [
+            "javascript"
+          ],
+          "missing_query_skills": [
+            "css",
+            "git",
+            "html",
+            "node.js",
+            "react"
+          ],
+          "coverage": {
+            "total_tokens": 137,
+            "used_tokens": 137,
+            "chunks": 2,
+            "truncated": false
+          },
+          "explanation": "Cosine của embedding cục bộ; kỹ năng giao nhau lấy từ trường khai báo, không phải lý do nhân quả hoặc xác suất trúng tuyển.",
+          "rank": 6,
+          "title": "JD-10-1 — Lập trình hợp đồng thông minh — Nghiệp vụ cơ bản",
+          "company_name": "Công ty TNHH Đông Phương Systems",
+          "description": "Lập trình hợp đồng thông minh — Nghiệp vụ cơ bản. Nhiệm vụ: viết kiểm thử quyền, đọc sự kiện và kiểm tra receipt. Yêu cầu: JavaScript, Solidity, Hardhat, ethers.js. Ưu tiên mô tả được bài tập đã thực hiện, biết phối hợp nhóm, chủ động báo khó khăn và ghi lại cách kiểm tra. Làm việc 3 ngày mỗi tuần trong 12 tuần. Chấp nhận sinh viên chưa có kinh nghiệm doanh nghiệp; không xem các phẩm chất tự khai là đã xác minh.",
+          "duplicate_content_count": 1,
+          "required_skills": [
+            "javascript",
+            "solidity",
+            "hardhat",
+            "ethers.js"
+          ],
+          "missing_required_skills": [
+            "solidity",
+            "hardhat",
+            "ethers.js"
+          ],
+          "exact_matches": [
+            {
+              "required": "JavaScript",
+              "declared": "JavaScript",
+              "canonical": "javascript"
+            }
+          ],
+          "equivalent_matches": [],
+          "related_matches": [],
+          "no_direct_evidence_skills": [
+            "solidity",
+            "hardhat",
+            "ethers.js"
+          ],
+          "skill_catalog_version": "controlled-skills-v1-20261107",
+          "skill_match_count": 1,
+          "required_skill_count": 4,
+          "requirements_declared": true,
+          "skill_coverage_percent": 25,
+          "assessment_basis": "declared-skills-not-verified-proficiency"
+        },
+        {
+          "id": "1edd6cc85f2699473b24dc68",
+          "cosine": 0.459325,
+          "raw_cosine": 0.4593254143166727,
+          "matched_skills": [
+            "git"
+          ],
+          "missing_query_skills": [
+            "css",
+            "html",
+            "javascript",
+            "node.js",
+            "react"
+          ],
+          "coverage": {
+            "total_tokens": 130,
+            "used_tokens": 130,
+            "chunks": 2,
+            "truncated": false
+          },
+          "explanation": "Cosine của embedding cục bộ; kỹ năng giao nhau lấy từ trường khai báo, không phải lý do nhân quả hoặc xác suất trúng tuyển.",
+          "rank": 7,
+          "title": "JD-06-2 — Lập trình Android — Tích hợp và kiểm thử",
+          "company_name": "Công ty TNHH Hải Đăng Solutions",
+          "description": "Lập trình Android — Tích hợp và kiểm thử. Nhiệm vụ: thiết kế màn hình, lưu dữ liệu và xử lý lỗi kết nối. Yêu cầu: Android, REST API, SQLite, Git. Ưu tiên mô tả được bài tập đã thực hiện, biết phối hợp nhóm, chủ động báo khó khăn và ghi lại cách kiểm tra. Làm việc 4 ngày mỗi tuần trong 12 tuần. Chấp nhận sinh viên chưa có kinh nghiệm doanh nghiệp; không xem các phẩm chất tự khai là đã xác minh.",
+          "duplicate_content_count": 1,
+          "required_skills": [
+            "android",
+            "rest api",
+            "sqlite",
+            "git"
+          ],
+          "missing_required_skills": [
+            "android",
+            "rest api",
+            "sqlite"
+          ],
+          "exact_matches": [
+            {
+              "required": "Git",
+              "declared": "Git",
+              "canonical": "git"
+            }
+          ],
+          "equivalent_matches": [],
+          "related_matches": [],
+          "no_direct_evidence_skills": [
+            "android",
+            "rest api",
+            "sqlite"
+          ],
+          "skill_catalog_version": "controlled-skills-v1-20261107",
+          "skill_match_count": 1,
+          "required_skill_count": 4,
+          "requirements_declared": true,
+          "skill_coverage_percent": 25,
+          "assessment_basis": "declared-skills-not-verified-proficiency"
+        },
+        {
+          "id": "bf2c44f76426cb945aa60ac5",
+          "cosine": 0.445148,
+          "raw_cosine": 0.44514808536673683,
+          "matched_skills": [],
+          "missing_query_skills": [
+            "css",
+            "git",
+            "html",
+            "javascript",
+            "node.js",
+            "react"
+          ],
+          "coverage": {
+            "total_tokens": 124,
+            "used_tokens": 124,
+            "chunks": 1,
+            "truncated": false
+          },
+          "explanation": "Cosine của embedding cục bộ; kỹ năng giao nhau lấy từ trường khai báo, không phải lý do nhân quả hoặc xác suất trúng tuyển.",
+          "rank": 8,
+          "title": "JD-05-1 — Phân tích dữ liệu — Nghiệp vụ cơ bản",
+          "company_name": "Công ty TNHH Minh Quang Software",
+          "description": "Phân tích dữ liệu — Nghiệp vụ cơ bản. Nhiệm vụ: làm sạch dữ liệu, viết truy vấn và giải thích biểu đồ. Yêu cầu: Python, SQL, Pandas, Excel. Ưu tiên mô tả được bài tập đã thực hiện, biết phối hợp nhóm, chủ động báo khó khăn và ghi lại cách kiểm tra. Làm việc 3 ngày mỗi tuần trong 12 tuần. Chấp nhận sinh viên chưa có kinh nghiệm doanh nghiệp; không xem các phẩm chất tự khai là đã xác minh.",
+          "duplicate_content_count": 1,
+          "required_skills": [
+            "python",
+            "sql",
+            "pandas",
+            "excel"
+          ],
+          "missing_required_skills": [
+            "python",
+            "sql",
+            "pandas",
+            "excel"
+          ],
+          "exact_matches": [],
+          "equivalent_matches": [],
+          "related_matches": [],
+          "no_direct_evidence_skills": [
+            "python",
+            "sql",
+            "pandas",
+            "excel"
+          ],
+          "skill_catalog_version": "controlled-skills-v1-20261107",
+          "skill_match_count": 0,
+          "required_skill_count": 4,
+          "requirements_declared": true,
+          "skill_coverage_percent": 0,
+          "assessment_basis": "declared-skills-not-verified-proficiency"
+        },
+        {
+          "id": "96a7c567cee83b3793009f72",
+          "cosine": 0.43382,
+          "raw_cosine": 0.43382030731261395,
+          "matched_skills": [
+            "git"
+          ],
+          "missing_query_skills": [
+            "css",
+            "html",
+            "javascript",
+            "node.js",
+            "react"
+          ],
+          "coverage": {
+            "total_tokens": 142,
+            "used_tokens": 142,
+            "chunks": 2,
+            "truncated": false
+          },
+          "explanation": "Cosine của embedding cục bộ; kỹ năng giao nhau lấy từ trường khai báo, không phải lý do nhân quả hoặc xác suất trúng tuyển.",
+          "rank": 9,
+          "title": "JD-10-2 — Lập trình hợp đồng thông minh — Tích hợp và kiểm thử",
+          "company_name": "Công ty TNHH Đông Phương Systems",
+          "description": "Lập trình hợp đồng thông minh — Tích hợp và kiểm thử. Nhiệm vụ: viết kiểm thử quyền, đọc sự kiện và kiểm tra receipt. Yêu cầu: Solidity, Hardhat, ethers.js, Git. Ưu tiên mô tả được bài tập đã thực hiện, biết phối hợp nhóm, chủ động báo khó khăn và ghi lại cách kiểm tra. Làm việc 4 ngày mỗi tuần trong 12 tuần. Chấp nhận sinh viên chưa có kinh nghiệm doanh nghiệp; không xem các phẩm chất tự khai là đã xác minh.",
+          "duplicate_content_count": 1,
+          "required_skills": [
+            "solidity",
+            "hardhat",
+            "ethers.js",
+            "git"
+          ],
+          "missing_required_skills": [
+            "solidity",
+            "hardhat",
+            "ethers.js"
+          ],
+          "exact_matches": [
+            {
+              "required": "Git",
+              "declared": "Git",
+              "canonical": "git"
+            }
+          ],
+          "equivalent_matches": [],
+          "related_matches": [],
+          "no_direct_evidence_skills": [
+            "solidity",
+            "hardhat",
+            "ethers.js"
+          ],
+          "skill_catalog_version": "controlled-skills-v1-20261107",
+          "skill_match_count": 1,
+          "required_skill_count": 4,
+          "requirements_declared": true,
+          "skill_coverage_percent": 25,
+          "assessment_basis": "declared-skills-not-verified-proficiency"
+        },
+        {
+          "id": "2e9c7f4bdadc467f933ab965",
+          "cosine": 0.429467,
+          "raw_cosine": 0.4294670130263827,
+          "matched_skills": [
+            "git"
+          ],
+          "missing_query_skills": [
+            "css",
+            "html",
+            "javascript",
+            "node.js",
+            "react"
+          ],
+          "coverage": {
+            "total_tokens": 133,
+            "used_tokens": 133,
+            "chunks": 2,
+            "truncated": false
+          },
+          "explanation": "Cosine của embedding cục bộ; kỹ năng giao nhau lấy từ trường khai báo, không phải lý do nhân quả hoặc xác suất trúng tuyển.",
+          "rank": 10,
+          "title": "JD-04-2 — Kiểm thử phần mềm — Tích hợp và kiểm thử",
+          "company_name": "Công ty TNHH An Lạc Digital",
+          "description": "Kiểm thử phần mềm — Tích hợp và kiểm thử. Nhiệm vụ: thiết kế ca kiểm thử, tái hiện lỗi và kiểm tra API. Yêu cầu: Test Cases, Postman, SQL, Git. Ưu tiên mô tả được bài tập đã thực hiện, biết phối hợp nhóm, chủ động báo khó khăn và ghi lại cách kiểm tra. Làm việc 4 ngày mỗi tuần trong 12 tuần. Chấp nhận sinh viên chưa có kinh nghiệm doanh nghiệp; không xem các phẩm chất tự khai là đã xác minh.",
+          "duplicate_content_count": 1,
+          "required_skills": [
+            "test cases",
+            "postman",
+            "sql",
+            "git"
+          ],
+          "missing_required_skills": [
+            "test cases",
+            "postman",
+            "sql"
+          ],
+          "exact_matches": [
+            {
+              "required": "Git",
+              "declared": "Git",
+              "canonical": "git"
+            }
+          ],
+          "equivalent_matches": [],
+          "related_matches": [],
+          "no_direct_evidence_skills": [
+            "test cases",
+            "postman",
+            "sql"
+          ],
+          "skill_catalog_version": "controlled-skills-v1-20261107",
+          "skill_match_count": 1,
+          "required_skill_count": 4,
+          "requirements_declared": true,
+          "skill_coverage_percent": 25,
+          "assessment_basis": "declared-skills-not-verified-proficiency"
+        },
+        {
+          "id": "b39a528063b61a10cec1ed8d",
+          "cosine": 0.41182,
+          "raw_cosine": 0.41182049031999646,
+          "matched_skills": [],
+          "missing_query_skills": [
+            "css",
+            "git",
+            "html",
+            "javascript",
+            "node.js",
+            "react"
+          ],
+          "coverage": {
+            "total_tokens": 143,
+            "used_tokens": 143,
+            "chunks": 2,
+            "truncated": false
+          },
+          "explanation": "Cosine của embedding cục bộ; kỹ năng giao nhau lấy từ trường khai báo, không phải lý do nhân quả hoặc xác suất trúng tuyển.",
+          "rank": 11,
+          "title": "JD-09-2 — Xử lý ngôn ngữ — Tích hợp và kiểm thử",
+          "company_name": "Công ty TNHH Thiên Sơn Tech",
+          "description": "Xử lý ngôn ngữ — Tích hợp và kiểm thử. Nhiệm vụ: chuẩn hóa văn bản, chia tập dữ liệu và phân tích trường hợp sai. Yêu cầu: Pandas, NLP, scikit-learn, SQL. Ưu tiên mô tả được bài tập đã thực hiện, biết phối hợp nhóm, chủ động báo khó khăn và ghi lại cách kiểm tra. Làm việc 4 ngày mỗi tuần trong 12 tuần. Chấp nhận sinh viên chưa có kinh nghiệm doanh nghiệp; không xem các phẩm chất tự khai là đã xác minh.",
+          "duplicate_content_count": 1,
+          "required_skills": [
+            "pandas",
+            "nlp",
+            "scikit-learn",
+            "sql"
+          ],
+          "missing_required_skills": [
+            "pandas",
+            "nlp",
+            "scikit-learn",
+            "sql"
+          ],
+          "exact_matches": [],
+          "equivalent_matches": [],
+          "related_matches": [],
+          "no_direct_evidence_skills": [
+            "pandas",
+            "nlp",
+            "scikit-learn",
+            "sql"
+          ],
+          "skill_catalog_version": "controlled-skills-v1-20261107",
+          "skill_match_count": 0,
+          "required_skill_count": 4,
+          "requirements_declared": true,
+          "skill_coverage_percent": 0,
+          "assessment_basis": "declared-skills-not-verified-proficiency"
+        },
+        {
+          "id": "adbd5c2f86ffbc015490e294",
+          "cosine": 0.40055,
+          "raw_cosine": 0.4005497757373439,
+          "matched_skills": [
+            "git"
+          ],
+          "missing_query_skills": [
+            "css",
+            "html",
+            "javascript",
+            "node.js",
+            "react"
+          ],
+          "coverage": {
+            "total_tokens": 129,
+            "used_tokens": 129,
+            "chunks": 2,
+            "truncated": false
+          },
+          "explanation": "Cosine của embedding cục bộ; kỹ năng giao nhau lấy từ trường khai báo, không phải lý do nhân quả hoặc xác suất trúng tuyển.",
+          "rank": 12,
+          "title": "JD-07-1 — Vận hành ứng dụng — Nghiệp vụ cơ bản",
+          "company_name": "Công ty TNHH Nam Việt Cloud",
+          "description": "Vận hành ứng dụng — Nghiệp vụ cơ bản. Nhiệm vụ: đóng gói ứng dụng, viết quy trình triển khai và theo dõi log. Yêu cầu: Linux, Docker, Git, CI/CD. Ưu tiên mô tả được bài tập đã thực hiện, biết phối hợp nhóm, chủ động báo khó khăn và ghi lại cách kiểm tra. Làm việc 3 ngày mỗi tuần trong 12 tuần. Chấp nhận sinh viên chưa có kinh nghiệm doanh nghiệp; không xem các phẩm chất tự khai là đã xác minh.",
+          "duplicate_content_count": 1,
+          "required_skills": [
+            "linux",
+            "docker",
+            "git",
+            "ci/cd"
+          ],
+          "missing_required_skills": [
+            "linux",
+            "docker",
+            "ci/cd"
+          ],
+          "exact_matches": [
+            {
+              "required": "Git",
+              "declared": "Git",
+              "canonical": "git"
+            }
+          ],
+          "equivalent_matches": [],
+          "related_matches": [],
+          "no_direct_evidence_skills": [
+            "linux",
+            "docker",
+            "ci/cd"
+          ],
+          "skill_catalog_version": "controlled-skills-v1-20261107",
+          "skill_match_count": 1,
+          "required_skill_count": 4,
+          "requirements_declared": true,
+          "skill_coverage_percent": 25,
+          "assessment_basis": "declared-skills-not-verified-proficiency"
+        },
+        {
+          "id": "0379dc62b18cca09ed318b02",
+          "cosine": 0.389604,
+          "raw_cosine": 0.3896040123798957,
+          "matched_skills": [],
+          "missing_query_skills": [
+            "css",
+            "git",
+            "html",
+            "javascript",
+            "node.js",
+            "react"
+          ],
+          "coverage": {
+            "total_tokens": 129,
+            "used_tokens": 129,
+            "chunks": 2,
+            "truncated": false
+          },
+          "explanation": "Cosine của embedding cục bộ; kỹ năng giao nhau lấy từ trường khai báo, không phải lý do nhân quả hoặc xác suất trúng tuyển.",
+          "rank": 13,
+          "title": "JD-05-2 — Phân tích dữ liệu — Tích hợp và kiểm thử",
+          "company_name": "Công ty TNHH Minh Quang Software",
+          "description": "Phân tích dữ liệu — Tích hợp và kiểm thử. Nhiệm vụ: làm sạch dữ liệu, viết truy vấn và giải thích biểu đồ. Yêu cầu: SQL, Pandas, Excel, Power BI. Ưu tiên mô tả được bài tập đã thực hiện, biết phối hợp nhóm, chủ động báo khó khăn và ghi lại cách kiểm tra. Làm việc 4 ngày mỗi tuần trong 12 tuần. Chấp nhận sinh viên chưa có kinh nghiệm doanh nghiệp; không xem các phẩm chất tự khai là đã xác minh.",
+          "duplicate_content_count": 1,
+          "required_skills": [
+            "sql",
+            "pandas",
+            "excel",
+            "power bi"
+          ],
+          "missing_required_skills": [
+            "sql",
+            "pandas",
+            "excel",
+            "power bi"
+          ],
+          "exact_matches": [],
+          "equivalent_matches": [],
+          "related_matches": [],
+          "no_direct_evidence_skills": [
+            "sql",
+            "pandas",
+            "excel",
+            "power bi"
+          ],
+          "skill_catalog_version": "controlled-skills-v1-20261107",
+          "skill_match_count": 0,
+          "required_skill_count": 4,
+          "requirements_declared": true,
+          "skill_coverage_percent": 0,
+          "assessment_basis": "declared-skills-not-verified-proficiency"
+        },
+        {
+          "id": "55a18d41c472ead850b92255",
+          "cosine": 0.385272,
+          "raw_cosine": 0.38527231334997647,
+          "matched_skills": [],
+          "missing_query_skills": [
+            "css",
+            "git",
+            "html",
+            "javascript",
+            "node.js",
+            "react"
+          ],
+          "coverage": {
+            "total_tokens": 139,
+            "used_tokens": 139,
+            "chunks": 2,
+            "truncated": false
+          },
+          "explanation": "Cosine của embedding cục bộ; kỹ năng giao nhau lấy từ trường khai báo, không phải lý do nhân quả hoặc xác suất trúng tuyển.",
+          "rank": 14,
+          "title": "JD-09-1 — Xử lý ngôn ngữ — Nghiệp vụ cơ bản",
+          "company_name": "Công ty TNHH Thiên Sơn Tech",
+          "description": "Xử lý ngôn ngữ — Nghiệp vụ cơ bản. Nhiệm vụ: chuẩn hóa văn bản, chia tập dữ liệu và phân tích trường hợp sai. Yêu cầu: Python, Pandas, NLP, scikit-learn. Ưu tiên mô tả được bài tập đã thực hiện, biết phối hợp nhóm, chủ động báo khó khăn và ghi lại cách kiểm tra. Làm việc 3 ngày mỗi tuần trong 12 tuần. Chấp nhận sinh viên chưa có kinh nghiệm doanh nghiệp; không xem các phẩm chất tự khai là đã xác minh.",
+          "duplicate_content_count": 1,
+          "required_skills": [
+            "python",
+            "pandas",
+            "nlp",
+            "scikit-learn"
+          ],
+          "missing_required_skills": [
+            "python",
+            "pandas",
+            "nlp",
+            "scikit-learn"
+          ],
+          "exact_matches": [],
+          "equivalent_matches": [],
+          "related_matches": [],
+          "no_direct_evidence_skills": [
+            "python",
+            "pandas",
+            "nlp",
+            "scikit-learn"
+          ],
+          "skill_catalog_version": "controlled-skills-v1-20261107",
+          "skill_match_count": 0,
+          "required_skill_count": 4,
+          "requirements_declared": true,
+          "skill_coverage_percent": 0,
+          "assessment_basis": "declared-skills-not-verified-proficiency"
+        },
+        {
+          "id": "8ceb81c5467f892609b18a76",
+          "cosine": 0.359712,
+          "raw_cosine": 0.3597121640052749,
+          "matched_skills": [],
+          "missing_query_skills": [
+            "css",
+            "git",
+            "html",
+            "javascript",
+            "node.js",
+            "react"
+          ],
+          "coverage": {
+            "total_tokens": 131,
+            "used_tokens": 131,
+            "chunks": 2,
+            "truncated": false
+          },
+          "explanation": "Cosine của embedding cục bộ; kỹ năng giao nhau lấy từ trường khai báo, không phải lý do nhân quả hoặc xác suất trúng tuyển.",
+          "rank": 15,
+          "title": "JD-04-1 — Kiểm thử phần mềm — Nghiệp vụ cơ bản",
+          "company_name": "Công ty TNHH An Lạc Digital",
+          "description": "Kiểm thử phần mềm — Nghiệp vụ cơ bản. Nhiệm vụ: thiết kế ca kiểm thử, tái hiện lỗi và kiểm tra API. Yêu cầu: Manual Testing, Test Cases, Postman, SQL. Ưu tiên mô tả được bài tập đã thực hiện, biết phối hợp nhóm, chủ động báo khó khăn và ghi lại cách kiểm tra. Làm việc 3 ngày mỗi tuần trong 12 tuần. Chấp nhận sinh viên chưa có kinh nghiệm doanh nghiệp; không xem các phẩm chất tự khai là đã xác minh.",
+          "duplicate_content_count": 1,
+          "required_skills": [
+            "manual testing",
+            "test cases",
+            "postman",
+            "sql"
+          ],
+          "missing_required_skills": [
+            "manual testing",
+            "test cases",
+            "postman",
+            "sql"
+          ],
+          "exact_matches": [],
+          "equivalent_matches": [],
+          "related_matches": [],
+          "no_direct_evidence_skills": [
+            "manual testing",
+            "test cases",
+            "postman",
+            "sql"
+          ],
+          "skill_catalog_version": "controlled-skills-v1-20261107",
+          "skill_match_count": 0,
+          "required_skill_count": 4,
+          "requirements_declared": true,
+          "skill_coverage_percent": 0,
+          "assessment_basis": "declared-skills-not-verified-proficiency"
+        },
+        {
+          "id": "43f116dfe9ad643847a1fb3b",
+          "cosine": 0.357603,
+          "raw_cosine": 0.35760310184951677,
+          "matched_skills": [
+            "git"
+          ],
+          "missing_query_skills": [
+            "css",
+            "html",
+            "javascript",
+            "node.js",
+            "react"
+          ],
+          "coverage": {
+            "total_tokens": 133,
+            "used_tokens": 133,
+            "chunks": 2,
+            "truncated": false
+          },
+          "explanation": "Cosine của embedding cục bộ; kỹ năng giao nhau lấy từ trường khai báo, không phải lý do nhân quả hoặc xác suất trúng tuyển.",
+          "rank": 16,
+          "title": "JD-07-2 — Vận hành ứng dụng — Tích hợp và kiểm thử",
+          "company_name": "Công ty TNHH Nam Việt Cloud",
+          "description": "Vận hành ứng dụng — Tích hợp và kiểm thử. Nhiệm vụ: đóng gói ứng dụng, viết quy trình triển khai và theo dõi log. Yêu cầu: Docker, Git, CI/CD, Networking. Ưu tiên mô tả được bài tập đã thực hiện, biết phối hợp nhóm, chủ động báo khó khăn và ghi lại cách kiểm tra. Làm việc 4 ngày mỗi tuần trong 12 tuần. Chấp nhận sinh viên chưa có kinh nghiệm doanh nghiệp; không xem các phẩm chất tự khai là đã xác minh.",
+          "duplicate_content_count": 1,
+          "required_skills": [
+            "docker",
+            "git",
+            "ci/cd",
+            "networking"
+          ],
+          "missing_required_skills": [
+            "docker",
+            "ci/cd",
+            "networking"
+          ],
+          "exact_matches": [
+            {
+              "required": "Git",
+              "declared": "Git",
+              "canonical": "git"
+            }
+          ],
+          "equivalent_matches": [],
+          "related_matches": [],
+          "no_direct_evidence_skills": [
+            "docker",
+            "ci/cd",
+            "networking"
+          ],
+          "skill_catalog_version": "controlled-skills-v1-20261107",
+          "skill_match_count": 1,
+          "required_skill_count": 4,
+          "requirements_declared": true,
+          "skill_coverage_percent": 25,
+          "assessment_basis": "declared-skills-not-verified-proficiency"
+        },
+        {
+          "id": "41e66dc080ce6a3a2e558a20",
+          "cosine": 0.343143,
+          "raw_cosine": 0.34314294938566875,
+          "matched_skills": [],
+          "missing_query_skills": [
+            "css",
+            "git",
+            "html",
+            "javascript",
+            "node.js",
+            "react"
+          ],
+          "coverage": {
+            "total_tokens": 131,
+            "used_tokens": 131,
+            "chunks": 2,
+            "truncated": false
+          },
+          "explanation": "Cosine của embedding cục bộ; kỹ năng giao nhau lấy từ trường khai báo, không phải lý do nhân quả hoặc xác suất trúng tuyển.",
+          "rank": 17,
+          "title": "JD-08-2 — An toàn ứng dụng web — Tích hợp và kiểm thử",
+          "company_name": "Công ty TNHH Bình Minh Data",
+          "description": "An toàn ứng dụng web — Tích hợp và kiểm thử. Nhiệm vụ: kiểm tra phân quyền và xác thực trong phạm vi được phép. Yêu cầu: Networking, OWASP, Python, HTTP. Ưu tiên mô tả được bài tập đã thực hiện, biết phối hợp nhóm, chủ động báo khó khăn và ghi lại cách kiểm tra. Làm việc 4 ngày mỗi tuần trong 12 tuần. Chấp nhận sinh viên chưa có kinh nghiệm doanh nghiệp; không xem các phẩm chất tự khai là đã xác minh.",
+          "duplicate_content_count": 1,
+          "required_skills": [
+            "networking",
+            "owasp",
+            "python",
+            "http"
+          ],
+          "missing_required_skills": [
+            "networking",
+            "owasp",
+            "python",
+            "http"
+          ],
+          "exact_matches": [],
+          "equivalent_matches": [],
+          "related_matches": [],
+          "no_direct_evidence_skills": [
+            "networking",
+            "owasp",
+            "python",
+            "http"
+          ],
+          "skill_catalog_version": "controlled-skills-v1-20261107",
+          "skill_match_count": 0,
+          "required_skill_count": 4,
+          "requirements_declared": true,
+          "skill_coverage_percent": 0,
+          "assessment_basis": "declared-skills-not-verified-proficiency"
+        },
+        {
+          "id": "acf9468bc1c67e4401c56e71",
+          "cosine": 0.320963,
+          "raw_cosine": 0.32096346414329413,
+          "matched_skills": [],
+          "missing_query_skills": [
+            "css",
+            "git",
+            "html",
+            "javascript",
+            "node.js",
+            "react"
+          ],
+          "coverage": {
+            "total_tokens": 128,
+            "used_tokens": 128,
+            "chunks": 2,
+            "truncated": false
+          },
+          "explanation": "Cosine của embedding cục bộ; kỹ năng giao nhau lấy từ trường khai báo, không phải lý do nhân quả hoặc xác suất trúng tuyển.",
+          "rank": 18,
+          "title": "JD-08-1 — An toàn ứng dụng web — Nghiệp vụ cơ bản",
+          "company_name": "Công ty TNHH Bình Minh Data",
+          "description": "An toàn ứng dụng web — Nghiệp vụ cơ bản. Nhiệm vụ: kiểm tra phân quyền và xác thực trong phạm vi được phép. Yêu cầu: Linux, Networking, OWASP, Python. Ưu tiên mô tả được bài tập đã thực hiện, biết phối hợp nhóm, chủ động báo khó khăn và ghi lại cách kiểm tra. Làm việc 3 ngày mỗi tuần trong 12 tuần. Chấp nhận sinh viên chưa có kinh nghiệm doanh nghiệp; không xem các phẩm chất tự khai là đã xác minh.",
+          "duplicate_content_count": 1,
+          "required_skills": [
+            "linux",
+            "networking",
+            "owasp",
+            "python"
+          ],
+          "missing_required_skills": [
+            "linux",
+            "networking",
+            "owasp",
+            "python"
+          ],
+          "exact_matches": [],
+          "equivalent_matches": [],
+          "related_matches": [],
+          "no_direct_evidence_skills": [
+            "linux",
+            "networking",
+            "owasp",
+            "python"
+          ],
+          "skill_catalog_version": "controlled-skills-v1-20261107",
+          "skill_match_count": 0,
+          "required_skill_count": 4,
+          "requirements_declared": true,
+          "skill_coverage_percent": 0,
+          "assessment_basis": "declared-skills-not-verified-proficiency"
+        },
+        {
+          "id": "3769475200b078aee0e49de9",
+          "cosine": 0.312388,
+          "raw_cosine": 0.31238800119132726,
+          "matched_skills": [
+            "git"
+          ],
+          "missing_query_skills": [
+            "css",
+            "html",
+            "javascript",
+            "node.js",
+            "react"
+          ],
+          "coverage": {
+            "total_tokens": 133,
+            "used_tokens": 133,
+            "chunks": 2,
+            "truncated": false
+          },
+          "explanation": "Cosine của embedding cục bộ; kỹ năng giao nhau lấy từ trường khai báo, không phải lý do nhân quả hoặc xác suất trúng tuyển.",
+          "rank": 19,
+          "title": "JD-03-2 — Phát triển ứng dụng Java — Tích hợp và kiểm thử",
+          "company_name": "Công ty TNHH Phú An Security",
+          "description": "Phát triển ứng dụng Java — Tích hợp và kiểm thử. Nhiệm vụ: xây dựng nghiệp vụ mượn trả, API và truy vấn dữ liệu. Yêu cầu: Spring Boot, SQL, MySQL, Git. Ưu tiên mô tả được bài tập đã thực hiện, biết phối hợp nhóm, chủ động báo khó khăn và ghi lại cách kiểm tra. Làm việc 4 ngày mỗi tuần trong 12 tuần. Chấp nhận sinh viên chưa có kinh nghiệm doanh nghiệp; không xem các phẩm chất tự khai là đã xác minh.",
+          "duplicate_content_count": 1,
+          "required_skills": [
+            "spring boot",
+            "sql",
+            "mysql",
+            "git"
+          ],
+          "missing_required_skills": [
+            "spring boot",
+            "sql",
+            "mysql"
+          ],
+          "exact_matches": [
+            {
+              "required": "Git",
+              "declared": "Git",
+              "canonical": "git"
+            }
+          ],
+          "equivalent_matches": [],
+          "related_matches": [],
+          "no_direct_evidence_skills": [
+            "spring boot",
+            "sql",
+            "mysql"
+          ],
+          "skill_catalog_version": "controlled-skills-v1-20261107",
+          "skill_match_count": 1,
+          "required_skill_count": 4,
+          "requirements_declared": true,
+          "skill_coverage_percent": 25,
+          "assessment_basis": "declared-skills-not-verified-proficiency"
+        },
+        {
+          "id": "332bfc6f189645bfd7d11904",
+          "cosine": 0.302728,
+          "raw_cosine": 0.3027279241091314,
+          "matched_skills": [],
+          "missing_query_skills": [
+            "css",
+            "git",
+            "html",
+            "javascript",
+            "node.js",
+            "react"
+          ],
+          "coverage": {
+            "total_tokens": 129,
+            "used_tokens": 129,
+            "chunks": 2,
+            "truncated": false
+          },
+          "explanation": "Cosine của embedding cục bộ; kỹ năng giao nhau lấy từ trường khai báo, không phải lý do nhân quả hoặc xác suất trúng tuyển.",
+          "rank": 20,
+          "title": "JD-03-1 — Phát triển ứng dụng Java — Nghiệp vụ cơ bản",
+          "company_name": "Công ty TNHH Phú An Security",
+          "description": "Phát triển ứng dụng Java — Nghiệp vụ cơ bản. Nhiệm vụ: xây dựng nghiệp vụ mượn trả, API và truy vấn dữ liệu. Yêu cầu: Java, Spring Boot, SQL, MySQL. Ưu tiên mô tả được bài tập đã thực hiện, biết phối hợp nhóm, chủ động báo khó khăn và ghi lại cách kiểm tra. Làm việc 3 ngày mỗi tuần trong 12 tuần. Chấp nhận sinh viên chưa có kinh nghiệm doanh nghiệp; không xem các phẩm chất tự khai là đã xác minh.",
+          "duplicate_content_count": 1,
+          "required_skills": [
+            "java",
+            "spring boot",
+            "sql",
+            "mysql"
+          ],
+          "missing_required_skills": [
+            "java",
+            "spring boot",
+            "sql",
+            "mysql"
+          ],
+          "exact_matches": [],
+          "equivalent_matches": [],
+          "related_matches": [],
+          "no_direct_evidence_skills": [
+            "java",
+            "spring boot",
+            "sql",
+            "mysql"
+          ],
+          "skill_catalog_version": "controlled-skills-v1-20261107",
+          "skill_match_count": 0,
+          "required_skill_count": 4,
+          "requirements_declared": true,
+          "skill_coverage_percent": 0,
+          "assessment_basis": "declared-skills-not-verified-proficiency"
+        }
+      ]
+    }
+  },
+  "comparisonResponse": {
+    "http": 200,
+    "body": {
+      "engine": "compare",
+      "inference_performed": true,
+      "model": {
+        "ready": true,
+        "configured": true,
+        "model_id": "sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2",
+        "revision": "e8f8c211226b894fcb81acc59f3b34ba3efd5f42",
+        "expected_revision": "e8f8c211226b894fcb81acc59f3b34ba3efd5f42",
+        "backend": "onnx-cpu-int8",
+        "reason": null,
+        "available_memory_mib": 992.90234375,
+        "network_inference": false
+      },
+      "results": [
+        {
+          "id": "5599a4d00f69abce7f455846",
+          "cosine": 0.799235,
+          "raw_cosine": 0.7992346663845215,
+          "matched_skills": [
+            "css",
+            "git",
+            "javascript",
+            "react"
+          ],
+          "missing_query_skills": [
+            "html",
+            "node.js"
+          ],
+          "coverage": {
+            "total_tokens": 129,
+            "used_tokens": 129,
+            "chunks": 2,
+            "truncated": false
+          },
+          "explanation": "Cosine của embedding cục bộ; kỹ năng giao nhau lấy từ trường khai báo, không phải lý do nhân quả hoặc xác suất trúng tuyển.",
+          "rank": 1,
+          "comparison": {
+            "tfidf": {
+              "cosine": 0.31696,
+              "raw_cosine": 0.3169600635196145,
+              "rank": 1
+            },
+            "sbert": {
+              "cosine": 0.799235,
+              "raw_cosine": 0.7992346663845215,
+              "rank": 1
+            },
+            "rank_delta_tfidf_to_sbert": 0
+          }
+        },
+        {
+          "id": "53cc320aed40ed68f75be643",
+          "cosine": 0.669082,
+          "raw_cosine": 0.6690818005855917,
+          "matched_skills": [
+            "css",
+            "html",
+            "javascript",
+            "react"
+          ],
+          "missing_query_skills": [
+            "git",
+            "node.js"
+          ],
+          "coverage": {
+            "total_tokens": 125,
+            "used_tokens": 125,
+            "chunks": 1,
+            "truncated": false
+          },
+          "explanation": "Cosine của embedding cục bộ; kỹ năng giao nhau lấy từ trường khai báo, không phải lý do nhân quả hoặc xác suất trúng tuyển.",
+          "rank": 2,
+          "comparison": {
+            "tfidf": {
+              "cosine": 0.310937,
+              "raw_cosine": 0.31093718057549297,
+              "rank": 2
+            },
+            "sbert": {
+              "cosine": 0.669082,
+              "raw_cosine": 0.6690818005855917,
+              "rank": 2
+            },
+            "rank_delta_tfidf_to_sbert": 0
+          }
+        },
+        {
+          "id": "1507abe5284e3d3366d3e741",
+          "cosine": 0.574751,
+          "raw_cosine": 0.5747511704497068,
+          "matched_skills": [
+            "git",
+            "node.js"
+          ],
+          "missing_query_skills": [
+            "css",
+            "html",
+            "javascript",
+            "react"
+          ],
+          "coverage": {
+            "total_tokens": 141,
+            "used_tokens": 141,
+            "chunks": 2,
+            "truncated": false
+          },
+          "explanation": "Cosine của embedding cục bộ; kỹ năng giao nhau lấy từ trường khai báo, không phải lý do nhân quả hoặc xác suất trúng tuyển.",
+          "rank": 3,
+          "comparison": {
+            "tfidf": {
+              "cosine": 0.185496,
+              "raw_cosine": 0.18549642214971865,
+              "rank": 3
+            },
+            "sbert": {
+              "cosine": 0.574751,
+              "raw_cosine": 0.5747511704497068,
+              "rank": 3
+            },
+            "rank_delta_tfidf_to_sbert": 0
+          }
+        },
+        {
+          "id": "70c97795fbd20d7c9935a0c0",
+          "cosine": 0.545444,
+          "raw_cosine": 0.5454439083982678,
+          "matched_skills": [
+            "javascript",
+            "node.js"
+          ],
+          "missing_query_skills": [
+            "css",
+            "git",
+            "html",
+            "react"
+          ],
+          "coverage": {
+            "total_tokens": 136,
+            "used_tokens": 136,
+            "chunks": 2,
+            "truncated": false
+          },
+          "explanation": "Cosine của embedding cục bộ; kỹ năng giao nhau lấy từ trường khai báo, không phải lý do nhân quả hoặc xác suất trúng tuyển.",
+          "rank": 4,
+          "comparison": {
+            "tfidf": {
+              "cosine": 0.180602,
+              "raw_cosine": 0.18060241677539157,
+              "rank": 4
+            },
+            "sbert": {
+              "cosine": 0.545444,
+              "raw_cosine": 0.5454439083982678,
+              "rank": 4
+            },
+            "rank_delta_tfidf_to_sbert": 0
+          }
+        },
+        {
+          "id": "2e9c7f4bdadc467f933ab965",
+          "cosine": 0.429467,
+          "raw_cosine": 0.4294670130263827,
+          "matched_skills": [
+            "git"
+          ],
+          "missing_query_skills": [
+            "css",
+            "html",
+            "javascript",
+            "node.js",
+            "react"
+          ],
+          "coverage": {
+            "total_tokens": 133,
+            "used_tokens": 133,
+            "chunks": 2,
+            "truncated": false
+          },
+          "explanation": "Cosine của embedding cục bộ; kỹ năng giao nhau lấy từ trường khai báo, không phải lý do nhân quả hoặc xác suất trúng tuyển.",
+          "rank": 10,
+          "comparison": {
+            "tfidf": {
+              "cosine": 0.122188,
+              "raw_cosine": 0.12218789640158223,
+              "rank": 5
+            },
+            "sbert": {
+              "cosine": 0.429467,
+              "raw_cosine": 0.4294670130263827,
+              "rank": 10
+            },
+            "rank_delta_tfidf_to_sbert": -5
+          }
+        },
+        {
+          "id": "24da10613c35e8f5dd8609ae",
+          "cosine": 0.522232,
+          "raw_cosine": 0.5222318107440709,
+          "matched_skills": [],
+          "missing_query_skills": [
+            "css",
+            "git",
+            "html",
+            "javascript",
+            "node.js",
+            "react"
+          ],
+          "coverage": {
+            "total_tokens": 127,
+            "used_tokens": 127,
+            "chunks": 2,
+            "truncated": false
+          },
+          "explanation": "Cosine của embedding cục bộ; kỹ năng giao nhau lấy từ trường khai báo, không phải lý do nhân quả hoặc xác suất trúng tuyển.",
+          "rank": 5,
+          "comparison": {
+            "tfidf": {
+              "cosine": 0.083663,
+              "raw_cosine": 0.08366331145502597,
+              "rank": 18
+            },
+            "sbert": {
+              "cosine": 0.522232,
+              "raw_cosine": 0.5222318107440709,
+              "rank": 5
+            },
+            "rank_delta_tfidf_to_sbert": 13
+          }
+        }
+      ],
+      "candidate_count": 20,
+      "excluded_empty": 0,
+      "query_coverage": {
+        "total_tokens": 254,
+        "used_tokens": 254,
+        "chunks": 3,
+        "truncated": false
+      },
+      "confidence": null,
+      "score_is_probability": false,
+      "elapsed_ms": 6.73,
+      "comparison": {
+        "requested_top_k": 5,
+        "ranked_pool_limit": 20,
+        "tfidf_model": {
+          "name": "TF-IDF word unigram/bigram"
+        },
+        "sbert_model": {
+          "ready": true,
+          "configured": true,
+          "model_id": "sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2",
+          "revision": "e8f8c211226b894fcb81acc59f3b34ba3efd5f42",
+          "expected_revision": "e8f8c211226b894fcb81acc59f3b34ba3efd5f42",
+          "backend": "onnx-cpu-int8",
+          "reason": null,
+          "available_memory_mib": 992.90234375,
+          "network_inference": false
+        },
+        "tfidf_elapsed_ms": 5.49,
+        "sbert_elapsed_ms": 1.24
+      },
+      "input_fingerprint": "0a992bff2badfbaecf984e9e02678264160701c0e6bf2bcc3249a537a5f86f99",
+      "cv_skills": [
+        "HTML",
+        "CSS",
+        "JavaScript",
+        "React",
+        "Git",
+        "Node.js"
+      ],
+      "catalog_total": 20,
+      "catalog_limit": 50,
+      "excluded_insufficient_job_content": 0,
+      "scope": "own-eligible-period/available-opportunities",
+      "items": [
+        {
+          "id": "5599a4d00f69abce7f455846",
+          "cosine": 0.799235,
+          "raw_cosine": 0.7992346663845215,
+          "matched_skills": [
+            "css",
+            "javascript",
+            "react",
+            "git"
+          ],
+          "missing_query_skills": [
+            "html",
+            "node.js"
+          ],
+          "coverage": {
+            "total_tokens": 129,
+            "used_tokens": 129,
+            "chunks": 2,
+            "truncated": false
+          },
+          "explanation": "Cosine của embedding cục bộ; kỹ năng giao nhau lấy từ trường khai báo, không phải lý do nhân quả hoặc xác suất trúng tuyển.",
+          "rank": null,
+          "comparison": {
+            "tfidf": {
+              "cosine": 0.31696,
+              "raw_cosine": 0.3169600635196145,
+              "rank": 1
+            },
+            "sbert": {
+              "cosine": 0.799235,
+              "raw_cosine": 0.7992346663845215,
+              "rank": 1
+            },
+            "rank_delta_tfidf_to_sbert": 0
+          },
+          "title": "JD-01-2 — Phát triển giao diện web — Tích hợp và kiểm thử",
+          "company_name": "Công ty TNHH Vạn Phúc Networks",
+          "description": "Phát triển giao diện web — Tích hợp và kiểm thử. Nhiệm vụ: xây dựng biểu mẫu, danh sách và xử lý lỗi nhập liệu. Yêu cầu: CSS, JavaScript, React, Git. Ưu tiên mô tả được bài tập đã thực hiện, biết phối hợp nhóm, chủ động báo khó khăn và ghi lại cách kiểm tra. Làm việc 4 ngày mỗi tuần trong 12 tuần. Chấp nhận sinh viên chưa có kinh nghiệm doanh nghiệp; không xem các phẩm chất tự khai là đã xác minh.",
+          "duplicate_content_count": 1,
+          "required_skills": [
+            "css",
+            "javascript",
+            "react",
+            "git"
+          ],
+          "missing_required_skills": [],
+          "exact_matches": [
+            {
+              "required": "CSS",
+              "declared": "CSS",
+              "canonical": "css"
+            },
+            {
+              "required": "JavaScript",
+              "declared": "JavaScript",
+              "canonical": "javascript"
+            },
+            {
+              "required": "React",
+              "declared": "React",
+              "canonical": "react"
+            },
+            {
+              "required": "Git",
+              "declared": "Git",
+              "canonical": "git"
+            }
+          ],
+          "equivalent_matches": [],
+          "related_matches": [],
+          "no_direct_evidence_skills": [],
+          "skill_catalog_version": "controlled-skills-v1-20261107",
+          "skill_match_count": 4,
+          "required_skill_count": 4,
+          "requirements_declared": true,
+          "skill_coverage_percent": 100,
+          "assessment_basis": "declared-skills-not-verified-proficiency"
+        },
+        {
+          "id": "53cc320aed40ed68f75be643",
+          "cosine": 0.669082,
+          "raw_cosine": 0.6690818005855917,
+          "matched_skills": [
+            "html",
+            "css",
+            "javascript",
+            "react"
+          ],
+          "missing_query_skills": [
+            "git",
+            "node.js"
+          ],
+          "coverage": {
+            "total_tokens": 125,
+            "used_tokens": 125,
+            "chunks": 1,
+            "truncated": false
+          },
+          "explanation": "Cosine của embedding cục bộ; kỹ năng giao nhau lấy từ trường khai báo, không phải lý do nhân quả hoặc xác suất trúng tuyển.",
+          "rank": null,
+          "comparison": {
+            "tfidf": {
+              "cosine": 0.310937,
+              "raw_cosine": 0.31093718057549297,
+              "rank": 2
+            },
+            "sbert": {
+              "cosine": 0.669082,
+              "raw_cosine": 0.6690818005855917,
+              "rank": 2
+            },
+            "rank_delta_tfidf_to_sbert": 0
+          },
+          "title": "JD-01-1 — Phát triển giao diện web — Nghiệp vụ cơ bản",
+          "company_name": "Công ty TNHH Vạn Phúc Networks",
+          "description": "Phát triển giao diện web — Nghiệp vụ cơ bản. Nhiệm vụ: xây dựng biểu mẫu, danh sách và xử lý lỗi nhập liệu. Yêu cầu: HTML, CSS, JavaScript, React. Ưu tiên mô tả được bài tập đã thực hiện, biết phối hợp nhóm, chủ động báo khó khăn và ghi lại cách kiểm tra. Làm việc 3 ngày mỗi tuần trong 12 tuần. Chấp nhận sinh viên chưa có kinh nghiệm doanh nghiệp; không xem các phẩm chất tự khai là đã xác minh.",
+          "duplicate_content_count": 1,
+          "required_skills": [
+            "html",
+            "css",
+            "javascript",
+            "react"
+          ],
+          "missing_required_skills": [],
+          "exact_matches": [
+            {
+              "required": "HTML",
+              "declared": "HTML",
+              "canonical": "html"
+            },
+            {
+              "required": "CSS",
+              "declared": "CSS",
+              "canonical": "css"
+            },
+            {
+              "required": "JavaScript",
+              "declared": "JavaScript",
+              "canonical": "javascript"
+            },
+            {
+              "required": "React",
+              "declared": "React",
+              "canonical": "react"
+            }
+          ],
+          "equivalent_matches": [],
+          "related_matches": [],
+          "no_direct_evidence_skills": [],
+          "skill_catalog_version": "controlled-skills-v1-20261107",
+          "skill_match_count": 4,
+          "required_skill_count": 4,
+          "requirements_declared": true,
+          "skill_coverage_percent": 100,
+          "assessment_basis": "declared-skills-not-verified-proficiency"
+        },
+        {
+          "id": "1507abe5284e3d3366d3e741",
+          "cosine": 0.574751,
+          "raw_cosine": 0.5747511704497068,
+          "matched_skills": [
+            "node.js",
+            "git"
+          ],
+          "missing_query_skills": [
+            "css",
+            "html",
+            "javascript",
+            "react"
+          ],
+          "coverage": {
+            "total_tokens": 141,
+            "used_tokens": 141,
+            "chunks": 2,
+            "truncated": false
+          },
+          "explanation": "Cosine của embedding cục bộ; kỹ năng giao nhau lấy từ trường khai báo, không phải lý do nhân quả hoặc xác suất trúng tuyển.",
+          "rank": null,
+          "comparison": {
+            "tfidf": {
+              "cosine": 0.185496,
+              "raw_cosine": 0.18549642214971865,
+              "rank": 3
+            },
+            "sbert": {
+              "cosine": 0.574751,
+              "raw_cosine": 0.5747511704497068,
+              "rank": 3
+            },
+            "rank_delta_tfidf_to_sbert": 0
+          },
+          "title": "JD-02-2 — Phát triển API Node.js — Tích hợp và kiểm thử",
+          "company_name": "Công ty TNHH Hoàng Gia Web",
+          "description": "Phát triển API Node.js — Tích hợp và kiểm thử. Nhiệm vụ: thiết kế API, kiểm tra đầu vào và phân quyền người dùng. Yêu cầu: Node.js, Express, MongoDB, Git. Ưu tiên mô tả được bài tập đã thực hiện, biết phối hợp nhóm, chủ động báo khó khăn và ghi lại cách kiểm tra. Làm việc 4 ngày mỗi tuần trong 12 tuần. Chấp nhận sinh viên chưa có kinh nghiệm doanh nghiệp; không xem các phẩm chất tự khai là đã xác minh.",
+          "duplicate_content_count": 1,
+          "required_skills": [
+            "node.js",
+            "express",
+            "mongodb",
+            "git"
+          ],
+          "missing_required_skills": [
+            "express",
+            "mongodb"
+          ],
+          "exact_matches": [
+            {
+              "required": "Node.js",
+              "declared": "Node.js",
+              "canonical": "node.js"
+            },
+            {
+              "required": "Git",
+              "declared": "Git",
+              "canonical": "git"
+            }
+          ],
+          "equivalent_matches": [],
+          "related_matches": [
+            {
+              "required": "express",
+              "declared": "node.js"
+            }
+          ],
+          "no_direct_evidence_skills": [
+            "express",
+            "mongodb"
+          ],
+          "skill_catalog_version": "controlled-skills-v1-20261107",
+          "skill_match_count": 2,
+          "required_skill_count": 4,
+          "requirements_declared": true,
+          "skill_coverage_percent": 50,
+          "assessment_basis": "declared-skills-not-verified-proficiency"
+        },
+        {
+          "id": "70c97795fbd20d7c9935a0c0",
+          "cosine": 0.545444,
+          "raw_cosine": 0.5454439083982678,
+          "matched_skills": [
+            "javascript",
+            "node.js"
+          ],
+          "missing_query_skills": [
+            "css",
+            "git",
+            "html",
+            "react"
+          ],
+          "coverage": {
+            "total_tokens": 136,
+            "used_tokens": 136,
+            "chunks": 2,
+            "truncated": false
+          },
+          "explanation": "Cosine của embedding cục bộ; kỹ năng giao nhau lấy từ trường khai báo, không phải lý do nhân quả hoặc xác suất trúng tuyển.",
+          "rank": null,
+          "comparison": {
+            "tfidf": {
+              "cosine": 0.180602,
+              "raw_cosine": 0.18060241677539157,
+              "rank": 4
+            },
+            "sbert": {
+              "cosine": 0.545444,
+              "raw_cosine": 0.5454439083982678,
+              "rank": 4
+            },
+            "rank_delta_tfidf_to_sbert": 0
+          },
+          "title": "JD-02-1 — Phát triển API Node.js — Nghiệp vụ cơ bản",
+          "company_name": "Công ty TNHH Hoàng Gia Web",
+          "description": "Phát triển API Node.js — Nghiệp vụ cơ bản. Nhiệm vụ: thiết kế API, kiểm tra đầu vào và phân quyền người dùng. Yêu cầu: JavaScript, Node.js, Express, MongoDB. Ưu tiên mô tả được bài tập đã thực hiện, biết phối hợp nhóm, chủ động báo khó khăn và ghi lại cách kiểm tra. Làm việc 3 ngày mỗi tuần trong 12 tuần. Chấp nhận sinh viên chưa có kinh nghiệm doanh nghiệp; không xem các phẩm chất tự khai là đã xác minh.",
+          "duplicate_content_count": 1,
+          "required_skills": [
+            "javascript",
+            "node.js",
+            "express",
+            "mongodb"
+          ],
+          "missing_required_skills": [
+            "express",
+            "mongodb"
+          ],
+          "exact_matches": [
+            {
+              "required": "JavaScript",
+              "declared": "JavaScript",
+              "canonical": "javascript"
+            },
+            {
+              "required": "Node.js",
+              "declared": "Node.js",
+              "canonical": "node.js"
+            }
+          ],
+          "equivalent_matches": [],
+          "related_matches": [
+            {
+              "required": "express",
+              "declared": "node.js"
+            }
+          ],
+          "no_direct_evidence_skills": [
+            "express",
+            "mongodb"
+          ],
+          "skill_catalog_version": "controlled-skills-v1-20261107",
+          "skill_match_count": 2,
+          "required_skill_count": 4,
+          "requirements_declared": true,
+          "skill_coverage_percent": 50,
+          "assessment_basis": "declared-skills-not-verified-proficiency"
+        },
+        {
+          "id": "2e9c7f4bdadc467f933ab965",
+          "cosine": 0.429467,
+          "raw_cosine": 0.4294670130263827,
+          "matched_skills": [
+            "git"
+          ],
+          "missing_query_skills": [
+            "css",
+            "html",
+            "javascript",
+            "node.js",
+            "react"
+          ],
+          "coverage": {
+            "total_tokens": 133,
+            "used_tokens": 133,
+            "chunks": 2,
+            "truncated": false
+          },
+          "explanation": "Cosine của embedding cục bộ; kỹ năng giao nhau lấy từ trường khai báo, không phải lý do nhân quả hoặc xác suất trúng tuyển.",
+          "rank": null,
+          "comparison": {
+            "tfidf": {
+              "cosine": 0.122188,
+              "raw_cosine": 0.12218789640158223,
+              "rank": 5
+            },
+            "sbert": {
+              "cosine": 0.429467,
+              "raw_cosine": 0.4294670130263827,
+              "rank": 10
+            },
+            "rank_delta_tfidf_to_sbert": -5
+          },
+          "title": "JD-04-2 — Kiểm thử phần mềm — Tích hợp và kiểm thử",
+          "company_name": "Công ty TNHH An Lạc Digital",
+          "description": "Kiểm thử phần mềm — Tích hợp và kiểm thử. Nhiệm vụ: thiết kế ca kiểm thử, tái hiện lỗi và kiểm tra API. Yêu cầu: Test Cases, Postman, SQL, Git. Ưu tiên mô tả được bài tập đã thực hiện, biết phối hợp nhóm, chủ động báo khó khăn và ghi lại cách kiểm tra. Làm việc 4 ngày mỗi tuần trong 12 tuần. Chấp nhận sinh viên chưa có kinh nghiệm doanh nghiệp; không xem các phẩm chất tự khai là đã xác minh.",
+          "duplicate_content_count": 1,
+          "required_skills": [
+            "test cases",
+            "postman",
+            "sql",
+            "git"
+          ],
+          "missing_required_skills": [
+            "test cases",
+            "postman",
+            "sql"
+          ],
+          "exact_matches": [
+            {
+              "required": "Git",
+              "declared": "Git",
+              "canonical": "git"
+            }
+          ],
+          "equivalent_matches": [],
+          "related_matches": [],
+          "no_direct_evidence_skills": [
+            "test cases",
+            "postman",
+            "sql"
+          ],
+          "skill_catalog_version": "controlled-skills-v1-20261107",
+          "skill_match_count": 1,
+          "required_skill_count": 4,
+          "requirements_declared": true,
+          "skill_coverage_percent": 25,
+          "assessment_basis": "declared-skills-not-verified-proficiency"
+        },
+        {
+          "id": "24da10613c35e8f5dd8609ae",
+          "cosine": 0.522232,
+          "raw_cosine": 0.5222318107440709,
+          "matched_skills": [],
+          "missing_query_skills": [
+            "css",
+            "git",
+            "html",
+            "javascript",
+            "node.js",
+            "react"
+          ],
+          "coverage": {
+            "total_tokens": 127,
+            "used_tokens": 127,
+            "chunks": 2,
+            "truncated": false
+          },
+          "explanation": "Cosine của embedding cục bộ; kỹ năng giao nhau lấy từ trường khai báo, không phải lý do nhân quả hoặc xác suất trúng tuyển.",
+          "rank": null,
+          "comparison": {
+            "tfidf": {
+              "cosine": 0.083663,
+              "raw_cosine": 0.08366331145502597,
+              "rank": 18
+            },
+            "sbert": {
+              "cosine": 0.522232,
+              "raw_cosine": 0.5222318107440709,
+              "rank": 5
+            },
+            "rank_delta_tfidf_to_sbert": 13
+          },
+          "title": "JD-06-1 — Lập trình Android — Nghiệp vụ cơ bản",
+          "company_name": "Công ty TNHH Hải Đăng Solutions",
+          "description": "Lập trình Android — Nghiệp vụ cơ bản. Nhiệm vụ: thiết kế màn hình, lưu dữ liệu và xử lý lỗi kết nối. Yêu cầu: Kotlin, Android, REST API, SQLite. Ưu tiên mô tả được bài tập đã thực hiện, biết phối hợp nhóm, chủ động báo khó khăn và ghi lại cách kiểm tra. Làm việc 3 ngày mỗi tuần trong 12 tuần. Chấp nhận sinh viên chưa có kinh nghiệm doanh nghiệp; không xem các phẩm chất tự khai là đã xác minh.",
+          "duplicate_content_count": 1,
+          "required_skills": [
+            "kotlin",
+            "android",
+            "rest api",
+            "sqlite"
+          ],
+          "missing_required_skills": [
+            "kotlin",
+            "android",
+            "rest api",
+            "sqlite"
+          ],
+          "exact_matches": [],
+          "equivalent_matches": [],
+          "related_matches": [],
+          "no_direct_evidence_skills": [
+            "kotlin",
+            "android",
+            "rest api",
+            "sqlite"
+          ],
+          "skill_catalog_version": "controlled-skills-v1-20261107",
+          "skill_match_count": 0,
+          "required_skill_count": 4,
+          "requirements_declared": true,
+          "skill_coverage_percent": 0,
+          "assessment_basis": "declared-skills-not-verified-proficiency"
+        }
+      ]
+    }
+  }
+}

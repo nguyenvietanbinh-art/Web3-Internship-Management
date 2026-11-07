@@ -1,0 +1,31 @@
+{
+  "dataset": "synthetic-internship-v2",
+  "synthetic": true,
+  "human_annotated": false,
+  "intended_use": "offline-pipeline-demonstration-only",
+  "real_world_acceptance": false,
+  "source": "original-scenario-generator",
+  "structural_references": [
+    "https://research.stem.open.ac.uk/ouanalyse/dataset/",
+    "https://pmc.ncbi.nlm.nih.gov/articles/PMC5704676/"
+  ],
+  "references_are_not_source_records": true,
+  "students": 500,
+  "reports": 1000,
+  "splits": {
+    "train": 600,
+    "validation": 200,
+    "test": 200
+  },
+  "labels": {
+    "on_track": 500,
+    "needs_support": 500
+  },
+  "sha256": "2117670df7cd8c5886fdeaa7b07e3facf01a4853b7d41cac60510205d1b9959e",
+  "limitations": [
+    "Labels authored by generator, not teachers.",
+    "Scenario templates overlap across splits; student isolation is not independent-domain evaluation.",
+    "No CV data and no real internship outcome labels.",
+    "Must not promote to production or claim quality on real students."
+  ]
+}

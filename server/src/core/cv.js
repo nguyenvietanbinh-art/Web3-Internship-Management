@@ -101,6 +101,27 @@ router.post(
     res.json(await saveCvFile(req.user, file, 'url'));
   })
 );
+router.delete(
+  '/cv/file',
+  requireRole('student'),
+  asyncHandler(async (req, res) => {
+    v.keys(req.body, ['version']);
+    v.integer(req.body.version, 0, Number.MAX_SAFE_INTEGER, 'Phiên bản');
+    const doc = await CV.findOne(identity.owned(req.user, 'ownerUserId', 'ownerWallet'));
+    if (!doc?.fileName) throw new HttpError(404, 'Chưa có tệp CV để xóa');
+    const updated = await CV.findOneAndUpdate(
+      { _id: doc._id, ...v.versionMatch(req.body.version) },
+      {
+        $unset: { fileData: 1, fileName: 1, mime: 1, sha256: 1, extractedText: 1, parser: 1 },
+        $inc: { __v: 1 },
+        $push: { history: v.event(req.user, 'cv.file_removed', { fileName: doc.fileName, sha256: doc.sha256 }) },
+      },
+      { new: true, runValidators: true }
+    );
+    if (!updated) throw new HttpError(409, 'CV đã thay đổi; tải lại trước khi xóa tệp', 'STALE_VERSION');
+    res.json(updated);
+  })
+);
 router.get(
   '/cv/file',
   requireRole('student'),

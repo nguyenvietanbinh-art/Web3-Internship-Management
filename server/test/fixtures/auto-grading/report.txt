@@ -1,0 +1,30 @@
+BÁO CÁO KẾT QUẢ CÔNG VIỆC THỰC TẬP
+Sinh viên: Sinh viên kiểm thử chất lượng
+Mã sinh viên: QA-SAMPLE
+Kỳ: Thực tập CNTT — Học kỳ I, năm học 2026–2027
+Đề tài: Phát triển chức năng lọc đề tài
+Phạm vi bài nộp: mô-đun lọc dữ liệu cục bộ; không khẳng định hoàn tất toàn bộ kỳ hoặc hệ thống.
+
+1. MỤC TIÊU VÀ YÊU CẦU
+Mục tiêu là tìm cơ hội thực tập còn tuyển theo tên đề tài, tên doanh nghiệp và kỹ năng. Các yêu cầu bao gồm tìm kiếm không phân biệt hoa thường, hỗ trợ từ khóa không dấu, kết hợp từ khóa với một kỹ năng và loại cơ hội đã đóng hoặc đủ chỉ tiêu. Sản phẩm bàn giao là hàm lọc có thể chạy và bộ kiểm thử đi kèm. Phạm vi chưa bao gồm giao diện React, API Express, phân trang trên MongoDB hoặc kiểm tra quyền truy cập ở máy chủ.
+
+2. PHÂN TÍCH VÀ THIẾT KẾ
+Đầu vào là danh sách có title, companyName, status, capacity, confirmedCount và skills; bộ lọc nhận query và skill. Đầu ra là mảng các phần tử thỏa điều kiện. Tôi chuẩn hóa chuỗi bằng Unicode NFD, bỏ dấu kết hợp, xử lý đ/Đ, chuyển chữ thường và bỏ khoảng trắng đầu cuối. Từ khóa được so trong tên đề tài và doanh nghiệp; kỹ năng yêu cầu trùng tên sau chuẩn hóa. Trạng thái phải open và số đã nhận nhỏ hơn chỉ tiêu. Giải pháp này phù hợp mô-đun nhỏ, chưa thay cho truy vấn database và chưa xử lý đồng nghĩa kỹ năng.
+
+3. CÁCH THỰC HIỆN VÀ ĐÓNG GÓP
+Tôi tách chuẩn hóa chuỗi khỏi điều kiện lọc, kết hợp các điều kiện trong Array.filter và tạo dữ liệu kiểm thử riêng. Phần việc cá nhân là mã hàm lọc, thiết kế năm ca và ghi nhận giới hạn. Mã nguồn thật của tình huống này nằm trong topic-filter.cjs; nội dung và log được đính kèm vào nhiệm vụ dưới tên evidence.txt. Không cung cấp liên kết repository hoặc sản phẩm triển khai không tồn tại.
+
+4. KẾT QUẢ VÀ ĐỐI CHIẾU YÊU CẦU
+Mô-đun trả đúng một đề tài khi tìm giao dien, hai đề tài khi tìm minh phat, và một đề tài khi kết hợp giao với React. Hai dòng đóng hoặc đủ chỉ tiêu không được trả về; từ khóa kế toán trả mảng rỗng. Năm ca mô-đun đã chạy bằng Node test runner và thành công. Đây là kết quả trên bộ dữ liệu nhỏ đã khai báo, chưa chứng minh đúng với mọi dữ liệu đầu vào. Tôi chưa xây dựng màn hình tìm kiếm trong bài nộp này và không báo hoàn thành UI/API.
+
+5. KIỂM THỬ VÀ BẰNG CHỨNG
+Các ca kiểm thử gồm: tìm tên không dấu; tìm tên doanh nghiệp; kết hợp từ khóa và kỹ năng; loại đề tài đóng/hết chỗ; không có kết quả. Mỗi ca có assertion kiểm số phần tử hoặc mảng rỗng. Tệp evidence.txt chứa nguyên mã nguồn, mã kiểm thử và đầu ra TAP chạy thật. Giới hạn còn lại: chưa có kiểm thử đầu vào sai kiểu, dữ liệu thiếu trường số, dấu câu phức tạp, kỹ năng đồng nghĩa, tải lớn, API và giao diện. Không có ảnh chụp UI, đường dẫn triển khai hoặc bằng chứng GPS để xác minh trong bài.
+
+6. TIẾN ĐỘ VÀ QUÁ TRÌNH THỰC HIỆN
+Nhiệm vụ gồm hai tiêu chí: chức năng lọc trọng số60 và kiểm thử/giới hạn trọng số40. Doanh nghiệp TEST đã xác nhận cả hai sau khi mã và năm ca kiểm thử được chạy. Tiến độ nhiệm vụ là100% theo phạm vi mô-đun, không phải phần trăm hoàn thành cả kỳ thực tập. Chưa tạo chấm công hoặc số giờ lao động trong tình huống này; không lấy ngày ghi báo cáo làm bằng chứng số giờ.
+
+7. KHÓ KHĂN, BÀI HỌC VÀ KẾ HOẠCH
+Khó khăn là tìm không dấu với ký tự đ và tránh đề tài đủ người vẫn còn hiển thị. Biện pháp là chuẩn hóa rõ ràng và kiểm điều kiện còn chỗ ở bước lọc. Bài học: phải xác định phạm vi và ca kiểm thử trước khi kết luận sản phẩm đạt yêu cầu. Kế hoạch cải tiến là kiểm tra kiểu dữ liệu, dùng danh mục kỹ năng chuẩn, bổ sung test trường thiếu và triển khai lọc phía máy chủ; sau đó kiểm thử quyền và giao diện. Những việc này chưa được tính là đã hoàn thành.
+
+8. TỰ ĐÁNH GIÁ VÀ TÀI LIỆU THAM KHẢO
+Tôi hoàn thành phần mô-đun được giao nhưng cần thêm hướng dẫn về validation dữ liệu và kiểm thử tích hợp. Người hướng dẫn cần mở mã/log để kiểm tra; nội dung tự trình bày không tự trở thành bằng chứng đã xác minh. Tài liệu tham khảo: tài liệu JavaScript về String.normalize/Array.filter và tài liệu Node.js test runner. Kết luận: bài nộp đủ để xem xét mô-đun nhỏ, chưa đủ để nghiệm thu ứng dụng production.

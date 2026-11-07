@@ -1,0 +1,63 @@
+MÃ NGUỒN MÔ-ĐUN
+
+const normalize=v=>String(v||'').normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/đ/g,'d').replace(/Đ/g,'D').toLowerCase().trim();
+ function filterTopics(rows,{query='',skill=''}={}){return rows.filter(r=>r.status==='open'&&r.confirmedCount<r.capacity&&normalize(r.title+' '+r.companyName).includes(normalize(query))&&(!skill||(r.skills||[]).some(s=>normalize(s)===normalize(skill))));}
+ module.exports={filterTopics};
+
+
+KIỂM THỬ
+
+const {test}=require('node:test'),a=require('assert/strict'),{filterTopics}=require('./topic-filter.cjs');
+ const rows=[{title:'Giao diện tuyển dụng',companyName:'Minh Phát',status:'open',capacity:2,confirmedCount:1,skills:['React','JavaScript']},{title:'API quản lý',companyName:'Minh Phát',status:'open',capacity:2,confirmedCount:0,skills:['Node.js']},{title:'Đề tài đã đủ',status:'open',capacity:1,confirmedCount:1,skills:['React']},{title:'Đề tài đóng',status:'closed',capacity:2,confirmedCount:0,skills:['React']}];
+ test('Tìm tên không dấu',()=>a.equal(filterTopics(rows,{query:'giao dien'}).length,1));
+ test('Tìm theo doanh nghiệp',()=>a.equal(filterTopics(rows,{query:'minh phat'}).length,2));
+ test('Kết hợp từ khóa và kỹ năng',()=>a.equal(filterTopics(rows,{query:'giao',skill:'react'}).length,1));
+ test('Không trả đề tài đóng hoặc hết chỗ',()=>a.equal(filterTopics(rows).length,2));
+ test('Từ khóa không khớp trả danh sách rỗng',()=>a.deepEqual(filterTopics(rows,{query:'kế toán'}),[]));
+
+
+KẾT QUẢ CHẠY THẬT
+
+TAP version 13
+# Subtest: Tìm tên không dấu
+ok 1 - Tìm tên không dấu
+  ---
+  duration_ms: 0.9088
+  type: 'test'
+  ...
+# Subtest: Tìm theo doanh nghiệp
+ok 2 - Tìm theo doanh nghiệp
+  ---
+  duration_ms: 0.1398
+  type: 'test'
+  ...
+# Subtest: Kết hợp từ khóa và kỹ năng
+ok 3 - Kết hợp từ khóa và kỹ năng
+  ---
+  duration_ms: 0.2091
+  type: 'test'
+  ...
+# Subtest: Không trả đề tài đóng hoặc hết chỗ
+ok 4 - Không trả đề tài đóng hoặc hết chỗ
+  ---
+  duration_ms: 0.1155
+  type: 'test'
+  ...
+# Subtest: Từ khóa không khớp trả danh sách rỗng
+ok 5 - Từ khóa không khớp trả danh sách rỗng
+  ---
+  duration_ms: 0.6523
+  type: 'test'
+  ...
+1..5
+# tests 5
+# suites 0
+# pass 5
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 90.4872
+
+
+GIỚI HẠN: Chỉ kiểm thử mô-đun; chưa xác minh UI, API, hiệu năng và thiết bị thực.

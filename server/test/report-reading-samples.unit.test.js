@@ -1,0 +1,10 @@
+const {test}=require('node:test'),assert=require('assert/strict'),{build,hash}=require('../src/core/reportSampleContent'),{validate}=require('../src/core/reportSamples');
+const context={student:'Sinh viên tổng hợp',company:'Đơn vị tổng hợp',mentor:'Giảng viên tổng hợp',batch:'Thực tập cử nhân — 2026',topic:'Website thương mại điện tử',start:'2026-06-01',end:'2026-08-31',lifecycle:'completed',kind:'final',incomplete:false,tasks:[{title:'Thiết kế bảng đơn hàng',status:'done',progress:100,dueDate:'2026-07-01'}],logCount:2,sessionCount:3,approvedMinutes:120};
+test('full report sample includes concrete subject, observations and proposed test cases, not fabricated results',()=>{
+ const text=build(context);assert.ok(text.length>6000);for(const value of [context.student,context.topic,'Thiết kế bảng đơn hàng','120 phút','RequestHistory','TC01','TC06','chưa phải bảng kết quả PASS'])assert.ok(text.includes(value),value);assert.ok(!text.includes('https://'));assert.ok(text.includes('BÀI MẪU TỔNG HỢP'));
+});
+test('incomplete sample genuinely omits completed-result and test-plan sections',()=>{const complete=build(context),incomplete=build({...context,incomplete:true});assert.ok(incomplete.length<complete.length);assert.ok(incomplete.includes('Kết quả thực hiện còn thiếu'));assert.ok(!incomplete.includes('TC06'));});
+test('sample must bind exact report, assignment, original content, database and source version',()=>{
+ const report={_id:'1',assignmentId:'2',version:1,content:'original submission'},sample={database:'qa',reportId:'1',assignmentId:'2',sourceVersion:1,sourceReportHash:hash(report.content),content:'sample text',contentHash:hash('sample text'),synthetic:true,official:false};assert.equal(validate(sample,report,'qa'),sample);
+ for(const changes of [{reportId:'another'},{assignmentId:'another'},{sourceVersion:2},{sourceReportHash:'bad'},{database:'other'},{content:'modified'},{synthetic:false},{official:true}])assert.throws(()=>validate({...sample,...changes},report,'qa'),e=>e.status===409);
+});

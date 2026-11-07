@@ -1,0 +1,111 @@
+{
+  "status": "PASS",
+  "database": "internova_role_qa_20261107",
+  "scriptHash": "b8f1dbcb29b99cbc0260d79027e97923003f3930b5d30a417b9749088953f062",
+  "manifestHash": "bb97252d69cc6d84b97e6b8177ba32c83f9f5a34c36db0c7bae45bc6ae75d373",
+  "sourceDataset": "cv-jd-reference-200-v1",
+  "synthetic": true,
+  "expertLabels": false,
+  "batchId": "f7db376f23b77a162341a7d0",
+  "batchName": "Thực tập cử nhân CNTT — Đợt tháng 11, năm học 2026–2027",
+  "registrationClosesAt": "2026-11-21T04:40:57.731Z",
+  "startDate": "2026-11-28T04:40:57.731Z",
+  "endDate": "2027-02-20T04:40:57.731Z",
+  "inserted": {
+    "users": 200,
+    "students": 200,
+    "cvs": 200,
+    "enrollments": 200,
+    "topics": 20,
+    "opportunities": 20,
+    "batches": 1
+  },
+  "existingDataAndIndexesPreserved": true,
+  "firstStudent": "2699000001@gmail.com",
+  "fullSkillStudent": "2699000004@gmail.com",
+  "newBeginnerStudent": "2699000001@gmail.com",
+  "frontend": "http://localhost:5189",
+  "topicCompanies": [
+    {
+      "jd": "JD-01-1",
+      "company": "Doanh nghiệp TEST mw5t1g9l"
+    },
+    {
+      "jd": "JD-01-2",
+      "company": "Doanh nghiệp TEST mw5t1g9l"
+    },
+    {
+      "jd": "JD-02-1",
+      "company": "Doanh nghiệp TEST mw5t1g9l"
+    },
+    {
+      "jd": "JD-02-2",
+      "company": "Doanh nghiệp TEST mw5t1g9l"
+    },
+    {
+      "jd": "JD-03-1",
+      "company": "Doanh nghiệp TEST mw5t1g9l"
+    },
+    {
+      "jd": "JD-03-2",
+      "company": "Doanh nghiệp TEST mw5t1g9l"
+    },
+    {
+      "jd": "JD-04-1",
+      "company": "Doanh nghiệp TEST mw5t1g9l"
+    },
+    {
+      "jd": "JD-04-2",
+      "company": "Doanh nghiệp TEST mw5t1g9l"
+    },
+    {
+      "jd": "JD-05-1",
+      "company": "Doanh nghiệp TEST mw5t1g9l"
+    },
+    {
+      "jd": "JD-05-2",
+      "company": "Doanh nghiệp TEST mw5t1g9l"
+    },
+    {
+      "jd": "JD-06-1",
+      "company": "Doanh nghiệp TEST mw5t1g9l"
+    },
+    {
+      "jd": "JD-06-2",
+      "company": "Doanh nghiệp TEST mw5t1g9l"
+    },
+    {
+      "jd": "JD-07-1",
+      "company": "Doanh nghiệp TEST mw5t1g9l"
+    },
+    {
+      "jd": "JD-07-2",
+      "company": "Doanh nghiệp TEST mw5t1g9l"
+    },
+    {
+      "jd": "JD-08-1",
+      "company": "Doanh nghiệp TEST mw5t1g9l"
+    },
+    {
+      "jd": "JD-08-2",
+      "company": "Doanh nghiệp TEST mw5t1g9l"
+    },
+    {
+      "jd": "JD-09-1",
+      "company": "Doanh nghiệp TEST mw5t1g9l"
+    },
+    {
+      "jd": "JD-09-2",
+      "company": "Doanh nghiệp TEST mw5t1g9l"
+    },
+    {
+      "jd": "JD-10-1",
+      "company": "Doanh nghiệp TEST mw5t1g9l"
+    },
+    {
+      "jd": "JD-10-2",
+      "company": "Doanh nghiệp TEST mw5t1g9l"
+    }
+  ],
+  "at": "2026-11-07T04:41:49.099Z"
+}

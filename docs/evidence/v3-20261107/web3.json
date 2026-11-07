@@ -1,0 +1,51 @@
+{
+  "at": "2026-11-07T10:24:41.408Z",
+  "database": "internova_role_qa_20261107",
+  "tests": [
+    {
+      "name": "Actual password reauthentication and signature link a fresh TEST wallet",
+      "status": "PASS",
+      "detail": {
+        "wallet": "0x7075201Da46C67388c78a5Fd9d153C0f92C18210",
+        "chainId": 31337,
+        "privateKeyPersisted": false
+      }
+    },
+    {
+      "name": "QR signature, GPS bounds, nonce replay and check-out work through real API",
+      "status": "PASS",
+      "detail": {
+        "sessionId": "6aeefc679bad339073f6df7e",
+        "unadjustedMinutes": 0,
+        "gpsIsClientClaim": true
+      }
+    },
+    {
+      "name": "Explicit company TEST time adjustment is audited, approved and anchored with actual receipt",
+      "status": "PASS",
+      "detail": {
+        "txHash": "0x7037439478159b839665e5a248a110c9fe366363f91d321488047870b55b1a01",
+        "minutes": 55
+      }
+    },
+    {
+      "name": "Approved report hash is anchored once; no IPFS success invented",
+      "status": "PASS",
+      "detail": {
+        "txHash": "0x4b07f4acf105b7a668cd5430bb496d0f48a1853df49cf5fce5f1375418da59b1",
+        "digest": "0x4adb54ecf76e8aacdd7506c6e1f33802fc2133ff6f241f24bfcc40346105a034",
+        "ipfsUploaded": false
+      }
+    },
+    {
+      "name": "School completion gates precede actual SBT mint and certificate verification",
+      "status": "PASS",
+      "detail": {
+        "tokenId": "2",
+        "contractAddress": "0x5FbDB2315678afecb367f032d93F642f64180aa3",
+        "chainId": 31337,
+        "txHash": "0x279bdcb6d1304a373c1be0d4ae7e7f025a2bdcedb6df9d2496c93b5fc8f25f7d"
+      }
+    }
+  ]
+}

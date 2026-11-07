@@ -1,0 +1,128 @@
+[
+  {
+    "slug": "01-frontend",
+    "name": "Nguyễn Minh An",
+    "track": "Frontend React",
+    "skills": [
+      "HTML",
+      "CSS",
+      "JavaScript",
+      "React",
+      "REST API"
+    ],
+    "gpa": 3.2,
+    "topic": "Website thương mại điện tử",
+    "synthetic": true,
+    "expertLabel": false
+  },
+  {
+    "slug": "02-backend",
+    "name": "Trần Quốc Bình",
+    "track": "Backend Node.js",
+    "skills": [
+      "JavaScript",
+      "Node.js",
+      "Express",
+      "MongoDB",
+      "REST API",
+      "Git"
+    ],
+    "gpa": 3.05,
+    "topic": "Cổng tuyển dụng và quản lý hồ sơ",
+    "synthetic": true,
+    "expertLabel": false
+  },
+  {
+    "slug": "03-fullstack",
+    "name": "Lê Thu Chi",
+    "track": "Full-stack",
+    "skills": [
+      "React",
+      "JavaScript",
+      "Node.js",
+      "MongoDB",
+      "Git"
+    ],
+    "gpa": 3.3,
+    "topic": "Website thương mại điện tử",
+    "synthetic": true,
+    "expertLabel": false
+  },
+  {
+    "slug": "04-qa",
+    "name": "Phạm Gia Duy",
+    "track": "Kiểm thử phần mềm",
+    "skills": [
+      "Manual Testing",
+      "Test Cases",
+      "Postman",
+      "API Testing",
+      "SQL"
+    ],
+    "gpa": 2.9,
+    "topic": "Ứng dụng theo dõi kho",
+    "synthetic": true,
+    "expertLabel": false
+  },
+  {
+    "slug": "05-data",
+    "name": "Hoàng Ngọc Hà",
+    "track": "Phân tích dữ liệu",
+    "skills": [
+      "Python",
+      "SQL",
+      "Pandas",
+      "Excel",
+      "Power BI"
+    ],
+    "gpa": 3.45,
+    "topic": "Dashboard phân tích doanh thu",
+    "synthetic": true,
+    "expertLabel": false
+  },
+  {
+    "slug": "06-ai-nlp",
+    "name": "Vũ Minh Khang",
+    "track": "AI và xử lý ngôn ngữ",
+    "skills": [
+      "Python",
+      "Pandas",
+      "SQL",
+      "NLP"
+    ],
+    "gpa": 3.25,
+    "topic": "Dashboard phân tích dữ liệu và nội dung",
+    "synthetic": true,
+    "expertLabel": false
+  },
+  {
+    "slug": "07-blockchain",
+    "name": "Đặng Bảo Linh",
+    "track": "Blockchain và Backend",
+    "skills": [
+      "JavaScript",
+      "Node.js",
+      "Solidity",
+      "ethers.js",
+      "Git"
+    ],
+    "gpa": 3.0,
+    "topic": "Dịch vụ Backend và lưu bằng chứng",
+    "synthetic": true,
+    "expertLabel": false
+  },
+  {
+    "slug": "08-beginner",
+    "name": "Bùi Thanh Nam",
+    "track": "Sinh viên ít kinh nghiệm",
+    "skills": [
+      "HTML",
+      "CSS",
+      "Git"
+    ],
+    "gpa": 2.55,
+    "topic": "Giao diện web và hỗ trợ kiểm thử",
+    "synthetic": true,
+    "expertLabel": false
+  }
+]

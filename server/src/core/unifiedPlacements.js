@@ -75,6 +75,7 @@ function topicInput(body) {
   return {
     title: v.text(body.title, 'Đề tài', { required: true, max: 200 }),
     description: v.text(body.description, 'Mô tả', { required: true }),
+    ...(body.requiredSkills===undefined?{}:{requiredSkills:v.list(body.requiredSkills,'Kỹ năng yêu cầu')}),
     kpis,
     maxSlots:
       body.maxSlots === undefined ? 1 : v.integer(body.maxSlots, 1, 1000, 'Chỉ tiêu ứng tuyển'),
@@ -109,7 +110,7 @@ router.post(
   '/topics',
   requireRole('company'),
   asyncHandler(async (req, res) => {
-    v.keys(req.body, ['title', 'description', 'kpis', 'maxSlots']);
+    v.keys(req.body, ['title', 'description', 'kpis', 'maxSlots', 'requiredSkills']);
     res.status(201).json(
       await Topic.create({
         ...identity.refs(req.user, 'companyUserId', 'companyWallet'),
@@ -150,7 +151,7 @@ router.patch(
   '/topics/:id',
   requireRole('company'),
   asyncHandler(async (req, res) => {
-    v.keys(req.body, ['title', 'description', 'kpis', 'maxSlots', 'version']);
+    v.keys(req.body, ['title', 'description', 'kpis', 'maxSlots', 'version', 'requiredSkills']);
     const topic = await editableTopic(req),
       input = topicInput(req.body);
     if (req.body.maxSlots === undefined) input.maxSlots = topic.maxSlots;

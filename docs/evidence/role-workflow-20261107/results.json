@@ -1,0 +1,753 @@
+{
+  "time": "2026-11-06T23:35:52.065Z",
+  "tests": [
+    {
+      "name": "student role menu, scoped reports and no automatic writes",
+      "status": "PASS"
+    },
+    {
+      "name": "student mobile, dark/light and overflow",
+      "status": "PASS"
+    },
+    {
+      "name": "company role menu, scoped reports and no automatic writes",
+      "status": "PASS"
+    },
+    {
+      "name": "company mobile, dark/light and overflow",
+      "status": "PASS"
+    },
+    {
+      "name": "mentor role menu, scoped reports and no automatic writes",
+      "status": "PASS"
+    },
+    {
+      "name": "mentor mobile, dark/light and overflow",
+      "status": "PASS"
+    },
+    {
+      "name": "admin role menu, scoped reports and no automatic writes",
+      "status": "PASS"
+    },
+    {
+      "name": "admin mobile, dark/light and overflow",
+      "status": "PASS"
+    },
+    {
+      "name": "Student search and period survive navigation, Back/Forward and reload",
+      "status": "PASS"
+    },
+    {
+      "name": "Logout clears private view state and next account cannot inherit it",
+      "status": "PASS"
+    },
+    {
+      "name": "Student receives real semantic suggestions with two complete declared-skill matches",
+      "status": "PASS"
+    },
+    {
+      "name": "Analysis result and expanded explanation survive tab changes without repeating inference",
+      "status": "PASS"
+    },
+    {
+      "name": "Completed report practice opens full text and proposes scores without official grade writes",
+      "status": "PASS"
+    },
+    {
+      "name": "Unsaved profile asks before leaving and never persists its draft or submits automatically",
+      "status": "PASS"
+    },
+    {
+      "name": "Admin verifies the real local SBT without connecting a personal wallet",
+      "status": "PASS"
+    },
+    {
+      "name": "Browser console has no uncaught runtime exceptions",
+      "status": "PASS"
+    }
+  ],
+  "requests": [
+    {
+      "method": "OPTIONS",
+      "path": "/api/core/capabilities"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/capabilities"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/capabilities"
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/api/core/capabilities"
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/api/core/capabilities"
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/api/auth/me"
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/api/core/capabilities"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/capabilities"
+    },
+    {
+      "method": "GET",
+      "path": "/api/auth/me"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/capabilities"
+    },
+    {
+      "method": "GET",
+      "path": "/api/auth/me"
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/api/auth/me"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/dashboard"
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/api/core/dashboard"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/placements"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/reports"
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/api/core/placements"
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/api/core/reports"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/web3/reports/6aee627d16e71f9ab59208aa/artifacts"
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/api/core/web3/reports/6aee627d16e71f9ab59208aa/artifacts"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/profile"
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/api/core/profile"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/capabilities"
+    },
+    {
+      "method": "GET",
+      "path": "/api/auth/me"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/capabilities"
+    },
+    {
+      "method": "GET",
+      "path": "/api/auth/me"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/profile"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/placements"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/reports"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/web3/reports/6aee627d16e71f9ab59208aa/artifacts"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/profile"
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/api/core/capabilities"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/capabilities"
+    },
+    {
+      "method": "GET",
+      "path": "/api/auth/me"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/capabilities"
+    },
+    {
+      "method": "GET",
+      "path": "/api/auth/me"
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/api/auth/me"
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/api/core/capabilities"
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/api/auth/me"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/profile"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/placements"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/reports"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/placements"
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/api/core/placements"
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/api/core/reports"
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/api/core/placements"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/web3/reports/6aee627d16e71f9ab59208aa/artifacts"
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/api/core/web3/reports/6aee627d16e71f9ab59208aa/artifacts"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/profile"
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/api/core/profile"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/capabilities"
+    },
+    {
+      "method": "GET",
+      "path": "/api/auth/me"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/capabilities"
+    },
+    {
+      "method": "GET",
+      "path": "/api/auth/me"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/profile"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/placements"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/reports"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/admin/batches"
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/api/core/admin/batches"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/web3/reports/6aee631b1fc2b84e92177372/artifacts"
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/api/core/web3/reports/6aee631b1fc2b84e92177372/artifacts"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/profile"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/capabilities"
+    },
+    {
+      "method": "GET",
+      "path": "/api/auth/me"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/capabilities"
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/api/core/capabilities"
+    },
+    {
+      "method": "GET",
+      "path": "/api/auth/me"
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/api/auth/me"
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/api/core/capabilities"
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/api/auth/me"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/profile"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/my/internships"
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/api/core/my/internships"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/my/internships/6aee627d16e71f9ab592098b/applications"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/my/internships/6aee627d16e71f9ab592098b/opportunities"
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/api/core/my/internships/6aee627d16e71f9ab592098b/applications"
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/api/core/my/internships/6aee627d16e71f9ab592098b/opportunities"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/my/internships/6aee627d16e71f9ab592098b/opportunities"
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/api/core/my/internships/6aee627d16e71f9ab592098b/opportunities"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/profile"
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/api/core/profile"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/my/internships"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/my/internships/6aee627d16e71f9ab592098b/applications"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/my/internships/6aee627d16e71f9ab592098b/opportunities"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/profile"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/my/internships"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/my/internships/6aee627d16e71f9ab592098b/applications"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/my/internships/6aee627d16e71f9ab592098b/opportunities"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/capabilities"
+    },
+    {
+      "method": "GET",
+      "path": "/api/auth/me"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/capabilities"
+    },
+    {
+      "method": "GET",
+      "path": "/api/auth/me"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/my/internships"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/my/internships/6aee627d16e71f9ab592098b/applications"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/my/internships/6aee627d16e71f9ab592098b/opportunities"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/capabilities"
+    },
+    {
+      "method": "GET",
+      "path": "/api/auth/me"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/capabilities"
+    },
+    {
+      "method": "GET",
+      "path": "/api/auth/me"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/capabilities"
+    },
+    {
+      "method": "GET",
+      "path": "/api/auth/me"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/capabilities"
+    },
+    {
+      "method": "GET",
+      "path": "/api/auth/me"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/my/internships"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/ai/status"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/my/internships"
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/api/core/ai/status"
+    },
+    {
+      "method": "POST",
+      "path": "/api/core/school/ai/match"
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/api/core/school/ai/match"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/ai/status"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/profile"
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/api/core/profile"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/ai/status"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/my/internships"
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/api/core/my/internships"
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/api/core/capabilities"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/capabilities"
+    },
+    {
+      "method": "GET",
+      "path": "/api/auth/me"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/capabilities"
+    },
+    {
+      "method": "GET",
+      "path": "/api/auth/me"
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/api/auth/me"
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/api/core/capabilities"
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/api/auth/me"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/ai/status"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/reports"
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/api/core/reports"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/placements"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/reports"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/placements"
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/api/core/placements"
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/api/core/reports"
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/api/core/placements"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/reports/6aee627f16e71f9ab5920a1f/practice"
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/api/core/reports/6aee627f16e71f9ab5920a1f/practice"
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/api/core/ai/reports/6aee627f16e71f9ab5920a1f/practice-analyze"
+    },
+    {
+      "method": "POST",
+      "path": "/api/core/ai/reports/6aee627f16e71f9ab5920a1f/practice-analyze"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/profile"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/placements"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/reports"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/placements"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/capabilities"
+    },
+    {
+      "method": "GET",
+      "path": "/api/auth/me"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/capabilities"
+    },
+    {
+      "method": "GET",
+      "path": "/api/auth/me"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/placements"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/reports"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/admin/batches"
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/api/core/admin/batches"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/placements"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/web3/status"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/reports"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/time/sessions"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/web3/status"
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/api/core/web3/status"
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/api/core/reports"
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/api/core/time/sessions"
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/api/core/web3/status"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/reports"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/time/sessions"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/web3/placements/6aee631b1fc2b84e92177332/operations"
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/api/core/reports"
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/api/core/time/sessions"
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/api/core/web3/placements/6aee631b1fc2b84e92177332/operations"
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/api/core/web3/placements/6aee631b1fc2b84e92177332/certificate"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/web3/placements/6aee631b1fc2b84e92177332/certificate"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/web3/status"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/reports"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/time/sessions"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/web3/placements/6aee631b1fc2b84e92177332/operations"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/web3/status"
+    }
+  ],
+  "exceptions": [],
+  "blocked": []
+}

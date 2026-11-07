@@ -161,3 +161,9 @@ staff-public.json
 
 # Turbo Repo
 .turbo
+
+# Local database backups must never be published.
+/database/local-imports/
+
+# Per-machine keys, plaintext restored logins and runtime state.
+/.team/

@@ -27,6 +27,8 @@ import AuthModal from './components/AuthModal';
 import AccountOverview from './components/AccountOverview';
 import {IdentitySettings} from './components/GoogleIdentity';
 import AppShell from './components/AppShell';
+import {ViewStateProvider} from './components/viewState';
+import {useViewNavigation} from './components/viewStateStore';
 import ViewBoundary from './components/ViewBoundary';
 import { Dialog, EmptyState, LoadingSkeleton, UnavailableView } from './components/ui';
 const DashboardView = lazy(() => import('./components/DashboardView'));
@@ -49,12 +51,14 @@ export default function App() {
   const [contractConnected, setContractConnected] = useState(false);
 
   // Navigation Tabs: 'dashboard' | 'topics' | 'cv-jd' | 'attendance' | 'web3'
-  const [activeTab, setActiveTab] = useState('dashboard');
+
   const [coreEnabled, setCoreEnabled] = useState(false);
   const [unifiedMode,setUnifiedMode]=useState(false);
+  const [practiceMode,setPracticeMode]=useState(false);
   const [schoolWorkflow,setSchoolWorkflow]=useState(false);
   const [authMode,setAuthMode]=useState(location.pathname==='/register'?'register':'login');
   const [sessionReady, setSessionReady] = useState(false);
+  const [activeTab,setActiveTab]=useViewNavigation(user,sessionReady);
 
   // Modals
   const [showAuthModal, setShowAuthModal] = useState(['/login','/register'].includes(location.pathname));
@@ -88,10 +92,10 @@ export default function App() {
   const [evalForm, setEvalForm] = useState({ score: '', status: 'approved', feedback: '' });
   const [assigneeWallet, setAssigneeWallet] = useState('');
 
-  const showToast = (msg) => {
+  const showToast = useCallback((msg) => {
     setToastMessage(msg);
     setTimeout(() => setToastMessage(''), 3800);
-  };
+  }, []);
 
   const requireLogin = () => {
     if (user) return true;
@@ -100,17 +104,30 @@ export default function App() {
     return false;
   };
 
+  // Another tab can change the shared token; never keep the old role UI active.
+  useEffect(()=>{
+    let alive=true;
+    const sync=async event=>{
+      if(event.storageArea!==localStorage||!(event.key==='w3i_token'||event.key===null))return;
+      const expected=getToken();setSessionReady(false);setUser(null);setWalletAddress('');setNetworkName('');setTopics([]);setSelectedTopic(null);setShowAuthModal(false);setShowCreateTopicModal(false);setShowSubmitKPIModal(null);setShowEvaluateModal(null);
+      try{const restored=await restoreSession();if(!alive||getToken()!==expected)return;setUser(restored);setWalletAddress(restored?.walletAddress||'');setActiveTab('dashboard',{discard:true});setShowAuthModal(!restored);setBackendError('');showToast(restored?'Tài khoản đã được cập nhật theo phiên đăng nhập ở tab khác.':'Bạn đã đăng xuất ở tab khác.');}
+      catch(error){if(alive&&getToken()===expected)setBackendError(error.message);}
+      finally{if(alive&&getToken()===expected)setSessionReady(true);}
+    };
+    window.addEventListener('storage',sync);return()=>{alive=false;window.removeEventListener('storage',sync);};
+  },[setActiveTab,showToast]);
+
   // Restore session
   useEffect(() => {
     const expire = () => {
       setUser(null);setWalletAddress('');setNetworkName('');setTopics([]);setSelectedTopic(null);
       setShowCreateTopicModal(false);setShowSubmitKPIModal(null);setShowEvaluateModal(null);
-      setActiveTab('dashboard');setAuthMode('login');setShowAuthModal(true);
+      setActiveTab('dashboard',{discard:true});setAuthMode('login');setShowAuthModal(true);
       history.replaceState({},'', '/login');setBackendError('Phiên đăng nhập đã hết hiệu lực. Vui lòng đăng nhập lại.');
     };
     window.addEventListener('internova:session-expired',expire);
     return () => window.removeEventListener('internova:session-expired',expire);
-  }, []);
+  }, [setActiveTab]);
 
   useEffect(() => {
     let active = true;
@@ -118,7 +135,7 @@ export default function App() {
     Promise.all([apiRequest('/core/capabilities').catch(()=>({enabled:false,unified:false})),restoreSession()])
       .then(([capabilities,restored]) => {
         if(!active)return;
-        setCoreEnabled(capabilities.enabled===true);setUnifiedMode(capabilities.unified===true);setSchoolWorkflow(capabilities.schoolWorkflow===true);
+        setCoreEnabled(capabilities.enabled===true);setUnifiedMode(capabilities.unified===true);setSchoolWorkflow(capabilities.schoolWorkflow===true);setPracticeMode(capabilities.environment==='practice');
         if(getToken()===initialToken&&restored){
           setUser(restored);setWalletAddress(restored.walletAddress||'');setNetworkName('Chưa kiểm tra mạng ví');
           setActiveTab(capabilities.unified?'dashboard':restored.walletAddress?'dashboard':'core-profile');setShowAuthModal(false);
@@ -128,7 +145,7 @@ export default function App() {
       .catch((err) => { if (active && getToken() === initialToken) setBackendError(err.message); })
       .finally(() => { if (active) setSessionReady(true); });
     return () => { active = false; };
-  }, []);
+  }, [setActiveTab]);
 
   useEffect(()=>{const update=()=>{if(user&&['/login','/register'].includes(location.pathname)){history.replaceState({},'','/');setShowAuthModal(false);return;}setAuthMode(location.pathname==='/register'?'register':'login');setShowAuthModal(['/login','/register'].includes(location.pathname));};window.addEventListener('popstate',update);return()=>window.removeEventListener('popstate',update);},[user]);
 
@@ -150,7 +167,7 @@ export default function App() {
     };
     window.ethereum.on('accountsChanged', onAccountsChanged);
     return () => window.ethereum.removeListener?.('accountsChanged', onAccountsChanged);
-  }, [user]);
+  }, [user,showToast]);
 
   // Connect MetaMask or open modal if missing
   const connectWallet = async () => {
@@ -214,7 +231,7 @@ export default function App() {
       const restored=await restoreSession();
       if(token!==getToken())return;
       if(!restored){setUser(null);return;}
-      setUser(restored);setActiveTab('account-overview');setBackendError('');
+      setUser(restored);setActiveTab(restored.role==='student'?'dashboard':'account-overview');setBackendError('');
       showToast('Đã lưu hồ sơ thành công.');
     }catch(error){if(token===getToken())setBackendError('Hồ sơ đã lưu nhưng chưa tải lại được tài khoản: '+error.message);}
   };
@@ -528,7 +545,7 @@ export default function App() {
         loading={loading}
       />
 
-      <AppShell schoolWorkflow={schoolWorkflow} unified={unifiedMode} authReady={sessionReady} coreEnabled={coreEnabled} activeTab={activeTab} onNavigate={setActiveTab} user={user} walletAddress={walletAddress}
+      <ViewStateProvider key={user?`${user._id}:${user.role}`:'guest'} user={user} view={activeTab}><AppShell practiceMode={practiceMode} schoolWorkflow={schoolWorkflow} unified={unifiedMode} authReady={sessionReady} coreEnabled={coreEnabled} activeTab={activeTab} onNavigate={setActiveTab} user={user} walletAddress={walletAddress}
         networkName={networkName} onConnect={() => {setAuthMode('login');history.pushState({},'','/login');setShowAuthModal(true);}} onDemo={() => setShowAuthModal(true)} onLogout={disconnectWallet} loading={loading}
         roleChoice={roleChoice} onRoleChoice={setUserRole} transactionStatus={transactionStatus}
         onCheckContract={() => checkContractConnection().then(setContractConnected).catch(() => setContractConnected(false))} contractConnected={contractConnected} contractAddress={CONTRACT_ADDRESS} error={backendError}>
@@ -867,7 +884,7 @@ export default function App() {
         )}
       </>}
       </Suspense></ViewBoundary>
-      </AppShell>
+      </AppShell></ViewStateProvider>
 
       {/* MODAL: Create Topic */}
       {showCreateTopicModal && (

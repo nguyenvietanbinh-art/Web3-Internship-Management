@@ -1,0 +1,245 @@
+{
+  "time": "2026-11-07T11:29:54.544Z",
+  "tests": [
+    {
+      "name": "Student sees own self marks, AI criterion marks, comments and pending official result",
+      "status": "PASS"
+    },
+    {
+      "name": "Mentor sees the same AI proposal and genuine source excerpts in a five-column rubric",
+      "status": "PASS"
+    },
+    {
+      "name": "Mentor accepts proposal into the draft, adjusts one criterion and saves without publishing",
+      "status": "PASS"
+    },
+    {
+      "name": "AI rubric fits desktop, tablet, mobile and dark mode without exposing raw JSON",
+      "status": "PASS"
+    }
+  ],
+  "requests": [
+    {
+      "method": "OPTIONS",
+      "path": "/api/core/capabilities"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/capabilities"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/capabilities"
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/api/core/capabilities"
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/api/core/capabilities"
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/api/auth/me"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/capabilities"
+    },
+    {
+      "method": "GET",
+      "path": "/api/auth/me"
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/api/core/capabilities"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/capabilities"
+    },
+    {
+      "method": "GET",
+      "path": "/api/auth/me"
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/api/auth/me"
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/api/core/placements"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/placements"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/tasks"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/reports"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/time/totals"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/dashboard"
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/api/core/tasks"
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/api/core/reports"
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/api/core/time/totals"
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/api/core/dashboard"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/placements"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/reports"
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/api/core/reports"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/reports"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/reports"
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/api/core/reports"
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/api/core/reports"
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/api/core/reports/6aef023b9bad339073f6e9a9/ai-evaluation"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/reports/6aef023b9bad339073f6e9a9/ai-evaluation"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/web3/reports/6aef023b9bad339073f6e9a9/artifacts"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/web3/status"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/web3/reports/6aef023b9bad339073f6e9a9/artifacts"
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/api/core/web3/reports/6aef023b9bad339073f6e9a9/artifacts"
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/api/core/web3/status"
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/api/core/web3/reports/6aef023b9bad339073f6e9a9/artifacts"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/capabilities"
+    },
+    {
+      "method": "GET",
+      "path": "/api/auth/me"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/capabilities"
+    },
+    {
+      "method": "GET",
+      "path": "/api/auth/me"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/placements"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/reports"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/placements"
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/api/core/reports"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/ai/status"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/reports"
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/api/core/ai/status"
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/api/core/reports"
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/api/core/ai/reports/6aef023b9bad339073f6e9a9/analyze"
+    },
+    {
+      "method": "POST",
+      "path": "/api/core/ai/reports/6aef023b9bad339073f6e9a9/analyze"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/ai/status"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/reports"
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/api/core/reports/6aef023b9bad339073f6e9a9/review-draft"
+    },
+    {
+      "method": "PUT",
+      "path": "/api/core/reports/6aef023b9bad339073f6e9a9/review-draft"
+    }
+  ],
+  "exceptions": [],
+  "blocked": []
+}

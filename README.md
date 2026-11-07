@@ -1,3 +1,16 @@
+# Internova — Web3 Internship Management
+
+**Nhóm tải source và đúng dữ liệu đang có:** đọc [hướng dẫn khôi phục database thật và chạy từng dịch vụ](docs/TEAM_ACTUAL_DATABASE.md). Database/account được mã hóa trong `database/shared-snapshot`; khóa giải mã gửi riêng, không nằm trên GitHub. Không chạy seed để thay dữ liệu tác giả.
+
+- Main: localhost5188 → API57418 → Mongo27018; QA: localhost5189 → API57419, database riêng.
+- BERT+quy tắc chấm sơ bộ: Phúc77.5/100, self80, officialchưa xác nhận. [Kết quả và giới hạn](docs/INTERNOVA_PRODUCTION_READINESS/AI_AUTO_GRADING/FINAL_AI_GRADING_REPORT.md).
+- Không coi điểmAI là điểm chính thức. IPFS/Maps/lịch sửblockchain trên máy khác cần cấu hình; chưa đạtproduction100%.
+
+<details>
+<summary>Tài liệu lịch sử (cổng/trạng thái có thể cũ)</summary>
+
+> **Hiện hành 07/11/2026:** dữ liệu đang dùng tại **http://localhost:5188**; môi trường TEST để nghiệm thu và thử ghi tại **http://localhost:5189**, database riêng. Đọc [hướng dẫn chạy toàn bộ theo thứ tự](docs/RUN_FULL_WORKFLOW.md) và [kết quả hoàn thiện theo vai trò](docs/ROLE_WORKFLOW_COMPLETION.md). Sinh viên dùng tài khoản nhà trường cấp; doanh nghiệp không có xếp hạng AI; giảng viên/Admin không cần ví cá nhân. Hướng dẫn cổng/đăng ký bên dưới là lịch sử, không áp dụng thay cho hướng dẫn hiện hành. Không seed/reset dữ liệu để mở website.
+
 > **Thành viên clone mới:** đọc [TEAM_QUICKSTART.md](docs/TEAM_QUICKSTART.md) để cài dependency, chạy MongoDB/AI/Hardhat/Backend/Frontend và tạo file tài khoản TEST trên máy mình. Database cloud sẽ làm sau; không cần mật khẩu trên máy tác giả.
 >
 > Luồng hiện hành: **http://localhost:5182/**, email trước và ví sau. [Hướng dẫn thống nhất](docs/FULL_WEBSITE_TEST_GUIDE.md). Các môi trường nhiều cổng bên dưới là lịch sử; Google live cần Client ID hợp lệ cho origin5182.
@@ -34,3 +47,6 @@ Nền tảng quản lý đề tài thực tập, giao KPI theo trọng số, nh�
 - Dữ liệu khởi tạo trong frontend chỉ để xem thử; thao tác ghi yêu cầu đề tài có MongoDB ID và backend đang chạy.
 
 Chi tiết phạm vi và các hạng mục còn thiếu theo đề tài được ghi tại [docs/analysis.md](docs/analysis.md).
+
+
+</details>

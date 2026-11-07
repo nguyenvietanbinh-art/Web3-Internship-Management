@@ -43,8 +43,10 @@ async function issue(req,res,purpose){
     wallet=req.body.walletAddress.toLowerCase();
   }
   const expiresAt=new Date(Date.now()+300000);
-  const message=['Internova - Identity linking',`Purpose: ${purpose}`,`User: ${req.user?._id||'new'}`,`Wallet: ${wallet||req.user?.walletAddress||'none'}`,`Nonce: ${nonce}`,`Origin: ${req.headers.origin}`,`Expires: ${expiresAt.toISOString()}`].join('\n');
-  await Challenge.create({_id:id,nonce,purpose,browserHash:hash(secret),userId:req.user?._id,wallet,message,expiresAt});
+  let chainId;
+  if(purpose==='link-wallet'){try{const raw=req.body.chainId||'31337';if(typeof raw!=='string'||!(/^(0x[0-9a-fA-F]+|[1-9][0-9]*)$/).test(raw))throw Error();const n=BigInt(raw);if(n<=0n||n>18446744073709551615n)throw Error();chainId=n.toString();}catch{throw new HttpError(400,'Chain ID không hợp lệ');}}
+  const message=['Internova - Identity linking',`Purpose: ${purpose}`,`User: ${req.user?._id||'new'}`,`Wallet: ${wallet||req.user?.walletAddress||'none'}`,...(chainId?[`Chain ID: ${chainId}`]:[]),`Nonce: ${nonce}`,`Origin: ${req.headers.origin}`,`Expires: ${expiresAt.toISOString()}`].join('\n');
+  await Challenge.create({_id:id,nonce,purpose,browserHash:hash(secret),userId:req.user?._id,wallet,message,chainId,expiresAt});
   res.json({challengeId:id,nonce,message,expiresAt});
 }
 async function challenge(req,purpose){

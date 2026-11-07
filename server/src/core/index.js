@@ -16,6 +16,8 @@ router.use(require('./placements'));
 router.use(require('./kpis'));
 router.use(require('./work'));
 router.use(require('./time'));
+router.use(require('./companyLocations'));
+router.use(require('./reportEvaluation').router);
 router.use(require('./reports'));
 router.use(require('./dashboard'));
 router.use(require('./ai'));

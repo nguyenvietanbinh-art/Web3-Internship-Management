@@ -1,0 +1,283 @@
+{
+  "time": "2026-11-07T10:27:53.336Z",
+  "tests": [
+    {
+      "name": "Changing shared token in another tab updates role UI without stale student tools",
+      "status": "PASS",
+      "detail": {
+        "twoTabsSameSession": true
+      }
+    },
+    {
+      "name": "Mentor and school profile do not expose wallet linking tools",
+      "status": "PASS",
+      "detail": {
+        "roles": [
+          "mentor",
+          "admin"
+        ]
+      }
+    },
+    {
+      "name": "Company sees no AI ranking menu; location form saves only on explicit submit",
+      "status": "PASS",
+      "detail": {
+        "noAutoWriteBeforeSubmit": true
+      }
+    },
+    {
+      "name": "Role pages fit desktop/tablet/mobile and support dark mode",
+      "status": "PASS",
+      "detail": {
+        "widths": [
+          1440,
+          820,
+          390
+        ]
+      }
+    },
+    {
+      "name": "Logout from one tab removes private role navigation in the other tab",
+      "status": "PASS",
+      "detail": {
+        "crossTabLogout": true
+      }
+    }
+  ],
+  "requests": [
+    {
+      "method": "GET",
+      "path": "/api/core/capabilities"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/capabilities"
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/api/core/capabilities"
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/api/core/capabilities"
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/api/core/capabilities"
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/api/auth/me"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/capabilities"
+    },
+    {
+      "method": "GET",
+      "path": "/api/auth/me"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/capabilities"
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/api/core/capabilities"
+    },
+    {
+      "method": "GET",
+      "path": "/api/auth/me"
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/api/auth/me"
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/api/core/placements"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/placements"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/tasks"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/reports"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/time/totals"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/dashboard"
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/api/core/tasks"
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/api/core/reports"
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/api/core/time/totals"
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/api/core/dashboard"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/capabilities"
+    },
+    {
+      "method": "GET",
+      "path": "/api/auth/me"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/capabilities"
+    },
+    {
+      "method": "GET",
+      "path": "/api/auth/me"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/dashboard"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/capabilities"
+    },
+    {
+      "method": "GET",
+      "path": "/api/auth/me"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/capabilities"
+    },
+    {
+      "method": "GET",
+      "path": "/api/auth/me"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/dashboard"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/profile"
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/api/core/profile"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/capabilities"
+    },
+    {
+      "method": "GET",
+      "path": "/api/auth/me"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/capabilities"
+    },
+    {
+      "method": "GET",
+      "path": "/api/auth/me"
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/api/core/capabilities"
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/api/core/capabilities"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/profile"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/capabilities"
+    },
+    {
+      "method": "GET",
+      "path": "/api/auth/me"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/capabilities"
+    },
+    {
+      "method": "GET",
+      "path": "/api/auth/me"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/profile"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/placements"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/web3/status"
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/api/core/placements"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/company/locations"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/time/sessions"
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/api/core/web3/status"
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/api/core/company/locations"
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/api/core/time/sessions"
+    },
+    {
+      "method": "POST",
+      "path": "/api/core/company/locations"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/web3/status"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/company/locations"
+    },
+    {
+      "method": "GET",
+      "path": "/api/core/time/sessions"
+    }
+  ],
+  "exceptions": [],
+  "blocked": []
+}

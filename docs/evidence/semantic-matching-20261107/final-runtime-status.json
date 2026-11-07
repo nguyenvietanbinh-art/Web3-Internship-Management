@@ -1,0 +1,16 @@
+﻿{
+    "checkedAt":  "2026-11-07T12:24:00.5395029+07:00",
+    "sbert":  {
+                  "ready":  true,
+                  "configured":  true,
+                  "model_id":  "sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2",
+                  "revision":  "e8f8c211226b894fcb81acc59f3b34ba3efd5f42",
+                  "expected_revision":  "e8f8c211226b894fcb81acc59f3b34ba3efd5f42",
+                  "backend":  "onnx-cpu-int8",
+                  "reason":  null,
+                  "available_memory_mib":  1263.20703125,
+                  "network_inference":  false
+              },
+    "data_leaves_machine":  false,
+    "frontendStatus":  200
+}

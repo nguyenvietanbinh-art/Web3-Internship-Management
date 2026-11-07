@@ -1,0 +1,95 @@
+{
+  "at": "2026-11-07T10:19:47.853Z",
+  "database": "internova_role_qa_20261107",
+  "tests": [
+    {
+      "name": "BERT is real local ONNX and ready",
+      "status": "PASS",
+      "detail": {
+        "ready": true,
+        "configured": true,
+        "model_id": "sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2",
+        "revision": "e8f8c211226b894fcb81acc59f3b34ba3efd5f42",
+        "expected_revision": "e8f8c211226b894fcb81acc59f3b34ba3efd5f42",
+        "backend": "onnx-cpu-int8",
+        "reason": null,
+        "available_memory_mib": 889.83984375,
+        "network_inference": false
+      }
+    },
+    {
+      "name": "Student matches own CV against eligible opportunities with BERT",
+      "status": "PASS",
+      "detail": {
+        "elapsedMs": 29,
+        "candidates": 2,
+        "results": [
+          {
+            "title": "Phát triển giao diện web",
+            "cosine": 0.586578959295853
+          },
+          {
+            "title": "Phát triển API Node.js",
+            "cosine": 0.5094385090314159
+          }
+        ],
+        "model": {
+          "ready": true,
+          "configured": true,
+          "model_id": "sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2",
+          "revision": "e8f8c211226b894fcb81acc59f3b34ba3efd5f42",
+          "expected_revision": "e8f8c211226b894fcb81acc59f3b34ba3efd5f42",
+          "backend": "onnx-cpu-int8",
+          "reason": null,
+          "available_memory_mib": 883.7421875,
+          "network_inference": false
+        }
+      }
+    },
+    {
+      "name": "Another student cannot match someone else enrollment",
+      "status": "PASS",
+      "detail": {
+        "status": 404
+      }
+    },
+    {
+      "name": "School receives BERT allocation suggestions without assigning automatically",
+      "status": "PASS",
+      "detail": {
+        "elapsedMs": 19,
+        "candidates": 2,
+        "results": 2,
+        "allocationAvailable": false,
+        "model": {
+          "ready": true,
+          "configured": true,
+          "model_id": "sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2",
+          "revision": "e8f8c211226b894fcb81acc59f3b34ba3efd5f42",
+          "expected_revision": "e8f8c211226b894fcb81acc59f3b34ba3efd5f42",
+          "backend": "onnx-cpu-int8",
+          "reason": null,
+          "available_memory_mib": 883.625,
+          "network_inference": false
+        }
+      }
+    },
+    {
+      "name": "Mentor analyzes actual submitted content within assigned scope",
+      "status": "PASS",
+      "detail": {
+        "elapsedMs": 40,
+        "characters": 236,
+        "reportHash": "37ababc12467d1f1cfde4c918c35a506c817238add3a8f94e157debd335019d3",
+        "proposedTotal": null
+      }
+    },
+    {
+      "name": "Wrong roles cannot use student matching or school allocation; company ranking remains disabled",
+      "status": "PASS",
+      "detail": {
+        "roleGatesChecked": 12
+      }
+    }
+  ]
+}

@@ -40,7 +40,7 @@ function createApp(options = {}) {
   app.use("/api/topics", legacyOnly, require("./routes/topic.routes"));
   app.use("/api/data", legacyOnly, require("./routes/data.routes"));
   app.use("/api/internship", legacyOnly, require("./routes/internship.routes"));
-  app.get('/api/core/capabilities', (_req,res)=>res.json({enabled:config.coreBusinessEnabled,authentication:config.userIdBusiness?'user-id':'wallet',unified:config.userIdBusiness,schoolWorkflow:config.schoolWorkflowEnabled}));
+  app.get('/api/core/capabilities', (_req,res)=>res.json({enabled:config.coreBusinessEnabled,authentication:config.userIdBusiness?'user-id':'wallet',unified:config.userIdBusiness,schoolWorkflow:config.schoolWorkflowEnabled,environment:process.env.NODE_ENV==='test'?'practice':'standard'}));
   if(config.coreBusinessEnabled) app.use('/api/core',require('./core'));
 
   app.get("/api/health", (_req, res) => {

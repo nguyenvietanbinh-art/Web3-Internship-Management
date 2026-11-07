@@ -1,3 +1,4 @@
+import {cvDisplayText} from './cvPresentation';
 import { displayLabel } from './content';
 import { useState } from 'react';
 import { apiRequest } from '../../api/client';
@@ -37,7 +38,7 @@ export function ApplicationsPage({user}) {
     <Select label="Lọc trạng thái ứng tuyển" value={filter} onChange={setFilter} options={[{value:'',label:'Tất cả trạng thái'},...['submitted','under_review','accepted','rejected','withdrawn'].map(value=>({value,label:displayLabel(value)}))]} />
     <ServerTable key={filter} path={'/core/applications'+(filter?'?status='+filter:'')} revision={revision} label="Ứng tuyển" columns={[
       {key:'jdTitle',title:'Vị trí',render:r=><div><strong>{r.jdTitle}</strong><small className="business-block muted">{r.companyName} · {r.studentName}</small></div>},
-      {key:'cv',title:'Hồ sơ đã nộp',render:r=><details><summary>CV đã nộp</summary><strong>{r.cvSnapshot.title}</strong><p className="business-content">{r.cvSnapshot.summary}</p><p>{r.cvSnapshot.skills.join(', ')}</p><p className="business-content">{r.cvSnapshot.education}</p><p className="business-content">{r.cvSnapshot.experience}</p>{r.cvSnapshot.extractedText&&<pre className="business-content">{r.cvSnapshot.extractedText}</pre>}<small>Phiên bản CV {r.cvSnapshot.cvVersion} · {r.cvSnapshot.parser||'CV nhập tay'}</small></details>},
+      {key:'cv',title:'Hồ sơ đã nộp',render:r=><details><summary>CV đã nộp</summary><strong>{r.cvSnapshot.title}</strong><p className="business-content">{cvDisplayText(r.cvSnapshot.summary)}</p><p>{r.cvSnapshot.skills.join(', ')}</p><p className="business-content">{cvDisplayText(r.cvSnapshot.education)}</p><p className="business-content">{cvDisplayText(r.cvSnapshot.experience)}</p>{r.cvSnapshot.extractedText&&<pre className="business-content">{cvDisplayText(r.cvSnapshot.extractedText)}</pre>}<small>Phiên bản CV {r.cvSnapshot.cvVersion} · {r.cvSnapshot.parser||'CV nhập tay'}</small></details>},
       {key:'status',title:'Trạng thái',render:r=><><Status value={r.status} /><History entries={r.history} /></>},
       {key:'actions',title:'Thao tác',render:r=>['submitted','under_review'].includes(r.status)&&user.role!=='admin'?<button className="btn btn-secondary" onClick={()=>setEditing(r)}>{user.role==='student'?'Rút ứng tuyển':'Xét duyệt hồ sơ'}</button>:<span>Đã chốt / chỉ xem</span>},
     ]} />

@@ -6,6 +6,7 @@ const CompanySchema = new mongoose.Schema({
   description: { type: String, default: "" },
   industry: { type: String, default: "", trim: true },
   website: { type: String, default: "", trim: true },
+  locations: {type:[mongoose.Schema.Types.Mixed],default:undefined},
 }, { timestamps: true, collection: "companies" });
 
 module.exports = mongoose.model("Company", CompanySchema);

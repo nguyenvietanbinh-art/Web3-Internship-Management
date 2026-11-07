@@ -22,17 +22,17 @@ const items = [
 ];
 
 const coreItems = [
-  {id:'account-overview',label:'Tổng quan tài khoản',icon:LayoutDashboard,roles:['student','company','mentor','admin']},
-  {id:'core-web3',label:'Web3 theo kỳ',icon:BadgeCheck,roles:['student','company','mentor','admin']},
-  {id:'core-ai',label:'Phân tích AI',icon:BriefcaseBusiness,roles:['student','company','mentor','admin']},
+  {id:'account-overview',label:'Tổng quan tài khoản',icon:LayoutDashboard,roles:['company','mentor','admin']},
+  {id:'core-web3',label:'Điểm danh & chứng nhận',companyLabel:'Điểm danh & bằng chứng',mentorLabel:'Bằng chứng thực tập',adminLabel:'Quản lý chứng nhận',icon:BadgeCheck,roles:['student','company','mentor','admin']},
+  {id:'core-ai',label:'Đề tài phù hợp',companyLabel:'Đánh giá độ phù hợp',mentorLabel:'Phân tích báo cáo thực tập',icon:BriefcaseBusiness,roles:['student','mentor']},
   {id:'core-profile',label:'Hồ sơ cá nhân',icon:Wallet,roles:['student','company','mentor','admin']},
   {id:'core-cv',label:'CV của tôi',icon:BriefcaseBusiness,roles:['student']},
   {id:'core-jds',label:'Cơ hội ứng tuyển',companyLabel:'Tin tuyển dụng',icon:BriefcaseBusiness,roles:['student','company']},
   {id:'core-applications',label:'Ứng tuyển',companyLabel:'Ứng viên',icon:Users,roles:['student','company','admin']},
   {id:'core-placements',label:'Kỳ & phân công',icon:GraduationCap,roles:['student','company','mentor','admin']},
-  {id:'core-work',label:'Công việc & nhật ký',icon:ClipboardList,roles:['student','company','mentor','admin']},
+  {id:'core-work',label:'Công việc được giao',companyLabel:'Công việc & nhật ký',mentorLabel:'Công việc & nhật ký',adminLabel:'Công việc & nhật ký',icon:ClipboardList,roles:['student','company','mentor','admin']},
   {id:'core-time',label:'Chấm công',icon:ClipboardList,roles:['student','company','mentor','admin']},
-  {id:'core-reports',label:'Báo cáo & kết quả',icon:Layers,roles:['student','company','mentor','admin']},
+  {id:'core-reports',label:'Báo cáo kết quả',companyLabel:'Báo cáo & kết quả',mentorLabel:'Báo cáo & kết quả',adminLabel:'Báo cáo & kết quả',icon:Layers,roles:['student','company','mentor','admin']},
   {id:'core-accounts',label:'Tài khoản & phân quyền',icon:Users,roles:['admin']},
 ];
 const workflowItems=[
@@ -43,15 +43,16 @@ const workflowItems=[
   {id:'core-company-students',label:'Sinh viên thực tập tại doanh nghiệp',icon:GraduationCap,roles:['company']},
   {id:'core-mentor-students',label:'Sinh viên được phân công',icon:GraduationCap,roles:['mentor']},
 ];
-export default function AppShell({ children, activeTab, onNavigate, user, unified=false, schoolWorkflow=false, authReady = true, coreEnabled = false, walletAddress, networkName, onConnect, onDemo, onLogout, loading, roleChoice, onRoleChoice, transactionStatus, onCheckContract, contractConnected, contractAddress, error }) {
+export default function AppShell({ children, activeTab, onNavigate, user, unified=false, schoolWorkflow=false, practiceMode=false, authReady = true, coreEnabled = false, walletAddress, networkName, onConnect, onDemo, onLogout, loading, roleChoice, onRoleChoice, transactionStatus, onCheckContract, contractConnected, contractAddress, error }) {
   const [collapsed, setCollapsed] = useState(false), [mobileOpen, setMobileOpen] = useState(false), [notifications, setNotifications] = useState(false);
   const [theme, setTheme] = useState(() => { try { return localStorage.getItem('w3i_theme') === 'dark' ? 'dark' : 'light'; } catch { return 'light'; } });
   const main = useRef(null);
   const role = user?.role || 'guest';
   const schoolItems=[items[0],...workflowItems,...coreItems.filter(i=>!['core-jds','core-applications'].includes(i.id)).map(i=>i.id==='core-placements'?{...i,roles:['admin']}:i)];
-  const available = schoolWorkflow&&user?schoolItems:unified&&user?[items[0],...coreItems]:coreEnabled && user ? [...items.filter(item => !item.unavailable || item.id === 'unavailable-alerts'),...coreItems] : items, allowed = available.filter(item => item.roles.includes(role) && (schoolWorkflow || unified || !user || user.walletAddress || ['core-profile','account-overview'].includes(item.id)));
+  const available = schoolWorkflow&&user?schoolItems:unified&&user?[items[0],...coreItems]:coreEnabled && user ? [...items.filter(item => !item.unavailable || item.id === 'unavailable-alerts'),...coreItems] : items, allowed = available.filter(item => item.roles.includes(role) && (schoolWorkflow || unified || !user || user.walletAddress || ['core-profile','account-overview'].includes(item.id))).map(item=>({...item,label:(role==='company'&&item.companyLabel)||(role==='mentor'&&item.mentorLabel)||(role==='admin'&&item.adminLabel)||item.label}));
   const fallbackCurrent={id:'core-profile',label:'Hồ sơ cá nhân'};
   const current = allowed.find(item => item.id === activeTab) || allowed[0] || fallbackCurrent;
+  useEffect(()=>{if(authReady&&user&&!allowed.some(item=>item.id===activeTab))onNavigate('dashboard');},[authReady,user,allowed,activeTab,onNavigate]);
   useEffect(() => { document.documentElement.dataset.theme = theme; try { localStorage.setItem('w3i_theme', theme); } catch { /* Preference persistence is optional. */ } }, [theme]);
   useEffect(() => { document.title = `${user ? current.label : 'Đăng nhập'} · Internova`; }, [current.label,user]);
   const navigate = id => { onNavigate(id); setMobileOpen(false); requestAnimationFrame(() => main.current?.focus()); };
@@ -74,9 +75,9 @@ export default function AppShell({ children, activeTab, onNavigate, user, unifie
       {!user && DEMO_ENABLED && <button className="btn btn-secondary" onClick={onDemo}>Ví Demo</button>}
       <button className="icon-button" aria-label={theme === 'light' ? 'Bật Dark Mode' : 'Bật Light Mode'} onClick={() => setTheme(theme === 'light' ? 'dark' : 'light')}>{theme === 'light' ? <Moon size={19} /> : <Sun size={19} />}</button>
       <button className="icon-button" aria-label="Thông báo" disabled={Boolean(user&&!unified&&!user.walletAddress)} onClick={() => setNotifications(true)}><Bell size={19} /></button><span className="header-divider" />
-      {user ? <><details className="wallet-summary"><summary>{user.name}</summary><p>{user.email||'Chưa có email'} · {roleNames[role]}</p><p>{walletAddress?`${walletAddress.slice(0,6)}…${walletAddress.slice(-4)}`:'Chưa liên kết ví'}</p><button className="btn btn-secondary" onClick={()=>navigate('core-profile')}>Hồ sơ & cài đặt tài khoản</button></details><button id="logout-btn" className="icon-button" title="Đăng xuất" aria-label="Đăng xuất" onClick={onLogout}><LogOut size={19} /><span className="sr-only">Đăng xuất</span></button></> : <button id="connect-wallet-btn" className="btn btn-primary" disabled={loading} onClick={onConnect}><Wallet size={17} /><span>{loading ? 'Đang xác thực…' : 'Đăng nhập / Đăng ký'}</span></button>}
+      {user ? <><details className="wallet-summary"><summary>{user.name}</summary><p>{user.email||'Chưa có email'} · {roleNames[role]}</p>{['student','company'].includes(role)&&<p>{walletAddress?`${walletAddress.slice(0,6)}…${walletAddress.slice(-4)}`:'Chưa liên kết ví'}</p>}<button className="btn btn-secondary" onClick={()=>navigate('core-profile')}>Hồ sơ & cài đặt tài khoản</button></details><button id="logout-btn" className="icon-button" title="Đăng xuất" aria-label="Đăng xuất" onClick={onLogout}><LogOut size={19} /><span className="sr-only">Đăng xuất</span></button></> : <button id="connect-wallet-btn" className="btn btn-primary" disabled={loading} onClick={onConnect}><Wallet size={17} /><span>{loading ? 'Đang xác thực…' : 'Đăng nhập / Đăng ký'}</span></button>}
     </div></header>
-    <main id="main-content" className="main-content" tabIndex={-1} ref={main}><PageHeader eyebrow={user ? `${roleNames[role]} / KHÔNG GIAN LÀM VIỆC` : 'WEB3 INTERNSHIP MANAGEMENT'} title={current.id === 'dashboard' ? `Tổng quan${user?.name ? `, ${user.name}` : ''}` : current.label} description={current.description}><span className="workspace-pill"><span className="status-dot" />{user ? roleNames[role] : 'Công khai'}</span></PageHeader>
+    <main id="main-content" className="main-content" tabIndex={-1} ref={main}><PageHeader eyebrow={user ? `${roleNames[role]} / KHÔNG GIAN LÀM VIỆC` : 'WEB3 INTERNSHIP MANAGEMENT'} title={current.id === 'dashboard' ? `Tổng quan${user?.name ? `, ${user.name}` : ''}` : current.label} description={current.description}><div className="workspace-status-pills"><span className="workspace-pill"><span className="status-dot" />{user ? roleNames[role] : 'Công khai'}</span>{practiceMode&&<span className="workspace-pill">Môi trường thực hành</span>}</div></PageHeader>
       {!user && <div className="guest-banner"><div><strong>Chọn vai trò để bắt đầu</strong><p>Xác thực bằng chữ ký ví; không gửi giao dịch blockchain.</p></div><div className="segmented" aria-label="Vai trò đăng ký">{[['company','Doanh nghiệp'],['student','Sinh viên']].map(([value,label]) => <button key={value} id={`role-${value}-btn`} aria-pressed={roleChoice === value} onClick={() => onRoleChoice(value)}>{label}</button>)}</div></div>}
       {error && <div role="alert" className="inline-alert is-error">{error}</div>}
       {children}

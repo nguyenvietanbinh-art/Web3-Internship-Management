@@ -1,0 +1,27 @@
+{
+  "at": "2026-11-07T10:30:14.373Z",
+  "scope": "local QA, sequential, no load test, warmed model; 3 distinct queries but candidates may be cached",
+  "health": {
+    "samples": 10,
+    "p50Ms": 1.356499999999997,
+    "p95Ms": 56.8982,
+    "maxMs": 56.8982
+  },
+  "inference": [
+    {
+      "wallMs": 27,
+      "serviceMs": 19.92,
+      "model": "sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2"
+    },
+    {
+      "wallMs": 11,
+      "serviceMs": 6.51,
+      "model": "sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2"
+    },
+    {
+      "wallMs": 11,
+      "serviceMs": 7.66,
+      "model": "sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2"
+    }
+  ]
+}

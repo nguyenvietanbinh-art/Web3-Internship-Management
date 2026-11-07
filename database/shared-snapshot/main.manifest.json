@@ -1,0 +1,172 @@
+{
+  "format": 1,
+  "sourceDatabase": "internova_demo_cunhan_kysu_20261107",
+  "createdAt": "2026-11-07T11:38:53.987Z",
+  "snapshotReadConcern": "snapshot",
+  "encrypted": true,
+  "cipher": "AES-256-GCM+scrypt",
+  "encryptedSha256": "bbf927691383c937d465054fc71092a4d8119ece9a23897056230e1b2428cead",
+  "compressedSha256": "621a76061511aadfcc2d91edc32188f2edd166af07aaf17f1942af01c73741c2",
+  "bytes": 254440,
+  "collections": [
+    {
+      "name": "ai_analyses",
+      "count": 0,
+      "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+    },
+    {
+      "name": "applications",
+      "count": 3,
+      "sha256": "a6f2fc58fa0f4fae4572763a686799fbb8f995a169f001c37f0662a86ae75eab"
+    },
+    {
+      "name": "assignments",
+      "count": 35,
+      "sha256": "d16a67c5872538ad84f6b7b2129fe6ddf10a8d1889e49b10c24bfc950e6def3e"
+    },
+    {
+      "name": "attendance_sessions",
+      "count": 0,
+      "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+    },
+    {
+      "name": "attendances",
+      "count": 0,
+      "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+    },
+    {
+      "name": "auth_nonces",
+      "count": 0,
+      "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+    },
+    {
+      "name": "batch_enrollments",
+      "count": 473,
+      "sha256": "e2368380f8863c26f513f311ca3e077e9c9631e23a54b14f9735a0d151c02fbc"
+    },
+    {
+      "name": "batch_registrations",
+      "count": 0,
+      "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+    },
+    {
+      "name": "business_reports",
+      "count": 49,
+      "sha256": "10288307741d4873a3278a2bf16049b9ab52c367f9b0848171d40e9c14621c28"
+    },
+    {
+      "name": "chain_events",
+      "count": 0,
+      "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+    },
+    {
+      "name": "chain_operations",
+      "count": 0,
+      "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+    },
+    {
+      "name": "companies",
+      "count": 13,
+      "sha256": "df447173811b64bb3b3acb974ef18923ec5509e6d5a0510fb5039141a027dd28"
+    },
+    {
+      "name": "core_qr_sessions",
+      "count": 0,
+      "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+    },
+    {
+      "name": "cvs",
+      "count": 476,
+      "sha256": "c02706bf4129dfaa041a39303c71177ee124900e70216a7c14f921d873f926d8"
+    },
+    {
+      "name": "identitychallenges",
+      "count": 1,
+      "sha256": "9ea3ead753e90addc2e27e1b5843f9a9877db32bbf00189364735c5f3d8a8ac4"
+    },
+    {
+      "name": "internship_batches",
+      "count": 7,
+      "sha256": "2a345dfda63984e2c7ca2ebf0c20ac991dbe934b08d413cbfc0e3a1899680bf5"
+    },
+    {
+      "name": "internship_tasks",
+      "count": 73,
+      "sha256": "49f23686ff5fc8bb497711726f1237d75500bd5a61893428f206b20b18688a37"
+    },
+    {
+      "name": "job_descriptions",
+      "count": 8,
+      "sha256": "0d075f9a8062cbc3b2867ff5046ba31cc89e8327b66667bf2057c2f98ac4ab3e"
+    },
+    {
+      "name": "kpi_evaluations",
+      "count": 0,
+      "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+    },
+    {
+      "name": "notification_receipts",
+      "count": 0,
+      "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+    },
+    {
+      "name": "private_report_artifacts",
+      "count": 0,
+      "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+    },
+    {
+      "name": "school_applications",
+      "count": 79,
+      "sha256": "815c7b22d2655152f5f16e2e79ec95710d8c5d5734d87f433ebdb9d6e53b1e19"
+    },
+    {
+      "name": "students",
+      "count": 478,
+      "sha256": "fa2291a4c7eb7bbb5bcfc5da5daf215cee6c1c18ee1b52e798a11d9ca78a40d0"
+    },
+    {
+      "name": "submissions",
+      "count": 0,
+      "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+    },
+    {
+      "name": "support_payments",
+      "count": 0,
+      "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+    },
+    {
+      "name": "support_rounds",
+      "count": 0,
+      "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+    },
+    {
+      "name": "topic_opportunities",
+      "count": 164,
+      "sha256": "2ca5a5566fff9203fd0a44b94cdf6f387367d2d1e63bd99e9df875268ccbd312"
+    },
+    {
+      "name": "topics",
+      "count": 88,
+      "sha256": "1c022d24f9f6a1cca46a5747ef510737c0ec71d587d72881c5408bb0defce200"
+    },
+    {
+      "name": "users",
+      "count": 505,
+      "sha256": "646cdc2d48f051c996d2b9483b72837367a5397bb6dcfe16af9e678b5ac65c53"
+    },
+    {
+      "name": "work_logs",
+      "count": 48,
+      "sha256": "5585ee20176ba7cdfdb3f8d32351d37986ae5a68a6596434e9c1c280bd36cab8"
+    },
+    {
+      "name": "work_sessions",
+      "count": 61,
+      "sha256": "85330f3059d7236eacf16308bc9bcb129792f609da7c8b221c715d3e907c61a0"
+    }
+  ],
+  "loginReferenceCount": 2,
+  "containsActualDatabase": true,
+  "containsOriginalPasswordHashes": true,
+  "passwordStoredInGit": false
+}

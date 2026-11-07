@@ -24,15 +24,16 @@ router.get(
       );
     const q = v.search(req.query.q);
     if (q) filter.title = q;
-    res.json(await v.paged(Task, filter, req.query));
+    const page=await v.paged(Task, filter, req.query);if(req.user.role!=='student')page.items=page.items.map(({draft,...row})=>row);res.json(page);
   })
 );
 router.post(
   '/tasks',
   requireRole('company', 'mentor'),
   asyncHandler(async (req, res) => {
-    v.keys(req.body, ['assignmentId', 'title', 'description', 'priority', 'dueDate']);
+    v.keys(req.body, ['assignmentId', 'title', 'description', 'priority', 'dueDate','objective','workItems','requiredProducts','criteria','progressWeight','startDate']);
     const a = await policy.load(req.user, req.body.assignmentId, { active: true });
+    const creation=await require('./creationIdentity')(Task,req,String(a._id));if(creation.existing)return res.json(creation.existing);
     const dueDate = v.date(req.body.dueDate, 'Hạn task');
     if (dueDate < a.startDate || dueDate > a.endDate)
       throw new HttpError(400, 'Hạn task ngoài thời gian phân công');
@@ -40,6 +41,8 @@ router.post(
       .status(201)
       .json(
         await Task.create({
+          ...(creation._id?{_id:creation._id,creationRequestHash:creation.creationRequestHash}:{}),
+          ...require('./taskEvaluationService').taskDefinition(req.body,a,req.user),
           assignmentId: a._id,
           topicId: a.topicId,
           title: v.text(req.body.title, 'Tên task', { required: true, max: 200 }),
@@ -68,8 +71,8 @@ router.patch(
     const { doc, assignment } = await resource(Task, req.user, req.params.id, true);
     const allowed =
       req.user.role === 'student'
-        ? ['status', 'progress', 'version']
-        : ['title', 'description', 'priority', 'dueDate', 'status', 'progress', 'version'];
+        ? ['version']
+        : ['title', 'description', 'priority', 'dueDate', 'version'];
     v.keys(req.body, allowed);
     const set = {};
     if (req.body.title !== undefined)
@@ -82,34 +85,8 @@ router.patch(
       if (set.dueDate < assignment.startDate || set.dueDate > assignment.endDate)
         throw new HttpError(400, 'Hạn ngoài phân công');
     }
-    if (req.user.role === 'student' && ['review', 'done'].includes(doc.status))
-      throw new HttpError(409, 'Công việc đang chờ duyệt hoặc đã hoàn thành');
-    if (req.body.status !== undefined)
-      set.status = v.choice(
-        req.body.status,
-        req.user.role === 'student'
-          ? ['todo', 'in_progress']
-          : ['todo', 'in_progress', 'review', 'done'],
-        'Trạng thái'
-      );
-    if (req.body.progress !== undefined)
-      set.progress = v.integer(
-        req.body.progress,
-        0,
-        req.user.role === 'student' ? 99 : 100,
-        'Tiến độ'
-      );
-    const progress = set.progress ?? doc.progress,
-      status = set.status ?? doc.status;
-    if (
-      (status === 'done' && progress !== 100) ||
-      (['todo', 'in_progress'].includes(status) && progress === 100)
-    )
-      throw new HttpError(
-        400,
-        'Hoàn thành cần tiến độ 100%; dùng Nộp bài để gửi kết quả chờ duyệt'
-      );
-    set.completedAt = status === 'done' ? new Date() : null;
+    if(req.user.role==='student')throw new HttpError(403,'Sinh viên chỉ nộp kết quả, không tự cập nhật phần trăm hoặc xác nhận hoàn thành');
+    if(doc.submissionVersion||doc.submission?.submittedAt||doc.status==='done')throw new HttpError(409,'Công việc đã có bài nộp; không thay yêu cầu trong phiên bản đang đánh giá');
     res.json(
       await v.updateVersion(
         Task,
@@ -132,7 +109,7 @@ router.patch(
 );
 const taskUpload = multer({
   storage: multer.memoryStorage(),
-  limits: { fileSize: 5 * 1024 * 1024, files: 1, fields: 4, fieldSize: 160000 },
+  limits: { fileSize: 5 * 1024 * 1024, files: 1, fields: 8, fieldSize: 160000 },
 }).single('file');
 router.post(
   '/tasks/:id/submit',
@@ -144,6 +121,7 @@ router.post(
         409,
         'Bài đang chờ duyệt hoặc đã hoàn thành; chỉ nộp lại khi được yêu cầu'
       );
+    require('./taskEvaluationService').requireCriteria(context.doc);
     req.taskContext = context;
     next();
   }),
@@ -161,7 +139,7 @@ router.post(
       next();
     }),
   asyncHandler(async (req, res) => {
-    v.keys(req.body, ['content', 'link', 'version', 'fileName']);
+    v.keys(req.body, ['content', 'link', 'version', 'fileName','result','challenges','solution']);
     const { doc } = req.taskContext,
       content = v.text(req.body.content, 'Nội dung bài nộp', { max: 40000 }),
       link = v.text(req.body.link, 'Liên kết kết quả', { max: 2000 });
@@ -188,12 +166,14 @@ router.post(
       );
       if (!/\.(pdf|docx|zip|txt|png|jpg|jpeg)$/i.test(fileName) || !req.file.size)
         throw new HttpError(415, 'Chỉ nhận PDF, DOCX, ZIP, TXT, PNG hoặc JPG có nội dung');
-      mime = 'application/octet-stream';
+      mime = await require('../services/taskEvidenceFile').validate(req.file,fileName);
       size = req.file.size;
     }
+    const resultText=v.text(req.body.result,'Kết quả đạt được',{required:true,max:15000}),challenges=v.text(req.body.challenges,'Khó khăn',{required:true,max:10000}),solution=v.text(req.body.solution,'Giải pháp',{required:true,max:10000});
+    if(!content.trim())throw new HttpError(400,'Cần nội dung công việc đã thực hiện');
     const submittedAt = new Date(),
       submission = {
-        content,
+        content,result:resultText,challenges,solution,
         link,
         submittedAt,
         late: submittedAt > doc.dueDate,
@@ -201,17 +181,26 @@ router.post(
         mime,
         size,
       };
+    if(require('./taskEvaluationService').submissionText(submission).length>50000)throw new HttpError(400,'Tổng nội dung bài nộp vượt 50.000 ký tự');
     const version = req.is('multipart/form-data') ? Number(req.body.version) : req.body.version;
+    const prior=await Task.findById(doc._id).select('+submissionVersions.fileData +submissionFileData');
+    const versions=(prior.submissionVersions||[]).map(row=>row.toObject());
+    if(!versions.length&&prior.submission?.submittedAt)versions.push({version:prior.submissionVersion||1,submission:prior.submission.toObject?.()||prior.submission,fileData:prior.submissionFileData,criteriaVersion:prior.criteriaVersion,reviews:prior.criterionReviews||[],analysis:prior.evidenceAnalysis});
+    if(versions.length>=15||versions.reduce((n,row)=>n+(row.fileData?.length||0),0)+(req.file?.buffer.length||0)>8*1024*1024)throw new HttpError(413,'Lịch sử bài nộp đã đạt giới hạn; liên hệ người phụ trách, không xóa bản cũ');
+    const previous=versions.find(row=>row.version===prior.submissionVersion);if(previous){previous.reviews=(prior.criterionReviews||[]).map(r=>r.toObject?.()||r);previous.analysis=prior.evidenceAnalysis;}
+    const nextVersion=(prior.submissionVersion||versions.length||0)+1;
+    versions.push({version:nextVersion,submission,fileData:req.file?.buffer,sha256:require('./taskEvaluationService').hash(req.file?.buffer||Buffer.from(content)),criteriaVersion:doc.criteriaVersion});
+    if(require('mongoose').mongo.BSON.calculateObjectSize({...prior.toObject(),submissionVersions:versions,submissionFileData:req.file?.buffer,history:[...(prior.history||[]).map(e=>e.toObject?.()||e),{data:{submission,previous:doc.submission}}]})>15*1024*1024)throw new HttpError(413,'Lịch sử bài nộp vượt giới hạn lưu trữ; không xóa bản cũ');
     const saved = await v.updateVersion(
       Task,
       doc,
       version,
       {
-        submission,
+        submission,submissionVersion:nextVersion,submissionVersions:versions,draft:null,evidenceAnalysis:null,criterionReviews:[],confirmedProgress:0,
         submissionFileData: req.file?.buffer || null,
         review: null,
         status: 'review',
-        progress: 100,
+        progress: 0,
         completedAt: null,
       },
       v.event(req.user, 'task.submitted', {
@@ -221,6 +210,7 @@ router.post(
     );
     const result = saved.toObject();
     delete result.submissionFileData;
+    result.submissionVersions=result.submissionVersions?.map(({fileData,...row})=>row);
     res.json(result);
   })
 );
@@ -228,7 +218,7 @@ router.get(
   '/tasks/:id/submission/file',
   asyncHandler(async (req, res) => {
     const { doc } = await resource(Task, req.user, req.params.id);
-    const file = await Task.findById(doc._id).select('+submissionFileData');
+    const file = await require('./taskEvaluationService').fileVersion(doc,req.query);
     if (!file?.submissionFileData || !file.submission?.fileName)
       throw new HttpError(404, 'Bài nộp chưa có tệp đính kèm');
     res
@@ -247,7 +237,7 @@ router.get(
   '/tasks/:id/submission/preview',
   asyncHandler(async (req, res) => {
     const { doc } = await resource(Task, req.user, req.params.id);
-    const file = await Task.findById(doc._id).select('+submissionFileData'),
+    const file = await require('./taskEvaluationService').fileVersion(doc,req.query),
       bytes = file?.submissionFileData,
       name = file?.submission?.fileName;
     if (!bytes || !name) throw new HttpError(404, 'Bài nộp chưa có tệp đính kèm');
@@ -304,32 +294,5 @@ router.get(
       .send(bytes);
   })
 );
-router.post(
-  '/tasks/:id/review',
-  requireRole('company', 'mentor'),
-  asyncHandler(async (req, res) => {
-    v.keys(req.body, ['decision', 'comment', 'version']);
-    const { doc } = await resource(Task, req.user, req.params.id, true);
-    if (doc.status !== 'review' || !doc.submission?.submittedAt)
-      throw new HttpError(409, 'Chỉ đánh giá công việc đã nộp và đang chờ duyệt');
-    const decision = v.choice(req.body.decision, ['approved', 'need_revision'], 'Kết quả'),
-      comment = v.text(req.body.comment, 'Nhận xét', { required: true, max: 5000 }),
-      approved = decision === 'approved';
-    const review = { decision, comment, reviewedAt: new Date(), reviewerUserId: req.user._id };
-    res.json(
-      await v.updateVersion(
-        Task,
-        doc,
-        req.body.version,
-        {
-          review,
-          status: approved ? 'done' : 'in_progress',
-          progress: approved ? 100 : 99,
-          completedAt: approved ? new Date() : null,
-        },
-        v.event(req.user, 'task.reviewed', review)
-      )
-    );
-  })
-);
+router.post('/tasks/:id/review',requireRole('company','mentor'),asyncHandler(async(req,res)=>{await resource(Task,req.user,req.params.id,true);throw new HttpError(409,'Duyệt từng tiêu chí để tính tiến độ chính thức','CRITERION_REVIEW_REQUIRED');}));
 module.exports = router;

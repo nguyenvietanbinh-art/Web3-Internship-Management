@@ -46,6 +46,7 @@ contract InternshipRegistry {
     mapping(uint256 => Submission) public latestSubmissions;
     mapping(uint256 => Evaluation) public evaluations;
     mapping(uint256 => uint256[]) private topicAssignmentIds;
+    mapping(uint256 => mapping(address => bool)) public registeredStudents;
 
     event TopicCreated(uint256 indexed topicId, address indexed company, uint64 deadline, uint32 maxSlots);
     event TopicStatusChanged(uint256 indexed topicId, TopicStatus status);
@@ -69,13 +70,16 @@ contract InternshipRegistry {
     function assignStudent(uint256 topicId, address student, uint16 kpiAtAssign) external onlyCompany(topicId) returns (uint256 assignmentId) {
         Topic storage topic = topics[topicId];
         require(topic.status == TopicStatus.Open, "Topic is not open");
+        require(block.timestamp < topic.deadline, "Registration deadline passed");
         require(student != address(0), "Invalid student address");
+        require(!registeredStudents[topicId][student], "Student already assigned");
         require(kpiAtAssign <= 100, "KPI snapshot must be 0-100");
         require(topic.assignmentCount < topic.maxSlots, "No slots remaining");
 
         assignmentId = nextAssignmentId++;
         assignments[assignmentId] = Assignment(assignmentId, topicId, student, kpiAtAssign, AssignmentStatus.Assigned);
         topicAssignmentIds[topicId].push(assignmentId);
+        registeredStudents[topicId][student] = true;
         topic.assignmentCount++;
         topic.status = topic.assignmentCount == topic.maxSlots ? TopicStatus.Assigned : TopicStatus.Open;
         emit AssignmentCreated(assignmentId, topicId, student, kpiAtAssign);

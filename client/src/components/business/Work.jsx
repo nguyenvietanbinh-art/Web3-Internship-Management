@@ -1,3 +1,5 @@
+import {TaskProgressSummary} from './work/TaskAssessment';
+import {useViewState} from '../viewStateStore';
 import { useState } from 'react';
 import { displayLabel } from './content';
 import { Panel, ServerTable, MutationDialog, History, Status, AssignmentPicker } from './Shared';
@@ -6,21 +8,23 @@ import AssignmentNotice from './work/AssignmentNotice';
 import { TaskHistory, TaskSubmission } from './work/TaskSubmission';
 import WorkDialog from './work/WorkDialog';
 import { WORK_DIALOG_TITLES } from './work/constants';
+import ReportsPage from './Reports';
+import Kpis from './Kpis';
 import CompanyWorkPeriods from './work/CompanyWorkPeriods';
 export default function WorkPage({ user, schoolWorkflow=false }) {
   const [assignment, setAssignment] = useState(null),
-    [tab, setTab] = useState('tasks'),
+    [tab,setTab]=useViewState('tab','tasks'),
     [revision, setRevision] = useState(0),
     [modal, setModal] = useState(null);
   const [message, setMessage] = useState('');
-  const [batchId,setBatchId]=useState('');
+  const [batchId,setBatchId]=useViewState('batchId','');
   const periodMode=schoolWorkflow&&user.role==='company';
   const selected = assignment&&!assignment.pendingAssignment ? `?assignmentId=${assignment._id}${periodMode?'&batchId='+batchId:''}` : periodMode&&batchId?'?batchId='+batchId:'',
     isActive = active(assignment),
     manage = ['company', 'mentor'].includes(user.role),
-    saved = () => {
+    saved = (result) => {
       setMessage(
-        modal.type === 'submitTask'
+        result?.draftSaved?'Đã lưu bản nháp công việc.':modal.type === 'submitTask'
           ? 'Đã nộp công việc thành công.'
           : modal.type === 'reviewTask'
           ? 'Đã lưu đánh giá công việc.'
@@ -32,11 +36,12 @@ export default function WorkPage({ user, schoolWorkflow=false }) {
   return (
     <div className="business-stack">
       <Panel
-        title="Công việc / nhật ký theo kỳ"
+        title={user.role==='student'?'Công việc được giao':'Công việc / nhật ký theo kỳ'}
         description="Giao việc, theo dõi deadline, nộp kết quả và nhận xét."
       >
         {periodMode&&<CompanyWorkPeriods value={batchId} onChange={id=>{setBatchId(id);setAssignment(null);setModal(null);setMessage('');setRevision(n=>n+1);}}/>}
         <AssignmentPicker
+          userRole={user.role}
           batchId={periodMode?batchId:''}
           requireBatch={periodMode}
           includeAdmissions={periodMode}
@@ -60,13 +65,15 @@ export default function WorkPage({ user, schoolWorkflow=false }) {
             aria-pressed={tab === 'logs'}
             onClick={() => setTab('logs')}
           >
-            Nhật ký theo kỳ
+            {user.role==='student'?'Báo cáo tuần':'Nhật ký theo kỳ'}
           </button>
         </div>
       </Panel>
       {message && <p role="status">{message}</p>}
+      {user.role==='student'&&tab==='logs'&&<ReportsPage user={user} studentKind="weekly" embedded providedAssignment={assignment}/>}
+      {user.role==='student'&&tab==='logs'&&<p className="muted">Nhật ký và yêu cầu theo tuần đã có được giữ bên dưới để tra cứu và phản hồi; báo cáo tuần chính thức nộp ở biểu mẫu phía trên.</p>}
       <Panel
-        title={tab === 'tasks' ? 'Công việc được giao' : 'Nhật ký tuần'}
+        title={tab === 'tasks' ? 'Công việc được giao' : user.role==='student'?'Nhật ký công việc đã có':'Nhật ký tuần'}
         actions={
           tab === 'tasks' && manage ? (
             <button className="btn btn-primary" disabled={periodMode&&!isActive} onClick={() => setModal({ type: 'task' })}>
@@ -75,14 +82,6 @@ export default function WorkPage({ user, schoolWorkflow=false }) {
           ) : tab === 'logs' && manage ? (
             <button className="btn btn-primary" disabled={periodMode&&!isActive} onClick={() => setModal({ type: 'assignLog' })}>
               Giao yêu cầu theo tuần
-            </button>
-          ) : tab === 'logs' && user.role === 'student' ? (
-            <button
-              className="btn btn-primary"
-              disabled={!isActive}
-              onClick={() => setModal({ type: 'log' })}
-            >
-              Nộp nhật ký theo kỳ
             </button>
           ) : null
         }
@@ -123,7 +122,7 @@ export default function WorkPage({ user, schoolWorkflow=false }) {
                 title: 'Tiến độ',
                 render: (r) => (
                   <span>
-                    {r.progress}% · <Status value={r.status} />
+                    {r.confirmedProgress==null?'Chưa xác nhận theo tiêu chí':r.confirmedProgress+'%'} · <Status value={r.status} />
                   </span>
                 ),
               },
@@ -137,6 +136,8 @@ export default function WorkPage({ user, schoolWorkflow=false }) {
                 title: 'Thao tác',
                 render: (r) => (
                   <div className="business-actions">
+                    <button className="btn btn-secondary" onClick={()=>setModal({type:'evaluation',data:r})}>Tiến độ và bài nộp</button>
+                    {user.role==='company'&&!r.submission?.submittedAt&&r.status!=='done'&&<button className="btn btn-secondary" onClick={()=>setModal({type:'criteria',data:r})}>Tiêu chí nghiệm thu</button>}
                     {user.role === 'student' ? (
                       <>
                         <button
@@ -148,13 +149,7 @@ export default function WorkPage({ user, schoolWorkflow=false }) {
                             ? 'Nộp lại công việc'
                             : 'Nộp công việc'}
                         </button>
-                        <button
-                          className="btn btn-secondary"
-                          disabled={['review', 'done'].includes(r.status)}
-                          onClick={() => setModal({ type: 'task', data: r })}
-                        >
-                          Cập nhật tiến độ
-                        </button>
+
                       </>
                     ) : manage ? (
                       <>
@@ -166,7 +161,7 @@ export default function WorkPage({ user, schoolWorkflow=false }) {
                         </button>
                         <button
                           className="btn btn-primary"
-                          disabled={r.status !== 'review' || !r.submission?.submittedAt}
+                          disabled={r.status !== 'review' || !r.submission?.submittedAt || user.role!=='company'}
                           onClick={() => setModal({ type: 'reviewTask', data: r })}
                         >
                           Duyệt bài nộp
@@ -283,8 +278,10 @@ export default function WorkPage({ user, schoolWorkflow=false }) {
           />
         )}
       </Panel>
+      {tab==='tasks'&&assignment&&<TaskProgressSummary assignmentId={assignment._id} revision={revision}/>}
+      {user.role==='student'&&tab==='tasks'&&assignment&&<Kpis assignment={assignment} user={user}/>}
       {modal && (
-        <MutationDialog title={WORK_DIALOG_TITLES[modal.type]} onClose={() => setModal(null)}>
+        <MutationDialog title={WORK_DIALOG_TITLES[modal.type]} onClose={() => {setModal(null);setRevision(n=>n+1);}}>
           <WorkDialog
             modal={modal}
             user={user}
@@ -293,7 +290,7 @@ export default function WorkPage({ user, schoolWorkflow=false }) {
             onAssignment={setAssignment}
             onSaved={saved}
           />
-          <button className="btn btn-secondary" onClick={() => setModal(null)}>
+          <button className="btn btn-secondary" onClick={() => {setModal(null);setRevision(n=>n+1);}}>
             Đóng
           </button>
         </MutationDialog>

@@ -1,0 +1,24 @@
+{
+  "at": "2026-11-07T11:43:56.9498303Z",
+  "model": {
+    "ready": true,
+    "configured": true,
+    "model_id": "sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2",
+    "revision": "e8f8c211226b894fcb81acc59f3b34ba3efd5f42",
+    "expected_revision": "e8f8c211226b894fcb81acc59f3b34ba3efd5f42",
+    "backend": "onnx-cpu-int8",
+    "reason": null,
+    "available_memory_mib": 1725.51953125,
+    "network_inference": false
+  },
+  "processCount": 1,
+  "processes": [
+    {
+      "Id": 29100,
+      "ProcessName": "python",
+      "WorkingSetMiB": 16.3,
+      "PrivateMemoryMiB": 611.1
+    }
+  ],
+  "mongodb27018": 22392
+}

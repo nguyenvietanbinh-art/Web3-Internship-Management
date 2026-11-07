@@ -47,4 +47,16 @@ TaskSchema.add({
   },
 });
 require('./userOwnership')(TaskSchema, 'Task');
+const Mixed=mongoose.Schema.Types.Mixed;
+TaskSchema.add({
+  objective:String,workItems:[String],requiredProducts:[String],startDate:Date,
+  creationRequestHash:String,
+  progressWeight:{type:Number,min:1,max:1000},criteriaVersion:Number,
+  acceptanceCriteria:[{id:String,title:String,description:String,weight:Number,requiredProduct:String}],
+  criteriaApprovedBy:{type:mongoose.Schema.Types.ObjectId,ref:'User'},criteriaApprovedAt:Date,
+  confirmedProgress:{type:Number,min:0,max:100},criterionReviews:[Mixed],
+  submissionVersion:Number,draft:Mixed,evidenceAnalysis:Mixed,
+  submissionVersions:[{version:Number,submission:Mixed,sha256:String,fileData:{type:Buffer,select:false},criteriaVersion:Number,reviews:[Mixed],analysis:Mixed}],
+});
+TaskSchema.add({'submission.result':String,'submission.challenges':String,'submission.solution':String});
 module.exports = mongoose.model('Task', TaskSchema);

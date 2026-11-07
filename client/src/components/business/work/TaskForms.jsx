@@ -1,11 +1,15 @@
-import { useState } from 'react';
+import {definitionState,definitionBody} from './taskCriteria.mjs';
+import { useState, useRef } from 'react';
 import { apiRequest } from '../../../api/client';
 import { displayLabel } from '../content';
 import { active, dateLabel, localInput, asIso } from '../hooks';
 import { Text, Area, Select, ActionForm, AssignmentPicker, Field } from '../Shared';
 import AssignmentNotice from './AssignmentNotice';
-import { TaskSubmission } from './TaskSubmission';
+import {CriteriaFields,TaskCriteriaReview} from './TaskAssessment';
 export function TaskForm({ data, assignment, user, onAssignment, onSaved, batchId='' }) {
+  const [criteria,setCriteria]=useState(()=>definitionState(data));
+  const creationKey=useRef(crypto.randomUUID());
+  const [startDate,setStartDate]=useState(localInput(data?.startDate||assignment?.startDate));
   const [form, setForm] = useState({
       title: data?.title || '',
       description: data?.description || '',
@@ -30,14 +34,13 @@ export function TaskForm({ data, assignment, user, onAssignment, onSaved, batchI
         };
         return apiRequest('/core/tasks' + (data ? '/' + data._id : ''), {
           method: data ? 'PATCH' : 'POST',
+          headers:data?{}:{'Idempotency-Key':creationKey.current},
           body: data
             ? {
                 ...(student ? {} : info),
-                status: form.status,
-                progress: Number(form.progress),
                 version: data.__v,
               }
-            : { ...info, assignmentId: assignment._id },
+            : { ...info,...definitionBody(criteria),startDate:asIso(startDate), assignmentId: assignment._id },
         });
       }}
     >
@@ -90,65 +93,42 @@ export function TaskForm({ data, assignment, user, onAssignment, onSaved, batchI
           </div>
         </>
       )}
-      {data && (
-        <div className="business-grid">
-          <Select
-            label="Trạng thái công việc"
-            value={form.status}
-            onChange={(v) =>
-              setForm((f) => ({
-                ...f,
-                status: v,
-                progress: v === 'done' ? 100 : f.progress === 100 ? 99 : f.progress,
-              }))
-            }
-            options={(student
-              ? ['todo', 'in_progress']
-              : ['todo', 'in_progress', 'review', 'done']
-            ).map((value) => ({ value, label: displayLabel(value) }))}
-          />
-          <Text
-            label="Tiến độ (%)"
-            type="number"
-            required
-            min="0"
-            max={student ? 99 : 100}
-            value={form.progress}
-            onChange={(v) => set('progress', v)}
-          />
-        </div>
-      )}
-      <p className="muted">
-        Sinh viên dùng Nộp công việc để gửi kết quả ở mức 100% và chờ duyệt. Deadline phải nằm trong
-        thời gian phân công.
-      </p>
+      {!data&&<><Text label="Ngày bắt đầu công việc" type="datetime-local" required value={startDate} onChange={setStartDate}/><CriteriaFields value={criteria} onChange={setCriteria}/></>}
+      <p className="muted">Tiến độ được tính từ các tiêu chí đã được doanh nghiệp xác nhận; nộp bài không tự xác nhận hoàn thành.</p>
     </ActionForm>
   );
 }
 export function TaskSubmitForm({ data, onSaved }) {
-  const [content, setContent] = useState(data.submission?.content || ''),
-    [link, setLink] = useState(data.submission?.link || ''),
-    [file, setFile] = useState(null);
+  const [content, setContent] = useState(data.draft?.content ?? data.submission?.content ?? ''),
+    [link, setLink] = useState(data.draft?.link ?? data.submission?.link ?? ''),
+    [file, setFile] = useState(null),[result,setResult]=useState(data.draft?.result??data.submission?.result??''),[challenges,setChallenges]=useState(data.draft?.challenges??data.submission?.challenges??''),[solution,setSolution]=useState(data.draft?.solution??data.submission?.solution??''),[draftBusy,setDraftBusy]=useState(false),[draftError,setDraftError]=useState('');
+  const pending=useRef(false);
   return (
     <ActionForm
       submit={data.submission?.submittedAt ? 'Nộp lại công việc' : 'Nộp công việc'}
       onSaved={onSaved}
-      onSubmit={() => {
+      disabled={draftBusy||!data.criteriaApprovedAt}
+      onSubmit={async () => {
+        if(pending.current)throw new Error('Đang lưu bài nộp.');
         if (!content.trim() && !link.trim() && !file)
           throw new Error('Cần nội dung, liên kết hoặc tệp kết quả.');
         if (file && file.size > 5 * 1024 * 1024) throw new Error('Tệp không được vượt quá 5 MiB.');
         const body = new FormData();
         body.set('content', content);
-        body.set('link', link);
+        body.set('link', link);body.set('result',result);body.set('challenges',challenges);body.set('solution',solution);
         body.set('version', String(data.__v));
         if (file) {
           body.set('fileName', file.name);
           body.set('file', file);
         }
-        return apiRequest('/core/tasks/' + data._id + '/submit', { method: 'POST', body });
+        pending.current=true;try{return await apiRequest('/core/tasks/' + data._id + '/submit', { method: 'POST', body });}finally{pending.current=false;}
       }}
     >
       <strong>{data.title}</strong>
+      {!data.criteriaApprovedAt&&<p>Doanh nghiệp cần bổ sung và xác nhận tiêu chí trước khi nộp bài. Bạn vẫn có thể lưu nháp.</p>}
+      <button type="button" className="btn btn-secondary" disabled={draftBusy} onClick={async()=>{if(pending.current)return;pending.current=true;setDraftBusy(true);setDraftError('');try{await apiRequest('/core/tasks/'+data._id+'/draft',{method:'PUT',body:{version:data.__v,content,result,challenges,solution,link}});onSaved({draftSaved:true});}catch(e){setDraftError(e.message);}finally{pending.current=false;setDraftBusy(false);}}}>{draftBusy?'Đang lưu nháp…':'Lưu bản nháp'}</button>
+      {draftError&&<p role="alert" className="is-error">{draftError}</p>}
+      <p>Tệp đính kèm được lưu khi gửi bài nộp, không lưu cùng bản nháp.</p>
       <p>Hạn hoàn thành: {dateLabel(data.dueDate)}</p>
       <p className="muted">
         Có thể nộp trước hạn. Sau deadline, bài nộp được đánh dấu nộp muộn; phân công phải còn đang
@@ -156,10 +136,14 @@ export function TaskSubmitForm({ data, onSaved }) {
       </p>
       <Area
         label="Nội dung kết quả công việc"
+        required
         maxLength={40000}
         value={content}
         onChange={setContent}
       />
+      <Area label="Kết quả đạt được" required maxLength={15000} value={result} onChange={setResult}/>
+      <Area label="Khó khăn gặp phải" required maxLength={10000} value={challenges} onChange={setChallenges}/>
+      <Area label="Giải pháp đã áp dụng" required maxLength={10000} value={solution} onChange={setSolution}/>
       <Text
         label="Liên kết kết quả (GitHub, Drive…)"
         type="url"
@@ -186,38 +170,4 @@ export function TaskSubmitForm({ data, onSaved }) {
     </ActionForm>
   );
 }
-export function TaskReviewForm({ data, onSaved }) {
-  const [decision, setDecision] = useState('approved'),
-    [comment, setComment] = useState('');
-  return (
-    <ActionForm
-      submit="Lưu đánh giá công việc"
-      onSaved={onSaved}
-      onSubmit={() =>
-        apiRequest('/core/tasks/' + data._id + '/review', {
-          method: 'POST',
-          body: { decision, comment, version: data.__v },
-        })
-      }
-    >
-      <strong>{data.title}</strong>
-      <TaskSubmission data={data} />
-      <Select
-        label="Kết quả duyệt công việc"
-        value={decision}
-        onChange={setDecision}
-        options={[
-          { value: 'approved', label: 'Duyệt hoàn thành' },
-          { value: 'need_revision', label: 'Yêu cầu làm lại' },
-        ]}
-      />
-      <Area
-        label="Nhận xét công việc"
-        required
-        maxLength={5000}
-        value={comment}
-        onChange={setComment}
-      />
-    </ActionForm>
-  );
-}
+export function TaskReviewForm(props){return <TaskCriteriaReview {...props}/>;}

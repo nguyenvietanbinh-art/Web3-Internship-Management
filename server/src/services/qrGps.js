@@ -13,7 +13,8 @@ function validatePosition(position,session,now=Date.now()){
  return{distanceMeters:Math.round(meters*10)/10,accuracyMeters:accuracy,capturedAt:new Date(timestamp),clientClaim:true,spoofResistant:false};
 }
 async function issue(user,body){
- v.keys(body,['assignmentId','action','ttlSeconds','centerLat','centerLon','radiusMeters','maxAccuracyMeters']);if(user.role!=='company')throw new HttpError(403,'Chỉ doanh nghiệp tạo QR');
+ v.keys(body,['assignmentId','action','ttlSeconds','locationId','centerLat','centerLon','radiusMeters','maxAccuracyMeters']);if(user.role!=='company')throw new HttpError(403,'Chỉ doanh nghiệp tạo QR');
+ if(body.locationId){if(['centerLat','centerLon','radiusMeters','maxAccuracyMeters'].some(k=>body[k]!==undefined))throw new HttpError(400,'Không gửi lại tọa độ khi chọn địa điểm đã lưu');const company=await require('../models/Company').findOne({userId:user._id}).lean(),location=company?.locations?.find(l=>l.id===body.locationId);if(!location)throw new HttpError(404,'Địa điểm không thuộc doanh nghiệp');body={...body,centerLat:location.latitude,centerLon:location.longitude,radiusMeters:location.radiusMeters,maxAccuracyMeters:location.maxAccuracyMeters};}
  const a=await policy.load(user,body.assignmentId,{active:true}),action=v.choice(body.action,['checkin','checkout'],'Thao tácQR'),ttl=v.integer(body.ttlSeconds===undefined?120:body.ttlSeconds,15,300,'TTL');
  const centerLat=number(body.centerLat,-90,90,'Vĩ độ tâm'),centerLon=number(body.centerLon,-180,180,'Kinh độ tâm'),radiusMeters=number(body.radiusMeters,20,300,'Bán kính'),maxAccuracyMeters=number(body.maxAccuracyMeters===undefined?50:body.maxAccuracyMeters,1,100,'Sai số tối đa');
  if(maxAccuracyMeters>radiusMeters)throw new HttpError(400,'Sai số tối đa không được lớn hơn bán kính');

@@ -1,0 +1,432 @@
+[
+  {
+    "name": "full",
+    "engine": "sbert",
+    "total": 77.5,
+    "criteria": [
+      {
+        "id": "goals",
+        "score": 7.5,
+        "status": "PROPOSED_NOT_APPROVED"
+      },
+      {
+        "id": "method",
+        "score": 15,
+        "status": "PROPOSED_NOT_APPROVED"
+      },
+      {
+        "id": "results",
+        "score": 18.75,
+        "status": "PROPOSED_NOT_APPROVED"
+      },
+      {
+        "id": "evidence",
+        "score": 15,
+        "status": "PROPOSED_NOT_APPROVED"
+      },
+      {
+        "id": "progress",
+        "score": 10,
+        "status": "PROPOSED_NOT_APPROVED"
+      },
+      {
+        "id": "reflection",
+        "score": 7.5,
+        "status": "PROPOSED_NOT_APPROVED"
+      },
+      {
+        "id": "presentation",
+        "score": 3.75,
+        "status": "PROPOSED_NOT_APPROVED"
+      }
+    ],
+    "status": "PASS"
+  },
+  {
+    "name": "missing-results",
+    "engine": "sbert",
+    "total": 71.25,
+    "criteria": [
+      {
+        "id": "goals",
+        "score": 7.5,
+        "status": "PROPOSED_NOT_APPROVED"
+      },
+      {
+        "id": "method",
+        "score": 15,
+        "status": "PROPOSED_NOT_APPROVED"
+      },
+      {
+        "id": "results",
+        "score": 12.5,
+        "status": "PROPOSED_NOT_APPROVED"
+      },
+      {
+        "id": "evidence",
+        "score": 15,
+        "status": "PROPOSED_NOT_APPROVED"
+      },
+      {
+        "id": "progress",
+        "score": 10,
+        "status": "PROPOSED_NOT_APPROVED"
+      },
+      {
+        "id": "reflection",
+        "score": 7.5,
+        "status": "PROPOSED_NOT_APPROVED"
+      },
+      {
+        "id": "presentation",
+        "score": 3.75,
+        "status": "PROPOSED_NOT_APPROVED"
+      }
+    ],
+    "status": "PASS"
+  },
+  {
+    "name": "missing-evidence",
+    "engine": "sbert",
+    "total": 72.5,
+    "criteria": [
+      {
+        "id": "goals",
+        "score": 7.5,
+        "status": "PROPOSED_NOT_APPROVED"
+      },
+      {
+        "id": "method",
+        "score": 15,
+        "status": "PROPOSED_NOT_APPROVED"
+      },
+      {
+        "id": "results",
+        "score": 18.75,
+        "status": "PROPOSED_NOT_APPROVED"
+      },
+      {
+        "id": "evidence",
+        "score": 10,
+        "status": "PROPOSED_NOT_APPROVED"
+      },
+      {
+        "id": "progress",
+        "score": 10,
+        "status": "PROPOSED_NOT_APPROVED"
+      },
+      {
+        "id": "reflection",
+        "score": 7.5,
+        "status": "PROPOSED_NOT_APPROVED"
+      },
+      {
+        "id": "presentation",
+        "score": 3.75,
+        "status": "PROPOSED_NOT_APPROVED"
+      }
+    ],
+    "status": "PASS"
+  },
+  {
+    "name": "repeats-assignment",
+    "engine": "sbert",
+    "total": null,
+    "criteria": [
+      {
+        "id": "goals",
+        "score": null,
+        "status": "INSUFFICIENT_EVIDENCE"
+      },
+      {
+        "id": "method",
+        "score": 5,
+        "status": "PROPOSED_NOT_APPROVED"
+      },
+      {
+        "id": "results",
+        "score": 6.25,
+        "status": "PROPOSED_NOT_APPROVED"
+      },
+      {
+        "id": "evidence",
+        "score": 5,
+        "status": "PROPOSED_NOT_APPROVED"
+      },
+      {
+        "id": "progress",
+        "score": 10,
+        "status": "PROPOSED_NOT_APPROVED"
+      },
+      {
+        "id": "reflection",
+        "score": null,
+        "status": "INSUFFICIENT_EVIDENCE"
+      },
+      {
+        "id": "presentation",
+        "score": null,
+        "status": "INSUFFICIENT_EVIDENCE"
+      }
+    ],
+    "status": "PASS"
+  },
+  {
+    "name": "unrelated",
+    "engine": "sbert",
+    "total": null,
+    "criteria": [
+      {
+        "id": "goals",
+        "score": null,
+        "status": "INSUFFICIENT_EVIDENCE"
+      },
+      {
+        "id": "method",
+        "score": 5,
+        "status": "PROPOSED_NOT_APPROVED"
+      },
+      {
+        "id": "results",
+        "score": null,
+        "status": "INSUFFICIENT_EVIDENCE"
+      },
+      {
+        "id": "evidence",
+        "score": null,
+        "status": "INSUFFICIENT_EVIDENCE"
+      },
+      {
+        "id": "progress",
+        "score": 10,
+        "status": "PROPOSED_NOT_APPROVED"
+      },
+      {
+        "id": "reflection",
+        "score": null,
+        "status": "INSUFFICIENT_EVIDENCE"
+      },
+      {
+        "id": "presentation",
+        "score": null,
+        "status": "INSUFFICIENT_EVIDENCE"
+      }
+    ],
+    "status": "PASS"
+  },
+  {
+    "name": "rubric-copy",
+    "engine": "sbert",
+    "total": 33.75,
+    "criteria": [
+      {
+        "id": "goals",
+        "score": 2.5,
+        "status": "PROPOSED_NOT_APPROVED"
+      },
+      {
+        "id": "method",
+        "score": 5,
+        "status": "PROPOSED_NOT_APPROVED"
+      },
+      {
+        "id": "results",
+        "score": 6.25,
+        "status": "PROPOSED_NOT_APPROVED"
+      },
+      {
+        "id": "evidence",
+        "score": 5,
+        "status": "PROPOSED_NOT_APPROVED"
+      },
+      {
+        "id": "progress",
+        "score": 10,
+        "status": "PROPOSED_NOT_APPROVED"
+      },
+      {
+        "id": "reflection",
+        "score": 2.5,
+        "status": "PROPOSED_NOT_APPROVED"
+      },
+      {
+        "id": "presentation",
+        "score": 2.5,
+        "status": "PROPOSED_NOT_APPROVED"
+      }
+    ],
+    "status": "PASS"
+  },
+  {
+    "name": "paraphrase",
+    "engine": "sbert",
+    "total": 77.5,
+    "criteria": [
+      {
+        "id": "goals",
+        "score": 7.5,
+        "status": "PROPOSED_NOT_APPROVED"
+      },
+      {
+        "id": "method",
+        "score": 15,
+        "status": "PROPOSED_NOT_APPROVED"
+      },
+      {
+        "id": "results",
+        "score": 18.75,
+        "status": "PROPOSED_NOT_APPROVED"
+      },
+      {
+        "id": "evidence",
+        "score": 15,
+        "status": "PROPOSED_NOT_APPROVED"
+      },
+      {
+        "id": "progress",
+        "score": 10,
+        "status": "PROPOSED_NOT_APPROVED"
+      },
+      {
+        "id": "reflection",
+        "score": 7.5,
+        "status": "PROPOSED_NOT_APPROVED"
+      },
+      {
+        "id": "presentation",
+        "score": 3.75,
+        "status": "PROPOSED_NOT_APPROVED"
+      }
+    ],
+    "status": "PASS"
+  },
+  {
+    "name": "prompt-injection",
+    "engine": "sbert",
+    "total": 77.5,
+    "criteria": [
+      {
+        "id": "goals",
+        "score": 7.5,
+        "status": "PROPOSED_NOT_APPROVED"
+      },
+      {
+        "id": "method",
+        "score": 15,
+        "status": "PROPOSED_NOT_APPROVED"
+      },
+      {
+        "id": "results",
+        "score": 18.75,
+        "status": "PROPOSED_NOT_APPROVED"
+      },
+      {
+        "id": "evidence",
+        "score": 15,
+        "status": "PROPOSED_NOT_APPROVED"
+      },
+      {
+        "id": "progress",
+        "score": 10,
+        "status": "PROPOSED_NOT_APPROVED"
+      },
+      {
+        "id": "reflection",
+        "score": 7.5,
+        "status": "PROPOSED_NOT_APPROVED"
+      },
+      {
+        "id": "presentation",
+        "score": 3.75,
+        "status": "PROPOSED_NOT_APPROVED"
+      }
+    ],
+    "status": "PASS"
+  },
+  {
+    "name": "unreadable-file",
+    "engine": "sbert",
+    "total": null,
+    "criteria": [
+      {
+        "id": "goals",
+        "score": 7.5,
+        "status": "PROPOSED_NOT_APPROVED"
+      },
+      {
+        "id": "method",
+        "score": 15,
+        "status": "PROPOSED_NOT_APPROVED"
+      },
+      {
+        "id": "results",
+        "score": null,
+        "status": "NEEDS_REVIEW"
+      },
+      {
+        "id": "evidence",
+        "score": null,
+        "status": "NEEDS_REVIEW"
+      },
+      {
+        "id": "progress",
+        "score": 10,
+        "status": "PROPOSED_NOT_APPROVED"
+      },
+      {
+        "id": "reflection",
+        "score": 7.5,
+        "status": "PROPOSED_NOT_APPROVED"
+      },
+      {
+        "id": "presentation",
+        "score": 3.75,
+        "status": "PROPOSED_NOT_APPROVED"
+      }
+    ],
+    "status": "PASS"
+  },
+  {
+    "name": "modified-report",
+    "engine": "sbert",
+    "total": 77.5,
+    "criteria": [
+      {
+        "id": "goals",
+        "score": 7.5,
+        "status": "PROPOSED_NOT_APPROVED"
+      },
+      {
+        "id": "method",
+        "score": 15,
+        "status": "PROPOSED_NOT_APPROVED"
+      },
+      {
+        "id": "results",
+        "score": 18.75,
+        "status": "PROPOSED_NOT_APPROVED"
+      },
+      {
+        "id": "evidence",
+        "score": 15,
+        "status": "PROPOSED_NOT_APPROVED"
+      },
+      {
+        "id": "progress",
+        "score": 10,
+        "status": "PROPOSED_NOT_APPROVED"
+      },
+      {
+        "id": "reflection",
+        "score": 7.5,
+        "status": "PROPOSED_NOT_APPROVED"
+      },
+      {
+        "id": "presentation",
+        "score": 3.75,
+        "status": "PROPOSED_NOT_APPROVED"
+      }
+    ],
+    "status": "PASS"
+  }
+]
