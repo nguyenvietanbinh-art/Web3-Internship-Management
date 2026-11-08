@@ -6,7 +6,7 @@
 import { getToken, setToken, invalidateSession } from './session.js';
 import { errorMessage } from './errorMessages.js';
 export { getToken, setToken };
-export const API_BASE = import.meta.env?.VITE_API_URL || 'http://localhost:5000/api';
+export const API_BASE = import.meta.env?.VITE_API_URL || (import.meta.env?.DEV ? 'http://localhost:5000/api' : '/api');
 export const DEMO_ENABLED =
   import.meta.env?.DEV === true && import.meta.env?.VITE_ENABLE_DEMO === 'true';
 

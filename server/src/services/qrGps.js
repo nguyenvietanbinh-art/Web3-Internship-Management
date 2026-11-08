@@ -3,6 +3,12 @@ const crypto=require('node:crypto'),jwt=require('jsonwebtoken');
 const config=require('../config/env'),{HttpError}=require('../utils/http');
 const {CoreQrSession}=require('../models/Web3Models'),{WorkSession}=require('../models/BusinessModels');
 const policy=require('../core/placementPolicy'),v=require('../core/shared'),time=require('./timeTracking');
+const {assertBusinessWriteEnvironment}=require('./businessWriteEnvironment');
+async function activeAssignment(user,id){
+ const a=await policy.load(user,id,{active:true}),start=a.startDate?.getTime(),end=a.endDate?.getTime(),now=Date.now();
+ if(!Number.isFinite(start)||!Number.isFinite(end)||start>end||now<start||now>end)throw new HttpError(409,'Phân công chưa có thời gian thực tập hợp lệ','QR_ASSIGNMENT_INACTIVE');
+ return a;
+}
 function number(x,min,max,label){if(typeof x!=='number'||!Number.isFinite(x)||x<min||x>max)throw new HttpError(400,label+' không hợp lệ');return x;}
 function distance(lat1,lon1,lat2,lon2){const rad=x=>x*Math.PI/180;const a=Math.sin(rad(lat2-lat1)/2)**2+Math.cos(rad(lat1))*Math.cos(rad(lat2))*Math.sin(rad(lon2-lon1)/2)**2;return 6371000*2*Math.atan2(Math.sqrt(a),Math.sqrt(Math.max(0,1-a)));}
 function validatePosition(position,session,now=Date.now()){
@@ -14,8 +20,9 @@ function validatePosition(position,session,now=Date.now()){
 }
 async function issue(user,body){
  v.keys(body,['assignmentId','action','ttlSeconds','locationId','centerLat','centerLon','radiusMeters','maxAccuracyMeters']);if(user.role!=='company')throw new HttpError(403,'Chỉ doanh nghiệp tạo QR');
+ await assertBusinessWriteEnvironment();
  if(body.locationId){if(['centerLat','centerLon','radiusMeters','maxAccuracyMeters'].some(k=>body[k]!==undefined))throw new HttpError(400,'Không gửi lại tọa độ khi chọn địa điểm đã lưu');const company=await require('../models/Company').findOne({userId:user._id}).lean(),location=company?.locations?.find(l=>l.id===body.locationId);if(!location)throw new HttpError(404,'Địa điểm không thuộc doanh nghiệp');body={...body,centerLat:location.latitude,centerLon:location.longitude,radiusMeters:location.radiusMeters,maxAccuracyMeters:location.maxAccuracyMeters};}
- const a=await policy.load(user,body.assignmentId,{active:true}),action=v.choice(body.action,['checkin','checkout'],'Thao tácQR'),ttl=v.integer(body.ttlSeconds===undefined?120:body.ttlSeconds,15,300,'TTL');
+ const a=await activeAssignment(user,body.assignmentId),action=v.choice(body.action,['checkin','checkout'],'Thao tácQR'),ttl=v.integer(body.ttlSeconds===undefined?120:body.ttlSeconds,15,300,'TTL');
  const centerLat=number(body.centerLat,-90,90,'Vĩ độ tâm'),centerLon=number(body.centerLon,-180,180,'Kinh độ tâm'),radiusMeters=number(body.radiusMeters,20,300,'Bán kính'),maxAccuracyMeters=number(body.maxAccuracyMeters===undefined?50:body.maxAccuracyMeters,1,100,'Sai số tối đa');
  if(maxAccuracyMeters>radiusMeters)throw new HttpError(400,'Sai số tối đa không được lớn hơn bán kính');
  const nonce=crypto.randomBytes(24).toString('hex'),session=await CoreQrSession.create({assignmentId:a._id,...identity.participants(a),action,nonceHash:crypto.createHash('sha256').update(nonce).digest('hex'),expiresAt:new Date(Date.now()+ttl*1000),centerLat,centerLon,radiusMeters,maxAccuracyMeters,history:[v.event(user,'qr.issued',{action})]});
@@ -24,11 +31,12 @@ async function issue(user,body){
 }
 async function redeem(user,body){
  v.keys(body,['token','position']);if(user.role!=='student')throw new HttpError(403,'Chỉ sinh viên dùng QR');if(typeof body.token!=='string'||body.token.length>4096)throw new HttpError(400,'QR không hợp lệ');
+ await assertBusinessWriteEnvironment();
  let claims;try{claims=jwt.verify(body.token,config.jwtSecret,{algorithms:['HS256'],audience:'core-qr',issuer:'web3-internship'});}catch{throw new HttpError(400,'QR sai hoặc hết hạn','INVALID_QR');}
  if(identity.enabled()&&claims.studentUserId?claims.studentUserId!==String(user._id):!identity.validWallet(user)||claims.studentWallet!==user.walletAddress)throw new HttpError(403,'QR không dành cho tài khoản này');
  const s=await CoreQrSession.findById(v.id(claims.sid)).select('+nonceHash');if(!s||s.expiresAt<=new Date()||s.nonceHash!==crypto.createHash('sha256').update(String(claims.nonce)).digest('hex')||String(s.assignmentId)!==claims.assignmentId||s.action!==claims.action)throw new HttpError(400,'PhiênQR không hợp lệ','INVALID_QR');
  if(s.usedAt)throw new HttpError(409,'QR đã dùng','QR_REPLAY');
- const a=await policy.load(user,String(s.assignmentId),{active:true}),gps=validatePosition(body.position,s),now=new Date(),requestKey='qr_'+crypto.createHash('sha256').update(body.token).digest('hex');
+ const a=await activeAssignment(user,String(s.assignmentId)),gps=validatePosition(body.position,s),now=new Date(),requestKey='qr_'+crypto.createHash('sha256').update(body.token).digest('hex');
  let open;
  if(s.action==='checkin'){if(await WorkSession.exists({...identity.owned(user,'studentUserId','studentWallet'),day:now.toISOString().slice(0,10)}))throw new HttpError(409,'Đã có phiên giờ làm hôm nay');}
  else{open=await WorkSession.findOne({assignmentId:a._id,...identity.owned(user,'studentUserId','studentWallet'),state:'open'});if(!open)throw new HttpError(409,'Chưa có phiên mở đểcheckout');}
