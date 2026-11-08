@@ -49,5 +49,3 @@ services:
         sync: false
       - key: CLOUD_DEMO_INSTANCE_ID
         sync: false
-      - key: CORS_ORIGIN
-        sync: false

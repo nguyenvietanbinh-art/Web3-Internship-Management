@@ -37,7 +37,22 @@ const config = {
   get nonceTtlMs() { return (Number(process.env.NONCE_TTL_SECONDS) || 300) * 1000; },
   get aiServiceUrl() { return process.env.AI_SERVICE_URL || "http://localhost:8000"; },
   get pinataJwt() { return process.env.PINATA_JWT || ""; },
-  get corsOrigin() { return process.env.CORS_ORIGIN || 'http://127.0.0.1:5173,http://localhost:5173'; },
+  get corsOrigin() {
+    if (process.env.CORS_ORIGIN) return process.env.CORS_ORIGIN;
+    if (process.env.APP_ENV === 'CLOUD_DEMO') {
+      // The combined frontend/API service receives its assigned URL at runtime.
+      // Trust deployment configuration, never the incoming Origin/Host headers.
+      if (process.env.RENDER === 'true' && process.env.SERVE_CLIENT === 'true') {
+        try {
+          const url = new URL(process.env.RENDER_EXTERNAL_URL);
+          if (url.protocol === 'https:' && url.hostname.endsWith('.onrender.com') && !url.port &&
+              !url.username && !url.password && url.pathname === '/' && !url.search && !url.hash) return url.origin;
+        } catch { /* No valid configured origin: reject browser requests. */ }
+      }
+      return '';
+    }
+    return 'http://127.0.0.1:5173,http://localhost:5173';
+  },
   get authRateLimit() { return Math.max(1, Number(process.env.AUTH_RATE_LIMIT) || 120); },
 };
 
