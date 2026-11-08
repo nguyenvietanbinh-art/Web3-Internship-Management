@@ -495,3 +495,30 @@ E2E bổ sung báo cáo liên kết hai task và giảng viên đề xuất/nhà
 ## AI auto grading — 07/11/2026
 
 Đã thay giới hạn6mụcnull bằngBERTtruyxuất+report-rules-v1.1. Phúc77.5/100,self80,officialnull. Backend28/28,browser8/8+4/4,frontendunit10/10,lint/buildPASS. Chấm sơ bộ theo luậtcôngkhai, không phải mô hình đã fine-tune/hiệu chuẩn bằng điểm giảng viên; hint tùy chỉnh ngoài luậtcầnreview. [Báo cáo](INTERNOVA_PRODUCTION_READINESS/AI_AUTO_GRADING/FINAL_AI_GRADING_REPORT.md). User yêu cầu tiếp chia sẻ source vàdatabase thật quaGit; snapshotsAESmãhóa đã restoreTEST/đốichiếuhash/indexes,khóariêngkhôngGit.
+
+
+## Web3 history E2E — 08/11/2026
+
+Đã chạy TEST riêng trên internova_role_qa_20261107, giữ node18546. 4 giao dịch thật block10–13, SBT token3 owner/locked verify; giao dịch negative status0 block14. API E2E14 nhóm PASS, verification7/7, Solidity9/9, regression9/9, browser4/4 (0 JS exceptions), lint/buildPASS sau chạy tuần tự. IPFS live BLOCKED; camera/GPS vật lý và restart node thực NOT TESTED. Không commit/push hoặc ghi database gốc/demo. Xem [báo cáo chi tiết](INTERNOVA_PRODUCTION_READINESS/BLOCKCHAIN_E2E/FINAL_WEB3_REPORT.md) và [hướng dẫn chạy](INTERNOVA_PRODUCTION_READINESS/BLOCKCHAIN_E2E/RUN_WEB3_DEMO.md).
+
+
+## Large TEST dataset — 08/11/2026
+
+DBriêng internova_large_test_20261108:500students/50companies/30mentors/2admins,150JD/1000applications/300placements/900tasks/2101reports/2100logs/6001sessions/500DOCX. Integrity/scopes/idempotencyPASS,22matching+7gradingcases,27backendunits/15frontendunits, browser5/5, lint/buildPASS. SBT4mint/verify thật(4tx). Officialscore ca72,92null. Scientificmetrics/IPFSliveBLOCKED; physicalGPS/camera/concurrency500usersNOTTESTED. [Báo cáo](INTERNOVA_PRODUCTION_READINESS/LARGE_TEST_DATASET/FINAL_REPORT.md), [chạy5190](INTERNOVA_PRODUCTION_READINESS/LARGE_TEST_DATASET/RUN_DATASET_DEMO.md). Không commit/push/sửaDBgốc.
+
+
+## Admin student search and chronological working time — 2026-11-08
+
+Hoàn tất tìm 500 sinh viên qua API, 10/trang, phân công và giám sát chỉ đọc. Lượt cuối:17 nhóm API/Playwright PASS;38 menu bốn vai trò mở được, không auto-write;3 integration ghi trên DB TEST riêng PASS;6 unit PASS;lint/build PASS. Giờ làm sắp checkInAt tăng dần trước phân trang. Hash27 collection website5190 không đổi; chain31337 vẫn block18. Không reset/seed/commit/push. [Báo cáo và giới hạn](../audit-reports/ADMIN_STUDENT_SEARCH_20261108/FINAL_REPORT.md).
+
+
+## Admin global student search — 2026-11-08
+
+Hoàn tất finder dùng chung trên các trang Admin, bảng bằng chứng giờ làm phân trang và xác nhận giao dịch. 21/21 nhóm API/Playwright PASS; lint/build PASS, unit 6/6 PASS. Kiểm thử giao dịch/SBT thật trên EVM và database TEST riêng; dataset lớn chỉ đọc. Backend 57420 đã cập nhật, Frontend 5190, 500 sinh viên; dữ liệu nghiệp vụ và main chain block 18 bảo toàn. IPFS thật BLOCKED do chưa cấu hình; không ghi giao dịch mới lên chain đang dùng.
+
+Chi tiết: [báo cáo nghiệm thu](../audit-reports/ADMIN_GLOBAL_SEARCH_20261108/FINAL_REPORT.md).
+
+
+## Compact lookup and four-role UI acceptance — 2026-11-08
+
+Rà soát 10 menu Admin và toàn bộ menu Student/Company/Mentor (37 tổng). Finder dùng chung thu gọn 5 gợi ý, chọn sinh viên theo scope server; Mentor bỏ menu Chấm công riêng. Thêm lọc 5 giai đoạn chấm báo cáo; hai giai đoạn chưa có dữ liệu giữ TODO. Các ca lỗi đã chạy lại riêng, không seed hoặc thay điểm. Lint/build và 6 unit PASS. Backend 57420 cập nhật; dữ liệu 27 collection và Hardhat block 18/SBT 4 bảo toàn. Chi tiết và ảnh: [nghiệm thu bốn vai trò](../audit-reports/ROLE_LOOKUP_RETEST_20261108/FINAL_ACCEPTANCE.md), [ma trận từng trang](../audit-reports/ROLE_LOOKUP_RETEST_20261108/ROLE_PAGE_MATRIX.md).

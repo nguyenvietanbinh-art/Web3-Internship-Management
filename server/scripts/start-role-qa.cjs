@@ -8,7 +8,9 @@ const {vault}=require('../../scripts/demo/common.cjs'),secretFile=path.join(dir,
 let secret;if(fs.existsSync(secretFile))secret=vault('unprotect',fs.readFileSync(secretFile,'utf8'));else{secret=crypto.randomBytes(32).toString('hex');fs.writeFileSync(secretFile,vault('protect',secret),{flag:'wx'});}
 Object.assign(process.env,{NODE_ENV:'test',SCHOOL_WORKFLOW_ENABLED:'true',USER_ID_BUSINESS_ENABLED:'true',EMAIL_AUTH_ENABLED:'true',CORE_BUSINESS_ENABLED:'true',GOOGLE_AUTH_ENABLED:'false',WEB3_LOCAL_ENABLED:'false',MONGODB_URI:uri,WORKFLOW_TEST_URI_ALLOWLIST:uri,JWT_SECRET:secret,CORS_ORIGIN:'http://localhost:5189',NLP_SERVICE_URL:'http://127.0.0.1:8003',CHAIN_LISTENER_ENABLED:'false',CHAIN_VERIFICATION_ENABLED:'false',PINATA_JWT:'',REPORT_ENCRYPTION_KEY:'',DEMO_MODE:'false'});
 const expected=require('../src/config/workflowTestGuard').assertWorkflowTest(),mongoose=require('mongoose');mongoose.set('autoIndex',false);mongoose.set('autoCreate',false);
-const deployment=path.join(dir,'sbt-deployment.json');if(fs.existsSync(deployment)){process.env.WEB3_LOCAL_ENABLED='true';process.env.WEB3_LOCAL_DEPLOYMENT=deployment;}
+const deployment=process.argv[2]?path.resolve(process.argv[2]):path.join(dir,'sbt-deployment.json');
+if(!deployment.startsWith(path.resolve(dir,'..')+path.sep))throw Error('QA deployment metadata must remain in the local ignored cache');
+if(process.argv[2]&&!fs.existsSync(deployment))throw Error('Explicit QA deployment metadata does not exist');if(fs.existsSync(deployment)){process.env.WEB3_LOCAL_ENABLED='true';process.env.WEB3_LOCAL_DEPLOYMENT=deployment;}
 (async()=>{
  await mongoose.connect(uri,{autoIndex:false,autoCreate:false,serverSelectionTimeoutMS:5000});
  if(mongoose.connection.name!==expected.database||(await mongoose.connection.db.command({hello:1})).setName!==expected.replicaSet||!await mongoose.connection.db.collection('qa_safety_marker').findOne({_id:'role-workflow'}))throw Error('QA database safety check failed');

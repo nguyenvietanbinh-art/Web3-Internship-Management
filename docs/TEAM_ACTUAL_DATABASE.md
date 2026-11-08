@@ -4,14 +4,14 @@
 
 Mỗi máy có bản khôi phục riêng; GitHub không phải MongoDB cloud và không tự đồng bộ thay đổi giữa các thành viên.
 
-## 1. Source và khóa giải mã
+## 1. Source và database không mã hóa
 
 ```powershell
 git clone --branch branch_1 https://github.com/nguyenvietanbinh-art/Web3-Internship-Management.git
 Set-Location Web3-Internship-Management
 ```
 
-Tác giả gửi riêng nội dung `.team/database-password.txt`. Trên clone mới tạo thư mục `.team` và lưu đúng khóa thành `.team/database-password.txt`. Không đưa khóa vào commit/issue/README. Hai file `database/shared-snapshot/main.snapshot.enc` và `qa.snapshot.enc` dùng AES256GCM+scrypt, chứa nguyên dữ liệu, password hashes và các file login đã biết. `.env`, JWT signing secret và private key không được đưa vào Git.
+Theo yêu cầu của chủ dự án, `database/shared-snapshot/main.snapshot.json` và `qa.snapshot.json` chứa nguyên dữ liệu hiện có, password hash và nội dung các file tài khoản đã biết, không mã hóa. Restore mặc định đọc JSON, không cần khóa giải mã. Người có quyền đọc repository có thể đọc dữ liệu và tài khoản này. Các bản `.enc` cũ vẫn được giữ để bảo toàn lịch sử; không cần dùng chúng. `.env`, JWT signing secret, private key và khóa mã hóa riêng của máy vẫn nằm ngoài Git.
 
 ## 2. Cài dependency trên clone mới
 
@@ -51,7 +51,7 @@ node scripts/team/database.cjs restore main
 
 Init chỉ khởi tạo server local đúng tham số và chưa có DB nghiệp vụ; đã cấu hình thì không đổi. Restore từ chối nếu DB đích có bất kỳ collection, không drop/merge/ghi đè. Khi thấy REFUSE_NONEMPTY_DATABASE, giữ dữ liệu và kiểm tra môi trường; không xóa để ép restore.
 
-Giữ nguyên ID/quan hệ/tệpCV/task và indexes; so hash từng collection sau restore trước khi bật lại TTL indexes. Sau đó MongoDB có thể tự hết hạn các nonce/reauth cũ theo TTL vốn có, không phải script xóa dữ liệu nghiệp vụ. Login được giải mã vào `.team/login-main/`, mở bằng VSCode/Notepad. Không reset mật khẩu. Nếu chủ tài khoản từng đổi mật khẩu sau khi tạo file login, phải dùng mật khẩu mới do chủ tài khoản cung cấp; không suy ra plaintext từ hash.
+Giữ nguyên ID/quan hệ/tệpCV/task và indexes; so hash từng collection sau restore trước khi bật lại TTL indexes. Sau đó MongoDB có thể tự hết hạn các nonce/reauth cũ theo TTL vốn có, không phải script xóa dữ liệu nghiệp vụ. Các file tài khoản được trích xuất vào `.team/login-main/`, mở bằng VSCode/Notepad. Không reset mật khẩu. Nếu chủ tài khoản từng đổi mật khẩu sau khi tạo file login, phải dùng mật khẩu mới do chủ tài khoản cung cấp; không suy ra plaintext từ hash.
 
 Compass: `mongodb://127.0.0.1:27018/?replicaSet=internovaTestRs`, chọn `internova_demo_cunhan_kysu_20261107`.
 
@@ -135,4 +135,4 @@ IPFS cần Pinata/key mã hóa do nhóm quản lý riêng; thiếu cấu hình t
 
 ## 8. An toàn và giới hạn
 
-Ai có repo+khóa giải mã có thể đọc toàn bộ dữ liệu/tài khoản trong snapshot; chỉ gửi khóa cho nhóm có quyền. Không commit `.team/`. Restore gián đoạn giữ nguyên phần đã ghi để kiểm tra, không tự xóa hoặc ghi đè. Đã restore hai DB TEST mới và kiểm document hash/indexes khớp trên máy tác giả. Chưa kiểm toàn bộ clone/cài dependency trên Windows khác/Linux/macOS, không tuyên bố PASS cho các máy đó. GoogleMaps/Pinata live, kiểm định điểmAI bằng chuyên gia và lịch sửchain trên máy khác vẫn có giới hạn. Không tắt Mongo27018 khi web đang dùng; đóng Compass không dừng Mongo.
+Ai có quyền đọc repository có thể đọc toàn bộ dữ liệu/tài khoản trong bản JSON không mã hóa. Không commit `.team/`. Restore gián đoạn giữ nguyên phần đã ghi để kiểm tra, không tự xóa hoặc ghi đè. Đã restore hai DB TEST mới và kiểm document hash/indexes khớp trên máy tác giả. Chưa kiểm toàn bộ clone/cài dependency trên Windows khác/Linux/macOS, không tuyên bố PASS cho các máy đó. GoogleMaps/Pinata live, kiểm định điểmAI bằng chuyên gia và lịch sửchain trên máy khác vẫn có giới hạn. Không tắt Mongo27018 khi web đang dùng; đóng Compass không dừng Mongo.
