@@ -1,0 +1,18 @@
+import {useState} from 'react';
+import {Dialog} from '../ui';
+import {apiRequest} from '../../api/client';
+const kinds={report:'Báo cáo',attendance:'Điểm danh',completion:'Kết quả thực tập',mint:'Phát hành chứng nhận'};
+const states={prepared:'Đang chuẩn bị',submitted:'Đang chờ xác nhận',confirmed:'Đã ghi nhận',failed:'Giao dịch thất bại'};
+const verification={valid:'Hợp lệ',invalid:'Không hợp lệ',unverifiable:'Không thể xác minh',chain_mismatch:'Sai mạng hoặc phiên blockchain',pending:'Chưa được xác nhận'};
+const short=value=>value?value.slice(0,10)+'…'+value.slice(-6):'Chưa có';
+export default function BlockchainHistory({items=[],studentName}){
+ const [selected,setSelected]=useState(null),[checks,setChecks]=useState({}),[busy,setBusy]=useState(null),[error,setError]=useState('');
+ async function verify(op){setBusy(op.id);setError('');try{const result=await apiRequest('/core/web3/operations/'+op.id+'/verify',{method:'POST',body:{}});setChecks(old=>({...old,[op.id]:result}));}catch(e){setError(e.message);}finally{setBusy(null);}}
+ const current=selected&&({...selected,...checks[selected.id]});
+ return <>{error&&<p role="alert" className="is-error">{error}</p>}
+ {!items.length?<p>Chưa có giao dịch của phân công này.</p>:<div className="table-scroll" role="region" aria-label="Lịch sử blockchain" tabIndex={0}><table className="business-table"><thead><tr>{['Thời gian','Sinh viên','Loại ghi nhận','Mã giao dịch','Số block','Trạng thái','Thao tác'].map(x=><th key={x}>{x}</th>)}</tr></thead><tbody>{items.map(op=><tr key={op.id}>
+ <td>{op.createdAt?new Date(op.createdAt).toLocaleString('vi-VN'):'Chưa có thời gian'}</td><td>{studentName||short(op.studentWallet)}</td><td>{kinds[op.kind]||'Ghi nhận'}</td><td title={op.txHash||''}>{short(op.txHash)}</td><td>{op.blockNumber??'—'}</td><td>{states[op.state]||'Chưa xác định'}<p role="status">{checks[op.id]?verification[checks[op.id].verificationStatus]:'Chưa xác minh lại'}</p></td>
+ <td><div className="business-actions"><button type="button" className="btn btn-secondary" onClick={()=>setSelected(op)}>Xem chi tiết</button><button type="button" className="btn btn-secondary" disabled={busy!==null} onClick={()=>verify(op)}>{busy===op.id?'Đang xác minh…':'Xác minh'}</button></div></td></tr>)}</tbody></table></div>}
+ {current&&<Dialog label="Chi tiết giao dịch blockchain" onClose={()=>setSelected(null)}><div className="modal-content"><h2>Chi tiết giao dịch</h2><dl className="web3-transaction-details">{[['Sinh viên',studentName||current.studentWallet],['Loại ghi nhận',kinds[current.kind]],['Mạng',current.chainId],['Hợp đồng',current.contractAddress],['Mã giao dịch',current.txHash],['Số block',current.blockNumber],['Sự kiện',current.eventName],['Mã chứng nhận',current.tokenId],['Ví nhận',current.studentWallet],['Trạng thái giao dịch',states[current.state]],['Xác minh',verification[current.verificationStatus]||'Chưa xác minh lại'],['Kiểm tra lúc',current.lastVerifiedAt?new Date(current.lastVerifiedAt).toLocaleString('vi-VN'):null]].map(([label,value])=><div key={label}><dt>{label}</dt><dd style={{overflowWrap:'anywhere'}}>{value??'—'}</dd></div>)}</dl>{current.message&&<p role="status">{current.message}</p>}<button type="button" className="btn btn-primary" disabled={busy!==null} onClick={()=>verify(current)}>{busy===current.id?'Đang xác minh…':'Xác minh blockchain'}</button><button type="button" className="btn btn-secondary" onClick={()=>setSelected(null)}>Đóng</button></div></Dialog>}
+ </>;
+}

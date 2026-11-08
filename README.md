@@ -1,6 +1,6 @@
 # Internova — Web3 Internship Management
 
-**Nhóm tải source và đúng dữ liệu đang có:** đọc [hướng dẫn khôi phục database thật và chạy từng dịch vụ](docs/TEAM_ACTUAL_DATABASE.md). Database/account được mã hóa trong `database/shared-snapshot`; khóa giải mã gửi riêng, không nằm trên GitHub. Không chạy seed để thay dữ liệu tác giả.
+**Nhóm tải source và đúng dữ liệu đang có:** đọc [hướng dẫn khôi phục database thật và chạy từng dịch vụ](docs/TEAM_ACTUAL_DATABASE.md). Database/account không mã hóa nằm trong `database/shared-snapshot/main.snapshot.json` và `qa.snapshot.json`; restore không cần khóa giải mã. Không chạy seed để thay dữ liệu tác giả.
 
 - Main: localhost5188 → API57418 → Mongo27018; QA: localhost5189 → API57419, database riêng.
 - BERT+quy tắc chấm sơ bộ: Phúc77.5/100, self80, officialchưa xác nhận. [Kết quả và giới hạn](docs/INTERNOVA_PRODUCTION_READINESS/AI_AUTO_GRADING/FINAL_AI_GRADING_REPORT.md).

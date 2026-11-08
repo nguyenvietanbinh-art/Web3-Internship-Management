@@ -12,6 +12,7 @@ import ReportsPage from './Reports';
 import Kpis from './Kpis';
 import CompanyWorkPeriods from './work/CompanyWorkPeriods';
 export default function WorkPage({ user, schoolWorkflow=false }) {
+  const [selectedStudent,setSelectedStudent]=useState(null);
   const [assignment, setAssignment] = useState(null),
     [tab,setTab]=useViewState('tab','tasks'),
     [revision, setRevision] = useState(0),
@@ -19,7 +20,7 @@ export default function WorkPage({ user, schoolWorkflow=false }) {
   const [message, setMessage] = useState('');
   const [batchId,setBatchId]=useViewState('batchId','');
   const periodMode=schoolWorkflow&&user.role==='company';
-  const selected = assignment&&!assignment.pendingAssignment ? `?assignmentId=${assignment._id}${periodMode?'&batchId='+batchId:''}` : periodMode&&batchId?'?batchId='+batchId:'',
+  const selected = assignment&&!assignment.pendingAssignment ? `?assignmentId=${assignment._id}${periodMode?'&batchId='+batchId:''}` : selectedStudent?'?studentUserId='+selectedStudent._id+(periodMode&&batchId?'&batchId='+batchId:''):periodMode&&batchId?'?batchId='+batchId:'',
     isActive = active(assignment),
     manage = ['company', 'mentor'].includes(user.role),
     saved = (result) => {
@@ -42,6 +43,7 @@ export default function WorkPage({ user, schoolWorkflow=false }) {
         {periodMode&&<CompanyWorkPeriods value={batchId} onChange={id=>{setBatchId(id);setAssignment(null);setModal(null);setMessage('');setRevision(n=>n+1);}}/>}
         <AssignmentPicker
           userRole={user.role}
+          onStudentChange={setSelectedStudent}
           batchId={periodMode?batchId:''}
           requireBatch={periodMode}
           includeAdmissions={periodMode}

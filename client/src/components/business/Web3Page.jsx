@@ -1,13 +1,16 @@
+import AdminCertificatePage from './AdminCertificatePage';
+import BlockchainHistory from './BlockchainHistory';
 import { displayLabel } from './content';
 import { useState, useCallback, lazy, Suspense } from 'react';
 import { apiRequest } from '../../api/client';
-import { Panel, Select, Text, Area, ActionForm, ErrorNotice, AssignmentPicker, Status } from './Shared';
+import { Panel, Select, Text, Area, ActionForm, ErrorNotice, AssignmentPicker } from './Shared';
 import { useResource } from './hooks';
 import CompanyLocations from './CompanyLocations';
 const Scanner=lazy(()=>import('./NativeQrScanner'));
 const QrCode=lazy(()=>import('./QrCode'));
 function position(){return new Promise((resolve,reject)=>{if(!navigator.geolocation)return reject(new Error('Trình duyệt không có vị trí GPS.'));navigator.geolocation.getCurrentPosition(p=>resolve({latitude:p.coords.latitude,longitude:p.coords.longitude,accuracy:p.coords.accuracy,timestamp:p.timestamp}),e=>reject(new Error(e.code===1?'Quyền vị trí bị từ chối; chưa ghi điểm danh.':e.code===3?'GPS timeout; thử lại.':'Không lấy được vị trí; thử lại.')),{enableHighAccuracy:true,maximumAge:0,timeout:10000});});}
-export default function Web3Page({user,unified=false,onWalletSettings}) {
+export default function Web3Page(props){return props.user.role==='admin'?<AdminCertificatePage/>:<ParticipantWeb3Page {...props}/>;}
+function ParticipantWeb3Page({user,unified=false,onWalletSettings}) {
   const personal=user.role==='student';
   const showWalletNetwork=['student','company'].includes(user.role);
   const showCertificateTools=['student','company','admin'].includes(user.role);
@@ -56,8 +59,7 @@ export default function Web3Page({user,unified=false,onWalletSettings}) {
       {camera&&<><Suspense fallback={<p>Đang mở camera…</p>}><Scanner onDecoded={decoded} onError={cameraError} /></Suspense><button className="btn btn-secondary" onClick={()=>setCamera(false)}>Dừng camera</button></>}
     </Panel>}
     {showCertificateTools&&<Panel title="Lịch sử ghi nhận trên blockchain" description="Theo dõi giao dịch và đối chiếu trạng thái khi cần.">
-      <ErrorNotice message={operations.error} />{(operations.data?.items||[]).map(op=><div key={op.id} className="web3-operation"><strong>{displayLabel(op.kind)}</strong> <Status value={op.state} /><p className="web3-reference">{op.txHash||'Chưa có mã giao dịch'} · {op.errorCode||''}</p><button className="btn btn-secondary" disabled={busy} onClick={()=>post('/core/web3/operations/'+op.id+'/reconcile')}>Đối chiếu giao dịch</button></div>)}
-      {!operations.data?.items?.length&&<p>Chưa có giao dịch của phân công này.</p>}
+      <ErrorNotice message={operations.error} /><BlockchainHistory key={assignment?._id||'none'} items={operations.data?.items||[]} studentName={assignment?.participantNames?.student||assignment?.studentName||assignment?.student?.name}/>
       {import.meta.env.DEV && import.meta.env.VITE_SHOW_DIAGNOSTICS==='true' && last&&<details data-testid="web3-last-result" open><summary>Kết quả thao tác thực tế</summary><pre>{JSON.stringify(last,null,2)}</pre></details>}
     </Panel>}
   </div>;

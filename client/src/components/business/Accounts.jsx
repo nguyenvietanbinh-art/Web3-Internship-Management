@@ -11,7 +11,7 @@ export default function AccountsPage({user,unified=false}) {
   return <Panel title="Tài khoản & phân quyền" description="Quản lý quyền và trạng thái tài khoản. Mọi thay đổi được lưu trong lịch sử." actions={<button className="btn btn-primary" onClick={()=>setEditing({})}>Cấp tài khoản</button>}>
     <Select label="Lọc vai trò tài khoản" value={role} onChange={setRole} options={[{value:'',label:'Tất cả vai trò'},...options]} />
     <ServerTable key={role} path={'/core/accounts'+(role?'?role='+role:'')} revision={revision} label="Tài khoản" columns={[
-      {key:'name',title:'Tài khoản',render:r=><div><strong>{r.name}</strong><small className="business-block muted">{r.walletAddress}</small></div>},
+      {key:'name',title:'Tài khoản',render:r=><div><strong>{r.name}</strong><small className="business-block muted">{r.email||'Chưa khai báo email'}</small>{r.walletAddress&&<small className="business-block muted">{r.walletAddress}</small>}</div>},
       {key:'role',title:'Vai trò',render:r=>roleNames[r.role]}, {key:'disabled',title:'Trạng thái',render:r=>r.disabled?'Đã khóa':'Hoạt động'},
       {key:'actions',title:'Thao tác',render:r=><div className="business-actions"><button className="btn btn-secondary" disabled={r.role==='admin'||r._id===user._id} onClick={()=>setEditing(r)}>Sửa quyền / khóa</button><button className="btn btn-secondary" onClick={()=>setHistory(r)}>Lịch sử tài khoản</button></div>},
     ]} />

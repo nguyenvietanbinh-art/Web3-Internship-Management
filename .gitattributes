@@ -1,2 +1,5 @@
 # Keep audit artifacts byte-for-byte so their recorded SHA-256 values survive clones.
 docs/evidence/** -text
+
+# Snapshot hashes must survive Windows/Linux checkouts unchanged.
+database/shared-snapshot/*.json -text

@@ -15,6 +15,7 @@ router.use(require('./recruitment'));
 router.use(require('./placements'));
 router.use(require('./kpis'));
 router.use(require('./work'));
+router.use(require('./supervision'));
 router.use(require('./time'));
 router.use(require('./companyLocations'));
 router.use(require('./reportEvaluation').router);

@@ -4,10 +4,10 @@ const {InternshipBatch:Batch}=require('../models/BusinessModels'),{Enrollment}=r
 // Accepted students are visible before formalization, without inventing an Assignment.
 // Only an actual official assignment can be passed to task/time/report commands.
 async function roster(user,query){
- const {page,limit,skip}=v.pagination(query),batchId=v.id(query.batchId);
+ const {page,limit,skip}=v.pagination(query),batchId=v.id(query.batchId),student=query.studentUserId?{studentUserId:v.id(query.studentUserId)}:{};
  const [assigned,admitted]=await Promise.all([
-  Assignment.find({...policy.scope(user),batchId}).lean(),
-  Enrollment.find({batchId,eligibility:'eligible','admission.state':'active','admission.companyUserId':user._id}).select('studentUserId batchId admission assignmentId').lean(),
+  Assignment.find({...policy.scope(user),batchId,...student}).lean(),
+  Enrollment.find({batchId,...student,eligibility:'eligible','admission.state':'active','admission.companyUserId':user._id}).select('studentUserId batchId admission assignmentId').lean(),
  ]);
  const ids=[...new Set([...assigned,...admitted].map(a=>String(a.studentUserId)))];
  const [people,topics,batch]=await Promise.all([

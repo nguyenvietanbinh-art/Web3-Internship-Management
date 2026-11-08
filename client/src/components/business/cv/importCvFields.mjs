@@ -1,12 +1,12 @@
 const normalize=value=>value.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/đ/g,'d').replace(/[^a-z0-9 ]/g,' ').replace(/\s+/g,' ').trim();
 const sections={
-  summary:['muc tieu','muc tieu nghe nghiep','muc tieu va dinh huong','tom tat','tom tat cv','gioi thieu','summary','profile','objective','career objective'],
+  summary:['muc tieu','muc tieu nghe nghiep','muc tieu va dinh huong','tom tat','tom tat cv','gioi thieu','summary','profile','objective','career objective','thoi gian thuc tap','dinh huong bo sung'],
   education:['hoc van','education'],
   skills:['ky nang','ky nang chuyen mon','ky nang ky thuat','skills','technical skills'],
-  experience:['kinh nghiem','kinh nghiem lam viec','experience','work experience','projects','du an','du an hoc tap va vai tro'],
+  experience:['kinh nghiem','kinh nghiem lam viec','experience','work experience','projects','du an','du an hoc tap va vai tro','du an hoc tap','kinh nghiem va cach lam viec'],
 };
 const fieldsForHeading=new Map(Object.entries(sections).flatMap(([field,headings])=>headings.map(h=>[h,field])));
-const boundaries=['ho so thuc tap','curriculum vitae','cv','lien he','contact','chung chi','certifications','nguoi tham chieu','references','so thich','interests','phoi hop trach nhiem va cach giai quyet kho khan','thoi gian va hinh thuc thuc tap','gioi han va phan can hoc them'];
+const boundaries=['ngoai ngu','ky nang mem','chung chi va hoat dong','ho so thuc tap','curriculum vitae','cv','lien he','contact','chung chi','certifications','nguoi tham chieu','references','so thich','interests','phoi hop trach nhiem va cach giai quyet kho khan','thoi gian va hinh thuc thuc tap','gioi han va phan can hoc them'];
 export function importCvFields(text) {
   if(typeof text!=='string'||!text.trim())return {};
   const lines=text.replace(/\r/g,'').split('\n'),parts={},result={};let field=null;

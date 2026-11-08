@@ -21,7 +21,7 @@ async function context(){
  }catch(e){provider.destroy();if(e instanceof HttpError)throw e;throw new HttpError(503,'RPC Hardhat local không khả dụng','CHAIN_UNAVAILABLE');}
 }
 async function status(){let c;try{c=await context();return{enabled:true,available:true,chainId:31337,contractAddress:c.d.address,deploymentTx:c.d.deploymentTx,attestor:c.d.deployer,signerMode:'local-hardhat-attestor-not-user-wallet',network:'Hardhat local',certificateStandard:'ERC721/ERC5192',mainnetAllowed:false};}catch(e){return{enabled:process.env.WEB3_LOCAL_ENABLED==='true',available:false,verified:false,reason:e.code||'CHAIN_UNAVAILABLE',message:e instanceof HttpError?e.message:'Web3 local chưa sẵn sàng'};}finally{c?.provider.destroy();}}
-function dto(op){const o=op.toObject?op.toObject():op;return{id:o._id,operationId:o.operationId,assignmentId:o.assignmentId,targetId:o.targetId,kind:o.kind,state:o.state,txHash:o.txHash||null,blockHash:o.blockHash||null,blockNumber:o.blockNumber??null,chainId:o.chainId,contractAddress:o.contractAddress,tokenId:o.tokenId||null,digest:o.digest,refURI:o.refURI,errorCode:o.errorCode,attempts:o.attempts,signerMode:'local-hardhat-attestor-not-user-wallet'};}
+function dto(op){const o=op.toObject?op.toObject():op;return{id:o._id,operationId:o.operationId,assignmentId:o.assignmentId,targetId:o.targetId,kind:o.kind,state:o.state,txHash:o.txHash||null,blockHash:o.blockHash||null,blockNumber:o.blockNumber??null,chainId:o.chainId,contractAddress:o.contractAddress,tokenId:o.tokenId||null,digest:o.digest,refURI:o.refURI,errorCode:o.errorCode,attempts:o.attempts,studentUserId:o.studentUserId||null,studentWallet:o.studentWallet,createdAt:o.createdAt,updatedAt:o.updatedAt,eventName:o.kind==='mint'?'CertificateIssued':'EvidenceRecorded',signerMode:'local-hardhat-attestor-not-user-wallet'};}
 async function findMined(c,op){
  const iface=c.contract.interface;const name=op.kind==='mint'?'CertificateIssued':'EvidenceRecorded';
  const logs=await c.provider.getLogs({address:c.d.address,fromBlock:c.d.deploymentBlock,toBlock:'latest',topics:[iface.getEvent(name).topicHash,op.operationId]});
@@ -51,9 +51,9 @@ async function verify(c,op,txHash){
  return{txHash:receipt.hash,blockHash:receipt.blockHash,blockNumber:receipt.blockNumber,...(tokenId?{tokenId}:{})};
 }
 let queue=Promise.resolve();
-async function execute(user,{assignment,kind,targetId,digest,refURI=''}){
+async function execute(user,{assignment,kind,targetId,digest,refURI=''},getContext=context){
  assignment=await identity.chainAssignment(assignment);
- const c=await context();try{
+ const c=await getContext();try{
   const assignmentKey=hash('core-assignment:'+String(assignment._id)),operationId=hash([c.d.hardhatInstanceId,c.d.deploymentTx,kind,String(targetId),digest].join(':'));
   let op;try{op=await ChainOperation.findOneAndUpdate({operationId},{$setOnInsert:{operationId,assignmentId:assignment._id,targetId,kind,actorUserId:user._id,actorWallet:user.walletAddress,studentWallet:assignment.studentWallet,assignmentKey,digest,refURI,chainId:31337,contractAddress:c.d.address.toLowerCase(),deploymentTx:c.d.deploymentTx,chainInstanceId:c.d.hardhatInstanceId,history:[v.event(user,'chain.prepared')]}},{upsert:true,new:true,runValidators:true});}catch(e){if(e.code!==11000)throw e;op=await ChainOperation.findOne({operationId});}
   if(op.refURI!==refURI||op.digest!==digest||op.assignmentKey!==assignmentKey)throw new HttpError(409,'Operation payload không còn khớp','OPERATION_MISMATCH');
@@ -76,6 +76,13 @@ async function execute(user,{assignment,kind,targetId,digest,refURI=''}){
   }
  }finally{c.provider.destroy();}
 }
+// Explicit read-only verification: transaction state and live verification remain distinct.
+async function verification(op,getContext=context){
+ let c;const checkedAt=new Date().toISOString();
+ try{c=await getContext();const proof=await verify(c,op,op.txHash||await findMined(c,op));return{...dto(op),...proof,verificationStatus:'valid',verified:true,lastVerifiedAt:checkedAt};}
+ catch(e){const code=e instanceof HttpError?e.code:'CHAIN_UNAVAILABLE';const verificationStatus=code==='CHAIN_DEPLOYMENT_MISMATCH'||code==='WEB3_UNSAFE_CONFIG'?'chain_mismatch':code==='CHAIN_PENDING'?'pending':['CHAIN_FAILED','RECEIPT_MISMATCH','CERTIFICATE_MISMATCH'].includes(code)?'invalid':'unverifiable';return{...dto(op),verified:false,verificationStatus,lastVerifiedAt:checkedAt,errorCode:code,message:e instanceof HttpError?e.message:'Không thể kết nối để xác minh blockchain'};}
+ finally{c?.provider.destroy();}
+}
 async function reconcile(user,op){
  const c=await context();try{const txHash=await findMined(c,op),proof=await verify(c,op,txHash);return dto(await ChainOperation.findByIdAndUpdate(op._id,{$set:{...proof,state:'confirmed',errorCode:''},$unset:{leaseUntil:1},$push:{history:v.event(user,'chain.reconciled',proof)}},{new:true}));}finally{c.provider.destroy();}
 }
@@ -83,7 +90,7 @@ async function certificate(assignment){
  assignment=await identity.chainAssignment(assignment);
  const c=await context();try{
   const op=await ChainOperation.findOne({assignmentId:assignment._id,kind:'mint',deploymentTx:c.d.deploymentTx,chainInstanceId:c.d.hardhatInstanceId,state:'confirmed'});if(!op)throw new HttpError(404,'Chưa có chứng nhận đã mint được xác nhận','CERTIFICATE_NOT_FOUND');
-  const proof=await verify(c,op,op.txHash);return{verified:true,locked:true,standard:'ERC721/ERC5192',tokenId:proof.tokenId,owner:assignment.studentWallet,chainId:31337,contractAddress:c.d.address,txHash:proof.txHash,blockNumber:proof.blockNumber,blockHash:proof.blockHash,assignmentId:assignment._id,metadataURI:await c.contract.tokenURI(proof.tokenId),signerMode:'local-hardhat-attestor-not-user-wallet'};
+  const proof=await verify(c,op,op.txHash);return{verified:true,lastVerifiedAt:new Date().toISOString(),locked:true,standard:'ERC721/ERC5192',tokenId:proof.tokenId,owner:assignment.studentWallet,chainId:31337,contractAddress:c.d.address,txHash:proof.txHash,blockNumber:proof.blockNumber,blockHash:proof.blockHash,assignmentId:assignment._id,metadataURI:await c.contract.tokenURI(proof.tokenId),signerMode:'local-hardhat-attestor-not-user-wallet'};
  }finally{c.provider.destroy();}
 }
-module.exports={assertTest,metadata,context,status,dto,execute,reconcile,certificate,verify,hash};
+module.exports={assertTest,metadata,context,status,dto,execute,reconcile,certificate,verify,verification,hash};

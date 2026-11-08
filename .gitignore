@@ -167,3 +167,9 @@ staff-public.json
 
 # Per-machine keys, plaintext restored logins and runtime state.
 /.team/
+
+# Cloud release excludes local raw database handoffs and machine deployment state.
+/database/shared-snapshot/*.snapshot.json
+/database/shared-snapshot/*.plain.manifest.json
+/server.zip
+.vercel/

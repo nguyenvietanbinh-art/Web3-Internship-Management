@@ -7,11 +7,12 @@ async function contexts(assignments){
  return new Map(assignments.map(a=>[String(a._id),{studentName:users.get(String(a.studentUserId))?.name||'',studentCode:codes.get(String(a.studentUserId))||'',batchName:bs.get(String(a.batchId))?.name||'',topicTitle:a.topicSnapshot?.title||ts.get(String(a.topicId))?.title||'',companyName:users.get(String(a.companyUserId))?.name||'',mentorName:users.get(String(a.mentorUserId))?.name||'Chưa phân công'}]));
 }
 async function list(user,query,v,policy,Report){
- const placementFilter=policy.scope(user);if(query.batchId)placementFilter.batchId=v.id(query.batchId);
+ const placementFilter=policy.scope(user);if(query.batchId)placementFilter.batchId=v.id(query.batchId);if(query.studentUserId){const id=v.id(query.studentUserId);placementFilter.$and=[...(placementFilter.$and||[]),{studentUserId:id}];}
  if(query.assignmentId){await policy.load(user,query.assignmentId);placementFilter._id=v.id(query.assignmentId);}
  const assignments=await Assignment.find(placementFilter).lean(),context=await contexts(assignments),search=v.search(query.q);
  const matching=search?assignments.filter(a=>Object.values(context.get(String(a._id))).some(x=>search.test(x))):assignments;
  const filter=search?{$or:[{assignmentId:{$in:matching.map(a=>a._id)}},{assignmentId:{$in:assignments.map(a=>a._id)},title:search}]}:{assignmentId:{$in:assignments.map(a=>a._id)}};
+ if(query.reviewStage){const stage=v.choice(query.reviewStage,['unreviewed','company_only','mentor_only','both','finalized'],'Tình trạng chấm');const has=role=>({reviews:{$elemMatch:{role}}}),not=role=>({reviews:{$not:{$elemMatch:{role}}}});filter.$and=[...(filter.$and||[]),...(stage==='finalized'?[{state:'approved'}]:[{state:{$ne:'approved'}},...(stage==='unreviewed'?[not('company'),not('mentor')]:stage==='company_only'?[has('company'),not('mentor')]:stage==='mentor_only'?[has('mentor'),not('company')]:[has('company'),has('mentor')])])];}
  if(query.kind)filter.kind=v.choice(query.kind,['weekly','final'],'Loại báo cáo');
  if(query.state)filter.state=v.choice(query.state,['submitted','reviewed','approved','need_revision'],'Trạng thái báo cáo');
  const weekly=await Report.aggregate([{$match:{assignmentId:{$in:assignments.map(a=>a._id)},kind:'weekly',weekNumber:{$exists:true}}},{$group:{_id:{assignmentId:'$assignmentId',weekNumber:'$weekNumber'},version:{$max:'$version'}}}]);const latestWeeks=new Map(weekly.map(r=>[String(r._id.assignmentId)+':'+r._id.weekNumber,r.version]));

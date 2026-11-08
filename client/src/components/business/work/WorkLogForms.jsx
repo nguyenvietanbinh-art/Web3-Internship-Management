@@ -4,7 +4,7 @@ import { Text, Area, Select, ActionForm, AssignmentPicker } from '../Shared';
 import { active, asIso, dateLabel, localInput } from '../hooks';
 import { displayLabel } from '../content';
 import AssignmentNotice from './AssignmentNotice';
-export function LogAssignmentForm({ data, assignment, onAssignment, onSaved, batchId='' }) {
+export function LogAssignmentForm({user, data, assignment, onAssignment, onSaved, batchId='' }) {
   const [form, setForm] = useState({
     weekNumber: data?.weekNumber || 1,
     title: data?.title || '',
@@ -35,7 +35,7 @@ export function LogAssignmentForm({ data, assignment, onAssignment, onSaved, bat
     >
       {!data && (
         <>
-          <AssignmentPicker value={assignment} onChange={onAssignment} batchId={batchId} includeAdmissions={Boolean(batchId)}/>
+          <AssignmentPicker userRole={user.role} value={assignment} onChange={onAssignment} batchId={batchId} includeAdmissions={Boolean(batchId)}/>
           <AssignmentNotice assignment={assignment} />
         </>
       )}

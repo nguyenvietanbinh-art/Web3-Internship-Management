@@ -2,8 +2,9 @@ const Assignment = require('../models/Assignment');
 const { HttpError } = require('../utils/http');
 const v = require('./shared');
 const policy = require('./placementPolicy');
-async function scope(user, {batchId} = {}) {
-  return { assignmentId: { $in: await Assignment.find({...policy.scope(user),...(batchId?{batchId:v.id(batchId)}:{})}).distinct('_id') } };
+async function scope(user, {batchId,studentUserId} = {}) {
+ const filter={$and:[policy.scope(user),{...(batchId?{batchId:v.id(batchId)}:{}),...(studentUserId?{studentUserId:v.id(studentUserId)}:{})}]};
+ const ids=await Assignment.find(filter).distinct('_id');return {assignmentId:{$in:ids},...(studentUserId?{$and:[{assignmentId:{$in:ids}}]}:{})};
 }
 async function resource(Model, user, id, active = false) {
   const doc = await Model.findOne({ _id: v.id(id), ...(await scope(user)) });

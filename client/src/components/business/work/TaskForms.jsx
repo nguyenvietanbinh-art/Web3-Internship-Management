@@ -46,7 +46,7 @@ export function TaskForm({ data, assignment, user, onAssignment, onSaved, batchI
     >
       {!data && (
         <>
-          <AssignmentPicker value={assignment} onChange={onAssignment} batchId={batchId} includeAdmissions={Boolean(batchId)}/>
+          <AssignmentPicker userRole={user.role} value={assignment} onChange={onAssignment} batchId={batchId} includeAdmissions={Boolean(batchId)}/>
           <AssignmentNotice assignment={assignment} />
           {assignment && (
             <p>

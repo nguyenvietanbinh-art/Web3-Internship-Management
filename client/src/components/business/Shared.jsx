@@ -6,6 +6,7 @@ import { useResource, shortWallet, dateLabel } from './hooks';
 import { completeAction } from '../../api/formAction';
 import { displayLabel } from './content';
 import {historyContent} from './historyContent';
+import AdminStudentPicker from './AdminStudentPicker';
 
 export function Panel({ title, children, description, actions }) {
   return (
@@ -277,7 +278,8 @@ export function ServerTable({
     </section>
   );
 }
-export function AssignmentPicker({ value, onChange, revision = 0, batchId='', requireBatch=false, includeAdmissions=false, userRole='' }) {
+export function AssignmentPicker(props){return props.userRole!=='student'?<AdminStudentPicker {...props}/>:<ScopedAssignmentPicker {...props}/>;}
+function ScopedAssignmentPicker({ value, onChange, revision = 0, batchId='', requireBatch=false, includeAdmissions=false, userRole='' }) {
   const [remembered,setRemembered]=useViewState('assignment:'+batchId,'');
   const [selectionNotice,setSelectionNotice]=useState('');
   const personal=userRole==='student';

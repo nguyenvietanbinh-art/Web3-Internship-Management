@@ -261,3 +261,33 @@
 .recommendation-rank{flex-shrink:0;padding:6px 9px;border-radius:9px;color:var(--primary);background:var(--primary-soft);font-weight:700}.recommendation-score strong{display:block;font-size:24px;color:var(--text-main);font-variant-numeric:tabular-nums}.recommendation-card>.btn{align-self:flex-start;margin-top:8px}.recommendation-detail{border-top:1px solid var(--border-glass);padding-top:14px;display:grid;gap:12px;min-width:0}.recommendation-comparison{padding:12px;border-radius:10px;background:var(--primary-soft);font-variant-numeric:tabular-nums}
 
 .workspace-status-pills{display:flex;flex-wrap:wrap;justify-content:flex-end;gap:8px;min-width:0}
+
+/* School roster: stable column widths and compact, readable actions. */
+.school-student-list .table-scroll{min-height:320px;overflow-anchor:none}
+.school-student-list table{width:100%;min-width:940px;table-layout:fixed}
+.school-student-list th:nth-child(1){width:21%}
+.school-student-list th:nth-child(2){width:12%}
+.school-student-list th:nth-child(3){width:28%}
+.school-student-list th:nth-child(4){width:14%}
+.school-student-list th:nth-child(5){width:25%}
+.school-student-list td{vertical-align:top;padding:20px 14px;overflow-wrap:anywhere}
+.school-student-list td p{margin:6px 0 0;color:var(--text-muted)}
+.school-student-list td .business-actions{display:flex;flex-direction:column;align-items:stretch;gap:8px}
+.school-student-list td .btn{min-height:36px;padding:7px 12px;text-align:center;font-size:12px}
+.school-student-list tbody tr:hover{background:var(--surface-muted)}
+@media(max-width:767px){.school-student-list td{padding:14px 10px}}
+.supervision-students { margin-top: 1.5rem; }
+.supervision-student-list { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: .65rem; list-style: none; padding: 0; }
+.supervision-student-list li { min-width: 0; }
+.supervision-student-list button { width: 100%; height: 100%; display: flex; align-items: flex-start; flex-direction: column; text-align: left; gap: .3rem; white-space: normal; overflow-wrap: anywhere; }
+.supervision-student-list span { font-size: .8rem; font-weight: 400; }
+.supervision-selection { margin-top: 1rem; padding-top: 1rem; border-top: 1px solid var(--border-color, #dfe3ef); }
+@media (max-width: 640px) { .supervision-student-list { grid-template-columns: minmax(0,1fr); } }
+.admin-picker-fields { border: 0; padding: 0; margin: 0; min-width: 0; }
+
+/* Compact shared Admin student lookup; details stay next to the selection. */
+.supervision-students { min-width:0; }
+.supervision-student-list { max-height:320px; overflow-y:auto; overscroll-behavior:contain; grid-template-columns:repeat(auto-fit,minmax(min(100%,250px),1fr)); }
+.supervision-selection { padding:14px; border:1px solid var(--border); border-radius:12px; margin-top:10px; }
+.supervision-selection p { overflow-wrap:anywhere; margin-top:0; }
+@media(max-width:640px){.supervision-student-list{max-height:260px;grid-template-columns:1fr;}}

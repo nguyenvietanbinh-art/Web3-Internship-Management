@@ -5,6 +5,7 @@ import AccountsPage from './Accounts';
 import PlacementsPage from './Placements';
 import WorkPage from './Work';
 import TimePage from './Time';
+import AdminSupervision from './AdminSupervision';
 import ReportsPage from './Reports';
 import AiPage from './AiPage';
 import AdminPage from './workflow/AdminPage';
@@ -14,7 +15,7 @@ import {ApplicantPage,ScopedStudents,OpportunityPage} from './workflow/CompanyPa
 const Web3Page=lazy(()=>import('./Web3Page'));
 import { lazy, Suspense } from 'react';
 
-const access={profile:['student','company','mentor','admin'],cv:['student'],jds:['student','company','mentor','admin'],applications:['student','company','admin'],accounts:['admin'],placements:['student','company','mentor','admin'],work:['student','company','mentor','admin'],time:['student','company','mentor','admin'],reports:['student','company','mentor','admin']};
+const access={profile:['student','company','mentor','admin'],cv:['student'],jds:['student','company','mentor','admin'],applications:['student','company','admin'],accounts:['admin'],placements:['student','company','mentor','admin'],work:['student','company','mentor','admin'],time:['student','company','admin'],reports:['student','company','mentor','admin']};
 export default function CoreBusinessView({view,user,onProfileSaved,unified=false,schoolWorkflow=false,onNavigate}) {
   const page=view.replace('core-','');
   if(schoolWorkflow){
@@ -32,6 +33,7 @@ export default function CoreBusinessView({view,user,onProfileSaved,unified=false
   if(page==='web3')return user?<Suspense fallback={<p>Đang tải Web3…</p>}><Web3Page key={user._id} user={user} unified={unified} onWalletSettings={()=>onNavigate('core-profile')} /></Suspense>:<EmptyState error title="Cần xác thực tài khoản" />;
   if(page==='ai')return user&&['student','mentor'].includes(user.role)?<AiPage key={user._id} user={user} />:<EmptyState error title="Cần xác thực tài khoản" />;
   if(!user||!access[page]?.includes(user.role))return <EmptyState error title="Không có quyền truy cập trang này">Tài khoản của bạn chưa được cấp quyền sử dụng chức năng này.</EmptyState>;
+  if(user.role==='admin'&&['work','time'].includes(page))return <div className="business-page"><AdminSupervision key={page} time={page==='time'}/></div>;
   const views={profile:<ProfilePage user={user} onProfileSaved={onProfileSaved} />,cv:<CvPage />,jds:<JdPage user={user} />,applications:<ApplicationsPage user={user} />,accounts:<AccountsPage user={user} unified={unified} />,placements:<PlacementsPage user={user} unified={unified} />,work:<WorkPage user={user} schoolWorkflow={schoolWorkflow}/>,time:<TimePage user={user} />,reports:<ReportsPage user={user} unified={unified} />};
   return <div className="business-page">{views[page]}</div>;
 }

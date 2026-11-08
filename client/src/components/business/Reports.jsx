@@ -17,6 +17,7 @@ export default function ReportsPage({ user,studentKind='final',embedded=false,pr
   const placements=useResource(user.role==='mentor'?'/core/placements?limit=100':null);
   const completedIds=new Set((placements.data?.items||[]).filter(a=>a.lifecycle==='completed').map(a=>a._id));
   const student=user.role==='student',weekly=student&&studentKind==='weekly';
+  const [adminStudent,setAdminStudent]=useState(null),[reviewStage,setReviewStage]=useViewState('reportReviewStage','');
   const [localAssignment, setAssignment] = useState(null),
     [revision, setRevision] = useState(0),
     [modal, setModal] = useState(null),
@@ -35,7 +36,7 @@ export default function ReportsPage({ user,studentKind='final',embedded=false,pr
     setModal(null);
     setRevision((n) => n + 1);
   };
-  const reportPath='/core/reports?'+new URLSearchParams({...(assignment?{assignmentId:assignment._id}:{}),...(student?{kind:studentKind}:kind?{kind}:{}),...(state?{state}:{}),...(user.role==='admin'&&batchId?{batchId}:{})});
+  const reportPath='/core/reports?'+new URLSearchParams({...(assignment?{assignmentId:assignment._id}:{}),...(!student&&adminStudent?{studentUserId:adminStudent._id}:{}),...(student?{kind:studentKind}:kind?{kind}:{}),...(state?{state}:{}),...(user.role==='admin'&&batchId?{batchId}:{}),...(user.role==='admin'&&reviewStage?{reviewStage}:{})});
   return (
     <div className="business-stack">
       <Panel
@@ -44,9 +45,12 @@ export default function ReportsPage({ user,studentKind='final',embedded=false,pr
       >
         {!student&&<Select label="Loại báo cáo cần xem" value={kind} onChange={setKind} options={[{value:'',label:'Tất cả loại báo cáo'},{value:'weekly',label:'Báo cáo tuần'},{value:'final',label:'Báo cáo cuối kỳ'}]}/>}
         <Select label="Trạng thái đánh giá báo cáo" value={state} onChange={setState} options={[{value:'',label:'Tất cả trạng thái'},{value:'submitted',label:'Đã nộp'},{value:'reviewed',label:'Đã có hai đánh giá'},{value:'need_revision',label:'Cần bổ sung'},{value:'approved',label:'Đã chốt kết quả'}]}/>
-        {user.role==='admin'&&<Select label="Kỳ của báo cáo" value={batchId} onChange={setBatchId} options={[{value:'',label:'Tất cả kỳ'},...(batches.data?.items||[]).map(b=>({value:b._id,label:b.name}))]}/>}
+        {user.role==='admin'&&<Select label="Tình trạng chấm báo cáo" value={reviewStage} onChange={setReviewStage} options={[{value:'',label:'Tất cả tình trạng chấm'},{value:'unreviewed',label:'Chưa ai chấm'},{value:'company_only',label:'Chỉ doanh nghiệp đã chấm'},{value:'mentor_only',label:'Chỉ giảng viên đã chấm'},{value:'both',label:'Cả hai bên đã chấm, chưa chốt'},{value:'finalized',label:'Đã chốt kết quả'}]}/> }
+        {user.role==='admin'&&<Select label="Kỳ của báo cáo" value={batchId} onChange={value=>{setBatchId(value);setAssignment(null);}} options={[{value:'',label:'Tất cả kỳ'},...(batches.data?.items||[]).map(b=>({value:b._id,label:b.name}))]}/>}
         {!embedded&&<AssignmentPicker
           userRole={user.role}
+          batchId={user.role==='admin'?batchId:''}
+          onStudentChange={setAdminStudent}
           value={assignment}
           onChange={(a) => {
             setAssignment(a);
