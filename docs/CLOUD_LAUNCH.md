@@ -11,7 +11,11 @@
 
 ## Chưa thực hiện
 
-Đã đăng nhập Atlas và Render. Đã tạo cluster `Internova` gói Free, AWS Singapore, MongoDB 8.0.37 và xác minh trạng thái ACTIVE trên dashboard. Chưa tạo database user/IP access list, chưa chuyển dữ liệu lên Atlas, chưa tạo dịch vụ Render hoặc phát hành URL công khai. Docker daemon trên máy chưa hoạt động nên chưa build image thực tế; frontend build và unit tests đã chạy độc lập. AI, IPFS, SBT/testnet chưa được triển khai. Cấu hình mới tắt adapter Hardhat local trên cloud.
+Đã đăng nhập Atlas và Render. Cluster `Internova` gói Free, AWS Singapore, MongoDB 8.0.37 đang ACTIVE. Đã khôi phục 15.302 document vào `internova_cloud_demo` trên cluster mới, 0 lỗi; đối chiếu số lượng và index của 27 collection, kiểm tra unique indexes ứng dụng và environment marker thành công. Replica set đã xác minh: `atlas-xyrdqo-shard-0`. Dữ liệu nguồn local được giữ nguyên. Evidence riêng tư tại `.team/atlas-migration-verification.json`; cấu hình server tại `.team/cloud.env`, không commit.
+
+Chưa tạo dịch vụ Render hoặc phát hành URL công khai. Render báo `Repository not found` khi dùng Public Git Repository; đã chuyển sang Git Provider và mở bước GitHub Authorize Render để chủ tài khoản cấp quyền. Không thay đổi visibility của repository. Docker daemon trên máy chưa hoạt động nên chưa build image thực tế; frontend build và unit tests đã chạy độc lập. AI, IPFS, SBT/testnet chưa được triển khai. Cấu hình mới tắt adapter Hardhat local trên cloud.
+
+Trong quá trình chuyển dữ liệu, Cloudflare WARP được tạm ngắt theo xác nhận của người dùng để xử lý lỗi TLS. Sau khi chuyển xong đã bật lại và xác minh trạng thái Connected.
 
 ## Hoàn tất triển khai
 
