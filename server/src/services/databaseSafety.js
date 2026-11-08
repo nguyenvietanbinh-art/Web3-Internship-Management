@@ -1,9 +1,20 @@
 const {assertTestEnvironment}=require('../config/testDatabaseGuard');
 function connectionOptions(env,uri){
+ if(env.APP_ENV==='CLOUD_DEMO'){
+  if(uri!==env.MONGODB_URI)throw Error('Cloud connection URI mismatch');
+  require('../config/cloudDemoPolicy').configuration(env);
+  return{autoIndex:false,autoCreate:false};
+ }
  if(env.SCHOOL_WORKFLOW_ENABLED==='true'){require('../config/workflowTestGuard').assertWorkflowTest(env);return{autoIndex:false,autoCreate:false};}
  const test=env.NODE_ENV==='test';
  if(test)assertTestEnvironment({nodeEnv:env.NODE_ENV,uri,allowlistedUri:env.MONGODB_URI_TEST_ALLOWLIST});
  return{autoIndex:test,autoCreate:test};
+}
+async function verifyDatabaseIdentity(env=process.env,connection=require('mongoose').connection){
+ if(env.APP_ENV!=='CLOUD_DEMO')return;
+ const hello=await connection.db.command({hello:1});
+ const marker=await connection.db.collection('cloud_environment').findOne({_id:'internova-cloud-demo-v1'});
+ return require('../config/cloudDemoPolicy').identity(env,{databaseName:connection.name,hello,marker});
 }
 const stable=value=>JSON.stringify(value,(_key,item)=>item&&typeof item==='object'&&!Array.isArray(item)?Object.fromEntries(Object.entries(item).sort(([a],[b])=>a.localeCompare(b))):item);
 async function verifyIndexes(coreEnabled=false){
@@ -19,4 +30,4 @@ async function verifyIndexes(coreEnabled=false){
  }
  return{verified:true,models:models.map(m=>m.modelName)};
 }
-module.exports={connectionOptions,verifyIndexes};
+module.exports={connectionOptions,verifyIndexes,verifyDatabaseIdentity};

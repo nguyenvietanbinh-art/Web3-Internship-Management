@@ -1,0 +1,17 @@
+**/node_modules
+**/.env
+**/.env.*
+.git
+.team
+.venv
+**/__pycache__
+**/dist
+**/*.archive
+database
+audit-reports
+docs
+contracts
+ai-service
+**/*.log
+**/*.dpapi
+**/manual-login*.txt

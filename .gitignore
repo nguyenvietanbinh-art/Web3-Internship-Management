@@ -173,3 +173,6 @@ staff-public.json
 /database/shared-snapshot/*.plain.manifest.json
 /server.zip
 .vercel/
+
+# Database dumps can contain private records and password hashes.
+*.archive

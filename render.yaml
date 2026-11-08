@@ -1,0 +1,53 @@
+# Frontend and API share one HTTPS origin; database secrets stay on the server.
+# See docs/CLOUD_LAUNCH.md before creating this service.
+services:
+  - type: web
+    name: internova
+    runtime: docker
+    plan: free
+    region: singapore
+    dockerfilePath: ./Dockerfile
+    dockerContext: .
+    healthCheckPath: /api/ready
+    autoDeployTrigger: off
+    envVars:
+      - key: APP_ENV
+        value: CLOUD_DEMO
+      - key: NODE_ENV
+        value: production
+      - key: HOST
+        value: 0.0.0.0
+      - key: SERVE_CLIENT
+        value: 'true'
+      - key: SCHOOL_WORKFLOW_ENABLED
+        value: 'true'
+      - key: CORE_BUSINESS_ENABLED
+        value: 'true'
+      - key: USER_ID_BUSINESS_ENABLED
+        value: 'true'
+      - key: EMAIL_AUTH_ENABLED
+        value: 'true'
+      - key: GOOGLE_AUTH_ENABLED
+        value: 'false'
+      - key: WEB3_LOCAL_ENABLED
+        value: 'false'
+      - key: CHAIN_LISTENER_ENABLED
+        value: 'false'
+      - key: DEMO_MODE
+        value: 'false'
+      - key: IPFS_EXTERNAL_UPLOAD_ENABLED
+        value: 'false'
+      - key: JWT_SECRET
+        generateValue: true
+      - key: MONGODB_URI
+        sync: false
+      - key: CLOUD_DEMO_DB_NAME
+        value: internova_cloud_demo
+      - key: CLOUD_DEMO_CLUSTER_HOST
+        sync: false
+      - key: CLOUD_DEMO_REPLICA_SET
+        sync: false
+      - key: CLOUD_DEMO_INSTANCE_ID
+        sync: false
+      - key: CORS_ORIGIN
+        sync: false

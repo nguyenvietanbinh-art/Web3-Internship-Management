@@ -1,5 +1,7 @@
 # Audit và chuẩn bị Internova lên Vercel + Render + MongoDB Atlas
 
+> Cập nhật sau audit: đã khôi phục archive mới và tích hợp nhánh startup CLOUD_DEMO. Xem [trạng thái hiện hành và cấu hình Render chung frontend/API](CLOUD_LAUNCH.md). Các kết luận “policy chưa tích hợp” bên dưới là lịch sử audit; chưa có triển khai cloud thực tế.
+
 Ngày xác minh: **08/11/2026, Asia/Bangkok**. Chưa deploy, đăng ký hộ hoặc sửa cấu hình cloud. Không kết nối database TEST/Atlas trong các script preflight; không seed/migrate, sửa điểm/báo cáo/ví/SBT hoặc giao dịch Hardhat 18546. Không commit/push.
 
 ## 1. Kết luận

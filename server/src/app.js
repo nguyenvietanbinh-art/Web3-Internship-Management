@@ -1,4 +1,6 @@
 const express = require("express");
+const path = require('node:path');
+const fs = require('node:fs');
 const cors = require("cors");
 const mongoose = require("mongoose");
 const config = require("./config/env");
@@ -8,6 +10,8 @@ const { notFound, errorHandler } = require("./middleware/errorHandler");
 /** Tạo Express app (không listen) để test import trực tiếp. */
 function createApp(options = {}) {
   const app = express();
+  // Render terminates TLS in front of this process. Limit trust to its immediate proxy.
+  if (process.env.APP_ENV === 'CLOUD_DEMO') app.set('trust proxy', 1);
   if(options.googleVerifier){
     require('./config/testDatabaseGuard').assertTestEnvironment({nodeEnv:process.env.NODE_ENV,uri:config.mongoUri,allowlistedUri:process.env.MONGODB_URI_TEST_ALLOWLIST});
     app.locals.googleVerifier=options.googleVerifier;
@@ -57,6 +61,12 @@ function createApp(options = {}) {
     .json({ ready: mongoose.connection.readyState === 1 }));
 
   app.use("/api", notFound);
+  if (process.env.SERVE_CLIENT === 'true') {
+    const directory = path.resolve(__dirname, '../../client/dist');
+    if (!fs.existsSync(path.join(directory, 'index.html'))) throw Error('Frontend build missing');
+    app.use(express.static(directory));
+    app.get('*', (_req, res) => res.sendFile(path.join(directory, 'index.html')));
+  }
   app.use(errorHandler);
   return app;
 }

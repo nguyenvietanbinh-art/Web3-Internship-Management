@@ -8,4 +8,16 @@ for(const [key,value]of Object.entries({NODE_ENV:'test',APP_ENV:'production',CLO
 for(const suffix of ['&tls=false','&tlsAllowInvalidCertificates=true','&retryWrites=false','&w=1','&unknown=true'])test('unsafe query '+suffix+' refused',()=>assert.throws(()=>policy.configuration({...env,MONGODB_URI:env.MONGODB_URI+suffix})));
 test('local URI and wrong database refused',()=>{for(const uri of ['mongodb://127.0.0.1:27018/internova_cloud_demo',env.MONGODB_URI.replace('/internova_cloud_demo','/production')])assert.throws(()=>policy.configuration({...env,MONGODB_URI:uri}));});
 test('unverified live identity or missing marker refused',()=>{for(const evidence of [{databaseName:'wrong',hello,marker},{databaseName:env.CLOUD_DEMO_DB_NAME,hello:{...hello,setName:'wrong'},marker},{databaseName:env.CLOUD_DEMO_DB_NAME,hello,marker:null},{databaseName:env.CLOUD_DEMO_DB_NAME,hello,marker:{...marker,instanceId:'wrong'}}])assert.throws(()=>policy.identity(env,evidence));});
-test('existing local workflow startup still rejects cloud; draft is not a bypass',()=>{assert.throws(()=>require('../src/services/databaseSafety').connectionOptions(env,env.MONGODB_URI));});
+test('cloud startup disables automatic schema writes; local TEST guard still refuses Atlas',()=>{
+ assert.deepEqual(require('../src/services/databaseSafety').connectionOptions(env,env.MONGODB_URI),{autoIndex:false,autoCreate:false});
+ assert.throws(()=>require('../src/config/workflowTestGuard').assertWorkflowTest(env));
+ assert.throws(()=>require('../src/services/databaseSafety').connectionOptions(env,env.MONGODB_URI+'x'));
+});
+
+test('startup reads live identity and refuses a missing or mismatched environment marker',async()=>{
+ const {verifyDatabaseIdentity}=require('../src/services/databaseSafety');
+ const connection=(value)=>({name:env.CLOUD_DEMO_DB_NAME,db:{command:async()=>hello,collection:()=>({findOne:async()=>value})}});
+ assert.equal((await verifyDatabaseIdentity(env,connection(marker))).instanceId,env.CLOUD_DEMO_INSTANCE_ID);
+ await assert.rejects(()=>verifyDatabaseIdentity(env,connection(null)),{code:'CLOUD_DEMO_POLICY_REJECTED'});
+ await assert.rejects(()=>verifyDatabaseIdentity(env,connection({...marker,replicaSet:'other'})),{code:'CLOUD_DEMO_POLICY_REJECTED'});
+});

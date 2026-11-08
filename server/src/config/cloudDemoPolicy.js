@@ -1,5 +1,5 @@
-// Draft cloud identity policy: intentionally NOT wired into databaseSafety/startup.
-// Pure validation only. Does not connect, seed, create markers or change local guards.
+// Cloud startup validates configuration before connecting and live identity before listen.
+// No automatic schema changes, provisioning, or local test-guard bypass.
 const DATABASE='internova_cloud_demo';
 function fail(){const error=new Error('CLOUD_DEMO identity configuration rejected');error.code='CLOUD_DEMO_POLICY_REJECTED';throw error;}
 function configuration(env){
