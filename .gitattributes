@@ -3,3 +3,6 @@ docs/evidence/** -text
 
 # Snapshot hashes must survive Windows/Linux checkouts unchanged.
 database/shared-snapshot/*.json -text
+
+# Pin audited Solidity source bytes across Windows/Linux checkouts.
+contracts/contracts/InternshipEvidenceSBT.sol text eol=lf

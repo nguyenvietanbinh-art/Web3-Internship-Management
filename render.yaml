@@ -29,6 +29,16 @@ services:
         value: 'true'
       - key: GOOGLE_AUTH_ENABLED
         value: 'false'
+      - key: CLOUD_WEB3_ENABLED
+        value: 'false'
+      - key: CLOUD_WEB3_WRITE_ENABLED
+        value: 'false'
+      - key: CLOUD_CUSTODY_ENABLED
+        value: 'false'
+      - key: CLOUD_CUSTODY_WRITE_ENABLED
+        value: 'false'
+      - key: CLOUD_SBT_AUTO_ISSUE_ENABLED
+        value: 'false'
       - key: WEB3_LOCAL_ENABLED
         value: 'false'
       - key: WEB3_LOCAL_READ_ONLY

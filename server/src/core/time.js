@@ -4,7 +4,7 @@ const {requireRole}=require('../middleware/auth');const {asyncHandler,HttpError}
 async function scope(user,query={}){return require('./workPolicy').scope(user,{studentUserId:query.studentUserId,batchId:query.batchId});}
 router.get('/time/sessions',asyncHandler(async(req,res)=>{
  const filter=await scope(req.user,req.query);if(req.query.assignmentId){await policy.load(req.user,req.query.assignmentId);filter.assignmentId=req.query.assignmentId;}if(req.query.state)filter.state=v.choice(req.query.state,['open','pending','needs_adjustment','approved','rejected'],'Trạng thái');
- const data=await v.paged(WorkSession,filter,req.query,{sort:{checkInAt:1,_id:1}});data.items=data.items.map(d=>time.view(d));res.json(data);
+ const data=await v.paged(WorkSession,filter,req.query,{sort:{updatedAt:-1,checkInAt:-1,_id:-1}});data.items=data.items.map(d=>time.view(d));res.json(data);
 }));
 router.post('/time/check-in',requireRole('student'),asyncHandler(async(req,res)=>{
  v.keys(req.body,['assignmentId','requestKey']);const a=await policy.load(req.user,req.body.assignmentId,{active:true});

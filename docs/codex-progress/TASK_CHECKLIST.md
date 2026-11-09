@@ -196,3 +196,98 @@ NEXT: Stage selective source/docs, scan secrets, refetch and commit/push only ex
 ## 2026-11-09 21:06:27 Asia/Bangkok — Custodial DEPLOY BRANCH UPDATE STEP prepush — PASS
 Worktree targetbranch based7960173;97selectedtestsPASS, frontendlint/buildPASS, server syntax allPASS, manifests/lock consistent.132stagedsource/config/docs no conflict/whitespace; stagedsecret scan found0 privatekey/MongoURIcredential/JWT/GitHubAWS/literalkey matches and no forbidden runtimepaths. Remote lsremote still7960173. NoCloudaccess orDBwrites.
 NEXT: Commit selective stage then recheckremote immediately before nonforce push to exactdeploybranch only.
+
+## 2026-11-09 21:07:17 Asia/Bangkok — Custodial DEPLOY BRANCH UPDATE STEP push-handoff — PASS
+Commit5e41f78 pushed nonforce fastforward7960173->5e41f78 to origin/deploy/internova-cloud-20261108 only;132selectedsafe source/config/docs. Remote verified, integrationworktree clean; original branch_1/6e29330 dirty workspace preserved.97tests+lint/prodbuild/syntaxPASS, no secrets detected staged. Report docs/INTERNOVA_DEPLOY_BRANCH_UPDATE.md includes actual local push result. No Cloudaccess/restart or DB/chainwrites.
+NEXT: Team pull--ff-only targetbranch, preserve currentenv/Atlasmarker, RenderManualDeploy existingservice; no migration/contractdeploy/seed. CloudE2E Dockerbuild NOTTESTED; blockchainwrite remains disabled/read-only.
+
+## 2026-11-09 21:15:01 Asia/Bangkok — Custodial CLOUD WEB3 + DB HANDOFF STEP database-export — PASS
+Main5190 database identity verified internova_large_test_20261108 on27018/internovaTestRs. Official mongodump archive27collections/15401docs, mongorestore--dryRun PASS, full source hashes before/after equal. Private ignored .team/exports/internova_database_handoff_20261109.zip contains archive+SHA256manifest+safeimportguide; no plaintext credentials/keys/journal. No restore/Cloudchanges/push.
+NEXT: Deliver private bundle; group must backup/review existingAtlas and merge separately, never --drop or replaceCLOUDmarker. CloudWeb3 attachment requires separate config/signerdeploy approval, no activation.
+
+## 2026-11-09 21:16:27 Asia/Bangkok — Custodial CLOUD WEB3 + DB HANDOFF STEP cloud-web3-audit — BLOCKED
+Read full CloudWeb3 attachment; reviewed deployedbranch5e41f78, local journal/custody/contract. Prepared5required CloudWeb3 guides both root/integrationworktree, no commit/push. OfficialRenderFree ephemeralstorage blocks localfilejournal; Sepolia11155111 requires separate adapter/policy and suppliedRPC/signertestETH, Cloudcustodyguard+portablekeyrestore and durableAtlasjournal not yetimplemented. No Cloudaccess/envchanges/deploy/tx/mint.
+NEXT: Deliver DB bundle now. Cloud source enablement remains NOTREADY; operator prerequisites and separate deployment/transaction/activation approvals required. Do not bypassHardhat/Atlasguards or autoIssue/backlog.
+
+## 2026-11-09 21:25:13 Asia/Bangkok — Custodial CLOUD WEB3 STEP source-preparation — PASS
+On deploy worktree base5e41f78 added Sepolia failclosed config/read-only deployment verifier, unsignedprepare/verify CLI, majoritytransaction Mongojournal store candidate requiring preexistingindexes/leasecollection, EIP1559 gateway candidate.12/12controlledtestsPASS; syntaxPASS. Unsignedplan generated withoutRPC/key/signature. No Cloud/Atlas writes or activation.
+NEXT: Candidates not yet wired to Cloudruntime; no liveAtlas/Sepolia acceptance. Keep main flagsfalse.
+
+## 2026-11-09 21:25:13 Asia/Bangkok — Custodial CLOUD WEB3 STEP handoff — BLOCKED
+Five required Cloud docs updated and evidence CLOUD_WEB3_PREPARATION_20261109/result.json saved. Runtime integration, portable Cloudcustody and realdurableStore tests remain developerTODO; RPC/signertestETH/approvedstorage and contractmanifest operatorTODO. No deploy/tx/mint/keycreation/backlog/envchange/commit/push. Existing Hardhat/SBT unchanged.
+NEXT: Before any publicdeploy/tx/write/autoIssue orsecretchange get separate approval. Do not activate candidate code just by togglingflags. Resume exactworktree/source and tests, not repeat priorPASS unrelated.
+
+## 2026-11-09 21:37:12 Asia/Bangkok — Custodial CLOUD RUNTIME STEP 1 — PASS
+On deploy worktree base5e41f78 integrated cloudWeb3Runtime selection into localWeb3 metadata/context/send, API blockchain guards and signedreceipt checks. Separate Sepolia policy failsclosed; noHardhatguard bypass. Main runtime/env untouched.
+NEXT: Continue durablestore test on approved existingTEST only.
+
+## 2026-11-09 21:37:12 Asia/Bangkok — Custodial CLOUD RUNTIME STEP 2 — PASS
+Real Mongo integration PASS on internova_full_role_test_20261109 after verified fullbackup: created2dedicatedjournalcollections/indexes, majority/fencing/uniqueNonce/distributedlease, durablePREPARED and recreatedgateway crashafterbroadcast retry1send, readback no privatekey; all priorbusinesshashes same. Providercontrolled, no EVM RPC. Evidence cache/cloud-journal-integration-1794234563479/result.json.
+NEXT: ProductionAtlas/redeploy and realEVM recovery still NOTTESTED.
+
+## 2026-11-09 21:37:12 Asia/Bangkok — Custodial CLOUD RUNTIME STEP 3 — PASS
+Added cloudCustodialVault v2 portable AES-GCM/AAD11155111 and distinct Cloudrecipient mappingservice; rejects legacy auto conversion, existingaddress derives from decryptedkey, indexes required. Unit JSONkeyringrestore/wrongAAD/key/chain testsPASS. No Cloudkey created or studentwallet provisioned.
+NEXT: Cloud key DR and recipient provisioningintegration pendingoperatorinfra approval.
+
+## 2026-11-09 21:37:12 Asia/Bangkok — Custodial CLOUD RUNTIME STEP 4 — PASS
+Cloudqueue wrapper reuses eligibility/systemprincipal/receiptverify and distinct Cloudjob/leasecollections; outbox newlyapproved only fullflags+version+activationtimestamp; oldpumpdisabled, one-shot worker explicitapproval only and no startup invocation. Snapshotfreeze uses Cloudjobs.
+NEXT: Cloudqueue E2E/idempotency/mint not markedPASS; no worker run.
+
+## 2026-11-09 21:37:12 Asia/Bangkok — Custodial CLOUD RUNTIME STEP 5-6 — PASS
+Public journalstate projection and BlockchainHistory labels wired withoutraw/key exposure.40selectedtestsPASS+17overlappingfocusedretestPASS; Backend syntaxPASS, frontendlint/prodbuildPASS.7HTTP+realTESTMongo RBAC/IDOR checksPASS andDBsnapshot unchanged. No liveCloud/Sepolia accessed.
+NEXT: Do not equate controlledprovider with networkacceptance; live gates remain.
+
+## 2026-11-09 21:37:12 Asia/Bangkok — Custodial CLOUD RUNTIME STEP 7 — BLOCKED
+Updated4requiredguides bothworktree+root and summaryevidence. SourceCloudadapter/custody/queue nowwired but not activated. Productionindex/key/backuprestore approval, RPC/signermanifest and realrecipientqueue/processrestartE2E missing. No actualpublicdeploy/tx/mint/secret/envchange/commit/push, no sourceDBwrite/chain reset.
+NEXT: STOP before Cloudinfrastructure/secret changes or publictransactions. Operator must approve provisioning/recovery plan and supply configuration; keep allwrite/auto flagsdisabled.
+
+## 2026-11-09 21:55:52 Asia/Bangkok — Custodial CLOUD ACCEPTANCE TESTS STEP 1 — PASS
+Restored deployworktree current source and retained priorPASS; extracted createService DI factory only for explicit dependency testing, productionservice still Atlasguard+flags. No activation or Cloudchanges.
+NEXT: Backup approvedTEST, provision only explicitTEST schema and1recipient.
+
+## 2026-11-09 21:55:52 Asia/Bangkok — Custodial CLOUD ACCEPTANCE TESTS STEP 2-3 — PASS
+Verified BSONbackup before TESTwrites. RealMongo internova_full_role_test_20261109:3Cloudcollections/indexes plus owned fixture assignment/report/session;1recipient CSPRNG/encrypted/idempotent, portableencryptedbackup and wrongkey/chain rejection PASS. FreshNodeprocess backuprestore matched DBaddress. KeyfilesACL fixed/verified PC+testowner+SYSTEM; productionloader rejects QA IDs. Source/legacy records unchanged.
+NEXT: No realCloudkeys or studentbulk; do not rerun issuedfixture.
+
+## 2026-11-09 21:55:52 Asia/Bangkok — Custodial CLOUD ACCEPTANCE TESTS STEP 4 — PASS
+RealMongo queue newoutbox enqueue twice samejob,2workers1leasewinner; simulatedpending retry and recreatedfactory issued only1simulatedmint; oldoutbox/pump denied. RealMongo journal stalelease fencing PASS0stalewrites. No EVMnetwork/realmint. Fixed pendingconfirmation mapping and pending retries not prematurely manualreview.
+NEXT: Provider states simulated; fullworkerprocesskill/liveSepoliaE2E NOTTESTED.
+
+## 2026-11-09 21:55:52 Asia/Bangkok — Custodial CLOUD ACCEPTANCE TESTS STEP 5-6 — PASS
+42selectedregressionsPASS then31focusedtestsPASS afterpendingfix (overlap, not73unique). Syntax/lint/prodbuildPASS, secretscan0. Prior7HTTP/Mongo RBAC unchanged and retained; no newliveSepoliaUIacceptance claimed. Migrationplan script refusesproductionapply and guards TESTapply afterbackup.
+NEXT: Keep READONLY/Cloud flagsdisabled. Need Atlasindex+keyDR+RPC/deploy approvals for liveacceptance.
+
+## 2026-11-09 21:55:52 Asia/Bangkok — Custodial CLOUD ACCEPTANCE TESTS STEP 7 — BLOCKED
+Updated4Cloud guides with realMongo/provider distinction, backuprollback, RenderFree constraints and operatorgates. No commit/push or Cloudinfra/secrets/restart/blockchain changes. Evidence .team/cloud-custody-queue-test-20261109/result.json+restore-process-result.json and audit-reports/CLOUD_RUNTIME_20261109/fencing.json. TESTfixtures retained; no legacyoverwrite.
+NEXT: Operator approval needed before Atlasprovision, secretimport/deploy/transactions/autoIssue. Resume sourceworktree; do notreset issuedTESTjob, generate anotherrecipient or use QAkeys onCloud.
+
+## 2026-11-09 22:09:12 Asia/Bangkok — Custodial READ_ONLY RELEASE STEP 1 — PASS
+Moved deploy worktree with gitworktree move from ignorednode_modules cache to .worktrees/cloud-integration-20261109 withinworkspace; source anddirtychanges preserved, branchdeploy/base5e41f78, originalbranch_1 untouched. Added localouterexclude only. Source notignored; envsample relocated to tracked server/config-examples/sepolia.env.example.
+NEXT: Review source/Docker and selective staging, no commit/push.
+
+## 2026-11-09 22:09:12 Asia/Bangkok — Custodial READ_ONLY RELEASE STEP 2 — PASS
+Affected51Cloud/Sepolia/QR/RenderpolicytestsPASS; frontend lint+productionbuild/apiPASS, allserver syntaxPASS, lockfiles consistent, startup noCloudworker. Retained priorrealMongo fixtures/tests without rerunningissuedjob. No source/Cloud data changes.
+NEXT: DockerCLI absent means imagebuild NOTTESTED; liveCloud acceptance notclaimed.
+
+## 2026-11-09 22:09:12 Asia/Bangkok — Custodial READ_ONLY RELEASE STEP 3 — PASS
+Prepared exactbranch and commitmessage, no newcommit/hash. Fetchedremote still5e41f78 equalsHEAD. Release doc CLOUD_WEB3_READ_ONLY_RELEASE.md includes commands, schema/rollback, file scope; next selective stage+secretscan beforeapproval.
+NEXT: Do not push or createcommit until plannedstagedreview approved.
+
+## 2026-11-09 22:09:12 Asia/Bangkok — Custodial READ_ONLY RELEASE STEP 4 — PASS
+Docker source/scripts/shared COPY reviewed and twoone-shot/plan scripts included. render.yaml explicitlydisables Cloudweb3/custody/autoflags andREADONLYtrue; realenv untouched, noRenderdeploy. Dockerimage NOTTESTED due missingCLI.
+NEXT: Operator approval needed for existingservice ManualDeploy READONLY after sourceapproval.
+
+## 2026-11-09 22:09:12 Asia/Bangkok — Custodial READ_ONLY RELEASE STEP 5 — PASS
+ExactSolidity source/artifact preflightPASS after pinLF via.gitattributes:0.8.24 optimizer200 SHA256ca1163e4166daa147802c12359ea9a7474ba27b3a0c283ae068ca993b5fb565e; ABIowner/writers/mint/locked reviewed. Unsigned/read-onlyscripts prepared; noRPC/deploy/tx.
+NEXT: Need suppliedRPC/publicsigner/testETH/manifest and separatepublicdeploy approval.
+
+## 2026-11-09 22:09:12 Asia/Bangkok — Custodial READ_ONLY RELEASE STEP 6 — BLOCKED
+Atlas expectedDBinternova_cloud_demo enforced bypolicy; liveRender env reference absent locally, cannotconfirm liveconnection. Schema plan+backuprestore/rollback documented, noproductionmigration/index. Source ready forREADONLYreview only; fullWeb3 write remainsBLOCKED.
+NEXT: Operator verifies currentAtlascluster/db/marker/env before anyinfrachange; retain allflags disabled.
+
+## Release staging verification — 2026-11-09
+[RESULT] PHASE 3: PASS — 38 selected files staged; cached diff check clean; no merge conflicts; staged-content scan found no private-key blocks, credential-bearing MongoDB URI, GitHub/AWS tokens, literal long secrets or forbidden data/cache paths. No commit or push executed.
+PHASE 4: Configuration/static packaging PASS; actual Docker image build NOT TESTED (Docker unavailable). Render was not changed.
+PHASE 5: Source/artifact/compiler/ABI checks PASS; live Sepolia NOT TESTED. No transactions or deployments.
+PHASE 6: Atlas plan prepared; live Render database identity NOT TESTED. No production migration/index/data changes.
+NEXT: Review docs/CLOUD_WEB3_READ_ONLY_RELEASE.md; obtain approval before commit/push/deploy or Cloud activation. Keep READ_ONLY and automatic worker disabled.

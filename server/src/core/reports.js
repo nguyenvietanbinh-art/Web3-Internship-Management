@@ -182,7 +182,7 @@ router.post(
           approvedBy: req.user.walletAddress || '',
           ...(identity.enabled() ? { approvedByUserId: req.user._id } : {}),
           approvedAt: new Date(),
-          ...(process.env.CUSTODIAL_AUTO_ISSUE_ENABLED==='true'?{certificateRequest:{enabled:true,requestedAt:new Date(),approvedByUserId:req.user._id}}:{}),
+          ...((process.env.CUSTODIAL_AUTO_ISSUE_ENABLED==='true'||(process.env.CLOUD_SBT_AUTO_ISSUE_ENABLED==='true'&&process.env.CLOUD_WEB3_WRITE_ENABLED==='true'&&process.env.WEB3_LOCAL_READ_ONLY==='false'&&process.env.CLOUD_CUSTODY_ENABLED==='true'&&require('../services/cloudWeb3Runtime').selected()))?{certificateRequest:{enabled:true,...(require('../services/cloudWeb3Runtime').selected()?{policyVersion:'cloud-sepolia-v1'}:{}),requestedAt:new Date(),approvedByUserId:req.user._id}}:{}),
         },
         v.event(req.user, 'report.approved', { score, reason }),
         require('./reportVersions').currentFilter(doc)

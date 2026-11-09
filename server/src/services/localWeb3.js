@@ -6,6 +6,7 @@ const hash=text=>ethers.keccak256(ethers.toUtf8Bytes(text));
 const kindId={report:1,attendance:2,completion:3};
 function assertTest(){if(process.env.SCHOOL_WORKFLOW_ENABLED==='true')return require('../config/workflowTestGuard').assertWorkflowTest();assertTestEnvironment({nodeEnv:process.env.NODE_ENV,uri:process.env.MONGODB_URI,allowlistedUri:process.env.MONGODB_URI_TEST_ALLOWLIST});}
 function metadata(){
+ if(require('./cloudWeb3Runtime').selected())return require('./cloudWeb3Runtime').metadata();
  const injected=require('./custodialRuntime').testContext();if(injected?.metadata)return injected.metadata;
  if(process.env.WEB3_LOCAL_ENABLED!=='true'||!process.env.WEB3_LOCAL_DEPLOYMENT)throw new HttpError(503,'Web3 local chưa bật/cấu hình','WEB3_NOT_CONFIGURED');
  assertTest();let d;try{d=JSON.parse(fs.readFileSync(process.env.WEB3_LOCAL_DEPLOYMENT,'utf8'));}catch{throw new HttpError(503,'Không đọc được metadata deployment local','WEB3_NOT_CONFIGURED');}
@@ -16,6 +17,7 @@ function metadata(){
  if(d.chainId!==allowedChainId||d.rpcUrl!==rpc||!ethers.isAddress(d.address)||!ethers.isAddress(d.deployer)||d.localTestOnly!==true||!Array.isArray(d.abi)||!/^0x[a-f0-9]{64}$/i.test(d.deploymentTx))throw new HttpError(503,'Deployment không thuộc môi trường Hardhat local được phép','WEB3_UNSAFE_CONFIG');return d;
 }
 async function context(){
+ if(require('./cloudWeb3Runtime').selected())return require('./cloudWeb3Runtime').context();
  const injected=require('./custodialRuntime').testContext();if(injected)return injected();
  const d=metadata(),request=new ethers.FetchRequest(d.rpcUrl);request.timeout=4000;
  const provider=new ethers.JsonRpcProvider(request,undefined,{batchMaxCount:1,cacheTimeout:-1,pollingInterval:100});
@@ -37,7 +39,7 @@ async function verify(c,op,txHash){
  const [receipt,transaction]=await Promise.all([c.provider.getTransactionReceipt(txHash),c.provider.getTransaction(txHash)]);
  if(!receipt)throw new HttpError(409,'Giao dịch chưa có receipt; cần đối chiếu lại','CHAIN_PENDING');
  if(receipt.status!==1)throw new HttpError(409,'Giao dịch đã thất bại on-chain','CHAIN_FAILED');
- if(receipt.hash.toLowerCase()!==txHash.toLowerCase()||receipt.to?.toLowerCase()!==c.d.address.toLowerCase()||receipt.from.toLowerCase()!==c.d.deployer.toLowerCase()||transaction?.to?.toLowerCase()!==c.d.address.toLowerCase())throw new HttpError(409,'Receipt/signer/address không khớp','RECEIPT_MISMATCH');
+ if(receipt.hash.toLowerCase()!==txHash.toLowerCase()||receipt.to?.toLowerCase()!==c.d.address.toLowerCase()||receipt.from.toLowerCase()!==(c.d.signerAddress||c.d.deployer).toLowerCase()||transaction?.to?.toLowerCase()!==c.d.address.toLowerCase())throw new HttpError(409,'Receipt/signer/address không khớp','RECEIPT_MISMATCH');
  const block=await c.provider.getBlock(receipt.blockNumber);if(block?.hash!==receipt.blockHash)throw new HttpError(503,'Receipt không ở canonical block','CHAIN_REORG');
  let input;try{input=c.contract.interface.parseTransaction({data:transaction.data,value:transaction.value});}catch{throw new HttpError(409,'Không đọc được calldata','RECEIPT_MISMATCH');}
  if(input.args[0]!==op.operationId||input.args[1]!==op.assignmentKey)throw new HttpError(409,'Operation/assignment khác calldata','RECEIPT_MISMATCH');
@@ -57,7 +59,7 @@ async function verify(c,op,txHash){
 }
 async function execute(user,{assignment,kind,targetId,digest,refURI=''},getContext=context){
  if(process.env.WEB3_LOCAL_READ_ONLY==='true')throw new HttpError(503,'Kết nối chain mới chỉ đọc; chưa bật ghi dữ liệu nghiệp vụ','CHAIN_READ_ONLY');
- if(require('./custodialRuntime').enabled()){
+ if(require('./custodialRuntime').enabled()||require('./cloudWeb3Runtime').selected()){
   const system=require('./custodialPrincipal').isSystem(user);
   if(kind==='mint'&&!system)throw new HttpError(403,'Chỉ tác nhân hệ thống được cấp chứng nhận','CERTIFICATE_SYSTEM_ONLY');
   if(!system&&user.role!=='admin')throw new HttpError(403,'Chỉ nhà trường ghi bằng chứng','CHAIN_ADMIN_ONLY');
@@ -65,7 +67,7 @@ async function execute(user,{assignment,kind,targetId,digest,refURI=''},getConte
  assignment=await identity.chainAssignment(assignment);
  const c=await getContext();try{
   const assignmentKey=hash('core-assignment:'+String(assignment._id)),operationId=hash([c.d.hardhatInstanceId,c.d.deploymentTx,kind,String(targetId),digest].join(':'));
-  let op;try{op=await ChainOperation.findOneAndUpdate({operationId},{$setOnInsert:{operationId,assignmentId:assignment._id,targetId,kind,actorUserId:user._id,actorWallet:user.walletAddress,studentUserId:assignment.studentUserId,signerAddress:c.d.deployer.toLowerCase(),studentWallet:assignment.studentWallet,assignmentKey,digest,refURI,chainId:c.d.chainId,contractAddress:c.d.address.toLowerCase(),deploymentTx:c.d.deploymentTx,chainInstanceId:c.d.hardhatInstanceId,history:[v.event(user,'chain.prepared')]}},{upsert:true,new:true,runValidators:true});}catch(e){if(e.code!==11000)throw e;op=await ChainOperation.findOne({operationId});}
+  let op;try{op=await ChainOperation.findOneAndUpdate({operationId},{$setOnInsert:{operationId,assignmentId:assignment._id,targetId,kind,actorUserId:user._id,actorWallet:user.walletAddress,studentUserId:assignment.studentUserId,signerAddress:(c.d.signerAddress||c.d.deployer).toLowerCase(),studentWallet:assignment.studentWallet,assignmentKey,digest,refURI,chainId:c.d.chainId,contractAddress:c.d.address.toLowerCase(),deploymentTx:c.d.deploymentTx,chainInstanceId:c.d.hardhatInstanceId,history:[v.event(user,'chain.prepared')]}},{upsert:true,new:true,runValidators:true});}catch(e){if(e.code!==11000)throw e;op=await ChainOperation.findOne({operationId});}
   if(op.refURI!==refURI||op.digest!==digest||op.assignmentKey!==assignmentKey)throw new HttpError(409,'Operation payload không còn khớp','OPERATION_MISMATCH');
   if(op.state==='confirmed'){await verify(c,op,op.txHash);return dto(op);}
   const lease=new Date(Date.now()+20000),now=new Date();op=await ChainOperation.findOneAndUpdate({_id:op._id,state:{$ne:'confirmed'},$or:[{leaseUntil:{$exists:false}},{leaseUntil:null},{leaseUntil:{$lt:now}}]},{$set:{leaseUntil:lease},$inc:{attempts:1}},{new:true});if(!op)throw new HttpError(409,'Operation đang được xử lý; không gửi trùng','OPERATION_BUSY');
@@ -73,13 +75,14 @@ async function execute(user,{assignment,kind,targetId,digest,refURI=''},getConte
    let txHash=op.txHash;
    if(await c.contract.usedOperations(op.operationId))txHash=await findMined(c,op);
    if(!txHash){
-    const tx=await require('./transactionGatewayRuntime').send(c,op,verify);txHash=tx.hash;
+    const tx=await (c.cloud?require('./cloudWeb3Runtime'):require('./transactionGatewayRuntime')).send(c,op,verify);txHash=tx.hash;
     await ChainOperation.updateOne({_id:op._id},{$set:{txHash,state:'submitted',errorCode:''},$push:{history:v.event(user,'chain.submitted',{txHash})}});
    }
    const receipt=await c.provider.waitForTransaction(txHash,1,5000);if(!receipt)throw new HttpError(409,'Transaction pending','CHAIN_PENDING');
    const proof=await verify(c,op,txHash);const done=await ChainOperation.findByIdAndUpdate(op._id,{$set:{...proof,state:'confirmed',errorCode:''},$unset:{leaseUntil:1},$push:{history:v.event(user,'chain.confirmed',proof)}},{new:true});return dto(done);
   }catch(e){
-   const code=e instanceof HttpError?e.code||'CHAIN_REJECTED':e.code==='TIMEOUT'?'CHAIN_PENDING':'CHAIN_WRITE_FAILED';
+   const pending=['TIMEOUT','CLOUD_TX_PENDING','CLOUD_TX_RECOVERY_REQUIRED','JOURNAL_RECEIPT_PENDING','JOURNAL_RECOVERY_REQUIRED'].includes(e.code);
+   const code=pending?'CHAIN_PENDING':e instanceof HttpError?e.code||'CHAIN_REJECTED':'CHAIN_WRITE_FAILED';
    await ChainOperation.updateOne({_id:op._id},{$set:{state:code==='CHAIN_PENDING'?'submitted':'failed',errorCode:code},$unset:{leaseUntil:1},$push:{history:v.event(user,'chain.not_confirmed',{code})}});
    if(e instanceof HttpError)throw e;if(code==='CHAIN_PENDING')throw new HttpError(409,'Giao dịch pending; dùng đối chiếu, không gửi lại mù quáng',code);throw new HttpError(503,'Giao dịch chưa được xác minh; dùng đối chiếu/retry, không tạo hash giả',code);
   }
@@ -107,4 +110,5 @@ async function certificate(assignment){
   const proof=await verify(c,op,op.txHash),issuedBlock=await c.provider.getBlock(proof.blockNumber);return{mintOperationId:String(op._id),issuedAt:new Date(Number(issuedBlock.timestamp)*1000).toISOString(),verified:true,lastVerifiedAt:new Date().toISOString(),locked:true,standard:'ERC721/ERC5192',tokenId:proof.tokenId,owner:assignment.studentWallet,chainId:c.d.chainId,contractAddress:c.d.address,txHash:proof.txHash,blockNumber:proof.blockNumber,blockHash:proof.blockHash,assignmentId:assignment._id,metadataURI:await c.contract.tokenURI(proof.tokenId),signerMode:'local-hardhat-attestor-not-user-wallet'};
  }finally{c.provider.destroy();}
 }
-module.exports={assertCertificateBinding,assertTest,metadata,context,status,dto,execute,reconcile,certificate,verify,verification,hash};
+async function assertWriteEnvironment(){if(require('./cloudWeb3Runtime').selected())return require('./cloudWeb3Runtime').writeGuard();return assertTest();}
+module.exports={assertWriteEnvironment,assertCertificateBinding,assertTest,metadata,context,status,dto,execute,reconcile,certificate,verify,verification,hash};

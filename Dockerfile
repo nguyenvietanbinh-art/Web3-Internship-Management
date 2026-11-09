@@ -16,6 +16,7 @@ WORKDIR /app
 COPY server/package*.json ./server/
 RUN npm ci --prefix server --omit=dev --no-audit --no-fund
 COPY server/src ./server/src
+COPY server/scripts/cloud-sbt-once.cjs server/scripts/cloud-web3-schema.cjs ./server/scripts/
 COPY server/parsers ./server/parsers
 COPY shared ./shared
 COPY --from=frontend /app/client/dist ./client/dist

@@ -59,7 +59,6 @@ export default function EmailIdentity({ register, onSession }) {
           maxLength={254}
           value={email}
           onChange={(e) => setEmail(e.target.value)}
-          placeholder="ten@gmail.com"
         />
       </label>
       <label>

@@ -13,7 +13,7 @@ function participants(a){const out={};for(const role of ['student','company','me
 function personKey(a){const value=enabled()?a.studentUserId:a.studentWallet;if(!value)throw new HttpError(409,'Thiếu danh tính sinh viên đã xác minh','IDENTITY_MAPPING_REQUIRED');return String(value);}
 async function chainAssignment(a){
  if(!enabled()||!a.studentUserId)return a;
- if(require('./custodialRuntime').enabled()){
+ if((require('./custodialRuntime').enabled()||require('./cloudWeb3Runtime').selected())){
   const recipient=await require('./custodialRuntime').service().recipients.read(String(a.studentUserId));
   if(!recipient)throw new HttpError(409,'Chưa có địa chỉ nhận chứng nhận do hệ thống quản lý','CUSTODY_RECIPIENT_REQUIRED');
   return Object.assign(a,{studentWallet:recipient.address});
