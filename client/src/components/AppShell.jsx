@@ -1,3 +1,4 @@
+import {useResource,useCertificateRefresh} from './business/hooks';
 import { useEffect, useState, useRef, lazy, Suspense } from 'react';
 import { Layers, LayoutDashboard, BriefcaseBusiness, ClipboardList, BadgeCheck, Users, Building2, Bell, Moon, Sun, PanelLeftClose, PanelLeftOpen, Menu, Wallet, LogOut, ShieldCheck, GraduationCap } from 'lucide-react';
 import { Dialog, PageHeader, EmptyState, LoadingSkeleton } from './ui';
@@ -22,16 +23,15 @@ const items = [
 ];
 
 const coreItems = [
-  {id:'account-overview',label:'Tổng quan tài khoản',icon:LayoutDashboard,roles:['company','mentor','admin']},
-  {id:'core-web3',label:'Điểm danh & chứng nhận',companyLabel:'Điểm danh & bằng chứng',mentorLabel:'Bằng chứng thực tập',adminLabel:'Quản lý chứng nhận',icon:BadgeCheck,roles:['student','company','mentor','admin']},
+  {id:'core-web3',label:'Điểm danh QR',companyLabel:'Tạo QR điểm danh',mentorLabel:'Bằng chứng thực tập',adminLabel:'Quản lý chứng nhận',icon:BadgeCheck,roles:['student','company','admin']},
   {id:'core-ai',label:'Đề tài phù hợp',companyLabel:'Đánh giá độ phù hợp',mentorLabel:'Phân tích báo cáo thực tập',icon:BriefcaseBusiness,roles:['student','mentor']},
-  {id:'core-profile',label:'Hồ sơ cá nhân',icon:Wallet,roles:['student','company','mentor','admin']},
+  {id:'core-profile',studentLabel:'Đổi mật khẩu',label:'Hồ sơ cá nhân',companyLabel:'Hồ sơ doanh nghiệp',adminLabel:'Đổi mật khẩu',icon:Wallet,roles:['student','company','mentor','admin']},
   {id:'core-cv',label:'CV của tôi',icon:BriefcaseBusiness,roles:['student']},
   {id:'core-jds',label:'Cơ hội ứng tuyển',companyLabel:'Tin tuyển dụng',icon:BriefcaseBusiness,roles:['student','company']},
   {id:'core-applications',label:'Ứng tuyển',companyLabel:'Ứng viên',icon:Users,roles:['student','company','admin']},
   {id:'core-placements',label:'Kỳ & phân công',icon:GraduationCap,roles:['student','company','mentor','admin']},
-  {id:'core-work',label:'Công việc được giao',companyLabel:'Công việc & nhật ký',mentorLabel:'Công việc & nhật ký',adminLabel:'Giám sát công việc & nhật ký',icon:ClipboardList,roles:['student','company','mentor','admin']},
-  {id:'core-time',label:'Chấm công',adminLabel:'Thống kê chấm công',icon:ClipboardList,roles:['student','company','admin']},
+  {id:'core-work',label:'Công việc được giao',companyLabel:'Công việc thực tập',mentorLabel:'Nhật ký thực tập',adminLabel:'Giám sát công việc & nhật ký',icon:ClipboardList,roles:['student','company','mentor','admin']},
+  {id:'core-time',label:'Chấm công',adminLabel:'Thống kê chấm công',icon:ClipboardList,roles:['company','admin']},
   {id:'core-reports',label:'Báo cáo kết quả',companyLabel:'Báo cáo & kết quả',mentorLabel:'Báo cáo & kết quả',adminLabel:'Báo cáo & kết quả',icon:Layers,roles:['student','company','mentor','admin']},
   {id:'core-accounts',label:'Tài khoản & phân quyền',icon:Users,roles:['admin']},
 ];
@@ -41,21 +41,25 @@ const workflowItems=[
   {id:'core-company-applicants',label:'Hồ sơ ứng tuyển',icon:Users,roles:['company']},
   {id:'core-company-opportunities',label:'Đề tài tuyển theo kỳ',icon:BriefcaseBusiness,roles:['company']},
   {id:'core-company-students',label:'Sinh viên thực tập tại doanh nghiệp',icon:GraduationCap,roles:['company']},
-  {id:'core-mentor-students',label:'Sinh viên được phân công',icon:GraduationCap,roles:['mentor']},
 ];
-export default function AppShell({ children, activeTab, onNavigate, user, unified=false, schoolWorkflow=false, practiceMode=false, authReady = true, coreEnabled = false, walletAddress, networkName, onConnect, onDemo, onLogout, loading, roleChoice, onRoleChoice, transactionStatus, onCheckContract, contractConnected, contractAddress, error }) {
+export default function AppShell({ children, activeTab, onNavigate, user, unified=false, schoolWorkflow=false, practiceMode: _practiceMode=false, authReady = true, coreEnabled = false, walletAddress: _walletAddress, networkName, onConnect, onDemo, onLogout, loading, roleChoice, onRoleChoice, transactionStatus, onCheckContract, contractConnected, contractAddress, error }) {
+  const [notificationRevision]=useCertificateRefresh();
+  const notificationSummary=useResource(user&&schoolWorkflow&&user.role==='student'?'/core/notifications?limit=1':null,notificationRevision);
   const [collapsed, setCollapsed] = useState(false), [mobileOpen, setMobileOpen] = useState(false), [notifications, setNotifications] = useState(false);
   const [theme, setTheme] = useState(() => { try { return localStorage.getItem('w3i_theme') === 'dark' ? 'dark' : 'light'; } catch { return 'light'; } });
   const main = useRef(null);
   const role = user?.role || 'guest';
   const schoolItems=[items[0],...workflowItems,...coreItems.filter(i=>!['core-jds','core-applications'].includes(i.id)).map(i=>i.id==='core-placements'?{...i,roles:['admin']}:i)];
-  const available = schoolWorkflow&&user?schoolItems:unified&&user?[items[0],...coreItems]:coreEnabled && user ? [...items.filter(item => !item.unavailable || item.id === 'unavailable-alerts'),...coreItems] : items, allowed = available.filter(item => item.roles.includes(role) && (schoolWorkflow || unified || !user || user.walletAddress || ['core-profile','account-overview'].includes(item.id))).map(item=>({...item,label:(role==='company'&&item.companyLabel)||(role==='mentor'&&item.mentorLabel)||(role==='admin'&&item.adminLabel)||item.label}));
+  const available = schoolWorkflow&&user?schoolItems:unified&&user?[items[0],...coreItems]:coreEnabled && user ? [...items.filter(item => !item.unavailable || item.id === 'unavailable-alerts'),...coreItems] : items;
+  const ordered=[...available];
+  if(role==='mentor'){const index=ordered.findIndex(item=>item.id==='core-profile');if(index>=0){const [profile]=ordered.splice(index,1);const aiIndex=ordered.findIndex(item=>item.id==='core-ai');ordered.splice(aiIndex<0?ordered.length:aiIndex,0,profile);}}
+  const allowed = ordered.filter(item => item.roles.includes(role) && !(role==='company'&&item.id==='core-profile')).map(item=>({...item,label:(role==='student'&&item.studentLabel)||(role==='company'&&item.companyLabel)||(role==='mentor'&&item.mentorLabel)||(role==='admin'&&item.adminLabel)||item.label}));
   const fallbackCurrent={id:'core-profile',label:'Hồ sơ cá nhân'};
   const current = allowed.find(item => item.id === activeTab) || allowed[0] || fallbackCurrent;
-  useEffect(()=>{if(authReady&&user&&!allowed.some(item=>item.id===activeTab))onNavigate('dashboard');},[authReady,user,allowed,activeTab,onNavigate]);
+  useEffect(()=>{if(authReady&&user&&!allowed.some(item=>item.id===activeTab))onNavigate(activeTab==='account-overview'&&role!=='company'?'core-profile':'dashboard');},[authReady,user,role,allowed,activeTab,onNavigate]);
   useEffect(() => { document.documentElement.dataset.theme = theme; try { localStorage.setItem('w3i_theme', theme); } catch { /* Preference persistence is optional. */ } }, [theme]);
   useEffect(() => { document.title = `${user ? current.label : 'Đăng nhập'} · Internova`; }, [current.label,user]);
-  const navigate = id => { onNavigate(id); setMobileOpen(false); requestAnimationFrame(() => main.current?.focus()); };
+  const navigate = id => { const companyProfile=role==='company'&&id==='core-profile';onNavigate(companyProfile?'dashboard':id); setMobileOpen(false); requestAnimationFrame(() => {if(companyProfile)document.getElementById('company-account-profile')?.scrollIntoView({behavior:'smooth',block:'start'});else main.current?.focus();}); };
   if(!user || !authReady)return <div className="app-shell auth-entry">
     <a href="#main-content" className="skip-link">Đi tới nội dung chính</a>
     <header className="auth-entry-header"><div className="brand"><span className="brand-mark"><Layers size={24} /></span><div><strong>internova<span>®</span></strong><small>WEB3 INTERNSHIP</small></div></div><button className="icon-button" aria-label={theme==='light'?'Bật Dark Mode':'Bật Light Mode'} onClick={()=>setTheme(theme==='light'?'dark':'light')}>{theme==='light'?<Moon size={19}/>:<Sun size={19}/>}</button></header>
@@ -74,16 +78,16 @@ export default function AppShell({ children, activeTab, onNavigate, user, unifie
     <div className="workspace"><header className="topbar"><div className="header-context"><button className="icon-button mobile-menu" aria-label="Mở menu điều hướng" aria-expanded={mobileOpen} onClick={() => setMobileOpen(true)}><Menu size={21} /></button><span className="workspace-path">Internova <span>/</span> <strong>{current.label}</strong></span></div><div className="header-actions">
       {!user && DEMO_ENABLED && <button className="btn btn-secondary" onClick={onDemo}>Ví Demo</button>}
       <button className="icon-button" aria-label={theme === 'light' ? 'Bật Dark Mode' : 'Bật Light Mode'} onClick={() => setTheme(theme === 'light' ? 'dark' : 'light')}>{theme === 'light' ? <Moon size={19} /> : <Sun size={19} />}</button>
-      <button className="icon-button" aria-label="Thông báo" disabled={Boolean(user&&!unified&&!user.walletAddress)} onClick={() => setNotifications(true)}><Bell size={19} /></button><span className="header-divider" />
-      {user ? <><details className="wallet-summary"><summary>{user.name}</summary><p>{user.email||'Chưa có email'} · {roleNames[role]}</p>{['student','company'].includes(role)&&<p>{walletAddress?`${walletAddress.slice(0,6)}…${walletAddress.slice(-4)}`:'Chưa liên kết ví'}</p>}<button className="btn btn-secondary" onClick={()=>navigate('core-profile')}>Hồ sơ & cài đặt tài khoản</button></details><button id="logout-btn" className="icon-button" title="Đăng xuất" aria-label="Đăng xuất" onClick={onLogout}><LogOut size={19} /><span className="sr-only">Đăng xuất</span></button></> : <button id="connect-wallet-btn" className="btn btn-primary" disabled={loading} onClick={onConnect}><Wallet size={17} /><span>{loading ? 'Đang xác thực…' : 'Đăng nhập / Đăng ký'}</span></button>}
+      <button className="icon-button" aria-label="Thông báo" disabled={!user} onClick={() => setNotifications(true)}><Bell size={19} />{!notificationSummary.loading&&notificationSummary.data?.unread>0&&<span className="notification-count" aria-label={notificationSummary.data.unread+' thông báo chưa đọc'}>{notificationSummary.data.unread}</span>}</button><span className="header-divider" />
+      {user ? <><details className="wallet-summary"><summary>{user.name}</summary><p>{user.email||'Chưa có email'} · {roleNames[role]}</p><button className="btn btn-secondary" onClick={event=>{event.currentTarget.closest('details').open=false;navigate('core-profile');}}>{['admin','student'].includes(role)?'Đổi mật khẩu':role==='company'?'Hồ sơ doanh nghiệp':'Hồ sơ & cài đặt tài khoản'}</button></details><button id="logout-btn" className="icon-button" title="Đăng xuất" aria-label="Đăng xuất" onClick={onLogout}><LogOut size={19} /><span className="sr-only">Đăng xuất</span></button></> : <button id="connect-wallet-btn" className="btn btn-primary" disabled={loading} onClick={onConnect}><Wallet size={17} /><span>{loading ? 'Đang xác thực…' : 'Đăng nhập / Đăng ký'}</span></button>}
     </div></header>
-    <main id="main-content" className="main-content" tabIndex={-1} ref={main}><PageHeader eyebrow={user ? `${roleNames[role]} / KHÔNG GIAN LÀM VIỆC` : 'WEB3 INTERNSHIP MANAGEMENT'} title={current.id === 'dashboard' ? `Tổng quan${user?.name ? `, ${user.name}` : ''}` : current.label} description={current.description}><div className="workspace-status-pills"><span className="workspace-pill"><span className="status-dot" />{user ? roleNames[role] : 'Công khai'}</span>{practiceMode&&<span className="workspace-pill">Môi trường TEST</span>}</div></PageHeader>
-      {!user && <div className="guest-banner"><div><strong>Chọn vai trò để bắt đầu</strong><p>Xác thực bằng chữ ký ví; không gửi giao dịch blockchain.</p></div><div className="segmented" aria-label="Vai trò đăng ký">{[['company','Doanh nghiệp'],['student','Sinh viên']].map(([value,label]) => <button key={value} id={`role-${value}-btn`} aria-pressed={roleChoice === value} onClick={() => onRoleChoice(value)}>{label}</button>)}</div></div>}
+    <main id="main-content" className="main-content" tabIndex={-1} ref={main}><PageHeader eyebrow={user ? `${roleNames[role]} / KHÔNG GIAN LÀM VIỆC` : 'WEB3 INTERNSHIP MANAGEMENT'} title={current.id === 'dashboard' ? `Tổng quan${user?.name ? `, ${user.name}` : ''}` : current.label} description={current.description}><div className="workspace-status-pills"><span className="workspace-pill"><span className="status-dot" />{user ? roleNames[role] : 'Công khai'}</span></div></PageHeader>
+      {!user && <div className="guest-banner"><div><strong>Chọn vai trò để bắt đầu</strong><p>Đăng nhập tài khoản Internova để sử dụng hệ thống.</p></div><div className="segmented" aria-label="Vai trò đăng ký">{[['company','Doanh nghiệp'],['student','Sinh viên']].map(([value,label]) => <button key={value} id={`role-${value}-btn`} aria-pressed={roleChoice === value} onClick={() => onRoleChoice(value)}>{label}</button>)}</div></div>}
       {error && <div role="alert" className="inline-alert is-error">{error}</div>}
       {children}
       <footer className="workspace-footer"><span>Internova · Web3 Internship Management</span></footer>
       {import.meta.env.DEV && import.meta.env.VITE_SHOW_DIAGNOSTICS==='true' && <details className="runtime-details"><summary>Trạng thái kết nối & blockchain</summary><button className="btn btn-secondary" onClick={onCheckContract}>Kiểm tra RPC (chỉ đọc)</button><p>{networkName || 'Chưa kiểm tra ví/mạng'} · Contract: {contractAddress || 'chưa cấu hình'} · {contractConnected ? 'RPC phản hồi (không đồng nghĩa chứng nhận hợp lệ)' : 'Chưa kết nối'}</p><p data-testid="transaction-status" role="status">Trạng thái blockchain: {transactionStatus}. Chứng nhận token chỉ được xác nhận khi có bằng chứng.</p></details>}
     </main></div>
-    {notifications && <Dialog label="Thông báo" onClose={() => setNotifications(false)}><div className="modal-content"><h2>Thông báo</h2>{coreEnabled && user ? <Suspense fallback={<LoadingSkeleton />}><Notifications key={user.walletAddress} /></Suspense> : <><span className="badge badge-pending">Chưa khả dụng</span><EmptyState title="Chưa có dịch vụ thông báo">Thông báo hiện chưa khả dụng. Vui lòng thử lại sau.</EmptyState></>}</div></Dialog>}
+    {notifications && <Dialog label="Thông báo" onClose={() => setNotifications(false)}><div className="modal-content"><h2>Thông báo</h2>{coreEnabled && user ? <Suspense fallback={<LoadingSkeleton />}><Notifications key={user._id} onNavigate={id=>{setNotifications(false);navigate(role==='student'&&id==='core-web3'?'dashboard':id);}} /></Suspense> : <><span className="badge badge-pending">Chưa khả dụng</span><EmptyState title="Chưa có dịch vụ thông báo">Thông báo hiện chưa khả dụng. Vui lòng thử lại sau.</EmptyState></>}</div></Dialog>}
   </div>;
 }

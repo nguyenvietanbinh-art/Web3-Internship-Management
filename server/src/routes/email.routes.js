@@ -28,6 +28,10 @@ function walletOrigin(req){if(!config.corsOrigin.split(',').map(x=>x.trim()).inc
 function chainId(value){try{if(typeof value!=='string'||!(/^(0x[0-9a-fA-F]+|[1-9][0-9]*)$/).test(value))throw Error();const n=BigInt(value);if(n<=0n||n>18446744073709551615n)throw Error();return n.toString();}catch{throw new HttpError(400,'Chain ID không hợp lệ');}}
 function bindCookie(res,secret){res.cookie('internova_email_bind',secret,{httpOnly:true,sameSite:'strict',secure:process.env.NODE_ENV==='production',path:'/api/auth',maxAge:300000});}
 const dummy = bcrypt.hashSync(crypto.randomBytes(32).toString('hex'), 12);
+router.post('/email/reset-password',asyncHandler(async(req,res)=>{
+ if(!config.emailEnabled)throw new HttpError(503,'Đăng nhập email chưa được bật');
+ res.json(await require('../services/passwordReset').complete(req.body));
+}));
 function email(value) {
   if (
     typeof value !== 'string' ||

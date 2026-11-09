@@ -18,7 +18,7 @@ router.post(
   '/reports',
   requireRole('student'),
   asyncHandler(async (req, res) => {
-    v.keys(req.body, ['assignmentId', 'kind', 'title', 'content','weekNumber','taskIds','selfAssessment','selfGrading']);
+    v.keys(req.body, ['assignmentId', 'kind', 'title', 'content','weekNumber','taskIds','selfAssessment','selfGrading','previousReportId','previousVersion']);
     const a = await policy.load(req.user, req.body.assignmentId, { active: true }),
       kind = v.choice(req.body.kind, ['weekly', 'final'], 'Loại báo cáo');
     const title = v.text(req.body.title, 'Tiêu đề', { required: true, max: 200 }),
@@ -33,6 +33,14 @@ router.post(
     const previousWeek=linked.weekNumber?await Report.findOne({assignmentId:a._id,kind,weekNumber:linked.weekNumber}).sort({version:-1}).session(session):null;
     if(previousWeek&&previousWeek.state!=='need_revision')throw new HttpError(409,'Tuần này đã có báo cáo; chỉ nộp bổ sung khi được yêu cầu');
 
+    if(req.body.previousReportId){
+      const prior=await Report.findById(v.id(req.body.previousReportId)).session(session);
+      if(!prior||String(prior.assignmentId)!==String(a._id)||prior.kind!==kind||prior.state!=='need_revision'||(prior.kind==='weekly'&&prior.weekNumber!==linked.weekNumber))throw new HttpError(409,'Báo cáo không còn ở trạng thái được nộp bổ sung');
+      v.integer(req.body.previousVersion,0,Number.MAX_SAFE_INTEGER,'Phiên bản');
+      if(prior.__v!==req.body.previousVersion)throw new HttpError(409,'Yêu cầu bổ sung đã thay đổi','STALE_VERSION');
+      const latestGroup=await Report.findOne(require('./reportVersions').group(prior)).sort({version:-1}).session(session);
+      if(String(latestGroup?._id)!==String(prior._id))throw new HttpError(409,'Đã có phiên bản bổ sung mới hơn');
+    }
     const last = await Report.findOne({ assignmentId: a._id, kind }).sort({ version: -1 }).session(session);
     if(require('../config/env').schoolWorkflowEnabled&&kind==='final'&&last&&last.state!=='need_revision')throw new HttpError(409,'Báo cáo cuối kỳ đã nộp. Chỉ nộp lại khi có yêu cầu bổ sung; bài đã chốt được giữ nguyên.','FINAL_RESUBMISSION_NOT_REQUESTED');
     if (kind === 'final' && (await Report.exists({ assignmentId: a._id, kind, state: 'approved' }).session(session)))
@@ -64,7 +72,7 @@ router.post(
       version: (last?.version || 0) + 1,
       title,
       content,
-      history: [v.event(req.user, 'report.submitted')],
+      history: [v.event(req.user, 'report.submitted',req.body.previousReportId?{previousReportId:req.body.previousReportId}: {})],
     }],{session});
     return doc;
     };
@@ -153,7 +161,7 @@ router.post(
       if (!assignment.kpis?.length || assignment.kpis.some((k) => k.status !== 'approved'))
         throw new HttpError(409, 'Cần duyệt đủ KPI trước khi chốt báo cáo cuối kỳ');
     }
-    const reason = v.text(req.body.reason, 'Lý do', { required: true, max: 2000 });
+    const reason = v.text(req.body.reason, 'Lý do', { required:false, max: 2000 });
     let score,publicationPolicy;
     if(doc.evaluationRequired){
       const assignment=await policy.load(req.user,String(doc.assignmentId)),batch=await require('../models/BusinessModels').InternshipBatch.findById(assignment.batchId),rule=batch?.reportRubric?.gradingPolicy;
@@ -174,6 +182,7 @@ router.post(
           approvedBy: req.user.walletAddress || '',
           ...(identity.enabled() ? { approvedByUserId: req.user._id } : {}),
           approvedAt: new Date(),
+          ...(process.env.CUSTODIAL_AUTO_ISSUE_ENABLED==='true'?{certificateRequest:{enabled:true,requestedAt:new Date(),approvedByUserId:req.user._id}}:{}),
         },
         v.event(req.user, 'report.approved', { score, reason }),
         require('./reportVersions').currentFilter(doc)

@@ -14,7 +14,7 @@ async function students(batchId,query={}) {
  if(status==='missing_topic')Object.assign(filter,{hasTopic:false,actionable:true,...(query.due==='true'?{dueReached:true}:{})});
  if(status==='missing_mentor')Object.assign(filter,{hasTopic:true,hasMentor:false,actionable:true});
  if(status==='assigned')filter.hasMentor=true;if(['active','completed'].includes(status))filter['assignment.lifecycle']=status;
- const search=v.search(query.q);if(search)filter['student.name']=search;
+ const search=v.personSearch(query.q);if(search){const coded=await require('../models/Student').find({studentCode:search}).distinct('userId');filter.$or=[{'student.name':search},{'student.email':search},{studentUserId:{$in:coded}}];}
  const summary={_id:null,total:{$sum:1},registered:{$sum:{$cond:['$registered',1,0]}},unregistered:{$sum:{$cond:['$registered',0,1]}},disabled:{$sum:{$cond:['$student.disabled',1,0]}},hasTopic:{$sum:{$cond:['$hasTopic',1,0]}},missingTopic:{$sum:{$cond:[{$and:['$actionable',{$not:['$hasTopic']}]},1,0]}},dueMissingTopic:{$sum:{$cond:[{$and:['$actionable',{$not:['$hasTopic']},'$dueReached']},1,0]}},missingMentor:{$sum:{$cond:[{$and:['$actionable','$hasTopic',{$not:['$hasMentor']}]},1,0]}},assigned:{$sum:{$cond:['$hasMentor',1,0]}},active:{$sum:{$cond:[{$eq:['$assignment.lifecycle','active']},1,0]}},completed:{$sum:{$cond:[{$eq:['$assignment.lifecycle','completed']},1,0]}}};
  const [data]=await Enrollment.aggregate([
   {$match:{batchId:new mongoose.Types.ObjectId(String(batchId)),eligibility:'eligible'}},

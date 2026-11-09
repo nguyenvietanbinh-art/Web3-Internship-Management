@@ -1,11 +1,11 @@
-import {useEffect,useState,lazy,Suspense} from 'react';
+import {useEffect,useState} from 'react';
 import {Layers} from 'lucide-react';
 import {Dialog} from './ui';
 import {apiRequest} from '../api/client';
 import EmailIdentity from './EmailIdentity';
 import GoogleIdentity from './GoogleIdentity';
 import './identity.css';
-const LegacyAuthModal=import.meta.env.DEV?lazy(()=>import('./LegacyAuthModal')):null;
+
 
 export default function AuthModal(props){
  const {isOpen,onClose,onGoogleSession,mode='login',onModeChange,schoolWorkflow=false}=props;
@@ -17,8 +17,6 @@ export default function AuthModal(props){
   return()=>{active=false;};
  },[isOpen]);
  if(!isOpen)return null;
- // Preserve wallet-only legacy access through an explicit local opt-in.
- if(!schoolWorkflow&&import.meta.env.DEV&&import.meta.env.VITE_ENABLE_LEGACY_AUTH_UI==='true')return <Suspense fallback={null}><LegacyAuthModal {...props}/></Suspense>;
  return <Dialog label="Đăng nhập / đăng ký Internova" className="auth-dialog" closeLabel="Đóng đăng nhập" onClose={onClose}>
   <div className="modal-content auth-modal">
    <div className="auth-modal-heading"><span className="brand-mark"><Layers size={24}/></span><h3>{register?'Tạo tài khoản':'Đăng nhập Internova'}</h3></div>

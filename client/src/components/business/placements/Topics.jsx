@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { confirmLeave } from '../../viewStateStore';
 import { apiRequest } from '../../../api/client';
 import { dateLabel, localInput, asIso } from '../hooks';
 import { Panel, ServerTable, Text, Area, ActionForm, MutationDialog } from '../Shared';
@@ -226,15 +227,19 @@ export function TopicCreator({ onSaved, endpoint="/core/topics" }) {
     deadline: '',
     maxSlots: 3,
   };
+  const [open, setOpen] = useState(false);
   const [form, setForm] = useState(emptyForm),
     set = (k, v) => setForm((s) => ({ ...s, [k]: v }));
+  const close = () => { setOpen(false); setForm(emptyForm); };
   return (
-    <Panel title="Đề tài và tiêu chí thực tập" description="Xác định đề tài và tiêu chí đánh giá.">
+    <><div className="business-actions"><button type="button" className="btn btn-primary" onClick={()=>setOpen(true)}>Tạo đề tài</button></div>
+    {open&&<MutationDialog title="Tạo đề tài thực tập" onClose={close}>
       <ActionForm
         submit="Tạo đề tài thực tập"
         onSaved={async (topic) => {
           await onSaved(topic);
           setForm(emptyForm);
+          setOpen(false);
         }}
         onSubmit={() =>
           apiRequest(endpoint, {
@@ -288,8 +293,9 @@ export function TopicCreator({ onSaved, endpoint="/core/topics" }) {
           value={form.deadline}
           onChange={(v) => set('deadline', v)}
         />
+        <button type="button" className="btn btn-secondary" onClick={()=>{if(confirmLeave())close();}}>Hủy</button>
       </ActionForm>
-    </Panel>
+    </MutationDialog>}</>
   );
 }
 function CapacityForm({ data, onSaved }) {

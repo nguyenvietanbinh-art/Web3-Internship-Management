@@ -3,6 +3,7 @@ import {useViewState} from '../viewStateStore';
 import { useState } from 'react';
 import { displayLabel } from './content';
 import { Panel, ServerTable, MutationDialog, History, Status, AssignmentPicker } from './Shared';
+import WeekFilter from './WeekFilter';
 import { active, dateLabel } from './hooks';
 import AssignmentNotice from './work/AssignmentNotice';
 import { TaskHistory, TaskSubmission } from './work/TaskSubmission';
@@ -11,18 +12,21 @@ import { WORK_DIALOG_TITLES } from './work/constants';
 import ReportsPage from './Reports';
 import Kpis from './Kpis';
 import CompanyWorkPeriods from './work/CompanyWorkPeriods';
+import ExpandableText from './ExpandableText';
 export default function WorkPage({ user, schoolWorkflow=false }) {
   const [selectedStudent,setSelectedStudent]=useState(null);
   const [assignment, setAssignment] = useState(null),
-    [tab,setTab]=useViewState('tab','tasks'),
+    [storedTab,setTab]=useViewState('tab','tasks'),
     [revision, setRevision] = useState(0),
     [modal, setModal] = useState(null);
   const [message, setMessage] = useState('');
   const [batchId,setBatchId]=useViewState('batchId','');
+  const tab=user.role==='mentor'?'logs':user.role==='company'?'tasks':storedTab;
+  const [week,setWeek]=useViewState('log-week','');
   const periodMode=schoolWorkflow&&user.role==='company';
   const selected = assignment&&!assignment.pendingAssignment ? `?assignmentId=${assignment._id}${periodMode?'&batchId='+batchId:''}` : selectedStudent?'?studentUserId='+selectedStudent._id+(periodMode&&batchId?'&batchId='+batchId:''):periodMode&&batchId?'?batchId='+batchId:'',
     isActive = active(assignment),
-    manage = ['company', 'mentor'].includes(user.role),
+    manage = user.role===(tab==='tasks'?'company':'mentor'),
     saved = (result) => {
       setMessage(
         result?.draftSaved?'Đã lưu bản nháp công việc.':modal.type === 'submitTask'
@@ -37,8 +41,7 @@ export default function WorkPage({ user, schoolWorkflow=false }) {
   return (
     <div className="business-stack">
       <Panel
-        title={user.role==='student'?'Công việc được giao':'Công việc / nhật ký theo kỳ'}
-        description="Giao việc, theo dõi deadline, nộp kết quả và nhận xét."
+        title={user.role==='student'?'Công việc được giao':user.role==='mentor'?'Nhật ký thực tập theo tuần':'Quản lý công việc thực tập'}
       >
         {periodMode&&<CompanyWorkPeriods value={batchId} onChange={id=>{setBatchId(id);setAssignment(null);setModal(null);setMessage('');setRevision(n=>n+1);}}/>}
         <AssignmentPicker
@@ -54,7 +57,7 @@ export default function WorkPage({ user, schoolWorkflow=false }) {
           }}
         />
         <AssignmentNotice assignment={assignment} />
-        <div className="business-actions">
+        {user.role==='student'&&<div className="business-actions">
           <button
             className="btn btn-secondary"
             aria-pressed={tab === 'tasks'}
@@ -69,7 +72,8 @@ export default function WorkPage({ user, schoolWorkflow=false }) {
           >
             {user.role==='student'?'Báo cáo tuần':'Nhật ký theo kỳ'}
           </button>
-        </div>
+        </div>}
+        {tab==='logs'&&<WeekFilter value={week} onChange={setWeek}/>}
       </Panel>
       {message && <p role="status">{message}</p>}
       {user.role==='student'&&tab==='logs'&&<ReportsPage user={user} studentKind="weekly" embedded providedAssignment={assignment}/>}
@@ -180,10 +184,12 @@ export default function WorkPage({ user, schoolWorkflow=false }) {
         ) : (
           <ServerTable
             key={`logs-${batchId}-${assignment?._id || 'all'}`}
-            path={'/core/worklogs' + selected}
+            path={'/core/worklogs'+selected+(week?(selected?'&':'?')+'weekNumber='+encodeURIComponent(week):'')}
             revision={revision}
             label="Nhật ký theo kỳ"
+            groupBy={row=>'Tuần '+row.weekNumber}
             columns={[
+              {key:'student',title:'Sinh viên',render:r=><><strong>{r.context?.studentName||r.studentName}</strong><p>{r.context?.studentCode}</p><p>{r.context?.batchName}</p></>},
               {
                 key: 'title',
                 title: 'Nội dung',
@@ -194,16 +200,14 @@ export default function WorkPage({ user, schoolWorkflow=false }) {
                     </strong>
                     {r.requirement && (
                       <>
-                        <p className="business-content">
-                          <strong>Yêu cầu:</strong> {r.requirement}
-                        </p>
+                        <strong>Yêu cầu:</strong><ExpandableText key={'requirement-'+r._id+'-'+r.__v} text={r.requirement} label="yêu cầu tuần"/>
                         <p>
                           Ưu tiên: {displayLabel(r.priority)} · Hạn nộp: {dateLabel(r.dueDate)}
                         </p>
                       </>
                     )}
                     {r.status === 'pending_submission' && <p>Chờ sinh viên nộp kết quả.</p>}
-                    <p className="business-content">{r.tasksDone}</p>
+                    <ExpandableText key={'content-'+r._id+'-'+r.__v} text={r.tasksDone} label="nội dung nhật ký"/>
                     {r.resultLink && /^https?:\/\//i.test(r.resultLink) && (
                       <a href={r.resultLink} target="_blank" rel="noopener noreferrer">
                         Xem liên kết kết quả
@@ -250,7 +254,7 @@ export default function WorkPage({ user, schoolWorkflow=false }) {
                       {r.status === 'pending_submission'
                         ? 'Nộp kết quả theo tuần'
                         : r.status === 'need_revision'
-                        ? 'Nộp lại nhật ký'
+                        ? 'Nộp bổ sung'
                         : 'Sửa nhật ký'}
                     </button>
                   ) : manage ? (

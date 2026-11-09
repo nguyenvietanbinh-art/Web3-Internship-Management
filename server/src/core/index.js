@@ -1,6 +1,7 @@
 const router=require('express').Router();
 const {requireAuth}=require('../middleware/auth');
 router.use(requireAuth);
+router.use(require('../middleware/custodialFreeze'));
 router.use((req,res,next)=>require('../config/env').schoolWorkflowEnabled?require('../workflow/routes')(req,res,next):next());
 router.use((req,_res,next)=>{
  if(!require('../config/env').schoolWorkflowEnabled)return next();
@@ -9,6 +10,7 @@ router.use((req,_res,next)=>{
  next();
 });
 router.use(require('./accounts'));
+router.use(require('./custodial'));
 router.use(require('./unifiedPlacements'));
 router.use(require('./batchRegistrations'));
 router.use(require('./recruitment'));

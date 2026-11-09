@@ -2,6 +2,7 @@ const mongoose=require('mongoose');
 const {Schema}=mongoose;
 const history={type:[require('../core/shared').HistorySchema],default:[]};
 const op=new Schema({
+ studentUserId:{type:Schema.Types.ObjectId,ref:'User'},signerAddress:String,
  operationId:{type:String,required:true,unique:true},assignmentId:{type:Schema.Types.ObjectId,ref:'Assignment',required:true,index:true},targetId:{type:Schema.Types.ObjectId,required:true},kind:{type:String,enum:['report','attendance','completion','mint'],required:true},
  actorWallet:{type:String,required:true},studentWallet:{type:String,required:true},assignmentKey:{type:String,required:true},digest:{type:String,required:true},refURI:{type:String,default:''},
  chainId:{type:Number,required:true},contractAddress:{type:String,required:true},deploymentTx:{type:String,required:true},chainInstanceId:{type:String,required:true},state:{type:String,enum:['prepared','submitted','confirmed','failed'],default:'prepared'},

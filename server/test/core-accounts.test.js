@@ -16,11 +16,11 @@ test('core accounts require JWT and admin, profile cannot elevate role',async()=
 });
 test('profile persists allowed fields, audits atomically and rejects stale/invalid input',async()=>{
  const p=await h.api('GET','/core/profile',{token:student.token});
- const updated=await h.api('PATCH','/core/profile',{token:student.token,body:{name:'TEST edited name',email:'student@example.invalid',skills:['React'],version:p.body.__v}});
+ const updated=await h.api('PATCH','/core/profile',{token:student.token,body:{name:'TEST edited name',skills:['React'],version:p.body.__v}});
  assert.equal(updated.status,200);assert.equal(updated.body.name,'TEST edited name');assert.equal(updated.body.auditHistory,undefined);
  assert.equal((await User.findById(student.user._id).select('+auditHistory')).auditHistory.length,1);
  assert.equal((await h.api('PATCH','/core/profile',{token:student.token,body:{name:'stale overwrite',version:p.body.__v}})).status,409);
- assert.equal((await h.api('PATCH','/core/profile',{token:student.token,body:{email:'bad',version:updated.body.__v}})).status,400);
+ assert.equal((await h.api('PATCH','/core/profile',{token:student.token,body:{email:'bad',version:updated.body.__v}})).status,403);
  assert.equal((await h.api('PATCH','/core/profile',{token:student.token,body:{companyName:'spoof',version:updated.body.__v}})).status,403);
 });
 test('admin provisions mentor; public self-registration still cannot grant mentor',async()=>{
@@ -31,14 +31,13 @@ test('admin provisions mentor; public self-registration still cannot grant mento
  const invalid=await h.loginAs('mentor','not provisioned');assert.equal(invalid.res.status,400);
  assert.equal((await h.api('POST','/core/accounts',{token:admin.token,body:{walletAddress:wallet.address,name:'duplicate',role:'mentor'}})).status,409);
 });
-test('admin disable invalidates existing JWT, enable restores; reasons/history required',async()=>{
+test('admin disable invalidates existing JWT, enable restores; reason optional and history retained',async()=>{
  let p=(await h.api('GET','/core/profile',{token:company.token})).body;
- assert.equal((await h.api('PATCH','/core/accounts/'+p._id,{token:admin.token,body:{disabled:true,version:p.__v}})).status,400);
- let r=await h.api('PATCH','/core/accounts/'+p._id,{token:admin.token,body:{disabled:true,reason:'TEST disable',version:p.__v}});assert.equal(r.status,200);
+ let r=await h.api('PATCH','/core/accounts/'+p._id,{token:admin.token,body:{disabled:true,version:p.__v}});assert.equal(r.status,200);
  assert.equal((await h.api('GET','/topics',{token:company.token})).status,401);
  r=await h.api('PATCH','/core/accounts/'+p._id,{token:admin.token,body:{disabled:false,reason:'TEST reenable',version:r.body.__v}});assert.equal(r.status,200);
  assert.equal((await h.api('GET','/core/profile',{token:company.token})).status,200);
- const audit=await h.api('GET','/core/accounts/'+p._id+'/history',{token:admin.token});assert.equal(audit.body.length,2);
+ const audit=await h.api('GET','/core/accounts/'+p._id+'/history',{token:admin.token});assert.equal(audit.body.length,2);assert.equal(audit.body[0].data.reason,'');
  assert.equal((await h.api('GET','/core/accounts/'+p._id+'/history',{token:student.token})).status,403);
 });
 test('admin self-modification blocked; pagination validated; GET has zero persistence writes',async()=>{

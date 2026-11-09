@@ -74,7 +74,7 @@ test('official assignment supports task, diary, time and report workflow with fo
  let task=ok(await api(company,'POST','/core/tasks',{assignmentId:a._id,title:'SYNTHETIC QA task',description:'Implement test',priority:'high',dueDate:future(2)}),201);
  for(const who of [foreign,otherMentor,s1])assert.equal((await api(who,'PATCH',`/core/tasks/${task._id}`,{version:task.__v,status:'in_progress',progress:20})).status,404);
  task=ok(await api(student,'POST',`/core/tasks/${task._id}/submit`,{version:task.__v,content:'SYNTHETIC QA finished result'}));assert.equal(task.status,'review');
- let log=ok(await api(company,'POST','/core/worklogs/assign',{assignmentId:a._id,weekNumber:1,title:'SYNTHETIC QA diary',requirement:'Summarize work',priority:'medium',dueDate:future(2)}),201);
+ let log=ok(await api(mentor,'POST','/core/worklogs/assign',{assignmentId:a._id,weekNumber:1,title:'SYNTHETIC QA diary',requirement:'Summarize work',priority:'medium',dueDate:future(2)}),201);
  log=ok(await api(student,'PATCH',`/core/worklogs/${log._id}`,{version:log.__v,title:log.title,tasksDone:'SYNTHETIC QA work completed',challenges:'',nextPlan:'Testing',resultLink:''}));assert.equal(log.status,'submitted');
  const session=ok(await api(student,'POST','/core/time/check-in',{assignmentId:a._id,requestKey:crypto.randomUUID()}),201);
  assert.equal((await api(foreign,'PATCH',`/core/time/${session._id}/review`,{version:session.__v,decision:'rejected',reason:'attack'})).status,404);
@@ -141,7 +141,7 @@ test('company work period choices and task/diary filters stay within the selecte
  const student=await actor('student','period-work'),enrollment=await enroll(student,second),o=await Opportunity.create({topicId:opps[4].topicId,companyUserId:company.user._id,batchId:second._id,title:'SYNTHETIC QA period task',companyName:company.user.name,capacity:5,schoolAllocationAllowed:true,kpis:[{title:'Deliver',description:'Test',weightPercent:100,deadline:future(10)}]});
  let a=ok(await api(admin,'POST',`/core/admin/enrollments/${enrollment._id}/assignment`,{version:enrollment.__v,opportunityId:String(o._id),mentorUserId:String(mentor.user._id),startDate:second.startDate.toISOString(),endDate:second.endDate.toISOString(),reason:'SYNTHETIC QA period scope',confirmParticipation:true}),201);
  a=ok(await api(company,'POST',`/core/school/assignments/${a._id}/state`,{state:'active',version:a.__v,reason:'SYNTHETIC QA active period'}));
- const task=ok(await api(company,'POST','/core/tasks',{assignmentId:a._id,title:'SYNTHETIC QA second-period task',priority:'high',dueDate:future(5)}),201),log=ok(await api(company,'POST','/core/worklogs/assign',{assignmentId:a._id,weekNumber:1,title:'SYNTHETIC QA second-period diary',requirement:'Test period filter',priority:'medium',dueDate:future(5)}),201);
+ const task=ok(await api(company,'POST','/core/tasks',{assignmentId:a._id,title:'SYNTHETIC QA second-period task',priority:'high',dueDate:future(5)}),201),log=ok(await api(mentor,'POST','/core/worklogs/assign',{assignmentId:a._id,weekNumber:1,title:'SYNTHETIC QA second-period diary',requirement:'Test period filter',priority:'medium',dueDate:future(5)}),201);
  const privatePeriod=await Batch.create({code:'QA_PRIVATE_'+run,name:'SYNTHETIC QA foreign-only period',type:'engineer',startDate:future(-1),endDate:future(20),registrationOpensAt:future(-5),registrationClosesAt:future(10),status:'open'});
  await Opportunity.create({topicId:opps[4].topicId,companyUserId:foreign.user._id,batchId:privatePeriod._id,title:'SYNTHETIC QA foreign period',companyName:foreign.user.name,capacity:5,kpis:[{title:'Deliver',weightPercent:100,deadline:future(10)}]});
  const choices=ok(await api(company,'GET','/core/work/batches?limit=100'));assert.ok(choices.items.some(b=>b._id===String(second._id)));assert.equal(choices.items.some(b=>b._id===String(privatePeriod._id)),false);
@@ -149,8 +149,8 @@ test('company work period choices and task/diary filters stay within the selecte
  assert.equal(ok(await api(company,'GET',`/core/placements?batchId=${second._id}`)).items[0]._id,a._id);
  const selected=ok(await api(company,'GET',`/core/tasks?batchId=${second._id}`));assert.deepEqual(selected.items.map(t=>t._id),[task._id]);assert.equal(ok(await api(company,'GET',`/core/tasks?batchId=${batch._id}`)).items.some(t=>t._id===task._id),false);
  assert.equal(ok(await api(company,'GET',`/core/tasks?batchId=${batch._id}`)).items.some(t=>t._id===String(originalTask._id)),true);
- assert.deepEqual(ok(await api(company,'GET',`/core/worklogs?batchId=${second._id}`)).items.map(t=>t._id),[log._id]);
- for(const resource of ['tasks','worklogs']){assert.equal(ok(await api(foreign,'GET',`/core/${resource}?batchId=${second._id}`)).total,0);assert.equal((await api(company,'GET',`/core/${resource}?batchId=${second._id}&assignmentId=${original._id}`)).status,400);}
+ assert.deepEqual(ok(await api(mentor,'GET',`/core/worklogs?batchId=${second._id}`)).items.map(t=>t._id),[log._id]);
+ for(const resource of ['tasks','worklogs']){if(resource==='worklogs')assert.equal((await api(foreign,'GET',`/core/${resource}?batchId=${second._id}`)).status,403);else assert.equal(ok(await api(foreign,'GET',`/core/${resource}?batchId=${second._id}`)).total,0);assert.equal((await api(resource==='worklogs'?mentor:company,'GET',`/core/${resource}?batchId=${second._id}&assignmentId=${original._id}`)).status,400);}
 });
 test('work roster shows accepted students awaiting formal assignment without granting task rights',async()=>{
  const student=await actor('student','pending-work-student'),e=await enroll(student),accepted=await offer(company,await apply(student,e,opps[4]));

@@ -97,7 +97,7 @@ export function LogForm({ data, assignment, onSaved }) {
     set = (k, v) => setForm((f) => ({ ...f, [k]: v }));
   return (
     <ActionForm
-      submit={data?.requirement ? 'Nộp kết quả theo tuần' : 'Lưu nhật ký theo kỳ'}
+      submit={data?.status==='need_revision'?'Nộp bổ sung':data?.requirement ? 'Nộp kết quả theo tuần' : 'Lưu nhật ký theo kỳ'}
       onSaved={onSaved}
       onSubmit={() =>
         apiRequest('/core/worklogs' + (data ? '/' + data._id : ''), {
@@ -115,6 +115,7 @@ export function LogForm({ data, assignment, onSaved }) {
         })
       }
     >
+      {data?.status==='need_revision'&&<div role="note"><p>Yêu cầu bổ sung: {data.mentorFeedback}</p><p>Người yêu cầu: {data.history?.filter(e=>e.action==='worklog.reviewed').at(-1)?.actorRole==='company'?'Doanh nghiệp phụ trách':'Giảng viên phụ trách'} · {dateLabel(data.reviewedAt)}</p>{data.dueDate&&<p>Hạn nộp theo tuần: {dateLabel(data.dueDate)}</p>}</div>}
       {data?.requirement && (
         <div>
           <p>

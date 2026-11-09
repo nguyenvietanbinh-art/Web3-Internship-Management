@@ -7,13 +7,7 @@ export default function AssignmentNotice({ assignment }) {
     const timer = setInterval(() => setNow(Date.now()), 30000);
     return () => clearInterval(timer);
   }, []);
-  if (!assignment)
-    return (
-      <p className="muted">
-        Chọn phân công để xác định sinh viên nhận việc. Chỉ phân công đang thực tập và còn trong
-        thời gian thực tập mới được giao/nộp bài.
-      </p>
-    );
+  if (!assignment) return null;
   if(assignment.pendingAssignment)return <p className="inline-alert">{assignment.participantNames?.student||'Sinh viên'} đã được doanh nghiệp tiếp nhận, đang chờ nhà trường phân công chính thức và gắn giảng viên. Thời gian kỳ: {dateLabel(assignment.startDate)} → {dateLabel(assignment.endDate)}. Cần hoàn tất phân công trước khi giao công việc.{Date.parse(assignment.startDate)>now?' Kỳ thực tập cũng chưa đến ngày bắt đầu.':''}</p>;
   const future = Date.parse(assignment.startDate) > now,
     ended = Date.parse(assignment.endDate) < now;

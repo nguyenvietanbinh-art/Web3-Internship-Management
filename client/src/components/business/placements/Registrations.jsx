@@ -224,7 +224,7 @@ function AssignmentForm({ row, onSaved }) {
         value={end}
         onChange={setEnd}
       />
-      <Area label="Lý do phân công" required value={reason} onChange={setReason} />
+      <Area label="Lý do phân công"  value={reason} onChange={setReason} />
       <p className="muted">
         Nhà trường phê duyệt phân công; doanh nghiệp bắt đầu thực tập khi đến thời gian đã chọn.
       </p>
@@ -244,7 +244,7 @@ function DecisionForm({ row, admin, onSaved }) {
         })
       }
     >
-      <Area label="Lý do" required value={reason} onChange={setReason} />
+      <Area label="Lý do"  value={reason} onChange={setReason} />
     </ActionForm>
   );
 }

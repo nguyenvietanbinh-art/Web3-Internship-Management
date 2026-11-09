@@ -8,6 +8,7 @@ const policy = require('./placementPolicy');
 const { scope, resource } = require('./workPolicy');
 router.get(
   '/worklogs',
+  requireRole('student','mentor','admin'),
   asyncHandler(async (req, res) => {
     const filter = await scope(req.user,{batchId:req.query.batchId,studentUserId:req.query.studentUserId});
     if (req.query.assignmentId) {
@@ -16,8 +17,11 @@ router.get(
       filter.assignmentId = req.query.assignmentId;
     }
     const q = v.search(req.query.q);
-    if (q) filter.title = q;
-    res.json(await v.paged(WorkLog, filter, req.query));
+    if(q)filter.$or=[{title:q},{studentName:q}];
+    if(req.query.weekNumber!==undefined){if(!/^[1-9][0-9]{0,2}$/.test(req.query.weekNumber))throw new HttpError(400,'Tuần báo cáo không hợp lệ');filter.weekNumber=v.integer(Number(req.query.weekNumber),1,104,'Tuần báo cáo');}
+    const page=await v.paged(WorkLog,filter,req.query,{sort:{weekNumber:1,studentName:1,createdAt:1,_id:1}});
+    const assignments=await require('../models/Assignment').find({_id:{$in:page.items.map(row=>row.assignmentId)}}).lean(),context=await require('./reportContext').contexts(assignments);
+    res.json({...page,items:page.items.map(row=>({...row,context:context.get(String(row.assignmentId))}))});
   })
 );
 function logInput(body) {
@@ -59,7 +63,7 @@ function requestInput(body, assignment) {
 }
 router.post(
   '/worklogs/assign',
-  requireRole('company', 'mentor'),
+  requireRole('mentor'),
   asyncHandler(async (req, res) => {
     v.keys(req.body, ['assignmentId', 'weekNumber', 'title', 'requirement', 'priority', 'dueDate']);
     const a = await policy.load(req.user, req.body.assignmentId, { active: true });
@@ -86,7 +90,7 @@ router.post(
 );
 router.patch(
   '/worklogs/:id/assignment',
-  requireRole('company', 'mentor'),
+  requireRole('mentor'),
   asyncHandler(async (req, res) => {
     v.keys(req.body, ['title', 'requirement', 'priority', 'dueDate', 'version']);
     const { doc, assignment } = await resource(WorkLog, req.user, req.params.id, true);
@@ -154,12 +158,14 @@ router.patch(
           reviewedAt: null,
         },
         v.event(req.user, 'worklog.revised', {
+          resubmission:doc.status==='need_revision',
           previous: {
             title: doc.title,
             tasksDone: doc.tasksDone,
             challenges: doc.challenges,
             nextPlan: doc.nextPlan,
             status: doc.status,
+            resultLink: doc.resultLink,mentorFeedback:doc.mentorFeedback,reviewedAt:doc.reviewedAt,submittedAt:doc.submittedAt,
           },
         })
       )
@@ -168,7 +174,7 @@ router.patch(
 );
 router.patch(
   '/worklogs/:id/review',
-  requireRole('company', 'mentor'),
+  requireRole('mentor'),
   asyncHandler(async (req, res) => {
     v.keys(req.body, ['status', 'mentorFeedback', 'version']);
     const { doc } = await resource(WorkLog, req.user, req.params.id, true);

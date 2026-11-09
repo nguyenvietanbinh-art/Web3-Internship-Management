@@ -83,7 +83,7 @@ router.get('/report-rubrics',asyncHandler(async(req,res)=>{
 }));
 router.put('/report-rubrics/:batchId',requireRole('admin'),asyncHandler(async(req,res)=>{
  v.keys(req.body,['version','criteria','gradingPolicy','reason','proposalId']);const batch=await InternshipBatch.findById(v.id(req.params.batchId));if(!batch)throw new HttpError(404,'Không có kỳ thực tập');
- const rubric=validateRubric({criteria:req.body.criteria,gradingPolicy:req.body.gradingPolicy}),reason=v.text(req.body.reason,'Lý do đổi rubric',{required:true,max:2000});
+ const rubric=validateRubric({criteria:req.body.criteria,gradingPolicy:req.body.gradingPolicy}),reason=v.text(req.body.reason,'Lý do đổi rubric',{required:false,max:2000});
  let proposals;if(req.body.proposalId){const selected=(batch.rubricProposals||[]).find(p=>p.id===req.body.proposalId&&p.state==='proposed');if(!selected)throw new HttpError(409,'Đề xuất không còn chờ duyệt');rubric.academicDeadline=selected.deadline;rubric.version='rubric-'+hash(rubric).slice(0,16);proposals=batch.rubricProposals.map(p=>p.id===req.body.proposalId?{...p,state:'approved',approvedBy:String(req.user._id),approvedAt:new Date(),approvedRubricVersion:rubric.version}:p);}
  res.json(await v.updateVersion(InternshipBatch,batch,req.body.version,{reportRubric:rubric,...(proposals?{rubricProposals:proposals}:{})},v.event(req.user,'report.rubric_changed',{previous:batch.reportRubric||defaults,rubric,reason,proposalId:req.body.proposalId})));
 }));

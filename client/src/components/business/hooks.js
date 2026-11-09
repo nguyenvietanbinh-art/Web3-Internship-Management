@@ -20,3 +20,5 @@ export const shortWallet = value => value ? `${value.slice(0, 6)}…${value.slic
 export function localInput(value) { if (!value) return ''; const date = new Date(value); return new Date(date.getTime() - date.getTimezoneOffset() * 60000).toISOString().slice(0, 16); }
 export const asIso = value => new Date(value).toISOString();
 export const active = assignment => assignment?.lifecycle === 'active' && Date.parse(assignment.startDate) <= Date.now() && Date.parse(assignment.endDate) >= Date.now();
+
+export function useCertificateRefresh(){const [revision,setRevision]=useState(0);useEffect(()=>{const refresh=()=>{if(document.visibilityState!=='hidden')setRevision(n=>n+1);};const timer=setInterval(refresh,30000);window.addEventListener('focus',refresh);return()=>{clearInterval(timer);window.removeEventListener('focus',refresh);};},[]);return [revision,()=>setRevision(n=>n+1)];}

@@ -29,7 +29,7 @@ router.get(
 );
 router.post(
   '/tasks',
-  requireRole('company', 'mentor'),
+  requireRole('company'),
   asyncHandler(async (req, res) => {
     v.keys(req.body, ['assignmentId', 'title', 'description', 'priority', 'dueDate','objective','workItems','requiredProducts','criteria','progressWeight','startDate']);
     const a = await policy.load(req.user, req.body.assignmentId, { active: true });
@@ -66,7 +66,7 @@ router.post(
 );
 router.patch(
   '/tasks/:id',
-  requireRole('student', 'company', 'mentor'),
+  requireRole('student', 'company'),
   asyncHandler(async (req, res) => {
     const { doc, assignment } = await resource(Task, req.user, req.params.id, true);
     const allowed =
@@ -294,5 +294,5 @@ router.get(
       .send(bytes);
   })
 );
-router.post('/tasks/:id/review',requireRole('company','mentor'),asyncHandler(async(req,res)=>{await resource(Task,req.user,req.params.id,true);throw new HttpError(409,'Duyệt từng tiêu chí để tính tiến độ chính thức','CRITERION_REVIEW_REQUIRED');}));
+router.post('/tasks/:id/review',requireRole('company'),asyncHandler(async(req,res)=>{await resource(Task,req.user,req.params.id,true);throw new HttpError(409,'Duyệt từng tiêu chí để tính tiến độ chính thức','CRITERION_REVIEW_REQUIRED');}));
 module.exports = router;

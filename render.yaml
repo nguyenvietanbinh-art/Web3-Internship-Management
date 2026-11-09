@@ -31,6 +31,14 @@ services:
         value: 'false'
       - key: WEB3_LOCAL_ENABLED
         value: 'false'
+      - key: WEB3_LOCAL_READ_ONLY
+        value: 'true'
+      - key: WEB3_JOURNAL_ENABLED
+        value: 'false'
+      - key: CUSTODIAL_LOCAL_TEST_ENABLED
+        value: 'false'
+      - key: CUSTODIAL_AUTO_ISSUE_ENABLED
+        value: 'false'
       - key: CHAIN_LISTENER_ENABLED
         value: 'false'
       - key: DEMO_MODE

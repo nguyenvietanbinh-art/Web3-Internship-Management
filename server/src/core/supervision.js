@@ -32,7 +32,7 @@ async function studentScope(query,user={role:'admin'}){
  return filter;
 }
 router.get(['/admin/supervision/students','/student-lookup'],requireRole('admin','company','mentor'),asyncHandler(async(req,res)=>{
- const {page,limit,skip}=v.pagination({...req.query,limit:req.query.limit||'10'}),filter=await studentScope(req.query,req.user),search=v.search(req.query.q);
+ const {page,limit,skip}=v.pagination({...req.query,limit:req.query.limit||'10'}),filter=await studentScope(req.query,req.user),search=v.personSearch(req.query.q);
  const pipeline=[{$match:filter},{$lookup:{from:'users',localField:'userId',foreignField:'_id',pipeline:[{$match:{role:'student'}},{$project:{name:1,email:1,disabled:1}}],as:'user'}},{$unwind:'$user'}];
  if(search)pipeline.push({$match:{$or:[{fullName:search},{studentCode:search},{'user.name':search},{'user.email':search}]}});
  pipeline.push({$facet:{items:[{$sort:{fullName:1,_id:1}},{$skip:skip},{$limit:limit},{$lookup:{from:'assignments',localField:'userId',foreignField:'studentUserId',pipeline:[{$match:policy.scope(req.user)},{$project:{lifecycle:1}}],as:'placements'}},{$project:{_id:'$userId',name:'$user.name',studentCode:1,email:'$user.email',disabled:'$user.disabled',internshipStates:'$placements.lifecycle',assignmentCount:{$size:'$placements'}}}],count:[{$count:'total'}]}});

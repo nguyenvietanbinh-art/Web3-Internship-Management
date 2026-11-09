@@ -64,7 +64,7 @@ router.patch('/placements/:id/details',requireRole('admin'),asyncHandler(async(r
  const mentorWallet=v.wallet(req.body.mentorWallet);if(!await User.exists({walletAddress:mentorWallet,role:'mentor',disabled:{$ne:true}}))throw new HttpError(400,'Giảng viên chưa hợp lệ');
  const startDate=v.date(req.body.startDate,'Ngày bắt đầu'),endDate=v.date(req.body.endDate,'Ngày kết thúc');if(startDate>=endDate||startDate<batch.startDate||endDate>batch.endDate)throw new HttpError(400,'Ngày phải trong kỳ');
  if(doc.kpis?.some(k=>k.deadline<startDate||k.deadline>endDate))throw new HttpError(400,'Ngày phân công phải bao gồm các hạn KPI');
- const reason=v.text(req.body.reason,'Lý do',{required:true,max:1000});res.json(await v.updateVersion(Assignment,doc,req.body.version,{mentorWallet,startDate,endDate},v.event(req.user,'placement.details_updated',{before:{mentorWallet:doc.mentorWallet,startDate:doc.startDate,endDate:doc.endDate},after:{mentorWallet,startDate,endDate},reason})));
+ const reason=v.text(req.body.reason,'Lý do',{required:false,max:1000});res.json(await v.updateVersion(Assignment,doc,req.body.version,{mentorWallet,startDate,endDate},v.event(req.user,'placement.details_updated',{before:{mentorWallet:doc.mentorWallet,startDate:doc.startDate,endDate:doc.endDate},after:{mentorWallet,startDate,endDate},reason})));
 }));
 router.patch('/placements/:id',requireRole('admin','company'),asyncHandler(async(req,res)=>{
  v.keys(req.body,['lifecycle','reason','version']);const doc=await policy.load(req.user,req.params.id),target=v.choice(req.body.lifecycle,['approved','active','completed','cancelled'],'Trạng thái');
@@ -76,7 +76,7 @@ router.patch('/placements/:id',requireRole('admin','company'),asyncHandler(async
   if(!doc.kpis?.length||doc.kpis.some(k=>k.status!=='approved')||doc.kpiScore===null)throw new HttpError(409,'Cần duyệt đủ KPI theo phân công');
   const {Report,WorkSession}=require('../models/BusinessModels');if(!await Report.exists({assignmentId:doc._id,kind:'final',state:'approved',current:true}))throw new HttpError(409,'Cần báo cáo cuối kỳ đã duyệt');if(await WorkSession.exists({assignmentId:doc._id,state:{$in:['open','pending','needs_adjustment']}}))throw new HttpError(409,'Cần xử lý phiên giờ làm chưa duyệt');
  }
- const reason=v.text(req.body.reason,'Lý do',{required:true,max:1000});
+ const reason=v.text(req.body.reason,'Lý do',{required:false,max:1000});
  const saved=await v.updateVersion(Assignment,doc,req.body.version,{lifecycle:target,...(target==='cancelled'?{studentBatchKey:null}:{})},v.event(req.user,'placement.state',{before:doc.lifecycle,after:target,reason}));
  if(target==='cancelled'&&doc.studentUserId)await require('../services/topicRecruitment').releaseTopic(doc.topicId,require('../services/topicRecruitment').applicantKey(doc.batchId,doc.studentUserId));
  res.json(saved);

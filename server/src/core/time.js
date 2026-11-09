@@ -19,7 +19,7 @@ router.post('/time/:id/check-out',requireRole('student'),asyncHandler(async(req,
 }));
 router.patch('/time/:id/review',requireRole('company'),asyncHandler(async(req,res)=>{
  v.keys(req.body,['decision','reason','checkInAt','checkOutAt','version']);const doc=await WorkSession.findOne({_id:v.id(req.params.id),...identity.owned(req.user,'companyUserId','companyWallet'),...await scope(req.user,req.query)});if(!doc)throw new HttpError(404,'Không có phiên trong phạm vi doanh nghiệp');
- const decision=v.choice(req.body.decision,['approved','rejected','adjust'],'Thao tác'),reason=v.text(req.body.reason,'Lý do',{required:true,max:2000});let set;
+ const decision=v.choice(req.body.decision,['approved','rejected','adjust'],'Thao tác'),reason=v.text(req.body.reason,'Lý do',{required:false,max:2000});let set;
  if(decision==='adjust'){
   const start=v.date(req.body.checkInAt,'Giờ vào'),end=v.date(req.body.checkOutAt,'Giờ ra');const a=await policy.load(req.user,String(doc.assignmentId));if(start<a.startDate||end>a.endDate||end>new Date()||start.toISOString().slice(0,10)!==doc.day||end.toISOString().slice(0,10)!==doc.day)throw new HttpError(400,'Điều chỉnh phải trong ngày UTC của phiên, thuộc phân công và không ở tương lai');
   if(await WorkSession.exists({_id:{$ne:doc._id},...(doc.studentUserId?{studentUserId:doc.studentUserId}:{studentWallet:doc.studentWallet}),state:{$ne:'rejected'},checkInAt:{$lt:end},$or:[{checkOutAt:{$gt:start}},{state:'open'}]}))throw new HttpError(409,'Khoảng giờ trùng phiên khác');

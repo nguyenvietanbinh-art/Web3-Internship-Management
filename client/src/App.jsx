@@ -24,7 +24,6 @@ import {
   completeInternshipOnChain
 } from './api/web3Client';
 import AuthModal from './components/AuthModal';
-import AccountOverview from './components/AccountOverview';
 import {IdentitySettings} from './components/GoogleIdentity';
 import AppShell from './components/AppShell';
 import {ViewStateProvider} from './components/viewState';
@@ -33,6 +32,8 @@ import ViewBoundary from './components/ViewBoundary';
 import { Dialog, EmptyState, LoadingSkeleton, UnavailableView } from './components/ui';
 const DashboardView = lazy(() => import('./components/DashboardView'));
 const WorkflowDashboard = lazy(() => import('./components/business/workflow/Dashboard'));
+const MentorStudents = lazy(() => import('./components/business/workflow/CompanyPages').then(module=>({default:module.ScopedStudents})));
+const OverviewProfile = lazy(() => import('./components/business/ProfileCv').then(module=>({default:module.OverviewProfile})));
 const CvJdView = lazy(() => import('./components/CvJdView'));
 const AttendanceView = lazy(() => import('./components/AttendanceView'));
 const Web3CertificateView = lazy(() => import('./components/Web3CertificateView'));
@@ -149,26 +150,6 @@ export default function App() {
 
   useEffect(()=>{const update=()=>{if(user&&['/login','/register'].includes(location.pathname)){history.replaceState({},'','/');setShowAuthModal(false);return;}setAuthMode(location.pathname==='/register'?'register':'login');setShowAuthModal(['/login','/register'].includes(location.pathname));};window.addEventListener('popstate',update);return()=>window.removeEventListener('popstate',update);},[user]);
 
-  // MetaMask listener
-  useEffect(() => {
-    if(['google','password'].includes(user?.authProvider))return undefined;
-    if (!window.ethereum?.on) return undefined;
-    const onAccountsChanged = () => {
-      logout();
-      setUser(null);
-      setWalletAddress('');
-      setNetworkName('');
-      setTopics([]);
-      setSelectedTopic(null);
-      setShowCreateTopicModal(false);
-      setShowSubmitKPIModal(null);
-      setShowEvaluateModal(null);
-      showToast('Địa chỉ ví đã thay đổi, hãy xác thực lại.');
-    };
-    window.ethereum.on('accountsChanged', onAccountsChanged);
-    return () => window.ethereum.removeListener?.('accountsChanged', onAccountsChanged);
-  }, [user,showToast]);
-
   // Connect MetaMask or open modal if missing
   const connectWallet = async () => {
     if (typeof window === 'undefined' || !window.ethereum) {
@@ -231,7 +212,7 @@ export default function App() {
       const restored=await restoreSession();
       if(token!==getToken())return;
       if(!restored){setUser(null);return;}
-      setUser(restored);setActiveTab(restored.role==='student'?'dashboard':'account-overview');setBackendError('');
+      setUser(restored);setActiveTab(['student','admin','company','mentor'].includes(restored.role)?'dashboard':'core-profile');setBackendError('');
       showToast('Đã lưu hồ sơ thành công.');
     }catch(error){if(token===getToken())setBackendError('Hồ sơ đã lưu nhưng chưa tải lại được tài khoản: '+error.message);}
   };
@@ -549,14 +530,13 @@ export default function App() {
         networkName={networkName} onConnect={() => {setAuthMode('login');history.pushState({},'','/login');setShowAuthModal(true);}} onDemo={() => setShowAuthModal(true)} onLogout={disconnectWallet} loading={loading}
         roleChoice={roleChoice} onRoleChoice={setUserRole} transactionStatus={transactionStatus}
         onCheckContract={() => checkContractConnection().then(setContractConnected).catch(() => setContractConnected(false))} contractConnected={contractConnected} contractAddress={CONTRACT_ADDRESS} error={backendError}>
-      {user&&activeTab==='core-profile'&&<IdentitySettings user={user} onSession={handleGoogleSession} />}
+      {user&&user.role!=='company'&&activeTab==='core-profile'&&<IdentitySettings user={user} onSession={handleGoogleSession} />}
       <ViewBoundary key={`${activeTab}-${user?._id || 'guest'}`}><Suspense fallback={<LoadingSkeleton label="Đang tải màn hình" />}>
-        {user&&!unifiedMode&&!user.walletAddress&&!['core-profile','account-overview'].includes(activeTab)?<EmptyState title="Cần liên kết ví">Mở Hồ sơ cá nhân để liên kết ví trước khi sử dụng nghiệp vụ.</EmptyState>:<>
-        {user&&activeTab==='account-overview'&&<AccountOverview user={user} onEdit={()=>setActiveTab('core-profile')} />}
+        {<>
         {activeTab.startsWith('unavailable-') && <UnavailableView title="Chức năng chưa triển khai" />}
         {coreEnabled && activeTab.startsWith('core-') && <CoreBusinessView key={`${activeTab}-${user?._id || 'guest'}`} view={activeTab} user={user} schoolWorkflow={schoolWorkflow} unified={unifiedMode} onNavigate={setActiveTab} onProfileSaved={handleProfileSaved} />}
         {/* VIEW 1: DASHBOARD */}
-        {activeTab === 'dashboard' && schoolWorkflow && user && <WorkflowDashboard user={user} onNavigate={setActiveTab} />}
+        {activeTab === 'dashboard' && schoolWorkflow && user && <WorkflowDashboard user={user} onNavigate={setActiveTab} onProfileSaved={handleProfileSaved} />}
         {activeTab === 'dashboard' && !schoolWorkflow && (
           <DashboardView
             unified={unifiedMode}
@@ -566,6 +546,9 @@ export default function App() {
             onSelectTopic={(t) => { setSelectedTopic(t); setActiveTab('topics'); }}
           />
         )}
+
+        {activeTab==='dashboard'&&user?.role==='mentor'&&<><OverviewProfile user={user} onProfileSaved={handleProfileSaved}/><MentorStudents user={user}/></>}
+        {activeTab==='dashboard'&&coreEnabled&&user?.role==='company'&&<section id="company-account-profile" className="business-stack" style={{marginTop:24}}><OverviewProfile user={user} onProfileSaved={handleProfileSaved}/><IdentitySettings user={user} onSession={handleGoogleSession}/></section>}
 
         {/* VIEW 2: CV & JD MATCHING */}
         {activeTab === 'cv-jd' && (

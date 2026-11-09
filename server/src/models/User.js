@@ -54,6 +54,8 @@ UserSchema.add({
   walletVerified:{type:Boolean,default:false},walletVerifiedAt:Date,
   loginEmail: {type:String,select:false},
   passwordHash: {type:String,select:false},
+  passwordEmailVerifiedAt: Date,
+  passwordReset: {type: new mongoose.Schema({digest:String,expiresAt:Date,requestedAt:Date,requestedBy:mongoose.Schema.Types.ObjectId,authVersion:Number,deliveryState:String},{_id:false}),select:false},
   authVersion: {type:Number,default:0},
   walletLinkVersion: {type:Number,default:0},
   googleSubject: {type:String,select:false},

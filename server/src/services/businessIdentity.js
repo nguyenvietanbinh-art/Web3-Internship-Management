@@ -13,8 +13,13 @@ function participants(a){const out={};for(const role of ['student','company','me
 function personKey(a){const value=enabled()?a.studentUserId:a.studentWallet;if(!value)throw new HttpError(409,'Thiếu danh tính sinh viên đã xác minh','IDENTITY_MAPPING_REQUIRED');return String(value);}
 async function chainAssignment(a){
  if(!enabled()||!a.studentUserId)return a;
+ if(require('./custodialRuntime').enabled()){
+  const recipient=await require('./custodialRuntime').service().recipients.read(String(a.studentUserId));
+  if(!recipient)throw new HttpError(409,'Chưa có địa chỉ nhận chứng nhận do hệ thống quản lý','CUSTODY_RECIPIENT_REQUIRED');
+  return Object.assign(a,{studentWallet:recipient.address});
+ }
  const user=await require('../models/User').findById(a.studentUserId);
- if(!user||!validWallet(user))throw new HttpError(409,'Sinh viên cần liên kết ví đã xác minh để sử dụng chức năng này','WALLET_LINK_REQUIRED');
+ if(!user||!validWallet(user))throw new HttpError(409,'Chưa có địa chỉ nhận chứng nhận được hệ thống xác minh; liên hệ nhà trường','WALLET_LINK_REQUIRED');
  return Object.assign(a,{studentWallet:user.walletAddress}); // In-memory projection only; never backfill/replace ownership on GET.
 }
 module.exports={enabled,validWallet,owned,refs,belongs,participants,personKey,chainAssignment};

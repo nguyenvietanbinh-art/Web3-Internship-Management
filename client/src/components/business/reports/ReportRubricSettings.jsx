@@ -12,7 +12,7 @@ function Editor({batch,rubric,onSaved}){
   {criteria.map((c,i)=><fieldset className="business-panel" key={c.id}><legend>{c.label}</legend><Text label={'Điểm tối đa: '+c.id} type="number" required min="1" max="100" step="1" value={c.max} onChange={v=>setCriteria(rows=>rows.map((row,j)=>j===i?{...row,max:v}:row))}/><Area label={'Yêu cầu đánh giá: '+c.id} required maxLength={1500} value={c.hint} onChange={v=>setCriteria(rows=>rows.map((row,j)=>j===i?{...row,hint:v}:row))}/></fieldset>)}
   <Select label="Quy định chốt điểm cuối kỳ" required value={method} onChange={setMethod} options={[{value:'',label:'Chọn quy định của nhà trường'},{value:'mentor',label:'Giảng viên xác nhận điểm; doanh nghiệp nhận xét độc lập'},{value:'weighted',label:'Kết hợp điểm theo trọng số được công bố'}]}/>
   {method==='weighted'&&<div className="business-grid"><Text label="Trọng số điểm giảng viên" type="number" min="1" max="99" required value={mentorWeight} onChange={setMentorWeight}/><Text label="Trọng số điểm doanh nghiệp" type="number" min="1" max="99" required value={companyWeight} onChange={setCompanyWeight}/></div>}
-  <p role="status">Tổng điểm: {total}/100</p><Area label="Lý do cập nhật rubric" required maxLength={2000} value={reason} onChange={setReason}/><p>Các phân tích đã lưu giữ nguyên rubric tại thời điểm đánh giá. Điểm chưa xác nhận phải phân tích lại nếu rubric thay đổi.</p>
+  <p role="status">Tổng điểm: {total}/100</p><Area label="Lý do cập nhật rubric"  maxLength={2000} value={reason} onChange={setReason}/><p>Các phân tích đã lưu giữ nguyên rubric tại thời điểm đánh giá. Điểm chưa xác nhận phải phân tích lại nếu rubric thay đổi.</p>
  </ActionForm>;
 }
 export default function ReportRubricSettings({batch,onSaved}){

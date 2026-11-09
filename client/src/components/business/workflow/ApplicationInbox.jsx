@@ -17,7 +17,7 @@ export default function ApplicationInbox({batchId:fixedBatchId=''}){
  if(query)params.set('q',query);
  const applications=useData('/core/admin/applications?'+params,revision);
  const reload=()=>{setPage(1);setRevision(n=>n+1);};
- return <Panel title="Theo dõi hồ sơ ứng tuyển" description="Sinh viên ứng tuyển trực tiếp đến doanh nghiệp. Nhà trường theo dõi và phải xử lý phân công nếu tới mốc 7 ngày trước khi kỳ bắt đầu mà sinh viên chưa có nơi tiếp nhận." actions={<button className="btn btn-secondary" onClick={reload}>Tải lại hồ sơ</button>}>
+ return <Panel title="Theo dõi hồ sơ ứng tuyển" actions={<button className="btn btn-secondary" onClick={reload}>Tải lại hồ sơ</button>}>
  {!fixedBatchId&&<Resource state={batches}><Select label="Kỳ của hồ sơ ứng tuyển" value={batchId} onChange={value=>{setBatchId(value);setPage(1);}} options={[{value:'',label:'Tất cả kỳ'},...choices(batches.data?.items,b=>`${b.code} · ${b.name}`).filter(x=>x.value)]}/></Resource>}
  <Select label="Trạng thái hồ sơ ứng tuyển" value={state} onChange={value=>{setState(value);setPage(1);}} options={[{value:'',label:'Tất cả trạng thái'},...['submitted','dispatched','under_review','offered','confirmed','withdrawn','rejected','closed_other_selected','closed_full','cancelled'].map(value=>({value,label:stateLabel[value]}))]}/>
  <SupervisionStudentFinder filters={{batchId:fixedBatchId||batchId}} selected={selectedStudent} showAssignments={false} onSelect={s=>{setSelectedStudent(s);setViewing(null);setPage(1);}}/><Text label="Tìm hồ sơ theo sinh viên, doanh nghiệp hoặc đề tài" value={query} onChange={value=>{setQuery(value);setPage(1);}}/>

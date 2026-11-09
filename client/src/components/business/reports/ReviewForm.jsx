@@ -79,8 +79,8 @@ export default function ReviewForm({ data, approve, onSaved, reviewerRole, propo
         </>
       )}
       <Area
-        label={approve ? 'Lý do chốt kết quả' : 'Nhận xét báo cáo theo kỳ'}
-        required
+        label={approve ? 'Lý do chốt kết quả (không bắt buộc)' : 'Nhận xét báo cáo theo kỳ'}
+        required={!approve}
         maxLength={approve ? 2000 : rubric?1500:5000}
         value={comment}
         onChange={setComment}

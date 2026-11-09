@@ -26,10 +26,10 @@ test('weekly log edit/review history and duplicate week; approved log immutable 
  const body={assignmentId:p.doc._id,weekNumber:1,title:'TEST worklog',tasksDone:'Actual TEST work input',challenges:'',nextPlan:''};
  let r=await h.api('POST','/core/worklogs',{token:f.student.token,body});assert.equal(r.status,201);log=r.body;
  assert.equal((await h.api('POST','/core/worklogs',{token:f.student.token,body})).status,409);
- assert.equal((await h.api('PATCH','/core/worklogs/'+log._id+'/review',{token:f.foreignCompany.token,body:{status:'approved',mentorFeedback:'foreign',version:0}})).status,404);
+ assert.equal((await h.api('PATCH','/core/worklogs/'+log._id+'/review',{token:f.foreignCompany.token,body:{status:'approved',mentorFeedback:'foreign',version:0}})).status,403);
  r=await h.api('PATCH','/core/worklogs/'+log._id+'/review',{token:f.mentor.token,body:{status:'need_revision',mentorFeedback:'TEST revise',version:0}});assert.equal(r.status,200);
  r=await h.api('PATCH','/core/worklogs/'+log._id,{token:f.student.token,body:{...{title:body.title,tasksDone:'Revised TEST text'},version:r.body.__v}});assert.equal(r.status,200);
- r=await h.api('PATCH','/core/worklogs/'+log._id+'/review',{token:f.company.token,body:{status:'approved',mentorFeedback:'TEST approved',version:r.body.__v}});assert.equal(r.status,200);
+ r=await h.api('PATCH','/core/worklogs/'+log._id+'/review',{token:f.mentor.token,body:{status:'approved',mentorFeedback:'TEST approved',version:r.body.__v}});assert.equal(r.status,200);
  assert.equal((await h.api('PATCH','/core/worklogs/'+log._id,{token:f.student.token,body:{title:'locked',tasksDone:'locked',version:r.body.__v}})).status,409);
  assert.equal((await WorkLog.findById(log._id)).history.length,4);
 });

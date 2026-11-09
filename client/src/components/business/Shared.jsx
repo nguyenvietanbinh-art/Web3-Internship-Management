@@ -1,8 +1,9 @@
-import { useEffect, useState, useRef } from 'react';
+import AssignmentContext from './AssignmentContext';
+import { useEffect, useState, useRef, Fragment } from 'react';
 import {useViewState,confirmLeave} from '../viewStateStore';
 import { apiRequest } from '../../api/client';
 import { EmptyState, LoadingSkeleton, Dialog } from '../ui';
-import { useResource, shortWallet, dateLabel } from './hooks';
+import { useResource, dateLabel } from './hooks';
 import { completeAction } from '../../api/formAction';
 import { displayLabel } from './content';
 import {historyContent} from './historyContent';
@@ -175,6 +176,7 @@ export function ServerTable({
   search = true,
   emptyTitle = 'Không tìm thấy kết quả',
   emptyDescription,
+  groupBy,
 }) {
   const [page, setPage] = useViewState(`table:${path}:page`,1),
     [query, setQuery] = useViewState(`table:${path}:query`,''),
@@ -235,12 +237,15 @@ export function ServerTable({
                 </tr>
               </thead>
               <tbody>
-                {state.data.items.map((row) => (
-                  <tr key={row._id || row.id} data-record-id={row._id||row.id}>
+                {state.data.items.map((row,index) => (
+                  <Fragment key={row._id||row.id}>
+                  {groupBy&&(index===0||groupBy(row)!==groupBy(state.data.items[index-1]))&&<tr className="table-group-row"><th colSpan={columns.length} scope="rowgroup">{groupBy(row)}</th></tr>}
+                  <tr data-record-id={row._id||row.id}>
                     {columns.map((c) => (
                       <td key={c.key}>{c.render ? c.render(row) : row[c.key] ?? '—'}</td>
                     ))}
                   </tr>
+                  </Fragment>
                 ))}
                 {!state.data.items.length && (
                   <tr>
@@ -287,23 +292,11 @@ function ScopedAssignmentPicker({ value, onChange, revision = 0, batchId='', req
   const path=includeAdmissions&&batchId?'/core/work/students?limit=100&batchId='+encodeURIComponent(batchId):'/core/placements?limit=100'+(batchId?'&batchId='+encodeURIComponent(batchId):'');
   const state = useResource(requireBatch&&!batchId?null:path, revision);
   const items=(state.data?.items||[]).filter(a=>!batchId||a.batchId===batchId);
-  useEffect(()=>{if(state.loading||!state.data||state.error||!remembered||value)return;let cancelled=false;queueMicrotask(()=>{if(cancelled)return;const found=state.data.items.find(a=>a._id===remembered);if(found)onChange(found);else{setRemembered('');setSelectionNotice('Hồ sơ đã chọn không còn trong phạm vi truy cập. Vui lòng chọn lại.');}});return()=>{cancelled=true;};},[state.data,state.loading,state.error,remembered,value,onChange,setRemembered]);
+
   return (
     <div>
       <ErrorNotice message={state.error} />{selectionNotice&&<p role="status">{selectionNotice}</p>}
-      <Select
-          label={personal?'Thông tin thực tập của tôi':company?'Sinh viên thực tập tại doanh nghiệp':mentor?'Sinh viên tôi phụ trách':'Phân công theo kỳ'}
-        disabled={requireBatch&&!batchId}
-        value={value?._id || ''}
-        onChange={(id) => {setRemembered(id);setSelectionNotice('');onChange(items.find((a) => a._id === id) || null);}}
-        options={[
-            { value: '', label: requireBatch&&!batchId?'Chọn kỳ thực tập trước':state.loading ? 'Đang tải…' : personal?'Chọn đề tài thực tập của tôi':company?'Chọn sinh viên thực tập':mentor?'Chọn sinh viên phụ trách':'Chọn sinh viên / phân công' },
-          ...items.map((a) => ({
-            value: a._id,
-            label: `${a.topic?.title || (personal?'Đề tài chưa có tên':a._id)}${personal?'':' · '+(a.participantNames?.student || shortWallet(a.studentWallet))} · ${a.pendingAssignment?'Đã tiếp nhận · Chờ nhà trường phân công':displayLabel(a.lifecycle)}`,
-          })),
-        ]}
-      />
+      <AssignmentContext items={items} preferredId={remembered} selectedId={value?._id||''} loading={state.loading} error={state.error} onChange={(_id,a)=>{setRemembered(_id);setSelectionNotice('');onChange(a);}}/>
       <small className="muted">
           {personal?'Chỉ hiển thị thông tin thực tập của bạn đã được nhà trường phân công.':company?'Chỉ hiển thị sinh viên có phân công thực tập chính thức tại doanh nghiệp của bạn.':mentor?'Chỉ hiển thị sinh viên có phân công do bạn phụ trách.':'Hiển thị tối đa 100 sinh viên/phân công. Thời gian theo múi giờ thiết bị.'}
       </small>

@@ -36,6 +36,11 @@ function createApp(options = {}) {
     next();
   });
 
+  app.use('/api/auth',(req,_res,next)=>{
+    if(require('./services/custodialRuntime').enabled() && (req.path.startsWith('/wallet/') || ['/email/wallet-reauth','/email/wallet-challenge','/email/link-wallet'].includes(req.path) || (req.path==='/google/challenge'&&req.body?.purpose==='link-wallet')))
+      return next(new HttpError(410,'Liên kết ví cá nhân đã được tắt','PERSONAL_WALLET_LINK_DISABLED'));
+    next();
+  });
   app.use('/api/auth', require('./routes/walletIdentity.routes'));
   app.use('/api/auth', require('./routes/email.routes'));
   app.use('/api/auth', require('./routes/google.routes').router);

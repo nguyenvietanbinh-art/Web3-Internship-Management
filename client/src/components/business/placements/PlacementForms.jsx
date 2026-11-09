@@ -97,7 +97,7 @@ export function PlacementState({ data, user, onSaved }) {
         onChange={setLifecycle}
         options={choices.map((value) => ({ value, label: displayLabel(value) }))}
       />
-      <Area label="Lý do phân công" required value={reason} onChange={setReason} />
+      <Area label="Lý do phân công"  value={reason} onChange={setReason} />
       <p className="muted">
         Kết thúc cần báo cáo cuối kỳ đã được Nhà trường chốt và không còn phiên giờ làm chưa xử lý.
       </p>
@@ -253,7 +253,7 @@ function UnifiedPlacementDetails({ data, onSaved }) {
           onChange={setEnd}
         />
       </div>
-      <Area label="Lý do sửa phân công" required value={reason} onChange={setReason} />
+      <Area label="Lý do sửa phân công"  value={reason} onChange={setReason} />
       <p className="muted">
         Ngày phân công phải nằm trong kỳ thực tập đang mở và bao gồm các hạn KPI. Nếu muốn bắt đầu
         ngay, chọn thời điểm bắt đầu không muộn hơn hiện tại.
@@ -306,7 +306,7 @@ function LegacyPlacementDetails({ data, onSaved }) {
           onChange={setEnd}
         />
       </div>
-      <Area label="Lý do sửa phân công" required value={reason} onChange={setReason} />
+      <Area label="Lý do sửa phân công"  value={reason} onChange={setReason} />
     </ActionForm>
   );
 }
@@ -434,7 +434,7 @@ function UnifiedPlacementForm({ user, onSaved }) {
       {user.role === 'admin' && (
         <Area
           label="Lý do phân công"
-          required
+
           value={form.reason}
           onChange={(v) => set('reason', v)}
         />

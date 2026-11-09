@@ -6,6 +6,7 @@ const {ChainOperation,PrivateReportArtifact}=require('../models/Web3Models'),{Re
 const {parseCv}=require('../services/cvParser');
 function requireLocalBlockchain(_req,_res,next){try{chain.assertTest();next();}catch{next(new HttpError(503,'Giao dịch blockchain chỉ bật trong TEST exact-allowlist','WEB3_TEST_ONLY'));}}
 const requireBusinessEnvironment=asyncHandler(async(_req,_res,next)=>{await require('../services/businessWriteEnvironment').assertBusinessWriteEnvironment();next();});
+router.get('/web3/my-certificates',requireRole('student'),asyncHandler(async(req,res)=>res.json(await require('../services/studentCertificates').list(req.user,req.query))));
 router.get('/web3/status',asyncHandler(async(_req,res)=>res.json({chain:await chain.status(),ipfs:{...ipfs.configured(),privacy:'AES-256-GCM ciphertext only; key never leaves server'},gps:{source:'client-claim',absoluteAntiSpoof:false},qrLibraries:'lazy/native-fallback'})));
 router.post('/web3/qr/issue',requireRole('company'),asyncHandler(async(req,res)=>res.status(201).json(await qr.issue(req.user,req.body))));
 router.post('/web3/qr/redeem',requireRole('student'),asyncHandler(async(req,res)=>res.json(await qr.redeem(req.user,req.body))));
@@ -37,7 +38,7 @@ async function uploadReport(req,res,attachment){
 }
 router.post('/web3/reports/:id/ipfs',requireRole('student'),requireBusinessEnvironment,asyncHandler(async(req,res)=>uploadReport(req,res,false)));
 router.post('/web3/reports/:id/ipfs/file',requireRole('student'),requireBusinessEnvironment,express.raw({type:()=>true,limit:2*1024*1024}),asyncHandler(async(req,res)=>uploadReport(req,res,true)));
-router.post('/web3/reports/:id/anchor',requireLocalBlockchain,asyncHandler(async(req,res)=>{
+router.post('/web3/reports/:id/anchor',requireRole('admin'),requireLocalBlockchain,asyncHandler(async(req,res)=>{
  v.keys(req.body,['artifactId']);const {report,assignment}=await reportScope(req.user,req.params.id);let digest='0x'+ipfs.sha(Buffer.from(report.content)),refURI='';
  if(report.kind!=='final'||!report.current||report.state!=='approved')throw new HttpError(409,'Chỉ anchor báo cáo cuối kỳ hiện hành đã được duyệt');
  if(req.body.artifactId){const artifact=await PrivateReportArtifact.findOne({_id:v.id(req.body.artifactId),reportId:report._id,state:'verified'});if(!artifact)throw new HttpError(409,'Cần artifact readback verified của đúng báo cáo');digest='0x'+artifact.plaintextHash;refURI='ipfs://'+artifact.cid;}
@@ -45,8 +46,8 @@ router.post('/web3/reports/:id/anchor',requireLocalBlockchain,asyncHandler(async
 }));
 const timeEvidence=require('./timeEvidence'),{workDigest}=timeEvidence;
 router.get('/web3/placements/:id/time-evidence',requireRole('admin','company'),asyncHandler(async(req,res)=>res.json(await timeEvidence.list(req.user,req.params.id,req.query))));
-router.post('/web3/placements/:id/time-evidence/anchor',requireLocalBlockchain,requireRole('admin','company'),asyncHandler(async(req,res)=>res.json(await timeEvidence.batch(req.user,req.params.id,req.body))));
-router.post('/web3/time/:id/anchor',requireLocalBlockchain,requireRole('company','admin'),asyncHandler(async(req,res)=>{
+router.post('/web3/placements/:id/time-evidence/anchor',requireLocalBlockchain,requireRole('admin'),asyncHandler(async(req,res)=>res.json(await timeEvidence.batch(req.user,req.params.id,req.body))));
+router.post('/web3/time/:id/anchor',requireLocalBlockchain,requireRole('admin'),asyncHandler(async(req,res)=>{
  v.keys(req.body,[]);const session=await WorkSession.findById(v.id(req.params.id));if(!session)throw new HttpError(404,'Không có phiên');const assignment=await policy.load(req.user,String(session.assignmentId));res.json(await timeEvidence.anchor(req.user,assignment,session));
 }));
 async function completion(user,id){
@@ -69,7 +70,7 @@ router.get('/web3/placements/:id/eligibility',requireRole('admin'),asyncHandler(
  res.json({checks,canComplete,canMint,alreadyMinted,certificateStateKnown,completionRecorded,certificate,reason,readOnly:true});
 }));
 router.post('/web3/placements/:id/complete',requireLocalBlockchain,requireRole('admin'),asyncHandler(async(req,res)=>{v.keys(req.body,[]);const {assignment,digest}=await completion(req.user,req.params.id);res.json(await chain.execute(req.user,{assignment,kind:'completion',targetId:assignment._id,digest}));}));
-router.post('/web3/placements/:id/mint',requireLocalBlockchain,requireRole('admin'),asyncHandler(async(req,res)=>{v.keys(req.body,[]);const selected=await policy.load(req.user,req.params.id),ctx=await chain.context();try{if(await ctx.contract.tokenForAssignment(chain.hash('core-assignment:'+String(selected._id)))>0n)throw new HttpError(409,'Sinh viên đã có chứng nhận cho phân công này','CERTIFICATE_ALREADY_ISSUED');}finally{ctx.provider.destroy();}const {assignment,digest}=await completion(req.user,req.params.id);const m=chain.metadata();if(!await ChainOperation.exists({assignmentId:assignment._id,kind:'completion',digest,state:'confirmed',deploymentTx:m.deploymentTx,chainInstanceId:m.hardhatInstanceId}))throw new HttpError(409,'Cần bằng chứng phê duyệt hoàn tất đúng snapshot');res.json(await chain.execute(req.user,{assignment,kind:'mint',targetId:assignment._id,digest}));}));
+router.post('/web3/placements/:id/mint',requireLocalBlockchain,requireRole('admin'),asyncHandler(async(req,res)=>{if(require('../services/custodialRuntime').enabled())throw new HttpError(403,'Chỉ tác nhân hệ thống được cấp chứng nhận','CERTIFICATE_SYSTEM_ONLY');v.keys(req.body,[]);const selected=await policy.load(req.user,req.params.id),ctx=await chain.context();try{if(await ctx.contract.tokenForAssignment(chain.hash('core-assignment:'+String(selected._id)))>0n)throw new HttpError(409,'Sinh viên đã có chứng nhận cho phân công này','CERTIFICATE_ALREADY_ISSUED');}finally{ctx.provider.destroy();}const {assignment,digest}=await completion(req.user,req.params.id);const m=chain.metadata();if(!await ChainOperation.exists({assignmentId:assignment._id,kind:'completion',digest,state:'confirmed',deploymentTx:m.deploymentTx,chainInstanceId:m.hardhatInstanceId}))throw new HttpError(409,'Cần bằng chứng phê duyệt hoàn tất đúng snapshot');res.json(await chain.execute(req.user,{assignment,kind:'mint',targetId:assignment._id,digest}));}));
 router.get('/web3/placements/:id/certificate',asyncHandler(async(req,res)=>res.json(await chain.certificate(await policy.load(req.user,req.params.id)))));
 router.get('/web3/placements/:id/operations',asyncHandler(async(req,res)=>{const a=await policy.load(req.user,req.params.id);res.json({items:(await ChainOperation.find({assignmentId:a._id}).sort({createdAt:-1})).map(op=>({...chain.dto(op),studentUserId:a.studentUserId||null}))});}));
 router.post('/web3/operations/:id/verify',requireLocalBlockchain,asyncHandler(async(req,res)=>{v.keys(req.body,[]);const op=await ChainOperation.findById(v.id(req.params.id));if(!op)throw new HttpError(404,'Không có giao dịch');await policy.load(req.user,String(op.assignmentId));res.json(await chain.verification(op));}));

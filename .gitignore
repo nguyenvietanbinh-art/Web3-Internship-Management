@@ -176,3 +176,10 @@ staff-public.json
 
 # Database dumps can contain private records and password hashes.
 *.archive
+
+# Local credentials and broadcastable transaction journals
+**/transactions.jsonl
+**/journal.json
+**/keyring*.json
+**/manual-login*.txt
+**/*.dpapi

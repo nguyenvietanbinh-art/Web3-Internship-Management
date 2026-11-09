@@ -1,7 +1,5 @@
 import {useEffect,useRef,useState} from 'react';
 import {apiRequest,setToken} from '../api/client';
-import MyWallet from './MyWallet';
-import {Dialog} from './ui';
 import {PasswordSettings} from './EmailIdentity';
 let loadingScript;
 function loadGIS(){
@@ -55,10 +53,5 @@ export default function GoogleIdentity({purpose='login',onSession,user}){
   return <section className="google-identity">{purpose==='link-google'&&!user.walletAddress&&<label>Mật khẩu hiện tại<input type="password" autoComplete="current-password" value={reauth} onChange={e=>setReauth(e.target.value)}/></label>}<button className="btn btn-secondary" type="button" onClick={begin} disabled={pending}>{ready?'Bắt đầu lại Google':'Tiếp tục với Google'}</button><div ref={button} />{state&&<p role="status">{state}</p>}{error&&<p className="inline-alert is-error" role="alert">{error}</p>}</section>;
 }
 export function IdentitySettings({user,onSession}){
-  const [action,setAction]=useState('');
-  if(['admin','mentor'].includes(user.role))return <section className="glass-panel identity-settings"><h2>Bảo mật tài khoản</h2><div className="account-security-grid account-security-single"><PasswordSettings user={user} onSession={onSession}/></div></section>;
-  return <section className="glass-panel identity-settings">
-    <h2>Bảo mật tài khoản</h2><div className="account-security-grid"><MyWallet user={user} onSession={onSession} onGoogleVerify={()=>setAction('link-wallet')}/><PasswordSettings user={user} onSession={onSession}/></div>
-    {action&&<Dialog label="Xác minh danh tính để liên kết ví" onClose={()=>setAction('')}><div className="modal-content"><h2>Xác minh danh tính</h2><p>Tài khoản chưa có mật khẩu website. Xác minh lại bằng phương thức Google đã liên kết; không tạo hoặc bỏ phương thức đăng nhập hiện tại.</p><GoogleIdentity key={action} purpose={action} user={user} onSession={async result=>{await onSession(result);setAction('');}} /></div></Dialog>}
-  </section>;
+ return <section className="glass-panel identity-settings"><h2>Bảo mật tài khoản</h2><div className="account-security-grid account-security-single"><PasswordSettings user={user} onSession={onSession}/></div></section>;
 }

@@ -28,7 +28,7 @@ router.post(
       auditHistory: [
         v.event(req.user, 'account.email_provisioned', {
           role,
-          reason: v.text(req.body.reason, 'Lý do', { required: true }),
+          reason: v.text(req.body.reason, 'Lý do', { required:false }),
         }),
       ],
     });
@@ -263,7 +263,7 @@ router.patch(
           endDate,
         },
         v.event(req.user, 'placement.details_updated', {
-          reason: v.text(req.body.reason, 'Lý do', { required: true }),
+          reason: v.text(req.body.reason, 'Lý do', { required:false }),
         })
       )
     );

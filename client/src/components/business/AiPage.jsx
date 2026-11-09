@@ -1,4 +1,5 @@
 import ReportAnalysisResult from './ReportAnalysisResult';
+import ReportSearch from './reports/ReportSearch';
 import RecommendationResults from './RecommendationResults';
 import StudentMatchingForm from './StudentMatchingForm';
 import MentorRubricProposal from './reports/MentorRubricProposal';
@@ -20,8 +21,9 @@ export default function AiPage({user,schoolWorkflow=false}) {
   const reportAnalysis=user.role==='mentor';
   const student=user.role==='student';
   const admittedInternship=schoolWorkflow&&student?jds.data?.items.find(e=>e._id===jdId&&e.admission?.state==='active'):null;
-  const reports=useResource(reportAnalysis?'/core/reports?limit=50':null,statusRevision);
-  const selectedReport=reports.data?.items.find(report=>report._id===reportId);
+  const [chosenReport,setChosenReport]=useViewMemory('chosenAnalysisReport',null);
+  const reports=useResource(reportAnalysis&&chosenReport?'/core/reports?limit=100&assignmentId='+chosenReport.assignmentId:null,statusRevision);
+  const selectedReport=reports.data?.items.find(report=>report._id===reportId)||(chosenReport?._id===reportId?chosenReport:null);
   const readingSample=useResource(reportAnalysis&&reportId&&reportSource==='sample'?'/core/reports/'+reportId+'/reading-sample':null);
   const readingDocument=reportSource==='sample'?(readingSample.data?.reportId===reportId?readingSample.data:null):selectedReport;
   const canReviewProposal=reportAnalysis&&result?.document?.source!=='sample'&&result?.reportId===reportId&&selectedReport?.current&&['submitted','reviewed'].includes(selectedReport.state)&&!selectedReport.reviews.some(review=>review.role===user.role);
@@ -46,7 +48,7 @@ export default function AiPage({user,schoolWorkflow=false}) {
     </Panel>}
     {reportAnalysis&&<Panel title="Báo cáo thực tập cần phân tích" description="Chỉ báo cáo của sinh viên bạn phụ trách; không chấm điểm hay kỷ luật tự động.">
       <ErrorNotice message={reports.error} /><ActionForm disabled={!selectedReport||(reportSource==='submitted'&&!['submitted','reviewed'].includes(selectedReport.state))||(reportSource==='sample'&&(!readingDocument||readingSample.loading||Boolean(readingSample.error)))} submit="Phân tích báo cáo" onSaved={setResult} onSubmit={()=>run('/core/ai/reports/'+reportId+'/analyze')}>
-        <Select label="Báo cáo của sinh viên phụ trách" required value={reportId} onChange={id=>{setReportId(id);setResult(null);}} options={[{value:'',label:'Chọn báo cáo thực tập'},...(reports.data?.items||[]).map(r=>({value:r._id,label:r.title+' · v'+r.version}))]} />
+        <ReportSearch selected={selectedReport} revision={statusRevision} onSelect={report=>{setChosenReport(report);setReportId(report?._id||'');setResult(null);setReading(false);setReviewing(false);}}/>
         <Select label="Nội dung dùng để phân tích" value={reportSource} onChange={value=>{setReportSource(value);setResult(null);setReading(false);}} options={[{value:'submitted',label:'Bài báo cáo đã nộp'},{value:'sample',label:'Bài mẫu chi tiết theo đề tài'}]}/>
         {selectedReport&&reportSource==='submitted'&&!['submitted','reviewed'].includes(selectedReport.state)&&<p role="status">Bài đã chốt hoặc đang cần bổ sung. Bạn có thể đọc bài và xem kết quả đã lưu trong Báo cáo &amp; kết quả.</p>}<ErrorNotice message={readingSample.error}/>
         <button type="button" className="btn btn-secondary" disabled={!readingDocument} onClick={()=>setReading(true)}>Xem bài báo cáo</button>

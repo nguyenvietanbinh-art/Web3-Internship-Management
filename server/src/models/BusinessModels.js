@@ -160,6 +160,7 @@ const Report = model(
     approvedAt: Date,
     publicationPolicy:{type:Schema.Types.Mixed,default:undefined},
     evaluationRequired: {type:Boolean,default:undefined},
+    certificateRequest: {type:Schema.Types.Mixed,default:undefined},
     creationRequestHash:String,
     evaluationHistory: {type:[Schema.Types.Mixed],default:undefined},
     evidenceChecks: {type:[Schema.Types.Mixed],default:undefined},

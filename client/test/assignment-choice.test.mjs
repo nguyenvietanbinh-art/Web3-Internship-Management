@@ -1,0 +1,11 @@
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import {defaultAssignment} from '../src/components/business/assignmentChoice.mjs';
+const now=Date.parse('2026-11-09T00:00:00Z');
+const active={_id:'active',lifecycle:'active',startDate:'2026-11-01',endDate:'2026-12-01'};
+test('one assigned internship is inferred without user reselecting',()=>assert.equal(defaultAssignment([active],now),active));
+test('a single historical internship remains readable',()=>{const old={...active,lifecycle:'completed'};assert.equal(defaultAssignment([old],now),old);});
+test('unique active internship wins over historical records',()=>assert.equal(defaultAssignment([{...active,_id:'old',lifecycle:'completed'},active],now),active));
+test('two active internships are ambiguous and never picked arbitrarily',()=>assert.equal(defaultAssignment([active,{...active,_id:'second'}],now),null));
+test('no current internship among multiple histories requires explicit history navigation',()=>assert.equal(defaultAssignment([{...active,lifecycle:'completed'},{...active,_id:'future',startDate:'2027-01-01',endDate:'2027-02-01'}],now),null));
+test('empty list does not invent an assignment or mutate inputs',()=>{const data=[];assert.equal(defaultAssignment(data,now),null);assert.deepEqual(data,[]);});

@@ -2,34 +2,13 @@ import {cvDisplayText} from '../cvPresentation';
 import { useState } from 'react';
 import { apiRequest } from '../../../api/client';
 import { downloadFile } from '../../../api/files';
-import { ActionForm, Text, Field, ErrorNotice, MutationDialog } from '../Shared';
+import { ActionForm, Field, ErrorNotice, MutationDialog } from '../Shared';
 export default function CvFile({ data, onSaved, onRemoved }) {
   const [file, setFile] = useState(null),
     [error, setError] = useState(''),
-    [mode, setMode] = useState('local'),
-    [cvUrl, setCvUrl] = useState(''),
     [removing, setRemoving] = useState(false);
   return (
     <div className="business-stack">
-      <div className="business-actions">
-        <button
-          type="button"
-          className="btn btn-secondary"
-          aria-pressed={mode === 'local'}
-          onClick={() => setMode('local')}
-        >
-          Chọn file từ máy
-        </button>
-        <button
-          type="button"
-          className="btn btn-secondary"
-          aria-pressed={mode === 'url'}
-          onClick={() => setMode('url')}
-        >
-          Lấy CV từ đường dẫn
-        </button>
-      </div>
-      {mode === 'local' ? (
         <ActionForm
           submit="Tải CV từ máy lên"
           onSaved={onSaved}
@@ -60,26 +39,6 @@ export default function CvFile({ data, onSaved, onRemoved }) {
             />
           </Field>
         </ActionForm>
-      ) : (
-        <ActionForm
-          submit="Lấy và lưu CV từ đường dẫn"
-          onSaved={onSaved}
-          onSubmit={() =>
-            apiRequest('/core/cv/import-url', { method: 'POST', body: { url: cvUrl.trim() } })
-          }
-        >
-          <Text
-            label="Đường dẫn CV trực tiếp"
-            type="url"
-            required
-            maxLength={2048}
-            value={cvUrl}
-            onChange={setCvUrl}
-            placeholder="https://example.com/cv-cua-toi.pdf"
-            hint="Dán link HTTPS công khai dẫn trực tiếp tới file PDF/DOCX. Link trang xem CV hoặc yêu cầu đăng nhập chưa được hỗ trợ."
-          />
-        </ActionForm>
-      )}
       <p className="muted">
         Tải tệp mới sẽ thay tệp cũ. Sau khi tải, kiểm tra các mục đọc được và chọn
         “Đưa vào thông tin CV”, sau đó nhấn “Lưu CV” để cập nhật hồ sơ.

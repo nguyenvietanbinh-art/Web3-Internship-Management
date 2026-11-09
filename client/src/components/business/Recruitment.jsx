@@ -48,6 +48,6 @@ export function ApplicationsPage({user}) {
 function ApplicationReview({data,user,onSaved}) {
   const [status,setStatus]=useState(user.role==='student'?'withdrawn':data.status==='submitted'?'under_review':'accepted'),[reason,setReason]=useState('');
   return <ActionForm submit="Xác nhận trạng thái ứng tuyển" onSaved={onSaved} onSubmit={()=>apiRequest('/core/applications/'+data._id,{method:'PATCH',body:{status,reason,version:data.__v}})}>
-    <Select label="Trạng thái ứng tuyển" value={status} onChange={setStatus} options={user.role==='student'?[{value:'withdrawn',label:'Rút hồ sơ'}]:[{value:'under_review',label:'Đang xét'},{value:'accepted',label:'Chấp nhận'},{value:'rejected',label:'Từ chối'}]} /><Area label="Lý do ứng tuyển" required maxLength={2000} value={reason} onChange={setReason} />
+    <Select label="Trạng thái ứng tuyển" value={status} onChange={setStatus} options={user.role==='student'?[{value:'withdrawn',label:'Rút hồ sơ'}]:[{value:'under_review',label:'Đang xét'},{value:'accepted',label:'Chấp nhận'},{value:'rejected',label:'Từ chối'}]} /><Area label="Lý do ứng tuyển"  maxLength={2000} value={reason} onChange={setReason} />
   </ActionForm>;
 }

@@ -34,7 +34,7 @@ test('password accounts cannot access wallet scope; profile email edits do not c
  assert.equal((await h.api('GET','/core/cv',{token:actor.token})).body.code,'WALLET_LINK_REQUIRED');
  const p=(await h.api('GET','/core/profile',{token:actor.token})).body;
  assert.equal(p.authentication,'password');
- assert.equal((await h.api('PATCH','/core/profile',{token:actor.token,body:{email:'edited@example.invalid',version:p.__v}})).status,200);
+ assert.equal((await h.api('PATCH','/core/profile',{token:actor.token,body:{email:'edited@example.invalid',version:p.__v}})).status,403);
  assert.equal((await api('login',{email:'edited@example.invalid',password:plain})).status,401);assert.equal((await api('login',{email:'test.email@gmail.com',password:plain})).status,200);
 });
 test('password change verifies old password, revokes prior JWT and accepts only new password',async()=>{

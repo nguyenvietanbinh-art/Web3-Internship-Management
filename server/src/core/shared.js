@@ -28,6 +28,7 @@ function pagination(query) {
   integer(page,1,10000,'Trang');integer(limit,1,100,'Số bản ghi');return{page,limit,skip:(page-1)*limit};
 }
 function search(value) { const q=text(value,'Từ khóa',{max:120});return q?new RegExp(q.replace(/[.*+?^${}()|[\]\\]/g,'\\$&'),'i'):null; }
+function personSearch(value) { return require('../services/personSearch').pattern(text(value,'Từ khóa',{max:120})); }
 async function paged(Model,filter,query,{select,sort={createdAt:-1}}={}) {
   const {page,limit,skip}=pagination(query);let request=Model.find(filter).sort(sort).skip(skip).limit(limit);
   if(select)request=request.select(select);
@@ -40,4 +41,9 @@ async function updateVersion(Model,doc,version,set,entry,extra={}) {
   if(!updated)throw new HttpError(409,'Dữ liệu đã thay đổi; tải lại trước khi sửa','STALE_VERSION');return updated;
 }
 function versionMatch(version){return version===0?{$or:[{__v:0},{__v:{$exists:false}}]}:{__v:version};}
-module.exports={HistorySchema,event,keys,text,choice,integer,id,wallet,date,list,pagination,search,paged,updateVersion,versionMatch};
+function optionalWeek(value){
+ if(value===undefined)return undefined;
+ if(typeof value!=='string'||!/^[1-9][0-9]{0,2}$/.test(value))throw new HttpError(400,'Tuần báo cáo không hợp lệ');
+ return integer(Number(value),1,104,'Tuần báo cáo');
+}
+module.exports={HistorySchema,event,keys,text,choice,integer,id,wallet,date,list,pagination,search,personSearch,paged,updateVersion,versionMatch,optionalWeek};

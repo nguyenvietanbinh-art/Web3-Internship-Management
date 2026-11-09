@@ -276,7 +276,7 @@ router.patch(
         if (!choice || choice.status !== 'submitted')
           throw new HttpError(409, 'Chỉ xét nguyện vọng đang chờ của doanh nghiệp mình');
         choice.status = v.choice(req.body.status, ['accepted', 'rejected'], 'Kết quả');
-        choice.reason = v.text(req.body.reason, 'Nhận xét', { required: true, max: 2000 });
+        choice.reason = v.text(req.body.reason, 'Nhận xét', { required:false, max: 2000 });
         choice.reviewedAt = new Date();
         row.history.push(
           v.event(req.user, 'registration.company_reviewed', {
@@ -360,7 +360,7 @@ router.patch(
         const row = await Registration.findById(initial._id),
           status = req.user.role === 'admin' ? 'rejected' : 'withdrawn';
         v.choice(req.body.status, [status], 'Trạng thái');
-        const reason = v.text(req.body.reason, 'Lý do', { required: true, max: 2000 });
+        const reason = v.text(req.body.reason, 'Lý do', { required:false, max: 2000 });
         if (row.status !== 'submitted')
           throw new HttpError(409, 'Chỉ xử lý đăng ký chưa phân công');
         const result = await v.updateVersion(

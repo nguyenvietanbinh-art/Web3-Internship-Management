@@ -188,7 +188,7 @@ router.patch(
       throw new HttpError(403, 'Xét duyệt thuộc doanh nghiệp sở hữu JD');
     if (!['submitted', 'under_review'].includes(doc.status) || status === doc.status)
       throw new HttpError(409, 'Ứng tuyển đã kết thúc hoặc trạng thái không đổi');
-    const reason = v.text(req.body.reason, 'Lý do', { required: true, max: 2000 });
+    const reason = v.text(req.body.reason, 'Lý do', { required:false, max: 2000 });
     res.json(
       await v.updateVersion(
         Application,

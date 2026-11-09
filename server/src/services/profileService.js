@@ -6,7 +6,12 @@ function profileFields(body){
  if(patch.email&&!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(patch.email))throw new HttpError(400,'Email không hợp lệ');if(body.skills!==undefined)patch.skills=v.list(body.skills,'Kỹ năng');return patch;
 }
 async function legacyUpdate(actor,patch,action,details={}){
+ patch=profileUpdateFields(actor,patch);
  const saved=await User.findOneAndUpdate({_id:actor._id,...v.versionMatch(actor.__v??0)},{$set:patch,$inc:{__v:1},$push:{auditHistory:v.event(actor,action,{fields:Object.keys(patch),...details})}},{new:true,runValidators:true});
  if(!saved)throw new HttpError(409,'Hồ sơ đã thay đổi; tải lại trước khi sửa','STALE_VERSION');return saved;
 }
-module.exports={profileFields,legacyUpdate};
+function profileUpdateFields(actor,body){
+ if(body.email!==undefined&&(typeof body.email!=='string'||body.email.trim()!==(actor.email||'')))throw new HttpError(403,'Email tài khoản không được phép chỉnh sửa','EMAIL_READ_ONLY');
+ const {email,...editable}=body;return profileFields(editable);
+}
+module.exports={profileFields,profileUpdateFields,legacyUpdate};

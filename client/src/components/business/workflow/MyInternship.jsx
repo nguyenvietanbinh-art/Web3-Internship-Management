@@ -4,7 +4,7 @@ import {useSchoolResource as useData} from './useSchoolResource';
 import {Panel,Resource,Rows,Pager,CommandDialog} from './common';
 import {choices,stateLabel,vnDate,reasonField} from './constants';
 import {Select,Text} from '../Shared';
-export default function MyInternship({user}){
+export default function MyInternship({user:_user}){
  const [selected,setSelected]=useViewState('enrollment',''),[company,setCompany]=useViewState('company',''),[revision,setRevision]=useState(0),[modal,setModal]=useState(null);
  const [query,setQuery]=useViewState('search',''),[skill,setSkill]=useViewState('skill',''),[page,setPage]=useViewState('page',1);
  const mine=useData('/core/my/internships',revision),current=mine.data?.items.find(e=>e._id===selected)||null;
@@ -19,7 +19,7 @@ export default function MyInternship({user}){
  {notice&&<p role="status">{notice}</p>}
  <Resource state={mine}><Select label="Kỳ thực tập được cấp" value={selected} onChange={id=>{setSelected(id);setCompany('');setPage(1);}} options={choices(enrollments,e=>`${e.batch.name} · ${e.batch.type==='bachelor'?'Cử nhân':'Kỹ sư'}`)}/></Resource>
  {current&&<><p>Thời gian: {vnDate(current.batch.startDate)} → {vnDate(current.batch.endDate)} (giờ Việt Nam)</p><p>Đăng ký: {current.registeredAt?'Đã đăng ký':'Chưa đăng ký'} · Đã ứng tuyển <strong>{current.applicationCount}/3 đề tài</strong></p><p>Được hoàn {current.refundedCount||0} lượt · Còn {current.remainingApplications??Math.max(0,3-current.applicationCount)} lượt ứng tuyển.</p><p>Đề tài: {current.admission?.state==='active'?current.admission.title:'Chưa nhận đề tài'} · Doanh nghiệp: {current.admission?.state==='active'?current.admission.companyName:'Chưa có'}</p><p>Phân công: {current.assignmentId?'Nhà trường đã phân công chính thức':'Chưa phân công chính thức / chờ giảng viên'}</p>{!current.registeredAt&&<button className="btn btn-primary" onClick={()=>setModal({title:'Đăng ký tham gia kỳ',path:`/core/my/internships/${current._id}/register`,fields:[],initial:{}})}>Đăng ký tham gia kỳ</button>}</>}
- {!user.walletVerified&&<p className="inline-alert">Bạn chưa liên kết ví. Bạn vẫn có thể làm công việc, viết nhật ký, chấm công và nộp báo cáo; ghi nhận blockchain cần ví đã xác minh.</p>}
+
  </Panel>
  {current?.registeredAt&&current.admission?.state!=='active'&&<Panel title="Cơ hội còn tuyển trong kỳ" description="Nộp hồ sơ không giữ chỗ. Hồ sơ đã rút hoặc bị từ chối vẫn tính vào giới hạn 3.">
  <Text label="Tìm đề tài, nội dung hoặc doanh nghiệp" value={query} onChange={v=>{setQuery(v);setPage(1);}}/><Text label="Lọc kỹ năng yêu cầu" value={skill} onChange={v=>{setSkill(v);setPage(1);}}/><button className="btn btn-secondary" onClick={()=>{setQuery('');setSkill('');setCompany('');setPage(1);}}>Xóa bộ lọc</button><Select label="Lọc doanh nghiệp ứng tuyển" value={company} onChange={v=>{setCompany(v);setPage(1);}} options={[{value:'',label:'Tất cả doanh nghiệp còn chỗ'},...companies.map(c=>({value:c._id,label:c.name}))]}/>

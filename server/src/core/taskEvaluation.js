@@ -10,7 +10,7 @@ router.put('/tasks/:id/draft',requireRole('student'),asyncHandler(async(req,res)
  if(draft.link){const u=(()=>{try{return new URL(draft.link);}catch{throw new HttpError(400,'Liên kết không hợp lệ');}})();if(!['https:','http:'].includes(u.protocol)||u.username||u.password)throw new HttpError(400,'Liên kết không hợp lệ');}
  res.json(await v.updateVersion(Task,doc,req.body.version,{draft},v.event(req.user,'task.draft_saved')));
 }));
-router.post('/tasks/:id/analyze',requireRole('student','company','mentor'),asyncHandler(async(req,res)=>{
+router.post('/tasks/:id/analyze',requireRole('student','company'),asyncHandler(async(req,res)=>{
  v.keys(req.body,['version']);const {doc}=await resource(Task,req.user,req.params.id);service.requireCriteria(doc);if(!doc.submission?.submittedAt)throw new HttpError(409,'Chưa có bài nộp');if(doc.status==='done')throw new HttpError(409,'Kết quả đã xác nhận, không ghi đè phân tích');
  if(doc.__v!==req.body.version)throw new HttpError(409,'Công việc đã thay đổi','STALE_VERSION');
  const full=await Task.findById(doc._id).select('+submissionFileData');let attachments=[],attachmentError=null;

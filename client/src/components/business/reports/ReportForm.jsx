@@ -4,17 +4,17 @@ import { loadReportTasks, reportDraftFromTask } from '../../../api/reportTasks';
 import { displayLabel } from '../content';
 import { ActionForm, Select, Text, Area, ErrorNotice } from '../Shared';
 import ReportSelfAssessment from './ReportSelfAssessment';
-export default function ReportForm({ assignment, onSaved,fixedKind }) {
+export default function ReportForm({ assignment, onSaved,fixedKind,previous }) {
   const creationKey=useRef(crypto.randomUUID());
   const [selfGrading,setSelfGrading]=useState(null);
   const [kind, setKind] = useState(fixedKind||'weekly'),
-    [title, setTitle] = useState(''),
-    [content, setContent] = useState(''),[weekNumber,setWeekNumber]=useState('1'),[selfAssessment,setSelfAssessment]=useState('');
+    [title, setTitle] = useState(previous?.title||''),
+    [content, setContent] = useState(previous?.content||''),[weekNumber,setWeekNumber]=useState(String(previous?.weekNumber||1)),[selfAssessment,setSelfAssessment]=useState(previous?.selfAssessment||'');
   const [weekly,setWeekly]=useState({work:'',results:'',challenges:'',support:'',plan:''});
   const weeklyFields=[['work','Công việc đã làm'],['results','Kết quả đạt được'],['challenges','Khó khăn gặp phải'],['support','Phần cần doanh nghiệp hỗ trợ'],['plan','Kế hoạch tiếp theo']];
   const [tasks, setTasks] = useState({ loading: true, items: [], error: '' }),
     [retry, setRetry] = useState(0),
-    [selected, setSelected] = useState(''),[linkedTasks,setLinkedTasks]=useState([]),
+    [selected, setSelected] = useState(''),[linkedTasks,setLinkedTasks]=useState(previous?.taskIds||[]),
     [lastFill, setLastFill] = useState(null),
     [needsFill, setNeedsFill] = useState(false);
   useEffect(() => {
@@ -53,18 +53,19 @@ export default function ReportForm({ assignment, onSaved,fixedKind }) {
   };
   return (
     <ActionForm
-      submit="Nộp phiên bản báo cáo"
+      submit={previous?'Nộp bổ sung':'Nộp phiên bản báo cáo'}
       onSaved={onSaved}
       onSubmit={async() => {
         const created=await apiRequest('/core/reports', {
           method: 'POST',
           headers:{'Idempotency-Key':creationKey.current},
-          body: { assignmentId: assignment._id,...((fixedKind||kind)==='weekly'?{weekNumber:Number(weekNumber),taskIds:linkedTasks}:linkedTasks.length?{taskIds:linkedTasks}:{}),selfAssessment,...(selfGrading?.scores?.length?{selfGrading}:{}), kind:fixedKind||kind, title, content:fixedKind==='weekly'?weeklyFields.map(([key,label])=>label+'\n'+weekly[key].trim()).join('\n\n'):content },
+          body: { assignmentId: assignment._id,...(previous?{previousReportId:previous._id,previousVersion:previous.__v}:{}),...((fixedKind||kind)==='weekly'?{weekNumber:Number(weekNumber),taskIds:linkedTasks}:linkedTasks.length?{taskIds:linkedTasks}:{}),selfAssessment,...(selfGrading?.scores?.length?{selfGrading}:{}), kind:fixedKind||kind, title, content:fixedKind==='weekly'&&!previous?weeklyFields.map(([key,label])=>label+'\n'+weekly[key].trim()).join('\n\n'):content },
         });
         if((fixedKind||kind)==='final'){try{await apiRequest('/core/ai/reports/'+created._id+'/analyze',{method:'POST',body:{engine:'sbert',reportSource:'submitted'}});}catch{/* The submitted report remains saved; its detail view offers a retry. */}}
         return created;
       }}
     >
+      {previous&&<p>Đang bổ sung phiên bản {previous.version}. Nội dung và tệp của lần nộp trước được giữ nguyên; tệp mới được đính kèm vào phiên bản mới qua phần Lưu trữ báo cáo hiện có.</p>}
       {!fixedKind&&<Select
         label="Loại báo cáo"
         value={kind}
@@ -139,8 +140,8 @@ export default function ReportForm({ assignment, onSaved,fixedKind }) {
         onChange={setTitle}
       />
       <Area label="Tự đánh giá và phần cần hỗ trợ" maxLength={5000} value={selfAssessment} onChange={setSelfAssessment}/>
-      {(fixedKind||kind)==='final'&&<ReportSelfAssessment batchId={assignment.batchId} value={selfGrading} onChange={setSelfGrading}/>}
-      {fixedKind==='weekly'?weeklyFields.map(([key,label])=><Area key={key} label={label} required={key!=='support'} maxLength={8000} value={weekly[key]} onChange={value=>setWeekly(s=>({...s,[key]:value}))}/>):<Area
+      {(fixedKind||kind)==='final'&&<ReportSelfAssessment batchId={assignment.batchId||previous?.batchId} value={selfGrading} onChange={setSelfGrading}/>}
+      {fixedKind==='weekly'&&!previous?weeklyFields.map(([key,label])=><Area key={key} label={label} required={key!=='support'} maxLength={8000} value={weekly[key]} onChange={value=>setWeekly(s=>({...s,[key]:value}))}/>):<Area
         label="Nội dung báo cáo theo kỳ"
         required
         maxLength={50000}

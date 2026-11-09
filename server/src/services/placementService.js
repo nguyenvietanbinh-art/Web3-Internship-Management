@@ -37,7 +37,7 @@ async function performPlacement(actor, body, registration = null) {
   }
   const approve = actor.role === 'admin' && body.approveImmediately === true;
   const reason = approve
-    ? v.text(body.reason, 'Lý do phân công', { required: true, max: 2000 })
+    ? v.text(body.reason, 'Lý do phân công', { required:false, max: 2000 })
     : '';
   const topic = await Topic.findById(v.id(body.topicId));
   const batch = await InternshipBatch.findById(v.id(body.batchId));
