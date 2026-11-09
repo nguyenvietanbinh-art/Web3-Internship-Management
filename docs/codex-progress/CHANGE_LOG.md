@@ -279,3 +279,24 @@ PHASE 4: Configuration/static packaging PASS; actual Docker image build NOT TEST
 PHASE 5: Source/artifact/compiler/ABI checks PASS; live Sepolia NOT TESTED. No transactions or deployments.
 PHASE 6: Atlas plan prepared; live Render database identity NOT TESTED. No production migration/index/data changes.
 NEXT: Review docs/CLOUD_WEB3_READ_ONLY_RELEASE.md; obtain approval before commit/push/deploy or Cloud activation. Keep READ_ONLY and automatic worker disabled.
+
+## Approved READ_ONLY release push — 2026-11-09
+[RESULT] PASS: fetched remote and verified base 5e41f785ef480427dc500c091ce2f9976bebffb3; exactly 38 staged files; cached diff check and secret/path scan PASS. Committed and fast-forward pushed to origin/deploy/internova-cloud-20261108.
+Commit: 497e40a3f3ffb9593165553203faad388274936f
+Remote refs/heads/deploy/internova-cloud-20261108 independently verified at the same hash after push.
+No Render deployment/env changes, Atlas migration, blockchain transaction, mint, write activation or autoIssue activation performed. Root branch_1 changes preserved.
+NEXT: operator review and separate approval for Render READ_ONLY deployment. This post-push checkpoint update remains local and is not part of the 38-file release commit; no additional commit/push performed.
+
+## Attendance Sepolia diagnosis — 2026-11-09
+[RESULT] PHASE1 PASS: found catch-all recipient error classification and hardcoded readOnly in timeEvidence.list.
+[RESULT] PHASE2 PARTIAL/BLOCKED: Render health/ready200, DBconnected; Web3 status401 without token. Live commit/config/recipient unverified.
+[RESULT] PHASE3 PASS source changes: timeEvidenceReadiness, timeEvidence.list, AdminCertificatePage banner, focused test. No validation bypass, provisioning or business data changes.
+[RESULT] PHASE4 PARTIAL:22 tests PASS, syntax/lint/build PASS. Fresh Mongo integration and authenticated browser NOT TESTED; previous custody fixtures preserved.
+[RESULT] PHASE5 checklist prepared; real transaction requires separate approval. No push/deploy/write/mint/worker.
+NEXT: obtain authorized Cloud read-only status/commit evidence; complete fresh isolated DB integration and authenticated UI before accepting end-to-end. See docs/SEPOLIA_TIME_EVIDENCE_DIAGNOSIS.md.
+
+## Readiness release verification — 2026-11-09
+PASS: remote/base497e40a unchanged before release. Four readiness files reviewed. Public readiness.status maps READ_ONLY, CLOUD_NOT_CONFIGURED, RECIPIENT_MISSING and READY; detailed readiness.code retained. No secret/error.message echoed.
+24 tests PASS: original22 plus stable public status and HTTP role/scope test (Student/Mentor403, out-of-scope Company404 before session reads). HTTP test uses database stubs, not Atlas/Mongo integration. Frontend lint/build and full Backend syntax PASS.
+Selected release includes four readiness files, diagnosis and five progress files; excludes Solidity newline-only working change and all secrets/data. No Render deploy/env change, Mongo writes, recipient provisioning or EVM transaction.
+NEXT: commit/push after staged scan; operator deploy Render manually with READ_ONLY/Cloud custody write/autoIssue flags unchanged. Verify health/ready, authorized Admin time-evidence response and browser banner. If bad, redeploy497e40a without data rollback. Live authenticated validation remains NOT TESTED.
